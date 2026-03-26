@@ -6,6 +6,7 @@
 #   ./run.sh scout                # Scout only (refresh backlog)
 #   ./run.sh architect            # Architect only (design methodology for top pending category)
 #   ./run.sh analyze              # Analyze only (execute research for top methodology-ready category)
+#   ./run.sh elf-run              # Full autonomous elf run (Steps A-E, 48+ capsules)
 #   ./run.sh --category "SLUG"    # Target a specific category
 #
 # For cron: runs unattended with logging to logs/
@@ -18,7 +19,9 @@ CATEGORIES_DIR="${UOF_DIR}/categories"
 ANALYSIS_DIR="${UOF_DIR}/analysis"
 TIMESTAMP="$(date +%Y%m%d_%H%M%S)"
 
-mkdir -p "$LOG_DIR" "$CATEGORIES_DIR" "$ANALYSIS_DIR"
+NOTES_DIR="${UOF_DIR}/notes"
+
+mkdir -p "$LOG_DIR" "$CATEGORIES_DIR" "$ANALYSIS_DIR" "$NOTES_DIR"
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -228,6 +231,58 @@ PROMPT
     log "Analysis complete for '${cat_name}'"
 }
 
+run_elf_run() {
+    log "=== ELF RUN: Full autonomous research session (Steps A-E) ==="
+
+    local elf_prompt
+    elf_prompt="$(cat <<'PROMPT'
+You are a Universe of Finance research Elf executing a full autonomous
+research run. Follow the protocol in elves/run_protocol.md exactly.
+
+## Your session protocol (Steps A-E):
+
+### Step A: Review & Orient
+1. Read notes/last_session.md (if it exists) for continuity
+2. Read notes/research_agenda.md for your work queue
+3. Read analysis/README.md to see completed work
+4. Read TAXONOMY.md for the full category structure
+5. Read elves/survival_guide.md for your rules
+
+### Step B: Research — Produce 48+ Research Capsules
+Follow inside-out priority (biggest categories today first).
+For each category:
+- If no METHODOLOGY.md exists, create one following architect/SKILL.md
+- Collect data, cite sources with hyperlinks, show calculations
+- Write REPORT.md (clean, reader-facing) + data.json + workings/
+- Run elves/validation_gates.sh on each completed category
+- Commit with prefix [UoF]
+
+### Step C: Taxonomy Review
+After 48+ capsules, assess whether TAXONOMY.md needs new sectors,
+categories, splits, or merges. Update if needed.
+
+### Step D: Retrospective
+Review prior research for stale data, cross-category conflicts,
+confidence upgrades, and double-counting issues.
+
+### Step E: Session Notes
+Write notes/last_session.md and notes/research_agenda.md for the
+next run. Commit with prefix [UoF] session-notes:
+
+## Critical rules:
+- CITE HEAVILY — hyperlink directly to sources, leave nothing relevant out
+- SHOW ALL MATH — explain calculations and assumptions in workings/ files
+- CONFIDENCE TAG every number (green/yellow/red)
+- Inside-out: biggest TODAY first, expand outward
+PROMPT
+)"
+
+    cd "${UOF_DIR}"
+    claude -p "$elf_prompt" 2>&1 | tee -a "${LOG_DIR}/elf_run_${TIMESTAMP}.log"
+
+    log "Elf run complete."
+}
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -245,7 +300,7 @@ main() {
                 category="$2"
                 shift 2
                 ;;
-            scout|architect|analyze|all)
+            scout|architect|analyze|elf-run|all)
                 mode="$1"
                 shift
                 ;;
@@ -267,13 +322,16 @@ main() {
         analyze)
             run_analyze "$category"
             ;;
+        elf-run)
+            run_elf_run
+            ;;
         all)
             run_scout
             run_architect "$category"
             run_analyze "$category"
             ;;
         *)
-            echo "Usage: $0 [scout|architect|analyze|all] [--category SLUG]"
+            echo "Usage: $0 [scout|architect|analyze|elf-run|all] [--category SLUG]"
             exit 1
             ;;
     esac

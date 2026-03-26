@@ -67,56 +67,57 @@ def check_existing_work() -> tuple[set[str], set[str]]:
 
 
 def score_category(entry: CategoryEntry, config: dict) -> float:
-    """Score a category based on config weights."""
+    """Score a category using inside-out prioritisation.
+
+    Inside-out means: biggest categories by CURRENT transaction volume
+    get the highest priority. We measure the centre of the universe first,
+    then expand outward to smaller and emerging categories.
+    """
     weights = config.get("scoring", {})
 
-    # Data availability (based on known sources count and confidence)
-    source_count = len(entry.known_sources)
-    data_score = min(source_count / 3.0, 1.0) * 100
-
-    # Market scale (rough estimate from description)
+    # Current scale — THE dominant factor (inside-out core)
+    # Highest-volume categories today get researched first because they
+    # represent the bulk of "The Big Number" and give context for everything else.
     scale_scores = {
-        "tens of billions/day": 100,
-        "billions/day": 85,
-        "hundreds of millions/day": 70,
-        "millions/day": 55,
-        "millions/day but massive value": 60,
-        "millions/day high value": 60,
-        "tens of millions/day": 65,
-        "emerging": 30,
-        "nascent": 15,
-        "nascent but projected massive": 25,
+        "tens of billions/day": 100,    # Consumer cards, UPI — the giants
+        "billions/day": 85,             # Equity markets, e-commerce, digital wallets
+        "hundreds of millions/day": 70, # Bank transfers, real-time payments
+        "tens of millions/day": 55,     # Crypto exchanges, blockchain L1/L2
+        "millions/day": 40,             # FX, OTC derivatives, P2P, stablecoins
+        "millions/day but massive value": 45,  # FX (few tx, enormous value)
+        "millions/day high value": 45,  # Interbank (few tx, enormous value)
+        "emerging": 15,                 # RWA tokenisation — small but growing
+        "nascent but projected massive": 10,  # IoT M2M — future, not today
+        "nascent": 5,                   # AI agents — future, not today
     }
-    market_score = scale_scores.get(entry.estimated_scale, 40)
+    current_scale_score = scale_scores.get(entry.estimated_scale, 30)
 
-    # Growth rate (heuristic: emerging > established)
-    growth_scores = {
-        "nascent but projected massive": 95,
-        "nascent": 85,
-        "emerging": 80,
-        "tens of billions/day": 30,  # mature
-        "billions/day": 45,
-        "hundreds of millions/day": 50,
-        "millions/day": 55,
-        "tens of millions/day": 60,
-    }
-    growth_score = growth_scores.get(entry.estimated_scale, 50)
+    # Data availability — more sources = faster to produce capsules
+    source_count = len(entry.known_sources)
+    data_availability_score = min(source_count / 3.0, 1.0) * 100
 
-    # Uniqueness (inverse of how well-covered this is)
-    uniqueness_score = 70  # base score, refined as we learn more
+    # Data quality — primary/official sources score higher
+    high_quality_keywords = {"BIS", "WFE", "FIA", "Federal Reserve", "ECB",
+                             "Visa", "Mastercard", "central banks", "DTCC"}
+    quality_hits = sum(1 for s in entry.known_sources
+                       if any(kw.lower() in s.lower() for kw in high_quality_keywords))
+    data_quality_score = min(quality_hits / 2.0, 1.0) * 100
 
-    # Radix relevance
+    # Uniqueness — inverse of how well-covered this topic is elsewhere
+    uniqueness_score = 70  # base; refined as we learn more
+
+    # Radix relevance (minor tiebreaker)
     radix_keywords = {"defi", "digital", "token", "blockchain", "l1", "l2",
                       "stablecoin", "crypto", "rwa"}
     radix_score = 80 if any(kw in entry.slug.lower() or kw in entry.name.lower()
                             for kw in radix_keywords) else 30
 
     total = (
-        data_score * weights.get("data_availability_weight", 0.30)
-        + market_score * weights.get("market_scale_weight", 0.25)
-        + growth_score * weights.get("growth_rate_weight", 0.20)
-        + uniqueness_score * weights.get("uniqueness_weight", 0.15)
-        + radix_score * weights.get("radix_relevance_weight", 0.10)
+        current_scale_score * weights.get("current_scale_weight", 0.45)
+        + data_availability_score * weights.get("data_availability_weight", 0.25)
+        + data_quality_score * weights.get("data_quality_weight", 0.15)
+        + uniqueness_score * weights.get("uniqueness_weight", 0.10)
+        + radix_score * weights.get("radix_relevance_weight", 0.05)
     )
 
     return round(total, 1)

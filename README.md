@@ -53,6 +53,31 @@ independently researched and measured.
 
 Individual protocols, networks, or platforms within each category.
 
+## Inside-Out Research Strategy
+
+Research expands outward from the centre like ripples:
+
+```
+THE CENTRE → biggest categories TODAY (current TPS)
+    Ring 1 → expand depth (historic, subcategories, projections)
+    Ring 2 → medium-scale categories
+    Ring 3 → smaller & emerging categories
+    Ring 4 → nascent & speculative categories
+```
+
+We measure consumer cards and bank transfers before IoT micropayments
+because the top 5 categories likely represent 80%+ of global TPS. Context
+from the giants calibrates everything else.
+
+## Research Capsules
+
+A **research capsule** is the atomic unit of output: one measurement of
+transactions for one category over one time period, plus all accompanying
+analysis. Each Elf run targets **48+ capsules** before assessing taxonomy
+gaps and preparing the next session's agenda.
+
+See `elves/run_protocol.md` for the full 5-step run process (A-E).
+
 ## Pipeline
 
 ```
@@ -145,7 +170,11 @@ universe-of-finance/
 │       └── quality_gates.md     # Research quality checklist
 ├── elves/                       # Autonomous research agents
 │   ├── survival_guide.md        # Standing brief for research elves
+│   ├── run_protocol.md          # Standard run protocol (Steps A-E)
 │   └── validation_gates.sh      # Data validation script
+├── notes/                       # Inter-session continuity
+│   ├── research_agenda.md       # Next run's work queue
+│   └── last_session.md          # Previous run's notes
 ├── categories/                  # Category specs (Architect output)
 │   ├── traditional-finance/
 │   │   ├── stock-exchanges/METHODOLOGY.md
@@ -163,9 +192,10 @@ universe-of-finance/
 ├── analysis/                    # Generated research reports
 │   ├── README.md                # Master index
 │   └── <category>/
-│       ├── REPORT.md
-│       ├── data.json
-│       └── charts/
+│       ├── REPORT.md            # Clean, reader-facing analysis
+│       ├── data.json            # Structured data with source URLs
+│       ├── charts/              # Generated visualisations
+│       └── workings/            # Full calculations, source notes, assumptions
 ├── models/                      # Projection models
 │   ├── baseline/
 │   ├── high-growth/

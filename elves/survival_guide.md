@@ -10,6 +10,26 @@ research following a methodology designed by the Architect. You collect
 data, normalise it, build projections, create visualisations, and write
 analysis reports.
 
+**Before starting work**, read `elves/run_protocol.md` for the full
+session protocol (Steps A-E) and inside-out prioritisation rules.
+
+## Research Capsules
+
+A **research capsule** is your atomic unit of output: one measurement of
+transactions for one category over one time period, plus all accompanying
+analysis. Your target is **48+ capsules per run**. See `run_protocol.md`
+for the full definition.
+
+## Inside-Out Priority
+
+Always work from the centre outward:
+1. **Biggest categories TODAY** (current TPS) — consumer cards, bank transfers, equity markets
+2. **Expand depth** on those (historic data, subcategories, projections)
+3. **Medium categories** (FX, crypto, gaming)
+4. **Smaller/emerging categories** (IoT, AI agents, RWAs)
+
+The research agenda in `notes/research_agenda.md` specifies the current queue.
+
 ## Core Rules
 
 ### 1. Follow the Methodology
@@ -25,13 +45,40 @@ precisely. The methodology specifies:
 **Do not invent your own methodology.** If the methodology has a gap,
 flag it — don't silently fill it with assumptions.
 
-### 2. Every Number Needs a Source
+### 2. Every Number Needs a Source — Cite Heavily
 
-No number appears in a report without a citation. Format:
+No number appears in a report without a citation. **Hyperlink directly to
+the source whenever possible.** Do not leave any relevant source uncited.
 
-- Direct data: `4,200 TPS (Source: Visa Q3 2025 Earnings, p.12)`
-- Derived: `~3,500 TPS (Derived: 302M daily tx / 86,400 sec; Source: WFE Monthly Stats, Jan 2026)`
-- Estimate: `~500-800 TPS (Estimate: based on [methodology]; Confidence: 🟡 Medium)`
+Format for reports (with hyperlinks):
+
+```markdown
+Consumer card networks processed approximately 640 billion transactions
+in 2024 ([Nilson Report #1243, March 2025](https://nilsonreport.com/...)),
+equivalent to ~20,300 TPS average.
+```
+
+For derived calculations, **show the math** inline or link to workings:
+
+```markdown
+Average TPS = 640B transactions / (365 days × 86,400 sec/day) = **20,289 TPS**
+(see [detailed calculation](workings/calculations.md#consumer-cards-tps))
+```
+
+For data.json, every data point includes source URL:
+
+```json
+{
+  "value": 20289,
+  "source": "Nilson Report #1243, March 2025",
+  "url": "https://nilsonreport.com/...",
+  "confidence": "high",
+  "accessed": "2026-03-26"
+}
+```
+
+When multiple sources disagree, report the range and explain the discrepancy.
+Prefer primary sources over secondary, recent over old, audited over estimated.
 
 ### 3. Tag Confidence Honestly
 
@@ -43,16 +90,38 @@ Every figure gets a confidence tag:
 When in doubt, tag lower. Honesty about uncertainty is more valuable than
 false precision.
 
-### 4. Structured Data First, Prose Second
+### 4. Show All Work — But Keep Reports Clean
+
+Use the `workings/` subdirectory to separate the audit trail from the
+consumable report:
+
+```
+analysis/<sector>/<category>/
+├── REPORT.md              # Clean, reader-facing analysis
+├── data.json              # Structured data
+├── charts/                # Visualisations
+└── workings/              # Full audit trail
+    ├── calculations.md    # Step-by-step math with all assumptions
+    ├── source_notes.md    # Extended notes on each source consulted
+    └── assumptions.md     # Detailed assumption documentation
+```
+
+**REPORT.md** = concise, every number hyperlinked, calculations summarised.
+**workings/** = full derivations, raw source extracts, assumption reasoning.
+Anyone questioning a number drills into workings/ for the paper trail.
+
+### 5. Structured Data First, Prose Second
 
 Before writing the narrative report:
 1. Collect all data points into `data.json`
-2. Generate charts from the structured data
-3. Write the report referencing the data and charts
+2. Write calculation derivations to `workings/calculations.md`
+3. Generate charts from the structured data
+4. Write the report referencing the data, charts, and workings
 
-The JSON is the source of truth. The report is the explanation.
+The JSON is the source of truth. The report is the explanation. The
+workings/ directory is the audit trail.
 
-### 5. Charts Must Be Correct
+### 6. Charts Must Be Correct
 
 Every chart must:
 - Have labelled axes with units
@@ -63,7 +132,7 @@ Every chart must:
 
 Use matplotlib with the project's standard style (see `scout/charts.py`).
 
-### 6. Three Projections, Always
+### 7. Three Projections, Always
 
 Every category gets three projection scenarios:
 - **Baseline**: current trends continue
@@ -79,13 +148,17 @@ For each category, produce:
 
 ```
 analysis/<sector>/<category>/
-├── REPORT.md          # Full research report
+├── REPORT.md          # Clean, reader-facing analysis (hyperlinked sources)
 ├── data.json          # Structured data (all figures, sources, projections)
-└── charts/
-    ├── historic_tps.png       # Historic TPS timeseries
-    ├── volume_breakdown.png   # Subcategory breakdown
-    ├── projections.png        # Three-scenario projection chart
-    └── ...                    # Additional charts as needed
+├── charts/
+│   ├── historic_tps.png       # Historic TPS timeseries
+│   ├── volume_breakdown.png   # Subcategory breakdown
+│   ├── projections.png        # Three-scenario projection chart
+│   └── ...                    # Additional charts as needed
+└── workings/
+    ├── calculations.md    # Full math: every derivation, step by step
+    ├── source_notes.md    # Extended notes on each source consulted
+    └── assumptions.md     # All assumptions documented with reasoning
 ```
 
 ### REPORT.md Template

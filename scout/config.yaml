@@ -262,12 +262,14 @@ categories:
       estimated_scale: "emerging"
 
 # Scoring weights for category prioritisation
+# Inside-out strategy: biggest categories TODAY get highest priority.
+# We measure the centre first, then expand outward to smaller/emerging.
 scoring:
-  data_availability_weight: 0.30    # Better data = research first
-  market_scale_weight: 0.25         # Bigger categories = higher priority
-  growth_rate_weight: 0.20          # Faster growing = more interesting
-  uniqueness_weight: 0.15           # Less covered = more valuable
-  radix_relevance_weight: 0.10     # Relevant to Radix ecosystem
+  current_scale_weight: 0.45        # BIGGEST today = research FIRST (inside-out core)
+  data_availability_weight: 0.25    # Better data = faster to produce capsules
+  data_quality_weight: 0.15         # Higher-confidence sources = more reliable findings
+  uniqueness_weight: 0.10           # Less covered elsewhere = more valuable contribution
+  radix_relevance_weight: 0.05     # Relevant to Radix ecosystem (minor tiebreaker)
 
 # Output
 output:
