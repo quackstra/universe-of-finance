@@ -1,0 +1,275 @@
+# Universe of Finance — Scout Configuration
+# Data sources and filters for transaction volume discovery
+
+sources:
+  # Primary: Central bank and regulatory data
+  bis:
+    description: "Bank for International Settlements"
+    base_url: "https://www.bis.org"
+    datasets:
+      - "CPMI statistics (payments, clearing, settlement)"
+      - "Triennial Central Bank Survey (FX and derivatives)"
+      - "OTC derivatives statistics"
+    update_frequency: "annual/triennial"
+    confidence: "high"
+
+  wfe:
+    description: "World Federation of Exchanges"
+    base_url: "https://www.world-exchanges.org"
+    datasets:
+      - "Monthly exchange statistics (equity, bonds, derivatives)"
+      - "Annual statistics report"
+    update_frequency: "monthly"
+    confidence: "high"
+
+  fed:
+    description: "Federal Reserve"
+    datasets:
+      - "Fedwire Funds Service statistics"
+      - "FedACH statistics"
+      - "Federal Reserve Payments Study"
+    update_frequency: "annual"
+    confidence: "high"
+
+  ecb:
+    description: "European Central Bank"
+    datasets:
+      - "TARGET2 statistics"
+      - "Payment statistics"
+      - "Securities settlement statistics"
+    update_frequency: "annual"
+    confidence: "high"
+
+  swift:
+    description: "SWIFT"
+    datasets:
+      - "Annual Review (message volumes)"
+      - "Monthly traffic data"
+    update_frequency: "monthly"
+    confidence: "high"
+
+  # Secondary: Industry reports
+  visa_mastercard:
+    description: "Card network reports"
+    datasets:
+      - "Visa quarterly earnings (transaction volumes)"
+      - "Mastercard quarterly earnings"
+      - "Nilson Report (card industry data)"
+    update_frequency: "quarterly"
+    confidence: "high"
+
+  fia:
+    description: "Futures Industry Association"
+    datasets:
+      - "Annual volume survey (exchange-traded derivatives)"
+    update_frequency: "annual"
+    confidence: "high"
+
+  # Digital assets
+  defillama:
+    description: "DeFi analytics"
+    base_url: "https://api.llama.fi"
+    endpoints:
+      protocols: "/protocols"
+      tvl_chart: "/charts"
+      volumes: "/overview/dexs"
+    update_frequency: "real-time"
+    confidence: "high"
+
+  blockchain_explorers:
+    description: "On-chain transaction data"
+    sources:
+      - "Etherscan (Ethereum)"
+      - "Blockchain.com (Bitcoin)"
+      - "Solscan (Solana)"
+      - "Radix Dashboard (Radix)"
+    update_frequency: "real-time"
+    confidence: "high"
+
+  # Gaming
+  gaming:
+    description: "Gaming industry analytics"
+    sources:
+      - "Newzoo Global Games Market Report"
+      - "Sensor Tower (mobile app analytics)"
+      - "Steam Charts"
+    update_frequency: "annual"
+    confidence: "medium"
+
+  # Tertiary: Projections and estimates
+  analyst_reports:
+    description: "Industry analyst firms"
+    sources:
+      - "McKinsey Global Payments Report"
+      - "BCG Global Payments Model"
+      - "Juniper Research"
+      - "Statista"
+    update_frequency: "annual"
+    confidence: "medium"
+
+# Transaction category definitions
+# Each category will become a research track
+categories:
+  traditional_finance:
+    - name: "Equity Markets (Stock Exchanges)"
+      slug: "equity-markets"
+      priority: 1
+      known_sources: ["WFE", "individual exchange reports"]
+      estimated_scale: "billions/day"
+
+    - name: "Fixed Income (Bond Markets)"
+      slug: "fixed-income"
+      priority: 2
+      known_sources: ["BIS", "TRACE", "ICMA"]
+      estimated_scale: "millions/day"
+
+    - name: "Exchange-Traded Derivatives"
+      slug: "etd"
+      priority: 3
+      known_sources: ["FIA", "WFE"]
+      estimated_scale: "billions/day"
+
+    - name: "OTC Derivatives"
+      slug: "otc-derivatives"
+      priority: 4
+      known_sources: ["BIS triennial survey", "ISDA"]
+      estimated_scale: "millions/day"
+
+    - name: "Foreign Exchange"
+      slug: "forex"
+      priority: 1
+      known_sources: ["BIS triennial survey", "CLS"]
+      estimated_scale: "millions/day but massive value"
+
+    - name: "Commodities"
+      slug: "commodities"
+      priority: 5
+      known_sources: ["CME", "ICE", "LME"]
+      estimated_scale: "millions/day"
+
+  payments:
+    - name: "Consumer Card Payments"
+      slug: "consumer-cards"
+      priority: 1
+      known_sources: ["Visa", "Mastercard", "Nilson Report"]
+      estimated_scale: "tens of billions/day"
+
+    - name: "Digital Wallets & Mobile Payments"
+      slug: "digital-wallets"
+      priority: 1
+      known_sources: ["Central banks", "platform reports"]
+      estimated_scale: "billions/day"
+
+    - name: "Bank Transfers (ACH/RTGS)"
+      slug: "bank-transfers"
+      priority: 2
+      known_sources: ["Federal Reserve", "ECB", "Bank of England"]
+      estimated_scale: "hundreds of millions/day"
+
+    - name: "Peer-to-Peer Transfers"
+      slug: "p2p-transfers"
+      priority: 3
+      known_sources: ["Company reports", "central banks"]
+      estimated_scale: "millions/day"
+
+    - name: "Remittances"
+      slug: "remittances"
+      priority: 3
+      known_sources: ["World Bank", "BIS"]
+      estimated_scale: "millions/day"
+
+    - name: "E-Commerce & Merchant Processing"
+      slug: "ecommerce"
+      priority: 2
+      known_sources: ["Shopify", "Stripe", "industry reports"]
+      estimated_scale: "billions/day"
+
+  digital_assets:
+    - name: "Centralised Crypto Exchanges"
+      slug: "cex"
+      priority: 2
+      known_sources: ["CoinGecko", "CoinMarketCap", "exchange APIs"]
+      estimated_scale: "tens of millions/day"
+
+    - name: "DeFi (Decentralised Finance)"
+      slug: "defi"
+      priority: 1
+      known_sources: ["DeFiLlama", "Dune Analytics"]
+      estimated_scale: "millions/day"
+
+    - name: "Stablecoins"
+      slug: "stablecoins"
+      priority: 2
+      known_sources: ["On-chain data", "Circle/Tether reports"]
+      estimated_scale: "millions/day"
+
+    - name: "L1 & L2 Blockchain Transactions"
+      slug: "blockchain-l1-l2"
+      priority: 3
+      known_sources: ["Block explorers", "L2Beat"]
+      estimated_scale: "tens of millions/day"
+
+  gaming:
+    - name: "In-Game Microtransactions"
+      slug: "gaming-microtx"
+      priority: 3
+      known_sources: ["Newzoo", "Sensor Tower"]
+      estimated_scale: "billions/day"
+
+    - name: "Digital Game Sales & Subscriptions"
+      slug: "gaming-sales"
+      priority: 4
+      known_sources: ["Steam", "platform reports"]
+      estimated_scale: "millions/day"
+
+  banking:
+    - name: "Interbank Settlement (RTGS)"
+      slug: "interbank-rtgs"
+      priority: 2
+      known_sources: ["Central banks", "CLS"]
+      estimated_scale: "millions/day high value"
+
+    - name: "Securities Settlement"
+      slug: "securities-settlement"
+      priority: 3
+      known_sources: ["DTCC", "Euroclear"]
+      estimated_scale: "millions/day"
+
+  government:
+    - name: "Tax & Government Payments"
+      slug: "government-payments"
+      priority: 4
+      known_sources: ["Revenue agencies", "government reports"]
+      estimated_scale: "millions/day"
+
+  emerging:
+    - name: "IoT & Machine-to-Machine Payments"
+      slug: "iot-m2m"
+      priority: 5
+      known_sources: ["Industry projections", "research papers"]
+      estimated_scale: "nascent but projected massive"
+
+    - name: "AI Agent Transactions"
+      slug: "ai-agents"
+      priority: 5
+      known_sources: ["x402", "research papers"]
+      estimated_scale: "nascent"
+
+    - name: "Tokenised Real-World Assets"
+      slug: "rwa-tokenisation"
+      priority: 3
+      known_sources: ["RWA platforms", "DeFiLlama"]
+      estimated_scale: "emerging"
+
+# Scoring weights for category prioritisation
+scoring:
+  data_availability_weight: 0.30    # Better data = research first
+  market_scale_weight: 0.25         # Bigger categories = higher priority
+  growth_rate_weight: 0.20          # Faster growing = more interesting
+  uniqueness_weight: 0.15           # Less covered = more valuable
+  radix_relevance_weight: 0.10     # Relevant to Radix ecosystem
+
+# Output
+output:
+  backlog_file: "backlog.yaml"
+  max_categories: 30
