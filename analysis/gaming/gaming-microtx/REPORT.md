@@ -158,6 +158,37 @@ The divergence between revenue and transaction growth is notable: **average tran
 
 ---
 
+## Card Rail Overlap: How Gaming Microtransactions Flow Through Payment Networks
+
+### Payment Method Breakdown (Estimated, 2024)
+
+| Payment Method | Share of Microtx Revenue | Ultimately on Card Rails? | Notes |
+|----------------|------------------------|---------------------------|-------|
+| App Store / Google Play billing (card-funded) | ~55-60% | Yes | Apple/Google charge stored cards; ~70% of digital wallets are card-funded ([Worldpay GPR 2024](https://corporate.worldpay.com/news-releases/news-release-details/worldpay-global-payments-report-2024-digital-wallet-maturity)) |
+| App Store / Google Play billing (wallet/bank-funded) | ~10-15% | Partially | Includes PayPal (often card-backed), bank transfers, store credit |
+| Direct carrier billing | ~8-12% | No | Charged to mobile phone bill; ~40% of carrier billing market is gaming ([Market.us](https://market.us/report/carrier-billing-market/)); dominant in SE Asia, Middle East, and unbanked populations |
+| Platform wallets (Steam Wallet, PlayStation Wallet) | ~5-8% | Mixed | Wallets are *funded* by cards (~60-70%) or bank transfers (~30-40%); the microtransaction itself is wallet-to-game |
+| PayPal / digital wallets (direct) | ~5-8% | Mostly | 56% of digital wallet transactions globally are card-funded ([Worldpay GPR 2024](https://corporate.worldpay.com/news-releases/news-release-details/worldpay-global-payments-report-2024-digital-wallet-maturity)) |
+| Prepaid cards / gift cards | ~3-5% | Partially | Bought with cash at retail; represents the primary cash-to-digital bridge for gaming |
+| Alipay / WeChat Pay (China) | ~5-8% | No | Funded primarily via bank account, not card rails; significant for China mobile gaming |
+| Other (crypto, bank transfer, etc.) | ~1-2% | No | Negligible share |
+
+### Summary: Card Rail Dependency
+
+**Estimated 65-75% of all gaming microtransactions ultimately flow through card network rails** (Visa, Mastercard, Amex, etc.), either directly or via intermediary platforms and digital wallets that are card-funded. This means approximately **8.0-9.2 billion** of the 12.3 billion annual microtransactions touch card infrastructure at some point in the payment chain.
+
+The remaining 25-35% flows through:
+- **Carrier billing** (~8-12%): The largest non-card channel, particularly important in emerging markets
+- **Chinese super-apps** (~5-8%): Alipay/WeChat Pay in China bypass card networks entirely, settling through bank accounts
+- **Prepaid/gift cards bought with cash** (~3-5%): The primary pathway for unbanked or underaged gamers
+- **Direct bank transfers** (~2-3%): Growing via open banking but still small in gaming
+
+### Why This Matters for Double-Counting
+
+The ~8.0-9.2 billion card-funded microtransactions are **already counted in the consumer card payments capsule's 773 billion annual transactions**. They represent ~1.0-1.2% of global card transaction volume. The non-card portion (~3.1-4.3 billion transactions) represents genuinely independent payment flows not captured elsewhere in the Universe of Finance taxonomy.
+
+---
+
 ## Data Quality & Limitations
 
 - **Transaction count confidence is 🔴 Low across all years.** This is an inherent limitation — the industry does not publish transaction data. Revenue figures are 🟢-🟡, but the ATV conversion introduces high uncertainty.
@@ -166,6 +197,36 @@ The divergence between revenue and transaction growth is notable: **average tran
 - **ATV varies enormously by game genre.** Casual games (Candy Crush) have $1-5 transactions; gacha games (Genshin Impact) can be $0.99-$100+; competitive games (Valorant) cluster around $10-25. A single blended ATV is a necessary simplification.
 - **Virtual currency complicates counting.** When a player buys V-Bucks, is that one transaction or many (when they spend the V-Bucks in-game)? We count the initial purchase (the payment transaction) only.
 - **Year-over-year transaction growth is noisy** because small changes in ATV assumptions compound into large transaction count differences.
+
+---
+
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Actual transaction counts**: No platform (Apple, Google, Steam, Sony, Microsoft, Nintendo) publishes aggregate microtransaction counts. The entire 12.3B figure is derived from revenue / ATV, making it fundamentally estimated.
+- **Average transaction value distribution**: We use a blended $8.83 ATV, but the actual distribution is extremely skewed (many $0.99-$4.99 transactions, a few $99.99+ whale purchases). The median is likely $3-5, much lower than the mean.
+- **China third-party Android store data**: Sensor Tower and similar trackers do not fully capture Huawei AppGallery, Xiaomi GetApps, and other Chinese Android stores. Revenue may be undercounted by 10-20%, which translates to 1-2B missing transactions.
+- **Virtual currency intermediation**: When a player buys V-Bucks and then spends them across 5 in-game items, is that 1 transaction or 6? We count the payment transaction only, but the in-game economy generates far more "transactions" that never touch payment rails.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Transaction count from ATV | Alternative: app store downloads x conversion rate x purchases-per-payer. If 136B downloads (2024) x 3.5% conversion x 2.6 purchases/payer = 12.4B — consistent with revenue/ATV method | Sensor Tower download data; conversion rate surveys (Udonis, GameAnalytics) | :yellow_circle: |
+| ATV uncertainty | Bracket with genre-specific ATVs: casual ($2-5), mid-core ($5-15), gacha ($10-30), whale-heavy ($15-50). Weight by genre revenue share. | GameAnalytics benchmarks; App Annie genre reports | :yellow_circle: |
+| China third-party store gap | Estimate from China mobile gaming revenue ($35-40B) minus tracked iOS + Google Play China revenue. Apply China-specific ATV (~$6-8, lower due to price sensitivity). | Niko Partners China gaming reports; CNG (China Game Industry) annual reports | :yellow_circle: |
+| China regulatory impact on volume | China gaming approval freezes (2021-2022) reduced new title flow. Track approved game count vs revenue to estimate suppressed transactions. | NPPA (National Press and Publication Administration) monthly approval lists | :green_circle: |
+| Seasonal pattern verification | Compare Q4 (holiday) vs Q1 (post-holiday) revenue spikes across Sensor Tower monthly data to validate 2.0x peak multiplier. | Sensor Tower quarterly reports (published) | :green_circle: |
+
+### Key Modeling Questions
+- **ATV sensitivity is the dominant uncertainty**: A shift from $8.83 to $6.00 ATV would push transaction count from 12.3B to 19.0B (+54%). A shift to $12.00 would reduce it to 9.5B (-23%). How can we narrow ATV confidence?
+- If AI-driven personalisation increases F2P conversion from 3% to 5-7% (as projected in the high-growth scenario), what is the elasticity of transaction count to conversion rate? Does higher conversion mean more small transactions or the same number of larger ones?
+- How will loot box / gacha regulation (Belgium ban, Netherlands pending, EU Digital Services Act) affect transaction patterns? If banned, does spending migrate to direct-purchase cosmetics (fewer, larger transactions) or disappear entirely?
+- What is the true overlap between microtransactions and DLC? Reclassifying even 5% of DLC as microtransactions (or vice versa) would move ~400M transactions between capsules.
+
+### Reference Comparisons
+- **Download-conversion-frequency triangulation**: 136B global app downloads (2024, PocketGamer) x 3-5% payer conversion x 2-3 purchases per payer = 8-20B transactions. Our 12.3B sits comfortably in this range.
+- **Roblox as micro-sample**: Roblox reports daily active users (79.5M) and bookings ($1.0B+/quarter). At ~$4B/year and an estimated $5-7 ATV, this implies ~570-800M Roblox transactions alone — roughly 5-6% of global microtransactions from one platform.
+- **Steam concurrent users as PC proxy**: Steam peaks at ~35M concurrent users. If 5% make a microtransaction on any given day at $10 avg, that's ~1.75M daily PC microtransactions — extrapolated to 638M/year, broadly consistent with our 1.5B PC estimate given Steam is ~50% of PC gaming.
 
 ---
 

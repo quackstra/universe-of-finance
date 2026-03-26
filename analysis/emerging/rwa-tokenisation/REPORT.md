@@ -172,6 +172,36 @@ TVL growth is decelerating from triple-digit percentages to ~50-70% as the base 
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Total on-chain RWA transaction count**: No aggregator tracks RWA-specific transaction counts across all chains. TVL is visible; transaction volume is not.
+- **Off-chain settlement that backs on-chain tokens**: When BlackRock's BUIDL token is minted, there's an off-chain Treasury purchase and an on-chain token creation. The off-chain leg is invisible in blockchain data but represents real settlement activity.
+- **Institutional vs retail transaction mix**: Most RWA protocols serve institutional investors, but the transaction count split (few large institutional vs many small retail) is not published.
+- **Secondary market trading volume for tokenised assets**: Primary issuance is tracked; secondary market activity on DEXs and OTC desks is fragmented and poorly measured.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| On-chain transaction count | Etherscan/Dune Analytics: query contract interactions for top 20 RWA protocols (BUIDL, OUSG, Centrifuge, Maple, etc.) | On-chain data is fully transparent; requires protocol-specific contract addresses | :green_circle: |
+| Future TVL trajectory | TradFi AUM ($100T+ global) x tokenisation penetration curve. If tokenisation follows S-curve adoption, 0.1% penetration (2025) -> 1% (2030) -> 5% (2035) = $100B -> $1T -> $5T | BlackRock/Fidelity allocation announcements; BCG/Standard Chartered projections | :yellow_circle: |
+| Regulatory sandbox approvals as leading indicator | Track MiCA (EU), SEC no-action letters (US), MAS sandbox (Singapore) approvals for tokenised securities. Each approval enables new protocols and TVL. | EU MiCA implementation timeline; SEC Crypto Task Force announcements; MAS FinTech Sandbox registry | :yellow_circle: |
+| Secondary market liquidity growth | Compare DEX volume for RWA tokens (Uniswap, Curve pools) to primary issuance. Rising secondary/primary ratio signals maturing market and higher transaction frequency per TVL dollar. | Dune Analytics dashboards; DeFiLlama DEX volume by token pair | :green_circle: |
+| Institutional adoption pace | Track number of TradFi institutions launching tokenised products: 2023 (~5), 2024 (~15), 2025 (~30+). Extrapolate product count x avg TVL per product. | Press releases; RWA.xyz issuer directory; CoinGecko RWA Report | :yellow_circle: |
+
+### Key Modeling Questions
+- **What is the transaction frequency per TVL dollar?** Current DeFi averages ~200-500 on-chain transactions per $1M TVL/year. If RWA tokens develop liquid secondary markets, this ratio could increase 10-100x. If they remain buy-and-hold (Treasury tokens), it stays low. This is the key variable for converting TVL projections into TPS projections.
+- The 10x spread in industry forecasts ($3.5T to $30T by 2030) is unusually wide. Can we narrow it by tracking leading indicators? Specific testable milestones: Does BUIDL reach $10B by 2027? Does Centrifuge reach $5B TVL? Does a major exchange (NYSE, LSE) list a tokenised security by 2028?
+- How will tokenised RWA settlement interact with traditional securities settlement (see securities-settlement capsule)? If DTCC's pilot tokenised settlement succeeds, tokenised assets could settle through existing infrastructure rather than creating new on-chain volume.
+- What happens when tokenised assets become composable with DeFi? If BUIDL can be used as collateral on Aave, each collateralisation/liquidation event creates new transactions that don't exist in TradFi. This could multiply transaction counts without changing TVL.
+
+### Reference Comparisons
+- **BlackRock BUIDL as adoption bellwether**: BUIDL grew from $40M at launch (March 2024) to $1.8B by late 2025 — a 45x increase in 18 months. If this growth rate applies to the broader RWA market, the $24B TVL could reach $1T by 2028. However, BUIDL's growth may not be representative — it benefits from BlackRock's brand and distribution.
+- **ETF adoption curve as analogy**: The first US equity ETF (SPY) launched in 1993 with $6.5M AUM. By 2003 ($400B AUM), ETFs had achieved ~2% of US equity market cap. By 2024 ($10T+), ETFs held ~30% of US equity assets. If tokenised assets follow a similar 30-year S-curve, we're in the "1993-1998" phase.
+- **Stablecoin precedent**: Stablecoins (excluded from this capsule) grew from $5B (2020) to $150B+ (2025) in 5 years. They demonstrate that on-chain financial instruments can achieve massive scale, but also that growth can plateau for years before the next breakout.
+
+---
+
 ## Sources
 
 1. [RWA.xyz — Analytics on Tokenized Real-World Assets](https://app.rwa.xyz/)

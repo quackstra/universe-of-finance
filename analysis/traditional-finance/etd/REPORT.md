@@ -221,6 +221,36 @@ Futures growth has been essentially flat at ~2.5% CAGR over the same period, ref
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **True economic activity behind India options volume**: NSE India accounts for the vast majority of global ETD volume, but much of this is short-dated, expiry-day speculation. The number of unique economic positions (vs. round-trip day trades) is unknown.
+- **OTC-to-exchange migration rate**: Some OTC derivatives are migrating to exchange-traded equivalents (e.g., OTC IRS to futures), but the exact conversion rate and its contribution to ETD growth is not tracked.
+- **Retail vs. institutional breakdown by exchange**: Most exchanges do not publish a clean retail/institutional split of derivatives trading volume.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| OTC-to-ETD migration | Compare BIS OTC IRD turnover growth vs. CME/Eurex IR futures growth | BIS triennial ($7.9T/day OTC IRD in 2025, +59%); CME IR ADV grew ~15% | 🟡 Medium |
+| Open interest vs. volume ratio | Use OI/volume as a measure of "real" position-taking vs. day-trading | FIA reports year-end OI at 1.23B contracts vs. 205B traded = 0.6% ratio (highly turnover-driven) | 🟢 High |
+| India options "real" activity | Compare open interest growth vs. volume growth; if OI lags, most volume is intraday speculation | NSE publishes daily OI; SEBI monthly data on expiry-day concentration | 🟡 Medium |
+| Crypto ETD contribution | Track CME crypto futures/options growth as share of total ETD | CME publishes crypto ADV separately; crypto ETD growing ~30-40% YoY | 🟢 High |
+| SEBI regulatory impact | Model volume reduction from known regulatory changes (lot-size increases, weekly expiry restrictions) | SEBI circular dates + NSE monthly volume post-implementation | 🟢 High |
+
+### Key Modeling Questions
+- If SEBI restricts weekly expiries further, could India lose 30-50% of its options volume? This would reduce global ETD by 25-40%.
+- What is the "natural ceiling" for ETD volume growth once the India retail options boom plateaus?
+- How much of futures' flat growth (~2.5% CAGR) is structural vs. cyclical? Are futures simply mature, or are they losing share to options and OTC?
+- Can the US ETF options boom (growing 25%+ annually) become a second major driver after Indian equity options?
+
+### Reference Comparisons
+- **OI/Volume ratio as health check**: Year-end OI of 1.23B vs. 205B contracts traded means each contract turns over ~167× per year — suggesting extreme short-term trading dominance
+- **CME 2025 ADV**: 28.1M contracts (+6% YoY) provides a "mature market" baseline growth rate to contrast against India's explosive trajectory
+- **Eurex 2024**: 2.08B contracts (+9%) — European ETD growth is steady and institutional, contrasting sharply with India's retail-driven explosion
+- **BIS OTC IRD turnover**: $7.9T/day (+59%) — if even 5% of this migrates to ETD (as futures-style swaps), it would add billions of contracts
+
+---
+
 ## Data Quality Assessment
 
 | Dimension | Score | Notes |

@@ -189,6 +189,38 @@ Driven by: Netting efficiency improvements reduce gross settlement counts, conso
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **DTCC total transaction count**: DTCC publishes value ($3.7Q) prominently but does not provide a single headline annual transaction count across all subsidiaries (DTC + NSCC + FICC + ATP). We estimate ~500M+ but this is assembled from partial disclosures.
+- **CSD consolidation impact**: European CSDs are gradually consolidating onto T2S. How much of the apparent growth in T2S volumes is migration (from national CSDs) vs genuine new activity?
+- **T+1 impact on fail rates**: The US moved to T+1 in May 2024; early data suggests fail rates initially spiked then normalised. The steady-state impact on settlement efficiency and transaction counts is still emerging.
+- **Asian CSD volumes**: Japan (JASDEC), China (CSDC/CCDC), and India (NSDL/CDSL) are major settlement systems not covered in our estimates. Including them could add 500M-1B+ settlement transactions.
+- **DLT settlement pilot volumes**: HKMA's Project Ensemble, BIS Project mBridge, and other DLT settlement pilots are live but volumes are not consistently reported.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| DTCC transaction count | Cross-reference: DTC daily deliveries (1.3M) x 250 days = 325M; add NSCC/FICC/ATP partial data | DTCC annual report, CPMI-IOSCO disclosures | :yellow_circle: |
+| Asian CSD volumes (China CSDC) | China equity market daily turnover (~$100-150B/day) / avg trade size; apply netting ratio | Shanghai/Shenzhen exchange published trading data | :yellow_circle: |
+| Asian CSD volumes (India NSDL/CDSL) | SEBI publishes depository statistics; CDSL processes ~80% of Indian equity settlements | SEBI Annual Report, CDSL monthly bulletins | :green_circle: |
+| T+1 fail rate impact | DTCC/SIFMA T+1 After Action Report; compare pre/post fail rates; model steady-state volume impact | SIFMA T+1 report (published); DTCC settlement data | :green_circle: |
+| CSD consolidation trend | Track number of CSDs on T2S over time (currently ~20); model remaining national CSD migration dates | ECB T2S participation list; CSDR implementation timeline | :yellow_circle: |
+| DLT settlement pilot scale | BIS Innovation Hub reports; HKMA Ensemble disclosures; SIX Digital Exchange published volumes | BIS Annual Report, individual pilot disclosures | :red_circle: |
+
+### Key Modeling Questions
+- If Asian CSDs (China, Japan, India, Korea) were included, does global securities settlement volume reach 2.5-3.0 billion transactions? This would significantly change the TPS picture.
+- What is the netting ratio trend? If NSCC netting becomes more efficient (currently ~5:1 to 10:1 trade-to-settlement), settlement transaction counts could decline even as trading volumes increase. Conversely, T+0/atomic settlement would eliminate netting, potentially multiplying settlement counts by 5-10x.
+- How will tokenised securities (see RWA capsule) interact with traditional settlement? Will tokenised settlement be additive or substitutive?
+- NSCC's 545M single-day peak vs ~2M daily average implies >250x headroom. Is this architecture genuine capacity or theoretical burst?
+
+### Reference Comparisons
+- **Trade-to-settlement ratio**: Comparing exchange-reported trade counts (~10B+ globally) to settlement counts (1.3-1.5B) gives a ~7:1 netting ratio. Monitoring this ratio over time reveals whether settlement is becoming more or less efficient.
+- **BIS CPMI-IOSCO PFMI disclosures**: All systemically important CCPs and CSDs must publish quantitative disclosures quarterly. These are the most granular source for settlement transaction counts but are dispersed across individual institution websites.
+- **Fractional share settlement**: The rise of fractional share trading (Robinhood, Trading 212) may increase settlement complexity without proportionally increasing settlement counts, as fractional positions are typically netted at the broker level before reaching DTCC.
+
+---
+
 ## Sources
 
 - [DTCC 2024 Annual Report](https://www.dtcc.com/annuals/2024/files/DTCC-Annual-Report-2024-Print.pdf)

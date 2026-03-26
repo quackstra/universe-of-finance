@@ -178,6 +178,37 @@ Note: India's UPI P2P transactions (which are massive) are counted under Digital
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Venmo's exact transaction count.** PayPal reports Venmo TPV (~$280B) but not transaction count. The ~2.3B estimate assumes a ~$120 average transaction, which is uncertain.
+- **Cash App's pure P2P vs. total inflows.** Block reports "Cash App inflows" ($283B) which includes direct deposits, Bitcoin purchases, and Cash App Pay merchant transactions. Pure P2P is estimated at ~60% ($170B) but not disclosed.
+- **Non-US P2P volume.** European P2P platforms (Bizum, Swish, Lydia) publish some data, but most Asian and Latin American P2P activity is embedded in multipurpose wallets (and thus counted in Digital Wallets).
+- **The boundary between P2P and "commercial."** Zelle's $1.04T includes small business payments (27% of volume per American Banker). Venmo and Cash App similarly serve gig workers, landlords, and small merchants. How much of "P2P" is actually P2B?
+- **International P2P vs. domestic P2P.** PayPal, Wise, and Cash App all enable cross-border personal transfers. These overlap with Remittances.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Venmo transaction count | Derive from PayPal's disclosed "payment transactions" (6.6B in Q4 2024 annualized = ~26B) minus eBay, merchant, and Braintree transactions. Venmo is ~25-30% of PayPal consumer transactions. | PayPal 10-K: 26B total payment transactions; Venmo ~30% of PayPal consumer P2P by value | 🟡 |
+| Cash App pure P2P | Block discloses "Cash App monetization rate" (1.35%) which applies to non-P2P revenue. Subtract Cash App Card spend ($10B+), Bitcoin ($14B), and direct deposits to isolate P2P. | Block 10-K: Cash App inflows $283B; Cash App Card GMV growing; Bitcoin revenue disclosed | 🟡 |
+| Non-US P2P volume | Bizum (Spain): 0.3B txns from press releases. Swish (Sweden): 0.15B from Riksbank data. Scale to EU population using adoption rates. | Bizum: 90M users in Spain; Swish: 8.3M users; Riksbank payment statistics | 🟡 |
+| P2B share of "P2P" | Zelle: 27% is small business (American Banker). Apply similar ratio to Venmo (which has business profiles) and Cash App (which has Cash App for Business). | American Banker Zelle analysis; Venmo Business profile count (~90M total users, ~10% business est.) | 🔴 |
+| Total addressable market | US adult population (260M) x estimated 30 P2P transactions/year = 7.8B — consistent with our 7.7B US total | Census Bureau; Federal Reserve Diary of Consumer Payment Choice | 🟢 |
+
+### Key Modeling Questions
+- As Zelle, Venmo, and Cash App all expand into bill pay, merchant payments, and banking services, will the "P2P" category become meaningless as a standalone classification? By 2030, these may be general-purpose wallets.
+- Zelle's bank-integrated model means transactions are invisible to non-bank data aggregators. Does this make Zelle the most accurately measured P2P platform (bank-reported) or the most under-counted (many banks don't report Zelle-specific breakdowns)?
+- The US dominates this category at ~90% of volume. Is this a genuine structural difference (US lacks a universal A2A system like UPI), or is it a classification artifact (P2P in other markets is counted in Digital Wallets)?
+- If India's UPI P2P transfers (~41% of 172B = ~70B) were reclassified into this category, it would be 10x the size of the entire US P2P market. Should UPI P2P be broken out?
+
+### Reference Comparisons
+- **US P2P per capita:** 7.7B transactions / 260M adults = ~30 P2P transactions per US adult per year, at ~$225 average. This is roughly 1 P2P transfer every 12 days.
+- **Sweden's Swish as saturation benchmark:** 8.3M users in a 10.4M population (80% penetration), processing ~0.15B transactions = ~18 per user per year. US Zelle: 120M users processing 3.6B = ~30 per user per year. Zelle users transact at 1.7x the rate of Swish users.
+- **India UPI P2P comparison:** UPI P2P (~70B transactions, ~350M users) = ~200 P2P transactions per user per year — nearly 7x the US Zelle rate. This reflects UPI's role as a cash replacement for everyday person-to-person payments.
+
+---
+
 ## Sources
 
 1. [CNBC — Zelle payments top $1 trillion in 2024](https://www.cnbc.com/2025/02/12/zelle-payments-top-1-trillion-in-2024.html)

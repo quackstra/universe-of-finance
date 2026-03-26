@@ -188,6 +188,36 @@ The commodity story in 2024 was one of records: record oil contract volumes on I
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Physical vs. financial commodity trading ratio**: The ratio of physical commodity trades (actual delivery) to financial commodity derivatives (paper barrels, financial settlement) is not centrally tracked. Estimates range from 1:10 to 1:50 depending on the commodity.
+- **OTC physical commodity trade count**: Major commodity trading houses (Vitol, Trafigura, Glencore, Cargill) execute thousands of physical trades daily, but these are bilateral and unreported.
+- **Energy trading frequency from renewables intermittency**: The shift from baseload to intermittent renewable generation is creating a need for vastly more intraday and real-time power trades, but the increment in transaction count is not well-quantified.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Physical-to-financial ratio | Compare ICE Brent open interest × contract size to global physical crude production | ICE Brent OI (~2.5M contracts × 1,000 bbl) vs. global production (~100M bbl/day) | 🟡 Medium |
+| Energy trading from renewables | Model from grid balancing data: intermittent generation → more intraday trades | European power exchange (EPEX Spot) intraday volume data; EIA wholesale electricity data | 🟡 Medium |
+| OTC physical commodity count | Use major trading house revenue / estimated margin per trade as proxy | Vitol ($505B revenue, 2024), Trafigura ($244B), Glencore ($218B); ~0.5-2% margin per trade | 🔴 Low |
+| Carbon market transaction count | ESMA EU ETS report: 4.7M transactions in 2024; scale for global ETS schemes | [ESMA Carbon Markets 2024](https://www.esma.europa.eu/sites/default/files/2024-10/ESMA50-43599798-10379_Carbon_markets_report_2024.pdf); ICE environmental: 20.4M contracts | 🟢 High |
+| Chinese commodity exchange accuracy | Cross-check Dalian/Zhengzhou volumes against physical commodity production | China commodity import/export data from customs; SHFE warehouse receipts | 🟡 Medium |
+
+### Key Modeling Questions
+- How much is energy trading growing specifically due to renewable intermittency? McKinsey estimates commodity trading revenues grew to $104B in 2024, but the transaction count impact of the energy transition is poorly modeled.
+- Are Chinese commodity exchange volumes inflated by day-trading? (High turnover ratios relative to open interest suggest significant speculative round-tripping.)
+- As carbon/environmental markets expand globally (China ETS maturing, Article 6 markets launching), how many additional transactions per year does this add? EU ETS alone saw 4.7M transactions in 2024.
+- Will the electrification super-cycle (EVs, batteries, grid storage) create a sustained metals trading boom, or is current growth cyclical?
+
+### Reference Comparisons
+- **Physical crude oil**: ~100M barrels/day global production; ICE + CME trade ~3-4 billion barrels/day equivalent in paper — a 30-40× financial-to-physical ratio
+- **European power trading**: EPEX Spot intraday volumes have been growing 20-30% annually as renewable penetration increases grid balancing needs ([Engelhart](https://www.ectp.com/2024/02/the-balancing-act-trading-renewables-in-europe-and-beyond/))
+- **Global energy trading market**: Valued at ~$3.1T in 2024 across all segments ([Probity Market Insights](https://www.probitymarketinsights.com/reports/energy-trading-market))
+- **LME vs. physical metals**: LME traded 179M lots in 2024; global copper production ~22M tonnes/year — LME turnover represents ~80× physical production in tonnage terms
+
+---
+
 ## 8. Sources
 
 1. [FIA — 2024 Annual ETD Volume Review](https://www.fia.org/fia/articles/2024-annual-etd-volume-review)

@@ -254,3 +254,34 @@ Sources: [Shopify](https://www.shopify.com/news/bfcm-data-2024),
 5. All supporting calculations in [workings/calculations.md](workings/calculations.md)
 6. All source notes in [workings/source_notes.md](workings/source_notes.md)
 7. All assumptions documented in [workings/assumptions.md](workings/assumptions.md)
+
+---
+
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Global e-commerce transaction count.** No single source tracks this. Our 57.5B figure is derived (GMV / AOV), introducing AOV sensitivity. A $10 shift in assumed AOV changes the count by ~5B.
+- **The true global Average Order Value (AOV).** Western sources cite $116-145; Asia-Pacific AOV is $60-80. The blended $110 is a weighted estimate, not a measured global figure.
+- **Platform-level transaction counts for most retailers.** Only Alibaba (~14.5B), Amazon (~4.5B), and Shopify (~3B) disclose order counts. The "long tail" of e-commerce (50%+ of GMV) is untracked by count.
+- **Social commerce transaction volume.** TikTok Shop, Instagram Shopping, and WeChat mini-program commerce are growing explosively but report GMV, not order counts. Social commerce may already be 15-20% of total e-commerce orders.
+- **Cross-border e-commerce share by volume.** Cross-border is ~15% of e-commerce by value, but average order values are higher — so it may be only ~8-10% by transaction count.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Global transaction count | Cross-check: sum platform-disclosed counts (Alibaba 14.5B + Amazon 4.5B + Shopify 3B = 22B) represents ~38% of estimated 57.5B; if these platforms are ~40% of GMV, the ratio is consistent | Platform annual reports and SEC filings | 🟡 |
+| Asia-Pacific AOV | Use Alibaba's disclosed GMV (~$900B) / orders (~14.5B) = ~$62 as APAC anchor; weight against Japan (~$95) and SE Asia (~$45) | Alibaba, Rakuten, Shopee quarterly disclosures | 🟡 |
+| Social commerce orders | TikTok Shop US: $15.82B GMV at ~$30 AOV = ~527M orders. Scale globally: if TikTok Shop is ~$50B global GMV, that's ~1.7B orders. Add WeChat mini-programs, Instagram: ~3-5B total social orders | eMarketer TikTok Shop data; Tencent mini-program GMV disclosures | 🔴 |
+| Payment processor cross-check | PayPal ($1.68T TPV) + Stripe ($1.40T) + Adyen ($1.38T) = $4.46T. These three handle ~70% of Western e-commerce. At ~$100 AOV, that's ~44.6B transactions through these processors alone — but this includes in-store (Adyen), subscriptions, and non-retail | PayPal, Stripe, Adyen annual reports | 🟡 |
+| Return rate adjustment | E-commerce return rates are 20-30% (vs. 8-10% in-store). If 57.5B orders generate ~14B returns (each a separate refund transaction), the true payment event count is ~71.5B | NRF return rate surveys; Shopify merchant data | 🔴 |
+
+### Key Modeling Questions
+- Should returns/refunds be counted as separate transactions? A return generates a refund payment that hits card networks as a credit. If so, e-commerce's "true TPS impact" is ~25% higher than order count alone.
+- The Worldpay GPR reports 53% of e-commerce value is paid by digital wallets. But in China and India, the wallet IS the default checkout method. Does this mean 53% of e-commerce orders are double-counted with Digital Wallets?
+- How should subscription e-commerce be treated? Netflix, Spotify, and SaaS are technically "e-commerce" (card-not-present) but are recurring billing, not shopping. They may add 10-15B annual transactions.
+- Alibaba stopped disclosing peak TPS after 2021 (last reported: 583K orders/sec in 2020). If GMV grew ~15% since then, is the realistic 2024 peak ~670K orders/sec?
+
+### Reference Comparisons
+- **China vs. US e-commerce penetration:** China's e-commerce is ~30% of retail sales; the US is ~16%. If the US reached China's penetration at US price levels, US e-commerce GMV would roughly double to ~$3.8T.
+- **India as growth frontier:** India's e-commerce is ~7% of retail (~$120B GMV in 2024). At China's 30% penetration rate, India would reach ~$500B — a 4x opportunity that could add 5-8B annual transactions.
+- **Platform concentration:** The top 10 e-commerce platforms (Alibaba, Amazon, JD, Pinduoduo, Shopify merchants, eBay, Rakuten, MercadoLibre, Shopee, Temu) account for ~60% of global GMV but probably ~65-70% of order count (lower AOV on Chinese/SE Asian platforms).

@@ -166,6 +166,39 @@ Stablecoin transfer volume is growing faster than market cap, indicating increas
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- The exact breakdown of the $27.6T raw → $5.7T Visa-adjusted gap (which categories account for the ~$22T difference)
+- What fraction of stablecoin volume is CEX-internal movements that happen to touch on-chain (deposit/withdrawal cycles)
+- How much stablecoin volume is bridge relay transactions (same dollar moving across chains counted multiple times)
+- The true "payment" volume — stablecoins used for goods/services, remittances, and salary payments vs. speculative/DeFi flows
+- Whether USDT's dominance in emerging markets reflects genuine dollarisation demand or exchange-mediated speculation
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Decomposing the $27.6T → $5.7T gap | Apply Visa's published filters sequentially: (1) single-directional filter, (2) address activity filter (>1,000 txns or >$10M/30 days removed) to reconstruct the adjustment | Visa Onchain Analytics methodology published; Allium Labs partnership provides the raw data; adjusted volume by category: CEX 41%, DEX, lending, etc. | 🟡 |
+| Bridge transfer volume | Count cross-chain bridge transactions (Wormhole, Stargate, Across, LayerZero) involving stablecoins — each bridge transfer generates 2+ on-chain transactions | DeFiLlama bridge volume tracker; Wormhole/LayerZero explorer data; estimated $50-100B/month in bridge volume | 🟡 |
+| Bot activity quantification | Filter addresses with >1,000 txns/month (Visa's threshold) and measure their share of total stablecoin volume | Visa methodology already does this; result is ~80% of raw volume is filtered — but the 1,000-txn threshold may be too aggressive (catching active human traders) or too lenient (missing sophisticated bots) | 🟡 |
+| CEX internal movement flows | Track stablecoin deposits to and withdrawals from known exchange addresses — these are real on-chain txns but not "payment" activity | Glassnode/CryptoQuant exchange flow data; Chainalysis exchange entity labels; estimated 30-40% of on-chain stablecoin volume is exchange-related | 🟢 |
+| Stablecoin velocity vs. M2 money velocity | Calculate stablecoin velocity (annual transfer volume / market cap) and compare to M2 velocity (~1.12 in 2024) | Raw velocity: $27.6T / $205B = ~135x. Adjusted: $5.7T / $205B = ~28x. M2 velocity: ~1.12. Even adjusted, stablecoin velocity is 25x higher than M2 | 🟢 |
+| Organic payment volume isolation | Cross-reference stablecoin transfers with known merchant/payment processor addresses (Stripe, PayPal, BitPay) | Limited but growing — Stripe announced USDC support in 2024; PayPal PYUSD data available; Artemis tracks payment-category volume | 🔴 |
+
+### Key Modeling Questions
+- The $27.6T raw / $5.7T adjusted / unknown "true payment" volume represents a 5x uncertainty range. Can we build a layer model? E.g.: Raw ($27.6T) → minus bridges ($3T?) → minus bot/HFT ($10T?) → minus CEX flows ($7T?) → minus DeFi internal ($2T?) → payment-like ($5.6T) — validating Visa's figure from the bottom up.
+- Stablecoin velocity of ~135x (raw) or ~28x (adjusted) vs. M2 velocity of ~1.12 is a 25-120x gap. What explains this? Hypotheses: (a) stablecoins are transactional money while M2 includes savings, (b) bot/DeFi activity inflates velocity, (c) stablecoins are structurally faster to move. A defensible velocity comparison would be a landmark finding.
+- USDC's 70% volume share vs. 22% market cap share means USDC velocity is ~4x higher than USDT's. Is this institutional/commercial usage (large, infrequent transfers) or programmatic DeFi routing? The answer determines whether USDC or USDT better represents "real" stablecoin adoption.
+- If stablecoin daily transactions (~45M) are a subset of total blockchain transactions (~70-90M/day), stablecoins represent ~50-65% of all on-chain activity by count. Is this accurate, or does it reflect measurement methodology differences?
+
+### Reference Comparisons
+- **Visa network:** ~$14.8T annual payment volume, ~640M transactions/day, ~7,400 TPS. Stablecoin adjusted volume ($5.7T) is ~39% of Visa. Stablecoin daily txns (~45M) are ~7% of Visa's — meaning stablecoins handle larger average transfers ($347 adjusted vs. $63 for Visa).
+- **SWIFT:** ~$150T annual value, ~50M messages/day. Stablecoin raw volume ($27.6T) is ~18% of SWIFT. Adjusted ($5.7T) is ~4%. Stablecoins are closer to SWIFT in transfer size profile than to card networks.
+- **Global remittances:** ~$860B/year (World Bank, 2024). If even 5% of stablecoin adjusted volume is remittances, that's ~$285B — a third of the global remittance market, consistent with Chainalysis and BVNK estimates of growing stablecoin remittance corridors (Turkey, Nigeria, Philippines).
+- **M2 money supply comparison:** US M2 ~$21T with velocity ~1.12 = ~$23.5T annual throughput. Stablecoin market cap $205B with adjusted velocity ~28x = ~$5.7T throughput. Per dollar of base, stablecoins circulate 25x faster than US dollars — they behave like transactional money, not store-of-value money.
+
+---
+
 ## Sources
 
 1. [CryptoSlate — Stablecoins surpass Visa and Mastercard with $27.6T transfer volume in 2024](https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/)

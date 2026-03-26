@@ -174,6 +174,37 @@ Government payment transaction counts grow more slowly than consumer payments be
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Most governments do not publish transaction counts.** Revenue and expenditure are well-tracked (IMF, OECD, World Bank), but the number of discrete payment transactions — tax payments received, benefit disbursements made — is rarely reported as a headline statistic.
+- **Employer withholding granularity**: In most countries, employers remit income tax withholdings monthly or quarterly. Whether this counts as 1 transaction (per employer per period) or N transactions (per employee) varies by jurisdiction and is not standardised.
+- **Developing country government payment volumes**: For ~100 countries (sub-Saharan Africa, parts of Asia, Central America), there is essentially no published data on government payment transaction counts.
+- **Informal economy payments**: In countries where 30-60% of GDP is informal, the formal tax/benefits transaction count dramatically understates the true economic activity.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| US tax payment count | IRS: 161M individual returns + ~10M business returns + quarterly estimated payments (~40M) = ~250M tax payment transactions/year | IRS Filing Season Statistics (published weekly during season) | :green_circle: |
+| US benefits disbursement count | 72M Social Security recipients x 12 payments + 42M SNAP recipients x 12 + 6M unemployment x ~6 months = ~1.5B/year | SSA Statistical Supplement; USDA SNAP data; DOL unemployment stats | :green_circle: |
+| India JAM trinity as case study | India: 530M Jan Dhan accounts + 1.4B Aadhaar IDs + UPI integration. Track DBT (Direct Benefit Transfer) volume: 7.4B transactions in FY2023-24 (~$140B) | DBT Mission dashboard (public); RBI annual report | :green_circle: |
+| EU VAT digitalisation impact | Real-time VAT reporting (ViDA proposal) fragments annual VAT payments into per-invoice reports. Estimate: ~100M EU businesses x 12 monthly filings = 1.2B vs ~100M annual filings today = 12x multiplier | European Commission ViDA impact assessment; Member state e-invoicing adoption data | :yellow_circle: |
+| Government payroll as proxy | Global government employment ~90-100M (ILO estimate). At 12-26 pay periods/year = 1.1-2.6B payroll transactions | ILO government employment statistics; national civil service headcount data | :yellow_circle: |
+| Developing country estimation | Take known tax-to-GDP ratio x GDP to get revenue. Divide by estimated average tax payment size ($500-2000 in developing countries) for transaction count. | OECD Revenue Statistics (36 countries); IMF GFS (180+ countries) | :red_circle: |
+
+### Key Modeling Questions
+- **Real-time VAT reporting is the biggest potential transaction multiplier.** The EU's ViDA (VAT in the Digital Age) proposal, if fully implemented, would require e-invoicing and real-time reporting across 27 member states. This could multiply EU government payment transactions by 5-10x without changing underlying economic activity. When will this take effect, and which countries will adopt it first?
+- India's Direct Benefit Transfer programme processed 7.4 billion transactions in FY2023-24. If other large developing countries (Indonesia, Brazil, Nigeria) replicate India's JAM trinity model, how many additional government payment transactions would be created?
+- What is the right level of granularity for "tax payment"? If every employer withholding remittance counts (rather than the consolidated monthly/quarterly payment), US tax transactions alone could increase from ~250M to ~2B+.
+- How do check vs. electronic disbursement ratios affect transaction counts? The US Treasury still issues ~50M paper checks per year for government payments. As these convert to electronic, does the transaction count stay the same (format change) or increase (due to easier splitting)?
+
+### Reference Comparisons
+- **India as digitalisation benchmark**: India's DBT (Direct Benefit Transfer) programme is the world's most advanced government payment digitalisation effort. 7.4B DBT transactions in FY2023-24 across 313 schemes, touching ~800M beneficiaries. This provides a concrete case study for what happens when a large developing country digitises government payments.
+- **US IRS as seasonal benchmark**: The IRS processes ~161M individual returns, with 80%+ filed January-April. This creates a predictable seasonal spike that can be used to calibrate peak-to-average ratios for government payment categories globally.
+- **OECD tax-to-GDP as consistency check**: At a global average ~25% tax-to-GDP ratio and ~$110T global GDP, total tax revenue is ~$27.5T. At our estimated ~10B tax/VAT/customs transactions, the average tax transaction is ~$2,750 — plausible as a blend of small VAT remittances and large corporate tax payments.
+
+---
+
 ## Sources
 
 1. [OECD — Revenue Statistics 2025](https://www.oecd.org/en/publications/2025/12/revenue-statistics-2025_07ca0a8e.html)

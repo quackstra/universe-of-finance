@@ -182,6 +182,36 @@ The disconnect between device growth (~8% CAGR) and payment market growth (~30-4
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Most IoT payments are invisible** — bundled into utility bills, toll invoices, fleet management fees, or subscription charges. The payment is device-initiated but appears in payment system data as a regular card/bank transaction.
+- **Payment-enabled device percentage**: We estimate 5-10% of 21.1B IoT devices are payment-enabled, but no authoritative source tracks this. The true figure could be 3% or 15%.
+- **Micropayment vs batch billing split**: A smart meter can generate a monthly bill (1 transaction) or a per-kWh streaming payment (thousands of transactions). The current split is unknown and the trend direction is the key variable for projections.
+- **Industrial IoT payment volume**: B2B automated procurement and supply chain payments are the most opaque subcategory. Transaction counts and values are not reported by any public source.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Toll collection volume | China: 300M+ ETC users x avg 40 trips/year = 12B tolling events. Europe: Viapass, ASFINAG publish transaction counts. US: E-ZPass handles ~12B transactions/year across 19 states. | National toll authority annual reports; IBTTA (International Bridge, Tunnel and Turnpike Association) data | :green_circle: |
+| EV charging sessions | Global public chargers (~3M in 2024). At avg 2-3 sessions/day per charger = 2.2-3.3B sessions/year. Cross-check with IEA Global EV Data Explorer. | IEA Global EV Outlook; BloombergNEF EV charging data; ChargePoint/EVgo quarterly earnings (sessions disclosed) | :yellow_circle: |
+| Smart meter billing frequency | 1.3B smart meters installed globally (IEA). If 90% bill monthly = 14B billing events. If 10% shift to daily/hourly = add 45B+ events. | IEA smart meter deployment data; utility company annual reports on billing frequency | :yellow_circle: |
+| Vending machine transactions | ~15M vending machines globally. At 50-100 cashless transactions/day per machine with 40% cashless adoption = 110-220B transactions/year? No — only ~30% of machines are payment-enabled. Revised: ~5M machines x 30 cashless txns/day = 55B/year? This seems too high. Cross-check with industry reports. | NAMA (National Automatic Merchandising Association) data; Japan Vending Machine Association (Japan has 4M+ machines) | :red_circle: |
+| Connected vehicle payments | 1.5B registered vehicles globally; ~15% have connected payment features (2024). At 10-20 autonomous payments/year (fuel, tolls, parking) = 2.3-4.5B transactions. | McKinsey Connected Car report; OEM connected services subscriber counts (GM OnStar, BMW ConnectedDrive) | :yellow_circle: |
+
+### Key Modeling Questions
+- **The micropayment revolution is the single biggest uncertainty.** If utilities, tolling, and parking shift from batch billing to per-use micropayments, IoT transaction counts could increase 100x without changing total payment value. What are the incentives for this shift, and which jurisdictions/sectors will adopt first?
+- How many EV charging transactions will there be by 2030? This depends on: EV fleet size (projected 150-230M by 2030), public vs home charging split (currently ~20% public), and sessions per public charger per day. At 200M EVs x 20% public x 100 sessions/year = 4B transactions — but this could be 2B or 10B.
+- What is the autonomous vehicle M2M payment multiplier? A single autonomous taxi could generate 50+ M2M payments per day (per-ride insurance, per-kWh charging, per-minute parking, toll per segment, maintenance alerts). At scale, 10M autonomous vehicles could add 180B+ transactions/year.
+- Will IoT payments remain on card/bank rails or migrate to crypto micropayment channels? If IOTA, Lightning Network, or similar protocols capture IoT micropayments, these transactions would shift from the card/bank ecosystem to a new rail entirely.
+
+### Reference Comparisons
+- **E-ZPass as mature M2M benchmark**: The US E-ZPass network processes ~12B toll transactions/year across 19 states and 40+ agencies. This is the best-documented M2M payment system and can serve as a calibration point for other regions.
+- **ChargePoint quarterly disclosures**: ChargePoint (the largest US EV charging network) reports quarterly charging sessions and revenue. In Q3 2024, ChargePoint reported ~70M charging sessions. Annualised across all networks globally, this suggests 500M-1B EV charging transactions in 2024 — consistent with our 0.5-1B estimate.
+- **Smart meter deployment curve as payment predictor**: IEA reports 1.3B smart meters installed globally, growing ~10% annually. Not all smart meters trigger autonomous payments today (most just enable automated meter reading), but the installed base provides the infrastructure for future payment automation. The conversion from "smart metering" to "smart billing/payment" is the key adoption metric to watch.
+
+---
+
 ## Sources
 
 1. [IoT Analytics — Number of Connected IoT Devices Growing 14% to 21.1 Billion](https://iot-analytics.com/number-connected-iot-devices/)

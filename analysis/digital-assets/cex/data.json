@@ -10,6 +10,15 @@
       "confidence": "low",
       "note": "Exchanges do not publish trade counts. This is order-of-magnitude estimate."
     },
+    "adjusted_avg_tps": {
+      "value": 3100,
+      "source": "Wash trading adjusted: 20-30% reduction applied to reported volumes based on NBER, Bitwise, CEPR, Kaiko studies",
+      "url": "",
+      "confidence": "low",
+      "note": "Midpoint of 2,450-3,700 range after removing estimated residual wash trading from CoinGecko top-15 trusted exchange data. Regulated exchanges (5-10% inflation), semi-regulated (20-35%), lower-tier trusted (30-50%).",
+      "adjustment_range_pct": "20-30",
+      "unadjusted_value": 4000
+    },
     "peak_tps": {
       "value": 15000,
       "source": "Estimated: avg TPS x 3-4 during peak volatility events",

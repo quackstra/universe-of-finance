@@ -172,6 +172,37 @@ Growth rate analysis is premature for a category this young. The meaningful ques
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Total AI agent payment volume beyond x402**: x402 is the only protocol with published transaction statistics. Enterprise AI agents using traditional payment rails (invoices, purchase orders, ACH) are invisible in agent-specific data.
+- **What fraction of API calls include a payment?** If 10% of AI agent API calls involve a payment (x402 or otherwise), the transaction count is very different from 0.1% or 50%.
+- **Agent-to-agent commerce volume**: The most speculative subcategory. Autonomous agents negotiating and settling with each other without human oversight may already be happening in DeFi but is not separately tracked.
+- **Where x402 daily volume stabilises post-hype**: The 92% decline from 731K to 57K daily is alarming or normal depending on interpretation. The sustainable baseline is unknown.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| AI API call volumes as ceiling | Anthropic, OpenAI, Google report aggregate API usage in investor updates. If total AI API calls reach 100B/year and 1-10% involve payment, that's 1-10B agent payment transactions. | Anthropic/OpenAI blog posts on usage milestones; cloud provider AI service revenue as proxy for call volume | :yellow_circle: |
+| x402 on-chain data | x402 settles on Base (Coinbase L2). All transactions are on-chain and queryable via BaseScan/Dune Analytics. Daily/weekly/monthly trends are fully transparent. | BaseScan; Dune Analytics x402 dashboards | :green_circle: |
+| Enterprise AI deployment as leading indicator | Gartner: 5% of enterprise apps have AI agents (2025), projected 40% by 2026. If each AI-enabled enterprise app generates 100-1000 agent payments/year, scale from enterprise software install base. | Gartner surveys; McKinsey Global AI Survey (annual); enterprise AI spend data from IDC | :yellow_circle: |
+| Venture funding as future volume indicator | AI agent startups raised ~$10-15B in 2024-2025. If each $1M in funding eventually generates $10M in transaction volume (typical for fintech), implied future volume is $100-150B. | Crunchbase/PitchBook AI agent funding data; CB Insights State of AI report | :red_circle: |
+| DeFi agent activity | Track wallet addresses identified as bots/agents on major DEXs (Uniswap, Aave). MEV bot activity is well-documented and represents a form of autonomous agent commerce. | Flashbots MEV-Explore; Dune Analytics bot activity dashboards; EigenPhi | :yellow_circle: |
+
+### Key Modeling Questions
+- **Where does x402 daily volume stabilise?** The 57K/day March 2026 level may be the trough, the new normal, or still declining. Tracking the 30-day moving average over the next 6 months will determine whether x402 follows a "crypto winter then recovery" or "fad that fades" pattern.
+- **Is Gartner's $15T B2B prediction remotely plausible?** Global B2B commerce is ~$150T. $15T in AI agent-directed purchases by 2028 would mean 10% of all B2B spending is agent-directed within 2 years. This seems aggressive even by Gartner's own track record. A 1-2% penetration ($1.5-3T) seems more defensible as a base case.
+- **What is the liability framework?** Until courts or regulators establish who is liable when an AI agent makes a bad purchase (the agent developer? the deploying enterprise? the AI model provider?), enterprise adoption of autonomous agent purchasing will be constrained to low-risk, low-value transactions.
+- **Will x402 and AP2 converge or fragment?** If the market fragments across multiple incompatible agent payment protocols, friction will slow adoption. If x402+AP2 converge into a standard (like HTTP did for the web), adoption could accelerate dramatically.
+- **How do agent payments interact with existing payment categories?** An AI agent paying for cloud compute via x402 creates a new transaction. But an AI agent placing a purchase order that is fulfilled via traditional invoicing is just automating an existing B2B payment flow. How much is genuinely new volume vs automation of existing volume?
+
+### Reference Comparisons
+- **Early internet commerce analogy**: Global e-commerce was ~$1B in 1997 (2 years after Netscape IPO). By 2007, it was $1T. If AI agent commerce follows a similar trajectory from its "1997 moment" (x402 launch in 2025), it could reach $1T by 2035. This is consistent with our baseline projection.
+- **HFT as precedent for machine-generated transactions**: High-frequency trading generates ~50-60% of US equity volume but only ~2% of value. If AI agent commerce follows a similar pattern (many small transactions), the TPS implications are much larger than the value implies.
+- **SWIFT messaging growth as B2B automation proxy**: SWIFT messages grew from ~5B/year (2015) to ~12B/year (2024) as B2B payment automation expanded. If AI agents further automate B2B payments, SWIFT-like message volumes could grow 5-10x — but the transactions would flow through existing B2B payment rails rather than x402.
+
+---
+
 ## Sources
 
 1. [AWS — x402 and Agentic Commerce: Redefining Autonomous Payments](https://aws.amazon.com/blogs/industries/x402-and-agentic-commerce-redefining-autonomous-payments-in-financial-services/)

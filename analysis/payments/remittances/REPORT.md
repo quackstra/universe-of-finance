@@ -166,6 +166,38 @@ Note: Transaction count estimates assume declining average transaction size over
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Global remittance transaction count.** The World Bank tracks value ($905B) but not transaction count. Our 1.8B estimate is the weakest figure in the entire payments taxonomy — built from provider extrapolations with low confidence.
+- **Informal/hawala transfer volume.** The World Bank estimates informal flows could be 50% of formal flows, which would imply true remittances of ~$1.35T and ~2.7B transactions. This is fundamentally unobservable.
+- **Average transaction size by corridor.** The global average (~$500) masks enormous variation: US-Mexico average is ~$390 (Banxico data), Gulf-India is ~$250, while UK-Nigeria may be ~$800+. Corridor-level data is sparse.
+- **Digital vs. traditional share by transaction count.** Digital is ~40% by value, but digital transactions are smaller ($200-300 avg) vs. traditional ($500+). By count, digital may already be >50%.
+- **MoneyGram data post-privatization.** Since going private in 2023 (acquired by Madison Dearborn), MoneyGram no longer files public financials. Its ~$50B volume and ~100M transaction estimates are increasingly stale.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Global transaction count | Method 1: $905B / $500 avg = 1.81B. Method 2: Sum known providers (WU 300M + Wise 125M + banks 400M + others 975M). Method 3: Use corridor-level data from World Bank RPW to build bottom-up count. | World Bank RPW (200+ corridors); WU quarterly reports; Wise annual report | 🔴 |
+| Informal flows | Compare official BoP remittance data with household survey data on received transfers. The gap = informal. IMF has done this for select corridors (India, Philippines, Pakistan). | IMF household surveys; World Bank bilateral estimates; Dilip Ratha research papers | 🔴 |
+| Average txn size by corridor | Banxico publishes US-Mexico average ($390). SBP publishes Pakistan inflow data. RBI publishes India corridor data. Assemble 10-15 major corridors to build weighted global average. | Banxico monthly remittance data; SBP monthly stats; RBI Annual Report; BSP (Philippines) OFW stats | 🟡 |
+| Digital share by count | Wise (125M txns, ~$145B value, $1,160 avg) is 100% digital. WU digital is ~40% of transactions. Remitly/WorldRemit are 100% digital. Weight by market share. | Wise annual report; WU quarterly: digital ~40% of C2C transactions; Remitly S-1 (2021) | 🟡 |
+| Cost reduction trajectory | World Bank RPW publishes quarterly average cost by corridor. Extrapolate cost decline rate to estimate when 3% G20 target is reached. | World Bank RPW: 6.35% global average; Sub-Saharan Africa 7.9%; South Asia 4.3% | 🟢 |
+
+### Key Modeling Questions
+- The World Bank's $905B figure is derived from balance-of-payments data (central bank reporting). This captures formal bank and MTO flows but may miss digital-native platforms that route through novel corridors (e.g., Wise's multi-currency accounts, crypto-bridged remittances). Is the $905B an undercount?
+- If digital remittance average transaction size ($250) continues converging toward P2P averages ($120-290), do remittances become indistinguishable from cross-border P2P transfers? At what point does the category boundary dissolve?
+- Western Union's strategic pivot from agent networks to digital: if WU's agent revenue declines faster than digital grows, could there be a net reduction in formal remittance volume as senders shift to informal digital channels (WhatsApp-mediated hawala, crypto)?
+- SWIFT gpi (global payments innovation) is reducing cross-border bank transfer costs. If bank wire remittances become competitive with MTOs at the <$1,000 level, could banks recapture remittance share?
+
+### Reference Comparisons
+- **India's inflows by channel:** India receives $129B in remittances. RBI data shows ~75% arrives via bank wire (SWIFT), ~15% via digital platforms, ~10% via traditional MTOs. This is unusual — most LMIC remittance corridors are MTO-dominated. India's high bank penetration (Jan Dhan accounts: 530M) explains this.
+- **Mexico vs. Philippines per-capita remittances:** Mexico receives $68B for 130M people (~$523/capita); Philippines receives $40B for 115M people (~$348/capita). But remittances are 8.5% of Philippine GDP vs. 3.9% of Mexican GDP — the Philippines is more remittance-dependent despite lower per-capita inflows.
+- **Cost corridor extremes:** Sending $200 from South Africa to Botswana costs ~20% in fees; sending $200 from Singapore to India costs ~2.7%. This 7.4x cost differential on similar-distance corridors reflects market competition, not geography.
+- **Crypto remittance test case:** El Salvador's Bitcoin remittance experiment showed <2% of remittances used Bitcoin in 2024, despite government promotion. This suggests crypto remittances remain a niche use case, not a systematic undercount in official figures.
+
+---
+
 ## Sources
 
 1. [World Bank — Remittance flows to LMICs reach $685 billion in 2024](https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar)

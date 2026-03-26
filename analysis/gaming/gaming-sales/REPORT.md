@@ -173,6 +173,46 @@ Unlike microtransactions (where revenue grows faster than transactions), digital
 
 ---
 
+## Card Rail Overlap: How Digital Game Sales & Subscriptions Flow Through Payment Networks
+
+### Payment Method Breakdown (Estimated, 2024)
+
+| Payment Method | Share of Sales/Sub Revenue | Ultimately on Card Rails? | Notes |
+|----------------|--------------------------|---------------------------|-------|
+| Direct credit/debit card | ~30-35% | Yes | Primary method on PSN, Xbox Store, Nintendo eShop; higher share than microtx due to larger transaction sizes |
+| Platform store billing (card-funded wallets) | ~25-30% | Yes | Apple/Google for mobile premium; card stored in platform account |
+| PayPal | ~10-15% | Mostly | ~56% of PayPal transactions card-funded ([Worldpay GPR 2024](https://corporate.worldpay.com/news-releases/news-release-details/worldpay-global-payments-report-2024-digital-wallet-maturity)); note Steam/PayPal disruption in 2025 |
+| Platform wallet credit (Steam Wallet, PSN Wallet) | ~8-10% | Mixed | Funded by cards ~60-70% of the time; remainder via bank transfer or gift card redemption |
+| Gift cards / prepaid codes | ~5-8% | Partially | Physical gift cards (GameStop, Amazon) bought with cash or card; digital codes often card-purchased |
+| Bank transfer / open banking | ~3-5% | No | iDEAL (Netherlands), SOFORT (Germany), Bancontact; growing in Europe |
+| Carrier billing | ~1-2% | No | Minimal for full game purchases due to higher price points; carrier billing caps at $25-50 in most markets |
+| Alipay / WeChat Pay | ~3-5% | No | Chinese PC/mobile game purchases; Epic Games Store accepts Alipay globally |
+| Other (crypto, Paysafecard, etc.) | ~1-2% | No | Niche; Paysafecard popular for privacy-conscious European gamers |
+
+### Summary: Card Rail Dependency
+
+**Estimated 70-80% of digital game sales and subscription transactions ultimately flow through card network rails**, a slightly higher percentage than microtransactions because:
+1. **Higher transaction values** ($21 avg vs $8.83 for microtx) favour card payment over alternatives like carrier billing
+2. **Subscription renewals** (~26% of transactions) are overwhelmingly card-on-file recurring charges
+3. **Console storefronts** (PlayStation, Xbox, Nintendo) have higher card usage than mobile platforms
+
+This means approximately **2.0-2.3 billion** of the 2.89 billion annual transactions touch card infrastructure.
+
+### Subscription-Specific Payment Profile
+
+Subscription services (Game Pass, PS Plus, etc.) have an even higher card dependency:
+- **~85-90% card-funded**: Recurring charges require a stored payment method; credit/debit cards are the default
+- **~5-8% PayPal**: Alternative recurring billing method (itself ~56% card-funded)
+- **~2-5% gift card/prepaid**: Users redeeming subscription codes purchased at retail
+
+The 757 million annual subscription renewal transactions are therefore almost entirely card-rail transactions, contributing ~640-680 million to the card payment ecosystem.
+
+### Why This Matters for Double-Counting
+
+The ~2.0-2.3 billion card-funded game sale transactions are **already counted in the consumer card payments capsule's 773 billion annual transactions**. They represent ~0.26-0.30% of global card transaction volume. Combined with microtransactions, total gaming on card rails is ~10.0-11.5 billion transactions, or ~1.3-1.5% of global card volume.
+
+---
+
 ## Data Quality & Limitations
 
 - **No platform publishes transaction counts.** Steam, PlayStation Store, Xbox Store, Nintendo eShop, Epic Games Store — none report aggregate purchase volumes. All transaction figures are derived estimates.
@@ -181,6 +221,36 @@ Unlike microtransactions (where revenue grows faster than transactions), digital
 - **DLC boundary with microtransactions is fuzzy.** A $4.99 skin pack could be classified as either DLC or microtransaction depending on the game. We classify single content drops under DLC; consumable/currency purchases under microtransactions.
 - **Steam revenue is estimated.** Valve is a private company and does not report revenue. Figures come from SteamSpy and industry estimates.
 - **Subscription bundling complicates counting.** Game Pass Ultimate bundles Gold, EA Play, and cloud gaming into one payment. We count it as one transaction, but it serves multiple purposes.
+
+---
+
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Platform-specific transaction counts**: Steam, PlayStation Store, Xbox Store, and Nintendo eShop do not publish purchase counts. All figures are derived from estimated revenue / ASP.
+- **Subscription monthly vs annual split**: This assumption significantly changes transaction counts. A ±20% shift in monthly subscription percentage changes total transactions by ~10%.
+- **Exact digital vs physical split by region**: While global digital share is ~84-96%, regional variation (Japan still has strong physical retail; Africa has almost no digital infrastructure) is poorly documented.
+- **Deep discount impact on ASP**: Steam sales regularly discount games 50-90%. The effective ASP during sale periods may be $5-10 vs $25-40 at full price. Seasonal ASP variation is not captured in our annual blended figure.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Physical-to-digital completion date | Track physical game revenue trend ($8.5B in 2024, -10% YoY). At current decline rate, physical falls below $3B by 2028, $1B by 2031. | thinglabs annual physical revenue data; NPD/Circana monthly physical sales | :green_circle: |
+| Steam transaction count | SteamDB tracks games owned per user (~15 avg). 132M monthly active users x 15% buying per month x 1.3 games = ~308M/year. Compare to our 296M estimate. | SteamDB statistics; Steam Hardware Survey | :yellow_circle: |
+| Subscription fatigue indicator | Track Game Pass churn rates (estimated 30-40% annual) and PS Plus tier downgrades. If churn stabilises, subscriptions plateau; if churn rises, transaction counts fall. | Microsoft/Sony quarterly earnings commentary; third-party surveys | :yellow_circle: |
+| Regional pricing impact on count | Regional pricing (Turkey, Argentina, India) lowers ASP by 50-80% vs US prices. If 20% of Steam transactions are regional-priced, effective ASP drops and transaction count rises. | SteamDB regional pricing data; Sensor Tower regional revenue splits | :yellow_circle: |
+| DLC boundary with microtransactions | Sample 50 top-grossing games; classify each paid content type as DLC or microtransaction. Calculate misclassification rate. | Manual sampling from Steam, PSN store listings | :red_circle: |
+
+### Key Modeling Questions
+- **When does the physical-to-digital shift complete?** Physical game revenue has declined from ~$20B (2019) to ~$8.5B (2024). Modeling the tail is important: the last physical holdouts (collectors, regions with poor internet) may persist for decades even as the mainstream market goes fully digital.
+- If Game Pass reaches 100M subscribers (high-growth assumption), does this cannibalise individual game purchases? Modelling the substitution elasticity between "buy a game" and "subscribe to a library" is critical for transaction count projections.
+- How do free-to-play conversions (e.g., Fall Guys went F2P in 2022) affect the game sales capsule? Each F2P conversion removes potential game sales but adds to the microtransaction capsule. Is this a net transaction increase or decrease?
+- **AI-generated game flooding**: If AI enables 10x more games to be published on Steam (currently ~14,000/year), does this increase purchase transactions or just dilute per-title sales?
+
+### Reference Comparisons
+- **Steam's published revenue estimate**: Industry estimates put Steam's 2024 gross revenue at ~$9-10B (including Valve's 30% cut on ~$33B gross merchandise value). At $25 ASP, this implies ~1.3B transactions on Steam alone — but this includes DLC, in-game items, and microtransactions, not just base game sales.
+- **Console sell-through as sanity check**: ~15M PS5 units sold in 2024. If each buyer purchases 5-8 games digitally, that's 75-120M PlayStation game purchases — consistent with our 222M estimate (which includes back-catalogue and PS4 digital sales).
+- **Epic Games Store disclosure**: Epic published that users claimed 250M+ free games in 2024 and the store had $950M in third-party sales. At $30 ASP, that's ~32M paid transactions — consistent with our 37M estimate.
 
 ---
 

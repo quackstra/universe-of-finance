@@ -183,6 +183,39 @@ The growth is driven by **supply-side scaling**: as transaction costs drop (L2 f
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- The true number of "economically meaningful" transactions on Solana (vote txns, failed txns, and spam are bundled into headline numbers)
+- What fraction of L2 transactions are MEV bots, sequencer overhead, or protocol-internal operations
+- Whether L2 batch compression means posted L1 data understates true L2 activity (or overstates it via duplicate state roots)
+- Cross-chain bridge transaction attribution — a single user transfer can generate 3-5 transactions across chains
+- The economic value per transaction on high-throughput chains (Solana, Base) vs. settlement chains (Bitcoin, Ethereum L1)
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Solana vote txns vs. real txns | Filter using Solana's native vote/non-vote classification; further filter non-vote for failed txns and known bot programs | Solscan analytics; Dune `solana.vote_transactions` table; Helius MEV report data. Non-vote txns were ~30-40% of total historically, but hit 148M/day in Jan 2025 | 🟢 |
+| Solana spam/MEV distortion | Analyse reverted transaction rate (peaked at 75.7% of non-vote txns in Apr 2024) and known MEV bot program IDs | Sandwiched.me analysed 8.5B trades / $1T DEX volume; Jito MEV data; Helius Solana MEV Report | 🟢 |
+| Bitcoin inscriptions/Ordinals as % of total | Count OP_RETURN and Taproot witness transactions; compare fee-adjusted vs. raw tx counts | 69.6M cumulative inscriptions by Sep 2024 (31.9% growth in 9 months); Ordinals activity peaked Q1 2024 then faded | 🟡 |
+| L2 sequencer data vs. posted batches | Compare L2Beat activity data (sequencer-reported) with L1 blob/calldata posts to validate L2 tx counts | L2Beat tracks both sequencer activity and L1 data posts; EIP-4844 blob data available on Etherscan | 🟡 |
+| "Economic transactions" vs. all transactions | Value-weight transactions: multiply tx count by median transfer value per chain to get "economic TPS" | Messari/Artemis chain-level value transferred data; Bitcoin ~$7K/tx, Ethereum L1 ~$6K/tx, Solana ~$8/tx | 🟢 |
+| L3/appchain undercounting | Survey emerging L3s (e.g., Degen Chain, Xai) not yet tracked by L2Beat | L2Beat covers ~30 major L2s but dozens of L3s are untracked; individual L3 explorers exist but no aggregator | 🔴 |
+
+### Key Modeling Questions
+- If we exclude Solana vote transactions AND failed transactions AND MEV bot reverts, what is the "genuine user TPS" for Solana? Early estimates suggest it could be 60-80% lower than headline — dropping Solana from ~580-1,600 TPS to ~120-500 TPS and combined blockchain TPS from ~800-1,000 to ~350-550.
+- Should we define a "value-weighted TPS" metric? One Bitcoin transaction at $100K has more economic significance than 10,000 Solana memecoin swaps at $5 each. A value-weighted measure would dramatically reorder the chain rankings.
+- What is the actual L2 transaction count growth rate net of airdrop farming? Many L2 transactions in 2024 were sybil accounts farming token airdrops (Base, zkSync, Starknet). Post-airdrop activity drops are the key signal.
+- How many unique humans (not addresses) transact on-chain daily? Address-based counts overstate by 5-20x due to multi-wallet usage, bot accounts, and sybil activity.
+
+### Reference Comparisons
+- **SWIFT:** ~50M messages/day (~580 TPS), each representing a high-value interbank transfer. Bitcoin + Ethereum L1 combined (~1.66M txns/day, ~19 TPS) are the crypto equivalents — lower throughput but arguably comparable economic gravity per transaction.
+- **Visa/Mastercard:** ~1.8B transactions/day (~21,000 TPS). Total blockchain TPS of ~800-1,000 is ~4-5% of card network throughput, but growing exponentially where card networks are flat.
+- **Solana vs. Visa throughput claim:** Solana's ~580-1,600 TPS headline is often compared to Visa's ~1,700 TPS average. But after filtering votes, failures, and MEV, Solana's "real" TPS may be ~120-500 — below Visa rather than approaching it.
+- **Ethereum L1 + L2 as a system:** Combined ~15M txns/day (~175 TPS). This is the more meaningful comparison unit for Ethereum's scaling strategy, not L1 alone.
+
+---
+
 ## Sources
 
 1. [Etherscan — Ethereum Daily Transactions Chart](https://etherscan.io/chart/tx)

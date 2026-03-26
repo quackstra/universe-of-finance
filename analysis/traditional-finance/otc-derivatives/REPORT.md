@@ -181,6 +181,38 @@ The 2025 BIS Triennial Survey revealed **OTC interest rate derivatives turnover 
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Global OTC derivative trade count with precision**: ISDA SwapsInfo covers US/EU/UK markets (~3.2M trades for IRD+CDS), but Asia-Pacific, Latin America, and EM markets are not covered. The "rest of world" multiplier (+35%) is an assumption.
+- **Equity and commodity OTC derivative trade counts**: Unlike IRD and CDS (tracked via DTCC SDR), equity swaps and commodity swaps have poor trade count visibility.
+- **Impact of compression on reported trade counts**: TriOptima/OSTTRA compression cycles eliminate trades (e.g., 79% of eligible trades in a single commodities cycle), reducing gross notional and trade count — but the net effect on annual statistics is not tracked comprehensively.
+- **True bilateral vs. cleared split by trade count**: BIS reports clearing rates by notional (76.9% for IRD, 67.9% for CDS), but clearing rates by trade count may differ.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| DTCC Trade Repository data | DTCC publishes weekly SDR data for CFTC-regulated swaps; aggregate for trade counts | [DTCC Repository OTC Data](https://www.dtcc.com/repository-otc-data) — weekly public dissemination | 🟡 Medium |
+| Compression impact | Track TriOptima/OSTTRA compression cycle announcements; estimate trades eliminated per cycle | OSTTRA reports ~79% trade elimination in commodity cycles; LCH SwapClear compression data | 🟡 Medium |
+| Central clearing % as opacity indicator | Higher clearing = more transparent trade count data; use clearing rate to bound observable vs. opaque trades | BIS: IRD 76.9% cleared, CDS 67.9% cleared; mandated currencies 98% cleared | 🟢 High |
+| Asia-Pacific trade count | Use Japan JSCC clearing data + Australian ASIC trade repository reports as anchors for APAC estimate | JSCC publishes IRD clearing volumes; ASIC derivative trade repository data | 🟡 Medium |
+| Equity swap trade count | SEC SBSDR data covers security-based swaps (equity + single-name CDS) in US | [SEC SBSDR](https://www.sec.gov/rules-regulations/staff-guidance/current-guidance/division-trading-markets-staff-guidance) public data | 🟡 Medium |
+
+### Key Modeling Questions
+- How many OTC derivative trades are "eliminated" annually by compression? If TriOptima eliminates 79% of eligible trades per cycle, and cycles run quarterly, the gross trade count before compression could be substantially higher than the net figure we observe.
+- As the clearing mandate expands (particularly for Phase 6 entities), does trade count increase (more standardized = more trades) or decrease (compression + netting efficiencies)?
+- The euro-denominated IRD surge to $3.0T/day (from $1.6T in 2022) — does this represent more trades or larger trades? ECB policy divergence could drive both.
+- What is the "dark matter" of OTC derivatives? Non-reportable trades below de minimis thresholds and trades in non-mandatory jurisdictions could add 10-30% to observed counts.
+
+### Reference Comparisons
+- **ISDA SwapsInfo 2024**: US IRD Q4 trade count was 696.6K (+14.1% YoY) — acceleration in trade frequency signals electronification gains
+- **CDS trade count declining**: 316.8K index CDS trades in 2024 (-6.9% YoY), even as notional grows — compression and portfolio optimization reduce ticket counts
+- **BIS gross credit exposure**: $3.0T at year-end 2024 (0.4% of $732T notional) — demonstrates massive netting; the true economic exposure is 250× smaller than gross notional
+- **Cleared share**: IRD 76.9% cleared ($445T), CDS 67.9% cleared ($6.1T) at H1 2024 ([BIS/CCP Global](https://ccp-global.org/sites/default/files/2025-02/INCENTIVES-FOR-CENTRAL-CLEARING-AND-THE-EVOLUTION-OF-OTC-DERIVATIVES-A-CCP12-REPORT_FINAL.pdf)); mandated currencies at 98% clearing rate
+- **OSTTRA/TriOptima compression**: In a single commodities compression cycle, 79% of submitted eligible trades were fully terminated — illustrating how compression deflates trade count statistics
+
+---
+
 ## 9. Sources
 
 1. [ISDA SwapsInfo — Full Year 2024 Review](https://www.isda.org/2025/02/20/swapsinfo-full-year-2024-and-the-fourth-quarter-of-2024/)

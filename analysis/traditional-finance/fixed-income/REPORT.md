@@ -177,6 +177,36 @@ TRACE reported approximately 52 million total bond transactions in 2024, includi
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Global repo transaction count**: The repo market is enormous by value (~$10T/day globally) but no single source reports daily transaction counts. ICMA reports outstanding value; the Fed reports SOFR-eligible volumes — neither reports trade counts.
+- **Non-US bond trade counts**: TRACE captures US corporate and agency bonds (~52M trades/year), but European, Asian, and EM bond market trade counts are largely unreported.
+- **Electronic vs. voice bond trading split**: Tradeweb and MarketAxess report ADV by value, but the share of bond trades executed electronically vs. voice across all market segments is not centrally tracked.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| US repo trade count | Use SOFR underlying volume (~$900B-$1.5T/day) divided by estimated avg repo size ($50-200M) | [NY Fed SOFR data](https://www.newyorkfed.org/markets/reference-rates/sofr) — daily volume and rate; FRED SOFRVOL series | 🟡 Medium |
+| European repo trade count | ICMA survey outstanding (EUR 10.9T at Dec 2023, EUR 12.4T at Jun 2025) + daily turnover growth (+25.9% H2 2024) | [ICMA Survey #48-49](https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/market-data/icma-european-repo-market-survey/) | 🟡 Medium |
+| Corporate bond e-trading % | Tradeweb + MarketAxess combined ADV as proxy for electronic share | Tradeweb ADV $2.35T (Oct 2024); MarketAxess ADV ~$8.5B (IG corporates) | 🟢 High (for platforms) |
+| Non-US bond trade count | Scale US TRACE data by US share of global outstanding (~33%) | SIFMA fact book: US = ~$51T of $145T global outstanding | 🟡 Medium |
+| Repo-to-cash bond ratio | Compare repo ADV (~$10T) to cash bond ADV (~$1.5T) as a multiplier | Both available from SIFMA/Fed/ICMA | 🟢 High |
+
+### Key Modeling Questions
+- What is the actual daily trade count in the global repo market? Even a rough estimate (e.g., 1-5 million trades/day) would dramatically change the fixed income TPS calculation.
+- As bond trading electronifies (Tradeweb ADV grew ~35% YoY), does trade count grow faster than value? (Electronic platforms enable smaller trade sizes.)
+- How should triparty repo be counted? (A single triparty repo may involve hundreds of underlying securities but is booked as one transaction.)
+- Will tokenized bonds (e.g., on blockchain rails) increase trading velocity for traditionally illiquid instruments?
+
+### Reference Comparisons
+- **SOFR daily volume**: ~$900B-$1.5T/day of actual repo transactions underpin SOFR — this provides a high-confidence lower bound for US repo market activity ([FRED SOFRVOL](https://fred.stlouisfed.org/series/SOFRVOL))
+- **ICMA European repo**: Record EUR 12.4T outstanding at June 2025; average daily turnover grew 25.9% in H2 2024 — European repo is growing faster than US ([ICMA](https://www.icmagroup.org/News/news-in-brief/the-european-repo-market-icma-survey-shows-record-outstanding-value-of-eur-12-4-trillion-at-june-2025/))
+- **Tradeweb vs. MarketAxess**: Tradeweb focuses on rates/govts ($2.35T ADV), MarketAxess on credit ($8.5B ADV) — together they proxy electronic bond trading velocity
+- **TRACE coverage**: ~52M transactions/year in US bonds provides the most reliable single-country trade count anchor for global extrapolation
+
+---
+
 ## 8. Sources
 
 1. [SIFMA — US Treasury Securities Statistics](https://www.sifma.org/research/statistics/us-treasury-securities-statistics)

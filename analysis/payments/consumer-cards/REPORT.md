@@ -66,28 +66,34 @@ Asia-Pacific's dominance is heavily driven by UnionPay (China), which accounts f
 
 ## Historic Trend
 
-### Global Card Purchase Transactions (2015-2024)
+### Global Card Purchase Transactions (2010-2024)
 
-| Year | Annual Volume (B) | YoY Growth | Avg TPS | Confidence |
-|------|-------------------|-----------|---------|------------|
-| 2015 | 227 | — | 7,197 | 🟡 |
-| 2016 | 260 | +14.5% | 8,243 | 🔴 |
-| 2017 | 300 | +15.4% | 9,512 | 🟡 |
-| 2018 | 346 | +15.3% | 10,971 | 🔴 |
-| 2019 | 398 | +15.0% | 12,620 | 🔴 |
-| 2020 | 380 | -4.5% | 12,049 | 🔴 |
-| 2021 | 467 | +22.9% | 14,805 | 🟡 |
-| 2022 | 625 | +33.8% | 19,812 | 🟢 |
-| 2023 | 687 | +9.9% | 21,788 | 🟢 |
-| 2024 | 773 | +12.4% | 24,501 | 🟢 |
+| Year | Annual Volume (B) | YoY Growth | Avg TPS | Confidence | Source |
+|------|-------------------|-----------|---------|------------|--------|
+| 2010 | 108 | — | 3,424 | 🟡 | Capgemini WPR (card share of 283B non-cash) |
+| 2011 | 120 | +11.1% | 3,804 | 🟡 | Capgemini WPR (card share of 307B non-cash) |
+| 2012 | 134 | +11.7% | 4,248 | 🟡 | Capgemini WPR (card share of 333B non-cash) |
+| 2013 | 155 | +15.7% | 4,914 | 🟡 | Capgemini WPR (card share of 366B non-cash) |
+| 2014 | 185 | +19.4% | 5,866 | 🟡 | Estimated; $20T card spend at ~$108 avg txn |
+| 2015 | 227 | +22.7% | 7,197 | 🟡 | Nilson projected |
+| 2016 | 255 | +12.3% | 8,084 | 🟡 | Derived: Visa 83.2B @ ~32.6% share |
+| 2017 | 300 | +17.6% | 9,512 | 🟡 | Derived: Visa 111.2B @ ~37% share |
+| 2018 | 340 | +13.3% | 10,781 | 🟡 | Derived: Visa 124.3B @ ~36.6% share |
+| 2019 | 377 | +10.9% | 11,953 | 🟡 | Derived: Visa 138.3B @ ~36.7% share |
+| 2020 | 370 | -1.9% | 11,731 | 🟡 | Derived: Visa ~140.8B processed; COVID dip moderated by e-commerce surge |
+| 2021 | 467 | +26.2% | 14,805 | 🟡 | Derived from Nilson 2022 data |
+| 2022 | 625 | +33.8% | 19,812 | 🟢 | Nilson Report |
+| 2023 | 687 | +9.9% | 21,788 | 🟢 | Nilson Report |
+| 2024 | 773 | +12.4% | 24,501 | 🟢 | Nilson Report |
 
-*Sources: 2022-2024 from [Nilson Report](https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/); 2015 from [Nilson projected](https://nilsonreport.com/articles/transactions-worldwide-projected-through-2024/); 2016-2021 interpolated (see [methodology](workings/calculations.md#8-historic-timeseries-2015-2024)).*
+*Sources: 2022-2024 from [Nilson Report](https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/); 2015 from [Nilson projected](https://nilsonreport.com/articles/transactions-worldwide-projected-through-2024/); 2010-2013 derived from [Capgemini World Payments Report](https://www.capgemini.com/insights/research-library/world-payments-report/) non-cash transaction totals (cards estimated at ~38-42% of non-cash); 2016-2020 derived from Visa processed transaction counts ([Visa 10-K filings](https://annualreport.visa.com/financials/default.aspx)) divided by Visa's estimated global share. See [methodology](workings/calculations.md#8-historic-timeseries-2015-2024).*
 
 **Key observations:**
-- Card transactions have grown **3.4× over the decade** (227B to 773B)
-- COVID-19 caused only a modest dip in 2020 (~-4.5%), far less than cash/check payments, as e-commerce surged
+- Card transactions have grown **~7.2× over 14 years** (108B in 2010 to 773B in 2024)
+- The 2010-2015 period saw steady ~16% CAGR as emerging markets adopted cards and contactless payments gained traction
+- COVID-19 caused only a modest dip in 2020 (~-1.9%), far less than cash/check payments, as e-commerce surged
 - 2021-2022 saw explosive catch-up growth as economies reopened and cash-to-card migration accelerated
-- The 2015-2024 CAGR is approximately **14.6%** (see [calculations](workings/calculations.md#8-historic-timeseries-2015-2024))
+- The 2015-2024 CAGR is approximately **14.6%**; the full 2010-2024 CAGR is **~15.2%** (see [calculations](workings/calculations.md#8-historic-timeseries-2015-2024))
 
 ---
 
@@ -95,8 +101,9 @@ Asia-Pacific's dominance is heavily driven by UnionPay (China), which accounts f
 
 | Period | CAGR | Context |
 |--------|------|---------|
+| 2010-2024 (14yr) | ~15.2% | Full extended timeseries |
 | 2015-2024 (9yr) | ~14.6% | Full decade including COVID recovery bounce |
-| 2019-2024 (5yr) | ~14.2% | Through-cycle including COVID dip and recovery |
+| 2019-2024 (5yr) | ~15.4% | Through-cycle including COVID dip and recovery |
 | 2022-2024 (2yr) | ~11.2% | Post-recovery normalising trend |
 
 The recent 2-year CAGR of 11.2% is the most indicative of near-term trajectory. Nilson Report projects a CAGR of **7.3%** from 2022 through 2027 (891.2B by 2027) ([Nilson Report](https://nilsonreport.com/articles/payment-card-transactions-projected-worldwide-3/)), which appears conservative given 2024 already exceeded their projections.
@@ -176,13 +183,44 @@ The card payments market by value was $28.6T in 2023, projected to reach $56.4T 
 
 ## Data Quality & Limitations
 
-- **Historic data gaps:** Years 2016, 2018, 2019, and 2020 are interpolated rather than directly sourced; confidence is 🔴 Low for these individual years
+- **Historic data (2016-2020):** Now derived from Visa's reported processed transaction counts (from 10-K filings) divided by Visa's estimated global market share; upgraded from 🔴 Low to 🟡 Medium. Cross-validated against Mastercard switched transactions where available. Pre-2015 data (2010-2014) derived from Capgemini World Payments Report non-cash totals with card share estimates (~38-42%); confidence 🟡 Medium
 - **Peak TPS is estimated:** No card network publicly discloses actual observed peak throughput. VisaNet's 83,000 TPS is a stated *capacity*, not an observed maximum
 - **UnionPay opacity:** UnionPay does not publish transaction data in the same format as Western networks; 2024 figures are estimated from 2023 base data
 - **Fiscal year misalignment:** Visa reports on a September fiscal year; Mastercard and others on calendar year. This creates ~3-month overlap discrepancies
 - **Double-counting risk:** Some transactions may be counted at both the network level and the acquirer level; we use network-level figures as primary
 - **Credit/debit/prepaid split:** Global breakdown is estimated from US data and Visa/Mastercard splits; actual global split may differ due to regional card usage patterns
 - **Value figures include cash volume:** The $51.92T figure includes ATM withdrawals and cash advances; purchase-only value is estimated at ~$44.5T
+
+---
+
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Actual peak TPS across all networks simultaneously.** VisaNet's 83,000 TPS is stated capacity, not observed throughput. No network publishes real-time load data.
+- **UnionPay's exact 2024 transaction count.** UnionPay does not publish transaction data in the same format as Western networks; the ~247B figure is extrapolated from 2023 estimates and PBOC aggregate data.
+- **How many card transactions are "synthetic" (wallet-initiated).** Apple Pay, Google Pay, and Samsung Pay generate ~32B card-rail transactions that are *also* counted in Digital Wallets. The exact number is not disclosed by any party.
+- **Global debit/credit/prepaid split.** Only the US Federal Reserve publishes granular split data. The global estimate (~55/37/8) extrapolates from US + Visa/Mastercard disclosures.
+- **Domestic/private-label card volume.** Excluded from primary counts but could add 50-100B+ transactions (e.g., China's domestic-only UnionPay cards, Indian RuPay domestic transactions).
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| UnionPay 2024 volume | Cross-reference PBOC "consumer payment transactions" (357B in 2024) minus mobile/non-card, compare with UnionPay's disclosed "cards in circulation" growth | PBOC Payment System Report Q4 2024: 357.2B consumer payment txns; UnionPay: 9.8B cards in circulation | 🟡 |
+| Wallet-initiated card txns | Subtract known non-card wallet volume (UPI, China mobile, M-Pesa) from total wallet volume; remainder approximates card-rail wallet txns | Apple Pay: ~24B txns (analyst est.); Google Pay non-UPI: ~5B; Samsung Pay: ~3B | 🟡 |
+| Global debit/credit split | Weight US Fed data (35% credit / 30% debit / 35% other) with Visa global split (53% debit by volume) and regional card issuance data | Visa FY2024: debit $6.02T / credit $5.31T; Mastercard similar ratio; India ~90% debit | 🟡 |
+| Peak TPS | Use Singles' Day and Black Friday merchant-side data (Alibaba 583K orders/sec, Shopify 700/sec) as lower bound; multiply by card-to-order ratio (~1.1x for auth + settlement) | Alibaba Singles' Day 2020 peak; Shopify BFCM 2024; Visa stated 65K TPS capacity | 🔴 |
+| Private-label / domestic-only cards | India's RuPay processed ~8.5B txns in FY2024 (NPCI data); add Mir (Russia, ~3B est.), Elo (Brazil, ~2B est.) | NPCI RuPay stats; Russian Central Bank; Brazilian card association | 🟡 |
+
+### Key Modeling Questions
+- What fraction of UnionPay's 247B transactions are purchase transactions vs. ATM/cash? PBOC data separates "consumer payments" from "cash withdrawals" — can this ratio be applied?
+- If Visa processes 303B branded transactions but only 233.8B switched transactions, what happens to the ~69B gap? (Answer: processed by third-party acquirers on Visa rails — but does this create double-counting with acquirer-reported volumes?)
+- How should contactless transaction growth (now >50% of in-person Visa/MC transactions in Europe and Australia) be modeled for peak TPS? Contactless has faster tap-and-go cycles, potentially increasing burst rates.
+- RuPay (India) processed ~30% of Indian card transactions in 2024. As India pushes RuPay internationally, should it be added to the global network table?
+
+### Reference Comparisons
+- **US vs. EU card usage:** The US averages ~480 card transactions per capita per year; the EU averages ~180. This 2.7x gap suggests significant headroom for European card growth — or alternatively, that EU consumers will leapfrog cards to A2A payments.
+- **China card paradox:** UnionPay claims ~247B transactions, but PBOC reports 357B total consumer payment transactions. The gap (~110B) likely represents mobile-payment-initiated bank transfers that bypass card rails entirely — consistent with Alipay/WeChat Pay dominance.
+- **India's dual growth:** Both RuPay card transactions (~8.5B) and UPI (~172B) are growing >40% YoY. India may be the only major economy where card and non-card electronic payments are both hypergrowth simultaneously.
 
 ---
 
@@ -208,3 +246,9 @@ The card payments market by value was $28.6T in 2023, projected to reach $56.4T 
 18. [Federal Reserve — The Federal Reserve Payments Study (Nov 2024)](https://www.federalreserve.gov/paymentsystems/2024-November-The-Federal-Reserve-Payments-Study.htm)
 19. [Nilson Report — Payment Card Transactions Projected 2022-2027](https://nilsonreport.com/articles/payment-card-transactions-projected-worldwide-3/)
 20. [Nilson Report — Transactions Worldwide Projected through 2024](https://nilsonreport.com/articles/transactions-worldwide-projected-through-2024/)
+21. [Capgemini — World Payments Report 2013 (non-cash transaction totals)](https://www.capgemini.com/us-en/news/global-non-cash-payments-expected-to-top-333-billion-says-world-payments-report-2013/)
+22. [Capgemini — World Payments Report 2014](https://www.slideshare.net/slideshow/10th-annual-world-payments-report-2014-from-capgemini-and-the-royal-bank-of-scotland/39686530)
+23. [Payments Cards & Mobile — $20 Trillion Card Spend in 2014](https://www.paymentscardsandmobile.com/20-trillion-spent-on-payment-cards-worldwide-in-2014/)
+24. [Visa — Historical 10-K Filings (processed transactions 2015-2024)](https://annualreport.visa.com/financials/default.aspx)
+25. [Mastercard — 10-K FY2018 (switched transactions)](https://www.sec.gov/Archives/edgar/data/1141391/000114139119000013/ma12312018-10xk.htm)
+26. [Expanded Ramblings — Visa Statistics and Facts](https://expandedramblings.com/index.php/visa-statistics-and-facts/)

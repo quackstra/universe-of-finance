@@ -181,6 +181,36 @@ Driven by: netting efficiency gains reducing gross settlement needs, shift to in
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **China's CNAPS/HVPS**: The PBoC's High-Value Payment System processed ~382 million RTGS transactions in 2023 (~¥8,481 trillion). This is comparable to Fedwire in volume but is excluded from our 423M aggregate because English-language reporting is inconsistent and 2024 data is not yet available. Including CNAPS would likely push global RTGS to ~800M+ transactions.
+- **India's RTGS**: RBI reports RTGS volume CAGR of 13.7% (2020-2025) with RTGS accounting for 69% of payment value but only 0.1% of volume. Absolute transaction counts are available in RBI annual reports but not included here.
+- **Russia's BESP**: Effectively opaque since 2022 sanctions; pre-sanctions volume was ~20-30M transactions/year.
+- **24/7 RTGS impact**: Bank of England has consulted on extended operating hours. No quantitative estimate exists for how much transaction volume would increase if RTGS operated 24/7 vs current ~10-18hr windows.
+- **Intraday liquidity recycling**: How many potential RTGS transactions are avoided through intraday netting and liquidity management is unknown but significant.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| China CNAPS volume | GDP ratio: China GDP is ~65% of US GDP; if RTGS scales with GDP, expect ~135-170M transactions | 2023 CNAPS data (382M) suggests CNAPS actually exceeds Fedwire proportionally | :green_circle: |
+| India RTGS volume | RBI publishes detailed payment system data; RTGS CAGR 13.7% from known 2020 baseline | RBI Annual Report, Payment & Settlement Systems in India | :green_circle: |
+| Russia BESP volume | Pre-2022 BIS CPMI data available; extrapolate at 2% CAGR from last known figure | BIS Red Book 2021 contains Russian data | :yellow_circle: |
+| 24/7 RTGS transaction uplift | BOE consultation responses; analogise from Faster Payments adoption curve when FPS went 24/7 | BOE 2024/25 RTGS Annual Report discusses extended hours | :yellow_circle: |
+| Missing smaller RTGS systems (Swiss SIC, Canadian LVTS, Australian RITS) | BIS CPMI database covers 25+ RTGS systems; aggregate from Red Book statistical annex | BIS CPMI payment statistics portal | :green_circle: |
+
+### Key Modeling Questions
+- If CNAPS, India RTGS, and other missing systems were included, does global RTGS volume reach ~1 billion transactions? This would roughly double our current 423M estimate and change the TPS calculation to ~32.
+- How does the T2 platform migration (March 2023) affect comparability of pre/post-2023 data? Is the 2024 "record" partly an artefact of broader service scope?
+- What is the netting ratio between gross interbank obligations and actual RTGS settlement? If netting is becoming more efficient (e.g., CLS netting ratio improving), RTGS counts may grow slower than underlying economic activity.
+
+### Reference Comparisons
+- **GDP-to-RTGS ratio**: For systems with published data, the ratio of annual RTGS value to GDP ranges from ~7x (CHAPS/UK GDP) to ~15x (Fedwire/US GDP). Applying these ratios to countries with missing data can produce rough volume estimates.
+- **BIS CPMI Red Book**: The most comprehensive cross-country payment system dataset. Updated annually with ~2-year lag. The 2023 edition covers 2022 data for 25+ jurisdictions.
+- **SWIFT gpi data**: While SWIFT is messaging (not settlement), SWIFT's published message volumes (~50M/day) provide a ceiling on cross-border RTGS settlement counts since most cross-border payments settle through RTGS.
+
+---
+
 ## Sources
 
 - [Fedwire Funds Service Annual Statistics](https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html)

@@ -4,9 +4,10 @@
 
 ## The Big Number
 
-**Estimated Total Global Financial TPS**: **~76,000** (non-overlapping categories, current-year average)
+**De-Duplicated Global Financial TPS: ~70,600** (payment infrastructure) / **~71,600** (all economic events)
 
-*This is a first-pass estimate summing the largest non-overlapping categories. See double-counting notes below.*
+*Run 2 analysis with full overlap quantification. See [OVERLAP_MATRIX.md](OVERLAP_MATRIX.md) for methodology.*
+*Range: 65,000 – 80,000 TPS depending on overlap assumptions.*
 
 ## Completed Analyses
 

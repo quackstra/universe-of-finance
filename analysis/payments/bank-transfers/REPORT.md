@@ -250,3 +250,36 @@ Even in the conservative case, bank transfers still exceed 1 trillion/year by 20
 - SWIFT volumes excluded from totals to prevent double-counting (SWIFT is messaging, not settlement).
 - See `workings/calculations.md` for full derivations and `workings/assumptions.md` for all assumptions.
 - Confidence levels: 🟢 Direct from operator reports | 🟡 Derived from multiple sources | 🔴 Estimated
+
+---
+
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Global ACH volume outside the US and EU.** Nacha (US: 33.6B) and EPC (EU: 32B) are well-documented, but national ACH systems in Japan, South Korea, Australia, and dozens of other countries do not publish comparable data.
+- **The exact boundary between "real-time payment" and "fast ACH."** Same Day ACH in the US (1.2B txns) settles within hours, not seconds — is it "real-time"? ACI counts it separately; some analysts don't.
+- **RTGS transaction counts for non-Western systems.** Fedwire (210M), TARGET2 (108M), and CHAPS (52.7M) are public. BOJ-NET (Japan), CNAPS (China), and RBI-RTGS (India) transaction counts are harder to source.
+- **What fraction of real-time payments are "push notification" micro-transfers vs. genuine commercial payments.** India's UPI includes ₹1 test transactions and promotional payments that inflate counts.
+- **The "Rest of World" bucket.** ACI reports 266.2B global RTP transactions in 2023. Subtracting known systems (India 131B, Brazil 63B, Thailand 18B, UK 5.1B, EU 5B, Nigeria 7.9B = ~230B) leaves ~36B unattributed.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Global ACH total | Sum known systems (US 33.6B, EU 32B, UK 7.5B) + estimate others from BIS CPMI Red Book statistics (covers ~25 countries) | BIS CPMI data; national central bank annual reports | 🟡 |
+| RTP "Rest of World" | Use ACI's regional breakdowns (Asia-Pacific 185.8B, LatAm ~40B, Europe ~12B, Africa ~8B, NA ~3B) and subtract known systems per region | ACI Prime Time Report 2024; individual system disclosures | 🟡 |
+| UPI commercial vs. micro-payment split | NPCI publishes P2M vs. P2P breakdowns. In Dec 2024, P2M was ~59% of UPI volume. Apply this ratio to annual figures. | NPCI monthly data: P2M ~59%, P2P ~41% (Dec 2024) | 🟢 |
+| RTGS non-Western volumes | China's CNAPS: PBOC reports "large-value payment system" processed ~RMB 5,300T in 2024; divide by avg transfer size for count estimate | PBOC Payment System Report Q4 2024 | 🟡 |
+| Fedwire peak throughput | Fed publishes daily averages ($4.52T/day). Peak day data occasionally disclosed in FRBNY reports. Compare with BOE's CHAPS peak day disclosures. | Federal Reserve annual report; BOE CHAPS annual report 2024 | 🟡 |
+
+### Key Modeling Questions
+- **UPI double-counting:** UPI's 172B transactions are counted in both Bank Transfers and Digital Wallets. The overlap analysis (see `../OVERLAP_ANALYSIS.md`) recommends primary classification here, with wallets subtracting UPI. Is this the right call?
+- If PIX continues at 52% YoY growth, it will process ~100B transactions by end of 2025. At what point does Brazil overtake India's UPI calendar-year count? (Answer: likely never at current rates, since UPI is also growing at 46%.)
+- FedNow processed just 1.5M transactions in 2024. If it follows PIX's trajectory (0 to 65B in 4 years), it would process 50B+ by 2028. But the US has different adoption dynamics — what is a realistic FedNow trajectory?
+- Same Day ACH grew 45.3% in 2024 to 1.2B transactions. Is this cannibalizing FedNow's potential user base, or are they serving different use cases?
+- SWIFT processed ~53.3M messages/day (~19.5B/year) but is a messaging layer, not a settlement rail. Should SWIFT message volume be tracked as a separate metric for cross-border payment activity?
+
+### Reference Comparisons
+- **PIX vs. UPI adoption curves:** PIX launched in Nov 2020 and hit ~65B transactions by 2024 (4 years). UPI launched in Aug 2016 and hit 172B by 2024 (8 years), but UPI only crossed 65B in late 2022 — meaning PIX reached that milestone 2 years faster. Brazil's adoption was faster despite a smaller population (215M vs. 1.4B).
+- **UK Faster Payments as mature benchmark:** Launched in 2008, FPS processes ~5.1B transactions in 2024 for 67M people (~76 txns/person/year). If India (1.4B people) reaches the same per-capita rate, UPI would process ~106B/year — already exceeded. India is now at ~123 UPI txns per person per year, 1.6x the UK rate.
+- **Fedwire vs. TARGET2:** Fedwire ($1,133T in 210M txns) vs. TARGET2 (~$600T in 108M txns). US average wire is $5.4M; EU average is $5.6M — remarkably similar, suggesting RTGS is a standardized wholesale settlement mechanism regardless of jurisdiction.
+- **ACH value as GDP proxy:** US ACH value ($86.2T) is ~3.2x US GDP ($27T). EU SEPA CT value (~$238T) is ~13x EU GDP ($18.5T). The disparity suggests European bank transfers handle a wider range of payments (including many that would be card transactions in the US).

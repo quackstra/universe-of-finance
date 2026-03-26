@@ -179,6 +179,38 @@ Key catalysts:
 
 ---
 
+## Open Questions & Triangulation Opportunities
+
+### What We Can't Directly Observe
+- **Dark pool / off-exchange true volume**: In the US, ~47% of equity volume trades off-exchange (TRF/dark pools), but the exact number of discrete trades in dark pools vs. internalizers is not publicly decomposed in real time. FINRA ATS data has a 2-4 week lag.
+- **India retail vs. institutional split**: NSE India is #3 globally by trade count, but the exact proportion of retail (individuals) vs. institutional (DII/FII) trades by count is not published at the granularity needed for TPS modeling. SEBI publishes monthly category-wise turnover, not trade counts.
+- **China A-share retail dominance**: Retail investors are estimated to account for 60-80% of China A-share trading volume by count, but the Shanghai and Shenzhen exchanges do not publish a clean retail/institutional trade count split.
+- **HFT share of trade count**: High-frequency trading generates a disproportionate share of order flow and trades, but the exact percentage varies by exchange and is not consistently reported globally.
+
+### Triangulation Strategies
+| Gap | Approach | Proxy Data Available | Expected Precision |
+|-----|----------|---------------------|-------------------|
+| Dark pool volume (US) | FINRA ATS weekly data + Cboe TRF market share reports | [FINRA ATS data](https://www.finra.org/investors/insights/where-do-stocks-trade) (2-4 week lag), Cboe monthly TCV reports | 🟡 Medium |
+| Dark pool volume (EU) | MiFID II post-trade transparency data via ESMA | ESMA quarterly reports on dark trading caps (DVC) | 🟡 Medium |
+| China A-share retail split | CSRC monthly investor statistics + SSE/SZSE turnover by account type | CSRC publishes new account openings; Wind database has category turnover | 🟡 Medium |
+| India NSE retail explosion | SEBI monthly bulletin (category-wise turnover) + NSE broker-level data | SEBI data available with 1-month lag; demat account growth from CDSL/NSDL | 🟢 High (value) / 🟡 Medium (count) |
+| HFT share of trades | SEC Rule 613 (CAT) data (not public) vs. academic estimates | Academic papers estimate 50-60% of US equity trades are HFT; no real-time source | 🔴 Low |
+| Global trade count verification | Cross-check WFE monthly data × 12 vs. annual estimate | WFE publishes monthly dashboard with YoY trade count growth rates | 🟡 Medium |
+
+### Key Modeling Questions
+- What is the true ratio of trades-to-value across dark pools vs. lit exchanges? (Dark pools may have higher average trade sizes, meaning fewer trades per dollar)
+- How should fractional share trades be counted? (One $5 fractional share purchase = one trade in the same way as a $500K block?)
+- If 24/7 trading gains traction (NYSE has explored this), does total trade count increase or just spread across more hours?
+- Can India's NSE sustain 40%+ trade count growth, or will SEBI lot-size and margin interventions (as seen in F&O) dampen equity cash market growth too?
+
+### Reference Comparisons
+- **India demat accounts**: 500M+ accounts (CDSL/NSDL combined), growing ~15M/month — comparable to China's 200M+ brokerage accounts but with much higher active trading rates
+- **US retail participation**: Retail investors deployed $1.3B/day in H1 2025, up 32.6% YoY ([RSM US](https://rsmus.com/insights/industries/financial-services/capital-markets-retail-investor-growth.html))
+- **Off-exchange trend**: US off-exchange share rose from ~35% (2019) to ~47% (2024); in January 2025, dark pools alone crossed 51.8% of volume for the first time ([Bloomberg](https://www.bloomberg.com/))
+- **Goldman Sachs projection**: Emerging stock markets projected to overtake the US by market cap by 2030, driven by India, China, and other Asian markets
+
+---
+
 ## Confidence Assessment
 
 | Capsule | Confidence | Notes |
