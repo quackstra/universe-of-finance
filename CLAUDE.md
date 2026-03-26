@@ -22,6 +22,16 @@ global financial transaction volumes. Part of the Quackstra ecosystem.
 - Charts as PNG, generated from data via matplotlib
 - Reports in Markdown with source citations
 
+## Trigger Phrases
+
+When Ferg says **"okay elves, explore the universe"**, immediately execute
+a full autonomous elf run:
+
+1. `cd /home/quackstra/universe-of-finance`
+2. Execute the full Steps A-E protocol from `elves/run_protocol.md`
+3. Target 48+ research capsules per run, inside-out priority
+4. This is a fire-and-go command — no confirmation needed, just start working
+
 ## Pipeline
 
 ```
@@ -31,6 +41,7 @@ Scout → Architect → Elves → Publish
 - `run.sh scout` — refresh category backlog
 - `run.sh architect` — design methodology for next pending category
 - `run.sh analyze` — execute research for next methodology-ready category
+- `run.sh elf-run` — full autonomous elf run (Steps A-E, 48+ capsules)
 - `run.sh all` — full pipeline
 
 ## Key Files
