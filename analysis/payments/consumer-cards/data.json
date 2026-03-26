@@ -1,0 +1,286 @@
+{
+  "category": "Consumer Card Payments",
+  "sector": "Payments",
+  "last_updated": "2026-03-26",
+  "current": {
+    "peak_tps": {
+      "value": 61250,
+      "source": "Estimated: avg TPS × 2.5 peak multiplier",
+      "url": "",
+      "confidence": "low",
+      "note": "No network publicly discloses observed peak. VisaNet capacity is 83,000 TPS."
+    },
+    "avg_tps": {
+      "value": 24501,
+      "source": "Derived: 772.73B / 31,536,000 seconds",
+      "url": "https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/",
+      "confidence": "medium"
+    },
+    "daily_volume": {
+      "value": 2117000000,
+      "source": "Derived: 772.73B / 365 days",
+      "url": "https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/",
+      "confidence": "medium"
+    },
+    "annual_volume": {
+      "value": 772730000000,
+      "source": "Nilson Report — Global Network Card Results Worldwide 2024",
+      "url": "https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/",
+      "confidence": "high"
+    },
+    "annual_value_usd": {
+      "value": 51920000000000,
+      "source": "Nilson Report — total purchase + cash volume 2024",
+      "url": "https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/",
+      "confidence": "high",
+      "note": "Includes purchase volume ($~44.5T est.) and cash advances/withdrawals"
+    }
+  },
+  "historic": [
+    { "year": 2015, "annual_volume": 227000000000, "avg_tps": 7197, "source": "Nilson Report projected", "confidence": "medium" },
+    { "year": 2016, "annual_volume": 260000000000, "avg_tps": 8243, "source": "Interpolated", "confidence": "low" },
+    { "year": 2017, "annual_volume": 300000000000, "avg_tps": 9512, "source": "Derived from Visa FY2017 111.2B @ ~37% share", "confidence": "medium" },
+    { "year": 2018, "annual_volume": 346000000000, "avg_tps": 10971, "source": "Interpolated", "confidence": "low" },
+    { "year": 2019, "annual_volume": 398000000000, "avg_tps": 12620, "source": "Interpolated", "confidence": "low" },
+    { "year": 2020, "annual_volume": 380000000000, "avg_tps": 12049, "source": "Estimated (COVID dip ~-4.5%)", "confidence": "low" },
+    { "year": 2021, "annual_volume": 467000000000, "avg_tps": 14805, "source": "Derived: Nilson 2022 adjusted for 24.5% growth", "confidence": "medium" },
+    { "year": 2022, "annual_volume": 624860000000, "avg_tps": 19812, "source": "Nilson Report", "confidence": "high" },
+    { "year": 2023, "annual_volume": 687190000000, "avg_tps": 21788, "source": "Nilson Report / derived", "confidence": "high" },
+    { "year": 2024, "annual_volume": 772730000000, "avg_tps": 24501, "source": "Nilson Report", "confidence": "high" }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2026, "tps": 29114, "annual_volume": 918000000000 },
+      { "year": 2027, "tps": 31586, "annual_volume": 996000000000 },
+      { "year": 2028, "tps": 34113, "annual_volume": 1076000000000 },
+      { "year": 2029, "tps": 36672, "annual_volume": 1157000000000 },
+      { "year": 2030, "tps": 39239, "annual_volume": 1238000000000 },
+      { "year": 2031, "tps": 41986, "annual_volume": 1324000000000 },
+      { "year": 2032, "tps": 44925, "annual_volume": 1417000000000 },
+      { "year": 2033, "tps": 48070, "annual_volume": 1516000000000 },
+      { "year": 2034, "tps": 51434, "annual_volume": 1622000000000 },
+      { "year": 2035, "tps": 55035, "annual_volume": 1736000000000 }
+    ],
+    "high_growth": [
+      { "year": 2026, "tps": 31292, "annual_volume": 987000000000 },
+      { "year": 2027, "tps": 35199, "annual_volume": 1110000000000 },
+      { "year": 2028, "tps": 39438, "annual_volume": 1244000000000 },
+      { "year": 2029, "tps": 43966, "annual_volume": 1387000000000 },
+      { "year": 2030, "tps": 48802, "annual_volume": 1539000000000 },
+      { "year": 2031, "tps": 53916, "annual_volume": 1701000000000 },
+      { "year": 2032, "tps": 59308, "annual_volume": 1871000000000 },
+      { "year": 2033, "tps": 64952, "annual_volume": 2049000000000 },
+      { "year": 2034, "tps": 70801, "annual_volume": 2233000000000 },
+      { "year": 2035, "tps": 77173, "annual_volume": 2434000000000 }
+    ],
+    "conservative": [
+      { "year": 2026, "tps": 27548, "annual_volume": 869000000000 },
+      { "year": 2027, "tps": 29071, "annual_volume": 917000000000 },
+      { "year": 2028, "tps": 30525, "annual_volume": 963000000000 },
+      { "year": 2029, "tps": 31898, "annual_volume": 1006000000000 },
+      { "year": 2030, "tps": 33174, "annual_volume": 1046000000000 },
+      { "year": 2031, "tps": 34335, "annual_volume": 1083000000000 },
+      { "year": 2032, "tps": 35537, "annual_volume": 1121000000000 },
+      { "year": 2033, "tps": 36603, "annual_volume": 1155000000000 },
+      { "year": 2034, "tps": 37701, "annual_volume": 1189000000000 },
+      { "year": 2035, "tps": 38832, "annual_volume": 1225000000000 }
+    ]
+  },
+  "subcategories": [
+    {
+      "name": "Visa",
+      "type": "network",
+      "annual_transactions": 303000000000,
+      "processed_transactions": 233800000000,
+      "share_pct": 39.2,
+      "note": "303B = total Visa-branded; 233.8B = Visa-processed"
+    },
+    {
+      "name": "UnionPay",
+      "type": "network",
+      "annual_transactions": 247000000000,
+      "share_pct": 32.0,
+      "note": "Estimated from 2023 base (228B) + growth"
+    },
+    {
+      "name": "Mastercard",
+      "type": "network",
+      "annual_transactions": 185000000000,
+      "switched_transactions": 159400000000,
+      "share_pct": 23.9,
+      "note": "159.4B = switched; ~185B est. total branded"
+    },
+    {
+      "name": "American Express",
+      "type": "network",
+      "annual_transactions": 15000000000,
+      "share_pct": 1.9,
+      "note": "Estimated from combined Amex+Discover figure"
+    },
+    {
+      "name": "JCB",
+      "type": "network",
+      "annual_transactions": 11000000000,
+      "share_pct": 1.4,
+      "note": "Industry estimate"
+    },
+    {
+      "name": "Discover/Diners Club",
+      "type": "network",
+      "annual_transactions": 8600000000,
+      "share_pct": 1.1,
+      "note": "Estimated from combined Amex+Discover figure"
+    },
+    {
+      "name": "Debit Cards",
+      "type": "card_type",
+      "share_pct_by_count": 55,
+      "share_pct_by_value": 42,
+      "note": "Global estimate; dominates by count"
+    },
+    {
+      "name": "Credit Cards",
+      "type": "card_type",
+      "share_pct_by_count": 37,
+      "share_pct_by_value": 52,
+      "note": "Global estimate; dominates by value"
+    },
+    {
+      "name": "Prepaid Cards",
+      "type": "card_type",
+      "share_pct_by_count": 8,
+      "share_pct_by_value": 6,
+      "note": "Global estimate"
+    }
+  ],
+  "regional_breakdown": [
+    { "region": "Asia-Pacific", "share_pct": 45.7, "annual_transactions_est": 353000000000 },
+    { "region": "North America (US)", "share_pct": 20.6, "annual_transactions_est": 159000000000 },
+    { "region": "Europe", "share_pct": 19.5, "annual_transactions_est": 151000000000 },
+    { "region": "Latin America", "share_pct": 7.0, "annual_transactions_est": 54000000000 },
+    { "region": "Middle East & Africa", "share_pct": 4.0, "annual_transactions_est": 31000000000 },
+    { "region": "Canada & Other", "share_pct": 3.2, "annual_transactions_est": 25000000000 }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "citation": "Nilson Report — Global Network Card Results Worldwide 2024",
+      "url": "https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "Nilson Report — Top 150 Merchant Acquirers Worldwide 2024",
+      "url": "https://nilsonreport.com/articles/top-150-merchant-acquirers-worldwide-2024/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "Visa Inc. — Fiscal Year 2024 Q4 Earnings Release",
+      "url": "https://s1.q4cdn.com/050606653/files/doc_financials/2024/q4/Q4-2024-Earnings-Release_vF.pdf",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "Visa Inc. — Annual Report 2024",
+      "url": "https://s29.q4cdn.com/385744025/files/doc_downloads/2024/Visa-Fiscal-2024-Annual-Report.pdf",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "Visa Inc. — 10-K FY2024 SEC Filing",
+      "url": "https://s1.q4cdn.com/050606653/files/doc_financials/2024/ar/2ddc584c-441d-475b-8a97-630dad75db94.pdf",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "Mastercard — Full Year 2024 Earnings Review",
+      "url": "https://www.mastercard.com/global/en/news-and-trends/stories/2025/earnings-review-2024-and-the-road-ahead.html",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "Mastercard — 10-K FY2024 SEC Filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1141391/000114139125000011/ma-20241231.htm",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 8,
+      "citation": "American Express — FY2024 Annual Report",
+      "url": "https://s26.q4cdn.com/747928648/files/doc_financials/2024/ar/v2/American-Express-2024-Annual-Report.pdf",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 9,
+      "citation": "American Express — FY2024 Earnings Release",
+      "url": "https://ir.americanexpress.com/news/investor-relations-news/investor-relations-news-details/2025/American-Express-Announces-Record-FY-2024-Revenue-Up-9-or-10-on-an-FX-Adjusted-Basis/default.aspx",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 10,
+      "citation": "Capital One Shopping — Number of Credit Card Transactions per Second & Year",
+      "url": "https://capitaloneshopping.com/research/number-of-credit-card-transactions/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 11,
+      "citation": "Capital One Shopping — Credit Card Market Share (2025)",
+      "url": "https://capitaloneshopping.com/research/credit-card-market-share-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 12,
+      "citation": "Payments Dive — Worldwide card use to jump 43% by 2029, Nilson predicts",
+      "url": "https://www.paymentsdive.com/news/credit-card-us-market-payments-outpaced-by-other-world-regions/740595/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 13,
+      "citation": "CoinLaw — UnionPay Statistics 2025",
+      "url": "https://coinlaw.io/unionpay-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 14,
+      "citation": "GlobeNewsWire / Nilson — Amex, Discover, Mastercard and Visa Card Spending Exceeded $10 Trillion in 2024",
+      "url": "https://www.globenewswire.com/news-release/2025/02/25/3032247/0/en/Amex-Discover-Mastercard-and-Visa-Card-Spending-Exceeded-10-Trillion-in-2024.html",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 15,
+      "citation": "Allied Market Research — Card Payments Market Size, Share, Trends & Growth 2033",
+      "url": "https://www.alliedmarketresearch.com/card-payments-market-A324247",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 16,
+      "citation": "Visa Corporate Factsheet — VisaNet Technology",
+      "url": "https://www.visa.co.uk/dam/VCOM/download/corporate/media/visanet-technology/aboutvisafactsheet.pdf",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 17,
+      "citation": "BIS — Retail payments, currency and related indicators (CPMI Statistics)",
+      "url": "https://data.bis.org/topics/CPMI_CT",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 18,
+      "citation": "Federal Reserve — The Federal Reserve Payments Study (November 2024)",
+      "url": "https://www.federalreserve.gov/paymentsystems/2024-November-The-Federal-Reserve-Payments-Study.htm",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 19,
+      "citation": "Nilson Report — Card Fraud Losses Worldwide 2024 (total volume reference)",
+      "url": "https://nilsonreport.com/articles/card-fraud-losses-worldwide-2024/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 20,
+      "citation": "Nilson Report — Payment Card Transactions Projected Worldwide 2022-2027",
+      "url": "https://nilsonreport.com/articles/payment-card-transactions-projected-worldwide-3/",
+      "accessed": "2026-03-26"
+    }
+  ]
+}

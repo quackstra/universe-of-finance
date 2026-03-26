@@ -1,0 +1,205 @@
+{
+  "category": "Bank Transfers (ACH/RTGS)",
+  "sector": "Payments",
+  "priority": 2,
+  "last_updated": "2026-03-26",
+  "data_year": 2024,
+  "capsules": {
+    "current_tps": {
+      "average_tps": 15338,
+      "peak_tps_estimate": 27500,
+      "confidence": "medium",
+      "notes": "Average = 484B txns / 31.56M seconds. Peak based on concurrent peak-day estimates across major systems.",
+      "sources": [
+        "https://www.aciworldwide.com/real-time-payments-report",
+        "https://www.nacha.org/content/ach-network-volume-and-value-statistics",
+        "https://www.npci.org.in/product/upi/product-statistics"
+      ]
+    },
+    "annual_volume": {
+      "total_transactions_billions": 484,
+      "breakdown": {
+        "real_time_payments_billions": 378,
+        "batch_ach_transfers_billions": 106,
+        "rtgs_wire_transfers_billions": 0.4
+      },
+      "confidence": "medium",
+      "sources": [
+        "https://investor.aciworldwide.com/news-releases/news-release-details/global-real-time-payments-growth-sustainable-new-use-cases-push",
+        "https://www.nacha.org/content/ach-network-volume-and-value-statistics",
+        "https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2024h2~5ada0087d2.en.html"
+      ]
+    },
+    "annual_value": {
+      "total_usd_trillions": 2471,
+      "breakdown": {
+        "rtgs_wire_usd_trillions": 1860,
+        "batch_ach_usd_trillions": 505,
+        "real_time_payments_usd_trillions": 106
+      },
+      "notes": "RTGS dominates value despite low volume — Fedwire avg txn $5.4M. RTP is high volume but low value per txn.",
+      "confidence": "medium",
+      "sources": [
+        "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
+        "https://www.nacha.org/content/ach-network-volume-and-value-statistics",
+        "https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html"
+      ]
+    },
+    "historic_timeseries": {
+      "us_ach_volume_billions": {
+        "2015": 24.0,
+        "2016": 25.6,
+        "2017": 23.0,
+        "2018": 23.0,
+        "2019": 24.7,
+        "2020": 26.8,
+        "2021": 29.1,
+        "2022": 30.0,
+        "2023": 31.5,
+        "2024": 33.6
+      },
+      "india_upi_volume_billions": {
+        "2017": 0.018,
+        "2018": 0.915,
+        "2019": 5.35,
+        "2020": 12.52,
+        "2021": 22.33,
+        "2022": 45.96,
+        "2023": 83.71,
+        "2024": 131.13
+      },
+      "fedwire_volume_millions": {
+        "2020": 184.0,
+        "2021": 204.5,
+        "2022": 196.1,
+        "2023": 193.3,
+        "2024": 209.9
+      },
+      "global_rtp_volume_billions": {
+        "2018": 50,
+        "2019": 75,
+        "2020": 105,
+        "2021": 145,
+        "2022": 188,
+        "2023": 266.2,
+        "2024": 378
+      },
+      "sources": [
+        "https://www.nacha.org/content/ach-network-volume-and-value-statistics",
+        "https://www.grabon.in/indulge/tech/upi-statistics/",
+        "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
+        "https://www.aciworldwide.com/real-time-payments-report"
+      ]
+    },
+    "subcategory_breakdown": {
+      "by_type": {
+        "real_time_payments": {
+          "volume_billions": 378,
+          "share_of_total": "78%",
+          "key_systems": {
+            "india_upi": {"volume_billions": 131.13, "value_usd_trillions": 2.5},
+            "brazil_pix": {"volume_billions": 63.0, "value_usd_trillions": 3.8},
+            "uk_faster_payments": {"volume_billions": 5.1, "value_usd_trillions": 5.3},
+            "other_rtp": {"volume_billions": 178.8, "notes": "Thailand PromptPay, Korea, Nigeria, Indonesia, etc."}
+          }
+        },
+        "batch_ach": {
+          "volume_billions": 106,
+          "share_of_total": "21.9%",
+          "key_systems": {
+            "us_ach_nacha": {"volume_billions": 33.6, "value_usd_trillions": 86.2},
+            "sepa_credit_transfers": {"volume_billions": 32.0, "value_eur_trillions": 220},
+            "uk_bacs": {"volume_billions": 4.5, "notes": "estimate"},
+            "china_domestic_est": {"volume_billions": 36.0, "notes": "low confidence estimate"}
+          }
+        },
+        "rtgs_wire": {
+          "volume_billions": 0.4,
+          "share_of_total": "0.08%",
+          "key_systems": {
+            "fedwire": {"volume_millions": 209.9, "value_usd_trillions": 1133.4},
+            "target2_t2": {"volume_millions": 108.0, "value_eur_trillions": 555},
+            "uk_chaps": {"volume_millions": 52.7},
+            "china_cips": {"volume_millions": 8.2, "value_usd_trillions": 24.5}
+          }
+        }
+      },
+      "by_region": {
+        "asia_pacific": {"rtp_volume_billions": 185.8, "notes": "2023 ACI data, APAC dominant"},
+        "americas": {"rtp_volume_billions": 63.5, "notes": "PIX + US FedNow/RTP"},
+        "europe": {"rtp_volume_billions": 11.5, "notes": "UK FP + SEPA Instant (~5B)"},
+        "africa": {"rtp_volume_billions": 8.0, "notes": "Nigeria dominant (7.9B in 2023)"},
+        "middle_east": {"rtp_volume_billions": 2.0, "notes": "estimate"}
+      },
+      "sources": [
+        "https://investor.aciworldwide.com/news-releases/news-release-details/global-real-time-payments-growth-sustainable-new-use-cases-push",
+        "https://www.nacha.org/content/ach-network-volume-and-value-statistics",
+        "https://www.npci.org.in/product/upi/product-statistics",
+        "https://www.bcb.gov.br/en",
+        "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
+        "https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html",
+        "https://www.cips.com.cn/en/about_us/about_cips/introduction/index.html"
+      ]
+    },
+    "growth_rate": {
+      "us_ach_5yr_cagr": "6.35%",
+      "india_upi_5yr_cagr": "89.4%",
+      "global_rtp_5yr_cagr": "38.2%",
+      "fedwire_5yr_cagr": "4.06%",
+      "composite_global_5yr_cagr": "22.6%",
+      "notes": "Composite CAGR heavily driven by real-time payments explosion, especially UPI and PIX.",
+      "sources": [
+        "https://www.nacha.org/content/ach-network-volume-and-value-statistics",
+        "https://www.grabon.in/indulge/tech/upi-statistics/",
+        "https://www.aciworldwide.com/real-time-payments-report",
+        "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html"
+      ]
+    },
+    "projections": {
+      "baseline": {
+        "2025": {"total_billions": 553, "avg_tps": 17519},
+        "2026": {"total_billions": 632, "avg_tps": 20030},
+        "2028": {"total_billions": 830, "avg_tps": 26309},
+        "2030": {"total_billions": 1026, "avg_tps": 32502},
+        "2035": {"total_billions": 1318, "avg_tps": 41758},
+        "assumptions": "RTP 16.7% CAGR to 2028 then decelerating, batch 5%, RTGS 3%"
+      },
+      "high_growth": {
+        "2025": {"total_billions": 587, "avg_tps": 18594},
+        "2026": {"total_billions": 712, "avg_tps": 22566},
+        "2028": {"total_billions": 1062, "avg_tps": 33664},
+        "2030": {"total_billions": 1602, "avg_tps": 50762},
+        "2035": {"total_billions": 3125, "avg_tps": 99020},
+        "assumptions": "RTP 25% CAGR to 2030 then 15%, batch 7%, RTGS 5%. UPI global expansion, SEPA Instant mandate."
+      },
+      "conservative": {
+        "2025": {"total_billions": 526, "avg_tps": 16657},
+        "2026": {"total_billions": 570, "avg_tps": 18064},
+        "2028": {"total_billions": 673, "avg_tps": 21325},
+        "2030": {"total_billions": 796, "avg_tps": 25229},
+        "2035": {"total_billions": 1225, "avg_tps": 38818},
+        "assumptions": "RTP 10% CAGR, batch 3%, RTGS 2%. Regulatory friction, slower adoption."
+      },
+      "sources": [
+        "https://www.aciworldwide.com/real-time-payments-report",
+        "https://investor.aciworldwide.com/news-releases/news-release-details/global-real-time-payments-growth-sustainable-new-use-cases-push"
+      ]
+    }
+  },
+  "cross_reference": {
+    "swift_context": {
+      "daily_messages_millions": 53.3,
+      "annual_messages_billions": 13.3,
+      "gpi_daily_value_usd_billions": 300,
+      "notes": "SWIFT is a messaging layer, not settlement. Not added to totals to avoid double-counting.",
+      "source": "https://www.swift.com/about-us/discover-swift/fin-traffic-figures"
+    },
+    "fednow_nascent": {
+      "2024_volume": 1500000,
+      "2024_value_usd_billions": 38.2,
+      "q4_2024_yoy_growth": "2000%",
+      "participating_institutions": 1200,
+      "source": "https://www.frbservices.org/resources/financial-services/fednow/quarterly-volume-value-stats"
+    }
+  }
+}
