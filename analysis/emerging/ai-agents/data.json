@@ -1,0 +1,179 @@
+{
+  "category": "AI Agent Transactions",
+  "sector": "Emerging",
+  "last_updated": "2026-03-26",
+  "current": {
+    "peak_tps": {
+      "value": 8.5,
+      "source": "x402 peak daily volume (Dec 2025): ~731K / 86,400 seconds",
+      "url": "https://blog.millionero.com/blog/ai-agents-in-crypto-how-autonomous-finance-is-becoming-real-in-2026/",
+      "confidence": "medium",
+      "note": "x402 protocol only; does not include AP2 or custom enterprise solutions"
+    },
+    "avg_tps": {
+      "value": 0.66,
+      "source": "x402 current daily volume (Mar 2026): ~57K / 86,400 seconds",
+      "url": "https://blog.millionero.com/blog/ai-agents-in-crypto-how-autonomous-finance-is-becoming-real-in-2026/",
+      "confidence": "medium",
+      "note": "Post-hype correction; -92% from Dec 2025 peak"
+    },
+    "daily_volume": {
+      "value": 57000,
+      "source": "x402 daily transactions (Mar 2026)",
+      "url": "https://blog.millionero.com/blog/ai-agents-in-crypto-how-autonomous-finance-is-becoming-real-in-2026/",
+      "confidence": "medium"
+    },
+    "cumulative_transactions": {
+      "value": 100000000,
+      "source": "x402 cumulative since launch",
+      "url": "https://calmops.com/web3/x402-protocol-programmable-payments-ai-agents-2026/",
+      "confidence": "medium"
+    },
+    "annual_value_usd": {
+      "value": 600000000,
+      "source": "x402 annual payment volume (2025)",
+      "url": "",
+      "confidence": "medium"
+    },
+    "enterprise_market_usd": {
+      "value": 7840000000,
+      "source": "MarketsAndMarkets — AI Agents Market (2025)",
+      "url": "https://www.marketsandmarkets.com/Market-Reports/ai-agents-market-15761548.html",
+      "confidence": "medium"
+    }
+  },
+  "historic": [
+    { "year": 2024, "note": "Pre-protocol era; experimental AI agent payments only", "confidence": "low" },
+    { "year": 2025, "cumulative_txns": 100000000, "annual_value_usd": 600000000, "peak_daily_txns": 731000, "source": "x402 protocol data", "confidence": "medium" },
+    { "year": 2026, "daily_txns_mar": 57000, "note": "Post-hype correction; 92% decline from Dec 2025 peak", "source": "Industry reports", "confidence": "medium" }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2026, "tps": 5, "annual_volume": 160000000, "annual_value_usd": 2000000000 },
+      { "year": 2027, "tps": 16, "annual_volume": 500000000, "annual_value_usd": 10000000000 },
+      { "year": 2028, "tps": 50, "annual_volume": 1580000000, "annual_value_usd": 25000000000 },
+      { "year": 2029, "tps": 127, "annual_volume": 4000000000, "annual_value_usd": 100000000000 },
+      { "year": 2030, "tps": 300, "annual_volume": 9460000000, "annual_value_usd": 150000000000 },
+      { "year": 2031, "tps": 507, "annual_volume": 16000000000, "annual_value_usd": 300000000000 },
+      { "year": 2032, "tps": 888, "annual_volume": 28000000000, "annual_value_usd": 600000000000 },
+      { "year": 2033, "tps": 1427, "annual_volume": 45000000000, "annual_value_usd": 1000000000000 },
+      { "year": 2034, "tps": 2124, "annual_volume": 67000000000, "annual_value_usd": 1500000000000 },
+      { "year": 2035, "tps": 3000, "annual_volume": 94600000000, "annual_value_usd": 2000000000000 }
+    ],
+    "high_growth": [
+      { "year": 2026, "tps": 20, "annual_volume": 631000000, "annual_value_usd": 10000000000 },
+      { "year": 2027, "tps": 100, "annual_volume": 3150000000, "annual_value_usd": 100000000000 },
+      { "year": 2028, "tps": 500, "annual_volume": 15770000000, "annual_value_usd": 500000000000 },
+      { "year": 2029, "tps": 1586, "annual_volume": 50000000000, "annual_value_usd": 2000000000000 },
+      { "year": 2030, "tps": 5000, "annual_volume": 157700000000, "annual_value_usd": 5000000000000 },
+      { "year": 2031, "tps": 9513, "annual_volume": 300000000000, "annual_value_usd": 10000000000000 },
+      { "year": 2032, "tps": 19026, "annual_volume": 600000000000, "annual_value_usd": 20000000000000 },
+      { "year": 2033, "tps": 31710, "annual_volume": 1000000000000, "annual_value_usd": 30000000000000 },
+      { "year": 2034, "tps": 63420, "annual_volume": 2000000000000, "annual_value_usd": 40000000000000 },
+      { "year": 2035, "tps": 100000, "annual_volume": 3154000000000, "annual_value_usd": 50000000000000 }
+    ],
+    "conservative": [
+      { "year": 2026, "tps": 2, "annual_volume": 63000000, "annual_value_usd": 800000000 },
+      { "year": 2027, "tps": 4, "annual_volume": 120000000, "annual_value_usd": 2000000000 },
+      { "year": 2028, "tps": 10, "annual_volume": 315000000, "annual_value_usd": 5000000000 },
+      { "year": 2029, "tps": 19, "annual_volume": 600000000, "annual_value_usd": 10000000000 },
+      { "year": 2030, "tps": 30, "annual_volume": 946000000, "annual_value_usd": 15000000000 },
+      { "year": 2031, "tps": 48, "annual_volume": 1500000000, "annual_value_usd": 25000000000 },
+      { "year": 2032, "tps": 76, "annual_volume": 2400000000, "annual_value_usd": 40000000000 },
+      { "year": 2033, "tps": 120, "annual_volume": 3800000000, "annual_value_usd": 60000000000 },
+      { "year": 2034, "tps": 159, "annual_volume": 5000000000, "annual_value_usd": 80000000000 },
+      { "year": 2035, "tps": 200, "annual_volume": 6310000000, "annual_value_usd": 100000000000 }
+    ]
+  },
+  "key_protocols": [
+    {
+      "name": "x402 (Coinbase)",
+      "launched": "2025",
+      "settlement": "USDC on Base",
+      "mechanism": "HTTP 402 status code",
+      "cumulative_txns": 100000000,
+      "status": "Live, post-hype correction"
+    },
+    {
+      "name": "AP2 (Google)",
+      "launched": "2025",
+      "settlement": "Multiple (incl. fiat)",
+      "mechanism": "Agent-to-agent negotiation",
+      "cumulative_txns": null,
+      "status": "Live, interoperable with x402 via A2A extension"
+    }
+  ],
+  "market_forecasts": {
+    "gartner_b2b_2028": {
+      "value": 15000000000000,
+      "description": "AI agents will command $15T in B2B purchases by 2028",
+      "source": "Gartner (Nov 2025)",
+      "confidence": "low",
+      "note": "Likely refers to AI-influenced, not AI-initiated payments"
+    },
+    "gartner_programmable_money_2030": {
+      "value": 0.20,
+      "description": "20% of monetary transactions will be programmable by 2030",
+      "source": "Gartner (Oct 2025)",
+      "confidence": "low",
+      "note": "Aspirational prediction; even 1-5% realisation would be transformative"
+    },
+    "markets_and_markets_2030": {
+      "value": 52620000000,
+      "description": "AI agent market size by 2030",
+      "source": "MarketsAndMarkets",
+      "cagr": 0.463,
+      "confidence": "medium"
+    }
+  },
+  "sources": [
+    {
+      "id": 1,
+      "citation": "AWS — x402 and Agentic Commerce",
+      "url": "https://aws.amazon.com/blogs/industries/x402-and-agentic-commerce-redefining-autonomous-payments-in-financial-services/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "BlockEden.xyz — Fortune 500 AI Agents + Alchemy x402 Integration",
+      "url": "https://blockeden.xyz/blog/2026/03/18/fortune-500-ai-agents-alchemy-x402-onchain-payments-enterprise-crypto-convergence/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "Millionero — AI Agents in Crypto: Autonomous Finance in 2026",
+      "url": "https://blog.millionero.com/blog/ai-agents-in-crypto-how-autonomous-finance-is-becoming-real-in-2026/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "Google Cloud Blog — Announcing Agent Payments Protocol (AP2)",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "Gartner — AI Agents Will Command $15 Trillion in B2B Purchases by 2028",
+      "url": "https://www.digitalcommerce360.com/2025/11/28/gartner-ai-agents-15-trillion-in-b2b-purchases-by-2028/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "Gartner — Predictions for IT Organizations 2026 and Beyond",
+      "url": "https://www.gartner.com/en/newsroom/press-releases/2025-10-21-gartner-unveils-top-predictions-for-it-organizations-and-users-in-2026-and-beyond",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "MarketsAndMarkets — AI Agents Market Report 2025-2030",
+      "url": "https://www.marketsandmarkets.com/Market-Reports/ai-agents-market-15761548.html",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 8,
+      "citation": "Calmops — x402 Protocol Complete Guide 2026",
+      "url": "https://calmops.com/web3/x402-protocol-programmable-payments-ai-agents-2026/",
+      "accessed": "2026-03-26"
+    }
+  ]
+}

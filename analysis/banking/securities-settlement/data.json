@@ -1,0 +1,130 @@
+{
+  "category": "Securities Settlement",
+  "sector": "Banking",
+  "priority": 2,
+  "last_updated": "2026-03-26",
+  "data_year": 2024,
+  "capsules": {
+    "current_tps": {
+      "average_tps": 44,
+      "peak_tps_estimate": 6300,
+      "confidence": "medium",
+      "notes": "Calendar TPS = ~1.4B / 31.56M sec. Peak from NSCC 545M single-day record (April 2025) / 86,400 sec. Settlement is batch-oriented, not continuous.",
+      "sources": [
+        "https://www.dtcc.com/annuals/2024/letters/cfo/",
+        "https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html",
+        "https://www.dtcc.com/news/2025/april/23/dtcc-processes-record-volumes-across-services-amid-market-volatility"
+      ]
+    },
+    "annual_volume": {
+      "total_transactions_billions": 1.4,
+      "breakdown": {
+        "dtcc_total_billions_est": 0.5,
+        "euroclear_total_billions": 0.331,
+        "clearstream_total_billions_est": 0.235,
+        "t2s_total_billions_est": 0.165,
+        "other_csds_billions_est": 0.17
+      },
+      "confidence": "medium",
+      "notes": "DTCC count estimated from DTC daily avg (1.3M) and ATP annual (350M). Clearstream annualized from 5-month YTD. T2S from ECB growth reports. Overlap exists between Euroclear/Clearstream and T2S for euro securities.",
+      "sources": [
+        "https://www.dtcc.com/annuals/2024/files/DTCC-Annual-Report-2024-Print.pdf",
+        "https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html",
+        "https://www.clearstream.com/clearstream-en/newsroom/240613-3997020",
+        "https://www.ecb.europa.eu/press/targetservar/html/ecb.targetservar2024.en.html"
+      ]
+    },
+    "annual_value": {
+      "total_usd_quadrillions": 5.0,
+      "breakdown": {
+        "dtcc_usd_quadrillions": 3.7,
+        "euroclear_usd_trillions": 1267,
+        "clearstream_usd_trillions_est": 200,
+        "t2s_usd_trillions_est": 196
+      },
+      "notes": "Euroclear €1,162T converted at EUR/USD 1.09. Significant overlap in value terms — a DVP settlement is counted as securities delivery here AND cash payment in RTGS. DTCC $3.7Q figure is gross; netting reduces actual funds movement.",
+      "confidence": "medium",
+      "sources": [
+        "https://finance.yahoo.com/news/dtcc-handles-3-7-quadrillion-162255289.html",
+        "https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html"
+      ]
+    },
+    "historic_timeseries": {
+      "dtcc_value_quadrillions": {
+        "2019": 2.0,
+        "2020": 2.3,
+        "2021": 2.5,
+        "2022": 2.5,
+        "2023": 3.0,
+        "2024": 3.7
+      },
+      "euroclear_transactions_millions": {
+        "2019": 250,
+        "2020": 265,
+        "2021": 280,
+        "2022": 290,
+        "2023": 310,
+        "2024": 331
+      },
+      "euroclear_value_eur_trillions": {
+        "2019": 800,
+        "2020": 850,
+        "2021": 950,
+        "2022": 1000,
+        "2023": 1100,
+        "2024": 1162
+      },
+      "sources": [
+        "https://www.dtcc.com/about/annual-report",
+        "https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html",
+        "https://en.wikipedia.org/wiki/Depository_Trust_%26_Clearing_Corporation"
+      ]
+    },
+    "growth_rate": {
+      "dtcc_5yr_cagr_value": "13.1%",
+      "euroclear_5yr_cagr_volume": "5.8%",
+      "euroclear_5yr_cagr_value": "7.7%",
+      "composite_5yr_cagr_volume": "5.0%",
+      "composite_5yr_cagr_value": "10.0%",
+      "notes": "DTCC value growth inflated by rising equity prices and increased debt issuance. Volume growth is more moderate.",
+      "sources": [
+        "https://www.dtcc.com/annuals/2024/letters/cfo/",
+        "https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html"
+      ]
+    },
+    "projections": {
+      "baseline": {
+        "2025": {"total_billions": 1.47, "avg_tps_calendar": 46.6, "value_usd_quadrillions": 4.0},
+        "2026": {"total_billions": 1.54, "avg_tps_calendar": 48.8, "value_usd_quadrillions": 4.3},
+        "2028": {"total_billions": 1.70, "avg_tps_calendar": 53.9, "value_usd_quadrillions": 5.0},
+        "2030": {"total_billions": 1.87, "avg_tps_calendar": 59.3, "value_usd_quadrillions": 5.9},
+        "2035": {"total_billions": 2.39, "avg_tps_calendar": 75.8, "value_usd_quadrillions": 8.7},
+        "assumptions": "5% volume CAGR, 8% value CAGR. Steady equity market growth, gradual T+0 exploration."
+      },
+      "high_growth": {
+        "2030": {"total_billions": 2.06, "avg_tps_calendar": 65.3},
+        "2035": {"total_billions": 3.03, "avg_tps_calendar": 96.1},
+        "assumptions": "8% volume CAGR. T+0/atomic settlement, tokenized securities, emerging market expansion, fractional shares."
+      },
+      "conservative": {
+        "2030": {"total_billions": 1.67, "avg_tps_calendar": 52.9},
+        "2035": {"total_billions": 1.93, "avg_tps_calendar": 61.2},
+        "assumptions": "3% volume CAGR. Netting efficiency gains, CSD consolidation, settlement internalization by large custodians."
+      }
+    }
+  },
+  "cross_reference": {
+    "interbank_rtgs_upstream": {
+      "notes": "The cash leg of DVP settlement flows through RTGS systems (Fedwire, T2). DTCC settles net cash obligations through ~70 daily NSS transfers. Value overlap exists between this capsule and interbank-rtgs.",
+      "source": "../interbank-rtgs/data.json"
+    },
+    "equity_markets_upstream": {
+      "notes": "Securities settlement is downstream of trading. The equity-markets capsule counts trades at execution; this capsule counts the same activity at the settlement layer after netting. Netting ratios are typically 5:1 to 10:1.",
+      "source": "../../traditional-finance/equity-markets/data.json"
+    },
+    "etd_upstream": {
+      "notes": "Exchange-traded derivatives that result in physical delivery or cash settlement flow through these settlement systems. Most ETD activity settles via CCP margin flows rather than individual settlement transactions.",
+      "source": "../../traditional-finance/etd/data.json"
+    }
+  }
+}

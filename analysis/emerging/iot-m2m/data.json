@@ -1,0 +1,193 @@
+{
+  "category": "IoT & Machine-to-Machine Payments",
+  "sector": "Emerging",
+  "last_updated": "2026-03-26",
+  "current": {
+    "peak_tps": {
+      "value": 2500,
+      "source": "Estimated: rush hour tolling + peak utility billing globally",
+      "url": "",
+      "confidence": "low"
+    },
+    "avg_tps": {
+      "value": 634,
+      "source": "Derived: midpoint of 15-25B annual / 31,536,000 seconds",
+      "url": "",
+      "confidence": "low"
+    },
+    "daily_volume": {
+      "value": 55000000,
+      "source": "Derived: midpoint of 15-25B / 365",
+      "url": "",
+      "confidence": "low"
+    },
+    "annual_volume": {
+      "value": 20000000000,
+      "source": "Aggregated estimate from subcategories",
+      "url": "",
+      "confidence": "low",
+      "note": "Midpoint of 15-25B range. Most M2M payments are invisible in existing payment statistics."
+    },
+    "market_value_usd": {
+      "value": 77300000000,
+      "source": "Research Nester — Autonomous IoT Payments Market (2025)",
+      "url": "https://www.researchnester.com/reports/autonomous-iot-payments-market/6532",
+      "confidence": "medium",
+      "note": "Market infrastructure value, not total payment throughput"
+    },
+    "connected_iot_devices": {
+      "value": 21100000000,
+      "source": "IoT Analytics (2025)",
+      "url": "https://iot-analytics.com/number-connected-iot-devices/",
+      "confidence": "high"
+    },
+    "payment_enabled_devices_est": {
+      "value": 2100000000,
+      "source": "Estimated: ~10% of IoT devices are payment-enabled",
+      "url": "",
+      "confidence": "low"
+    }
+  },
+  "historic": [
+    { "year": 2018, "iot_devices_billions": 7.0, "source": "IoT Analytics", "confidence": "high" },
+    { "year": 2019, "iot_devices_billions": 8.3, "source": "IoT Analytics", "confidence": "high" },
+    { "year": 2020, "iot_devices_billions": 9.7, "source": "IoT Analytics", "confidence": "high" },
+    { "year": 2021, "iot_devices_billions": 11.3, "source": "IoT Analytics", "confidence": "high" },
+    { "year": 2022, "iot_devices_billions": 13.1, "source": "IoT Analytics", "confidence": "high" },
+    { "year": 2023, "iot_devices_billions": 16.6, "source": "IoT Analytics", "confidence": "high" },
+    { "year": 2024, "iot_devices_billions": 18.5, "market_value_usd": 54300000000, "source": "IoT Analytics / GM Insights", "confidence": "high" },
+    { "year": 2025, "iot_devices_billions": 21.1, "market_value_usd": 77300000000, "source": "IoT Analytics / Research Nester", "confidence": "high" }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2026, "tps": 950, "annual_volume": 30000000000, "payment_enabled_devices": 2500000000 },
+      { "year": 2027, "tps": 1200, "annual_volume": 38000000000, "payment_enabled_devices": 3000000000 },
+      { "year": 2028, "tps": 1500, "annual_volume": 47000000000, "payment_enabled_devices": 3500000000 },
+      { "year": 2029, "tps": 2000, "annual_volume": 63000000000, "payment_enabled_devices": 4200000000 },
+      { "year": 2030, "tps": 2500, "annual_volume": 79000000000, "payment_enabled_devices": 5000000000 },
+      { "year": 2031, "tps": 3200, "annual_volume": 101000000000, "payment_enabled_devices": 6000000000 },
+      { "year": 2032, "tps": 4000, "annual_volume": 126000000000, "payment_enabled_devices": 7000000000 },
+      { "year": 2033, "tps": 5000, "annual_volume": 158000000000, "payment_enabled_devices": 8000000000 },
+      { "year": 2034, "tps": 6300, "annual_volume": 199000000000, "payment_enabled_devices": 9000000000 },
+      { "year": 2035, "tps": 8000, "annual_volume": 252000000000, "payment_enabled_devices": 10000000000 }
+    ],
+    "high_growth": [
+      { "year": 2026, "tps": 1200, "annual_volume": 38000000000, "payment_enabled_devices": 3000000000 },
+      { "year": 2027, "tps": 2000, "annual_volume": 63000000000, "payment_enabled_devices": 4000000000 },
+      { "year": 2028, "tps": 3000, "annual_volume": 95000000000, "payment_enabled_devices": 5000000000 },
+      { "year": 2029, "tps": 6000, "annual_volume": 189000000000, "payment_enabled_devices": 7500000000 },
+      { "year": 2030, "tps": 10000, "annual_volume": 315000000000, "payment_enabled_devices": 10000000000 },
+      { "year": 2031, "tps": 15000, "annual_volume": 473000000000, "payment_enabled_devices": 13000000000 },
+      { "year": 2032, "tps": 22000, "annual_volume": 694000000000, "payment_enabled_devices": 16000000000 },
+      { "year": 2033, "tps": 30000, "annual_volume": 946000000000, "payment_enabled_devices": 19000000000 },
+      { "year": 2034, "tps": 40000, "annual_volume": 1262000000000, "payment_enabled_devices": 22000000000 },
+      { "year": 2035, "tps": 50000, "annual_volume": 1577000000000, "payment_enabled_devices": 25000000000 }
+    ],
+    "conservative": [
+      { "year": 2026, "tps": 700, "annual_volume": 22000000000, "payment_enabled_devices": 2000000000 },
+      { "year": 2027, "tps": 790, "annual_volume": 25000000000, "payment_enabled_devices": 2200000000 },
+      { "year": 2028, "tps": 900, "annual_volume": 28000000000, "payment_enabled_devices": 2500000000 },
+      { "year": 2029, "tps": 1050, "annual_volume": 33000000000, "payment_enabled_devices": 2800000000 },
+      { "year": 2030, "tps": 1200, "annual_volume": 38000000000, "payment_enabled_devices": 3000000000 },
+      { "year": 2031, "tps": 1400, "annual_volume": 44000000000, "payment_enabled_devices": 3300000000 },
+      { "year": 2032, "tps": 1600, "annual_volume": 50000000000, "payment_enabled_devices": 3700000000 },
+      { "year": 2033, "tps": 1800, "annual_volume": 57000000000, "payment_enabled_devices": 4000000000 },
+      { "year": 2034, "tps": 2100, "annual_volume": 66000000000, "payment_enabled_devices": 4500000000 },
+      { "year": 2035, "tps": 2500, "annual_volume": 79000000000, "payment_enabled_devices": 5000000000 }
+    ]
+  },
+  "subcategories": [
+    {
+      "name": "Electronic Toll Collection",
+      "type": "payment_type",
+      "annual_transactions_est": 10000000000,
+      "share_pct": 50,
+      "note": "Most mature M2M payment type; 600M+ ETC users globally"
+    },
+    {
+      "name": "Vending & Unattended Retail",
+      "type": "payment_type",
+      "annual_transactions_est": 4000000000,
+      "share_pct": 20,
+      "note": "~15M machines globally; cashless share growing"
+    },
+    {
+      "name": "Smart Meter Billing",
+      "type": "payment_type",
+      "annual_transactions_est": 3000000000,
+      "share_pct": 15,
+      "note": "1.3B smart meters; only ~30% trigger autonomous payments"
+    },
+    {
+      "name": "EV Charging Payments",
+      "type": "payment_type",
+      "annual_transactions_est": 750000000,
+      "share_pct": 4,
+      "note": "Fastest-growing subcategory; ~3M public chargers"
+    },
+    {
+      "name": "Connected Vehicle Payments",
+      "type": "payment_type",
+      "annual_transactions_est": 750000000,
+      "share_pct": 4,
+      "note": "In-vehicle payments for fuel, parking, tolls"
+    },
+    {
+      "name": "Industrial IoT Payments",
+      "type": "payment_type",
+      "annual_transactions_est": 1500000000,
+      "share_pct": 7,
+      "note": "Automated procurement, supply chain, logistics payments"
+    }
+  ],
+  "regional_breakdown": [
+    { "region": "Asia-Pacific", "share_pct": 40, "note": "China leads ETC (300M users), smart meters, EV charging" },
+    { "region": "Europe", "share_pct": 25, "note": "Cross-border tolling; strong EV charging growth" },
+    { "region": "North America", "share_pct": 25, "note": "E-ZPass network; connected vehicle payments" },
+    { "region": "Rest of World", "share_pct": 10, "note": "Growing toll infrastructure" }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "citation": "IoT Analytics — Number of Connected IoT Devices Growing 14% to 21.1 Billion",
+      "url": "https://iot-analytics.com/number-connected-iot-devices/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "Ericsson — IoT Connections Forecast (Mobility Report)",
+      "url": "https://www.ericsson.com/en/reports-and-papers/mobility-report/dataforecasts/iot-connections-outlook",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "GSMA Intelligence — IoT Market Forecast to 2030",
+      "url": "https://www.gsmaintelligence.com/research/iot-market-forecast-to-2030-connections-by-region-and-vertical",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "Research Nester — Autonomous IoT Payments Market Size & Share 2037",
+      "url": "https://www.researchnester.com/reports/autonomous-iot-payments-market/6532",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "GM Insights — Autonomous IoT Payments Market Size 2024-2032",
+      "url": "https://www.gminsights.com/industry-analysis/autonomous-iot-payments-market",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "GlobeNewsWire — Electronic Toll Collection Market Size",
+      "url": "https://www.globenewswire.com/news-release/2024/03/22/2850890/0/en/Global-Electronic-Toll-Collection-Market-Size-To-Worth-USD-20-56-Billion-By-2033-CAGR-Of-7-71.html",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "Mastercard — How IoT Will Shape the Future of Payments (2021)",
+      "url": "https://www.mastercard.com/news/media/wddjfrhn/how-iot-will-shape-the-future-of-payments.pdf",
+      "accessed": "2026-03-26"
+    }
+  ]
+}

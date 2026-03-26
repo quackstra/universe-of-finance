@@ -1,0 +1,94 @@
+{
+  "category": "Remittances",
+  "sector": "Payments",
+  "last_updated": "2026-03-26",
+  "current": {
+    "avg_tps": {
+      "value": 57,
+      "source": "Derived from estimated annual transaction count of 1.8B",
+      "url": "https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar",
+      "confidence": "low"
+    },
+    "peak_tps": {
+      "value": 100,
+      "source": "Estimated from holiday corridor peaks (Eid, Christmas, Diwali)",
+      "url": null,
+      "confidence": "low"
+    },
+    "daily_volume": {
+      "value": 4930000,
+      "source": "Derived: 1.8B annual / 365 days",
+      "url": null,
+      "confidence": "low"
+    },
+    "annual_volume": {
+      "value": 1800000000,
+      "source": "Extrapolated from Western Union (~300M), Wise (~125M), MoneyGram (~100M), banks (~400M), others (~875M)",
+      "url": null,
+      "confidence": "low"
+    },
+    "annual_value_usd": {
+      "value": 905000000000,
+      "source": "World Bank KNOMAD 2024 estimate",
+      "url": "https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar",
+      "confidence": "high"
+    }
+  },
+  "top_recipients": [
+    { "country": "India", "inflows_usd": 129000000000 },
+    { "country": "Mexico", "inflows_usd": 68000000000 },
+    { "country": "China", "inflows_usd": 48000000000 },
+    { "country": "Philippines", "inflows_usd": 40000000000 },
+    { "country": "Pakistan", "inflows_usd": 33000000000 },
+    { "country": "Bangladesh", "inflows_usd": 25000000000 },
+    { "country": "Egypt", "inflows_usd": 24000000000 },
+    { "country": "Nigeria", "inflows_usd": 20000000000 }
+  ],
+  "historic": [
+    { "year": 2019, "annual_volume": 1300000000, "avg_tps": 41, "annual_value_usd": 715000000000, "source": "World Bank (value); txn count estimated", "confidence": "low" },
+    { "year": 2020, "annual_volume": 1350000000, "avg_tps": 43, "annual_value_usd": 717000000000, "source": "World Bank (value); txn count estimated", "confidence": "low" },
+    { "year": 2021, "annual_volume": 1450000000, "avg_tps": 46, "annual_value_usd": 791000000000, "source": "World Bank (value); txn count estimated", "confidence": "low" },
+    { "year": 2022, "annual_volume": 1550000000, "avg_tps": 49, "annual_value_usd": 831000000000, "source": "World Bank (value); txn count estimated", "confidence": "low" },
+    { "year": 2023, "annual_volume": 1650000000, "avg_tps": 52, "annual_value_usd": 865000000000, "source": "World Bank (value); txn count estimated", "confidence": "low" },
+    { "year": 2024, "annual_volume": 1800000000, "avg_tps": 57, "annual_value_usd": 905000000000, "source": "World Bank (value); txn count estimated", "confidence": "low" }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2025, "annual_volume": 1930000000, "avg_tps": 61, "annual_value_usd": 946000000000 },
+      { "year": 2027, "annual_volume": 2200000000, "avg_tps": 70, "annual_value_usd": 1034000000000 },
+      { "year": 2030, "annual_volume": 2700000000, "avg_tps": 86, "annual_value_usd": 1180000000000 },
+      { "year": 2035, "annual_volume": 3780000000, "avg_tps": 120, "annual_value_usd": 1475000000000 }
+    ],
+    "high_growth": [
+      { "year": 2025, "annual_volume": 1980000000, "avg_tps": 63, "annual_value_usd": 959000000000 },
+      { "year": 2027, "annual_volume": 2400000000, "avg_tps": 76, "annual_value_usd": 1078000000000 },
+      { "year": 2030, "annual_volume": 3190000000, "avg_tps": 101, "annual_value_usd": 1284000000000 },
+      { "year": 2035, "annual_volume": 5140000000, "avg_tps": 163, "annual_value_usd": 1718000000000 }
+    ],
+    "conservative": [
+      { "year": 2025, "annual_volume": 1890000000, "avg_tps": 60, "annual_value_usd": 932000000000 },
+      { "year": 2027, "annual_volume": 2080000000, "avg_tps": 66, "annual_value_usd": 989000000000 },
+      { "year": 2030, "annual_volume": 2410000000, "avg_tps": 76, "annual_value_usd": 1081000000000 },
+      { "year": 2035, "annual_volume": 3080000000, "avg_tps": 98, "annual_value_usd": 1253000000000 }
+    ]
+  },
+  "cost_metrics": {
+    "global_avg_cost_pct": 6.35,
+    "sub_saharan_africa_cost_pct": 7.9,
+    "digital_channel_avg_cost_pct": 4.3,
+    "g20_target_cost_pct": 3.0,
+    "source": "World Bank Remittance Prices Worldwide Q4 2024"
+  },
+  "sources": [
+    { "id": 1, "citation": "World Bank — Remittance flows to LMICs reach $685B in 2024", "url": "https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar", "accessed": "2026-03-26" },
+    { "id": 2, "citation": "World Bank — Remittances Slowed in 2023 press release", "url": "https://www.worldbank.org/en/news/press-release/2024/06/26/remittances-slowed-in-2023-expected-to-grow-faster-in-2024", "accessed": "2026-03-26" },
+    { "id": 3, "citation": "World Bank Remittance Prices Worldwide", "url": "https://remittanceprices.worldbank.org/", "accessed": "2026-03-26" },
+    { "id": 4, "citation": "World Bank Open Data — Personal remittances received", "url": "https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT", "accessed": "2026-03-26" },
+    { "id": 5, "citation": "Western Union Q4/FY2024 Results", "url": "https://www.businesswire.com/news/home/20250204893052/en/Western-Union-Reports-Fourth-Quarter-and-Full-Year-2024-Results", "accessed": "2026-03-26" },
+    { "id": 6, "citation": "Federal Reserve — Global Remittances Cycle", "url": "https://www.federalreserve.gov/econres/notes/feds-notes/global-remittances-cycle-20250227.html", "accessed": "2026-03-26" },
+    { "id": 7, "citation": "FXC Intelligence — Remittances 2024 year in data", "url": "https://www.fxcintel.com/research/reports/ct-remittances-money-transfers-2024-year-in-data", "accessed": "2026-03-26" },
+    { "id": 8, "citation": "GPFI — G20 Remittance Target update 2024", "url": "https://www.gpfi.org/sites/default/files/NEW%202024%20Update%20to%20Leaders%20on%20Progress%20Towards%20the%20G20%20Remittance%20Target.pdf", "accessed": "2026-03-26" },
+    { "id": 9, "citation": "Migration Data Portal — Remittances overview", "url": "https://www.migrationdataportal.org/themes/remittances-overview", "accessed": "2026-03-26" },
+    { "id": 10, "citation": "Grand View Research — Digital Remittance Market to $60B by 2030", "url": "https://www.grandviewresearch.com/press-release/global-digital-remittance-market", "accessed": "2026-03-26" }
+  ]
+}

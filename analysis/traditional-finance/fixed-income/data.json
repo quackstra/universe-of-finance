@@ -1,0 +1,113 @@
+{
+  "category": "Fixed Income / Bond Markets",
+  "sector": "Traditional Finance",
+  "priority": 5,
+  "last_updated": "2026-03-26",
+  "definition": "Cash bond trades (government, corporate, municipal, agency/MBS) plus repurchase agreements (repo). Transactions = individual trades between counterparties. Issuance (primary market) excluded.",
+
+  "annual_volume": {
+    "metric": "estimated_trades",
+    "unit": "millions",
+    "source_primary": "FINRA TRACE (US corporate), SIFMA (US value), ICMA (European repo)",
+    "note": "US TRACE trade count is well-reported (~52M/year for corporate/agency). Global count requires extrapolation. Repo trade counts are estimated.",
+    "us_trace_2024": {
+      "total_trades_millions": 52,
+      "investment_grade_corporate_millions": 19,
+      "confidence": "green",
+      "source": "https://www.finra.org/finra-data/fixed-income"
+    },
+    "global_cash_bond_estimate_2024": {
+      "daily_trades": 600000,
+      "annual_trades_millions": 151,
+      "confidence": "red",
+      "methodology": "US TRACE (52M) represents ~40% of global bond trading activity -> ~130M global. Add non-TRACE US Treasury trades (~20M est.) = ~150M."
+    },
+    "global_repo_estimate_2024": {
+      "daily_trades": 2500000,
+      "annual_trades_millions": 630,
+      "confidence": "red",
+      "methodology": "European repo turnover EUR 5T/day at avg ticket ~EUR 50M = ~100K European repo trades/day. US triparty + bilateral ~10x European by count due to higher automation. Global ~2.5M/day."
+    }
+  },
+
+  "annual_value": {
+    "metric": "daily_average_volume",
+    "unit": "USD_billions",
+    "us_treasury_adv_2024": 1055.5,
+    "us_corporate_adv_2024": 57.9,
+    "tradeweb_adv_oct_2024": 2350,
+    "global_outstanding_2024_usd_trillions": 145,
+    "confidence": "green",
+    "sources": [
+      "https://www.sifma.org/research/statistics/us-treasury-securities-statistics",
+      "https://www.sifma.org/research/statistics/us-corporate-bonds-statistics"
+    ]
+  },
+
+  "tps": {
+    "average_tps_cash_bonds_2024": 7,
+    "average_tps_incl_repo_2024": 35,
+    "peak_tps_estimate": 100,
+    "methodology": "See workings/calculations.md",
+    "confidence_cash_bonds": "red",
+    "confidence_incl_repo": "red",
+    "note": "Fixed income is a high-value, low-count market. Most bonds are held to maturity."
+  },
+
+  "historic": {
+    "us_treasury_adv_billions": {
+      "2019": 594, "2020": 632, "2021": 588, "2022": 632, "2023": 915, "2024": 1055.5
+    },
+    "us_corporate_adv_billions": {
+      "2019": 31.2, "2020": 36.1, "2021": 36.4, "2022": 36.8, "2023": 51.9, "2024": 57.9
+    },
+    "global_outstanding_trillions": {
+      "2019": 115, "2020": 124, "2021": 127, "2022": 130, "2023": 141, "2024": 145
+    },
+    "source": "https://www.sifma.org/wp-content/uploads/2023/07/2024-SIFMA-Capital-Markets-Factbook.pdf"
+  },
+
+  "growth_rates": {
+    "us_treasury_adv_cagr_5yr": 12.2,
+    "us_corporate_adv_cagr_5yr": 13.2,
+    "global_outstanding_cagr_5yr": 4.7,
+    "tradeweb_adv_yoy_2024": 35,
+    "note": "Electronification driving rapid ADV growth; outstanding grows more slowly."
+  },
+
+  "projections": {
+    "baseline": {
+      "scenario": "Continued electronification drives 8% CAGR in trade frequency",
+      "cagr_2024_2035": 8,
+      "daily_trades_2030": 950000,
+      "daily_trades_2035": 1400000,
+      "tps_cash_2035": 16,
+      "tps_incl_repo_2035": 80
+    },
+    "high_growth": {
+      "scenario": "All-to-all platforms, tokenized bonds, algo market-making",
+      "cagr_2024_2035": 12,
+      "daily_trades_2030": 1200000,
+      "daily_trades_2035": 2100000,
+      "tps_cash_2035": 24,
+      "tps_incl_repo_2035": 120
+    },
+    "conservative": {
+      "scenario": "Buy-and-hold dominance persists, electronification plateaus",
+      "cagr_2024_2035": 4,
+      "daily_trades_2030": 760000,
+      "daily_trades_2035": 925000,
+      "tps_cash_2035": 11,
+      "tps_incl_repo_2035": 54
+    }
+  },
+
+  "sources": [
+    {"id": 1, "title": "SIFMA — US Treasury Securities Statistics", "url": "https://www.sifma.org/research/statistics/us-treasury-securities-statistics"},
+    {"id": 2, "title": "SIFMA — US Corporate Bonds Statistics", "url": "https://www.sifma.org/research/statistics/us-corporate-bonds-statistics"},
+    {"id": 3, "title": "FINRA — TRACE Fixed Income Data", "url": "https://www.finra.org/finra-data/fixed-income"},
+    {"id": 4, "title": "Tradeweb — October 2024 Volume Report", "url": "https://www.tradeweb.com/newsroom/media-center/news-releases/tradeweb-reports-october-2024-total-trading-volume-of-$54.7-trillion-and-average-daily-volume-of-$2.35-trillion/"},
+    {"id": 5, "title": "ICMA — European Repo Market Survey", "url": "https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/market-data/icma-european-repo-market-survey/"},
+    {"id": 6, "title": "SIX Group — Global Bond Market $141T", "url": "https://www.six-group.com/dam/download/financial-information/reference-pricing-data/fixed-income-data/six-fixed-income-data-infographic.pdf"}
+  ]
+}

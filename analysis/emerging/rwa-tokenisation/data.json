@@ -1,0 +1,184 @@
+{
+  "category": "Tokenised Real-World Assets",
+  "sector": "Emerging",
+  "last_updated": "2026-03-26",
+  "current": {
+    "peak_tps": {
+      "value": 15,
+      "source": "Estimated: during major fund launches or market events",
+      "url": "",
+      "confidence": "low",
+      "note": "Very nascent market; peak TPS is orders of magnitude below traditional finance"
+    },
+    "avg_tps": {
+      "value": 2.4,
+      "source": "Derived: midpoint of 50-100M annual txns / 31,536,000 seconds",
+      "url": "",
+      "confidence": "low"
+    },
+    "daily_volume": {
+      "value": 205000,
+      "source": "Derived: midpoint of 50-100M / 365",
+      "url": "",
+      "confidence": "low"
+    },
+    "annual_volume": {
+      "value": 75000000,
+      "source": "Estimated from TVL-to-transaction ratios",
+      "url": "",
+      "confidence": "low",
+      "note": "Midpoint of 50-100M range. No aggregator tracks RWA txn counts directly."
+    },
+    "tvl_usd": {
+      "value": 24000000000,
+      "source": "RWA.xyz / DeFiLlama — mid-2025, excluding stablecoins",
+      "url": "https://app.rwa.xyz/",
+      "confidence": "medium"
+    },
+    "off_chain_backing_usd": {
+      "value": 402500000000,
+      "source": "RWA.xyz — total off-chain liquidity associated with RWA protocols",
+      "url": "https://app.rwa.xyz/",
+      "confidence": "medium"
+    }
+  },
+  "historic": [
+    { "year": 2019, "tvl_usd": 50000000, "source": "Estimated", "confidence": "low" },
+    { "year": 2020, "tvl_usd": 200000000, "source": "Estimated", "confidence": "low" },
+    { "year": 2021, "tvl_usd": 1500000000, "source": "DeFiLlama / RWA.xyz", "confidence": "medium" },
+    { "year": 2022, "tvl_usd": 3000000000, "source": "DeFiLlama / RWA.xyz", "confidence": "medium" },
+    { "year": 2023, "tvl_usd": 8000000000, "source": "RWA.xyz", "confidence": "medium" },
+    { "year": 2024, "tvl_usd": 15200000000, "source": "RWA.xyz — year-end 2024", "confidence": "medium" },
+    { "year": 2025, "tvl_usd": 24000000000, "source": "RWA.xyz — mid-2025", "confidence": "medium", "note": "Annualised from mid-year snapshot" }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2026, "tps": 8, "annual_volume": 250000000, "tvl_usd": 50000000000 },
+      { "year": 2027, "tps": 15, "annual_volume": 475000000, "tvl_usd": 85000000000 },
+      { "year": 2028, "tps": 30, "annual_volume": 950000000, "tvl_usd": 150000000000 },
+      { "year": 2029, "tps": 63, "annual_volume": 2000000000, "tvl_usd": 300000000000 },
+      { "year": 2030, "tps": 100, "annual_volume": 3150000000, "tvl_usd": 500000000000 },
+      { "year": 2031, "tps": 140, "annual_volume": 4400000000, "tvl_usd": 700000000000 },
+      { "year": 2032, "tps": 190, "annual_volume": 6000000000, "tvl_usd": 950000000000 },
+      { "year": 2033, "tps": 250, "annual_volume": 7900000000, "tvl_usd": 1250000000000 },
+      { "year": 2034, "tps": 350, "annual_volume": 11000000000, "tvl_usd": 1600000000000 },
+      { "year": 2035, "tps": 500, "annual_volume": 15800000000, "tvl_usd": 2000000000000 }
+    ],
+    "high_growth": [
+      { "year": 2026, "tps": 15, "annual_volume": 475000000, "tvl_usd": 80000000000 },
+      { "year": 2027, "tps": 40, "annual_volume": 1260000000, "tvl_usd": 200000000000 },
+      { "year": 2028, "tps": 100, "annual_volume": 3150000000, "tvl_usd": 500000000000 },
+      { "year": 2029, "tps": 300, "annual_volume": 9460000000, "tvl_usd": 2000000000000 },
+      { "year": 2030, "tps": 800, "annual_volume": 25200000000, "tvl_usd": 5000000000000 },
+      { "year": 2031, "tps": 1200, "annual_volume": 37800000000, "tvl_usd": 7000000000000 },
+      { "year": 2032, "tps": 1800, "annual_volume": 56800000000, "tvl_usd": 9500000000000 },
+      { "year": 2033, "tps": 2600, "annual_volume": 82000000000, "tvl_usd": 11500000000000 },
+      { "year": 2034, "tps": 3700, "annual_volume": 116700000000, "tvl_usd": 13500000000000 },
+      { "year": 2035, "tps": 5000, "annual_volume": 157700000000, "tvl_usd": 16000000000000 }
+    ],
+    "conservative": [
+      { "year": 2026, "tps": 5, "annual_volume": 160000000, "tvl_usd": 35000000000 },
+      { "year": 2027, "tps": 8, "annual_volume": 250000000, "tvl_usd": 50000000000 },
+      { "year": 2028, "tps": 12, "annual_volume": 380000000, "tvl_usd": 70000000000 },
+      { "year": 2029, "tps": 20, "annual_volume": 630000000, "tvl_usd": 85000000000 },
+      { "year": 2030, "tps": 30, "annual_volume": 950000000, "tvl_usd": 100000000000 },
+      { "year": 2031, "tps": 45, "annual_volume": 1420000000, "tvl_usd": 150000000000 },
+      { "year": 2032, "tps": 65, "annual_volume": 2050000000, "tvl_usd": 220000000000 },
+      { "year": 2033, "tps": 90, "annual_volume": 2840000000, "tvl_usd": 320000000000 },
+      { "year": 2034, "tps": 120, "annual_volume": 3780000000, "tvl_usd": 420000000000 },
+      { "year": 2035, "tps": 150, "annual_volume": 4730000000, "tvl_usd": 500000000000 }
+    ]
+  },
+  "subcategories": [
+    {
+      "name": "Private Credit",
+      "type": "asset_class",
+      "tvl_usd": 17000000000,
+      "share_pct": 61,
+      "key_protocols": ["Centrifuge", "Maple Finance", "Goldfinch"],
+      "note": "Largest RWA subcategory; tokenised lending against real-world collateral"
+    },
+    {
+      "name": "US Treasuries",
+      "type": "asset_class",
+      "tvl_usd": 7300000000,
+      "share_pct": 26,
+      "key_protocols": ["BlackRock BUIDL", "Ondo OUSG", "Franklin Templeton BENJI"],
+      "note": "Fastest-growing subcategory; gateway for institutional adoption"
+    },
+    {
+      "name": "Commodities (Gold)",
+      "type": "asset_class",
+      "tvl_usd": 1500000000,
+      "share_pct": 5,
+      "key_protocols": ["Paxos PAXG", "Tether Gold XAUT"],
+      "note": "Established niche; gold-backed tokens"
+    },
+    {
+      "name": "Real Estate",
+      "type": "asset_class",
+      "tvl_usd": 500000000,
+      "share_pct": 2,
+      "key_protocols": ["RealT", "Lofty"],
+      "note": "Nascent; fractional property ownership"
+    },
+    {
+      "name": "Institutional Funds",
+      "type": "asset_class",
+      "tvl_usd": 1200000000,
+      "share_pct": 4,
+      "note": "Alternative fund tokens; various platforms"
+    },
+    {
+      "name": "Other",
+      "type": "asset_class",
+      "tvl_usd": 500000000,
+      "share_pct": 2,
+      "note": "Carbon credits, art, collectibles, other"
+    }
+  ],
+  "sources": [
+    {
+      "id": 1,
+      "citation": "RWA.xyz — Analytics on Tokenized Real-World Assets",
+      "url": "https://app.rwa.xyz/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "The Defiant — RWAs Became Wall Street's Gateway to Crypto in 2025",
+      "url": "https://thedefiant.io/news/defi/rwas-became-wall-street-s-gateway-to-crypto-in-2025",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "RedStone — Real-World Assets in Onchain Finance Report",
+      "url": "https://blog.redstone.finance/2025/06/26/real-world-assets-in-onchain-finance-report/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "CoinGecko — 2025 RWA Report",
+      "url": "https://assets.coingecko.com/reports/2025/CoinGecko-2025-RWA-Report.pdf",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "CoinPedia — RWA Tokenization Could Reach $30T by 2030",
+      "url": "https://coinpedia.org/research-report/top-real-world-asset-rwa-projects/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "NextMSC — Global Tokenized RWAs Market Growth Trends and 2030 Forecast",
+      "url": "https://www.nextmsc.com/report/tokenized-real-world-assets-rwas-market-bf3345",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "ElectroIQ — Tokenized Assets Statistics 2025",
+      "url": "https://electroiq.com/stats/tokenized-assets-statistics/",
+      "accessed": "2026-03-26"
+    }
+  ]
+}
