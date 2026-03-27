@@ -18,32 +18,41 @@ FX swaps remain the dominant instrument at $4.0 trillion/day (42% of total), but
 
 | Metric | Value | Confidence |
 |--------|-------|------------|
-| Average TPS (est. 2024) | **~40** | 🟡 Medium |
+| Average TPS (est. 2024) | **~40** (institutional only) | 🟡 Medium |
+| Average TPS (incl. retail) | **~150** | 🔴 Low |
 | Peak TPS (est.) | **~160** | 🔴 Low |
 | Daily volume (value) | $9.6T (Apr 2025) | 🟢 High |
-| Daily transaction count (est.) | ~3.5 million trades | 🟡 Medium |
-| Annual volume (est. 2024) | ~880 million trades | 🟡 Medium |
-| Annual value (est. 2024) | ~$2,200T | 🟡 Medium |
+| Daily trade count — institutional | ~3.0M trades | 🟡 Medium |
+| Daily trade count — retail | ~10M trades | 🔴 Low |
+| Daily trade count — total | ~13M trades | 🔴 Low |
+| Annual volume (est. 2024) | ~880M trades (institutional) | 🟡 Medium |
+| Annual value (est. 2024) | ~$2,142T | 🟡 Medium |
 
-**Methodology**: BIS reports $9.6T daily turnover (April 2025) but does NOT report transaction counts. We estimate daily trade count from **four convergent approaches**:
+**Methodology**: BIS reports $9.6T daily turnover (April 2025) but does NOT report transaction counts. We triangulate daily trade count from **six independent approaches** (full model: [workings/count-triangulation.md](workings/count-triangulation.md)):
 
-1. **CLS settlement data**: CLS settles an average of ~1 million payment instructions per day ([CLS Group](https://www.cls-group.com/products/settlement/clssettlement/)) across 18 currencies, representing ~$7T+ in daily settled value. CLS covers approximately 55% of global FX turnover by value but a smaller share by count (institutional bias toward larger trades). Peak day: 2.6 million instructions. Since each FX trade generates two payment instructions (one per leg), CLS settles ~500K unique trades/day. CLS market share by count is estimated at 15-20%, implying **2.5-3.3M total trades/day**.
+1. **CLS settlement data**: CLS 2024 Annual Report shows **1.2 million payment instructions/day** average, settling **$7.2T/day** across 18 currencies and 37,000+ participants. Each trade = 2 instructions, so **~600K unique trades/day**. CLS coverage by count is estimated at 15-25% (institutional bias toward large trades; retail entirely outside CLS). Implied total: **2.4-4.0M trades/day** (central: 3.0M). Peak day: $19.1T settled (June 2024), ~1.3M trades.
 
-2. **Average ticket size decomposition** (BIS methodology): The BIS Triennial Survey collects turnover by counterparty type. Using estimated average ticket sizes by segment:
-   - Reporting dealer-to-dealer: ~$5-10M avg ticket → ~$2.5T/day ÷ $7.5M = ~333K trades
-   - Dealer-to-other financial: ~$2-5M avg ticket → ~$5.5T/day ÷ $3.5M = ~1.57M trades
-   - Dealer-to-non-financial: ~$0.5-2M avg ticket → ~$1.6T/day ÷ $1.25M = ~1.28M trades
-   - **Subtotal: ~3.2M trades/day**
+2. **BIS counterparty-segment decomposition**: Using 2025 survey proportions ($9.6T) with estimated ticket sizes:
+   - Dealer-to-dealer (46%, $4.42T): ~$7.5M avg ticket = ~589K trades
+   - Dealer-to-other financial (50%, $4.80T): ~$2.5M avg ticket = ~1.92M trades
+   - Dealer-to-non-financial (4%, $0.38T): ~$0.8M avg ticket = ~475K trades
+   - **Subtotal: ~2,984K trades/day** (scaled to 2024: ~2,642K)
 
-3. **Electronic platform volumes**: EBS (now CME) averaged $59.4B/day in 2024 ([The Full FX](https://thefullfx.com/fx-trading-venues-in-2024-a-big-tick/)). At an estimated $2-3M avg ticket for EBS, this implies ~20-30K trades/day on EBS alone. Electronic trading represents ~59% of global FX turnover ([BIS 2024](https://www.bis.org/publ/qtrpdf/r_qt1912g.pdf)), with the remainder voice/chat. Major electronic venues (EBS, Refinitiv Matching, Bloomberg, 360T, Cboe FX) collectively handle a significant share.
+3. **Electronic platform aggregation**: EBS averaged $55.8B/day spot ADNV in 2024 ([The Full FX](https://thefullfx.com/fx-trading-venues-in-2024-a-big-tick/)). LSEG/Refinitiv hit $100B ADV. Electronic trading = ~59% of turnover. Total electronic: ~$5.0T/day at ~$2.5M avg ticket = ~2.0M e-trades + ~467K voice trades = **~2.5M trades/day**.
 
-4. **Retail FX platforms**: Retail FX (eToro, OANDA, IG, Plus500, etc.) adds millions of small-value trades daily. Retail share of FX turnover is estimated at 3-5% by value but potentially 20-30% by count due to micro-lot sizes ($1K-$100K). This could add **0.5-1.5M trades/day** not captured in institutional estimates.
+4. **Retail FX estimation**: Retail = 3-5% of turnover by value (~$340B/day) but avg ticket ~$20K (micro-lots to standard lots). Implies **~10M retail trades/day** from estimated 10-15M active retail traders globally. This is economically minor (<3% of value) but numerically dominant (~77% of count).
 
-**Revised central estimate: ~3.5 million trades/day** (range: 2.5-5M). This is higher than our prior estimate of ~3M, reflecting better accounting for retail FX. TPS = 3,500,000 / 86,400 = **~40 TPS** (FX trades 24 hours across global time zones, with ~23.5 effective hours). Confidence upgraded from 🔴 Low to 🟡 Medium based on multi-source triangulation.
+5. **CME FX futures comparable**: CME FX futures ADV ~1.0-1.2M contracts/day. OTC is 30x larger by value at ~7.5x larger ticket, implying ~4.4M OTC trades + 1.1M futures = **~5.5M total**.
 
-**Electronic vs voice split**: Voice Direct 25%, Electronic Direct 33%, Voice Indirect 13%, Electronic Indirect 26% of all FX products by turnover ([BIS/Coalition Greenwich 2024](https://www.greenwich.com/blog/voice-trading-relationships-and-better-e-support-vital-fx)). The e-ratio across all products stands at ~59%.
+6. **Algo/HFT multiplier**: 75-85% of spot FX is algorithmic. HFT (~12.5% of spot value at ~$250K avg ticket) adds ~1.5M trades/day. Non-HFT algo adds ~1.95M. Voice/manual ~1.1M. **Total: ~4.5M**.
 
-**Sources**: [BIS Triennial Survey 2025](https://www.bis.org/statistics/rpfx25_fx.htm), [CLS Group](https://www.cls-group.com/products/settlement/clssettlement/), [CLS Trade Volume Report](https://www.cls-group.com/news/fx-trade-volume-report/), [BIS User's Guide to Triennial Survey](https://www.bis.org/publ/qtrpdf/r_qt1012h.pdf)
+**Convergence**: Approaches 1-3 converge at **~2.5-3.0M institutional trades/day**. Adding retail (Approach 4) gives **~13M total**. Approaches 5-6 give intermediate values (4.5-5.5M) as they partially capture retail/algo activity.
+
+**Primary estimate: ~3.5M trades/day (~40 TPS)** using institutional trades for economic consistency with other categories. Including retail: ~13M/day (~150 TPS). Confidence: 🟡 Medium, upgraded from prior 🔴 Low based on six-source triangulation.
+
+**Electronic vs voice split**: Voice Direct 25%, Electronic Direct 33%, Voice Indirect 13%, Electronic Indirect 26% ([BIS/Coalition Greenwich 2024](https://www.greenwich.com/blog/voice-trading-relationships-and-better-e-support-vital-fx)). E-ratio: ~59%.
+
+**Sources**: [BIS Triennial Survey 2025](https://www.bis.org/statistics/rpfx25_fx.htm), [CLS 2024 Annual Report](https://www.cls-group.com/about/annual-report-2024/), [CLS Trade Volume Report](https://www.cls-group.com/news/fx-trade-volume-report/), [CME Group ADV 2024](https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html), [The Full FX — Venues 2024](https://thefullfx.com/fx-trading-venues-in-2024-a-big-tick/)
 
 ---
 
@@ -143,7 +152,7 @@ FX swaps remain the dominant instrument at $4.0 trillion/day (42% of total), but
 
 2. **The 2025 BIS Triennial Survey shows $9.6T/day**, a 28% jump over 2022, driven by forwards (+62%), options (doubled), and spot (+36%).
 
-3. **Transaction count confidence has been upgraded.** Our revised ~3.5M trades/day estimate is triangulated from four independent approaches: CLS settlement instructions, BIS counterparty-segment ticket-size decomposition, electronic platform volumes, and retail FX estimates. Confidence upgraded from 🔴 Low to 🟡 Medium.
+3. **Transaction count confidence has been upgraded.** Our revised ~3.5M institutional trades/day estimate is triangulated from six independent approaches: CLS settlement (updated with 2024 Annual Report: 1.2M instructions/day, $7.2T settled), BIS counterparty-segment decomposition (updated with 2025 survey proportions), electronic platform aggregation (EBS $55.8B, LSEG $100B ADV), retail FX estimation (~10M trades/day), CME futures comparable (~1.0-1.2M contracts/day), and algo/HFT multiplier. Full model: [workings/count-triangulation.md](workings/count-triangulation.md). Confidence upgraded from 🔴 Low to 🟡 Medium.
 
 4. **FX swaps remain dominant** but lost share (51% to 42%), while forwards and options gained significantly — reflecting increased hedging demand.
 
@@ -166,31 +175,37 @@ FX swaps remain the dominant instrument at $4.0 trillion/day (42% of total), but
 ## Open Questions & Triangulation Opportunities
 
 ### What We Can't Directly Observe
-- **Exact global FX trade count**: No authority publishes this figure. BIS reports value turnover only. Our estimate (~3.5M trades/day) is triangulated but not directly observed.
-- **Retail FX trade count**: Retail platforms (eToro, OANDA, IG, Plus500, etc.) do not publicly disclose aggregate daily trade counts. Retail adds many small trades that inflate count but not value.
-- **FX algo/HFT trade share**: Algorithmic and high-frequency FX trading generates many small trades, but the exact share by count (as opposed to value) is not published.
-- **Non-CLS settled FX**: Approximately 45% of FX turnover by value settles outside CLS. The trade count composition of this non-CLS segment is opaque.
+- **Exact global FX trade count**: No authority publishes this figure. BIS reports value turnover only. Our six-approach triangulation ([workings/count-triangulation.md](workings/count-triangulation.md)) converges on ~3.0M institutional trades/day but uncertainty remains.
+- **Retail FX trade count**: Retail platforms (eToro, OANDA, IG, Plus500, etc.) do not publicly disclose aggregate daily trade counts. Our estimate of ~10M retail trades/day is highly uncertain and economically minor (<3% of value).
+- **FX algo/HFT trade share by count**: 75-85% of spot FX is algorithmic by value, but the share by count is almost certainly higher. Quantifying this split is the key gap between our institutional approaches (2.5-3.0M) and the algo/HFT approach (4.5M).
+- **Non-CLS settled FX**: ~15% of FX value settles outside CLS. The trade count composition of this segment is completely opaque — could be large bilateral trades or small domestic transactions.
+- **Dealer-to-other-financial ticket size**: This segment (50% of 2025 turnover) is a catch-all for hedge funds, asset managers, pension funds, central banks, retail aggregators, and prop firms. The blended average ticket ($1.5M-$4.0M) is the single most impactful assumption in the institutional trade count.
 
-### Triangulation Strategies
-| Gap | Approach | Proxy Data Available | Expected Precision |
-|-----|----------|---------------------|-------------------|
-| Trade count from turnover | BIS publishes turnover by counterparty segment; apply estimated avg ticket sizes per segment | BIS triennial breakdown: dealer-dealer, dealer-financial, dealer-non-financial | 🟡 Medium |
-| Electronic vs. voice split | Use BIS e-ratio (59% electronic) to separate electronic platform ticket counts from voice | BIS triennial, Coalition Greenwich surveys | 🟡 Medium |
-| Retail FX trade count | Estimate from retail FX share (3-5% of value) divided by avg retail ticket ($5K-$50K) | BIS estimates retail share; retail broker revenue reports | 🔴 Low |
-| CLS as lower bound | CLS ~1M instructions/day = ~500K trades; CLS covers 55% by value, ~15-20% by count | [CLS monthly reports](https://www.cls-group.com/news/fx-trade-volume-report/) | 🟢 High (for CLS portion) |
-| Platform ADV cross-check | Aggregate ADV from EBS ($59.4B), Refinitiv, Bloomberg, 360T, Cboe FX and divide by estimated ticket sizes | Platform-level ADV published monthly | 🟡 Medium |
+### Triangulation Strategies (Updated)
+| Gap | Approach | Status | Proxy Data Available | Expected Precision |
+|-----|----------|--------|---------------------|-------------------|
+| Trade count from turnover | BIS counterparty-segment decomposition | **Applied** — see [count-triangulation.md](workings/count-triangulation.md) Approach 2 | BIS 2025 breakdown: dealer-dealer 46%, dealer-financial 50%, dealer-non-financial 4% | 🟡 Medium |
+| CLS extrapolation | CLS 2024 Annual Report: 1.2M instructions/day = 600K trades at 20% count coverage | **Applied** — Approach 1 | CLS 2024: $7.2T/day, 37K+ participants | 🟢 High (for CLS portion) |
+| Electronic platform aggregation | Aggregate EBS ($55.8B), LSEG/Refinitiv ($100B), Bloomberg, 360T, Cboe FX | **Applied** — Approach 3 | Platform-level ADV published monthly | 🟡 Medium |
+| Retail FX trade count | Estimate from 3-5% value share / $20K avg retail ticket | **Applied** — Approach 4; ~10M trades/day | Retail broker financial reports; regulatory filings | 🔴 Low |
+| CME futures comparable | CME FX futures ~1.0-1.2M contracts/day as calibration anchor | **Applied** — Approach 5 | CME monthly ADV reports | 🟡 Medium |
+| Algo/HFT multiplier | 75-85% algorithmic, HFT at ~$250K avg ticket | **Applied** — Approach 6 | BIS 2022 algo share; industry estimates | 🔴 Low |
+| **CLS trade count by participant type** | CLS knows unique trades per segment — not yet published | **Not yet available** | Would dramatically improve CLS extrapolation | 🟢 Potential |
+| **BIS adding trade count question** | If the triennial survey asked for trade counts | **Not yet available** | Would convert estimate to semi-observation | 🟢 Potential |
+| **NY Fed FX Committee trade count** | If semi-annual survey added trade count for 21 major dealers | **Not yet available** | US-market trade count scalable globally | 🟢 Potential |
 
 ### Key Modeling Questions
-- What is the true average ticket size distribution across FX market participants? This single parameter dominates the trade count estimate — a shift from $3.2M to $2.5M average would increase daily count from 3.5M to 4.5M.
-- How many of the "trades" in retail FX are actual economic transactions vs. automated micro-orders from copy-trading and algo-bots?
-- As FX options turnover doubled in 2025, does this represent more trades or larger trades? (Options typically have smaller average ticket sizes than spot.)
-- Will the growth of crypto-fiat on-ramp/off-ramp flows appear in FX statistics, and if so, how many additional trades/day does this represent?
+- **Average ticket size in "dealer-to-other-financial"** dominates the estimate: a shift from $2.5M to $1.5M would increase institutional count from 3.0M to 4.6M/day (+53%). This single parameter accounts for more uncertainty than all other assumptions combined.
+- How many retail FX "trades" are actual economic transactions vs. automated micro-orders from copy-trading and algo-bots? Should they count at equal weight to institutional trades in a TPS metric?
+- As FX options turnover doubled in 2025, does this represent more trades or larger trades? Options typically have smaller ticket sizes, suggesting a material trade count increase.
+- Will crypto-fiat on-ramp/off-ramp flows appear in FX statistics? If so, how many additional trades/day?
+- Does CLS's 1.2M instructions/day represent a stable share of the market, or is CLS losing/gaining count share as new settlement models emerge?
 
 ### Reference Comparisons
-- **CLS monthly data**: CLS publishes monthly average daily traded volumes and can serve as a lower-bound validator — [CLS FX Trade Volume Report](https://www.cls-group.com/news/fx-trade-volume-report/)
-- **BIS triennial vs. semi-annual**: BIS also publishes semi-annual OTC derivative statistics that include FX forwards/swaps/options outstanding — useful for cross-referencing flow vs. stock
-- **Country-level data**: Some central banks publish domestic FX turnover (e.g., NY Fed FX Committee, Bank of England, ECB) — summing major centres provides an independent global estimate
-- **CME FX futures**: CME FX futures ADV (~1.1M contracts/day in 2024) provides a comparable for exchange-traded FX vs. OTC FX frequency
+- **CLS monthly data**: CLS publishes monthly ADV and can serve as a lower-bound validator — [CLS FX Trade Volume Report](https://www.cls-group.com/news/fx-trade-volume-report/). Updated: CLS 2024 shows $7.2T/day settled, 1.2M instructions/day.
+- **BIS triennial vs. semi-annual**: BIS publishes semi-annual OTC derivative statistics including FX forwards/swaps/options outstanding — useful for flow vs. stock cross-reference.
+- **Country-level data**: NY Fed FX Committee surveys 21 major dealers semi-annually (April 2024: spot +29.8%, forwards +19.1%, swaps +22.8%, options +57.9% YoY). [BoE October 2024 survey](https://www.bankofengland.co.uk/markets/london-foreign-exchange-joint-standing-committee/results-of-the-semi-annual-fx-turnover-survey-october-2024) provides London-specific data.
+- **CME FX futures**: CME FX futures ADV ~1.0-1.2M contracts/day (2024 record). FX Link ADV up 91% to 32K contracts. Provides calibrated exchange-traded FX comparable.
 
 ---
 

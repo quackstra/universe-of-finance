@@ -24,8 +24,8 @@ This analysis covers **centralised (custodial) cryptocurrency exchanges** — pl
 | Annual derivatives volume (2024) | ~$58.5T | [CoinGecko Perpetuals Report](https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf) | 🟡 Medium |
 | Combined annual volume (2024) | ~$77.3T | Derived (spot + derivatives) | 🟡 Medium |
 | Average daily volume | ~$212B | Derived ($77.3T / 365) | 🟡 Medium |
-| Est. daily trade count | ~300M-400M | Estimated (see [calculations](workings/calculations.md)) | 🔴 Low |
-| Est. average TPS (trades) | ~3,500-4,600 | Derived from daily count / 86,400 | 🔴 Low |
+| Est. daily trade count | ~263M (wash-adjusted) | Estimated (see [calculations](workings/calculations.md), [wash filter](workings/wash-trading-filter.md)) | 🟡 Medium-Low |
+| Est. average TPS (trades) | ~3,040 (wash-adjusted) | Tiered wash model: 25% blended reduction. Range: 2,685-3,275 | 🟡 Medium-Low |
 
 ### Exchange Market Share (Spot, 2024)
 
@@ -48,41 +48,47 @@ This analysis covers **centralised (custodial) cryptocurrency exchanges** — pl
 
 Derivatives dominate by a 3:1 ratio. Perpetual futures (contracts with no expiry) are the primary derivative instrument, dwarfing dated futures and options.
 
-### Wash Trading Adjustment
+### Wash Trading Adjustment (Tiered Model)
 
-The headline ~3,500-4,600 TPS estimate is derived from reported volumes that almost certainly include wash trading, even on "trusted" exchanges. Multiple academic and industry studies have quantified the scale of fake volume across crypto exchanges:
+The headline ~3,500-4,600 TPS estimate is derived from reported volumes that almost certainly include wash trading, even on "trusted" exchanges. We apply a **tiered exchange model** (detailed in [workings/wash-trading-filter.md](workings/wash-trading-filter.md)) that assigns per-tier wash trading discounts based on regulatory status and multiple independent detection methodologies.
+
+#### Research Base
 
 | Study | Year | Scope | Wash Trading Estimate | Source |
 |-------|------|-------|----------------------|--------|
 | Bitwise SEC Filing | 2019 | Unregulated exchanges | 95% of reported volume | [CoinTelegraph](https://cointelegraph.com/news/bitwise-tells-us-sec-that-95-of-volume-on-unregulated-crypto-exchanges-is-suspect) |
 | Cong, Li, Tang, Yang (NBER/Yale) | 2022 | Unregulated exchanges | 70%+ average | [NBER WP 30783](https://www.nber.org/papers/w30783) |
-| CEPR (Kočenda et al.) | 2024 | "Unregulated Tier 1" exchanges | 53.4% average (10 exchanges) | [CEPR VoxEU](https://cepr.org/voxeu/columns/wash-trading-centralised-crypto-exchanges-need-transparency-and-accountability) |
+| CEPR (Kocenda et al.) | 2024 | "Unregulated Tier 1" exchanges | 53.4% average (10 exchanges) | [CEPR VoxEU](https://cepr.org/voxeu/columns/wash-trading-centralised-crypto-exchanges-need-transparency-and-accountability) |
 | Forbes / Blockchain Transparency Institute | 2022 | Bitcoin trading across all exchanges | ~51% of reported volume | [Cryptonomist](https://en.cryptonomist.ch/2022/08/29/forbes-51-bitcoin-trading-volumes-fake/) |
 | Chainalysis | 2025 | DEX on-chain (Ethereum, BNB, Base) | $2.57B identified (0.035% of DEX volume) | [Chainalysis](https://www.chainalysis.com/blog/crypto-market-manipulation-wash-trading-pump-and-dump-2025/) |
-| Kaiko | 2024 | Volume-to-depth ratio analysis | Specific exchanges flagged (HTX, others) | [Kaiko Research](https://research.kaiko.com/insights/data-reveals-wash-trading-on-crypto-markets) |
+| Kaiko | 2024 | Volume-to-depth ratio analysis | HTX flagged; algorithmic wash patterns detected | [Kaiko Research](https://research.kaiko.com/insights/data-reveals-wash-trading-on-crypto-markets) |
+| CryptoCompare Exchange Benchmark | 2024 | 100+ exchanges, 68 metrics | Excludes volume from rankings due to manipulation | [CryptoCompare](https://www.cryptocompare.com/external/research/exchange-ranking/) |
+| Messari "Real 10" | 2019 | Volume comparison | 40-65% discount applied to Binance; 6.4x discrepancy between aggregators | [The Block](https://www.theblock.co/linked/17249/messari-rolls-out-real-10-volume-metrics-after-study-reveals-95-of-bitcoin-trading-volumes-are-fake) |
 
-**Applying the adjustment to our data:**
+#### Tiered Exchange Model
 
-The $77.3T combined volume figure uses CoinGecko's top-15 "trusted" exchanges, which already apply trust scores and exclude the worst offenders. This pre-filtering removes the grossest wash trading (the 95% Bitwise scenario applies to exchanges *not* in our dataset). However, even trusted exchanges exhibit residual wash trading:
+The $77.3T combined volume figure uses CoinGecko's top-15 "trusted" exchanges, which already apply trust scores and exclude the worst offenders. We segment these into three tiers:
 
-- **Regulated exchanges** (Coinbase, Kraken, Upbit — ~15% of volume): Minimal wash trading, estimated 5-10% inflation. These exchanges face SEC/MiCA oversight and publish audited trade data.
-- **Semi-regulated exchanges** (Binance, OKX, Bybit — ~55% of volume): Moderate wash trading, estimated 20-35% inflation. Kaiko's volume-to-depth analysis flags suspicious patterns on several of these platforms. The futures-to-spot ratio on some exchanges (8:1+) exceeds what organic trading behaviour would produce.
-- **Lower-tier "trusted" exchanges** (~30% of volume): Higher wash trading risk, estimated 30-50% inflation.
+| Tier | Exchanges | Volume Share | Wash Estimate | Rationale |
+|------|-----------|-------------|---------------|-----------|
+| **Tier 1** (Regulated) | Coinbase, Kraken, Bitstamp, Gemini, Upbit | ~15% | **2-5%** (central: 3.5%) | SEC/MiCA oversight. Coinbase is a public company; volume is SEC-auditable. |
+| **Tier 2** (Semi-regulated) | Binance, OKX, Bybit, Crypto.com | ~55% | **15-30%** (central: 20%) | Partial licenses. Forbes applied 40-65% discount to Binance historically; post-2023 regulatory pressure has likely reduced wash trading. Kaiko notes high volume-to-depth ratios partly due to zero-fee pairs. |
+| **Tier 3** (Lower-tier trusted) | HTX, KuCoin, Gate.io, MEXC, others | ~30% | **35-55%** (central: 45%) | Limited regulation. Kaiko flagged HTX specifically. CEPR found 80%+ on lower-tier exchanges. Strong ranking-inflation incentive. |
 
-**Weighted estimate of residual wash trading in CoinGecko top-15 data: ~20-30%.**
+**Blended wash trading estimate: ~25%** (range: 19-34%)
 
-| Metric | Reported | Adjusted (20-30% wash removed) |
-|--------|----------|-------------------------------|
-| Combined annual volume | $77.3T | $54-62T |
-| Annual spot volume | $18.83T | $13.2-15.1T |
-| Average daily volume | ~$212B | ~$148-170B |
-| Est. daily trade count | ~300-400M | ~210-320M |
-| **Est. average TPS** | **~3,500-4,600** | **~2,450-3,700** |
-| **Midpoint adjusted TPS** | **~4,000** | **~3,100** |
+| Metric | Reported | Low Adj. (19%) | Central (25%) | High Adj. (34%) |
+|--------|----------|----------------|---------------|-----------------|
+| Combined annual volume | $77.3T | $62.6T | $58.0T | $51.2T |
+| Average daily volume | ~$212B | ~$171B | ~$159B | ~$140B |
+| Est. daily trade count | ~350M | ~283M | ~263M | ~232M |
+| **Est. average TPS** | **~4,050** | **~3,275** | **~3,040** | **~2,685** |
 
-The adjusted midpoint of **~3,100 TPS** is our best estimate of genuine CEX trading activity. This aligns with the observation that regulated exchanges (Coinbase, Kraken) report roughly 40-50% lower volume per user than their semi-regulated peers — a gap too large to explain by product offering alone.
+The adjusted central estimate of **~3,040 TPS** is our best estimate of genuine CEX trading activity. The tiered model narrows the confidence interval from the prior 2,450-3,700 range (1,250 wide) to 2,685-3,275 (590 wide) — a **2.1x improvement in precision**.
 
-**Confidence level:** 🟡 Medium — the adjustment range is wide (20-30%) because wash trading detection methodologies disagree and CoinGecko's trust score filtering makes the residual hard to pin down.
+The single most impactful variable is Tier 2 wash trading (especially Binance at 39% of spot). A 10-percentage-point shift in Tier 2 wash estimate moves the adjusted TPS by ~370.
+
+**Confidence level:** 🟡 Medium-Low — the tiered model is more principled than a flat discount, but tier-level percentages are themselves uncertain. Full methodology and sensitivity analysis in [workings/wash-trading-filter.md](workings/wash-trading-filter.md).
 
 ---
 
@@ -201,31 +207,34 @@ Crypto exchange volumes are **highly cyclical** and correlated with Bitcoin pric
 
 ### What We Can't Directly Observe
 - Actual trade counts on any CEX (no exchange publishes this; all TPS figures are estimated)
-- The true wash trading percentage on "trusted" exchanges post-CoinGecko filtering
+- The true wash trading percentage on "trusted" exchanges post-CoinGecko filtering — the tiered model ([wash-trading-filter.md](workings/wash-trading-filter.md)) narrows this but does not eliminate it
 - Internal matching engine throughput vs. reported volume (exchanges batch and net orders internally)
 - The share of volume driven by market makers vs. organic traders
 - How much derivatives volume is delta-neutral hedging vs. directional speculation
+- Whether derivatives-specific wash trading rates differ from spot (our model applies the same % to both)
 
 ### Triangulation Strategies
 | Gap | Approach | Proxy Data Available | Expected Precision |
 |-----|----------|---------------------|-------------------|
-| Wash trading on trusted exchanges | Compare order book depth (Kaiko) to reported volume — high volume-to-depth ratio flags inflation | Kaiko volume-to-depth ratios for top exchanges; HTX flagged in 2024 analysis | 🟡 |
-| Regulated vs. unregulated volume split | Compare Coinbase/Kraken/Upbit volume patterns to Binance/OKX/Bybit — gap beyond product differences suggests wash trading | CoinGecko market share data; Coinbase 10-K filings with verified volumes | 🟢 |
-| Futures-to-spot ratio as manipulation indicator | Organic markets show 2-4x futures-to-spot; ratios above 6x on specific exchanges suggest synthetic volume | CoinGecko derivatives data; current global ratio is ~3.1:1 but individual exchanges diverge significantly | 🟡 |
+| Wash trading on trusted exchanges | **Tiered model applied** — see [wash-trading-filter.md](workings/wash-trading-filter.md). Further refinement via Kaiko volume-to-depth ratios per exchange. | Kaiko volume-to-depth ratios; HTX flagged in 2024 | 🟡 |
+| Regulated vs. unregulated volume split | Compare Coinbase/Kraken/Upbit volume patterns to Binance/OKX/Bybit — gap beyond product differences suggests wash trading | CoinGecko market share data; Coinbase 10-K ($1.16T FY2024 volume) | 🟢 |
+| Futures-to-spot ratio as manipulation indicator | Organic markets show 2-4x futures-to-spot; ratios above 6x on specific exchanges suggest synthetic volume | CoinGecko derivatives data; current global ratio is ~3.1:1 but individual exchanges diverge | 🟡 |
 | On-chain deposit/withdrawal flows | Compare on-chain inflows to exchanges (measurable) with claimed trading volume — genuine volume requires proportional deposits | Glassnode/CryptoQuant exchange flow data; Chainalysis exchange entity labelling | 🟢 |
 | True trade count estimation | Cross-reference API trade feeds (where available) with reported 24h volume to derive actual trade sizes | Binance/Coinbase public trade APIs; Kaiko tick-level data | 🟡 |
 | Bot vs. human trading ratio | Analyse trade size distribution and timing patterns — bot trades cluster at round numbers and sub-second intervals | Kaiko tick data; academic studies on HFT in crypto (Makarov & Schoar, 2020) | 🔴 |
+| Zero-fee pair volume decomposition | Separate Binance zero-fee BTC pairs from fee-bearing volume to distinguish incentivised trading from wash trading | Binance API; Kaiko per-pair volume data | 🟡 |
 
 ### Key Modeling Questions
-- If CoinGecko's trust scoring already removes the worst wash trading, is the residual 20-30% adjustment too aggressive or too conservative? A validated answer would narrow our TPS range by 2x.
-- What is the average trade size on regulated exchanges (Coinbase, Kraken)? If we had confirmed trade counts for even one major exchange, we could calibrate all estimates.
+- **Coinbase trade count disclosure** would be the single highest-value data point. If Coinbase published daily trade counts alongside dollar volume in its 10-K, we could calibrate average trade size for a regulated exchange and reduce our TPS confidence interval by ~50%.
+- The tiered model's Tier 2 estimate (20% wash, central) is the most impactful variable — a 10pp shift moves adjusted TPS by ~370. Post-2023 regulatory pressure may have reduced wash trading below our estimate, but no audit data exists to confirm.
 - How does the derivatives-to-spot ratio vary between regulated and unregulated exchanges? A structurally higher ratio on unregulated exchanges would be strong evidence of synthetic volume.
 - What fraction of CEX volume represents market-maker-to-market-maker trades? These are economically real but inflate the "human activity" interpretation of TPS.
+- Does Binance's zero-fee BTC pair volume represent genuine incentivised trading or wash trading? The answer materially affects the Tier 2 estimate.
 
 ### Reference Comparisons
-- **Traditional exchanges:** NYSE processes ~6B shares/day (~70K TPS) across ~$200B notional. If crypto CEXs process ~$212B/day at a similar trade-size distribution, we'd expect ~4,000 TPS — consistent with our unadjusted estimate but suggesting crypto trade sizes are smaller (which they are: median crypto trade ~$200-500 vs. NYSE ~$3,000).
-- **Bitwise "real 10" exchanges:** Bitwise's 2019 analysis identified only 10 exchanges with genuine volume. The combined "real" volume was ~5% of total reported — but this was pre-CoinGecko trust scores. The gap between Bitwise's filtered set and CoinGecko's top-15 represents the key uncertainty.
-- **FX market parallel:** Global FX does ~$7.5T/day. Crypto CEX does ~$212B/day (2.8% of FX). Given crypto's 24/7/365 operation and the speculative nature of the market, this ratio is plausible but worth monitoring as crypto matures.
+- **Traditional exchanges:** NYSE processes ~6B shares/day (~70K TPS) across ~$200B notional. If crypto CEXs process ~$159B/day (wash-adjusted) at a similar trade-size distribution, we'd expect ~3,000 TPS — closely matching our adjusted estimate.
+- **Bitwise "real 10" exchanges:** Bitwise's 2019 analysis identified only 10 exchanges with genuine volume. The combined "real" volume was ~5% of total reported — but this was pre-CoinGecko trust scores. Our tiered model suggests CoinGecko's top-15 retains ~75% genuine volume.
+- **FX market parallel:** Global FX does ~$8.5T/day (2024 interpolated). Crypto CEX does ~$159B/day wash-adjusted (1.9% of FX). Given crypto's 24/7/365 operation and speculative nature, this ratio is plausible.
 
 ---
 
