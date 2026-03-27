@@ -1,73 +1,69 @@
-# Research Agenda — Next Run (Run 4)
+# Research Agenda — Next Run (Run 5)
 
-> Updated 2026-03-26 after completing Run 3 (triangulation + tooling).
+> Updated 2026-03-27 after completing Run 4 (confidence upgrades + regional decomposition).
 
-## Status: Run 3 Complete
+## Status: Run 4 Complete
 
-All 24 categories have full capsules with normalized data.json schemas.
-Key overlaps quantified. Triangulation models for China, Solana, RTGS, Government.
-Big Number calculator and visualization tooling operational.
+All 24 categories now have confidence scores (34-91, median 62). Tier 1 confidence
+upgrades done for CEX, Forex, Fixed Income, OTC Derivatives, IoT/M2M. Regional
+decomposition complete for top 3 categories. Big Number: ~70,741 de-duplicated TPS.
 
-## What Run 4 Should Target
+## What Run 5 Should Target
 
-### Tier 1: Confidence Upgrades (move 🔴→🟡 and 🟡→🟢)
+### Tier 1: Remaining Confidence Gaps (highest ROI)
 
-1. **CEX wash trading adjustment** — Current ~3,100 TPS is wash-adjusted but methodology is rough. Cross-reference Kaiko/CryptoCompare real-volume estimates vs. CoinGecko/CMC reported. Build a wash-trading filter model similar to Solana vote filter.
+1. **Repo market deep dive** — Repo adds ~83.8M trades/year to fixed income but carries 4× uncertainty (40M-160M). Fed ON RRP, DTCC GCF, ECB MRO data could anchor this. This is the single largest remaining uncertainty by absolute count.
 
-2. **Forex transaction count** — Genuinely opaque. CLS settles ~$6.6T/day but only covers ~35% of market. Model remaining 65% via prime brokerage data, BIS triennial survey breakdowns by counterparty type, and electronic platform market share (EBS, Refinitiv, etc.).
+2. **CEX regional wash trading** — Current model uses global tiers. Regional analysis (Korea premium, China OTC, Middle East unregulated) could refine Tier 2/3 estimates.
 
-3. **Fixed income count refinement** — Current ~7 TPS is a rough estimate. TRACE data (US corporate/agency), MTS (EU govt bonds), and ICMA repo surveys could triangulate better.
+3. **Retail forex count validation** — ~10M/day estimate is extrapolated from limited broker data. FXCM, IG, Plus500, CMC Markets all report trade counts in annual reports — aggregate them.
 
-4. **OTC derivatives** — Most opaque category. DTCC SDR data + ISDA surveys + BIS semiannual could narrow from ~0.6 TPS estimate.
+4. **Equity OTC derivatives** — Most opaque sub-segment at 0.6M/year. Coalition Greenwich institutional surveys may have data.
 
-5. **IoT/M2M payments** — Currently 🔴 Low confidence. ABI Research, Juniper Research, and GSMA IoT data could triangulate. Separate toll/transit from industrial IoT.
+5. **Gaming overlap quantification** — Gaming purchases overlap with cards/wallets. Quantify: what % flows through Apple/Google in-app (counted in wallet?) vs. direct card charge.
 
-### Tier 2: Regional Decomposition
+### Tier 2: New Category Expansion
 
-6. **Consumer cards by network** — Break 772.7B into Visa/Mastercard/UnionPay/Amex/JCB/Discover. Network-specific growth rates.
+6. **Insurance premiums** — ~$7T global, unknown transaction count. Lloyd's, Swiss Re sigma data. Potentially billions of auto-debit premium collections.
 
-7. **Bank transfers by region** — India (UPI), Brazil (PIX), China (CNAPS), EU (SEPA), US (ACH/FedNow) — individual growth trajectories.
+7. **BNPL** — Klarna (~2.5M txns/day), Afterpay, Affirm, PayPal BNPL. Growing fast, partially overlapping cards. Model the overlap.
 
-8. **Equity markets by exchange** — NYSE, NASDAQ, SSE, SZSE, NSE, BSE, JPX, LSE, Euronext — validate 61.5B aggregate.
+8. **Bill payments** — Utilities, telecoms, subscriptions. Potentially 50-100B annual. NACHA biller data, UK Direct Debit stats, EU SEPA DD volumes.
 
-### Tier 3: Projection Model Improvements
+9. **Payroll** — Implicit in bank transfers. ADP processes ~100M paychecks/year in US alone. Global estimate unknown.
 
-9. **Backtest projections** — For categories with 5+ years of data, run backtests on projection models (did baseline/high/conservative brackets capture actual outcomes?).
+10. **ATM withdrawals** — Declining (~50B/year?). ATM Industry Association data. Overlap with bank transfers for cash-out.
 
-10. **Macro-scenario modelling** — How do recession, pandemic, or fintech disruption scenarios affect projections? Stress-test the Big Number under different assumptions.
+### Tier 3: Temporal & Scenario Analysis
 
-11. **Digital assets projection uncertainty** — CEX/L1L2 projections are especially uncertain. Model bull/bear crypto cycle impacts.
+11. **Backtest projections** — For categories with 5+ years of history, did our projection brackets capture reality? Run backtests.
 
-### Tier 4: New Categories & Expansion
+12. **Macro-scenario stress tests** — Recession, pandemic, crypto winter, fintech disruption — how does the Big Number shift?
 
-12. **Insurance premiums** — Global premium volume is ~$7T. Transaction count unknown but potentially billions.
-13. **Payroll payments** — Implicit in bank transfers. Could be 10-20B annual txns globally.
-14. **Bill payments** — Utilities, telecoms, subscriptions. Potentially 50-100B annual txns.
-15. **ATM withdrawals** — Declining (~50B/year?) but still relevant.
-16. **BNPL** — Growing rapidly, partially overlapping cards. Klarna alone at ~2.5M txns/day.
+13. **Time-series construction** — Build 2015-2025 annual TPS for all 24 categories using historic data already in capsules. Enable growth rate comparison.
 
-### Tier 5: Tooling & Presentation
+14. **Peak TPS analysis** — Black Friday, Singles' Day, crypto crashes, options expiry — what's the coordinated global peak?
 
-17. **Interactive dashboard** — Web-based visualization of the Big Number with drill-down by sector.
-18. **API endpoint** — Serve data.json programmatically for downstream projects (Blokenet context).
-19. **Confidence scoring model** — Formalize confidence from qualitative (🔴🟡🟢) to quantitative (0-100 with defined rubric).
-20. **Time-series animation** — Animated chart showing TPS growth from 2015→2035 across all categories.
+### Tier 4: Tooling & Presentation
+
+15. **Interactive dashboard** — Web-based Big Number visualization with drill-down by sector/category/region.
+
+16. **API endpoint** — Serve data.json programmatically for downstream projects (Blokenet context).
+
+17. **Time-series animation** — Animated chart: TPS by category 2015→2035.
+
+18. **Automated confidence updater** — Script that re-scores confidence as new workings files are added.
+
+19. **Data freshness tracker** — Flag categories where sources are >12 months old.
 
 ## Data Sources to Investigate
 
-- **Kaiko** — Real crypto trading volume (wash-filtered)
-- **CryptoCompare Exchange Benchmark** — Exchange trustworthiness scoring
-- **FINRA TRACE** — US corporate bond trading data
-- **ICMA European Repo Survey** — Repo market sizing
-- **DTCC SDR** — OTC derivative trade reporting
-- **BIS Triennial Survey 2025** — If published, latest forex/derivatives data
-- **ABI Research** — IoT payment forecasts
-- **Juniper Research** — IoT/M2M payment estimates
-- **GSMA IoT Report** — Connected device payment activity
-
-## Revisions Still Needed
-
-- Update OVERLAP_MATRIX.md with revised L1/L2 TPS (~350-480 vs. ~900) from Solana filter
-- Update OVERLAP_MATRIX.md with revised government TPS (~1,002 vs. ~793) from bottom-up model
-- Reconcile big_number.py output (~71,105) with OVERLAP_MATRIX.md estimates (~70,600/71,600)
-- Add revised RTGS total (~1.5B) to banking section of README
+- **DTCC GCF Repo Index** — US repo market daily data
+- **Fed ON RRP** — Overnight reverse repo facility usage
+- **ECB Money Market Statistical Reporting** — Euro repo data
+- **Coalition Greenwich** — Institutional trading surveys (equity OTC, FX)
+- **FXCM/IG/Plus500 Annual Reports** — Retail forex trade counts
+- **ATM Industry Association** — Global ATM withdrawal statistics
+- **ADP Research** — Payroll transaction volumes
+- **Swiss Re sigma** — Insurance premium data
+- **Klarna/Affirm 10-K** — BNPL transaction counts
