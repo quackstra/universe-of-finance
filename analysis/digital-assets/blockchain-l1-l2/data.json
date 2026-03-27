@@ -158,45 +158,53 @@
   "sources": [
     {
       "id": 1,
-      "citation": "Etherscan \u2014 Ethereum Daily Transactions Chart",
+      "citation": "Etherscan — Ethereum Daily Transactions Chart",
       "url": "https://etherscan.io/chart/tx",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "Blockchain.com \u2014 Bitcoin Confirmed Transactions Per Day",
+      "citation": "Blockchain.com — Bitcoin Confirmed Transactions Per Day",
       "url": "https://www.blockchain.com/charts/n-transactions",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "L2Beat \u2014 Scaling Activity Dashboard",
+      "citation": "L2Beat — Scaling Activity Dashboard",
       "url": "https://l2beat.com/scaling/activity",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "CryptoSlate \u2014 70M daily transactions: How Solana won DeFi's throughput race",
+      "citation": "CryptoSlate — 70M daily transactions: How Solana won DeFi's throughput race",
       "url": "https://cryptoslate.com/70m-daily-transactions-143b-volume-how-solana-won-defis-throughput-race/",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "CryptoRank \u2014 Base L2 transaction momentum 2024",
+      "citation": "CryptoRank — Base L2 transaction momentum 2024",
       "url": "https://cryptorank.io/news/feed/4c92e-base-l2-transaction-momentum-2024",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "BitInfoCharts \u2014 Blockchain Statistics",
+      "citation": "BitInfoCharts — Blockchain Statistics",
       "url": "https://bitinfocharts.com/",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Statista \u2014 Bitcoin/Ethereum daily transactions",
+      "citation": "Statista — Bitcoin/Ethereum daily transactions",
       "url": "https://www.statista.com/statistics/730838/number-of-daily-cryptocurrency-transactions-by-type/",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 76,
+    "source_quality": 22,
+    "data_recency": 19,
+    "triangulation": 20,
+    "coverage": 15,
+    "notes": "On-chain data is transparent and verifiable. L2 rollup transaction counts are harder to aggregate."
+  }
 }

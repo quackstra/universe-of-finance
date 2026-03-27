@@ -152,18 +152,18 @@
       "digital-wallets"
     ],
     "overlap_type": "partial",
-    "overlap_note": "Minor overlap \u2014 some P2P flows through digital wallet platforms"
+    "overlap_note": "Minor overlap — some P2P flows through digital wallet platforms"
   },
   "sources": [
     {
       "id": 1,
-      "citation": "CNBC \u2014 Zelle payments top $1 trillion in 2024",
+      "citation": "CNBC — Zelle payments top $1 trillion in 2024",
       "url": "https://www.cnbc.com/2025/02/12/zelle-payments-top-1-trillion-in-2024.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "Zelle press release \u2014 $806B in 2023",
+      "citation": "Zelle press release — $806B in 2023",
       "url": "https://www.zelle.com/press-releases/zelle-soars-806-billion-transaction-volume-28-prior-year",
       "accessed": "2026-03-26"
     },
@@ -181,33 +181,41 @@
     },
     {
       "id": 5,
-      "citation": "BusinessOfApps \u2014 Venmo Statistics 2026",
+      "citation": "BusinessOfApps — Venmo Statistics 2026",
       "url": "https://www.businessofapps.com/data/venmo-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "BusinessOfApps \u2014 Cash App Statistics 2026",
+      "citation": "BusinessOfApps — Cash App Statistics 2026",
       "url": "https://www.businessofapps.com/data/cash-app-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "CoinLaw \u2014 Zelle vs Venmo Statistics 2026",
+      "citation": "CoinLaw — Zelle vs Venmo Statistics 2026",
       "url": "https://coinlaw.io/zelle-vs-venmo-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 8,
-      "citation": "eMarketer \u2014 US Mobile P2P Payments Forecast 2024",
+      "citation": "eMarketer — US Mobile P2P Payments Forecast 2024",
       "url": "https://www.emarketer.com/content/us-mobile-p2p-payments-forecast-2024",
       "accessed": "2026-03-26"
     },
     {
       "id": 9,
-      "citation": "Precedence Research \u2014 P2P Payment Market to $16.21T by 2034",
+      "citation": "Precedence Research — P2P Payment Market to $16.21T by 2034",
       "url": "https://www.precedenceresearch.com/p2p-payment-market",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 69,
+    "source_quality": 20,
+    "data_recency": 17,
+    "triangulation": 16,
+    "coverage": 16,
+    "notes": "UPI (India) and Pix (Brazil) have excellent public data. US platforms (Venmo, Zelle) disclose quarterly. Informal cash P2P not captured."
+  }
 }

@@ -125,39 +125,47 @@
   "sources": [
     {
       "id": 1,
-      "citation": "FIA \u2014 2024 Annual ETD Volume Review",
+      "citation": "FIA — 2024 Annual ETD Volume Review",
       "url": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "ICE \u2014 Record 2 Billion Contracts in 2024",
+      "citation": "ICE — Record 2 Billion Contracts in 2024",
       "url": "https://ir.theice.com/press/news-details/2025/ICE-Announces-That-a-Record-2-Billion-Contracts-Traded-in-2024/default.aspx",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "ICE \u2014 Record Environmental Market Trading 2024",
+      "citation": "ICE — Record Environmental Market Trading 2024",
       "url": "https://ir.theice.com/press/news-details/2025/ICE-Announces-Record-Environmental-Market-Trading-in-2024/default.aspx",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "CME Group \u2014 Record Annual ADV 2024",
+      "citation": "CME Group — Record Annual ADV 2024",
       "url": "https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "LME \u2014 Annual Volumes",
+      "citation": "LME — Annual Volumes",
       "url": "https://www.lme.com/en/market-data/reports-and-data/volumes/annual-volumes",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "ESMA \u2014 EU Carbon Markets 2024",
+      "citation": "ESMA — EU Carbon Markets 2024",
       "url": "https://www.esma.europa.eu/sites/default/files/2024-10/ESMA50-43599798-10379_Carbon_markets_report_2024.pdf",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 74,
+    "source_quality": 22,
+    "data_recency": 18,
+    "triangulation": 18,
+    "coverage": 16,
+    "notes": "Exchange-traded commodity derivatives well documented via FIA. Physical commodity spot transactions are opaque."
+  }
 }

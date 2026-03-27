@@ -157,45 +157,53 @@
   "sources": [
     {
       "id": 1,
-      "citation": "DeFiLlama \u2014 DEX Volume Rankings",
+      "citation": "DeFiLlama — DEX Volume Rankings",
       "url": "https://defillama.com/dexs",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "DeFiLlama \u2014 Perp DEX Volume Rankings",
+      "citation": "DeFiLlama — Perp DEX Volume Rankings",
       "url": "https://defillama.com/perps",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "CoinGecko \u2014 2024 Annual Crypto Industry Report",
+      "citation": "CoinGecko — 2024 Annual Crypto Industry Report",
       "url": "https://www.coingecko.com/research/publications/2024-annual-crypto-report",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "CoinGecko \u2014 State of Crypto Perpetuals Market (2024)",
+      "citation": "CoinGecko — State of Crypto Perpetuals Market (2024)",
       "url": "https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "CoinLaw \u2014 Decentralized Finance Market Statistics 2025",
+      "citation": "CoinLaw — Decentralized Finance Market Statistics 2025",
       "url": "https://coinlaw.io/decentralized-finance-market-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "CoinLaw \u2014 Crypto Lending and Borrowing Statistics 2026",
+      "citation": "CoinLaw — Crypto Lending and Borrowing Statistics 2026",
       "url": "https://coinlaw.io/crypto-lending-and-borrowing-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Solana Floor \u2014 DEX Volume Hits Trillion Dollar Mark",
+      "citation": "Solana Floor — DEX Volume Hits Trillion Dollar Mark",
       "url": "https://solanafloor.com/news/solana-s-dex-volume-hits-trillion-dollar-mark-2025-in-numbers",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 62,
+    "source_quality": 18,
+    "data_recency": 19,
+    "triangulation": 15,
+    "coverage": 10,
+    "notes": "On-chain data is verifiable but DeFi 'transaction' definition varies. MEV and arbitrage inflate counts."
+  }
 }

@@ -228,51 +228,59 @@
   "sources": [
     {
       "id": 1,
-      "citation": "AWS \u2014 x402 and Agentic Commerce",
+      "citation": "AWS — x402 and Agentic Commerce",
       "url": "https://aws.amazon.com/blogs/industries/x402-and-agentic-commerce-redefining-autonomous-payments-in-financial-services/",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "BlockEden.xyz \u2014 Fortune 500 AI Agents + Alchemy x402 Integration",
+      "citation": "BlockEden.xyz — Fortune 500 AI Agents + Alchemy x402 Integration",
       "url": "https://blockeden.xyz/blog/2026/03/18/fortune-500-ai-agents-alchemy-x402-onchain-payments-enterprise-crypto-convergence/",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "Millionero \u2014 AI Agents in Crypto: Autonomous Finance in 2026",
+      "citation": "Millionero — AI Agents in Crypto: Autonomous Finance in 2026",
       "url": "https://blog.millionero.com/blog/ai-agents-in-crypto-how-autonomous-finance-is-becoming-real-in-2026/",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "Google Cloud Blog \u2014 Announcing Agent Payments Protocol (AP2)",
+      "citation": "Google Cloud Blog — Announcing Agent Payments Protocol (AP2)",
       "url": "https://cloud.google.com/blog/products/ai-machine-learning/announcing-agents-to-payments-ap2-protocol",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "Gartner \u2014 AI Agents Will Command $15 Trillion in B2B Purchases by 2028",
+      "citation": "Gartner — AI Agents Will Command $15 Trillion in B2B Purchases by 2028",
       "url": "https://www.digitalcommerce360.com/2025/11/28/gartner-ai-agents-15-trillion-in-b2b-purchases-by-2028/",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "Gartner \u2014 Predictions for IT Organizations 2026 and Beyond",
+      "citation": "Gartner — Predictions for IT Organizations 2026 and Beyond",
       "url": "https://www.gartner.com/en/newsroom/press-releases/2025-10-21-gartner-unveils-top-predictions-for-it-organizations-and-users-in-2026-and-beyond",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "MarketsAndMarkets \u2014 AI Agents Market Report 2025-2030",
+      "citation": "MarketsAndMarkets — AI Agents Market Report 2025-2030",
       "url": "https://www.marketsandmarkets.com/Market-Reports/ai-agents-market-15761548.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 8,
-      "citation": "Calmops \u2014 x402 Protocol Complete Guide 2026",
+      "citation": "Calmops — x402 Protocol Complete Guide 2026",
       "url": "https://calmops.com/web3/x402-protocol-programmable-payments-ai-agents-2026/",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 34,
+    "source_quality": 8,
+    "data_recency": 16,
+    "triangulation": 5,
+    "coverage": 5,
+    "notes": "Pre-market category. Most data is projections, not measurements. Very low base makes any estimate unreliable."
+  }
 }

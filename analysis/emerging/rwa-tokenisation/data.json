@@ -77,14 +77,14 @@
       "year": 2024,
       "annual_volume": null,
       "avg_tps": null,
-      "source": "RWA.xyz \u2014 year-end 2024",
+      "source": "RWA.xyz — year-end 2024",
       "confidence": "medium"
     },
     {
       "year": 2025,
       "annual_volume": null,
       "avg_tps": null,
-      "source": "RWA.xyz \u2014 mid-2025",
+      "source": "RWA.xyz — mid-2025",
       "confidence": "medium"
     }
   ],
@@ -256,45 +256,53 @@
   "sources": [
     {
       "id": 1,
-      "citation": "RWA.xyz \u2014 Analytics on Tokenized Real-World Assets",
+      "citation": "RWA.xyz — Analytics on Tokenized Real-World Assets",
       "url": "https://app.rwa.xyz/",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "The Defiant \u2014 RWAs Became Wall Street's Gateway to Crypto in 2025",
+      "citation": "The Defiant — RWAs Became Wall Street's Gateway to Crypto in 2025",
       "url": "https://thedefiant.io/news/defi/rwas-became-wall-street-s-gateway-to-crypto-in-2025",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "RedStone \u2014 Real-World Assets in Onchain Finance Report",
+      "citation": "RedStone — Real-World Assets in Onchain Finance Report",
       "url": "https://blog.redstone.finance/2025/06/26/real-world-assets-in-onchain-finance-report/",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "CoinGecko \u2014 2025 RWA Report",
+      "citation": "CoinGecko — 2025 RWA Report",
       "url": "https://assets.coingecko.com/reports/2025/CoinGecko-2025-RWA-Report.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "CoinPedia \u2014 RWA Tokenization Could Reach $30T by 2030",
+      "citation": "CoinPedia — RWA Tokenization Could Reach $30T by 2030",
       "url": "https://coinpedia.org/research-report/top-real-world-asset-rwa-projects/",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "NextMSC \u2014 Global Tokenized RWAs Market Growth Trends and 2030 Forecast",
+      "citation": "NextMSC — Global Tokenized RWAs Market Growth Trends and 2030 Forecast",
       "url": "https://www.nextmsc.com/report/tokenized-real-world-assets-rwas-market-bf3345",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "ElectroIQ \u2014 Tokenized Assets Statistics 2025",
+      "citation": "ElectroIQ — Tokenized Assets Statistics 2025",
       "url": "https://electroiq.com/stats/tokenized-assets-statistics/",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 56,
+    "source_quality": 14,
+    "data_recency": 18,
+    "triangulation": 12,
+    "coverage": 12,
+    "notes": "Public blockchain RWA data is verifiable. Private tokenisation platforms not captured."
+  }
 }

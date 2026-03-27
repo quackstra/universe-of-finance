@@ -30,7 +30,7 @@
     },
     "annual_value_usd": {
       "value": 15600000000000,
-      "source": "Worldpay Global Payments Report 2024 \u2014 digital wallet spend $15.6T",
+      "source": "Worldpay Global Payments Report 2024 — digital wallet spend $15.6T",
       "url": "https://worldpay.globalpaymentsreport.com/",
       "confidence": "high"
     }
@@ -164,7 +164,7 @@
     },
     {
       "id": 2,
-      "citation": "PIB \u2014 UPI as World's Largest Real-Time Payment System (IMF)",
+      "citation": "PIB — UPI as World's Largest Real-Time Payment System (IMF)",
       "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569",
       "accessed": "2026-03-26"
     },
@@ -176,19 +176,19 @@
     },
     {
       "id": 4,
-      "citation": "Electroiq \u2014 Alipay Statistics 2024",
+      "citation": "Electroiq — Alipay Statistics 2024",
       "url": "https://electroiq.com/stats/alipay-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "CoinLaw \u2014 Alipay vs WeChat Pay Statistics 2025",
+      "citation": "CoinLaw — Alipay vs WeChat Pay Statistics 2025",
       "url": "https://coinlaw.io/alipay-vs-wechat-pay-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "BusinessOfApps \u2014 WeChat Statistics 2026",
+      "citation": "BusinessOfApps — WeChat Statistics 2026",
       "url": "https://www.businessofapps.com/data/wechat-statistics/",
       "accessed": "2026-03-26"
     },
@@ -200,33 +200,41 @@
     },
     {
       "id": 8,
-      "citation": "Statista \u2014 M-Pesa transaction volume 2017-2024",
+      "citation": "Statista — M-Pesa transaction volume 2017-2024",
       "url": "https://www.statista.com/statistics/1139181/m-pesa-transaction-volume/",
       "accessed": "2026-03-26"
     },
     {
       "id": 9,
-      "citation": "Statista \u2014 China mobile payment transactions 2024",
+      "citation": "Statista — China mobile payment transactions 2024",
       "url": "https://www.statista.com/statistics/244538/number-of-mobile-payment-transactions-in-china/",
       "accessed": "2026-03-26"
     },
     {
       "id": 10,
-      "citation": "Electroiq \u2014 Apple Pay Statistics",
+      "citation": "Electroiq — Apple Pay Statistics",
       "url": "https://electroiq.com/stats/apple-pay-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 11,
-      "citation": "BusinessOfApps \u2014 Mobile Payments Market 2026",
+      "citation": "BusinessOfApps — Mobile Payments Market 2026",
       "url": "https://www.businessofapps.com/data/mobile-payments-app-market/",
       "accessed": "2026-03-26"
     },
     {
       "id": 12,
-      "citation": "Capital One Shopping \u2014 Digital Wallet Statistics 2026",
+      "citation": "Capital One Shopping — Digital Wallet Statistics 2026",
       "url": "https://capitaloneshopping.com/research/digital-wallet-statistics",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 67,
+    "source_quality": 18,
+    "data_recency": 17,
+    "triangulation": 16,
+    "coverage": 16,
+    "notes": "Alipay and WeChat Pay dominate but detailed transaction counts are corporate-confidential. Good proxy data from PBOC."
+  }
 }

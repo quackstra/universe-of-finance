@@ -223,5 +223,13 @@
       "url": "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 88,
+    "source_quality": 27,
+    "data_recency": 19,
+    "triangulation": 20,
+    "coverage": 22,
+    "notes": "FIA annual survey is the most authoritative source for ETD volumes. Excellent coverage of listed derivatives."
+  }
 }

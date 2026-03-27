@@ -12,7 +12,7 @@
     },
     "peak_tps": {
       "value": 61250,
-      "source": "Estimated: avg TPS \u00d7 2.5 peak multiplier",
+      "source": "Estimated: avg TPS × 2.5 peak multiplier",
       "url": "",
       "confidence": "low",
       "note": "No network publicly discloses observed peak. VisaNet capacity is 83,000 TPS."
@@ -25,13 +25,13 @@
     },
     "annual_volume": {
       "value": 772730000000,
-      "source": "Nilson Report \u2014 Global Network Card Results Worldwide 2024",
+      "source": "Nilson Report — Global Network Card Results Worldwide 2024",
       "url": "https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/",
       "confidence": "high"
     },
     "annual_value_usd": {
       "value": 51920000000000,
-      "source": "Nilson Report \u2014 total purchase + cash volume 2024",
+      "source": "Nilson Report — total purchase + cash volume 2024",
       "url": "https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/",
       "confidence": "high",
       "note": "Includes purchase volume ($~44.5T est.) and cash advances/withdrawals"
@@ -277,123 +277,131 @@
   "sources": [
     {
       "id": 1,
-      "citation": "Nilson Report \u2014 Global Network Card Results Worldwide 2024",
+      "citation": "Nilson Report — Global Network Card Results Worldwide 2024",
       "url": "https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "Nilson Report \u2014 Top 150 Merchant Acquirers Worldwide 2024",
+      "citation": "Nilson Report — Top 150 Merchant Acquirers Worldwide 2024",
       "url": "https://nilsonreport.com/articles/top-150-merchant-acquirers-worldwide-2024/",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "Visa Inc. \u2014 Fiscal Year 2024 Q4 Earnings Release",
+      "citation": "Visa Inc. — Fiscal Year 2024 Q4 Earnings Release",
       "url": "https://s1.q4cdn.com/050606653/files/doc_financials/2024/q4/Q4-2024-Earnings-Release_vF.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "Visa Inc. \u2014 Annual Report 2024",
+      "citation": "Visa Inc. — Annual Report 2024",
       "url": "https://s29.q4cdn.com/385744025/files/doc_downloads/2024/Visa-Fiscal-2024-Annual-Report.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "Visa Inc. \u2014 10-K FY2024 SEC Filing",
+      "citation": "Visa Inc. — 10-K FY2024 SEC Filing",
       "url": "https://s1.q4cdn.com/050606653/files/doc_financials/2024/ar/2ddc584c-441d-475b-8a97-630dad75db94.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "Mastercard \u2014 Full Year 2024 Earnings Review",
+      "citation": "Mastercard — Full Year 2024 Earnings Review",
       "url": "https://www.mastercard.com/global/en/news-and-trends/stories/2025/earnings-review-2024-and-the-road-ahead.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Mastercard \u2014 10-K FY2024 SEC Filing",
+      "citation": "Mastercard — 10-K FY2024 SEC Filing",
       "url": "https://www.sec.gov/Archives/edgar/data/1141391/000114139125000011/ma-20241231.htm",
       "accessed": "2026-03-26"
     },
     {
       "id": 8,
-      "citation": "American Express \u2014 FY2024 Annual Report",
+      "citation": "American Express — FY2024 Annual Report",
       "url": "https://s26.q4cdn.com/747928648/files/doc_financials/2024/ar/v2/American-Express-2024-Annual-Report.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 9,
-      "citation": "American Express \u2014 FY2024 Earnings Release",
+      "citation": "American Express — FY2024 Earnings Release",
       "url": "https://ir.americanexpress.com/news/investor-relations-news/investor-relations-news-details/2025/American-Express-Announces-Record-FY-2024-Revenue-Up-9-or-10-on-an-FX-Adjusted-Basis/default.aspx",
       "accessed": "2026-03-26"
     },
     {
       "id": 10,
-      "citation": "Capital One Shopping \u2014 Number of Credit Card Transactions per Second & Year",
+      "citation": "Capital One Shopping — Number of Credit Card Transactions per Second & Year",
       "url": "https://capitaloneshopping.com/research/number-of-credit-card-transactions/",
       "accessed": "2026-03-26"
     },
     {
       "id": 11,
-      "citation": "Capital One Shopping \u2014 Credit Card Market Share (2025)",
+      "citation": "Capital One Shopping — Credit Card Market Share (2025)",
       "url": "https://capitaloneshopping.com/research/credit-card-market-share-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 12,
-      "citation": "Payments Dive \u2014 Worldwide card use to jump 43% by 2029, Nilson predicts",
+      "citation": "Payments Dive — Worldwide card use to jump 43% by 2029, Nilson predicts",
       "url": "https://www.paymentsdive.com/news/credit-card-us-market-payments-outpaced-by-other-world-regions/740595/",
       "accessed": "2026-03-26"
     },
     {
       "id": 13,
-      "citation": "CoinLaw \u2014 UnionPay Statistics 2025",
+      "citation": "CoinLaw — UnionPay Statistics 2025",
       "url": "https://coinlaw.io/unionpay-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 14,
-      "citation": "GlobeNewsWire / Nilson \u2014 Amex, Discover, Mastercard and Visa Card Spending Exceeded $10 Trillion in 2024",
+      "citation": "GlobeNewsWire / Nilson — Amex, Discover, Mastercard and Visa Card Spending Exceeded $10 Trillion in 2024",
       "url": "https://www.globenewswire.com/news-release/2025/02/25/3032247/0/en/Amex-Discover-Mastercard-and-Visa-Card-Spending-Exceeded-10-Trillion-in-2024.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 15,
-      "citation": "Allied Market Research \u2014 Card Payments Market Size, Share, Trends & Growth 2033",
+      "citation": "Allied Market Research — Card Payments Market Size, Share, Trends & Growth 2033",
       "url": "https://www.alliedmarketresearch.com/card-payments-market-A324247",
       "accessed": "2026-03-26"
     },
     {
       "id": 16,
-      "citation": "Visa Corporate Factsheet \u2014 VisaNet Technology",
+      "citation": "Visa Corporate Factsheet — VisaNet Technology",
       "url": "https://www.visa.co.uk/dam/VCOM/download/corporate/media/visanet-technology/aboutvisafactsheet.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 17,
-      "citation": "BIS \u2014 Retail payments, currency and related indicators (CPMI Statistics)",
+      "citation": "BIS — Retail payments, currency and related indicators (CPMI Statistics)",
       "url": "https://data.bis.org/topics/CPMI_CT",
       "accessed": "2026-03-26"
     },
     {
       "id": 18,
-      "citation": "Federal Reserve \u2014 The Federal Reserve Payments Study (November 2024)",
+      "citation": "Federal Reserve — The Federal Reserve Payments Study (November 2024)",
       "url": "https://www.federalreserve.gov/paymentsystems/2024-November-The-Federal-Reserve-Payments-Study.htm",
       "accessed": "2026-03-26"
     },
     {
       "id": 19,
-      "citation": "Nilson Report \u2014 Card Fraud Losses Worldwide 2024 (total volume reference)",
+      "citation": "Nilson Report — Card Fraud Losses Worldwide 2024 (total volume reference)",
       "url": "https://nilsonreport.com/articles/card-fraud-losses-worldwide-2024/",
       "accessed": "2026-03-26"
     },
     {
       "id": 20,
-      "citation": "Nilson Report \u2014 Payment Card Transactions Projected Worldwide 2022-2027",
+      "citation": "Nilson Report — Payment Card Transactions Projected Worldwide 2022-2027",
       "url": "https://nilsonreport.com/articles/payment-card-transactions-projected-worldwide-3/",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 91,
+    "source_quality": 28,
+    "data_recency": 19,
+    "triangulation": 22,
+    "coverage": 22,
+    "notes": "Best-documented payment category. Nilson Report is the gold standard. Network filings provide cross-checks."
+  }
 }

@@ -2,38 +2,38 @@
   "category": "IoT & Machine-to-Machine Payments",
   "slug": "iot-m2m",
   "sector": "Emerging",
-  "last_updated": "2026-03-26",
+  "last_updated": "2026-03-27",
   "current": {
     "avg_tps": {
-      "value": 634,
-      "source": "Derived: midpoint of 15-25B annual / 31,536,000 seconds",
+      "value": 1538,
+      "source": "Triangulated bottom-up from 6 segments: toll 27B + EV charging 3B + smart meter 8.5B + vending 9.5B + connected vehicle 0.5B + wearable/industrial 0.22B = 48.5B / 31,536,000s",
       "url": "",
-      "confidence": "low"
+      "confidence": "low-medium"
     },
     "peak_tps": {
-      "value": 2500,
-      "source": "Estimated: rush hour tolling + peak utility billing globally",
+      "value": 4500,
+      "source": "Estimated: rush hour tolling (China + India + US + EU concurrent) + peak utility billing + evening vending",
       "url": "",
       "confidence": "low"
     },
     "daily_volume": {
-      "value": 55000000,
-      "source": "Derived: midpoint of 15-25B / 365",
+      "value": 132900000,
+      "source": "Derived: 48.5B / 365",
       "url": "",
-      "confidence": "low"
+      "confidence": "low-medium"
     },
     "annual_volume": {
-      "value": 20000000000,
-      "source": "Aggregated estimate from subcategories",
+      "value": 48500000000,
+      "source": "Bottom-up triangulation from 6 segments (medium scope): toll collection 27B, EV charging 3B, smart meter billing 8.5B, vending/unattended 9.5B, connected vehicle 0.5B, wearable+industrial 0.22B. See workings/triangulation-model.md",
       "url": "",
-      "confidence": "low",
-      "note": "Midpoint of 15-25B range. Most M2M payments are invisible in existing payment statistics."
+      "confidence": "low-medium",
+      "note": "Medium scope: device-initiated or device-mediated payments excluding transit card taps. Range: 35-65B depending on scope definition. Previous estimate was 20B (midpoint of 15-25B)."
     },
     "annual_value_usd": {
-      "value": null,
-      "source": "",
-      "url": "",
-      "confidence": "low"
+      "value": 77000000000,
+      "source": "Research Nester autonomous IoT payments market 2025",
+      "url": "https://www.researchnester.com/reports/autonomous-iot-payments-market/6532",
+      "confidence": "medium"
     }
   },
   "historic": [
@@ -263,45 +263,89 @@
   "sources": [
     {
       "id": 1,
-      "citation": "IoT Analytics \u2014 Number of Connected IoT Devices Growing 14% to 21.1 Billion",
+      "citation": "IoT Analytics — Number of Connected IoT Devices Growing 14% to 21.1 Billion",
       "url": "https://iot-analytics.com/number-connected-iot-devices/",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "Ericsson \u2014 IoT Connections Forecast (Mobility Report)",
+      "citation": "Ericsson — IoT Connections Forecast (Mobility Report)",
       "url": "https://www.ericsson.com/en/reports-and-papers/mobility-report/dataforecasts/iot-connections-outlook",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "GSMA Intelligence \u2014 IoT Market Forecast to 2030",
+      "citation": "GSMA Intelligence — IoT Market Forecast to 2030",
       "url": "https://www.gsmaintelligence.com/research/iot-market-forecast-to-2030-connections-by-region-and-vertical",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "Research Nester \u2014 Autonomous IoT Payments Market Size & Share 2037",
+      "citation": "Research Nester — Autonomous IoT Payments Market Size & Share 2037",
       "url": "https://www.researchnester.com/reports/autonomous-iot-payments-market/6532",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "GM Insights \u2014 Autonomous IoT Payments Market Size 2024-2032",
+      "citation": "GM Insights — Autonomous IoT Payments Market Size 2024-2032",
       "url": "https://www.gminsights.com/industry-analysis/autonomous-iot-payments-market",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "GlobeNewsWire \u2014 Electronic Toll Collection Market Size",
+      "citation": "GlobeNewsWire — Electronic Toll Collection Market Size",
       "url": "https://www.globenewswire.com/news-release/2024/03/22/2850890/0/en/Global-Electronic-Toll-Collection-Market-Size-To-Worth-USD-20-56-Billion-By-2033-CAGR-Of-7-71.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Mastercard \u2014 How IoT Will Shape the Future of Payments (2021)",
+      "citation": "Mastercard — How IoT Will Shape the Future of Payments (2021)",
       "url": "https://www.mastercard.com/news/media/wddjfrhn/how-iot-will-shape-the-future-of-payments.pdf",
       "accessed": "2026-03-26"
+    },
+    {
+      "id": 8,
+      "citation": "NPCI — NETC FASTag Product Statistics (monthly transaction data)",
+      "url": "https://www.npci.org.in/what-we-do/netc-fastag/product-statistics",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 9,
+      "citation": "IEA — Global EV Outlook 2025 (Electric Vehicle Charging)",
+      "url": "https://www.iea.org/reports/global-ev-outlook-2025/electric-vehicle-charging",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 10,
+      "citation": "Cantaloupe — 2025 Micropayment Trends Report (cashless vending data)",
+      "url": "https://cantaloupeinc.gcs-web.com/news-releases/news-release-details/self-service-goes-cash-free-cantaloupes-2025-micropayment-trends/",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 11,
+      "citation": "Astute Analytica / GlobeNewsWire — Smart Meter Market (1.8B installed base)",
+      "url": "https://www.globenewswire.com/news-release/2026/01/08/3215275/0/en/Smart-Meter-Market-Projected-to-Reach-US-112-71-Billion-by-2035-Supported-by-Utility-Modernization-Programs-Astute-Analytica.html",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 12,
+      "citation": "SNS Insider / GlobeNewsWire — In-Vehicle Payment Services Market",
+      "url": "https://www.globenewswire.com/news-release/2025/10/22/3171173/0/en/In-Vehicle-Payment-Services-Market-Projected-at-USD-20-80-Billion-by-2033-Fueled-by-Connected-Cars-and-Contactless-Payments-Research-by-SNS-Insider.html",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 13,
+      "citation": "E-ZPass IAG — Statistics (59M+ devices in circulation)",
+      "url": "https://e-zpassiag.com/about-us/statistics",
+      "accessed": "2026-03-27"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 67,
+    "source_quality": 16,
+    "data_recency": 17,
+    "triangulation": 20,
+    "coverage": 14,
+    "notes": "Triangulated across 6 segments. Toll collection (NPCI, E-ZPass) has hard data. Industrial IoT and connected vehicle segments are estimates."
+  }
 }

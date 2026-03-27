@@ -15,7 +15,7 @@
       "source": "Estimated: combined global tax deadline and benefits payment day peaks (revised upward with higher base)",
       "url": "",
       "confidence": "low",
-      "note": "Extreme seasonality \u2014 tax deadlines and benefits payment days create spikes 5-10x average"
+      "note": "Extreme seasonality — tax deadlines and benefits payment days create spikes 5-10x average"
     },
     "daily_volume": {
       "value": 86600000,
@@ -278,51 +278,59 @@
   "sources": [
     {
       "id": 1,
-      "citation": "OECD \u2014 Revenue Statistics 2025",
+      "citation": "OECD — Revenue Statistics 2025",
       "url": "https://www.oecd.org/en/publications/2025/12/revenue-statistics-2025_07ca0a8e.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "OECD \u2014 Tax Revenue Trends 1965-2024",
+      "citation": "OECD — Tax Revenue Trends 1965-2024",
       "url": "https://www.oecd.org/en/publications/2025/12/revenue-statistics-2025_07ca0a8e/full-report/tax-revenue-trends-1965-2024_98c75833.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "IMF \u2014 Government Expenditure % of GDP DataMapper",
+      "citation": "IMF — Government Expenditure % of GDP DataMapper",
       "url": "https://www.imf.org/external/datamapper/exp@FPP",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "US Social Security Administration \u2014 Annual Statistical Supplement 2024",
+      "citation": "US Social Security Administration — Annual Statistical Supplement 2024",
       "url": "https://www.ssa.gov/policy/docs/statcomps/supplement/2024/highlights.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "US IRS \u2014 Filing Season Statistics",
+      "citation": "US IRS — Filing Season Statistics",
       "url": "https://www.irs.gov/newsroom/filing-season-statistics-by-year",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "World Bank \u2014 Government Final Consumption Expenditure",
+      "citation": "World Bank — Government Final Consumption Expenditure",
       "url": "https://data.worldbank.org/indicator/NE.CON.GOVT.CD",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Our World in Data \u2014 Government Spending",
+      "citation": "Our World in Data — Government Spending",
       "url": "https://ourworldindata.org/government-spending",
       "accessed": "2026-03-26"
     },
     {
       "id": 8,
-      "citation": "Tax Foundation \u2014 OECD Tax Revenue by Country",
+      "citation": "Tax Foundation — OECD Tax Revenue by Country",
       "url": "https://taxfoundation.org/data/all/global/oecd-tax-revenue-by-country/",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 50,
+    "source_quality": 16,
+    "data_recency": 14,
+    "triangulation": 10,
+    "coverage": 10,
+    "notes": "Tax payment counts are published by some revenue authorities but aggregation is difficult. Social benefit disbursements better documented."
+  }
 }

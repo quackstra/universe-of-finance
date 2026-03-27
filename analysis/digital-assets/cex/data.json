@@ -5,11 +5,74 @@
   "last_updated": "2026-03-26",
   "current": {
     "avg_tps": {
-      "value": 3100,
-      "source": "Wash trading adjusted: 20-30% reduction applied to reported volumes based on NBER, Bitwise, CEPR, Kaiko studies",
+      "value": 3040,
+      "source": "Tiered wash trading model: Tier 1 (regulated, 3.5% wash), Tier 2 (semi-regulated, 20%), Tier 3 (lower-tier trusted, 45%). See workings/wash-trading-filter.md",
       "url": "",
-      "confidence": "low",
-      "note": "Midpoint of 2,450-3,700 range after removing estimated residual wash trading from CoinGecko top-15 trusted exchange data. Regulated exchanges (5-10% inflation), semi-regulated (20-35%), lower-tier trusted (30-50%)."
+      "confidence": "medium-low",
+      "note": "Central estimate from tiered model. Range: 2,685-3,275. 25% blended wash trading reduction from reported ~4,050 TPS. Narrowed from prior 2,450-3,700 range."
+    },
+    "wash_adjusted": {
+      "reported_tps": 4050,
+      "adjusted_tps": 3040,
+      "adjusted_tps_low": 2685,
+      "adjusted_tps_high": 3275,
+      "blended_wash_pct": 25.0,
+      "blended_wash_pct_low": 19.0,
+      "blended_wash_pct_high": 33.8,
+      "tier_1": {
+        "exchanges": [
+          "Coinbase",
+          "Kraken",
+          "Bitstamp",
+          "Gemini",
+          "Upbit"
+        ],
+        "volume_share_pct": 15,
+        "wash_pct": 3.5,
+        "wash_pct_range": [
+          2,
+          5
+        ]
+      },
+      "tier_2": {
+        "exchanges": [
+          "Binance",
+          "OKX",
+          "Bybit",
+          "Crypto.com"
+        ],
+        "volume_share_pct": 55,
+        "wash_pct": 20,
+        "wash_pct_range": [
+          15,
+          30
+        ]
+      },
+      "tier_3": {
+        "exchanges": [
+          "HTX",
+          "KuCoin",
+          "Gate.io",
+          "MEXC",
+          "Bitfinex",
+          "others"
+        ],
+        "volume_share_pct": 30,
+        "wash_pct": 45,
+        "wash_pct_range": [
+          35,
+          55
+        ]
+      },
+      "methodology": "workings/wash-trading-filter.md",
+      "sources": [
+        "NBER WP 30783 (Cong et al. 2023)",
+        "CEPR/Kocenda 2024",
+        "Bitwise SEC 2019",
+        "Forbes/BTI 2022",
+        "Kaiko 2024",
+        "CryptoCompare Exchange Benchmark 2024"
+      ]
     },
     "peak_tps": {
       "value": 15000,
@@ -156,45 +219,53 @@
   "sources": [
     {
       "id": 1,
-      "citation": "CoinGecko \u2014 Largest Centralized Crypto Exchanges, 2020-2024",
+      "citation": "CoinGecko — Largest Centralized Crypto Exchanges, 2020-2024",
       "url": "https://www.coingecko.com/research/publications/largest-centralized-crypto-exchanges",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "CoinGecko \u2014 2024 Annual Crypto Industry Report",
+      "citation": "CoinGecko — 2024 Annual Crypto Industry Report",
       "url": "https://www.coingecko.com/research/publications/2024-annual-crypto-report",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "CoinGecko \u2014 State of Crypto Perpetuals Market (2024)",
+      "citation": "CoinGecko — State of Crypto Perpetuals Market (2024)",
       "url": "https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "TokenInsight \u2014 Crypto Exchange 2024 Annual Report",
+      "citation": "TokenInsight — Crypto Exchange 2024 Annual Report",
       "url": "https://tokeninsight.com/en/research/reports/crypto-exchange-2024-annual-report",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "CoinLaw \u2014 Cryptocurrency Derivatives Market Statistics 2025",
+      "citation": "CoinLaw — Cryptocurrency Derivatives Market Statistics 2025",
       "url": "https://coinlaw.io/cryptocurrency-derivatives-market-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "CryptoSlate \u2014 Crypto trading volumes rebound to $18T in 2024",
+      "citation": "CryptoSlate — Crypto trading volumes rebound to $18T in 2024",
       "url": "https://cryptoslate.com/crypto-trading-volumes-rebound-in-2024-but-lag-behind-2021s-peak/",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Chainalysis \u2014 Crypto Market Manipulation 2025: Wash Trading",
+      "citation": "Chainalysis — Crypto Market Manipulation 2025: Wash Trading",
       "url": "https://www.chainalysis.com/blog/crypto-market-manipulation-wash-trading-pump-and-dump-2025/",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 56,
+    "source_quality": 12,
+    "data_recency": 18,
+    "triangulation": 12,
+    "coverage": 14,
+    "notes": "Wash trading inflates volumes at some exchanges. No regulatory audit of transaction counts."
+  }
 }

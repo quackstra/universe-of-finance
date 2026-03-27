@@ -153,18 +153,18 @@
       "p2p-transfers"
     ],
     "overlap_type": "partial",
-    "overlap_note": "Minor overlap \u2014 some remittances flow through bank transfer and P2P rails"
+    "overlap_note": "Minor overlap — some remittances flow through bank transfer and P2P rails"
   },
   "sources": [
     {
       "id": 1,
-      "citation": "World Bank \u2014 Remittance flows to LMICs reach $685B in 2024",
+      "citation": "World Bank — Remittance flows to LMICs reach $685B in 2024",
       "url": "https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "World Bank \u2014 Remittances Slowed in 2023 press release",
+      "citation": "World Bank — Remittances Slowed in 2023 press release",
       "url": "https://www.worldbank.org/en/news/press-release/2024/06/26/remittances-slowed-in-2023-expected-to-grow-faster-in-2024",
       "accessed": "2026-03-26"
     },
@@ -176,7 +176,7 @@
     },
     {
       "id": 4,
-      "citation": "World Bank Open Data \u2014 Personal remittances received",
+      "citation": "World Bank Open Data — Personal remittances received",
       "url": "https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT",
       "accessed": "2026-03-26"
     },
@@ -188,33 +188,41 @@
     },
     {
       "id": 6,
-      "citation": "Federal Reserve \u2014 Global Remittances Cycle",
+      "citation": "Federal Reserve — Global Remittances Cycle",
       "url": "https://www.federalreserve.gov/econres/notes/feds-notes/global-remittances-cycle-20250227.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "FXC Intelligence \u2014 Remittances 2024 year in data",
+      "citation": "FXC Intelligence — Remittances 2024 year in data",
       "url": "https://www.fxcintel.com/research/reports/ct-remittances-money-transfers-2024-year-in-data",
       "accessed": "2026-03-26"
     },
     {
       "id": 8,
-      "citation": "GPFI \u2014 G20 Remittance Target update 2024",
+      "citation": "GPFI — G20 Remittance Target update 2024",
       "url": "https://www.gpfi.org/sites/default/files/NEW%202024%20Update%20to%20Leaders%20on%20Progress%20Towards%20the%20G20%20Remittance%20Target.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 9,
-      "citation": "Migration Data Portal \u2014 Remittances overview",
+      "citation": "Migration Data Portal — Remittances overview",
       "url": "https://www.migrationdataportal.org/themes/remittances-overview",
       "accessed": "2026-03-26"
     },
     {
       "id": 10,
-      "citation": "Grand View Research \u2014 Digital Remittance Market to $60B by 2030",
+      "citation": "Grand View Research — Digital Remittance Market to $60B by 2030",
       "url": "https://www.grandviewresearch.com/press-release/global-digital-remittance-market",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 58,
+    "source_quality": 20,
+    "data_recency": 14,
+    "triangulation": 12,
+    "coverage": 12,
+    "notes": "World Bank is authoritative for formal remittances. Informal channels (estimated 30-50% of total) are untracked."
+  }
 }

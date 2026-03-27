@@ -250,51 +250,59 @@
   "sources": [
     {
       "id": 1,
-      "citation": "Sensor Tower \u2014 State of Mobile Gaming 2025",
+      "citation": "Sensor Tower — State of Mobile Gaming 2025",
       "url": "https://sensortower.com/blog/state-of-mobile-gaming-2025",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "Sensor Tower \u2014 2025 State of Mobile",
+      "citation": "Sensor Tower — 2025 State of Mobile",
       "url": "https://sensortower.com/blog/2025-state-of-mobile-consumers-usd150-billion-spent-on-mobile-highlights",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "Newzoo \u2014 Global Games Market Report 2024 (Free Version)",
+      "citation": "Newzoo — Global Games Market Report 2024 (Free Version)",
       "url": "https://best-of-gaming.be/wp-content/uploads/2024/09/2024_Newzoo_Global_Games_Market_Report.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "TweakTown \u2014 Games industry made $184.3 billion in 2024",
+      "citation": "TweakTown — Games industry made $184.3 billion in 2024",
       "url": "https://www.tweaktown.com/news/102255/games-industry-made-184-3-billion-in-2024-consoles-segment-was-84-digital/index.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "Precedence Research \u2014 Online Microtransaction Market",
+      "citation": "Precedence Research — Online Microtransaction Market",
       "url": "https://www.precedenceresearch.com/online-microtransaction-market",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "Game Developer \u2014 Average In-Game Mobile Transaction Worth $14",
+      "citation": "Game Developer — Average In-Game Mobile Transaction Worth $14",
       "url": "https://www.gamedeveloper.com/business/report-average-in-game-mobile-transaction-worth-14",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Icon Era \u2014 In-Game Purchase Spending Habits Statistics 2025",
+      "citation": "Icon Era — In-Game Purchase Spending Habits Statistics 2025",
       "url": "https://icon-era.com/blog/in-game-purchase-spending-habits-statistics-2025.343/",
       "accessed": "2026-03-26"
     },
     {
       "id": 8,
-      "citation": "Business of Apps \u2014 Genshin Impact Statistics",
+      "citation": "Business of Apps — Genshin Impact Statistics",
       "url": "https://www.businessofapps.com/data/genshin-impact-statistics/",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 44,
+    "source_quality": 10,
+    "data_recency": 16,
+    "triangulation": 8,
+    "coverage": 10,
+    "notes": "Publishers report revenue, not transaction counts. Derived from revenue / average transaction size."
+  }
 }

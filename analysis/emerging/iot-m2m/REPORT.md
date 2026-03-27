@@ -27,23 +27,27 @@ Excluded: Payments merely *processed by* IoT devices but initiated by humans (e.
 
 | Metric | Value | Source | Confidence |
 |--------|-------|--------|------------|
-| Avg TPS | ~475-790 | Derived from 15-25B annual txns | :red_circle: Low |
-| Peak TPS (est.) | ~2,000-3,000 | Rush hour tolling, peak utility billing | :red_circle: Low |
-| Daily volume | ~41-68 million | Derived from annual estimates | :red_circle: Low |
-| Annual volume (est.) | ~15-25 billion | Aggregated from subcategories ([calculations](workings/calculations.md#1-annual-transaction-estimate)) | :red_circle: Low |
+| Avg TPS | ~1,538 | Triangulated bottom-up from 6 segments ([triangulation model](workings/triangulation-model.md)) | :yellow_circle: Low-Medium |
+| Peak TPS (est.) | ~4,500 | Rush hour tolling (China+India+US+EU concurrent) + peak utility + vending | :red_circle: Low |
+| Daily volume | ~133 million | Derived: 48.5B / 365 | :yellow_circle: Low-Medium |
+| Annual volume (est.) | ~48.5 billion | Bottom-up from 6 segments, medium scope ([triangulation model](workings/triangulation-model.md)) | :yellow_circle: Low-Medium |
 | Market value (2025) | ~$77 billion | [Research Nester](https://www.researchnester.com/reports/autonomous-iot-payments-market/6532) | :yellow_circle: Medium |
 | Connected IoT devices | 21.1 billion | [IoT Analytics](https://iot-analytics.com/number-connected-iot-devices/) | :green_circle: High |
+| Confidence score | 67/100 | [Confidence Scorecard](../../CONFIDENCE_SCORECARD.md) | — |
 
-### Subcategory Breakdown
+> **Note on revision:** The previous estimate of 15-25B annual transactions (~634 TPS) has been revised upward to ~48.5B (~1,538 TPS) following a detailed segment-by-segment triangulation. The primary drivers of the increase are: (1) China + India toll collection volumes were previously underestimated by ~15B, (2) vending/unattended retail was revised up from 3-5B to 9.5B based on Cantaloupe industry data, and (3) smart meter billing base was updated to 1.8B meters. See [full triangulation model](workings/triangulation-model.md) for methodology and per-segment confidence.
+
+### Subcategory Breakdown (Triangulated)
 
 | Subcategory | Est. Annual Txns (B) | Market Value ($B) | Notes | Confidence |
 |-------------|---------------------|-------------------|-------|------------|
-| Electronic toll collection | ~8-12 | ~10.5 | 600M+ ETC users globally; 1.2M equipped lanes | :yellow_circle: Medium |
-| Vending & unattended retail | ~3-5 | ~15 | ~15M machines globally; shifting to cashless | :red_circle: Low |
-| Smart meter billing | ~2-4 | ~8 | ~1.3B smart meters installed; billing is monthly/quarterly | :red_circle: Low |
-| EV charging payments | ~0.5-1 | ~5 | Growing rapidly with EV adoption; ~3M public chargers globally | :red_circle: Low |
-| Connected vehicle payments | ~0.5-1 | ~12 | Fuel, parking, tolls via in-car systems | :red_circle: Low |
-| Industrial IoT payments | ~1-2 | ~27 | Supply chain, logistics, automated procurement | :red_circle: Low |
+| Electronic toll collection | **~27** | ~10.5 | China 12-15B, India FASTag 4-4.5B (NPCI data), US E-ZPass 3.5-5B, Europe 3-4B, RoW 1.5-2B | :yellow_circle: Medium |
+| Vending & unattended retail | **~9.5** | ~15 | 25.4M machines; 58% cashless; 8.2B cashless vending txns (Cantaloupe) + ~1.3B other unattended | :yellow_circle: Medium |
+| Smart meter billing | **~8.5** | ~8 | 1.8B smart meters; ~40% auto-pay; 12 billing events/year | :red_circle: Low-Medium |
+| EV charging payments | **~3.0** | ~5 | 5M+ public chargers (IEA); 2-4 sessions/day avg; cross-checked with EV fleet data | :yellow_circle: Medium |
+| Connected vehicle payments | **~0.5** | ~5.4 | ~11M active in-vehicle payment users x 50 auto-payments/year | :red_circle: Low |
+| Wearable payments (M2M) | **~0.2** | — | M2M portion only (<5% of all wearable payments); rest overlaps with consumer cards | :red_circle: Low |
+| Industrial IoT payments | **~0.02** | ~27 | High-value, low-frequency B2B automated procurement; revised sharply down from 1-2B | :red_circle: Very Low |
 
 ### Regional Breakdown
 

@@ -250,51 +250,59 @@
   "sources": [
     {
       "id": 1,
-      "citation": "Newzoo \u2014 Global Games Market Report 2024 (Free Version)",
+      "citation": "Newzoo — Global Games Market Report 2024 (Free Version)",
       "url": "https://best-of-gaming.be/wp-content/uploads/2024/09/2024_Newzoo_Global_Games_Market_Report.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "TweakTown \u2014 Games industry made $184.3 billion in 2024",
+      "citation": "TweakTown — Games industry made $184.3 billion in 2024",
       "url": "https://www.tweaktown.com/news/102255/games-industry-made-184-3-billion-in-2024-consoles-segment-was-84-digital/index.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "Icon Era \u2014 Steam Game Statistics",
+      "citation": "Icon Era — Steam Game Statistics",
       "url": "https://icon-era.com/statistics/steam-game-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "Epic Games Store \u2014 2024 Year in Review",
+      "citation": "Epic Games Store — 2024 Year in Review",
       "url": "https://store.epicgames.com/en-US/news/epic-games-store-2024-year-in-review",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "SQ Magazine \u2014 Xbox Game Pass Stats",
+      "citation": "SQ Magazine — Xbox Game Pass Stats",
       "url": "https://sqmagazine.co.uk/xbox-game-pass-subscriber/",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "Sensor Tower \u2014 State of Mobile Gaming 2025",
+      "citation": "Sensor Tower — State of Mobile Gaming 2025",
       "url": "https://sensortower.com/blog/state-of-mobile-gaming-2025",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Icon Era \u2014 Digital Sales Ratio 2024",
+      "citation": "Icon Era — Digital Sales Ratio 2024",
       "url": "https://icon-era.com/threads/digital-sales-ratio-2024-edition.14538/",
       "accessed": "2026-03-26"
     },
     {
       "id": 8,
-      "citation": "thinglabs \u2014 Global Physical Game Revenue 2024",
+      "citation": "thinglabs — Global Physical Game Revenue 2024",
       "url": "https://thinglabs.io/global-physical-game-revenue-in-2024-drops-nearly-10-to-just-8-5-billion",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 56,
+    "source_quality": 14,
+    "data_recency": 16,
+    "triangulation": 12,
+    "coverage": 14,
+    "notes": "Steam Replay and platform reports give reasonable data. Indie/smaller platform sales estimated."
+  }
 }

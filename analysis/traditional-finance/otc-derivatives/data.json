@@ -2,37 +2,95 @@
   "category": "OTC Derivatives",
   "slug": "otc-derivatives",
   "sector": "Traditional Finance",
-  "last_updated": "2026-03-26",
+  "last_updated": "2026-03-27",
   "current": {
     "avg_tps": {
-      "value": 0.6,
-      "source": "See workings/calculations.md. 12.3M annual trades / (252 x 24h x 3600) = ~0.6 TPS over 24h.",
+      "value": 0.15,
+      "source": "Segmented model: 4.7M trades/year (excl. FX) / (365.25 x 86400). See workings/count-triangulation.md",
+      "url": "",
+      "confidence": "medium",
+      "note": "Excl. FX derivatives (counted in FX category). Incl. FX: 0.31 TPS."
+    },
+    "avg_tps_incl_fx": {
+      "value": 0.31,
+      "source": "9.7M trades/year (incl. FX derivatives) / (365.25 x 86400)",
       "url": "",
       "confidence": "low"
     },
     "peak_tps": {
-      "value": 3,
-      "source": "See workings/calculations.md. 12.3M annual trades / (252 x 24h x 3600) = ~0.6 TPS over 24h.",
+      "value": 1.5,
+      "source": "Estimated: 3-5x average during high-vol events (rate decisions, credit events). See workings/count-triangulation.md",
       "url": "",
       "confidence": "low"
     },
     "annual_volume": {
-      "value": 7300000,
-      "source": "ISDA SwapsInfo provides reliable US/EU/UK IRD and CDS counts. Global total and non-IRD/CDS products are estimated.",
+      "value": 4700000,
+      "source": "Segmented model: IRD 3.1M + CDS 0.6M + Equity OTC 0.6M + Commodity OTC 0.4M. Excl. FX derivatives.",
       "url": "https://www.isda.org/2025/02/20/swapsinfo-full-year-2024-and-the-fourth-quarter-of-2024/",
       "confidence": "medium"
     },
+    "annual_volume_incl_fx": {
+      "value": 9700000,
+      "source": "4.7M (excl. FX) + 5.0M FX derivatives",
+      "url": "",
+      "confidence": "low"
+    },
     "annual_value_usd": {
-      "value": 665000000000000,
-      "source": "Reference value",
+      "value": 732000000000000,
+      "source": "BIS notional outstanding Dec 2024",
+      "url": "https://www.bis.org/statistics/derstats.htm",
+      "confidence": "high"
+    },
+    "daily_volume": {
+      "value": 18651,
+      "source": "4.7M / 252 trading days. Excl. FX derivatives.",
       "url": "",
       "confidence": "medium"
     },
-    "daily_volume": {
-      "value": 20000,
-      "source": "Derived: annual_volume / 365",
-      "url": "",
-      "confidence": "medium"
+    "segments": {
+      "ird_global": {
+        "annual_volume": 3100000,
+        "daily_volume": 12302,
+        "confidence": "medium-high",
+        "source": "ISDA SwapsInfo 2.7M (US/EU/UK) + 0.4M (APAC/EM est.)",
+        "breakdown": {
+          "us_reported": 1650000,
+          "eu_uk_reported": 1050000,
+          "japan_jscc": 200000,
+          "other_apac": 120000,
+          "em_other": 80000
+        }
+      },
+      "cds_global": {
+        "annual_volume": 600000,
+        "daily_volume": 2381,
+        "confidence": "medium-high",
+        "source": "ISDA: Index CDS 316.8K + Single-name 208.2K + rest of world 75K",
+        "breakdown": {
+          "index_cds": 316800,
+          "single_name_cds": 208200,
+          "rest_of_world": 75000
+        }
+      },
+      "equity_otc": {
+        "annual_volume": 600000,
+        "daily_volume": 2381,
+        "confidence": "low",
+        "source": "Estimated from BIS notional, proportional scaling, SEC SBSDR coverage"
+      },
+      "commodity_otc": {
+        "annual_volume": 400000,
+        "daily_volume": 1587,
+        "confidence": "low",
+        "source": "Estimated from BIS notional, exchange-traded proportional scaling"
+      },
+      "fx_derivatives_excluded": {
+        "annual_volume": 5000000,
+        "daily_volume": 19841,
+        "confidence": "low",
+        "source": "Excluded from total — counted in FX category to avoid double-counting",
+        "note": "FX forwards, swaps, and options"
+      }
     }
   },
   "historic": [
@@ -101,97 +159,123 @@
     },
     {
       "year": 2024,
-      "annual_volume": null,
-      "avg_tps": null,
-      "source": "BIS",
-      "confidence": "high"
+      "annual_volume": 4700000,
+      "avg_tps": 0.15,
+      "source": "Segmented triangulation model. See workings/count-triangulation.md",
+      "confidence": "medium"
     }
   ],
   "projections": {
     "baseline": [
       {
         "year": 2030,
-        "tps": 0.52,
-        "annual_volume": 16500000
+        "tps": 0.22,
+        "annual_volume": 6900000
       },
       {
         "year": 2035,
-        "tps": 1.0,
-        "annual_volume": 21100000
+        "tps": 0.30,
+        "annual_volume": 9500000
       }
     ],
     "high_growth": [
       {
         "year": 2030,
-        "tps": 0.62,
-        "annual_volume": 19500000
+        "tps": 0.32,
+        "annual_volume": 10100000
       },
       {
         "year": 2035,
-        "tps": 1.4,
-        "annual_volume": 28700000
+        "tps": 0.52,
+        "annual_volume": 16400000
       }
     ],
     "conservative": [
       {
         "year": 2030,
-        "tps": 0.44,
-        "annual_volume": 13800000
+        "tps": 0.17,
+        "annual_volume": 5400000
       },
       {
         "year": 2035,
-        "tps": 0.7,
-        "annual_volume": 15300000
+        "tps": 0.19,
+        "annual_volume": 6000000
       }
     ]
   },
   "overlap": {
-    "overlaps_with": [],
-    "overlap_type": "none",
-    "overlap_note": ""
+    "overlaps_with": ["fx"],
+    "overlap_type": "partial",
+    "overlap_note": "FX derivatives (forwards, swaps, options) are OTC derivatives but counted in the FX category. Our OTC derivatives figure EXCLUDES FX derivatives (~5M trades/year) to avoid double-counting."
   },
   "sources": [
     {
       "id": 1,
-      "citation": "ISDA SwapsInfo \u2014 Full Year 2024 Review",
+      "citation": "ISDA SwapsInfo — Full Year 2024 Review",
       "url": "https://www.isda.org/2025/02/20/swapsinfo-full-year-2024-and-the-fourth-quarter-of-2024/",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "ISDA SwapsInfo \u2014 Full Year 2024 PDF",
+      "citation": "ISDA SwapsInfo — Full Year 2024 PDF",
       "url": "https://www.isda.org/a/jYNgE/SwapsInfo-Full-Year-2024-and-the-Fourth-Quarter-of-2024.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "ISDA \u2014 Key Trends H2 2024",
+      "citation": "ISDA — Key Trends H2 2024",
       "url": "https://www.isda.org/a/1rjgE/Key-Trends-in-the-Size-and-Composition-of-OTC-Derivatives-Markets-in-the-Second-Half-of-2024.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "BIS \u2014 OTC Derivatives Statistics",
+      "citation": "BIS — OTC Derivatives Statistics",
       "url": "https://www.bis.org/statistics/derstats.htm",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "BIS \u2014 OTC Derivatives at end-June 2025",
+      "citation": "BIS — OTC Derivatives at end-June 2025",
       "url": "https://www.bis.org/publ/otc_hy2512.htm",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "BIS \u2014 Triennial Survey 2025 OTC IRD",
+      "citation": "BIS — Triennial Survey 2025 OTC IRD",
       "url": "https://www.bis.org/statistics/rpfx25_ir.htm",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "BIS \u2014 Triennial Survey 2025 Press Release",
+      "citation": "BIS — Triennial Survey 2025 Press Release",
       "url": "https://www.bis.org/press/p250930.htm",
       "accessed": "2026-03-26"
+    },
+    {
+      "id": 8,
+      "citation": "ISDA SwapsInfo — Full Year 2025 Review",
+      "url": "https://www.isda.org/2026/02/17/swapsinfo-full-year-2025-and-the-fourth-quarter-of-2025-review",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 9,
+      "citation": "ISDA — IRD Trading Activity H1 2025 (US/EU/UK)",
+      "url": "https://www.isda.org/a/XPBgE/Interest-Rate-Derivatives-Trading-Activity-Reported-in-EU-UK-and-US-Markets-First-Half-of-2025-and-the-Second-Quarter-of-2025.pdf",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 10,
+      "citation": "JSCC — Interest Rate Swap Clearing Statistics",
+      "url": "https://www.jpx.co.jp/jscc/en/interest_rate_swap.html",
+      "accessed": "2026-03-27"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 68,
+    "source_quality": 22,
+    "data_recency": 16,
+    "triangulation": 14,
+    "coverage": 16,
+    "notes": "BIS data on notional outstanding is authoritative. Transaction count now triangulated via ISDA SwapsInfo segmented data. IRD and CDS well-anchored; equity and commodity OTC remain low-confidence."
+  }
 }

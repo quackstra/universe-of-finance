@@ -18,7 +18,7 @@
     },
     "annual_volume": {
       "value": 57500000000,
-      "source": "Derived \u2014 see workings/calculations.md#c3",
+      "source": "Derived — see workings/calculations.md#c3",
       "url": "",
       "confidence": "medium"
     },
@@ -351,5 +351,13 @@
       "url": "https://www.sellerscommerce.com/blog/social-commerce-statistics/",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 67,
+    "source_quality": 18,
+    "data_recency": 17,
+    "triangulation": 16,
+    "coverage": 16,
+    "notes": "E-commerce GMV is well documented. Transaction count is derived from GMV / average order value, adding uncertainty."
+  }
 }

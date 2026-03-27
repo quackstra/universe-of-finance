@@ -180,5 +180,13 @@
       "url": "https://www.ecb.europa.eu/press/targetservar/html/ecb.targetservar2024.en.html",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 82,
+    "source_quality": 26,
+    "data_recency": 18,
+    "triangulation": 20,
+    "coverage": 18,
+    "notes": "Strong primary sources from central banks. Missing some smaller RTGS systems (MEPS+, SAMOS)."
+  }
 }

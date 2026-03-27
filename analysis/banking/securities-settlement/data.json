@@ -24,7 +24,7 @@
     },
     "annual_value_usd": {
       "value": 5000000000000000,
-      "source": "Euroclear \u20ac1,162T converted at EUR/USD 1.09. Significant overlap in value terms \u2014 a DVP settlement is counted as securities delivery here AND cash payment in RTGS. DTCC $3.7Q figure is gross; netting reduces actual funds movement.",
+      "source": "Euroclear €1,162T converted at EUR/USD 1.09. Significant overlap in value terms — a DVP settlement is counted as securities delivery here AND cash payment in RTGS. DTCC $3.7Q figure is gross; netting reduces actual funds movement.",
       "url": "https://finance.yahoo.com/news/dtcc-handles-3-7-quadrillion-162255289.html",
       "confidence": "medium"
     },
@@ -192,5 +192,13 @@
       "url": "https://en.wikipedia.org/wiki/Depository_Trust_%26_Clearing_Corporation",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 74,
+    "source_quality": 24,
+    "data_recency": 16,
+    "triangulation": 18,
+    "coverage": 16,
+    "notes": "Good CSD-level data for US/EU. Asia-Pacific settlement volumes partially estimated."
+  }
 }

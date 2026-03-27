@@ -5,34 +5,107 @@
   "last_updated": "2026-03-26",
   "current": {
     "avg_tps": {
-      "value": 35,
-      "source": "See workings/calculations.md. Derived from CLS settlement data (500K trades/day at ~20% market coverage) and average ticket size analysis ($3-5M).",
+      "value": 40,
+      "source": "Six-approach triangulation: CLS settlement, BIS counterparty decomposition, electronic platform aggregation, retail FX, CME futures comparable, algo/HFT multiplier. See workings/count-triangulation.md",
       "url": "",
-      "confidence": "low"
+      "confidence": "medium",
+      "note": "Institutional-only estimate: ~35 TPS (3.0M trades/day). Including retail: ~150 TPS (13M trades/day). Primary estimate uses institutional-only for economic consistency."
     },
     "peak_tps": {
-      "value": 140,
-      "source": "See workings/calculations.md. Derived from CLS settlement data (500K trades/day at ~20% market coverage) and average ticket size analysis ($3-5M).",
+      "value": 160,
+      "source": "Estimated: avg TPS x 4 during peak volatility. CLS peak day was ~2.6M instructions = ~1.3M trades, implying 4.3x average.",
       "url": "",
       "confidence": "low"
     },
     "annual_value_usd": {
       "value": 2142000000000000,
-      "source": "",
+      "source": "Interpolated: $8.5T/day x 252 trading days",
       "url": "",
       "confidence": "medium"
     },
     "annual_volume": {
-      "value": 750000000,
-      "source": "See workings/calculations.md. Derived from CLS settlement data (500K trades/day at ~20% market coverage) and average ticket size analysis ($3-5M).",
+      "value": 882000000,
+      "source": "Derived: 3.5M institutional trades/day x 252 trading days. See workings/count-triangulation.md",
       "url": "",
-      "confidence": "low"
+      "confidence": "medium"
     },
     "daily_volume": {
-      "value": 2054794,
-      "source": "Derived: annual_volume / 365",
+      "value": 3500000,
+      "source": "Central estimate from six-approach triangulation. See workings/count-triangulation.md",
       "url": "",
-      "confidence": "low"
+      "confidence": "medium"
+    },
+    "count_triangulation": {
+      "institutional_trades_per_day": 3000000,
+      "institutional_trades_range": [
+        2300000,
+        4000000
+      ],
+      "retail_trades_per_day": 10000000,
+      "retail_trades_range": [
+        8000000,
+        12000000
+      ],
+      "total_inclusive_per_day": 13000000,
+      "total_inclusive_tps": 150,
+      "institutional_only_tps": 35,
+      "approaches": {
+        "cls_settlement": {
+          "central": 3000000,
+          "range": [
+            2400000,
+            4000000
+          ],
+          "confidence": "medium-high"
+        },
+        "bis_counterparty": {
+          "central": 2642000,
+          "range": [
+            1900000,
+            4600000
+          ],
+          "confidence": "medium"
+        },
+        "electronic_platforms": {
+          "central": 2500000,
+          "range": [
+            2000000,
+            3500000
+          ],
+          "confidence": "medium-low"
+        },
+        "retail_fx": {
+          "central": 10000000,
+          "range": [
+            8000000,
+            12000000
+          ],
+          "confidence": "low"
+        },
+        "cme_futures_comparable": {
+          "central": 5500000,
+          "range": [
+            4000000,
+            6000000
+          ],
+          "confidence": "low-medium"
+        },
+        "algo_hft_multiplier": {
+          "central": 4500000,
+          "range": [
+            3500000,
+            5500000
+          ],
+          "confidence": "low-medium"
+        }
+      },
+      "methodology": "workings/count-triangulation.md",
+      "key_sources": [
+        "CLS Group 2024 Annual Report",
+        "BIS Triennial Survey 2025",
+        "CME Group ADV 2024",
+        "The Full FX — Trading Venues 2024"
+      ]
     }
   },
   "historic": [
@@ -146,33 +219,41 @@
   "sources": [
     {
       "id": 1,
-      "citation": "BIS Triennial Survey 2025 \u2014 FX Turnover",
+      "citation": "BIS Triennial Survey 2025 — FX Turnover",
       "url": "https://www.bis.org/statistics/rpfx25_fx.htm",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "BIS Triennial Survey 2022 \u2014 FX Turnover",
+      "citation": "BIS Triennial Survey 2022 — FX Turnover",
       "url": "https://www.bis.org/statistics/rpfx22_fx.htm",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "BIS Press Release \u2014 $9.6T daily",
+      "citation": "BIS Press Release — $9.6T daily",
       "url": "https://www.bis.org/press/p250930.htm",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "CLS Group \u2014 FX Trade Volume Report",
+      "citation": "CLS Group — FX Trade Volume Report",
       "url": "https://www.cls-group.com/news/fx-trade-volume-report/",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "CLS Group \u2014 December 2024 Trading Activity",
+      "citation": "CLS Group — December 2024 Trading Activity",
       "url": "https://www.cls-group.com/news/cls-fx-trading-activity-december-2024/",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 58,
+    "source_quality": 22,
+    "data_recency": 10,
+    "triangulation": 12,
+    "coverage": 14,
+    "notes": "BIS Triennial Survey is definitive but only every 3 years. Daily value well-known; transaction count is derived and low-confidence."
+  }
 }

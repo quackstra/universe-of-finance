@@ -250,5 +250,13 @@
       "url": "https://www.goldmansachs.com/insights/articles/emerging-stock-markets-projected-to-overtake-the-us-by-2030",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 86,
+    "source_quality": 26,
+    "data_recency": 18,
+    "triangulation": 22,
+    "coverage": 20,
+    "notes": "World Federation of Exchanges data is comprehensive for lit markets. Dark pool / ATS volume adds ~15-20% estimated."
+  }
 }

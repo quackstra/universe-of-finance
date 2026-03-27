@@ -158,19 +158,19 @@
   "sources": [
     {
       "id": 1,
-      "citation": "CryptoSlate \u2014 Stablecoins surpass Visa and Mastercard with $27.6T transfer volume in 2024",
+      "citation": "CryptoSlate — Stablecoins surpass Visa and Mastercard with $27.6T transfer volume in 2024",
       "url": "https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "Bloomberg \u2014 Stablecoin Transactions Rose to Record $33T",
+      "citation": "Bloomberg — Stablecoin Transactions Rose to Record $33T",
       "url": "https://www.bloomberg.com/news/articles/2026-01-08/stablecoin-transactions-rose-to-record-33-trillion-led-by-usdc",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "TRM Labs \u2014 2025 Crypto Adoption and Stablecoin Usage Report",
+      "citation": "TRM Labs — 2025 Crypto Adoption and Stablecoin Usage Report",
       "url": "https://www.trmlabs.com/reports-and-whitepapers/2025-crypto-adoption-and-stablecoin-usage-report",
       "accessed": "2026-03-26"
     },
@@ -182,21 +182,29 @@
     },
     {
       "id": 5,
-      "citation": "Artemis Terminal \u2014 Stablecoins Dashboard",
+      "citation": "Artemis Terminal — Stablecoins Dashboard",
       "url": "https://app.artemisanalytics.com/stablecoins",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "World Metrics \u2014 Stablecoin Statistics 2026",
+      "citation": "World Metrics — Stablecoin Statistics 2026",
       "url": "https://worldmetrics.org/stablecoin-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "McKinsey \u2014 Stablecoins: Payments infrastructure for modern finance",
+      "citation": "McKinsey — Stablecoins: Payments infrastructure for modern finance",
       "url": "https://www.mckinsey.com/industries/financial-services/our-insights/the-stable-door-opens-how-tokenized-cash-enables-next-gen-payments",
       "accessed": "2026-03-26"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 75,
+    "source_quality": 20,
+    "data_recency": 19,
+    "triangulation": 18,
+    "coverage": 18,
+    "notes": "Good coverage of major stablecoins. Transfer count vs. meaningful payment distinction is blurry."
+  }
 }

@@ -2,19 +2,26 @@
   "category": "Fixed Income / Bond Markets",
   "slug": "fixed-income",
   "sector": "Traditional Finance",
-  "last_updated": "2026-03-26",
+  "last_updated": "2026-03-27",
   "current": {
     "avg_tps": {
-      "value": 7,
-      "source": "See workings/calculations.md",
+      "value": 3.6,
+      "source": "Bottom-up segmented model: 112.9M cash bond trades/year. See workings/count-triangulation.md",
       "url": "",
-      "confidence": "medium"
+      "confidence": "medium",
+      "note": "Cash bonds only. Including repo: ~6.2 TPS."
+    },
+    "avg_tps_incl_repo": {
+      "value": 6.2,
+      "source": "Cash bonds (112.9M) + repo (83.8M) = 196.7M / (365.25 x 86400). See workings/count-triangulation.md",
+      "url": "",
+      "confidence": "low"
     },
     "peak_tps": {
-      "value": 100,
-      "source": "See workings/calculations.md",
+      "value": 50,
+      "source": "Estimated: 3-5x average during high-vol days (rate decisions, auctions). See workings/count-triangulation.md",
       "url": "",
-      "confidence": "medium"
+      "confidence": "low"
     },
     "annual_value_usd": {
       "value": 145000000000000,
@@ -24,16 +31,64 @@
       "note": "Outstanding value, not annual turnover"
     },
     "annual_volume": {
-      "value": 781000000,
-      "source": "Estimated cash bonds + repo trades",
+      "value": 112900000,
+      "source": "Segmented model: US 79.1M (TRACE + MSRB + Treasury est.) + Europe 13.8M + APAC/EM 20M. Cash bonds only.",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_volume_incl_repo": {
+      "value": 196700000,
+      "source": "Cash bonds 112.9M + global repo 83.8M. Repo estimate is highly uncertain (sensitive to avg trade size assumption).",
       "url": "",
       "confidence": "low"
     },
     "daily_volume": {
-      "value": 2139726,
-      "source": "Derived: annual_volume / 365",
+      "value": 448016,
+      "source": "112.9M / 252 trading days. Cash bonds only.",
+      "url": "",
+      "confidence": "medium"
+    },
+    "daily_volume_incl_repo": {
+      "value": 780596,
+      "source": "196.7M / 252 trading days. Including repo.",
       "url": "",
       "confidence": "low"
+    },
+    "segments": {
+      "us_cash_bonds": {
+        "annual_volume": 79100000,
+        "daily_volume": 313889,
+        "confidence": "high",
+        "source": "FINRA TRACE 52M + MSRB 14.5M + Treasury est. 12.6M",
+        "breakdown": {
+          "trace_corporate_agency_securitized": 52000000,
+          "msrb_municipal": 14500000,
+          "treasury_estimated": 12600000
+        }
+      },
+      "european_cash_bonds": {
+        "annual_volume": 13800000,
+        "daily_volume": 54762,
+        "confidence": "low-medium",
+        "source": "Estimated from Tradeweb ADV and proportional scaling"
+      },
+      "apac_em_cash_bonds": {
+        "annual_volume": 20000000,
+        "daily_volume": 79365,
+        "confidence": "low",
+        "source": "Estimated from regional market sizes and trading patterns"
+      },
+      "global_repo": {
+        "annual_volume": 83800000,
+        "daily_volume": 332580,
+        "confidence": "low",
+        "source": "Modeled from OFR US repo ($12.6T daily), ICMA European repo, avg trade size assumptions",
+        "breakdown": {
+          "us_repo": 27110160,
+          "european_repo": 31500000,
+          "apac_repo": 25200000
+        }
+      }
     }
   },
   "historic": [
@@ -74,9 +129,9 @@
     },
     {
       "year": 2024,
-      "annual_volume": null,
-      "avg_tps": null,
-      "source": "https://www.sifma.org/wp-content/uploads/2023/07/2024-SIFMA-Capital-Markets-Factbook.pdf",
+      "annual_volume": 112900000,
+      "avg_tps": 3.6,
+      "source": "Segmented triangulation model. See workings/count-triangulation.md",
       "confidence": "medium"
     }
   ],
@@ -84,81 +139,131 @@
     "baseline": [
       {
         "year": 2030,
-        "tps": 11.0,
-        "annual_volume": 239400000
+        "tps": 5.0,
+        "tps_incl_repo": 8.6,
+        "annual_volume": 157000000
       },
       {
         "year": 2035,
-        "tps": 16,
-        "annual_volume": 352800000
+        "tps": 6.9,
+        "tps_incl_repo": 11.8,
+        "annual_volume": 217000000
       }
     ],
     "high_growth": [
       {
         "year": 2030,
-        "tps": 13.9,
-        "annual_volume": 302400000
+        "tps": 6.4,
+        "tps_incl_repo": 11.0,
+        "annual_volume": 201000000
       },
       {
         "year": 2035,
-        "tps": 24,
-        "annual_volume": 529200000
+        "tps": 11.3,
+        "tps_incl_repo": 19.4,
+        "annual_volume": 356000000
       }
     ],
     "conservative": [
       {
         "year": 2030,
-        "tps": 8.8,
-        "annual_volume": 191520000
+        "tps": 4.2,
+        "tps_incl_repo": 7.2,
+        "annual_volume": 132000000
       },
       {
         "year": 2035,
-        "tps": 11,
-        "annual_volume": 233100000
+        "tps": 4.9,
+        "tps_incl_repo": 8.4,
+        "annual_volume": 154000000
       }
     ]
   },
   "overlap": {
     "overlaps_with": [],
     "overlap_type": "none",
-    "overlap_note": ""
+    "overlap_note": "Repo is included as a segment within fixed income. FX-related repo may overlap with FX category but is counted here."
   },
   "sources": [
     {
       "id": 1,
-      "citation": "SIFMA \u2014 US Treasury Securities Statistics",
+      "citation": "SIFMA — US Treasury Securities Statistics",
       "url": "https://www.sifma.org/research/statistics/us-treasury-securities-statistics",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "SIFMA \u2014 US Corporate Bonds Statistics",
+      "citation": "SIFMA — US Corporate Bonds Statistics",
       "url": "https://www.sifma.org/research/statistics/us-corporate-bonds-statistics",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "FINRA \u2014 TRACE Fixed Income Data",
+      "citation": "FINRA — TRACE Fixed Income Data",
       "url": "https://www.finra.org/finra-data/fixed-income",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "Tradeweb \u2014 October 2024 Volume Report",
+      "citation": "Tradeweb — October 2024 Volume Report",
       "url": "https://www.tradeweb.com/newsroom/media-center/news-releases/tradeweb-reports-october-2024-total-trading-volume-of-$54.7-trillion-and-average-daily-volume-of-$2.35-trillion/",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "ICMA \u2014 European Repo Market Survey",
+      "citation": "ICMA — European Repo Market Survey",
       "url": "https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/market-data/icma-european-repo-market-survey/",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "SIX Group \u2014 Global Bond Market $141T",
+      "citation": "SIX Group — Global Bond Market $141T",
       "url": "https://www.six-group.com/dam/download/financial-information/reference-pricing-data/fixed-income-data/six-fixed-income-data-infographic.pdf",
       "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "MSRB — 2024 Municipal Market Year in Review",
+      "url": "https://www.msrb.org/sites/default/files/2025-01/MSRB-2024-Municipal-Market-Year-in-Review.pdf",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 8,
+      "citation": "OFR — Sizing the US Repo Market (Dec 2025)",
+      "url": "https://www.financialresearch.gov/the-ofr-blog/2025/12/04/sizing-us-repo-market/",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 9,
+      "citation": "DTCC — FICC GSD Record Activity",
+      "url": "https://www.dtcc.com/news/2024/october/03/ficcs-government-securities-division-surpasses",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 10,
+      "citation": "Coalition Greenwich — US Corporate Bond Trading 2024",
+      "url": "https://coalitiongreenwich.crisil.com/",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 11,
+      "citation": "EMTA — Volume Surveys 2024",
+      "url": "https://www.emta.org/activities-and-services/volume-surveys/",
+      "accessed": "2026-03-27"
+    },
+    {
+      "id": 12,
+      "citation": "MSRB — 2025 Municipal Market Year in Review",
+      "url": "https://www.msrb.org/sites/default/files/2026-01/MSRB-2025-Municipal-Market-Year-in-Review.pdf",
+      "accessed": "2026-03-27"
     }
-  ]
+  ],
+  "confidence": {
+    "score": 60,
+    "source_quality": 18,
+    "data_recency": 16,
+    "triangulation": 14,
+    "coverage": 12,
+    "notes": "Bond trading is predominantly OTC, making transaction counts difficult. US TRACE data is good; global coverage is patchy."
+  }
 }
