@@ -1,131 +1,184 @@
 {
   "category": "Interbank Settlement (RTGS)",
+  "slug": "interbank-rtgs",
   "sector": "Banking",
-  "priority": 1,
   "last_updated": "2026-03-26",
-  "data_year": 2024,
-  "capsules": {
-    "current_tps": {
-      "average_tps": 13.4,
-      "average_tps_business_day": 6.7,
-      "peak_tps_estimate": 35,
-      "confidence": "medium",
-      "notes": "Calendar TPS = 423M / 31.56M sec. Business-day TPS = 423M / (250 × 28,800 sec). Peak is concurrent estimate across time zones.",
-      "sources": [
-        "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
-        "https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html",
-        "https://www.bankofengland.co.uk/payment-and-settlement/payment-and-settlement-statistics"
-      ]
+  "current": {
+    "avg_tps": {
+      "value": 13.4,
+      "source": "Calendar TPS = 423M / 31.56M sec. Business-day TPS = 423M / (250 \u00d7 28,800 sec). Peak is concurrent estimate across time zones.",
+      "url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
+      "confidence": "medium"
+    },
+    "peak_tps": {
+      "value": 35,
+      "source": "Calendar TPS = 423M / 31.56M sec. Business-day TPS = 423M / (250 \u00d7 28,800 sec). Peak is concurrent estimate across time zones.",
+      "url": "",
+      "confidence": "medium"
+    },
+    "daily_volume": {
+      "value": 1158904,
+      "source": "Derived: annual_volume / 365",
+      "url": "",
+      "confidence": "medium"
     },
     "annual_volume": {
-      "total_transactions_millions": 423,
-      "breakdown": {
-        "fedwire_millions": 209.9,
-        "t2_target2_millions": 108.0,
-        "chaps_millions": 52.7,
-        "boj_net_millions": 5.0,
-        "cls_millions_est": 250.0
-      },
-      "confidence": "medium",
-      "notes": "CLS transaction count is estimated from daily value (~$7T) and record-day volume (3.2M trades). BOJ-NET from most recent published data.",
-      "sources": [
-        "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
-        "https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html",
-        "https://www.bankofengland.co.uk/report/2025/rtgs-and-chaps-annual-report-2024-25",
-        "https://www.boj.or.jp/en/statistics/set/kess/index.htm",
-        "https://www.cls-group.com/about/annual-report-2024/annual-report-2024/"
-      ]
+      "value": 423000000,
+      "source": "CLS transaction count is estimated from daily value (~$7T) and record-day volume (3.2M trades). BOJ-NET from most recent published data.",
+      "url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
+      "confidence": "medium"
     },
-    "annual_value": {
-      "total_usd_trillions": 2150,
-      "breakdown": {
-        "fedwire_usd_trillions": 1133.4,
-        "t2_target2_usd_trillions": 605,
-        "chaps_usd_trillions": 111,
-        "boj_net_usd_trillions": 122,
-        "cls_usd_trillions_est": 1750
-      },
-      "notes": "Values converted at approximate 2024 average FX rates. CLS value includes gross bilateral obligations before netting. Total exceeds sum of pure RTGS because CLS operates across multiple RTGS systems.",
-      "confidence": "medium",
-      "sources": [
-        "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
-        "https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html",
-        "https://www.bankofengland.co.uk/report/2025/rtgs-and-chaps-annual-report-2024-25",
-        "https://www.cls-group.com/about/annual-report-2024/annual-report-2024/"
-      ]
-    },
-    "historic_timeseries": {
-      "fedwire_volume_millions": {
-        "2019": 179.0,
-        "2020": 184.0,
-        "2021": 204.5,
-        "2022": 196.1,
-        "2023": 193.3,
-        "2024": 209.9
-      },
-      "t2_target2_volume_millions": {
-        "2019": 87.8,
-        "2020": 89.5,
-        "2021": 92.0,
-        "2022": 95.3,
-        "2023": 104.4,
-        "2024": 108.0
-      },
-      "chaps_volume_millions": {
-        "2019": 43.5,
-        "2020": 41.0,
-        "2021": 46.0,
-        "2022": 50.5,
-        "2023": 51.8,
-        "2024": 52.7
-      },
-      "sources": [
-        "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
-        "https://www.ecb.europa.eu/press/targetservar/html/ecb.targetservar2024.en.html",
-        "https://www.bankofengland.co.uk/payment-and-settlement/payment-and-settlement-statistics"
-      ]
-    },
-    "growth_rate": {
-      "fedwire_5yr_cagr_volume": "3.2%",
-      "t2_5yr_cagr_volume": "4.2%",
-      "chaps_5yr_cagr_volume": "3.9%",
-      "composite_5yr_cagr_volume": "3.5%",
-      "composite_5yr_cagr_value": "5.0%",
-      "notes": "Value growth outpaces volume growth — average transaction sizes increasing across all systems.",
-      "sources": [
-        "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
-        "https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html"
-      ]
-    },
-    "projections": {
-      "baseline": {
-        "2025": {"total_millions": 436, "avg_tps_calendar": 13.8, "value_usd_trillions": 2258},
-        "2026": {"total_millions": 449, "avg_tps_calendar": 14.2, "value_usd_trillions": 2370},
-        "2028": {"total_millions": 476, "avg_tps_calendar": 15.1, "value_usd_trillions": 2614},
-        "2030": {"total_millions": 505, "avg_tps_calendar": 16.0, "value_usd_trillions": 2882},
-        "2035": {"total_millions": 585, "avg_tps_calendar": 18.5, "value_usd_trillions": 3678},
-        "assumptions": "3% volume CAGR, 5% value CAGR. Steady-state growth in wholesale obligations."
-      },
-      "high_growth": {
-        "2030": {"total_millions": 540, "avg_tps_calendar": 17.1},
-        "2035": {"total_millions": 689, "avg_tps_calendar": 21.8},
-        "assumptions": "5% volume CAGR. 24/7 RTGS operations, CBDC settlement integration, CLS currency expansion."
-      },
-      "conservative": {
-        "2030": {"total_millions": 467, "avg_tps_calendar": 14.8},
-        "2035": {"total_millions": 515, "avg_tps_calendar": 16.3},
-        "assumptions": "2% volume CAGR. Netting efficiency gains reduce gross settlement needs."
-      }
+    "annual_value_usd": {
+      "value": 2150000000000000,
+      "source": "Values converted at approximate 2024 average FX rates. CLS value includes gross bilateral obligations before netting. Total exceeds sum of pure RTGS because CLS operates across multiple RTGS systems.",
+      "url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
+      "confidence": "medium"
     }
   },
-  "cross_reference": {
-    "bank_transfers_overlap": {
-      "notes": "The bank-transfers capsule includes RTGS as a sub-category (0.4B transactions). This capsule covers the same systems in greater depth. Top-line Fedwire/T2/CHAPS numbers are consistent across capsules.",
-      "source": "../../../analysis/payments/bank-transfers/data.json"
+  "historic": [
+    {
+      "year": 2019,
+      "annual_volume": 310300000,
+      "avg_tps": 9.8,
+      "source": "Fedwire + T2 + CHAPS",
+      "confidence": "medium"
     },
-    "securities_settlement_downstream": {
-      "notes": "Securities settlement (DTCC/Euroclear/Clearstream) generates net payment obligations that settle through RTGS systems. The cash legs of DVP settlement are included in RTGS counts.",
-      "source": "../securities-settlement/data.json"
+    {
+      "year": 2020,
+      "annual_volume": 314500000,
+      "avg_tps": 10.0,
+      "source": "Fedwire + T2 + CHAPS",
+      "confidence": "medium"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 342500000,
+      "avg_tps": 10.9,
+      "source": "Fedwire + T2 + CHAPS",
+      "confidence": "medium"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 341900000,
+      "avg_tps": 10.8,
+      "source": "Fedwire + T2 + CHAPS",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 349500000,
+      "avg_tps": 11.1,
+      "source": "Fedwire + T2 + CHAPS",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 370599999,
+      "avg_tps": 11.8,
+      "source": "Fedwire + T2 + CHAPS",
+      "confidence": "medium"
     }
-  }
+  ],
+  "projections": {
+    "baseline": [
+      {
+        "year": 2025,
+        "tps": 13.8,
+        "annual_volume": 436000000
+      },
+      {
+        "year": 2026,
+        "tps": 14.2,
+        "annual_volume": 449000000
+      },
+      {
+        "year": 2028,
+        "tps": 15.1,
+        "annual_volume": 476000000
+      },
+      {
+        "year": 2030,
+        "tps": 16.0,
+        "annual_volume": 505000000
+      },
+      {
+        "year": 2035,
+        "tps": 18.5,
+        "annual_volume": 585000000
+      }
+    ],
+    "high_growth": [
+      {
+        "year": 2030,
+        "tps": 17.1,
+        "annual_volume": 540000000
+      },
+      {
+        "year": 2035,
+        "tps": 21.8,
+        "annual_volume": 689000000
+      }
+    ],
+    "conservative": [
+      {
+        "year": 2030,
+        "tps": 14.8,
+        "annual_volume": 467000000
+      },
+      {
+        "year": 2035,
+        "tps": 16.3,
+        "annual_volume": 515000000
+      }
+    ]
+  },
+  "overlap": {
+    "overlaps_with": [],
+    "overlap_type": "none",
+    "overlap_note": ""
+  },
+  "sources": [
+    {
+      "id": 1,
+      "citation": "annual-stats.html",
+      "url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "index.en.html",
+      "url": "https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "payment-and-settlement-statistics",
+      "url": "https://www.bankofengland.co.uk/payment-and-settlement/payment-and-settlement-statistics",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "rtgs-and-chaps-annual-report-2024-25",
+      "url": "https://www.bankofengland.co.uk/report/2025/rtgs-and-chaps-annual-report-2024-25",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "index.htm",
+      "url": "https://www.boj.or.jp/en/statistics/set/kess/index.htm",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "",
+      "url": "https://www.cls-group.com/about/annual-report-2024/annual-report-2024/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "ecb.targetservar2024.en.html",
+      "url": "https://www.ecb.europa.eu/press/targetservar/html/ecb.targetservar2024.en.html",
+      "accessed": "2026-03-26"
+    }
+  ]
 }

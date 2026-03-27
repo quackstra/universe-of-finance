@@ -169,6 +169,17 @@ Driven by: netting efficiency gains reducing gross settlement needs, shift to in
 
 6. **Double-counting boundary**: RTGS settles the net positions from other systems (e.g., CCP margins, ACH net settlement, securities DVP legs). The ~423M transaction count is the final settlement layer — it does NOT double-count upstream activity.
 
+### Missing RTGS Systems — Expanded Coverage
+
+A supplementary analysis ([missing-systems.md](workings/missing-systems.md)) quantifies eight additional national RTGS systems not covered in the main analysis above. The most significant additions are:
+
+- **China CNAPS-HVPS**: 382M transactions/year (2023), ¥8,481T (~$1,180T) — comparable to Fedwire in volume and the largest single addition.
+- **India RTGS**: 295M transactions/year (2024), ₹1,938.2 lakh crore (~$2,327T) — the fastest-growing major RTGS system globally at 13.7% volume CAGR.
+- **Saudi Arabia SARIE**: estimated ~200M transactions/year — surprisingly large, driven by oil economy settlement patterns.
+- **Others**: BOK-Wire+ (South Korea), RITS (Australia), MEPS+ (Singapore), Lynx (Canada), Russia BESP.
+
+Including these systems revises the estimated global RTGS total from **~423M to ~1,400-1,600M annual transactions** and from **~$2,150T to ~$5,600T+ annual value**. The calendar-averaged TPS rises from ~13.4 to ~44-50. See the working paper for full system-by-system data, GDP-ratio validation, and confidence ratings.
+
 ---
 
 ## Data Quality & Limitations

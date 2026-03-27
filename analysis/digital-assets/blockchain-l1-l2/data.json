@@ -1,5 +1,6 @@
 {
   "category": "L1 & L2 Blockchain Transactions",
+  "slug": "blockchain-l1-l2",
   "sector": "Digital Assets",
   "last_updated": "2026-03-26",
   "current": {
@@ -29,128 +30,173 @@
       "url": "",
       "confidence": "medium",
       "note": "Range: 25-30B. Includes Solana vote transactions."
-    }
-  },
-  "chains": [
-    {
-      "name": "Solana",
-      "type": "L1",
-      "avg_daily_txns": 60000000,
-      "avg_tps": 694,
-      "peak_daily_txns": 138000000,
-      "est_annual_txns": 18000000000,
-      "share_pct": 67,
-      "note": "Includes vote transactions (~60% of total). Real user txns ~30-40% of total.",
-      "confidence": "medium"
     },
-    {
-      "name": "Base",
-      "type": "L2",
-      "avg_daily_txns": 5500000,
-      "avg_tps": 64,
-      "peak_daily_txns": 8800000,
-      "est_annual_txns": 2000000000,
-      "share_pct": 7.4,
-      "confidence": "medium"
-    },
-    {
-      "name": "BNB Chain",
-      "type": "L1",
-      "avg_daily_txns": 3500000,
-      "avg_tps": 40,
-      "est_annual_txns": 1280000000,
-      "share_pct": 4.7,
-      "confidence": "medium"
-    },
-    {
-      "name": "Arbitrum",
-      "type": "L2",
-      "avg_daily_txns": 2500000,
-      "avg_tps": 29,
-      "est_annual_txns": 900000000,
-      "share_pct": 3.3,
-      "confidence": "medium"
-    },
-    {
-      "name": "Ethereum L1",
-      "type": "L1",
-      "avg_daily_txns": 1165000,
-      "avg_tps": 13.5,
-      "peak_daily_txns": 1961144,
-      "est_annual_txns": 425000000,
-      "share_pct": 1.6,
-      "confidence": "high"
-    },
-    {
-      "name": "Bitcoin",
-      "type": "L1",
-      "avg_daily_txns": 500000,
-      "avg_tps": 5.8,
-      "est_annual_txns": 183000000,
-      "share_pct": 0.7,
-      "confidence": "high"
-    },
-    {
-      "name": "Optimism",
-      "type": "L2",
-      "avg_daily_txns": 1500000,
-      "avg_tps": 17,
-      "est_annual_txns": 550000000,
-      "share_pct": 2.0,
-      "confidence": "medium"
-    },
-    {
-      "name": "Other L2s & L1s",
-      "type": "mixed",
-      "avg_daily_txns": 3000000,
-      "avg_tps": 35,
-      "est_annual_txns": 1100000000,
-      "share_pct": 4.1,
-      "note": "Includes zkSync, Starknet, Avalanche, Polygon, Tron, etc.",
+    "annual_value_usd": {
+      "value": null,
+      "source": "",
+      "url": "",
       "confidence": "low"
     }
-  ],
+  },
   "historic": [
-    { "year": 2019, "est_annual_txns": 1500000000, "est_avg_tps": 48, "confidence": "low", "source": "BTC + ETH only estimate" },
-    { "year": 2020, "est_annual_txns": 2000000000, "est_avg_tps": 63, "confidence": "low", "source": "DeFi summer, BSC emerging" },
-    { "year": 2021, "est_annual_txns": 4000000000, "est_avg_tps": 127, "confidence": "medium", "source": "Bull market, BSC + Polygon" },
-    { "year": 2022, "est_annual_txns": 5000000000, "est_avg_tps": 159, "confidence": "medium", "source": "L2 launches, Solana growth" },
-    { "year": 2023, "est_annual_txns": 8000000000, "est_avg_tps": 254, "confidence": "medium", "source": "L2 adoption, Solana recovery" },
-    { "year": 2024, "est_annual_txns": 27000000000, "est_avg_tps": 856, "confidence": "medium", "source": "Solana breakout + L2 explosion" }
+    {
+      "year": 2019,
+      "annual_volume": 1500000000,
+      "avg_tps": 48,
+      "source": "BTC + ETH only estimate",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 2000000000,
+      "avg_tps": 63,
+      "source": "DeFi summer, BSC emerging",
+      "confidence": "low"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 4000000000,
+      "avg_tps": 127,
+      "source": "Bull market, BSC + Polygon",
+      "confidence": "medium"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 5000000000,
+      "avg_tps": 159,
+      "source": "L2 launches, Solana growth",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 8000000000,
+      "avg_tps": 254,
+      "source": "L2 adoption, Solana recovery",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 27000000000,
+      "avg_tps": 856,
+      "source": "Solana breakout + L2 explosion",
+      "confidence": "medium"
+    }
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "est_annual_txns": 40000000000, "est_avg_tps": 1270 },
-      { "year": 2028, "est_annual_txns": 60000000000, "est_avg_tps": 1900 },
-      { "year": 2030, "est_annual_txns": 100000000000, "est_avg_tps": 3170 },
-      { "year": 2035, "est_annual_txns": 250000000000, "est_avg_tps": 7930 }
+      {
+        "year": 2026,
+        "tps": 1270,
+        "annual_volume": 40000000000
+      },
+      {
+        "year": 2028,
+        "tps": 1900,
+        "annual_volume": 60000000000
+      },
+      {
+        "year": 2030,
+        "tps": 3170,
+        "annual_volume": 100000000000
+      },
+      {
+        "year": 2035,
+        "tps": 7930,
+        "annual_volume": 250000000000
+      }
     ],
     "high_growth": [
-      { "year": 2026, "est_annual_txns": 60000000000, "est_avg_tps": 1900 },
-      { "year": 2028, "est_annual_txns": 150000000000, "est_avg_tps": 4760 },
-      { "year": 2030, "est_annual_txns": 500000000000, "est_avg_tps": 15850 },
-      { "year": 2035, "est_annual_txns": 2000000000000, "est_avg_tps": 63400 }
+      {
+        "year": 2026,
+        "tps": 1900,
+        "annual_volume": 60000000000
+      },
+      {
+        "year": 2028,
+        "tps": 4760,
+        "annual_volume": 150000000000
+      },
+      {
+        "year": 2030,
+        "tps": 15850,
+        "annual_volume": 500000000000
+      },
+      {
+        "year": 2035,
+        "tps": 63400,
+        "annual_volume": 2000000000000
+      }
     ],
     "conservative": [
-      { "year": 2026, "est_annual_txns": 30000000000, "est_avg_tps": 950 },
-      { "year": 2028, "est_annual_txns": 35000000000, "est_avg_tps": 1110 },
-      { "year": 2030, "est_annual_txns": 45000000000, "est_avg_tps": 1430 },
-      { "year": 2035, "est_annual_txns": 60000000000, "est_avg_tps": 1900 }
+      {
+        "year": 2026,
+        "tps": 950,
+        "annual_volume": 30000000000
+      },
+      {
+        "year": 2028,
+        "tps": 1110,
+        "annual_volume": 35000000000
+      },
+      {
+        "year": 2030,
+        "tps": 1430,
+        "annual_volume": 45000000000
+      },
+      {
+        "year": 2035,
+        "tps": 1900,
+        "annual_volume": 60000000000
+      }
     ]
   },
-  "double_counting_flags": [
-    "DeFi transactions (DEX swaps, lending, yield farming) are a SUBSET of L1/L2 transactions",
-    "Stablecoin transfers are a SUBSET of L1/L2 transactions",
-    "CEX internal trades have ZERO overlap with L1/L2 transactions",
-    "Cross-chain bridge transactions may be counted on both source and destination chains"
-  ],
+  "overlap": {
+    "overlaps_with": [],
+    "overlap_type": "none",
+    "overlap_note": ""
+  },
   "sources": [
-    { "id": 1, "citation": "Etherscan — Ethereum Daily Transactions Chart", "url": "https://etherscan.io/chart/tx", "accessed": "2026-03-26" },
-    { "id": 2, "citation": "Blockchain.com — Bitcoin Confirmed Transactions Per Day", "url": "https://www.blockchain.com/charts/n-transactions", "accessed": "2026-03-26" },
-    { "id": 3, "citation": "L2Beat — Scaling Activity Dashboard", "url": "https://l2beat.com/scaling/activity", "accessed": "2026-03-26" },
-    { "id": 4, "citation": "CryptoSlate — 70M daily transactions: How Solana won DeFi's throughput race", "url": "https://cryptoslate.com/70m-daily-transactions-143b-volume-how-solana-won-defis-throughput-race/", "accessed": "2026-03-26" },
-    { "id": 5, "citation": "CryptoRank — Base L2 transaction momentum 2024", "url": "https://cryptorank.io/news/feed/4c92e-base-l2-transaction-momentum-2024", "accessed": "2026-03-26" },
-    { "id": 6, "citation": "BitInfoCharts — Blockchain Statistics", "url": "https://bitinfocharts.com/", "accessed": "2026-03-26" },
-    { "id": 7, "citation": "Statista — Bitcoin/Ethereum daily transactions", "url": "https://www.statista.com/statistics/730838/number-of-daily-cryptocurrency-transactions-by-type/", "accessed": "2026-03-26" }
+    {
+      "id": 1,
+      "citation": "Etherscan \u2014 Ethereum Daily Transactions Chart",
+      "url": "https://etherscan.io/chart/tx",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "Blockchain.com \u2014 Bitcoin Confirmed Transactions Per Day",
+      "url": "https://www.blockchain.com/charts/n-transactions",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "L2Beat \u2014 Scaling Activity Dashboard",
+      "url": "https://l2beat.com/scaling/activity",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "CryptoSlate \u2014 70M daily transactions: How Solana won DeFi's throughput race",
+      "url": "https://cryptoslate.com/70m-daily-transactions-143b-volume-how-solana-won-defis-throughput-race/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "CryptoRank \u2014 Base L2 transaction momentum 2024",
+      "url": "https://cryptorank.io/news/feed/4c92e-base-l2-transaction-momentum-2024",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "BitInfoCharts \u2014 Blockchain Statistics",
+      "url": "https://bitinfocharts.com/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "Statista \u2014 Bitcoin/Ethereum daily transactions",
+      "url": "https://www.statista.com/statistics/730838/number-of-daily-cryptocurrency-transactions-by-type/",
+      "accessed": "2026-03-26"
+    }
   ]
 }
