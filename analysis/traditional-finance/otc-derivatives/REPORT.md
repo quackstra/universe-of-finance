@@ -10,9 +10,9 @@
 
 The OTC derivatives market is the largest financial market in the world by notional outstanding — **$732 trillion at year-end 2024** according to BIS — yet it is paradoxically one of the **lowest-frequency markets by transaction count**. These are bespoke, bilateral contracts between sophisticated counterparties, typically executed in large notional sizes ($50M-$500M+ per trade for interest rate swaps).
 
-We estimate approximately **40,000-60,000 OTC derivative trades per day** globally, yielding an average TPS of roughly **0.5-0.7**. This makes OTC derivatives the lowest-TPS category in the Universe of Finance despite being arguably the highest-value.
+**Revised estimate (Run 4 triangulation)**: A segmented model by derivative type yields **~4.7 million OTC derivative trades/year** (excluding FX derivatives), or **~18,700 trades/day**, for an average TPS of **~0.15** over 24h/365d. This is lower than the previous estimate of ~7.3M/~0.3 TPS because the earlier model overstated equity OTC and commodity OTC trade counts. Including FX derivatives: ~9.7M/year, ~0.31 TPS. The IRD and CDS components are well-anchored by ISDA SwapsInfo; equity and commodity OTC remain opaque.
 
-The 2025 BIS Triennial Survey revealed **OTC interest rate derivatives turnover surged to $7.9 trillion/day** (up 59% from 2022), driven by euro-denominated instruments and central bank policy divergence. However, this value is concentrated in relatively few, very large trades.
+The 2025 BIS Triennial Survey revealed **OTC interest rate derivatives turnover surged to $7.9 trillion/day** (up 59% from 2022), driven by euro-denominated instruments and central bank policy divergence. However, ISDA data shows trade count growth of +27.5% in H1 2025 vs H1 2024, indicating significant acceleration. However, this value is concentrated in relatively few, very large trades.
 
 ---
 
@@ -20,17 +20,20 @@ The 2025 BIS Triennial Survey revealed **OTC interest rate derivatives turnover 
 
 | Metric | Value | Confidence |
 |--------|-------|------------|
-| Average TPS (est.) | **~0.6** | 🔴 Low |
-| Peak TPS (est.) | **~3** | 🔴 Low |
-| Daily trade count (est.) | ~50,000 | 🔴 Low |
-| Annual trade count (est.) | ~12.5M | 🟡 Medium |
+| Average TPS — excl. FX derivatives | **~0.15** | 🟡 Medium |
+| Average TPS — incl. FX derivatives | **~0.31** | 🔴 Low |
+| Peak TPS (est.) | **~1.5** | 🔴 Low |
+| Daily trade count — excl. FX (est.) | ~18,700 | 🟡 Medium |
+| Annual trade count — excl. FX (est.) | ~4.7M | 🟡 Medium |
+| Annual IRD trade count (US/EU/UK) | 2.7M | 🟢 High |
+| Annual CDS trade count (index + single-name) | 525K | 🟢 High |
 | Notional outstanding (Dec 2024) | $732T | 🟢 High |
 | Daily turnover — OTC IRD (Apr 2025) | $7.9T | 🟢 High |
 | Daily turnover — OTC FX derivatives (Apr 2025) | $6.6T | 🟢 High |
 
-**Methodology**: ISDA SwapsInfo reports ~2.9 million IRD trades in 2024 for US, EU, and UK markets. CDS adds ~317K trades. Adding other jurisdictions (Asia, EM) and other OTC derivative types (equity, commodity, FX derivatives) yields an estimated 12-13 million global OTC derivative trades per year. TPS = 12.5M / (252 x 10h x 3600) = ~1.4 during trading hours, or ~0.6 over a 24h day.
+**Methodology**: Segmented model by derivative type. IRD: ISDA SwapsInfo 2.7M (US/EU/UK) + 0.4M (APAC/EM) = 3.1M. CDS: 525K (index + single-name, US/EU/UK) + 75K (RoW) = 0.6M. Equity OTC: 0.6M (estimated). Commodity OTC: 0.4M (estimated). Total excl. FX: 4.7M. FX derivatives (5M) excluded per taxonomy — counted in FX category. See [count triangulation](workings/count-triangulation.md) and [calculations](workings/calculations.md).
 
-**Sources**: [ISDA SwapsInfo 2024 Review](https://www.isda.org/2025/02/20/swapsinfo-full-year-2024-and-the-fourth-quarter-of-2024/), [BIS OTC Derivatives Statistics](https://www.bis.org/statistics/derstats.htm), [BIS Triennial Survey 2025](https://www.bis.org/statistics/rpfx25.htm)
+**Sources**: [ISDA SwapsInfo 2024](https://www.isda.org/2025/02/20/swapsinfo-full-year-2024-and-the-fourth-quarter-of-2024/), [ISDA 2025](https://www.isda.org/2026/02/17/swapsinfo-full-year-2025-and-the-fourth-quarter-of-2025-review), [BIS OTC Derivatives Statistics](https://www.bis.org/statistics/derstats.htm), [BIS Triennial Survey 2025](https://www.bis.org/statistics/rpfx25.htm)
 
 ---
 
@@ -48,22 +51,28 @@ The 2025 BIS Triennial Survey revealed **OTC interest rate derivatives turnover 
 | Single-name CDS | ~24K (est.) | — | ~$1.0T (est.) | Derived (7% of CDS notional) |
 | **US/EU/UK Total** | **~3.2M** | — | **~$414T** | Composite |
 
-### 2.2 Global Extrapolation
+### 2.2 Global Extrapolation (Revised — Run 4 Triangulation)
 
-| Component | Est. Annual Trades | Notes |
-|-----------|-------------------|-------|
-| IRD (US/EU/UK reported) | 2.9M | ISDA SwapsInfo |
-| IRD (rest of world, est. +35%) | 1.0M | Japan, Australia, HK, Singapore |
-| CDS (global) | 0.4M | ISDA + non-reported markets |
-| Equity derivatives (OTC) | 2.0M | Equity swaps, options — estimated |
-| Commodity swaps (OTC) | 1.0M | Physical commodity hedging |
-| FX derivatives (OTC, excl. spot) | 5.0M | Forwards, swaps, options (some overlap with FX category) |
-| **Global Total (est.)** | **~12.3M** | — |
+| Component | Est. Annual Trades | Notes | Confidence |
+|-----------|-------------------|-------|------------|
+| IRD (US/EU/UK reported) | 2.7M | ISDA SwapsInfo FY 2024 (+8.2% YoY) | High |
+| IRD (APAC: Japan, AU, SG, HK) | 0.32M | JSCC data + proportional scaling | Medium |
+| IRD (EM/other) | 0.08M | Minimal bilateral unreported | Low |
+| CDS — Index (US/EU/UK) | 0.317M | ISDA direct (-6.9% YoY) | High |
+| CDS — Single-name (US/EU/UK) | 0.208M | ISDA direct (-16.6% YoY) | High |
+| CDS — Rest of world | 0.075M | ~15% uplift | Low |
+| Equity derivatives (OTC) | 0.6M | Equity swaps, TRS, variance swaps — estimated | Low |
+| Commodity swaps (OTC) | 0.4M | Physical commodity hedging — estimated | Low |
+| **Total (excl. FX)** | **~4.7M** | — | Medium |
+| FX derivatives (OTC, excl. spot) | 5.0M | Forwards, swaps, options — EXCLUDED (in FX category) | Low |
+| **Total (incl. FX)** | **~9.7M** | — | Low-Medium |
 
-**Note on FX derivatives overlap**: FX forwards, swaps, and options are counted in the FX category. Some of these are also OTC derivatives. Per taxonomy, we include FX derivatives in the FX category and exclude them here to avoid double-counting. Excluding FX derivatives:
+**Note on FX derivatives overlap**: FX forwards, swaps, and options are counted in the FX category. Per taxonomy, we exclude FX derivatives here to avoid double-counting.
 
-**OTC Derivatives (excl. FX): ~7.3M trades/year** = ~29K trades/day = **~0.3 TPS**
-**OTC Derivatives (incl. FX derivatives): ~12.3M trades/year** = ~49K trades/day = **~0.6 TPS**
+**OTC Derivatives (excl. FX): ~4.7M trades/year** = ~18.7K trades/day = **~0.15 TPS** (24h/365d)
+**OTC Derivatives (incl. FX derivatives): ~9.7M trades/year** = ~38.5K trades/day = **~0.31 TPS** (24h/365d)
+
+**Why lower than previous estimate?** The prior model assumed 2.0M equity OTC and 1.0M commodity OTC trades. Triangulation against BIS notional data, proportional scaling, and available CCP data suggests these were overstated. These markets are dominated by very large institutional trades with low ticket counts. See [count-triangulation.md](workings/count-triangulation.md) for detailed methodology.
 
 ---
 
@@ -123,29 +132,29 @@ The 2025 BIS Triennial Survey revealed **OTC interest rate derivatives turnover 
 
 ## 6. Projections
 
-### 6.1 Baseline (CAGR 5% on trade count)
+### 6.1 Baseline (CAGR 7% on trade count — excl. FX)
 
-| Year | Est. Annual Trades (M) | Est. TPS | Notional Outstanding (est. $T) |
+| Year | Est. Annual Trades (M) | Est. TPS (24h) | Notional Outstanding (est. $T) |
 |------|-----------------------|----------|-------------------------------|
-| 2024 | 12.3 | 0.6 | 732 |
-| 2030 | 16.5 | 0.8 | 980 |
-| 2035 | 21.1 | 1.0 | 1,250 |
+| 2024 | 4.7 | 0.15 | 732 |
+| 2030 | 6.9 | 0.22 | 980 |
+| 2035 | 9.5 | 0.30 | 1,250 |
 
-### 6.2 High Growth (CAGR 8%)
+### 6.2 High Growth (CAGR 13% — in line with 2025 acceleration)
 
-| Year | Est. Annual Trades (M) | Est. TPS | Notional Outstanding (est. $T) |
+| Year | Est. Annual Trades (M) | Est. TPS (24h) | Notional Outstanding (est. $T) |
 |------|-----------------------|----------|-------------------------------|
-| 2024 | 12.3 | 0.6 | 732 |
-| 2030 | 19.5 | 0.9 | 1,160 |
-| 2035 | 28.7 | 1.4 | 1,700 |
+| 2024 | 4.7 | 0.15 | 732 |
+| 2030 | 10.1 | 0.32 | 1,160 |
+| 2035 | 16.4 | 0.52 | 1,700 |
 
 ### 6.3 Conservative (CAGR 2%)
 
-| Year | Est. Annual Trades (M) | Est. TPS | Notional Outstanding (est. $T) |
+| Year | Est. Annual Trades (M) | Est. TPS (24h) | Notional Outstanding (est. $T) |
 |------|-----------------------|----------|-------------------------------|
-| 2024 | 12.3 | 0.6 | 732 |
-| 2030 | 13.8 | 0.7 | 825 |
-| 2035 | 15.3 | 0.7 | 910 |
+| 2024 | 4.7 | 0.15 | 732 |
+| 2030 | 5.4 | 0.17 | 825 |
+| 2035 | 6.0 | 0.19 | 910 |
 
 **Scenario rationale**:
 - **Baseline**: Steady growth driven by interest rate hedging demand, continued clearing mandate expansion. Trade counts grow modestly as compression and netting reduce ticket count while notional grows.
@@ -156,17 +165,19 @@ The 2025 BIS Triennial Survey revealed **OTC interest rate derivatives turnover 
 
 ## 7. Key Findings
 
-1. **OTC derivatives are the highest-VALUE, lowest-FREQUENCY financial market.** At ~0.6 TPS and $732T notional outstanding, each transaction represents an enormous economic commitment (average notional per trade: ~$60M for IRD).
+1. **OTC derivatives are the highest-VALUE, lowest-FREQUENCY financial market.** At ~0.15 TPS (excl. FX) and $732T notional outstanding, each transaction represents an enormous economic commitment (average notional per trade: ~$118M for IRD, even higher for commodity swaps).
 
-2. **Interest rate derivatives dominate** at 75% of notional outstanding ($548T) and the majority of trade count. OIS (overnight index swaps) alone represent 70% of IRD traded notional.
+2. **Interest rate derivatives dominate by trade count (~66% of total)** at 3.1M trades/year globally. ISDA SwapsInfo provides high-confidence data for US/EU/UK (2.7M); APAC adds ~0.4M anchored by JSCC data.
 
-3. **The 2025 BIS Triennial Survey shows OTC IRD turnover surged 59% to $7.9T/day**, driven by a near-doubling of euro-denominated contracts as ECB and Fed policy diverged.
+3. **The 2025 BIS Triennial Survey shows OTC IRD turnover surged 59% to $7.9T/day**, driven by a near-doubling of euro-denominated contracts as ECB and Fed policy diverged. ISDA H1 2025 data shows trade count up 27.5% — the acceleration is real and significant.
 
-4. **CDS volume is declining by trade count** (-6.9% YoY) even as notional grows, reflecting trade compression and portfolio optimization by dealers.
+4. **CDS trade count is mixed**: Index CDS declined 6.9% in 2024 but rebounded 11.6% in 2025 (353.3K). Single-name CDS continues declining (-16.6% in 2024, -5.8% in 2025), reflecting compression and portfolio optimization.
 
-5. **Central clearing now dominates**: Over 70% of IRD trades are cleared through CCPs (LCH, CME Clearing), up from <30% pre-crisis. This has reduced bilateral credit risk but hasn't increased trade frequency.
+5. **Equity and commodity OTC derivatives are the most opaque segments**: No public aggregate trade count data exists. Our estimates (0.6M and 0.4M respectively) are low-confidence extrapolations.
 
-6. **Double-counting note**: FX derivatives (forwards, swaps, options) are included in the FX category. We present OTC derivatives both including and excluding FX derivatives. For Universe of Finance aggregation, use the "excl. FX" figure (~7.3M trades/year) to avoid double-counting.
+6. **Central clearing now dominates**: 76.9% of IRD by notional, 67.9% of CDS. SEF-traded IRD accounted for 77.3% of trade count in 2025. Electronic execution is growing but hasn't dramatically increased overall ticket count yet.
+
+7. **Double-counting note**: FX derivatives are excluded from our primary figure (counted in FX category). For Universe of Finance aggregation, use ~4.7M trades/year (excl. FX).
 
 ---
 
@@ -183,10 +194,13 @@ The 2025 BIS Triennial Survey revealed **OTC interest rate derivatives turnover 
 
 ## Open Questions & Triangulation Opportunities
 
+> **Run 4 update (2026-03-27)**: Detailed count triangulation completed. See [workings/count-triangulation.md](workings/count-triangulation.md) for the full segmented model, sensitivity analysis, and definition discussion.
+
 ### What We Can't Directly Observe
-- **Global OTC derivative trade count with precision**: ISDA SwapsInfo covers US/EU/UK markets (~3.2M trades for IRD+CDS), but Asia-Pacific, Latin America, and EM markets are not covered. The "rest of world" multiplier (+35%) is an assumption.
-- **Equity and commodity OTC derivative trade counts**: Unlike IRD and CDS (tracked via DTCC SDR), equity swaps and commodity swaps have poor trade count visibility.
-- **Impact of compression on reported trade counts**: TriOptima/OSTTRA compression cycles eliminate trades (e.g., 79% of eligible trades in a single commodities cycle), reducing gross notional and trade count — but the net effect on annual statistics is not tracked comprehensively.
+- **Equity OTC derivative trade count**: This is the single biggest gap. No public source aggregates global OTC equity swap/option trade counts. SEC SBSDR covers US security-based swaps, but aggregate statistics are not published accessibly. Our 0.6M estimate carries a wide range (0.3M-1.0M).
+- **Commodity OTC derivative trade count**: Similar opacity. BIS notional ($2.4T outstanding) provides a ceiling anchor, but trade count depends heavily on average notional per trade.
+- **Asia-Pacific OTC derivatives beyond Japan**: JSCC provides JPY IRS clearing data (record JPY 8,272T in 2024), but China, India, Korea, and other markets lack accessible English-language trade count reporting.
+- **Impact of compression on reported trade counts**: TriOptima/OSTTRA compression cycles eliminate trades (e.g., 79% of eligible trades in a single commodities cycle). If we counted gross trades before compression, the total could be 2-5x higher.
 - **True bilateral vs. cleared split by trade count**: BIS reports clearing rates by notional (76.9% for IRD, 67.9% for CDS), but clearing rates by trade count may differ.
 
 ### Triangulation Strategies

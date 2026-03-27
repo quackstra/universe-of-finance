@@ -8,11 +8,13 @@
 
 ## Executive Summary
 
-The global fixed income market is valued at approximately **$145 trillion outstanding** (2024), making it one of the largest asset classes on Earth. However, bonds trade far less frequently than equities — most bonds are held to maturity and the market is dominated by institutional, over-the-counter trading. We estimate approximately **500,000-700,000 bond trades per day** globally (excluding repo), yielding a modest average TPS of roughly **6-8**.
+The global fixed income market is valued at approximately **$145 trillion outstanding** (2024), making it one of the largest asset classes on Earth. However, bonds trade far less frequently than equities — most bonds are held to maturity and the market is dominated by institutional, over-the-counter trading.
 
-The repo market dwarfs cash bond trading by value, with the European repo market alone exceeding EUR 10 trillion outstanding and daily turnover of ~EUR 5 trillion. Including repo, daily transaction counts may reach **2-4 million**, pushing TPS into the **23-46** range.
+**Revised estimate (Run 4 triangulation)**: A bottom-up segmented model yields approximately **~448,000 cash bond trades per day** globally, for an average TPS of **~3.6** over a 24h/365d basis (~12 TPS during trading hours). The US accounts for ~70% of global cash bond trade count, anchored by FINRA TRACE (52M/year) and MSRB (14.5M municipal trades/year — a record in 2024).
 
-US Treasury ADV surpassed **$1 trillion for the first time in 2024**, and corporate bond ADV reached $57.9 billion (+11.5% YoY), reflecting the ongoing electronification of fixed income markets.
+The repo market adds substantial transaction volume but is extremely difficult to count — no centralized source reports global repo trade counts. Modeling from market size and estimated average trade sizes, we estimate **~333,000 repo trades/day** globally, bringing the total fixed income TPS to **~6.2** (24h basis). However, repo trade count carries a wide confidence interval (40M-160M annually) driven by uncertainty in average trade size.
+
+US Treasury ADV surpassed **$1 trillion for the first time in 2024**, corporate bond ADV reached $57.9 billion (+11.5% YoY), and MSRB reported 14.5M municipal bond trades (up to 17.6M in 2025, +22%), reflecting the ongoing electronification of fixed income markets.
 
 ---
 
@@ -20,19 +22,21 @@ US Treasury ADV surpassed **$1 trillion for the first time in 2024**, and corpor
 
 | Metric | Value | Confidence |
 |--------|-------|------------|
-| Average TPS — cash bonds only (est.) | **~7** | 🔴 Low |
-| Average TPS — including repo (est.) | **~35** | 🔴 Low |
-| Peak TPS (est.) | **~100** | 🔴 Low |
-| Daily trade count — cash bonds (est.) | ~600,000 | 🔴 Low |
-| Daily trade count — repo (est.) | ~2.5M | 🔴 Low |
+| Average TPS — cash bonds only | **~3.6** | 🟡 Medium |
+| Average TPS — including repo | **~6.2** | 🔴 Low |
+| Peak TPS (est.) | **~50** | 🔴 Low |
+| Daily trade count — cash bonds | ~448,000 | 🟡 Medium |
+| Daily trade count — repo (est.) | ~333,000 | 🔴 Low |
 | Daily value — US Treasuries ADV | $1,055B | 🟢 High |
 | Daily value — US Corporates ADV | $57.9B | 🟢 High |
 | Daily value — Tradeweb ADV (Oct 2024) | $2.35T | 🟢 High |
+| US corporate bond trades/day (Coalition Greenwich) | 125,723 | 🟢 High |
+| US municipal bond trades (MSRB, 2024) | 14.5M/year | 🟢 High |
 | Market outstanding (global, 2024) | $145T | 🟢 High |
 
-**Methodology**: FINRA TRACE reported ~52 million bond transactions in the US in 2024. The US represents roughly 40% of global bond trading activity, suggesting ~130 million global cash bond trades/year or ~520K/day over 252 trading days. Adding repo transactions (estimated from ICMA European survey) brings the total substantially higher. See [calculations](workings/calculations.md).
+**Methodology**: Bottom-up segmented model. US cash bonds: FINRA TRACE 52M + MSRB 14.5M + Treasury est. 12.6M = 79.1M/year. Europe: est. 13.8M. APAC/EM: est. 20M. Total cash: 112.9M/year. Repo: modeled from OFR US repo ($12.6T daily exposure) and ICMA European repo (EUR 13.7T outstanding), divided by estimated avg trade sizes. See [count triangulation](workings/count-triangulation.md) and [calculations](workings/calculations.md).
 
-**Sources**: [SIFMA](https://www.sifma.org/research/statistics/us-treasury-securities-statistics), [Tradeweb](https://www.tradeweb.com/newsroom/media-center/news-releases/tradeweb-reports-october-2024-total-trading-volume-of-$54.7-trillion-and-average-daily-volume-of-$2.35-trillion/), [FINRA TRACE](https://www.finra.org/finra-data/fixed-income)
+**Sources**: [SIFMA](https://www.sifma.org/research/statistics/us-treasury-securities-statistics), [FINRA TRACE](https://www.finra.org/finra-data/fixed-income), [MSRB](https://www.msrb.org/sites/default/files/2025-01/MSRB-2024-Municipal-Market-Year-in-Review.pdf), [OFR](https://www.financialresearch.gov/the-ofr-blog/2025/12/04/sizing-us-repo-market/), [Coalition Greenwich](https://coalitiongreenwich.crisil.com/)
 
 ---
 
@@ -120,29 +124,29 @@ TRACE reported approximately 52 million total bond transactions in 2024, includi
 
 ## 5. Projections
 
-### 5.1 Baseline (CAGR 8% on ADV)
+### 5.1 Baseline (CAGR 8% on trade count)
 
-| Year | Global Daily Trades (est.) | TPS (cash bonds) | TPS (incl. repo) |
+| Year | Global Daily Trades (cash) | TPS (cash bonds) | TPS (incl. repo) |
 |------|---------------------------|-------------------|-------------------|
-| 2024 | 600K | 7 | 35 |
-| 2030 | 950K | 11 | 55 |
-| 2035 | 1.4M | 16 | 80 |
+| 2024 | 448K | 3.6 | 6.2 |
+| 2030 | 711K | 5.0 | 8.6 |
+| 2035 | 1.04M | 6.9 | 11.8 |
 
 ### 5.2 High Growth (CAGR 12%)
 
-| Year | Global Daily Trades (est.) | TPS (cash bonds) | TPS (incl. repo) |
+| Year | Global Daily Trades (cash) | TPS (cash bonds) | TPS (incl. repo) |
 |------|---------------------------|-------------------|-------------------|
-| 2024 | 600K | 7 | 35 |
-| 2030 | 1.2M | 14 | 70 |
-| 2035 | 2.1M | 24 | 120 |
+| 2024 | 448K | 3.6 | 6.2 |
+| 2030 | 885K | 6.4 | 11.0 |
+| 2035 | 1.56M | 11.3 | 19.4 |
 
 ### 5.3 Conservative (CAGR 4%)
 
-| Year | Global Daily Trades (est.) | TPS (cash bonds) | TPS (incl. repo) |
+| Year | Global Daily Trades (cash) | TPS (cash bonds) | TPS (incl. repo) |
 |------|---------------------------|-------------------|-------------------|
-| 2024 | 600K | 7 | 35 |
-| 2030 | 760K | 9 | 44 |
-| 2035 | 925K | 11 | 54 |
+| 2024 | 448K | 3.6 | 6.2 |
+| 2030 | 567K | 4.2 | 7.2 |
+| 2035 | 690K | 4.9 | 8.4 |
 
 **Scenario rationale**:
 - **Baseline**: Continued electronification drives ~8% growth in trade frequency, with modest growth in outstanding.
@@ -153,17 +157,19 @@ TRACE reported approximately 52 million total bond transactions in 2024, includi
 
 ## 6. Key Findings
 
-1. **Fixed income is a high-value, very-low-frequency market.** At ~7 TPS for cash bonds only, it is one of the lowest-frequency categories in the Universe of Finance despite being one of the largest by value ($145T outstanding).
+1. **Fixed income is a high-value, low-frequency market.** At ~3.6 TPS for cash bonds (revised down from ~7), it is one of the lowest-frequency categories in the Universe of Finance despite being one of the largest by value ($145T outstanding). The previous estimate overstated global trade counts by assuming the US was only 40% of global activity; bottom-up modeling shows the US is closer to 70% by trade count.
 
-2. **The repo market vastly exceeds cash bond trading** in both value (~$10T/day vs ~$1.5T/day) and likely transaction count. Including repo brings estimated TPS up to ~35.
+2. **The repo market is significant but not as dominant by trade count as by value.** Repo adds ~333K trades/day (vs ~448K for cash bonds), bringing total FI TPS to ~6.2. However, repo trade count is the most uncertain number in the entire model — no public source reports it, and estimates swing 4x depending on average trade size assumptions.
 
-3. **US Treasury ADV crossed $1 trillion for the first time in 2024**, driven by rate volatility and electronic trading adoption.
+3. **US Treasury ADV crossed $1 trillion for the first time in 2024**, driven by rate volatility and electronic trading adoption. FICC GSD cleared a record $10T in a single day (Sep 30, 2024).
 
-4. **Electronification is the key growth driver**: Tradeweb ADV grew ~35% YoY. As more bonds move from voice trading to electronic platforms, trade frequency will increase even if total market value grows slowly.
+4. **Municipal bonds are a high-confidence anchor**: MSRB reported 14.5M trades in 2024 (first year above 14M) and 17.6M in 2025 (+22%). This direct count data is more reliable than most fixed income estimates.
 
-5. **TRACE data gap**: TRACE captures US corporate and agency bonds but does NOT cover US Treasuries traded outside of TRACE-eligible platforms, nor any non-US markets. Global trade count estimates require significant extrapolation.
+5. **Electronification is accelerating trade counts**: US corporate bond trading averaged 125,723 trades/day in 2024 (Coalition Greenwich). Tradeweb ADV grew ~35% YoY. MSRB trade counts surged 22% in 2025. Trade frequency is growing faster than market value.
 
 6. **Bond markets are structurally illiquid by count**: Unlike equities, most bonds are unique instruments (distinct CUSIPs) with limited secondary market activity. Corporate bonds average ~1 trade per bond per week.
+
+7. **Non-US trade count data remains the biggest gap**: Europe and APAC bond trade counts are estimated, not observed. The US has TRACE and MSRB; no equivalent exists globally.
 
 ---
 
@@ -179,9 +185,12 @@ TRACE reported approximately 52 million total bond transactions in 2024, includi
 
 ## Open Questions & Triangulation Opportunities
 
+> **Run 4 update (2026-03-27)**: Detailed count triangulation completed. See [workings/count-triangulation.md](workings/count-triangulation.md) for the full segmented model, sensitivity analysis, and confidence intervals.
+
 ### What We Can't Directly Observe
-- **Global repo transaction count**: The repo market is enormous by value (~$10T/day globally) but no single source reports daily transaction counts. ICMA reports outstanding value; the Fed reports SOFR-eligible volumes — neither reports trade counts.
-- **Non-US bond trade counts**: TRACE captures US corporate and agency bonds (~52M trades/year), but European, Asian, and EM bond market trade counts are largely unreported.
+- **Global repo transaction count**: The OFR's Dec 2024 NCCBR data collection is the first attempt at transaction-level US repo data, but aggregate trade counts are not yet published. Our model estimates ~333K repo trades/day globally, but this is sensitive to average trade size assumptions (40M-160M annual range).
+- **Non-US bond trade counts**: TRACE captures US corporate and agency bonds (~52M trades/year) and MSRB captures munis (14.5M). European, Asian, and EM bond market trade counts are estimated from ADV / assumed trade sizes.
+- **US Treasury trade count**: Unlike corporate bonds (TRACE) and munis (MSRB), US Treasury trades are not reported to a consolidated tape by trade count. Our 12.6M estimate is derived from $1,055B ADV / ~$21M avg trade size.
 - **Electronic vs. voice bond trading split**: Tradeweb and MarketAxess report ADV by value, but the share of bond trades executed electronically vs. voice across all market segments is not centrally tracked.
 
 ### Triangulation Strategies
