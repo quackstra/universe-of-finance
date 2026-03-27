@@ -169,6 +169,41 @@
       }
     ]
   },
+  "regional_breakdown": {
+    "year": 2024,
+    "real_time_systems": [
+      {"system": "UPI", "country": "India", "annual_txns_billions": 172.2, "yoy_growth_pct": 46, "share_of_global_rtp_pct": 45.6, "confidence": "high"},
+      {"system": "PIX", "country": "Brazil", "annual_txns_billions": 66.0, "yoy_growth_pct": 52, "share_of_global_rtp_pct": 17.5, "confidence": "high"},
+      {"system": "PromptPay", "country": "Thailand", "annual_txns_billions": 24.3, "yoy_growth_pct": 22, "share_of_global_rtp_pct": 6.4, "confidence": "medium"},
+      {"system": "China IBPS", "country": "China", "annual_txns_billions": 20.0, "share_of_global_rtp_pct": 5.3, "confidence": "low"},
+      {"system": "Nigeria NIP", "country": "Nigeria", "annual_txns_billions": 11.2, "yoy_growth_pct": 15.5, "share_of_global_rtp_pct": 3.0, "confidence": "high"},
+      {"system": "South Korea RTP", "country": "South Korea", "annual_txns_billions": 10.0, "share_of_global_rtp_pct": 2.6, "confidence": "low"},
+      {"system": "UK Faster Payments", "country": "UK", "annual_txns_billions": 5.09, "yoy_growth_pct": 5, "share_of_global_rtp_pct": 1.3, "confidence": "high"},
+      {"system": "SEPA Instant", "country": "EU", "annual_txns_billions": 5.0, "yoy_growth_pct": 72, "share_of_global_rtp_pct": 1.3, "confidence": "medium"},
+      {"system": "Japan Zengin (instant)", "country": "Japan", "annual_txns_billions": 2.0, "share_of_global_rtp_pct": 0.5, "confidence": "low"},
+      {"system": "Australia NPP", "country": "Australia", "annual_txns_billions": 1.6, "yoy_growth_pct": 23, "share_of_global_rtp_pct": 0.4, "confidence": "high"},
+      {"system": "US RTP (TCH)", "country": "US", "annual_txns_billions": 0.5, "share_of_global_rtp_pct": 0.1, "confidence": "low"},
+      {"system": "FedNow", "country": "US", "annual_txns_billions": 0.0015, "yoy_growth_pct": 2000, "share_of_global_rtp_pct": 0.0004, "confidence": "high"},
+      {"system": "Other", "country": "Various", "annual_txns_billions": 60.1, "share_of_global_rtp_pct": 15.9, "confidence": "low"}
+    ],
+    "real_time_total_billions": 378,
+    "batch_ach_systems": [
+      {"system": "US ACH (Nacha)", "country": "US", "annual_txns_billions": 33.6, "annual_value_usd_trillions": 86.2, "yoy_growth_pct": 6.7, "confidence": "high"},
+      {"system": "SEPA Credit Transfers (non-instant)", "country": "EU", "annual_txns_billions": 27.0, "confidence": "medium"},
+      {"system": "SEPA Direct Debits", "country": "EU", "annual_txns_billions": 24.0, "confidence": "medium"},
+      {"system": "UK Bacs", "country": "UK", "annual_txns_billions": 7.5, "confidence": "medium"},
+      {"system": "Other batch/ACH", "country": "Various", "annual_txns_billions": 13.9, "confidence": "low"}
+    ],
+    "batch_ach_total_billions": 106,
+    "rtgs_wire_systems": [
+      {"system": "Fedwire", "country": "US", "annual_txns_millions": 210, "annual_value_usd_trillions": 1133, "confidence": "high"},
+      {"system": "TARGET2/T2", "country": "EU", "annual_txns_millions": 108, "annual_value_usd_trillions": 600, "confidence": "high"},
+      {"system": "CHAPS", "country": "UK", "annual_txns_millions": 52.7, "confidence": "high"},
+      {"system": "CIPS", "country": "China", "annual_txns_millions": 8.2, "annual_value_usd_trillions": 24.5, "confidence": "high"},
+      {"system": "Other RTGS", "country": "Various", "annual_txns_millions": 21, "confidence": "low"}
+    ],
+    "rtgs_wire_total_millions": 400
+  },
   "overlap": {
     "overlaps_with": [
       "digital-wallets"

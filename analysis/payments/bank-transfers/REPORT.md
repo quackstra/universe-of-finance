@@ -162,6 +162,20 @@ The backbone of large-value settlement:
 
 Source: [ACI Worldwide 2024 Report](https://investor.aciworldwide.com/news-releases/news-release-details/global-real-time-payments-growth-sustainable-new-use-cases-push)
 
+### Per-Capita Real-Time Payments Leaders (2024)
+
+| Country | System | Txns/Person/Year | Notes |
+|---------|--------|-----------------|-------|
+| Thailand | PromptPay | ~337 | Highest per-capita RTP usage globally |
+| Brazil | PIX | ~307 | From zero to 307/person in 4 years |
+| India | UPI | ~123 | 1.6x the UK rate despite lower GDP/capita |
+| UK | Faster Payments | ~76 | Mature system (launched 2008) |
+| Australia | NPP | ~62 | Growing 23% YoY |
+| Nigeria | NIP | ~51 | Africa's real-time champion |
+| US | FedNow | ~0.005 | Effectively zero; 330M people, 1.5M txns |
+
+Thailand leads on per-capita real-time usage, reflecting both deep PromptPay merchant adoption and high smartphone penetration. The US per-capita figure is striking — 67,000x lower than Thailand. See [regional breakdown workings](workings/regional-breakdown.md) for full system-by-system decomposition.
+
 ---
 
 ## 6. Growth Rates
@@ -240,6 +254,12 @@ Even in the conservative case, bank transfers still exceed 1 trillion/year by 20
 5. **SWIFT is the messaging layer, not the rail.** SWIFT's [53.3 million messages/day](https://www.swift.com/about-us/discover-swift/fin-traffic-figures) coordinate cross-border payments but don't settle them. The actual settlement runs over Fedwire, TARGET2, or correspondent bank networks.
 
 6. **The trillion-transaction threshold approaches.** Under all three projections, global bank transfers exceed 1 trillion transactions/year between 2030-2035.
+
+7. **Nigeria is Africa's real-time payments powerhouse.** NIBSS processed 11.2B NIP transactions in 2024 (+15.5% YoY), more than the UK, EU SEPA Instant, and US real-time systems combined. Driven by mobile money operators (OPay, PalmPay, Moniepoint).
+
+8. **SEPA Instant is the fastest-accelerating developed-market RTP system.** Daily volumes grew 72% in 2024, driven by EU Instant Payments Regulation mandating adoption. This is the most significant regulatory catalyst for real-time payments in the developed world.
+
+9. **The "unattributed" 60B gap needs closing.** Of 378B global RTP transactions, ~60B (16%) cannot be attributed to specific named systems. These likely include Indonesia, Philippines, Malaysia, Vietnam, Mexico, and Middle East systems. See [regional breakdown](workings/regional-breakdown.md) for analysis.
 
 ---
 

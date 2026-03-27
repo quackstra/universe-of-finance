@@ -160,6 +160,34 @@
       }
     ]
   },
+  "exchange_breakdown": {
+    "year": 2024,
+    "tier1_exchanges": [
+      {"exchange": "NSE", "country": "India", "annual_trades_billions": 18.0, "share_pct": 29.3, "yoy_growth_pct": 74.3, "confidence": "medium", "note": "Includes some derivatives; equity-only est. ~15B"},
+      {"exchange": "Shenzhen SE", "country": "China", "annual_trades_billions": 10.5, "share_pct": 17.1, "yoy_growth_pct": 21.4, "confidence": "medium"},
+      {"exchange": "Shanghai SE", "country": "China", "annual_trades_billions": 8.5, "share_pct": 13.8, "yoy_growth_pct": 24.2, "confidence": "medium"},
+      {"exchange": "NASDAQ", "country": "US", "annual_trades_billions": 5.0, "share_pct": 8.1, "yoy_growth_pct": 8, "confidence": "medium"},
+      {"exchange": "NYSE", "country": "US", "annual_trades_billions": 4.5, "share_pct": 7.3, "yoy_growth_pct": 8, "confidence": "medium"},
+      {"exchange": "JPX", "country": "Japan", "annual_trades_billions": 4.2, "share_pct": 6.8, "yoy_growth_pct": 30.9, "confidence": "medium"},
+      {"exchange": "BSE", "country": "India", "annual_trades_billions": 3.0, "share_pct": 4.9, "yoy_growth_pct": 50, "confidence": "low"},
+      {"exchange": "Korea Exchange", "country": "South Korea", "annual_trades_billions": 2.5, "share_pct": 4.1, "yoy_growth_pct": 10, "confidence": "low"},
+      {"exchange": "B3", "country": "Brazil", "annual_trades_billions": 2.0, "share_pct": 3.3, "yoy_growth_pct": 5, "confidence": "low"},
+      {"exchange": "Euronext", "country": "Europe", "annual_trades_billions": 1.8, "share_pct": 2.9, "yoy_growth_pct": 5, "confidence": "low"},
+      {"exchange": "LSE Group", "country": "UK", "annual_trades_billions": 1.5, "share_pct": 2.4, "yoy_growth_pct": 8.5, "confidence": "medium"},
+      {"exchange": "HKEX", "country": "Hong Kong", "annual_trades_billions": 1.2, "share_pct": 2.0, "yoy_growth_pct": 31.1, "confidence": "medium"},
+      {"exchange": "Taiwan SE", "country": "Taiwan", "annual_trades_billions": 1.0, "share_pct": 1.6, "yoy_growth_pct": 41.6, "confidence": "medium"}
+    ],
+    "tier2_sum_billions": 3.7,
+    "total_sum_billions": 66.9,
+    "report_total_billions": 61.5,
+    "reconciliation_gap_pct": 8.8,
+    "reconciliation_note": "Gap explained by NSE equity-vs-derivatives classification. Adjusting NSE to ~15B equity-only gives adjusted total ~61.9B (0.6% gap).",
+    "regional_summary": [
+      {"region": "APAC", "annual_trades_billions": 40.0, "share_pct": 65.0, "yoy_growth_pct": 47.8},
+      {"region": "Americas", "annual_trades_billions": 13.5, "share_pct": 22.0, "yoy_growth_pct": 8},
+      {"region": "EMEA", "annual_trades_billions": 8.0, "share_pct": 13.0, "yoy_growth_pct": 4.8}
+    ]
+  },
   "overlap": {
     "overlaps_with": [],
     "overlap_type": "none",

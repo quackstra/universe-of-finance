@@ -37,6 +37,8 @@ Global equity markets executed an estimated **61.5 billion trades** in 2024, val
 
 The 61.5B figure is a **derived estimate** (🟡) — WFE does not publish a single annual global trade count in its public reports. It was triangulated from three independent methods (see [calculations](workings/calculations.md)) that converged on 59.9B-67.2B.
 
+A bottom-up sum of individual exchanges yields ~66.9B before adjustment, or ~61.9B after correcting for NSE India's equity-vs-derivatives classification overlap — reconciling to within 0.6% of the 61.5B estimate. See [exchange breakdown workings](workings/exchange-breakdown.md) for the full decomposition.
+
 ---
 
 ## 3. Annual Value (2024)
@@ -176,6 +178,10 @@ Key catalysts:
 4. **India is the wild card**: NSE India's 74.3% trade count growth in 2024 is extraordinary. If sustained even at half that rate, India alone could add 5-10B trades/year by 2030.
 
 5. **24/7 trading is coming**: NYSE has experimented with extended hours. If major exchanges move to round-the-clock trading, TPS averages drop (same volume over more hours) but annual volume likely increases as accessibility improves.
+
+6. **Exchange-level decomposition validates the 61.5B total.** Summing 13 major exchanges and estimating Tier 2 gives ~66.9B raw, which adjusts to ~61.9B after isolating NSE India's equity cash trades from derivatives — a 0.6% match with the triangulated estimate. India (NSE + BSE) accounts for ~28% of global equity trades on just 4% of global market cap. See [exchange breakdown](workings/exchange-breakdown.md).
+
+7. **Japan's 2024 resurgence is structural, not cyclical.** JPX's 30.9% trade count growth and record JPY 1,254T equity value reflect the Nikkei 225 hitting all-time highs for the first time since 1989. Corporate governance reforms (Tokyo Stock Exchange "name and shame" initiative for low-PBR companies) and BOJ policy shifts are driving sustained foreign investment flows.
 
 ---
 

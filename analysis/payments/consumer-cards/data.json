@@ -267,6 +267,120 @@
       }
     ]
   },
+  "network_breakdown": {
+    "year": 2024,
+    "global_networks": [
+      {
+        "network": "Visa",
+        "annual_txns_billions": 303.0,
+        "type": "branded",
+        "processed_txns_billions": 233.8,
+        "market_share_pct": 39.2,
+        "yoy_growth_pct": 10,
+        "avg_txn_value_usd": 58,
+        "confidence": "high",
+        "source": "Visa 10-K FY2024"
+      },
+      {
+        "network": "UnionPay",
+        "annual_txns_billions": 247.0,
+        "type": "estimated",
+        "market_share_pct": 32.0,
+        "yoy_growth_pct": 8,
+        "avg_txn_value_usd": 68,
+        "confidence": "medium",
+        "source": "CoinLaw / PBOC derived"
+      },
+      {
+        "network": "Mastercard",
+        "annual_txns_billions": 185.0,
+        "type": "branded",
+        "switched_txns_billions": 159.4,
+        "market_share_pct": 23.9,
+        "yoy_growth_pct": 11,
+        "avg_txn_value_usd": 62,
+        "confidence": "high",
+        "source": "Mastercard 10-K FY2024"
+      },
+      {
+        "network": "American Express",
+        "annual_txns_billions": 15.0,
+        "type": "estimated",
+        "market_share_pct": 1.9,
+        "yoy_growth_pct": 8,
+        "avg_txn_value_usd": 103,
+        "confidence": "medium",
+        "source": "Amex Annual Report 2024 ($1,551B billed / ~$103 avg)"
+      },
+      {
+        "network": "JCB",
+        "annual_txns_billions": 11.0,
+        "type": "estimated",
+        "market_share_pct": 1.4,
+        "yoy_growth_pct": 10,
+        "avg_txn_value_usd": 37,
+        "confidence": "low",
+        "source": "CoinLaw JCB Statistics 2025"
+      },
+      {
+        "network": "Discover/Diners",
+        "annual_txns_billions": 8.6,
+        "type": "estimated",
+        "market_share_pct": 1.1,
+        "yoy_growth_pct": -2,
+        "avg_txn_value_usd": 26,
+        "confidence": "low",
+        "source": "Nilson Report / Capital One Shopping derived"
+      }
+    ],
+    "global_networks_sum_billions": 769.6,
+    "nilson_total_billions": 772.73,
+    "reconciliation_gap_pct": 0.4,
+    "domestic_networks": [
+      {
+        "network": "RuPay",
+        "country": "India",
+        "annual_txns_billions": 12.0,
+        "yoy_growth_pct": 30,
+        "confidence": "medium",
+        "source": "NPCI / CoinLaw RuPay Statistics"
+      },
+      {
+        "network": "Mir",
+        "country": "Russia",
+        "annual_txns_billions": 15.0,
+        "yoy_growth_pct": 15,
+        "confidence": "low",
+        "source": "TAdviser / Russian Central Bank"
+      },
+      {
+        "network": "Elo",
+        "country": "Brazil",
+        "annual_txns_billions": 5.0,
+        "yoy_growth_pct": 8,
+        "confidence": "low",
+        "source": "Industry estimates"
+      },
+      {
+        "network": "BC Card",
+        "country": "South Korea",
+        "annual_txns_billions": 4.0,
+        "yoy_growth_pct": 5,
+        "confidence": "low",
+        "source": "Industry estimates"
+      },
+      {
+        "network": "Other domestic",
+        "country": "Various",
+        "annual_txns_billions": 10.0,
+        "confidence": "low",
+        "source": "TROY, Verve, Bancontact, etc."
+      }
+    ],
+    "domestic_networks_sum_billions": 46.0,
+    "adjusted_global_total_billions": 818.7,
+    "note": "Domestic networks are NOT included in the Nilson 772.73B figure. Adjusted total = Nilson + domestic-only."
+  },
   "overlap": {
     "overlaps_with": [
       "digital-wallets"

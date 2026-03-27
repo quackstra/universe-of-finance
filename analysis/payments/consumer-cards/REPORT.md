@@ -39,6 +39,8 @@ This analysis covers purchase transactions on the six global card networks: **Vi
 
 Three networks — Visa, UnionPay, and Mastercard — account for **~95% of all global card transactions** ([Capital One Shopping](https://capitaloneshopping.com/research/credit-card-market-share-statistics/)).
 
+The sum of individual networks (769.6B) reconciles to within 0.4% of the Nilson 772.73B total. Additionally, domestic-only networks (RuPay, Mir, Elo, BC Card, others) add an estimated **~46B transactions** not captured in the global network totals, bringing the adjusted worldwide card transaction count to **~819B**. See [network breakdown workings](workings/network-breakdown.md) for full decomposition.
+
 ### Card Type Breakdown (Global Estimate)
 
 | Card Type | Share by Count | Share by Value | Notes |
@@ -178,6 +180,10 @@ The card payments market by value was $28.6T in 2023, projected to reach $56.4T 
 5. **COVID accelerated the cash-to-card shift permanently.** The 2020 dip was shallow (~4.5%), and the subsequent recovery was explosive — transactions grew over 60% from 2020 to 2022 as consumers and merchants adopted contactless payments.
 
 6. **Card rails are embedded in the "next wave."** Digital wallets (Apple Pay, Google Pay), BNPL services, and embedded payments all predominantly run on Visa/Mastercard rails, meaning card network transaction counts capture much of the fintech revolution.
+
+7. **Domestic-only networks are a hidden ~6% of global card volume.** RuPay (India, ~12B), Mir (Russia, ~15B), and Elo (Brazil, ~5B) together process ~32B transactions invisible to standard global statistics. RuPay is the fastest-growing at 30%+ YoY, driven by India's push for payment sovereignty. Including all domestic networks, the true global card transaction count is **~819B**, not 773B. See [network breakdown](workings/network-breakdown.md).
+
+8. **Visa's branded-vs-processed gap reveals the network's evolving role.** Of Visa's 303B branded transactions, only 233.8B (77%) are processed by VisaNet — the remaining 69.2B are processed by third-party acquirers on Visa rails. This gap has been widening, reflecting the growing complexity of multi-party processing arrangements.
 
 ---
 
