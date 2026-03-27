@@ -4,10 +4,10 @@
 
 ## The Big Number
 
-**De-Duplicated Global Financial TPS: ~70,600** (payment infrastructure) / **~71,600** (all economic events)
+**De-Duplicated Global Financial TPS: ~70,200** (payment infrastructure) / **~71,200** (all economic events)
 
-*Run 2 analysis with full overlap quantification. See [OVERLAP_MATRIX.md](OVERLAP_MATRIX.md) for methodology.*
-*Range: 65,000 – 80,000 TPS depending on overlap assumptions.*
+*Run 3 reconciliation with Solana vote filtering, government bottom-up model, and expanded RTGS coverage.*
+*Programmatic validation (`tools/big_number.py`): ~70,741 TPS. Range: 64,000 – 80,000 TPS.*
 
 ## Completed Analyses
 
@@ -38,7 +38,7 @@
 | # | Category | Avg TPS | Peak TPS | Annual Txns | Annual Value | Confidence |
 |---|----------|---------|----------|-------------|--------------|------------|
 | 13 | [Centralised Exchanges](digital-assets/cex/REPORT.md) | ~4,000 | ~15,000 | — | $77.3T | 🔴 Low |
-| 14 | [L1 & L2 Blockchain](digital-assets/blockchain-l1-l2/REPORT.md) | ~900 | ~5,000 | ~27B | — | 🟡 Medium |
+| 14 | [L1 & L2 Blockchain](digital-assets/blockchain-l1-l2/REPORT.md) | ~415 | ~2,500 | ~13.1B | — | 🟡 Medium |
 | 15 | [Stablecoins](digital-assets/stablecoins/REPORT.md) | ~520 | ~2,000 | — | $27.6T raw / $5.7T adj. | 🟡 Medium |
 | 16 | [DeFi](digital-assets/defi/REPORT.md) | *(subset of L1/L2)* | — | — | $4.16T | 🟢 High (volume) |
 
@@ -47,7 +47,7 @@
 | # | Category | Avg TPS | Peak TPS | Annual Txns | Annual Value | Confidence |
 |---|----------|---------|----------|-------------|--------------|------------|
 | 17 | [Securities Settlement](banking/securities-settlement/REPORT.md) | ~41-48 | — | ~1.3-1.5B | $3.7 quadrillion | 🟡 Medium |
-| 18 | [Interbank RTGS](banking/interbank-rtgs/REPORT.md) | ~13.4 | ~35 | ~423M | $2,150T | 🟡 Medium |
+| 18 | [Interbank RTGS](banking/interbank-rtgs/REPORT.md) | ~50.1 | ~130 | ~1,581M | $5,614T | 🟡 Medium |
 
 ### Gaming
 
@@ -60,7 +60,7 @@
 
 | # | Category | Avg TPS | Peak TPS | Annual Txns | Annual Value | Confidence |
 |---|----------|---------|----------|-------------|--------------|------------|
-| 21 | [Tax & Government Payments](government/government-payments/REPORT.md) | ~793 | ~7,500 | ~25B | $25-30T | 🔴 Low |
+| 21 | [Tax & Government Payments](government/government-payments/REPORT.md) | ~1,002 | ~10,000 | ~31.6B | $25-30T | 🟡 Medium |
 
 ### Emerging
 
@@ -93,4 +93,4 @@ The top 5 categories by transaction count, accounting for overlaps:
 
 ---
 
-*Last updated: 2026-03-26. Run `./run.sh scout` to see the full research backlog.*
+*Last updated: 2026-03-27 (Run 3 reconciliation). Run `./run.sh scout` to see the full research backlog.*

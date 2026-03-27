@@ -5,30 +5,30 @@
   "last_updated": "2026-03-26",
   "current": {
     "avg_tps": {
-      "value": 793,
-      "source": "Derived: ~25B annual / 31,536,000 seconds",
+      "value": 1002,
+      "source": "Bottom-up model: US (5.09B) + India (8.19B) + EU (5.84B) + RoW (12.5B) = ~31.6B / 31,536,000 sec. See workings/bottom-up-model.md.",
       "url": "",
-      "confidence": "low"
+      "confidence": "medium"
     },
     "peak_tps": {
-      "value": 7500,
-      "source": "Estimated: combined global tax deadline and benefits payment day peaks",
+      "value": 10000,
+      "source": "Estimated: combined global tax deadline and benefits payment day peaks (revised upward with higher base)",
       "url": "",
       "confidence": "low",
       "note": "Extreme seasonality \u2014 tax deadlines and benefits payment days create spikes 5-10x average"
     },
     "daily_volume": {
-      "value": 68000000,
-      "source": "Derived: ~25B / 365 days",
+      "value": 86600000,
+      "source": "Derived: ~31.6B / 365 days",
       "url": "",
-      "confidence": "low"
+      "confidence": "medium"
     },
     "annual_volume": {
-      "value": 25000000000,
-      "source": "Aggregated estimate from national statistics",
+      "value": 31600000000,
+      "source": "Bottom-up model across US (5.09B), India (8.19B), EU (5.84B), and tiered RoW extrapolation. See workings/bottom-up-model.md.",
       "url": "",
-      "confidence": "low",
-      "note": "Bottom-up estimate from income tax (~3B), VAT (~5B), benefits (~12B), customs (~2B), other (~3B)"
+      "confidence": "medium",
+      "note": "Range: 28-32B. Three independent country models anchor the estimate, covering ~46% of global GDP."
     },
     "annual_value_usd": {
       "value": 27500000000000,

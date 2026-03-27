@@ -5,31 +5,31 @@
   "last_updated": "2026-03-26",
   "current": {
     "avg_tps": {
-      "value": 900,
-      "source": "Derived from combined chain daily transaction estimates",
+      "value": 415,
+      "source": "Derived from combined chain daily transaction estimates, adjusted for Solana vote/spam filtering (Run 3)",
       "url": "",
       "confidence": "medium",
-      "note": "Range: 800-1,000 TPS. Solana contributes ~70% of total."
+      "note": "Range: 350-480 TPS after filtering Solana vote txns, failed txns, and MEV spam. See workings/solana-filter.md."
     },
     "peak_tps": {
-      "value": 5000,
-      "source": "Estimated: Solana peak + L2 peaks concurrent",
+      "value": 2500,
+      "source": "Estimated: Solana peak (adjusted) + L2 peaks concurrent",
       "url": "",
       "confidence": "low"
     },
     "daily_volume": {
-      "value": 75000000,
-      "source": "Aggregated from chain explorers and L2Beat",
+      "value": 35900000,
+      "source": "Derived from adjusted annual volume / 365",
       "url": "",
       "confidence": "medium",
-      "note": "Range: 70-90M daily transactions across all chains"
+      "note": "Range: 30-42M daily after vote/spam filtering across all chains"
     },
     "annual_volume": {
-      "value": 27000000000,
-      "source": "Derived from daily estimates: ~75M x 365",
+      "value": 13100000000,
+      "source": "Derived from adjusted daily estimates: ~35.9M x 365. Solana filtered from ~60M to ~13-24M/day (vote/failed/MEV removal). See workings/solana-filter.md.",
       "url": "",
       "confidence": "medium",
-      "note": "Range: 25-30B. Includes Solana vote transactions."
+      "note": "Range: 11-15B. Solana vote transactions, failed transactions, and MEV spam removed per Run 3 analysis."
     },
     "annual_value_usd": {
       "value": null,

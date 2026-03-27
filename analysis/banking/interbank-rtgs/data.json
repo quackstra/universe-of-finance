@@ -5,32 +5,32 @@
   "last_updated": "2026-03-26",
   "current": {
     "avg_tps": {
-      "value": 13.4,
-      "source": "Calendar TPS = 423M / 31.56M sec. Business-day TPS = 423M / (250 \u00d7 28,800 sec). Peak is concurrent estimate across time zones.",
+      "value": 50.1,
+      "source": "Calendar TPS = 1,581M / 31.536M sec. Expanded from 5 to 13 systems (Run 3). See workings/missing-systems.md.",
       "url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
       "confidence": "medium"
     },
     "peak_tps": {
-      "value": 35,
-      "source": "Calendar TPS = 423M / 31.56M sec. Business-day TPS = 423M / (250 \u00d7 28,800 sec). Peak is concurrent estimate across time zones.",
+      "value": 130,
+      "source": "Estimated: concurrent peak across multiple time zones with 13 RTGS systems",
       "url": "",
-      "confidence": "medium"
+      "confidence": "low"
     },
     "daily_volume": {
-      "value": 1158904,
+      "value": 4331507,
       "source": "Derived: annual_volume / 365",
       "url": "",
       "confidence": "medium"
     },
     "annual_volume": {
-      "value": 423000000,
-      "source": "CLS transaction count is estimated from daily value (~$7T) and record-day volume (3.2M trades). BOJ-NET from most recent published data.",
+      "value": 1581000000,
+      "source": "13 RTGS systems: Fedwire (210M), CNAPS-HVPS (382M), India RTGS (295M), CLS (250M), SARIE (200M), T2 (108M), CHAPS (53M), BOK-Wire+ (25M), Russia BESP (25M), RITS (13.3M), Lynx (9M), MEPS+ (6M), BOJ-NET (5M). See workings/missing-systems.md.",
       "url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
       "confidence": "medium"
     },
     "annual_value_usd": {
-      "value": 2150000000000000,
-      "source": "Values converted at approximate 2024 average FX rates. CLS value includes gross bilateral obligations before netting. Total exceeds sum of pure RTGS because CLS operates across multiple RTGS systems.",
+      "value": 5614000000000000,
+      "source": "Sum across 13 RTGS systems. Values converted at approximate 2024 average FX rates. See workings/missing-systems.md.",
       "url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
       "confidence": "medium"
     }
