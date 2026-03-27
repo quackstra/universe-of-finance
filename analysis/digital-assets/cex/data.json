@@ -1,23 +1,15 @@
 {
   "category": "Centralised Crypto Exchanges",
+  "slug": "cex",
   "sector": "Digital Assets",
   "last_updated": "2026-03-26",
   "current": {
     "avg_tps": {
-      "value": 4000,
-      "source": "Estimated from volume/avg-trade-size assumptions",
-      "url": "",
-      "confidence": "low",
-      "note": "Exchanges do not publish trade counts. This is order-of-magnitude estimate."
-    },
-    "adjusted_avg_tps": {
       "value": 3100,
       "source": "Wash trading adjusted: 20-30% reduction applied to reported volumes based on NBER, Bitwise, CEPR, Kaiko studies",
       "url": "",
       "confidence": "low",
-      "note": "Midpoint of 2,450-3,700 range after removing estimated residual wash trading from CoinGecko top-15 trusted exchange data. Regulated exchanges (5-10% inflation), semi-regulated (20-35%), lower-tier trusted (30-50%).",
-      "adjustment_range_pct": "20-30",
-      "unadjusted_value": 4000
+      "note": "Midpoint of 2,450-3,700 range after removing estimated residual wash trading from CoinGecko top-15 trusted exchange data. Regulated exchanges (5-10% inflation), semi-regulated (20-35%), lower-tier trusted (30-50%)."
     },
     "peak_tps": {
       "value": 15000,
@@ -25,86 +17,184 @@
       "url": "",
       "confidence": "low"
     },
-    "daily_volume_usd": {
-      "value": 211780000000,
-      "source": "Derived: $77.3T / 365",
-      "url": "",
-      "confidence": "medium"
-    },
-    "annual_spot_volume_usd": {
-      "value": 18830000000000,
-      "source": "CoinGecko 2024 Annual Report — top 15 CEXs",
-      "url": "https://www.coingecko.com/research/publications/2024-annual-crypto-report",
-      "confidence": "high"
-    },
-    "annual_derivatives_volume_usd": {
-      "value": 58500000000000,
-      "source": "CoinGecko State of Crypto Perpetuals 2024 — top 10 CEXs",
-      "url": "https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf",
-      "confidence": "medium",
-      "note": "Notional volume; leverage inflates economic significance"
-    },
-    "annual_combined_volume_usd": {
+    "annual_value_usd": {
       "value": 77300000000000,
       "source": "Derived: spot + derivatives",
       "url": "",
       "confidence": "medium"
     },
-    "est_annual_trade_count": {
+    "annual_volume": {
       "value": 120000000000,
       "source": "Estimated: ~300-400M trades/day x 365",
+      "url": "",
+      "confidence": "low"
+    },
+    "daily_volume": {
+      "value": 328767123,
+      "source": "Derived: annual_volume / 365",
       "url": "",
       "confidence": "low"
     }
   },
   "historic": [
-    { "year": 2019, "annual_spot_volume_usd": 3500000000000, "confidence": "low", "source": "Industry estimate" },
-    { "year": 2020, "annual_spot_volume_usd": 3780000000000, "confidence": "medium", "source": "CoinGecko" },
-    { "year": 2021, "annual_spot_volume_usd": 25210000000000, "confidence": "high", "source": "CoinGecko" },
-    { "year": 2022, "annual_spot_volume_usd": 14000000000000, "confidence": "medium", "source": "CoinGecko estimated" },
-    { "year": 2023, "annual_spot_volume_usd": 8050000000000, "confidence": "high", "source": "CoinGecko" },
-    { "year": 2024, "annual_spot_volume_usd": 18830000000000, "confidence": "high", "source": "CoinGecko" }
+    {
+      "year": 2019,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "Industry estimate",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "CoinGecko",
+      "confidence": "medium"
+    },
+    {
+      "year": 2021,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "CoinGecko",
+      "confidence": "high"
+    },
+    {
+      "year": 2022,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "CoinGecko estimated",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "CoinGecko",
+      "confidence": "high"
+    },
+    {
+      "year": 2024,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "CoinGecko",
+      "confidence": "high"
+    }
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "est_spot_volume_usd": 22000000000000, "est_total_volume_usd": 88000000000000, "est_tps": 4500 },
-      { "year": 2028, "est_spot_volume_usd": 15000000000000, "est_total_volume_usd": 60000000000000, "est_tps": 3000 },
-      { "year": 2030, "est_spot_volume_usd": 30000000000000, "est_total_volume_usd": 120000000000000, "est_tps": 6000 },
-      { "year": 2035, "est_spot_volume_usd": 50000000000000, "est_total_volume_usd": 200000000000000, "est_tps": 10000 }
+      {
+        "year": 2026,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2028,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2030,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2035,
+        "tps": null,
+        "annual_volume": null
+      }
     ],
     "high_growth": [
-      { "year": 2026, "est_spot_volume_usd": 30000000000000, "est_total_volume_usd": 120000000000000, "est_tps": 6000 },
-      { "year": 2028, "est_spot_volume_usd": 25000000000000, "est_total_volume_usd": 100000000000000, "est_tps": 5000 },
-      { "year": 2030, "est_spot_volume_usd": 50000000000000, "est_total_volume_usd": 200000000000000, "est_tps": 10000 },
-      { "year": 2035, "est_spot_volume_usd": 100000000000000, "est_total_volume_usd": 400000000000000, "est_tps": 20000 }
+      {
+        "year": 2026,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2028,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2030,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2035,
+        "tps": null,
+        "annual_volume": null
+      }
     ],
     "conservative": [
-      { "year": 2026, "est_spot_volume_usd": 15000000000000, "est_total_volume_usd": 55000000000000, "est_tps": 2800 },
-      { "year": 2028, "est_spot_volume_usd": 10000000000000, "est_total_volume_usd": 38000000000000, "est_tps": 1900 },
-      { "year": 2030, "est_spot_volume_usd": 18000000000000, "est_total_volume_usd": 65000000000000, "est_tps": 3300 },
-      { "year": 2035, "est_spot_volume_usd": 25000000000000, "est_total_volume_usd": 90000000000000, "est_tps": 4500 }
+      {
+        "year": 2026,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2028,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2030,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2035,
+        "tps": null,
+        "annual_volume": null
+      }
     ]
   },
-  "subcategories": [
-    { "name": "Binance", "type": "exchange", "annual_spot_volume_usd": 7350000000000, "share_pct": 39.0 },
-    { "name": "Bybit", "type": "exchange", "annual_spot_volume_usd": 1750000000000, "share_pct": 9.3 },
-    { "name": "Crypto.com", "type": "exchange", "annual_spot_volume_usd": 1290000000000, "share_pct": 6.9 },
-    { "name": "Upbit", "type": "exchange", "annual_spot_volume_usd": 1100000000000, "share_pct": 5.8, "note": "Estimated" },
-    { "name": "OKX", "type": "exchange", "annual_spot_volume_usd": 1000000000000, "share_pct": 5.3, "note": "Estimated" },
-    { "name": "Coinbase", "type": "exchange", "annual_spot_volume_usd": 900000000000, "share_pct": 4.8, "note": "Estimated" }
-  ],
-  "volume_split": {
-    "spot_pct": 24,
-    "derivatives_pct": 76,
-    "note": "Derivatives (perpetual futures) dominate by 3:1 ratio"
+  "overlap": {
+    "overlaps_with": [],
+    "overlap_type": "none",
+    "overlap_note": ""
   },
   "sources": [
-    { "id": 1, "citation": "CoinGecko — Largest Centralized Crypto Exchanges, 2020-2024", "url": "https://www.coingecko.com/research/publications/largest-centralized-crypto-exchanges", "accessed": "2026-03-26" },
-    { "id": 2, "citation": "CoinGecko — 2024 Annual Crypto Industry Report", "url": "https://www.coingecko.com/research/publications/2024-annual-crypto-report", "accessed": "2026-03-26" },
-    { "id": 3, "citation": "CoinGecko — State of Crypto Perpetuals Market (2024)", "url": "https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf", "accessed": "2026-03-26" },
-    { "id": 4, "citation": "TokenInsight — Crypto Exchange 2024 Annual Report", "url": "https://tokeninsight.com/en/research/reports/crypto-exchange-2024-annual-report", "accessed": "2026-03-26" },
-    { "id": 5, "citation": "CoinLaw — Cryptocurrency Derivatives Market Statistics 2025", "url": "https://coinlaw.io/cryptocurrency-derivatives-market-statistics/", "accessed": "2026-03-26" },
-    { "id": 6, "citation": "CryptoSlate — Crypto trading volumes rebound to $18T in 2024", "url": "https://cryptoslate.com/crypto-trading-volumes-rebound-in-2024-but-lag-behind-2021s-peak/", "accessed": "2026-03-26" },
-    { "id": 7, "citation": "Chainalysis — Crypto Market Manipulation 2025: Wash Trading", "url": "https://www.chainalysis.com/blog/crypto-market-manipulation-wash-trading-pump-and-dump-2025/", "accessed": "2026-03-26" }
+    {
+      "id": 1,
+      "citation": "CoinGecko \u2014 Largest Centralized Crypto Exchanges, 2020-2024",
+      "url": "https://www.coingecko.com/research/publications/largest-centralized-crypto-exchanges",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "CoinGecko \u2014 2024 Annual Crypto Industry Report",
+      "url": "https://www.coingecko.com/research/publications/2024-annual-crypto-report",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "CoinGecko \u2014 State of Crypto Perpetuals Market (2024)",
+      "url": "https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "TokenInsight \u2014 Crypto Exchange 2024 Annual Report",
+      "url": "https://tokeninsight.com/en/research/reports/crypto-exchange-2024-annual-report",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "CoinLaw \u2014 Cryptocurrency Derivatives Market Statistics 2025",
+      "url": "https://coinlaw.io/cryptocurrency-derivatives-market-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "CryptoSlate \u2014 Crypto trading volumes rebound to $18T in 2024",
+      "url": "https://cryptoslate.com/crypto-trading-volumes-rebound-in-2024-but-lag-behind-2021s-peak/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "Chainalysis \u2014 Crypto Market Manipulation 2025: Wash Trading",
+      "url": "https://www.chainalysis.com/blog/crypto-market-manipulation-wash-trading-pump-and-dump-2025/",
+      "accessed": "2026-03-26"
+    }
   ]
 }

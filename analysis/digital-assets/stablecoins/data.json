@@ -1,5 +1,6 @@
 {
   "category": "Stablecoins",
+  "slug": "stablecoins",
   "sector": "Digital Assets",
   "last_updated": "2026-03-26",
   "current": {
@@ -16,110 +17,186 @@
       "url": "",
       "confidence": "low"
     },
-    "daily_transactions": {
-      "value": 45000000,
-      "source": "Artemis / World Metrics estimate",
-      "url": "https://worldmetrics.org/stablecoin-statistics/",
-      "confidence": "medium"
-    },
-    "annual_transfer_volume_usd": {
+    "annual_value_usd": {
       "value": 27600000000000,
-      "source": "CryptoSlate (raw on-chain volume)",
-      "url": "https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/",
-      "confidence": "high"
-    },
-    "adjusted_annual_volume_usd": {
-      "value": 5700000000000,
-      "source": "Visa Onchain Analytics (payment-like activity, annualised)",
-      "url": "https://visaonchainanalytics.com/transactions",
-      "confidence": "medium",
-      "note": "Strips out bots, bridge relay, HFT, smart contract routing"
-    },
-    "market_cap_usd": {
-      "value": 205000000000,
-      "source": "CoinGecko (Dec 2024)",
-      "url": "https://www.coingecko.com/",
-      "confidence": "high"
-    },
-    "usdt_daily_active_addresses": {
-      "value": 1500000,
-      "source": "Artemis Analytics",
-      "url": "https://app.artemisanalytics.com/stablecoins",
+      "source": "Reference value",
+      "url": "",
       "confidence": "medium"
+    },
+    "daily_volume": {
+      "value": null,
+      "source": "",
+      "url": "",
+      "confidence": "low"
+    },
+    "annual_volume": {
+      "value": null,
+      "source": "",
+      "url": "",
+      "confidence": "low"
     }
   },
-  "stablecoin_breakdown": [
-    {
-      "name": "USDT (Tether)",
-      "market_cap_usd": 140000000000,
-      "transfer_volume_share_pct": 25,
-      "active_address_share_pct": 67,
-      "primary_chains": ["Tron", "Ethereum", "Solana", "BNB Chain"],
-      "note": "Dominates by market cap and addresses; lower volume share due to smaller avg transfer"
-    },
-    {
-      "name": "USDC (Circle)",
-      "market_cap_usd": 45000000000,
-      "transfer_volume_share_pct": 70,
-      "active_address_share_pct": 27,
-      "primary_chains": ["Ethereum", "Solana", "Arbitrum", "Base"],
-      "note": "Dominates by transfer volume; institutional/compliance positioning"
-    },
-    {
-      "name": "DAI/USDS (MakerDAO/Sky)",
-      "market_cap_usd": 5000000000,
-      "transfer_volume_share_pct": 3,
-      "primary_chains": ["Ethereum"],
-      "note": "Decentralised/crypto-collateralised stablecoin"
-    },
-    {
-      "name": "Others (FDUSD, PYUSD, TUSD, etc.)",
-      "market_cap_usd": 15000000000,
-      "transfer_volume_share_pct": 2,
-      "note": "Includes Binance's FDUSD, PayPal's PYUSD"
-    }
-  ],
   "historic": [
-    { "year": 2019, "annual_transfer_volume_usd": 200000000000, "market_cap_usd": 5000000000, "confidence": "low" },
-    { "year": 2020, "annual_transfer_volume_usd": 1000000000000, "market_cap_usd": 25000000000, "confidence": "low" },
-    { "year": 2021, "annual_transfer_volume_usd": 5000000000000, "market_cap_usd": 140000000000, "confidence": "medium" },
-    { "year": 2022, "annual_transfer_volume_usd": 7000000000000, "market_cap_usd": 135000000000, "confidence": "medium" },
-    { "year": 2023, "annual_transfer_volume_usd": 12000000000000, "market_cap_usd": 130000000000, "confidence": "medium" },
-    { "year": 2024, "annual_transfer_volume_usd": 27600000000000, "market_cap_usd": 205000000000, "confidence": "high" }
+    {
+      "year": 2019,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "",
+      "confidence": "low"
+    },
+    {
+      "year": 2021,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "",
+      "confidence": "medium"
+    },
+    {
+      "year": 2022,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "",
+      "confidence": "high"
+    }
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "annual_transfer_volume_usd": 50000000000000, "market_cap_usd": 350000000000, "est_daily_txns": 80000000 },
-      { "year": 2028, "annual_transfer_volume_usd": 60000000000000, "market_cap_usd": 400000000000, "est_daily_txns": 100000000 },
-      { "year": 2030, "annual_transfer_volume_usd": 100000000000000, "market_cap_usd": 500000000000, "est_daily_txns": 150000000 },
-      { "year": 2035, "annual_transfer_volume_usd": 200000000000000, "market_cap_usd": 1000000000000, "est_daily_txns": 300000000 }
+      {
+        "year": 2026,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2028,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2030,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2035,
+        "tps": null,
+        "annual_volume": null
+      }
     ],
     "high_growth": [
-      { "year": 2026, "annual_transfer_volume_usd": 80000000000000, "market_cap_usd": 500000000000, "est_daily_txns": 120000000 },
-      { "year": 2028, "annual_transfer_volume_usd": 150000000000000, "market_cap_usd": 800000000000, "est_daily_txns": 200000000 },
-      { "year": 2030, "annual_transfer_volume_usd": 300000000000000, "market_cap_usd": 1500000000000, "est_daily_txns": 400000000 },
-      { "year": 2035, "annual_transfer_volume_usd": 1000000000000000, "market_cap_usd": 3000000000000, "est_daily_txns": 1000000000 }
+      {
+        "year": 2026,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2028,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2030,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2035,
+        "tps": null,
+        "annual_volume": null
+      }
     ],
     "conservative": [
-      { "year": 2026, "annual_transfer_volume_usd": 35000000000000, "market_cap_usd": 250000000000, "est_daily_txns": 55000000 },
-      { "year": 2028, "annual_transfer_volume_usd": 30000000000000, "market_cap_usd": 220000000000, "est_daily_txns": 50000000 },
-      { "year": 2030, "annual_transfer_volume_usd": 45000000000000, "market_cap_usd": 300000000000, "est_daily_txns": 70000000 },
-      { "year": 2035, "annual_transfer_volume_usd": 70000000000000, "market_cap_usd": 500000000000, "est_daily_txns": 100000000 }
+      {
+        "year": 2026,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2028,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2030,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2035,
+        "tps": null,
+        "annual_volume": null
+      }
     ]
   },
-  "double_counting_flags": [
-    "ALL stablecoin transfers are a SUBSET of L1/L2 blockchain transactions",
-    "Many stablecoin transactions overlap with DeFi activity (DEX swaps, lending deposits)",
-    "CEX stablecoin usage (deposits/withdrawals) appears on-chain, but CEX internal transfers do not",
-    "Do NOT sum stablecoins + L1/L2 capsule totals"
-  ],
+  "overlap": {
+    "overlaps_with": [
+      "blockchain-l1-l2"
+    ],
+    "overlap_type": "full_subset",
+    "overlap_note": "All stablecoin transfers are on-chain L1/L2 transactions"
+  },
   "sources": [
-    { "id": 1, "citation": "CryptoSlate — Stablecoins surpass Visa and Mastercard with $27.6T transfer volume in 2024", "url": "https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/", "accessed": "2026-03-26" },
-    { "id": 2, "citation": "Bloomberg — Stablecoin Transactions Rose to Record $33T", "url": "https://www.bloomberg.com/news/articles/2026-01-08/stablecoin-transactions-rose-to-record-33-trillion-led-by-usdc", "accessed": "2026-03-26" },
-    { "id": 3, "citation": "TRM Labs — 2025 Crypto Adoption and Stablecoin Usage Report", "url": "https://www.trmlabs.com/reports-and-whitepapers/2025-crypto-adoption-and-stablecoin-usage-report", "accessed": "2026-03-26" },
-    { "id": 4, "citation": "Visa Onchain Analytics Dashboard", "url": "https://visaonchainanalytics.com/transactions", "accessed": "2026-03-26" },
-    { "id": 5, "citation": "Artemis Terminal — Stablecoins Dashboard", "url": "https://app.artemisanalytics.com/stablecoins", "accessed": "2026-03-26" },
-    { "id": 6, "citation": "World Metrics — Stablecoin Statistics 2026", "url": "https://worldmetrics.org/stablecoin-statistics/", "accessed": "2026-03-26" },
-    { "id": 7, "citation": "McKinsey — Stablecoins: Payments infrastructure for modern finance", "url": "https://www.mckinsey.com/industries/financial-services/our-insights/the-stable-door-opens-how-tokenized-cash-enables-next-gen-payments", "accessed": "2026-03-26" }
+    {
+      "id": 1,
+      "citation": "CryptoSlate \u2014 Stablecoins surpass Visa and Mastercard with $27.6T transfer volume in 2024",
+      "url": "https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "Bloomberg \u2014 Stablecoin Transactions Rose to Record $33T",
+      "url": "https://www.bloomberg.com/news/articles/2026-01-08/stablecoin-transactions-rose-to-record-33-trillion-led-by-usdc",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "TRM Labs \u2014 2025 Crypto Adoption and Stablecoin Usage Report",
+      "url": "https://www.trmlabs.com/reports-and-whitepapers/2025-crypto-adoption-and-stablecoin-usage-report",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "Visa Onchain Analytics Dashboard",
+      "url": "https://visaonchainanalytics.com/transactions",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "Artemis Terminal \u2014 Stablecoins Dashboard",
+      "url": "https://app.artemisanalytics.com/stablecoins",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "World Metrics \u2014 Stablecoin Statistics 2026",
+      "url": "https://worldmetrics.org/stablecoin-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "McKinsey \u2014 Stablecoins: Payments infrastructure for modern finance",
+      "url": "https://www.mckinsey.com/industries/financial-services/our-insights/the-stable-door-opens-how-tokenized-cash-enables-next-gen-payments",
+      "accessed": "2026-03-26"
+    }
   ]
 }

@@ -1,236 +1,355 @@
 {
   "category": "E-Commerce & Merchant Processing",
+  "slug": "ecommerce",
   "sector": "Payments",
   "last_updated": "2026-03-26",
-  "boundary": "Retail/consumer e-commerce orders (B2C + C2C marketplace). Excludes B2B e-commerce. Counts the commerce event, not the payment rail.",
-
-  "current_tps": {
-    "year": 2024,
-    "average_tps": 1823,
-    "average_tps_range": { "low": 1400, "high": 2500 },
-    "peak_tps": 600000,
-    "peak_tps_range": { "low": 583000, "high": 1000000 },
-    "peak_event": "Alibaba Singles Day (single-platform record 583K/sec in 2020)",
-    "confidence": "medium",
-    "methodology": "GMV / AOV / seconds_per_year",
-    "source": "Derived from SOAX/Statista GMV and ECDB AOV",
-    "source_url": "https://soax.com/research/growth-ecommerce",
-    "accessed": "2026-03-26"
-  },
-
-  "annual_volume": {
-    "year": 2024,
-    "transactions_billions": 57.5,
-    "confidence": "medium",
-    "methodology": "GMV ($6.33T) / blended AOV ($110)",
-    "source": "Derived — see workings/calculations.md#c3",
-    "accessed": "2026-03-26"
-  },
-
-  "annual_value": {
-    "year": 2024,
-    "gmv_trillions_usd": 6.33,
-    "confidence": "high",
-    "source": "SOAX / Statista",
-    "source_url": "https://soax.com/research/growth-ecommerce",
-    "accessed": "2026-03-26"
-  },
-
-  "historic_timeseries": {
-    "metric": "GMV in trillions USD (retail e-commerce)",
-    "source": "SOAX / Statista",
-    "source_url": "https://soax.com/research/growth-ecommerce",
-    "confidence": "high",
-    "accessed": "2026-03-26",
-    "data": [
-      { "year": 2014, "gmv_trillions": 1.34, "yoy_growth_pct": null, "est_transactions_billions": 17.9, "est_avg_tps": 568 },
-      { "year": 2015, "gmv_trillions": 1.55, "yoy_growth_pct": 15.9, "est_transactions_billions": 19.4, "est_avg_tps": 614 },
-      { "year": 2016, "gmv_trillions": 1.85, "yoy_growth_pct": 19.2, "est_transactions_billions": 21.6, "est_avg_tps": 686 },
-      { "year": 2017, "gmv_trillions": 2.38, "yoy_growth_pct": 29.1, "est_transactions_billions": 26.4, "est_avg_tps": 838 },
-      { "year": 2018, "gmv_trillions": 2.98, "yoy_growth_pct": 25.2, "est_transactions_billions": 31.1, "est_avg_tps": 985 },
-      { "year": 2019, "gmv_trillions": 3.35, "yoy_growth_pct": 12.4, "est_transactions_billions": 33.5, "est_avg_tps": 1062 },
-      { "year": 2020, "gmv_trillions": 4.25, "yoy_growth_pct": 26.8, "est_transactions_billions": 40.5, "est_avg_tps": 1282 },
-      { "year": 2021, "gmv_trillions": 4.99, "yoy_growth_pct": 17.4, "est_transactions_billions": 45.4, "est_avg_tps": 1437 },
-      { "year": 2022, "gmv_trillions": 5.31, "yoy_growth_pct": 6.5, "est_transactions_billions": 46.6, "est_avg_tps": 1477 },
-      { "year": 2023, "gmv_trillions": 5.78, "yoy_growth_pct": 8.9, "est_transactions_billions": 49.8, "est_avg_tps": 1579 },
-      { "year": 2024, "gmv_trillions": 6.33, "yoy_growth_pct": 9.4, "est_transactions_billions": 57.5, "est_avg_tps": 1823 }
-    ]
-  },
-
-  "subcategory_by_payment_method": {
-    "year": 2024,
-    "source": "Worldpay Global Payments Report 2025",
-    "source_url": "https://worldpay.com/en/global-payments-report",
-    "confidence": "high",
-    "accessed": "2026-03-26",
-    "note": "Value-weighted shares. Transaction-count shares may differ.",
-    "data": [
-      { "method": "Digital Wallets", "share_pct": 53, "value_trillions": 3.35 },
-      { "method": "Credit Cards", "share_pct": 20, "value_trillions": 1.27 },
-      { "method": "Debit Cards", "share_pct": 12, "value_trillions": 0.76 },
-      { "method": "Bank Transfer (A2A)", "share_pct": 7, "value_trillions": 0.44 },
-      { "method": "Buy Now Pay Later", "share_pct": 5, "value_trillions": 0.32 },
-      { "method": "Cash on Delivery", "share_pct": 2, "value_trillions": 0.13 },
-      { "method": "Other", "share_pct": 1, "value_trillions": 0.06 }
-    ]
-  },
-
-  "subcategory_by_region": {
-    "year": 2024,
-    "source": "Polaris Market Research / Statista",
-    "source_url": "https://www.polarismarketresearch.com/industry-analysis/e-commerce-market",
-    "confidence": "high",
-    "accessed": "2026-03-26",
-    "data": [
-      { "region": "Asia-Pacific", "share_pct": 45.7, "value_trillions": 2.89, "est_transactions_billions": 36.2, "est_tps": 1146 },
-      { "region": "North America", "share_pct": 29.8, "value_trillions": 1.89, "est_transactions_billions": 12.6, "est_tps": 398 },
-      { "region": "Europe", "share_pct": 16.9, "value_trillions": 1.07, "est_transactions_billions": 6.9, "est_tps": 220 },
-      { "region": "LAMEA", "share_pct": 7.6, "value_trillions": 0.48, "est_transactions_billions": 1.8, "est_tps": 59 }
-    ]
-  },
-
-  "growth_rates": {
-    "cagr_10yr_2014_2024": 16.8,
-    "cagr_pre_covid_2014_2019": 20.1,
-    "cagr_post_covid_2020_2024": 10.5,
-    "cagr_normalised_2022_2024": 9.2,
-    "confidence": "high",
-    "source": "Calculated from SOAX/Statista timeseries"
-  },
-
-  "projections": {
-    "baseline": {
-      "scenario": "Steady growth at normalised rates",
-      "cagr_2025_2030": 8.5,
-      "cagr_2031_2035": 6.5,
-      "confidence": "medium",
-      "data": [
-        { "year": 2025, "gmv_trillions": 6.86, "est_avg_tps": 1907 },
-        { "year": 2026, "gmv_trillions": 7.44, "est_avg_tps": 2035 },
-        { "year": 2027, "gmv_trillions": 8.07, "est_avg_tps": 2173 },
-        { "year": 2028, "gmv_trillions": 8.76, "est_avg_tps": 2319 },
-        { "year": 2029, "gmv_trillions": 9.50, "est_avg_tps": 2476 },
-        { "year": 2030, "gmv_trillions": 10.31, "est_avg_tps": 2645 },
-        { "year": 2031, "gmv_trillions": 10.98, "est_avg_tps": 2769 },
-        { "year": 2032, "gmv_trillions": 11.69, "est_avg_tps": 2899 },
-        { "year": 2033, "gmv_trillions": 12.45, "est_avg_tps": 3034 },
-        { "year": 2034, "gmv_trillions": 13.26, "est_avg_tps": 3178 },
-        { "year": 2035, "gmv_trillions": 14.12, "est_avg_tps": 3327 }
-      ]
+  "current": {
+    "avg_tps": {
+      "value": 1823,
+      "source": "Derived from SOAX/Statista GMV and ECDB AOV",
+      "url": "https://soax.com/research/growth-ecommerce",
+      "confidence": "medium"
     },
-    "high_growth": {
-      "scenario": "Social commerce, embedded payments, livestream shopping accelerate adoption",
-      "cagr_2025_2030": 12.0,
-      "cagr_2031_2035": 9.0,
-      "confidence": "low",
-      "data": [
-        { "year": 2025, "gmv_trillions": 7.09, "est_avg_tps": 1971 },
-        { "year": 2026, "gmv_trillions": 7.94, "est_avg_tps": 2173 },
-        { "year": 2027, "gmv_trillions": 8.89, "est_avg_tps": 2395 },
-        { "year": 2028, "gmv_trillions": 9.96, "est_avg_tps": 2639 },
-        { "year": 2029, "gmv_trillions": 11.15, "est_avg_tps": 2909 },
-        { "year": 2030, "gmv_trillions": 12.49, "est_avg_tps": 3207 },
-        { "year": 2031, "gmv_trillions": 13.62, "est_avg_tps": 3438 },
-        { "year": 2032, "gmv_trillions": 14.84, "est_avg_tps": 3686 },
-        { "year": 2033, "gmv_trillions": 16.18, "est_avg_tps": 3954 },
-        { "year": 2034, "gmv_trillions": 17.63, "est_avg_tps": 4242 },
-        { "year": 2035, "gmv_trillions": 19.22, "est_avg_tps": 4551 }
-      ]
+    "peak_tps": {
+      "value": 600000,
+      "source": "Derived from SOAX/Statista GMV and ECDB AOV",
+      "url": "https://soax.com/research/growth-ecommerce",
+      "confidence": "medium"
     },
-    "conservative": {
-      "scenario": "Post-COVID normalisation, macro headwinds, saturation",
-      "cagr_2025_2030": 5.0,
-      "cagr_2031_2035": 4.0,
-      "confidence": "medium",
-      "data": [
-        { "year": 2025, "gmv_trillions": 6.65, "est_avg_tps": 1847 },
-        { "year": 2026, "gmv_trillions": 6.98, "est_avg_tps": 1911 },
-        { "year": 2027, "gmv_trillions": 7.33, "est_avg_tps": 1976 },
-        { "year": 2028, "gmv_trillions": 7.70, "est_avg_tps": 2043 },
-        { "year": 2029, "gmv_trillions": 8.08, "est_avg_tps": 2111 },
-        { "year": 2030, "gmv_trillions": 8.49, "est_avg_tps": 2183 },
-        { "year": 2031, "gmv_trillions": 8.83, "est_avg_tps": 2233 },
-        { "year": 2032, "gmv_trillions": 9.18, "est_avg_tps": 2288 },
-        { "year": 2033, "gmv_trillions": 9.55, "est_avg_tps": 2342 },
-        { "year": 2034, "gmv_trillions": 9.93, "est_avg_tps": 2399 },
-        { "year": 2035, "gmv_trillions": 10.33, "est_avg_tps": 2455 }
-      ]
+    "annual_volume": {
+      "value": 57500000000,
+      "source": "Derived \u2014 see workings/calculations.md#c3",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_value_usd": {
+      "value": 6330000000000,
+      "source": "SOAX / Statista",
+      "url": "https://soax.com/research/growth-ecommerce",
+      "confidence": "high"
+    },
+    "daily_volume": {
+      "value": 157534246,
+      "source": "Derived: annual_volume / 365",
+      "url": "",
+      "confidence": "medium"
     }
   },
-
-  "key_platforms": {
-    "year": 2024,
-    "data": [
+  "historic": [
+    {
+      "year": 2014,
+      "annual_volume": 17900000000,
+      "avg_tps": 568,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2015,
+      "annual_volume": 19400000000,
+      "avg_tps": 614,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2016,
+      "annual_volume": 21600000000,
+      "avg_tps": 686,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2017,
+      "annual_volume": 26400000000,
+      "avg_tps": 838,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2018,
+      "annual_volume": 31100000000,
+      "avg_tps": 985,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2019,
+      "annual_volume": 33500000000,
+      "avg_tps": 1062,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 40500000000,
+      "avg_tps": 1282,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 45400000000,
+      "avg_tps": 1437,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 46600000000,
+      "avg_tps": 1477,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 49800000000,
+      "avg_tps": 1579,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 57500000000,
+      "avg_tps": 1823,
+      "source": "SOAX / Statista",
+      "confidence": "high"
+    }
+  ],
+  "projections": {
+    "baseline": [
       {
-        "platform": "Alibaba (Taobao + Tmall)",
-        "annual_orders_billions": 14.5,
-        "gmv_estimate": "~$900B-$1T",
-        "peak_tps_record": 583000,
-        "peak_tps_year": 2020,
-        "source": "DemandSage / SCMP",
-        "source_url": "https://www.demandsage.com/ecommerce-statistics/",
-        "confidence": "medium"
+        "year": 2025,
+        "tps": 1907,
+        "annual_volume": 62363
       },
       {
-        "platform": "Amazon",
-        "annual_orders_billions": 4.5,
-        "gmv_estimate": "~$750B",
-        "daily_orders_millions": 12.3,
-        "source": "Capital One Shopping (analyst estimates)",
-        "source_url": "https://capitaloneshopping.com/research/amazon-orders-per-day/",
-        "confidence": "medium"
+        "year": 2026,
+        "tps": 2035,
+        "annual_volume": 67636
       },
       {
-        "platform": "Shopify (all merchants)",
-        "annual_gmv_billions": 292.28,
-        "bfcm_2024_gmv_billions": 11.5,
-        "peak_sales_per_min_millions": 4.6,
-        "consumers_millions": 875,
-        "source": "Shopify SEC Filing / Press Release",
-        "source_url": "https://www.shopify.com/news/bfcm-data-2024",
-        "confidence": "high"
+        "year": 2027,
+        "tps": 2173,
+        "annual_volume": 73363
+      },
+      {
+        "year": 2028,
+        "tps": 2319,
+        "annual_volume": 79636
+      },
+      {
+        "year": 2029,
+        "tps": 2476,
+        "annual_volume": 86363
+      },
+      {
+        "year": 2030,
+        "tps": 2645,
+        "annual_volume": 93727
+      },
+      {
+        "year": 2031,
+        "tps": 2769,
+        "annual_volume": 99818
+      },
+      {
+        "year": 2032,
+        "tps": 2899,
+        "annual_volume": 106272
+      },
+      {
+        "year": 2033,
+        "tps": 3034,
+        "annual_volume": 113181
+      },
+      {
+        "year": 2034,
+        "tps": 3178,
+        "annual_volume": 120545
+      },
+      {
+        "year": 2035,
+        "tps": 3327,
+        "annual_volume": 128363
+      }
+    ],
+    "high_growth": [
+      {
+        "year": 2025,
+        "tps": 1971,
+        "annual_volume": 64454
+      },
+      {
+        "year": 2026,
+        "tps": 2173,
+        "annual_volume": 72181
+      },
+      {
+        "year": 2027,
+        "tps": 2395,
+        "annual_volume": 80818
+      },
+      {
+        "year": 2028,
+        "tps": 2639,
+        "annual_volume": 90545
+      },
+      {
+        "year": 2029,
+        "tps": 2909,
+        "annual_volume": 101363
+      },
+      {
+        "year": 2030,
+        "tps": 3207,
+        "annual_volume": 113545
+      },
+      {
+        "year": 2031,
+        "tps": 3438,
+        "annual_volume": 123818
+      },
+      {
+        "year": 2032,
+        "tps": 3686,
+        "annual_volume": 134909
+      },
+      {
+        "year": 2033,
+        "tps": 3954,
+        "annual_volume": 147090
+      },
+      {
+        "year": 2034,
+        "tps": 4242,
+        "annual_volume": 160272
+      },
+      {
+        "year": 2035,
+        "tps": 4551,
+        "annual_volume": 174727
+      }
+    ],
+    "conservative": [
+      {
+        "year": 2025,
+        "tps": 1847,
+        "annual_volume": 60454
+      },
+      {
+        "year": 2026,
+        "tps": 1911,
+        "annual_volume": 63454
+      },
+      {
+        "year": 2027,
+        "tps": 1976,
+        "annual_volume": 66636
+      },
+      {
+        "year": 2028,
+        "tps": 2043,
+        "annual_volume": 70000
+      },
+      {
+        "year": 2029,
+        "tps": 2111,
+        "annual_volume": 73454
+      },
+      {
+        "year": 2030,
+        "tps": 2183,
+        "annual_volume": 77181
+      },
+      {
+        "year": 2031,
+        "tps": 2233,
+        "annual_volume": 80272
+      },
+      {
+        "year": 2032,
+        "tps": 2288,
+        "annual_volume": 83454
+      },
+      {
+        "year": 2033,
+        "tps": 2342,
+        "annual_volume": 86818
+      },
+      {
+        "year": 2034,
+        "tps": 2399,
+        "annual_volume": 90272
+      },
+      {
+        "year": 2035,
+        "tps": 2455,
+        "annual_volume": 93909
       }
     ]
   },
-
-  "payment_processors": {
-    "year": 2024,
-    "note": "Total payment volumes — not exclusively e-commerce. Includes in-store for multi-channel processors.",
-    "data": [
-      {
-        "processor": "PayPal",
-        "tpv_trillions_usd": 1.68,
-        "yoy_growth_pct": 10,
-        "source_url": "https://sqmagazine.co.uk/paypal-vs-stripe-statistics/",
-        "confidence": "high"
-      },
-      {
-        "processor": "Stripe",
-        "tpv_trillions_usd": 1.40,
-        "yoy_growth_pct": 38,
-        "source_url": "https://www.fintechwrapup.com/p/deep-dive-stripe-vs-adyen-comparing",
-        "confidence": "high"
-      },
-      {
-        "processor": "Adyen",
-        "tpv_trillions_eur": 1.29,
-        "tpv_trillions_usd_approx": 1.38,
-        "yoy_growth_pct": 33,
-        "source_url": "https://www.fintechwrapup.com/p/deep-dive-stripe-vs-adyen-comparing",
-        "confidence": "high"
-      }
-    ]
+  "overlap": {
+    "overlaps_with": [
+      "consumer-cards",
+      "digital-wallets",
+      "bank-transfers"
+    ],
+    "overlap_type": "partial",
+    "overlap_note": "~95% of e-commerce transactions settle on card, wallet, or bank transfer rails"
   },
-
-  "social_commerce": {
-    "global_market_trillions_usd": 2.0,
-    "year": 2025,
-    "projected_2030_trillions": 8.5,
-    "cagr_pct": 26.2,
-    "tiktok_shop_us_2025_billions": 15.82,
-    "tiktok_shop_us_growth_2024_pct": 407,
-    "livestream_shopping_us_2025_billions": 50,
-    "source_url": "https://www.sellerscommerce.com/blog/social-commerce-statistics/",
-    "confidence": "medium"
-  }
+  "sources": [
+    {
+      "id": 1,
+      "citation": "Derived from SOAX/Statista GMV and ECDB AOV",
+      "url": "https://soax.com/research/growth-ecommerce",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "Worldpay Global Payments Report 2025",
+      "url": "https://worldpay.com/en/global-payments-report",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "Polaris Market Research / Statista",
+      "url": "https://www.polarismarketresearch.com/industry-analysis/e-commerce-market",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "DemandSage / SCMP",
+      "url": "https://www.demandsage.com/ecommerce-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "Capital One Shopping (analyst estimates)",
+      "url": "https://capitaloneshopping.com/research/amazon-orders-per-day/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "Shopify SEC Filing / Press Release",
+      "url": "https://www.shopify.com/news/bfcm-data-2024",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "",
+      "url": "https://sqmagazine.co.uk/paypal-vs-stripe-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 8,
+      "citation": "deep-dive-stripe-vs-adyen-comparing",
+      "url": "https://www.fintechwrapup.com/p/deep-dive-stripe-vs-adyen-comparing",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 9,
+      "citation": "",
+      "url": "https://www.sellerscommerce.com/blog/social-commerce-statistics/",
+      "accessed": "2026-03-26"
+    }
+  ]
 }

@@ -1,92 +1,178 @@
 {
   "category": "Foreign Exchange",
+  "slug": "forex",
   "sector": "Traditional Finance",
-  "priority": 4,
   "last_updated": "2026-03-26",
-  "definition": "OTC foreign exchange trades including spot, forwards, swaps, and options. Transactions = individual FX trades between counterparties (not settlements or netted amounts).",
-
-  "annual_volume": {
-    "metric": "estimated_trades",
-    "unit": "millions",
-    "source_primary": "BIS Triennial Central Bank Survey (value); CLS Group (count proxy)",
-    "note": "BIS reports VALUE turnover only. Transaction COUNT is estimated from CLS settlement data (~500K trades/day = ~20% of market) and average ticket size analysis.",
-    "timeseries_daily_turnover_usd_trillions": {
-      "2001": {"value": 1.2, "confidence": "green", "source": "https://www.bis.org/statistics/rpfx22.htm"},
-      "2004": {"value": 1.9, "confidence": "green", "source": "https://www.bis.org/statistics/rpfx22.htm"},
-      "2007": {"value": 3.3, "confidence": "green", "source": "https://www.bis.org/statistics/rpfx22.htm"},
-      "2010": {"value": 4.0, "confidence": "green", "source": "https://www.bis.org/statistics/rpfx22.htm"},
-      "2013": {"value": 5.3, "confidence": "green", "source": "https://www.bis.org/statistics/rpfx22.htm"},
-      "2016": {"value": 5.1, "confidence": "green", "source": "https://www.bis.org/statistics/rpfx22.htm"},
-      "2019": {"value": 6.6, "confidence": "green", "source": "https://www.bis.org/statistics/rpfx22.htm"},
-      "2022": {"value": 7.5, "confidence": "green", "source": "https://www.bis.org/statistics/rpfx22_fx.htm"},
-      "2025": {"value": 9.6, "confidence": "green", "source": "https://www.bis.org/statistics/rpfx25_fx.htm"}
+  "current": {
+    "avg_tps": {
+      "value": 35,
+      "source": "See workings/calculations.md. Derived from CLS settlement data (500K trades/day at ~20% market coverage) and average ticket size analysis ($3-5M).",
+      "url": "",
+      "confidence": "low"
+    },
+    "peak_tps": {
+      "value": 140,
+      "source": "See workings/calculations.md. Derived from CLS settlement data (500K trades/day at ~20% market coverage) and average ticket size analysis ($3-5M).",
+      "url": "",
+      "confidence": "low"
+    },
+    "annual_value_usd": {
+      "value": 2142000000000000,
+      "source": "",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_volume": {
+      "value": 750000000,
+      "source": "See workings/calculations.md. Derived from CLS settlement data (500K trades/day at ~20% market coverage) and average ticket size analysis ($3-5M).",
+      "url": "",
+      "confidence": "low"
+    },
+    "daily_volume": {
+      "value": 2054794,
+      "source": "Derived: annual_volume / 365",
+      "url": "",
+      "confidence": "low"
     }
   },
-
-  "annual_value": {
-    "metric": "annual_turnover",
-    "unit": "USD_trillions",
-    "value_2024_est": 2142,
-    "methodology": "Interpolated daily turnover ($8.5T) x 252 trading days",
-    "confidence": "yellow"
-  },
-
-  "tps": {
-    "average_tps_2024_est": 35,
-    "peak_tps_estimate": 140,
-    "daily_trade_count_est": 3000000,
-    "annual_trade_count_est": 750000000,
-    "methodology": "See workings/calculations.md. Derived from CLS settlement data (500K trades/day at ~20% market coverage) and average ticket size analysis ($3-5M).",
-    "confidence_average": "red",
-    "confidence_peak": "red",
-    "note": "FX is a high-value, low-count market. TPS estimate is among the weakest in the Universe of Finance due to lack of official transaction count data."
-  },
-
-  "instrument_breakdown_april_2025": {
-    "source": "https://www.bis.org/statistics/rpfx25_fx.htm",
-    "spot": {"daily_turnover_usd_trillions": 3.0, "share_pct": 31, "change_vs_2022_pct": 36},
-    "fx_swaps": {"daily_turnover_usd_trillions": 4.0, "share_pct": 42, "change_vs_2022_pct": 5},
-    "outright_forwards": {"daily_turnover_usd_trillions": 1.8, "share_pct": 19, "change_vs_2022_pct": 62},
-    "fx_options": {"daily_turnover_usd_trillions": 0.8, "share_pct": 8, "change_vs_2022_pct": 100}
-  },
-
-  "growth_rates": {
-    "cagr_24yr_2001_2025": 8.9,
-    "cagr_15yr_2010_2025": 6.0,
-    "cagr_6yr_2019_2025": 6.4,
-    "cagr_3yr_2022_2025": 8.6,
-    "note": "CAGRs based on BIS triennial survey daily turnover values."
-  },
-
+  "historic": [
+    {
+      "year": 2001,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "https://www.bis.org/statistics/rpfx22.htm",
+      "confidence": "high"
+    },
+    {
+      "year": 2004,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "https://www.bis.org/statistics/rpfx22.htm",
+      "confidence": "high"
+    },
+    {
+      "year": 2007,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "https://www.bis.org/statistics/rpfx22.htm",
+      "confidence": "high"
+    },
+    {
+      "year": 2010,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "https://www.bis.org/statistics/rpfx22.htm",
+      "confidence": "high"
+    },
+    {
+      "year": 2013,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "https://www.bis.org/statistics/rpfx22.htm",
+      "confidence": "high"
+    },
+    {
+      "year": 2016,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "https://www.bis.org/statistics/rpfx22.htm",
+      "confidence": "high"
+    },
+    {
+      "year": 2019,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "https://www.bis.org/statistics/rpfx22.htm",
+      "confidence": "high"
+    },
+    {
+      "year": 2022,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "https://www.bis.org/statistics/rpfx22_fx.htm",
+      "confidence": "high"
+    },
+    {
+      "year": 2025,
+      "annual_volume": null,
+      "avg_tps": null,
+      "source": "https://www.bis.org/statistics/rpfx25_fx.htm",
+      "confidence": "high"
+    }
+  ],
   "projections": {
-    "baseline": {
-      "scenario": "Continues 15-year post-crisis trend. Electronic trading and EM currency growth sustain expansion.",
-      "cagr_2025_2035": 6,
-      "daily_turnover_2030_usd_trillions": 12.8,
-      "daily_turnover_2035_usd_trillions": 17.1,
-      "tps_2035": 62
-    },
-    "high_growth": {
-      "scenario": "Retail FX explosion, crypto-fiat conversion flows, Asian currency internationalization.",
-      "cagr_2025_2035": 9,
-      "daily_turnover_2030_usd_trillions": 14.8,
-      "daily_turnover_2035_usd_trillions": 22.8,
-      "tps_2035": 82
-    },
-    "conservative": {
-      "scenario": "Regulatory tightening, FX consolidation, bilateral netting reduces gross turnover.",
-      "cagr_2025_2035": 3,
-      "daily_turnover_2030_usd_trillions": 11.1,
-      "daily_turnover_2035_usd_trillions": 12.9,
-      "tps_2035": 47
-    }
+    "baseline": [
+      {
+        "year": 2030,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2035,
+        "tps": 62,
+        "annual_volume": null
+      }
+    ],
+    "high_growth": [
+      {
+        "year": 2030,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2035,
+        "tps": 82,
+        "annual_volume": null
+      }
+    ],
+    "conservative": [
+      {
+        "year": 2030,
+        "tps": null,
+        "annual_volume": null
+      },
+      {
+        "year": 2035,
+        "tps": 47,
+        "annual_volume": null
+      }
+    ]
   },
-
+  "overlap": {
+    "overlaps_with": [],
+    "overlap_type": "none",
+    "overlap_note": ""
+  },
   "sources": [
-    {"id": 1, "title": "BIS Triennial Survey 2025 — FX Turnover", "url": "https://www.bis.org/statistics/rpfx25_fx.htm"},
-    {"id": 2, "title": "BIS Triennial Survey 2022 — FX Turnover", "url": "https://www.bis.org/statistics/rpfx22_fx.htm"},
-    {"id": 3, "title": "BIS Press Release — $9.6T daily", "url": "https://www.bis.org/press/p250930.htm"},
-    {"id": 4, "title": "CLS Group — FX Trade Volume Report", "url": "https://www.cls-group.com/news/fx-trade-volume-report/"},
-    {"id": 5, "title": "CLS Group — December 2024 Trading Activity", "url": "https://www.cls-group.com/news/cls-fx-trading-activity-december-2024/"}
+    {
+      "id": 1,
+      "citation": "BIS Triennial Survey 2025 \u2014 FX Turnover",
+      "url": "https://www.bis.org/statistics/rpfx25_fx.htm",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "BIS Triennial Survey 2022 \u2014 FX Turnover",
+      "url": "https://www.bis.org/statistics/rpfx22_fx.htm",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "BIS Press Release \u2014 $9.6T daily",
+      "url": "https://www.bis.org/press/p250930.htm",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "CLS Group \u2014 FX Trade Volume Report",
+      "url": "https://www.cls-group.com/news/fx-trade-volume-report/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "CLS Group \u2014 December 2024 Trading Activity",
+      "url": "https://www.cls-group.com/news/cls-fx-trading-activity-december-2024/",
+      "accessed": "2026-03-26"
+    }
   ]
 }

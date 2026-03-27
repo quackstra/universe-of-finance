@@ -1,20 +1,21 @@
 {
   "category": "In-Game Microtransactions",
+  "slug": "gaming-microtx",
   "sector": "Gaming",
   "last_updated": "2026-03-26",
   "current": {
+    "avg_tps": {
+      "value": 389,
+      "source": "Derived: 12.28B annual / 31,557,600 seconds",
+      "url": "",
+      "confidence": "low"
+    },
     "peak_tps": {
       "value": 778,
       "source": "Estimated: avg TPS x 2.0 peak multiplier",
       "url": "",
       "confidence": "low",
       "note": "No platform publishes transaction counts. Peak based on holiday/event stacking."
-    },
-    "avg_tps": {
-      "value": 389,
-      "source": "Derived: 12.28B annual / 31,557,600 seconds",
-      "url": "",
-      "confidence": "low"
     },
     "daily_volume": {
       "value": 33600000,
@@ -38,127 +39,260 @@
     }
   },
   "historic": [
-    { "year": 2019, "annual_volume": 10290000000, "annual_value_usd": 72000000000, "avg_tps": 326, "source": "Derived from Newzoo + ATV estimate", "confidence": "low" },
-    { "year": 2020, "annual_volume": 12530000000, "annual_value_usd": 94000000000, "avg_tps": 397, "source": "Derived from Newzoo + ATV estimate (COVID boom)", "confidence": "low" },
-    { "year": 2021, "annual_volume": 11480000000, "annual_value_usd": 89000000000, "avg_tps": 364, "source": "Derived from Newzoo + ATV estimate", "confidence": "low" },
-    { "year": 2022, "annual_volume": 10750000000, "annual_value_usd": 86000000000, "avg_tps": 341, "source": "Derived from Newzoo + ATV estimate", "confidence": "low" },
-    { "year": 2023, "annual_volume": 11150000000, "annual_value_usd": 92000000000, "avg_tps": 354, "source": "Derived from Sensor Tower + ATV estimate", "confidence": "low" },
-    { "year": 2024, "annual_volume": 12280000000, "annual_value_usd": 114000000000, "avg_tps": 389, "source": "Sensor Tower + platform estimates / weighted ATV", "confidence": "low" }
+    {
+      "year": 2019,
+      "annual_volume": 10290000000,
+      "avg_tps": 326,
+      "source": "Derived from Newzoo + ATV estimate",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 12530000000,
+      "avg_tps": 397,
+      "source": "Derived from Newzoo + ATV estimate (COVID boom)",
+      "confidence": "low"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 11480000000,
+      "avg_tps": 364,
+      "source": "Derived from Newzoo + ATV estimate",
+      "confidence": "low"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 10750000000,
+      "avg_tps": 341,
+      "source": "Derived from Newzoo + ATV estimate",
+      "confidence": "low"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 11150000000,
+      "avg_tps": 354,
+      "source": "Derived from Sensor Tower + ATV estimate",
+      "confidence": "low"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 12280000000,
+      "avg_tps": 389,
+      "source": "Sensor Tower + platform estimates / weighted ATV",
+      "confidence": "low"
+    }
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "tps": 437, "annual_volume": 13800000000 },
-      { "year": 2027, "tps": 463, "annual_volume": 14630000000 },
-      { "year": 2028, "tps": 491, "annual_volume": 15510000000 },
-      { "year": 2029, "tps": 521, "annual_volume": 16440000000 },
-      { "year": 2030, "tps": 552, "annual_volume": 17430000000 },
-      { "year": 2031, "tps": 585, "annual_volume": 18480000000 },
-      { "year": 2032, "tps": 620, "annual_volume": 19590000000 },
-      { "year": 2033, "tps": 658, "annual_volume": 20760000000 },
-      { "year": 2034, "tps": 697, "annual_volume": 22010000000 },
-      { "year": 2035, "tps": 739, "annual_volume": 23320000000 }
+      {
+        "year": 2026,
+        "tps": 437,
+        "annual_volume": 13800000000
+      },
+      {
+        "year": 2027,
+        "tps": 463,
+        "annual_volume": 14630000000
+      },
+      {
+        "year": 2028,
+        "tps": 491,
+        "annual_volume": 15510000000
+      },
+      {
+        "year": 2029,
+        "tps": 521,
+        "annual_volume": 16440000000
+      },
+      {
+        "year": 2030,
+        "tps": 552,
+        "annual_volume": 17430000000
+      },
+      {
+        "year": 2031,
+        "tps": 585,
+        "annual_volume": 18480000000
+      },
+      {
+        "year": 2032,
+        "tps": 620,
+        "annual_volume": 19590000000
+      },
+      {
+        "year": 2033,
+        "tps": 658,
+        "annual_volume": 20760000000
+      },
+      {
+        "year": 2034,
+        "tps": 697,
+        "annual_volume": 22010000000
+      },
+      {
+        "year": 2035,
+        "tps": 739,
+        "annual_volume": 23320000000
+      }
     ],
     "high_growth": [
-      { "year": 2026, "tps": 462, "annual_volume": 14590000000 },
-      { "year": 2027, "tps": 504, "annual_volume": 15900000000 },
-      { "year": 2028, "tps": 550, "annual_volume": 17340000000 },
-      { "year": 2029, "tps": 599, "annual_volume": 18900000000 },
-      { "year": 2030, "tps": 653, "annual_volume": 20620000000 },
-      { "year": 2031, "tps": 712, "annual_volume": 22480000000 },
-      { "year": 2032, "tps": 776, "annual_volume": 24500000000 },
-      { "year": 2033, "tps": 846, "annual_volume": 26710000000 },
-      { "year": 2034, "tps": 922, "annual_volume": 29110000000 },
-      { "year": 2035, "tps": 1005, "annual_volume": 31720000000 }
+      {
+        "year": 2026,
+        "tps": 462,
+        "annual_volume": 14590000000
+      },
+      {
+        "year": 2027,
+        "tps": 504,
+        "annual_volume": 15900000000
+      },
+      {
+        "year": 2028,
+        "tps": 550,
+        "annual_volume": 17340000000
+      },
+      {
+        "year": 2029,
+        "tps": 599,
+        "annual_volume": 18900000000
+      },
+      {
+        "year": 2030,
+        "tps": 653,
+        "annual_volume": 20620000000
+      },
+      {
+        "year": 2031,
+        "tps": 712,
+        "annual_volume": 22480000000
+      },
+      {
+        "year": 2032,
+        "tps": 776,
+        "annual_volume": 24500000000
+      },
+      {
+        "year": 2033,
+        "tps": 846,
+        "annual_volume": 26710000000
+      },
+      {
+        "year": 2034,
+        "tps": 922,
+        "annual_volume": 29110000000
+      },
+      {
+        "year": 2035,
+        "tps": 1005,
+        "annual_volume": 31720000000
+      }
     ],
     "conservative": [
-      { "year": 2026, "tps": 413, "annual_volume": 13030000000 },
-      { "year": 2027, "tps": 425, "annual_volume": 13420000000 },
-      { "year": 2028, "tps": 438, "annual_volume": 13830000000 },
-      { "year": 2029, "tps": 451, "annual_volume": 14240000000 },
-      { "year": 2030, "tps": 465, "annual_volume": 14670000000 },
-      { "year": 2031, "tps": 479, "annual_volume": 15110000000 },
-      { "year": 2032, "tps": 493, "annual_volume": 15560000000 },
-      { "year": 2033, "tps": 508, "annual_volume": 16030000000 },
-      { "year": 2034, "tps": 523, "annual_volume": 16510000000 },
-      { "year": 2035, "tps": 539, "annual_volume": 17010000000 }
+      {
+        "year": 2026,
+        "tps": 413,
+        "annual_volume": 13030000000
+      },
+      {
+        "year": 2027,
+        "tps": 425,
+        "annual_volume": 13420000000
+      },
+      {
+        "year": 2028,
+        "tps": 438,
+        "annual_volume": 13830000000
+      },
+      {
+        "year": 2029,
+        "tps": 451,
+        "annual_volume": 14240000000
+      },
+      {
+        "year": 2030,
+        "tps": 465,
+        "annual_volume": 14670000000
+      },
+      {
+        "year": 2031,
+        "tps": 479,
+        "annual_volume": 15110000000
+      },
+      {
+        "year": 2032,
+        "tps": 493,
+        "annual_volume": 15560000000
+      },
+      {
+        "year": 2033,
+        "tps": 508,
+        "annual_volume": 16030000000
+      },
+      {
+        "year": 2034,
+        "tps": 523,
+        "annual_volume": 16510000000
+      },
+      {
+        "year": 2035,
+        "tps": 539,
+        "annual_volume": 17010000000
+      }
     ]
   },
-  "subcategories": [
-    {
-      "name": "Mobile IAP",
-      "type": "platform",
-      "annual_transactions": 9530000000,
-      "annual_value_usd": 81000000000,
-      "share_pct": 77.6,
-      "avg_transaction_value": 8.50,
-      "note": "iOS + Google Play; Sensor Tower 2024"
-    },
-    {
-      "name": "PC IAP",
-      "type": "platform",
-      "annual_transactions": 1500000000,
-      "annual_value_usd": 18000000000,
-      "share_pct": 12.2,
-      "avg_transaction_value": 12.00,
-      "note": "Estimated from PC gaming revenue minus full game sales"
-    },
-    {
-      "name": "Console IAP",
-      "type": "platform",
-      "annual_transactions": 1250000000,
-      "annual_value_usd": 15000000000,
-      "share_pct": 10.2,
-      "avg_transaction_value": 12.00,
-      "note": "Estimated from console F2P and live-service revenue"
-    }
-  ],
-  "double_counting_note": "Nearly all microtransactions are paid via credit/debit cards, digital wallets, or platform payment systems that settle on card networks. The ~12.3B transactions here are a subset of the 773B consumer card payment total (~1.6%).",
+  "overlap": {
+    "overlaps_with": [
+      "consumer-cards"
+    ],
+    "overlap_type": "partial",
+    "overlap_note": "65-75% of microtransactions settle on card rails"
+  },
   "sources": [
     {
       "id": 1,
-      "citation": "Sensor Tower — State of Mobile Gaming 2025",
+      "citation": "Sensor Tower \u2014 State of Mobile Gaming 2025",
       "url": "https://sensortower.com/blog/state-of-mobile-gaming-2025",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "Sensor Tower — 2025 State of Mobile",
+      "citation": "Sensor Tower \u2014 2025 State of Mobile",
       "url": "https://sensortower.com/blog/2025-state-of-mobile-consumers-usd150-billion-spent-on-mobile-highlights",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "Newzoo — Global Games Market Report 2024 (Free Version)",
+      "citation": "Newzoo \u2014 Global Games Market Report 2024 (Free Version)",
       "url": "https://best-of-gaming.be/wp-content/uploads/2024/09/2024_Newzoo_Global_Games_Market_Report.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "TweakTown — Games industry made $184.3 billion in 2024",
+      "citation": "TweakTown \u2014 Games industry made $184.3 billion in 2024",
       "url": "https://www.tweaktown.com/news/102255/games-industry-made-184-3-billion-in-2024-consoles-segment-was-84-digital/index.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "Precedence Research — Online Microtransaction Market",
+      "citation": "Precedence Research \u2014 Online Microtransaction Market",
       "url": "https://www.precedenceresearch.com/online-microtransaction-market",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "Game Developer — Average In-Game Mobile Transaction Worth $14",
+      "citation": "Game Developer \u2014 Average In-Game Mobile Transaction Worth $14",
       "url": "https://www.gamedeveloper.com/business/report-average-in-game-mobile-transaction-worth-14",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Icon Era — In-Game Purchase Spending Habits Statistics 2025",
+      "citation": "Icon Era \u2014 In-Game Purchase Spending Habits Statistics 2025",
       "url": "https://icon-era.com/blog/in-game-purchase-spending-habits-statistics-2025.343/",
       "accessed": "2026-03-26"
     },
     {
       "id": 8,
-      "citation": "Business of Apps — Genshin Impact Statistics",
+      "citation": "Business of Apps \u2014 Genshin Impact Statistics",
       "url": "https://www.businessofapps.com/data/genshin-impact-statistics/",
       "accessed": "2026-03-26"
     }

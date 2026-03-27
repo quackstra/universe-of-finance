@@ -1,124 +1,227 @@
 {
   "category": "Exchange-Traded Derivatives",
+  "slug": "etd",
   "sector": "Traditional Finance",
-  "priority": 3,
   "last_updated": "2026-03-26",
-  "definition": "Standardised futures and options contracts traded on regulated exchanges, including equity index, single stock, interest rate, FX, commodity, ETF, and crypto derivatives. Transactions = contracts traded (not settlements or notional value).",
-
-  "annual_volume": {
-    "metric": "contracts_traded",
-    "unit": "billions",
-    "source_primary": "FIA (Futures Industry Association)",
-    "source_secondary": "WFE (World Federation of Exchanges)",
-    "timeseries": {
-      "2015": {"total": 24.78, "futures": null, "options": null, "confidence": "green", "source": "https://www.fia.org/fia/articles/2015-fia-annual-futures-and-options-volume-survey-asia-takes-lead"},
-      "2016": {"total": 25.22, "futures": null, "options": null, "confidence": "green", "source": "https://www.fia.org/marketvoice/articles/2016-annual-volume-survey"},
-      "2017": {"total": 25.20, "futures": null, "options": null, "confidence": "green", "source": "https://www.fia.org/fia/articles/total-2017-volume-252-billion-contracts-down-01-2016"},
-      "2018": {"total": 30.28, "futures": null, "options": null, "confidence": "green", "source": "https://www.fia.org/fia/articles/fia-releases-annual-trading-statistics-showing-record-etd-volume-2018"},
-      "2019": {"total": 34.47, "futures": null, "options": null, "confidence": "green", "source": "https://www.fia.org/fia/articles/record-year-derivatives"},
-      "2020": {"total": 46.77, "futures": 25.55, "options": 21.22, "confidence": "green", "source": "https://www.fia.org/fia/articles/global-futures-and-options-trading-reaches-record-level-2020"},
-      "2021": {"total": 62.58, "futures": 29.28, "options": 33.31, "confidence": "green", "source": "https://www.fia.org/fia/articles/global-futures-and-options-trading-hits-another-record-2021"},
-      "2022": {"total": 83.85, "futures": 29.32, "options": 54.53, "confidence": "green", "source": "https://www.statista.com/statistics/377025/global-futures-and-options-volume/"},
-      "2023": {"total": 137.31, "futures": 29.10, "options": 108.20, "confidence": "green", "source": "https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023"},
-      "2024": {"total": 205.34, "futures": 28.22, "options": 177.12, "confidence": "green", "source": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review"}
+  "current": {
+    "avg_tps": {
+      "value": 9505,
+      "source": "See workings/calculations.md",
+      "url": "",
+      "confidence": "medium"
     },
-    "notes": "FIA reports 205.34B for 2024; WFE reports 180.22B. Discrepancy is due to WFE member universe being smaller than FIA's coverage of 85 exchanges in 33 countries. FIA figure used as primary."
-  },
-
-  "annual_notional_value": {
-    "metric": "notional_daily_turnover",
-    "unit": "USD_trillions_per_day",
-    "value_2024_q3": 12.83,
-    "breakdown": {
-      "interest_rate": 12.65,
-      "fx": 0.185
+    "peak_tps": {
+      "value": 57030,
+      "source": "See workings/calculations.md",
+      "url": "",
+      "confidence": "low"
     },
-    "confidence": "green",
-    "source": "https://www.bis.org/statistics/extderiv.htm",
-    "annual_estimate_usd_trillions": 3272,
-    "annual_estimate_note": "12.83T/day x 255 trading days = ~3,272T annual notional turnover (interest rate + FX only; BIS does not cover equity/commodity ETD turnover in notional terms)"
-  },
-
-  "open_interest": {
-    "metric": "contracts_outstanding",
-    "unit": "billions",
-    "value_dec_2024": 1.23,
-    "options": 0.955,
-    "futures": 0.298,
-    "confidence": "green",
-    "source": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review"
-  },
-
-  "tps": {
-    "average_tps_2024": 9505,
-    "peak_tps_estimate_2024": 57030,
-    "methodology": "See workings/calculations.md",
-    "confidence_average": "yellow",
-    "confidence_peak": "red"
-  },
-
-  "subcategory_breakdown_2024": {
-    "source": "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024",
-    "by_asset_class_share": {
-      "equity": {"share_pct": 85, "includes": "stock index options, stock index futures, single stock options, single stock futures", "note": "72.28% is stock index options alone (WFE)"},
-      "interest_rate": {"share_pct": 5, "volume_bn": 6.77, "growth_yoy_pct": 15.4},
-      "etf": {"share_pct": 4, "growth_yoy_pct": 25.8},
-      "currency": {"share_pct": 3, "growth_yoy_pct": -56.5, "note": "India regulatory change drove decline in H2 2024"},
-      "commodity": {"share_pct": 3, "growth_yoy_pct": -4.1}
+    "annual_volume": {
+      "value": 205340000000,
+      "source": "FIA (Futures Industry Association)",
+      "url": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review",
+      "confidence": "high"
     },
-    "by_instrument_type": {
-      "options": {"volume_bn": 177.12, "share_pct": 86.3, "growth_yoy_pct": 63.8},
-      "futures": {"volume_bn": 28.22, "share_pct": 13.7, "growth_yoy_pct": 1.2}
+    "daily_volume": {
+      "value": 562575342,
+      "source": "Derived: annual_volume / 365",
+      "url": "",
+      "confidence": "high"
     },
-    "by_region_share_2024": {
-      "apac": {"share_pct": 79.2, "volume_bn": 142.66},
-      "americas": {"share_pct": 17.5, "volume_bn": 31.60},
-      "emea": {"share_pct": 3.3, "volume_bn": 5.95}
-    },
-    "confidence": "green"
-  },
-
-  "top_exchanges_2023": {
-    "source": "https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023",
-    "rankings": [
-      {"rank": 1, "name": "National Stock Exchange of India (NSE)", "volume_bn": 84.8},
-      {"rank": 2, "name": "B3 (Brazil)", "volume_bn": 8.3},
-      {"rank": 3, "name": "CME Group", "volume_bn": 6.1},
-      {"rank": 4, "name": "BSE (India)", "volume_bn": 5.9},
-      {"rank": 5, "name": "Cboe Global Markets", "volume_bn": 3.71}
-    ],
-    "note": "2024 exchange-level rankings not yet published by FIA at time of writing"
-  },
-
-  "growth_rates": {
-    "cagr_5yr_2019_2024": 42.8,
-    "cagr_10yr_2015_2024_est": 26.4,
-    "cagr_5yr_futures_only_2019_2024": -3.9,
-    "cagr_5yr_options_only_2020_2024": 70.0,
-    "note": "Headline CAGR dominated by Indian equity index options explosion. Futures growth is essentially flat. See calculations."
-  },
-
-  "projections": {
-    "baseline": {
-      "scenario": "Steady growth — options growth moderates, futures stable",
-      "cagr_2024_2035": 12,
-      "volume_2030_bn": 405,
-      "volume_2035_bn": 714,
-      "tps_2035": 18760
-    },
-    "high_growth": {
-      "scenario": "Retail access expansion + crypto ETD mainstreaming + new markets",
-      "cagr_2024_2035": 18,
-      "volume_2030_bn": 560,
-      "volume_2035_bn": 1324,
-      "tps_2035": 34770
-    },
-    "conservative": {
-      "scenario": "Regulatory tightening (India lot size increases, position limits, transaction taxes)",
-      "cagr_2024_2035": 5,
-      "volume_2030_bn": 275,
-      "volume_2035_bn": 351,
-      "tps_2035": 9220
+    "annual_value_usd": {
+      "value": null,
+      "source": "",
+      "url": "",
+      "confidence": "low"
     }
-  }
+  },
+  "historic": [
+    {
+      "year": 2015,
+      "annual_volume": 24780000000,
+      "avg_tps": 786,
+      "source": "https://www.fia.org/fia/articles/2015-fia-annual-futures-and-options-volume-survey-asia-takes-lead",
+      "confidence": "high"
+    },
+    {
+      "year": 2016,
+      "annual_volume": 25220000000,
+      "avg_tps": 800,
+      "source": "https://www.fia.org/marketvoice/articles/2016-annual-volume-survey",
+      "confidence": "high"
+    },
+    {
+      "year": 2017,
+      "annual_volume": 25200000000,
+      "avg_tps": 799,
+      "source": "https://www.fia.org/fia/articles/total-2017-volume-252-billion-contracts-down-01-2016",
+      "confidence": "high"
+    },
+    {
+      "year": 2018,
+      "annual_volume": 30280000000,
+      "avg_tps": 960,
+      "source": "https://www.fia.org/fia/articles/fia-releases-annual-trading-statistics-showing-record-etd-volume-2018",
+      "confidence": "high"
+    },
+    {
+      "year": 2019,
+      "annual_volume": 34470000000,
+      "avg_tps": 1093,
+      "source": "https://www.fia.org/fia/articles/record-year-derivatives",
+      "confidence": "high"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 46770000000,
+      "avg_tps": 1483,
+      "source": "https://www.fia.org/fia/articles/global-futures-and-options-trading-reaches-record-level-2020",
+      "confidence": "high"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 62580000000,
+      "avg_tps": 1984,
+      "source": "https://www.fia.org/fia/articles/global-futures-and-options-trading-hits-another-record-2021",
+      "confidence": "high"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 83850000000,
+      "avg_tps": 2659,
+      "source": "https://www.statista.com/statistics/377025/global-futures-and-options-volume/",
+      "confidence": "high"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 137310000000,
+      "avg_tps": 4354,
+      "source": "https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023",
+      "confidence": "high"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 205340000000,
+      "avg_tps": 6511,
+      "source": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review",
+      "confidence": "high"
+    }
+  ],
+  "projections": {
+    "baseline": [
+      {
+        "year": 2030,
+        "tps": 12842,
+        "annual_volume": 405000000000
+      },
+      {
+        "year": 2035,
+        "tps": 18760,
+        "annual_volume": 714000000000
+      }
+    ],
+    "high_growth": [
+      {
+        "year": 2030,
+        "tps": 17757,
+        "annual_volume": 560000000000
+      },
+      {
+        "year": 2035,
+        "tps": 34770,
+        "annual_volume": 1324000000000
+      }
+    ],
+    "conservative": [
+      {
+        "year": 2030,
+        "tps": 8720,
+        "annual_volume": 275000000000
+      },
+      {
+        "year": 2035,
+        "tps": 9220,
+        "annual_volume": 351000000000
+      }
+    ]
+  },
+  "overlap": {
+    "overlaps_with": [],
+    "overlap_type": "none",
+    "overlap_note": ""
+  },
+  "sources": [
+    {
+      "id": 1,
+      "citation": "2015-fia-annual-futures-and-options-volume-survey-asia-takes-lead",
+      "url": "https://www.fia.org/fia/articles/2015-fia-annual-futures-and-options-volume-survey-asia-takes-lead",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "2016-annual-volume-survey",
+      "url": "https://www.fia.org/marketvoice/articles/2016-annual-volume-survey",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "total-2017-volume-252-billion-contracts-down-01-2016",
+      "url": "https://www.fia.org/fia/articles/total-2017-volume-252-billion-contracts-down-01-2016",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "fia-releases-annual-trading-statistics-showing-record-etd-volume-2018",
+      "url": "https://www.fia.org/fia/articles/fia-releases-annual-trading-statistics-showing-record-etd-volume-2018",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "record-year-derivatives",
+      "url": "https://www.fia.org/fia/articles/record-year-derivatives",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "global-futures-and-options-trading-reaches-record-level-2020",
+      "url": "https://www.fia.org/fia/articles/global-futures-and-options-trading-reaches-record-level-2020",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "global-futures-and-options-trading-hits-another-record-2021",
+      "url": "https://www.fia.org/fia/articles/global-futures-and-options-trading-hits-another-record-2021",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 8,
+      "citation": "",
+      "url": "https://www.statista.com/statistics/377025/global-futures-and-options-volume/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 9,
+      "citation": "global-futures-and-options-volume-hits-record-137-billion-contracts-2023",
+      "url": "https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 10,
+      "citation": "2024-annual-etd-volume-review",
+      "url": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 11,
+      "citation": "extderiv.htm",
+      "url": "https://www.bis.org/statistics/extderiv.htm",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 12,
+      "citation": "wfe-market-highlights-fy-2024",
+      "url": "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024",
+      "accessed": "2026-03-26"
+    }
+  ]
 }

@@ -1,20 +1,21 @@
 {
   "category": "Digital Game Sales & Subscriptions",
+  "slug": "gaming-sales",
   "sector": "Gaming",
   "last_updated": "2026-03-26",
   "current": {
+    "avg_tps": {
+      "value": 92,
+      "source": "Derived: 2.89B annual / 31,557,600 seconds",
+      "url": "",
+      "confidence": "low"
+    },
     "peak_tps": {
       "value": 275,
       "source": "Estimated: avg TPS x 3.0 peak multiplier (seasonal sales spikes)",
       "url": "",
       "confidence": "low",
       "note": "Peak driven by Steam seasonal sales, Black Friday, and major launch days."
-    },
-    "avg_tps": {
-      "value": 92,
-      "source": "Derived: 2.89B annual / 31,557,600 seconds",
-      "url": "",
-      "confidence": "low"
     },
     "daily_volume": {
       "value": 7900000,
@@ -38,187 +39,260 @@
     }
   },
   "historic": [
-    { "year": 2019, "annual_volume": 1720000000, "annual_value_usd": 38000000000, "avg_tps": 55, "source": "Derived from Newzoo + ASP estimate", "confidence": "low" },
-    { "year": 2020, "annual_volume": 2280000000, "annual_value_usd": 47500000000, "avg_tps": 72, "source": "Derived (COVID boom; digital shift to 75%+)", "confidence": "low" },
-    { "year": 2021, "annual_volume": 2150000000, "annual_value_usd": 43700000000, "avg_tps": 68, "source": "Derived (post-COVID dip)", "confidence": "low" },
-    { "year": 2022, "annual_volume": 2050000000, "annual_value_usd": 41500000000, "avg_tps": 65, "source": "Derived (correction; inflation)", "confidence": "low" },
-    { "year": 2023, "annual_volume": 2300000000, "annual_value_usd": 45000000000, "avg_tps": 73, "source": "Derived (recovery; strong release slate)", "confidence": "low" },
-    { "year": 2024, "annual_volume": 2890000000, "annual_value_usd": 60200000000, "avg_tps": 92, "source": "Derived from Newzoo + subscription data", "confidence": "low" }
+    {
+      "year": 2019,
+      "annual_volume": 1720000000,
+      "avg_tps": 55,
+      "source": "Derived from Newzoo + ASP estimate",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 2280000000,
+      "avg_tps": 72,
+      "source": "Derived (COVID boom; digital shift to 75%+)",
+      "confidence": "low"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 2150000000,
+      "avg_tps": 68,
+      "source": "Derived (post-COVID dip)",
+      "confidence": "low"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 2050000000,
+      "avg_tps": 65,
+      "source": "Derived (correction; inflation)",
+      "confidence": "low"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 2300000000,
+      "avg_tps": 73,
+      "source": "Derived (recovery; strong release slate)",
+      "confidence": "low"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 2890000000,
+      "avg_tps": 92,
+      "source": "Derived from Newzoo + subscription data",
+      "confidence": "low"
+    }
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "tps": 101, "annual_volume": 3190000000 },
-      { "year": 2027, "tps": 106, "annual_volume": 3350000000 },
-      { "year": 2028, "tps": 111, "annual_volume": 3510000000 },
-      { "year": 2029, "tps": 117, "annual_volume": 3690000000 },
-      { "year": 2030, "tps": 123, "annual_volume": 3870000000 },
-      { "year": 2031, "tps": 129, "annual_volume": 4060000000 },
-      { "year": 2032, "tps": 135, "annual_volume": 4270000000 },
-      { "year": 2033, "tps": 142, "annual_volume": 4480000000 },
-      { "year": 2034, "tps": 149, "annual_volume": 4700000000 },
-      { "year": 2035, "tps": 157, "annual_volume": 4940000000 }
+      {
+        "year": 2026,
+        "tps": 101,
+        "annual_volume": 3190000000
+      },
+      {
+        "year": 2027,
+        "tps": 106,
+        "annual_volume": 3350000000
+      },
+      {
+        "year": 2028,
+        "tps": 111,
+        "annual_volume": 3510000000
+      },
+      {
+        "year": 2029,
+        "tps": 117,
+        "annual_volume": 3690000000
+      },
+      {
+        "year": 2030,
+        "tps": 123,
+        "annual_volume": 3870000000
+      },
+      {
+        "year": 2031,
+        "tps": 129,
+        "annual_volume": 4060000000
+      },
+      {
+        "year": 2032,
+        "tps": 135,
+        "annual_volume": 4270000000
+      },
+      {
+        "year": 2033,
+        "tps": 142,
+        "annual_volume": 4480000000
+      },
+      {
+        "year": 2034,
+        "tps": 149,
+        "annual_volume": 4700000000
+      },
+      {
+        "year": 2035,
+        "tps": 157,
+        "annual_volume": 4940000000
+      }
     ],
     "high_growth": [
-      { "year": 2026, "tps": 107, "annual_volume": 3370000000 },
-      { "year": 2027, "tps": 115, "annual_volume": 3640000000 },
-      { "year": 2028, "tps": 125, "annual_volume": 3930000000 },
-      { "year": 2029, "tps": 135, "annual_volume": 4240000000 },
-      { "year": 2030, "tps": 145, "annual_volume": 4590000000 },
-      { "year": 2031, "tps": 157, "annual_volume": 4960000000 },
-      { "year": 2032, "tps": 170, "annual_volume": 5350000000 },
-      { "year": 2033, "tps": 183, "annual_volume": 5780000000 },
-      { "year": 2034, "tps": 198, "annual_volume": 6240000000 },
-      { "year": 2035, "tps": 214, "annual_volume": 6740000000 }
+      {
+        "year": 2026,
+        "tps": 107,
+        "annual_volume": 3370000000
+      },
+      {
+        "year": 2027,
+        "tps": 115,
+        "annual_volume": 3640000000
+      },
+      {
+        "year": 2028,
+        "tps": 125,
+        "annual_volume": 3930000000
+      },
+      {
+        "year": 2029,
+        "tps": 135,
+        "annual_volume": 4240000000
+      },
+      {
+        "year": 2030,
+        "tps": 145,
+        "annual_volume": 4590000000
+      },
+      {
+        "year": 2031,
+        "tps": 157,
+        "annual_volume": 4960000000
+      },
+      {
+        "year": 2032,
+        "tps": 170,
+        "annual_volume": 5350000000
+      },
+      {
+        "year": 2033,
+        "tps": 183,
+        "annual_volume": 5780000000
+      },
+      {
+        "year": 2034,
+        "tps": 198,
+        "annual_volume": 6240000000
+      },
+      {
+        "year": 2035,
+        "tps": 214,
+        "annual_volume": 6740000000
+      }
     ],
     "conservative": [
-      { "year": 2026, "tps": 95, "annual_volume": 3010000000 },
-      { "year": 2027, "tps": 97, "annual_volume": 3070000000 },
-      { "year": 2028, "tps": 99, "annual_volume": 3130000000 },
-      { "year": 2029, "tps": 101, "annual_volume": 3190000000 },
-      { "year": 2030, "tps": 103, "annual_volume": 3250000000 },
-      { "year": 2031, "tps": 105, "annual_volume": 3320000000 },
-      { "year": 2032, "tps": 107, "annual_volume": 3380000000 },
-      { "year": 2033, "tps": 109, "annual_volume": 3450000000 },
-      { "year": 2034, "tps": 112, "annual_volume": 3520000000 },
-      { "year": 2035, "tps": 114, "annual_volume": 3590000000 }
+      {
+        "year": 2026,
+        "tps": 95,
+        "annual_volume": 3010000000
+      },
+      {
+        "year": 2027,
+        "tps": 97,
+        "annual_volume": 3070000000
+      },
+      {
+        "year": 2028,
+        "tps": 99,
+        "annual_volume": 3130000000
+      },
+      {
+        "year": 2029,
+        "tps": 101,
+        "annual_volume": 3190000000
+      },
+      {
+        "year": 2030,
+        "tps": 103,
+        "annual_volume": 3250000000
+      },
+      {
+        "year": 2031,
+        "tps": 105,
+        "annual_volume": 3320000000
+      },
+      {
+        "year": 2032,
+        "tps": 107,
+        "annual_volume": 3380000000
+      },
+      {
+        "year": 2033,
+        "tps": 109,
+        "annual_volume": 3450000000
+      },
+      {
+        "year": 2034,
+        "tps": 112,
+        "annual_volume": 3520000000
+      },
+      {
+        "year": 2035,
+        "tps": 114,
+        "annual_volume": 3590000000
+      }
     ]
   },
-  "subcategories": [
-    {
-      "name": "Base Game Purchases",
-      "type": "transaction_type",
-      "annual_transactions": 1330000000,
-      "annual_value_usd": 40000000000,
-      "share_pct": 46.0,
-      "note": "Full game downloads across PC, console, mobile premium"
-    },
-    {
-      "name": "DLC / Expansion Purchases",
-      "type": "transaction_type",
-      "annual_transactions": 800000000,
-      "annual_value_usd": 12000000000,
-      "share_pct": 27.7,
-      "note": "One-time content additions; avg $15"
-    },
-    {
-      "name": "Subscription Renewals",
-      "type": "transaction_type",
-      "annual_transactions": 757000000,
-      "annual_value_usd": 8200000000,
-      "share_pct": 26.2,
-      "note": "~140M subscribers x 5.4 avg payments/year"
-    },
-    {
-      "name": "Steam",
-      "type": "platform",
-      "annual_transactions": 296000000,
-      "annual_value_usd": 7400000000,
-      "note": "Valve private; revenue estimated. ~$25 ASP."
-    },
-    {
-      "name": "PlayStation Store",
-      "type": "platform",
-      "annual_transactions": 222000000,
-      "annual_value_usd": 10000000000,
-      "note": "~$45 ASP; 78% digital on PS5"
-    },
-    {
-      "name": "Xbox Store",
-      "type": "platform",
-      "annual_transactions": 158000000,
-      "annual_value_usd": 7100000000,
-      "note": "~$45 ASP; 91% digital (US)"
-    },
-    {
-      "name": "Nintendo eShop",
-      "type": "platform",
-      "annual_transactions": 123000000,
-      "annual_value_usd": 4300000000,
-      "note": "~$35 ASP; 53% digital on Switch"
-    },
-    {
-      "name": "Mobile Premium",
-      "type": "platform",
-      "annual_transactions": 500000000,
-      "annual_value_usd": 2500000000,
-      "note": "~$5 ASP; most paid games $0.99-$9.99"
-    },
-    {
-      "name": "PS Plus",
-      "type": "subscription",
-      "subscribers_millions": 51.2,
-      "annual_transactions": 277000000,
-      "note": "70% base tier (annual); 30% Extra/Premium"
-    },
-    {
-      "name": "Xbox Game Pass",
-      "type": "subscription",
-      "subscribers_millions": 35.0,
-      "annual_transactions": 189000000,
-      "note": "Exceeded 35M; includes Ultimate tier"
-    },
-    {
-      "name": "Nintendo Switch Online",
-      "type": "subscription",
-      "subscribers_millions": 38.0,
-      "annual_transactions": 152000000,
-      "note": "Mostly annual family plans"
-    },
-    {
-      "name": "EA Play",
-      "type": "subscription",
-      "subscribers_millions": 13.0,
-      "annual_transactions": 70000000,
-      "note": "Often bundled with Game Pass Ultimate"
-    }
-  ],
-  "double_counting_note": "All digital game purchases and subscription payments flow through credit/debit card or digital wallet rails. The ~2.9B transactions here are a subset of the 773B consumer card payment total (~0.37%).",
+  "overlap": {
+    "overlaps_with": [
+      "consumer-cards"
+    ],
+    "overlap_type": "partial",
+    "overlap_note": "70-80% of digital game sales settle on card rails"
+  },
   "sources": [
     {
       "id": 1,
-      "citation": "Newzoo — Global Games Market Report 2024 (Free Version)",
+      "citation": "Newzoo \u2014 Global Games Market Report 2024 (Free Version)",
       "url": "https://best-of-gaming.be/wp-content/uploads/2024/09/2024_Newzoo_Global_Games_Market_Report.pdf",
       "accessed": "2026-03-26"
     },
     {
       "id": 2,
-      "citation": "TweakTown — Games industry made $184.3 billion in 2024",
+      "citation": "TweakTown \u2014 Games industry made $184.3 billion in 2024",
       "url": "https://www.tweaktown.com/news/102255/games-industry-made-184-3-billion-in-2024-consoles-segment-was-84-digital/index.html",
       "accessed": "2026-03-26"
     },
     {
       "id": 3,
-      "citation": "Icon Era — Steam Game Statistics",
+      "citation": "Icon Era \u2014 Steam Game Statistics",
       "url": "https://icon-era.com/statistics/steam-game-statistics/",
       "accessed": "2026-03-26"
     },
     {
       "id": 4,
-      "citation": "Epic Games Store — 2024 Year in Review",
+      "citation": "Epic Games Store \u2014 2024 Year in Review",
       "url": "https://store.epicgames.com/en-US/news/epic-games-store-2024-year-in-review",
       "accessed": "2026-03-26"
     },
     {
       "id": 5,
-      "citation": "SQ Magazine — Xbox Game Pass Stats",
+      "citation": "SQ Magazine \u2014 Xbox Game Pass Stats",
       "url": "https://sqmagazine.co.uk/xbox-game-pass-subscriber/",
       "accessed": "2026-03-26"
     },
     {
       "id": 6,
-      "citation": "Sensor Tower — State of Mobile Gaming 2025",
+      "citation": "Sensor Tower \u2014 State of Mobile Gaming 2025",
       "url": "https://sensortower.com/blog/state-of-mobile-gaming-2025",
       "accessed": "2026-03-26"
     },
     {
       "id": 7,
-      "citation": "Icon Era — Digital Sales Ratio 2024",
+      "citation": "Icon Era \u2014 Digital Sales Ratio 2024",
       "url": "https://icon-era.com/threads/digital-sales-ratio-2024-edition.14538/",
       "accessed": "2026-03-26"
     },
     {
       "id": 8,
-      "citation": "thinglabs — Global Physical Game Revenue 2024",
+      "citation": "thinglabs \u2014 Global Physical Game Revenue 2024",
       "url": "https://thinglabs.io/global-physical-game-revenue-in-2024-drops-nearly-10-to-just-8-5-billion",
       "accessed": "2026-03-26"
     }

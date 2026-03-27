@@ -1,128 +1,163 @@
 {
   "category": "Commodities",
+  "slug": "commodities",
   "sector": "Traditional Finance",
-  "priority": 6,
   "last_updated": "2026-03-26",
-  "definition": "Exchange-traded commodity futures, options, and physical OTC commodity trades. Covers energy, metals, agriculture, and environmental/carbon markets. Transactions = contracts traded.",
-
-  "annual_volume": {
-    "metric": "contracts_traded",
-    "unit": "billions",
-    "source_primary": "FIA (aggregate), individual exchanges (ICE, CME, LME)",
-    "total_2024_est": 6.5,
-    "confidence": "yellow",
-    "note": "Estimated from FIA ~3% commodity share of 205B total ETD, cross-checked with exchange-level data. Includes futures + options.",
-    "breakdown_2024": {
-      "energy": {"volume_bn": 2.5, "share_pct": 38},
-      "agriculture": {"volume_bn": 2.0, "share_pct": 31},
-      "metals": {"volume_bn": 1.2, "share_pct": 18},
-      "environmental_carbon": {"volume_bn": 0.3, "share_pct": 5},
-      "other": {"volume_bn": 0.5, "share_pct": 8}
+  "current": {
+    "avg_tps": {
+      "value": 330,
+      "source": "6.5B contracts / (252 trading days x 21.6h weighted effective hours x 3600s) = ~330 TPS",
+      "url": "",
+      "confidence": "medium"
+    },
+    "peak_tps": {
+      "value": 1650,
+      "source": "6.5B contracts / (252 trading days x 21.6h weighted effective hours x 3600s) = ~330 TPS",
+      "url": "",
+      "confidence": "low"
+    },
+    "annual_volume": {
+      "value": 6500000000,
+      "source": "FIA (aggregate), individual exchanges (ICE, CME, LME)",
+      "url": "",
+      "confidence": "medium"
+    },
+    "daily_volume": {
+      "value": 17808219,
+      "source": "Derived: annual_volume / 365",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_value_usd": {
+      "value": null,
+      "source": "",
+      "url": "",
+      "confidence": "low"
     }
   },
-
-  "exchange_level_2024": {
-    "ice": {
-      "total_commodity_contracts_bn": 1.2,
-      "oil_contracts_m": 655,
-      "brent_contracts_m": 346,
-      "gasoil_contracts_m": 92.8,
-      "environmental_contracts_m": 20.4,
-      "source": "https://ir.theice.com/press/news-details/2025/ICE-Announces-That-a-Record-2-Billion-Contracts-Traded-in-2024/default.aspx"
+  "historic": [
+    {
+      "year": 2019,
+      "annual_volume": 4800000000,
+      "avg_tps": 152,
+      "source": "FIA estimate",
+      "confidence": "medium"
     },
-    "cme_group": {
-      "total_adv_millions": 26.5,
-      "agriculture_adv_growth_yoy_pct": 13,
-      "metals_adv_growth_yoy_pct": 23,
-      "energy_international_growth_yoy_pct": 31,
-      "source": "https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html"
+    {
+      "year": 2020,
+      "annual_volume": 5500000000,
+      "avg_tps": 174,
+      "source": "FIA estimate",
+      "confidence": "medium"
     },
-    "lme": {
-      "total_lots_millions": 179,
-      "adv_lots": 702639,
-      "trading_days": 254,
-      "yoy_growth_pct": 18.4,
-      "source": "https://www.lme.com/en/market-data/reports-and-data/volumes/annual-volumes"
+    {
+      "year": 2021,
+      "annual_volume": 5800000000,
+      "avg_tps": 184,
+      "source": "FIA estimate",
+      "confidence": "medium"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 6000000000,
+      "avg_tps": 190,
+      "source": "FIA estimate",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 6200000000,
+      "avg_tps": 197,
+      "source": "FIA estimate",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 6500000000,
+      "avg_tps": 206,
+      "source": "FIA estimate",
+      "confidence": "medium"
     }
-  },
-
-  "carbon_markets_2024": {
-    "eu_ets_volume_tco2_billions": 13.7,
-    "eu_ets_transactions_millions": 4.7,
-    "eu_ets_on_venue_transactions_millions": 4.2,
-    "eu_ets_value_eur_billions": 781,
-    "ice_environmental_contracts_millions": 20.4,
-    "ice_environmental_yoy_growth_pct": 40,
-    "source": "https://www.esma.europa.eu/sites/default/files/2024-10/ESMA50-43599798-10379_Carbon_markets_report_2024.pdf"
-  },
-
-  "tps": {
-    "average_tps_2024": 330,
-    "peak_tps_estimate": 1650,
-    "methodology": "6.5B contracts / (252 trading days x 21.6h weighted effective hours x 3600s) = ~330 TPS",
-    "confidence_average": "yellow",
-    "confidence_peak": "red"
-  },
-
-  "historic": {
-    "global_commodity_etd_est_billions": {
-      "2019": 4.8,
-      "2020": 5.5,
-      "2021": 5.8,
-      "2022": 6.0,
-      "2023": 6.2,
-      "2024": 6.5
-    },
-    "lme_lots_millions": {
-      "2020": 144,
-      "2021": 151,
-      "2022": 145,
-      "2023": 150,
-      "2024": 179
-    }
-  },
-
-  "growth_rates": {
-    "commodity_etd_cagr_5yr_est": 6.2,
-    "lme_cagr_4yr_2020_2024": 5.6,
-    "cme_metals_yoy_2024": 23,
-    "cme_agriculture_yoy_2024": 13,
-    "carbon_ice_yoy_2024": 40,
-    "note": "Carbon/environmental is the fastest-growing commodity sub-sector."
-  },
-
+  ],
   "projections": {
-    "baseline": {
-      "scenario": "Energy transition + climate volatility drive steady growth",
-      "cagr_2024_2035": 6,
-      "volume_2030_bn": 9.2,
-      "volume_2035_bn": 12.3,
-      "tps_2035": 630
-    },
-    "high_growth": {
-      "scenario": "Carbon markets explode, metals super-cycle, retail commodity trading grows",
-      "cagr_2024_2035": 10,
-      "volume_2030_bn": 11.5,
-      "volume_2035_bn": 18.5,
-      "tps_2035": 945
-    },
-    "conservative": {
-      "scenario": "Price stabilization, regulatory tightening, Chinese exchange controls",
-      "cagr_2024_2035": 3,
-      "volume_2030_bn": 7.8,
-      "volume_2035_bn": 9.0,
-      "tps_2035": 460
-    }
+    "baseline": [
+      {
+        "year": 2030,
+        "tps": 292,
+        "annual_volume": 9200000000
+      },
+      {
+        "year": 2035,
+        "tps": 630,
+        "annual_volume": 12300000000
+      }
+    ],
+    "high_growth": [
+      {
+        "year": 2030,
+        "tps": 365,
+        "annual_volume": 11500000000
+      },
+      {
+        "year": 2035,
+        "tps": 945,
+        "annual_volume": 18500000000
+      }
+    ],
+    "conservative": [
+      {
+        "year": 2030,
+        "tps": 247,
+        "annual_volume": 7800000000
+      },
+      {
+        "year": 2035,
+        "tps": 460,
+        "annual_volume": 9000000000
+      }
+    ]
   },
-
-  "double_counting_notes": "Commodity futures and options are a SUBSET of the ETD category (205B total contracts in 2024). This report isolates the commodity segment (~3% = ~6.5B). Do not add these to the ETD total.",
-
+  "overlap": {
+    "overlaps_with": [],
+    "overlap_type": "none",
+    "overlap_note": ""
+  },
   "sources": [
-    {"id": 1, "title": "FIA — 2024 Annual ETD Volume Review", "url": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review"},
-    {"id": 2, "title": "ICE — Record 2 Billion Contracts in 2024", "url": "https://ir.theice.com/press/news-details/2025/ICE-Announces-That-a-Record-2-Billion-Contracts-Traded-in-2024/default.aspx"},
-    {"id": 3, "title": "ICE — Record Environmental Market Trading 2024", "url": "https://ir.theice.com/press/news-details/2025/ICE-Announces-Record-Environmental-Market-Trading-in-2024/default.aspx"},
-    {"id": 4, "title": "CME Group — Record Annual ADV 2024", "url": "https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html"},
-    {"id": 5, "title": "LME — Annual Volumes", "url": "https://www.lme.com/en/market-data/reports-and-data/volumes/annual-volumes"},
-    {"id": 6, "title": "ESMA — EU Carbon Markets 2024", "url": "https://www.esma.europa.eu/sites/default/files/2024-10/ESMA50-43599798-10379_Carbon_markets_report_2024.pdf"}
+    {
+      "id": 1,
+      "citation": "FIA \u2014 2024 Annual ETD Volume Review",
+      "url": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "ICE \u2014 Record 2 Billion Contracts in 2024",
+      "url": "https://ir.theice.com/press/news-details/2025/ICE-Announces-That-a-Record-2-Billion-Contracts-Traded-in-2024/default.aspx",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "ICE \u2014 Record Environmental Market Trading 2024",
+      "url": "https://ir.theice.com/press/news-details/2025/ICE-Announces-Record-Environmental-Market-Trading-in-2024/default.aspx",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "CME Group \u2014 Record Annual ADV 2024",
+      "url": "https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "LME \u2014 Annual Volumes",
+      "url": "https://www.lme.com/en/market-data/reports-and-data/volumes/annual-volumes",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "ESMA \u2014 EU Carbon Markets 2024",
+      "url": "https://www.esma.europa.eu/sites/default/files/2024-10/ESMA50-43599798-10379_Carbon_markets_report_2024.pdf",
+      "accessed": "2026-03-26"
+    }
   ]
 }

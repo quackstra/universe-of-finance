@@ -1,5 +1,6 @@
 {
   "category": "Digital Wallets & Mobile Payments",
+  "slug": "digital-wallets",
   "sector": "Payments",
   "last_updated": "2026-03-26",
   "current": {
@@ -29,90 +30,203 @@
     },
     "annual_value_usd": {
       "value": 15600000000000,
-      "source": "Worldpay Global Payments Report 2024 — digital wallet spend $15.6T",
+      "source": "Worldpay Global Payments Report 2024 \u2014 digital wallet spend $15.6T",
       "url": "https://worldpay.globalpaymentsreport.com/",
       "confidence": "high"
     }
   },
-  "platform_breakdown": {
-    "upi_india": {
-      "annual_transactions": 172000000000,
-      "annual_value_usd": 2900000000000,
-      "confidence": "high"
-    },
-    "china_mobile_total": {
-      "annual_transactions": 280000000000,
-      "annual_value_usd": 49000000000000,
-      "confidence": "medium",
-      "note": "Includes Alipay, WeChat Pay, and other Chinese mobile wallets"
-    },
-    "alipay": {
-      "annual_transactions": 44000000000,
-      "annual_value_usd": 19800000000000,
-      "confidence": "medium"
-    },
-    "wechat_pay": {
-      "annual_transactions": 130000000000,
-      "annual_value_usd": 15000000000000,
-      "confidence": "medium"
-    },
-    "apple_pay": {
-      "annual_transactions": 20000000000,
-      "annual_value_usd": 6000000000000,
-      "confidence": "low",
-      "note": "Mostly overlay on card rails — double-count risk with consumer-cards"
-    },
-    "google_pay": {
-      "annual_transactions": 66000000000,
-      "confidence": "low",
-      "note": "Mostly UPI in India — already counted in UPI total"
-    },
-    "m_pesa": {
-      "annual_transactions": 30000000000,
-      "annual_value_usd": 309000000000,
-      "confidence": "high"
-    }
-  },
   "historic": [
-    { "year": 2019, "annual_volume": 180000000000, "avg_tps": 5710, "annual_value_usd": 4400000000000, "source": "Aggregated estimates", "confidence": "medium" },
-    { "year": 2020, "annual_volume": 220000000000, "avg_tps": 6980, "annual_value_usd": 5800000000000, "source": "Aggregated estimates", "confidence": "medium" },
-    { "year": 2021, "annual_volume": 310000000000, "avg_tps": 9830, "annual_value_usd": 7500000000000, "source": "Aggregated estimates", "confidence": "medium" },
-    { "year": 2022, "annual_volume": 410000000000, "avg_tps": 13000, "annual_value_usd": 10200000000000, "source": "Aggregated estimates", "confidence": "medium" },
-    { "year": 2023, "annual_volume": 490000000000, "avg_tps": 15540, "annual_value_usd": 12800000000000, "source": "Aggregated estimates", "confidence": "medium" },
-    { "year": 2024, "annual_volume": 620000000000, "avg_tps": 19660, "annual_value_usd": 15600000000000, "source": "Worldpay GPR + platform data", "confidence": "medium" }
+    {
+      "year": 2019,
+      "annual_volume": 180000000000,
+      "avg_tps": 5710,
+      "source": "Aggregated estimates",
+      "confidence": "medium"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 220000000000,
+      "avg_tps": 6980,
+      "source": "Aggregated estimates",
+      "confidence": "medium"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 310000000000,
+      "avg_tps": 9830,
+      "source": "Aggregated estimates",
+      "confidence": "medium"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 410000000000,
+      "avg_tps": 13000,
+      "source": "Aggregated estimates",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 490000000000,
+      "avg_tps": 15540,
+      "source": "Aggregated estimates",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 620000000000,
+      "avg_tps": 19660,
+      "source": "Worldpay GPR + platform data",
+      "confidence": "medium"
+    }
   ],
   "projections": {
     "baseline": [
-      { "year": 2025, "annual_volume": 730000000000, "avg_tps": 23150 },
-      { "year": 2027, "annual_volume": 990000000000, "avg_tps": 31390 },
-      { "year": 2030, "annual_volume": 1560000000000, "avg_tps": 49450 },
-      { "year": 2035, "annual_volume": 2750000000000, "avg_tps": 87200 }
+      {
+        "year": 2025,
+        "tps": 23150,
+        "annual_volume": 730000000000
+      },
+      {
+        "year": 2027,
+        "tps": 31390,
+        "annual_volume": 990000000000
+      },
+      {
+        "year": 2030,
+        "tps": 49450,
+        "annual_volume": 1560000000000
+      },
+      {
+        "year": 2035,
+        "tps": 87200,
+        "annual_volume": 2750000000000
+      }
     ],
     "high_growth": [
-      { "year": 2025, "annual_volume": 756000000000, "avg_tps": 23970 },
-      { "year": 2027, "annual_volume": 1100000000000, "avg_tps": 34880 },
-      { "year": 2030, "annual_volume": 1920000000000, "avg_tps": 60880 },
-      { "year": 2035, "annual_volume": 3860000000000, "avg_tps": 122400 }
+      {
+        "year": 2025,
+        "tps": 23970,
+        "annual_volume": 756000000000
+      },
+      {
+        "year": 2027,
+        "tps": 34880,
+        "annual_volume": 1100000000000
+      },
+      {
+        "year": 2030,
+        "tps": 60880,
+        "annual_volume": 1920000000000
+      },
+      {
+        "year": 2035,
+        "tps": 122400,
+        "annual_volume": 3860000000000
+      }
     ],
     "conservative": [
-      { "year": 2025, "annual_volume": 707000000000, "avg_tps": 22420 },
-      { "year": 2027, "annual_volume": 900000000000, "avg_tps": 28540 },
-      { "year": 2030, "annual_volume": 1250000000000, "avg_tps": 39640 },
-      { "year": 2035, "annual_volume": 1840000000000, "avg_tps": 58330 }
+      {
+        "year": 2025,
+        "tps": 22420,
+        "annual_volume": 707000000000
+      },
+      {
+        "year": 2027,
+        "tps": 28540,
+        "annual_volume": 900000000000
+      },
+      {
+        "year": 2030,
+        "tps": 39640,
+        "annual_volume": 1250000000000
+      },
+      {
+        "year": 2035,
+        "tps": 58330,
+        "annual_volume": 1840000000000
+      }
     ]
   },
+  "overlap": {
+    "overlaps_with": [
+      "consumer-cards",
+      "bank-transfers"
+    ],
+    "overlap_type": "partial",
+    "overlap_note": "Card-rail overlay (~40B txns via Apple Pay etc.) + UPI counted in bank-transfers"
+  },
   "sources": [
-    { "id": 1, "citation": "NPCI UPI Product Statistics", "url": "https://www.npci.org.in/product/upi/product-statistics", "accessed": "2026-03-26" },
-    { "id": 2, "citation": "PIB — UPI as World's Largest Real-Time Payment System (IMF)", "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569", "accessed": "2026-03-26" },
-    { "id": 3, "citation": "Worldpay Global Payments Report 2024", "url": "https://worldpay.globalpaymentsreport.com/", "accessed": "2026-03-26" },
-    { "id": 4, "citation": "Electroiq — Alipay Statistics 2024", "url": "https://electroiq.com/stats/alipay-statistics/", "accessed": "2026-03-26" },
-    { "id": 5, "citation": "CoinLaw — Alipay vs WeChat Pay Statistics 2025", "url": "https://coinlaw.io/alipay-vs-wechat-pay-statistics/", "accessed": "2026-03-26" },
-    { "id": 6, "citation": "BusinessOfApps — WeChat Statistics 2026", "url": "https://www.businessofapps.com/data/wechat-statistics/", "accessed": "2026-03-26" },
-    { "id": 7, "citation": "Safaricom Annual Report 2024", "url": "https://www.safaricom.co.ke/annualreport_2024/", "accessed": "2026-03-26" },
-    { "id": 8, "citation": "Statista — M-Pesa transaction volume 2017-2024", "url": "https://www.statista.com/statistics/1139181/m-pesa-transaction-volume/", "accessed": "2026-03-26" },
-    { "id": 9, "citation": "Statista — China mobile payment transactions 2024", "url": "https://www.statista.com/statistics/244538/number-of-mobile-payment-transactions-in-china/", "accessed": "2026-03-26" },
-    { "id": 10, "citation": "Electroiq — Apple Pay Statistics", "url": "https://electroiq.com/stats/apple-pay-statistics/", "accessed": "2026-03-26" },
-    { "id": 11, "citation": "BusinessOfApps — Mobile Payments Market 2026", "url": "https://www.businessofapps.com/data/mobile-payments-app-market/", "accessed": "2026-03-26" },
-    { "id": 12, "citation": "Capital One Shopping — Digital Wallet Statistics 2026", "url": "https://capitaloneshopping.com/research/digital-wallet-statistics", "accessed": "2026-03-26" }
+    {
+      "id": 1,
+      "citation": "NPCI UPI Product Statistics",
+      "url": "https://www.npci.org.in/product/upi/product-statistics",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "PIB \u2014 UPI as World's Largest Real-Time Payment System (IMF)",
+      "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "Worldpay Global Payments Report 2024",
+      "url": "https://worldpay.globalpaymentsreport.com/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "Electroiq \u2014 Alipay Statistics 2024",
+      "url": "https://electroiq.com/stats/alipay-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "CoinLaw \u2014 Alipay vs WeChat Pay Statistics 2025",
+      "url": "https://coinlaw.io/alipay-vs-wechat-pay-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "BusinessOfApps \u2014 WeChat Statistics 2026",
+      "url": "https://www.businessofapps.com/data/wechat-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "Safaricom Annual Report 2024",
+      "url": "https://www.safaricom.co.ke/annualreport_2024/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 8,
+      "citation": "Statista \u2014 M-Pesa transaction volume 2017-2024",
+      "url": "https://www.statista.com/statistics/1139181/m-pesa-transaction-volume/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 9,
+      "citation": "Statista \u2014 China mobile payment transactions 2024",
+      "url": "https://www.statista.com/statistics/244538/number-of-mobile-payment-transactions-in-china/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 10,
+      "citation": "Electroiq \u2014 Apple Pay Statistics",
+      "url": "https://electroiq.com/stats/apple-pay-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 11,
+      "citation": "BusinessOfApps \u2014 Mobile Payments Market 2026",
+      "url": "https://www.businessofapps.com/data/mobile-payments-app-market/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 12,
+      "citation": "Capital One Shopping \u2014 Digital Wallet Statistics 2026",
+      "url": "https://capitaloneshopping.com/research/digital-wallet-statistics",
+      "accessed": "2026-03-26"
+    }
   ]
 }

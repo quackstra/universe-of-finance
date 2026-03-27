@@ -1,5 +1,6 @@
 {
   "category": "Peer-to-Peer Transfers",
+  "slug": "p2p-transfers",
   "sector": "Payments",
   "last_updated": "2026-03-26",
   "current": {
@@ -34,75 +35,179 @@
       "confidence": "medium"
     }
   },
-  "platform_breakdown": {
-    "zelle": {
-      "annual_transactions": 3600000000,
-      "annual_value_usd": 1040000000000,
-      "confidence": "high",
-      "source": "Early Warning Services / CNBC"
-    },
-    "venmo": {
-      "annual_transactions": 2300000000,
-      "annual_value_usd": 280000000000,
-      "confidence": "medium",
-      "source": "PayPal 10-K (TPV) + transaction count estimate"
-    },
-    "cash_app": {
-      "annual_transactions": 1500000000,
-      "annual_value_usd": 283000000000,
-      "confidence": "medium",
-      "source": "Block 10-K (inflows — includes non-P2P)",
-      "note": "Inflows include direct deposits, BTC, merchant payments. Pure P2P estimated at ~60% = $170B"
-    },
-    "paypal_p2p": {
-      "annual_transactions": 300000000,
-      "annual_value_usd": 150000000000,
-      "confidence": "low"
-    },
-    "non_us": {
-      "annual_transactions": 800000000,
-      "annual_value_usd": 105000000000,
-      "confidence": "low",
-      "note": "Bizum, Swish, other European and regional P2P"
-    }
-  },
   "historic": [
-    { "year": 2019, "annual_volume": 2700000000, "avg_tps": 86, "annual_value_usd": 450000000000, "source": "Aggregated platform data", "confidence": "medium" },
-    { "year": 2020, "annual_volume": 3900000000, "avg_tps": 124, "annual_value_usd": 680000000000, "source": "Aggregated platform data", "confidence": "medium" },
-    { "year": 2021, "annual_volume": 5100000000, "avg_tps": 162, "annual_value_usd": 920000000000, "source": "Aggregated platform data", "confidence": "medium" },
-    { "year": 2022, "annual_volume": 5800000000, "avg_tps": 184, "annual_value_usd": 1150000000000, "source": "Aggregated platform data", "confidence": "medium" },
-    { "year": 2023, "annual_volume": 7000000000, "avg_tps": 222, "annual_value_usd": 1450000000000, "source": "Aggregated platform data", "confidence": "medium" },
-    { "year": 2024, "annual_volume": 8500000000, "avg_tps": 270, "annual_value_usd": 2800000000000, "source": "Aggregated platform data", "confidence": "medium" }
+    {
+      "year": 2019,
+      "annual_volume": 2700000000,
+      "avg_tps": 86,
+      "source": "Aggregated platform data",
+      "confidence": "medium"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 3900000000,
+      "avg_tps": 124,
+      "source": "Aggregated platform data",
+      "confidence": "medium"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 5100000000,
+      "avg_tps": 162,
+      "source": "Aggregated platform data",
+      "confidence": "medium"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 5800000000,
+      "avg_tps": 184,
+      "source": "Aggregated platform data",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 7000000000,
+      "avg_tps": 222,
+      "source": "Aggregated platform data",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 8500000000,
+      "avg_tps": 270,
+      "source": "Aggregated platform data",
+      "confidence": "medium"
+    }
   ],
   "projections": {
     "baseline": [
-      { "year": 2025, "annual_volume": 9500000000, "avg_tps": 301 },
-      { "year": 2027, "annual_volume": 11800000000, "avg_tps": 374 },
-      { "year": 2030, "annual_volume": 15500000000, "avg_tps": 491 },
-      { "year": 2035, "annual_volume": 20700000000, "avg_tps": 656 }
+      {
+        "year": 2025,
+        "tps": 301,
+        "annual_volume": 9500000000
+      },
+      {
+        "year": 2027,
+        "tps": 374,
+        "annual_volume": 11800000000
+      },
+      {
+        "year": 2030,
+        "tps": 491,
+        "annual_volume": 15500000000
+      },
+      {
+        "year": 2035,
+        "tps": 656,
+        "annual_volume": 20700000000
+      }
     ],
     "high_growth": [
-      { "year": 2025, "annual_volume": 9900000000, "avg_tps": 314 },
-      { "year": 2027, "annual_volume": 13000000000, "avg_tps": 412 },
-      { "year": 2030, "annual_volume": 19000000000, "avg_tps": 602 },
-      { "year": 2035, "annual_volume": 30600000000, "avg_tps": 970 }
+      {
+        "year": 2025,
+        "tps": 314,
+        "annual_volume": 9900000000
+      },
+      {
+        "year": 2027,
+        "tps": 412,
+        "annual_volume": 13000000000
+      },
+      {
+        "year": 2030,
+        "tps": 602,
+        "annual_volume": 19000000000
+      },
+      {
+        "year": 2035,
+        "tps": 970,
+        "annual_volume": 30600000000
+      }
     ],
     "conservative": [
-      { "year": 2025, "annual_volume": 9200000000, "avg_tps": 292 },
-      { "year": 2027, "annual_volume": 10700000000, "avg_tps": 339 },
-      { "year": 2030, "annual_volume": 13000000000, "avg_tps": 412 },
-      { "year": 2035, "annual_volume": 15800000000, "avg_tps": 501 }
+      {
+        "year": 2025,
+        "tps": 292,
+        "annual_volume": 9200000000
+      },
+      {
+        "year": 2027,
+        "tps": 339,
+        "annual_volume": 10700000000
+      },
+      {
+        "year": 2030,
+        "tps": 412,
+        "annual_volume": 13000000000
+      },
+      {
+        "year": 2035,
+        "tps": 501,
+        "annual_volume": 15800000000
+      }
     ]
   },
+  "overlap": {
+    "overlaps_with": [
+      "digital-wallets"
+    ],
+    "overlap_type": "partial",
+    "overlap_note": "Minor overlap \u2014 some P2P flows through digital wallet platforms"
+  },
   "sources": [
-    { "id": 1, "citation": "CNBC — Zelle payments top $1 trillion in 2024", "url": "https://www.cnbc.com/2025/02/12/zelle-payments-top-1-trillion-in-2024.html", "accessed": "2026-03-26" },
-    { "id": 2, "citation": "Zelle press release — $806B in 2023", "url": "https://www.zelle.com/press-releases/zelle-soars-806-billion-transaction-volume-28-prior-year", "accessed": "2026-03-26" },
-    { "id": 3, "citation": "PayPal 10-K FY2024", "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391725000019/pypl-20241231.htm", "accessed": "2026-03-26" },
-    { "id": 4, "citation": "Block 10-K FY2024", "url": "https://www.sec.gov/Archives/edgar/data/1512673/000162828025007376/sq-20241231.htm", "accessed": "2026-03-26" },
-    { "id": 5, "citation": "BusinessOfApps — Venmo Statistics 2026", "url": "https://www.businessofapps.com/data/venmo-statistics/", "accessed": "2026-03-26" },
-    { "id": 6, "citation": "BusinessOfApps — Cash App Statistics 2026", "url": "https://www.businessofapps.com/data/cash-app-statistics/", "accessed": "2026-03-26" },
-    { "id": 7, "citation": "CoinLaw — Zelle vs Venmo Statistics 2026", "url": "https://coinlaw.io/zelle-vs-venmo-statistics/", "accessed": "2026-03-26" },
-    { "id": 8, "citation": "eMarketer — US Mobile P2P Payments Forecast 2024", "url": "https://www.emarketer.com/content/us-mobile-p2p-payments-forecast-2024", "accessed": "2026-03-26" },
-    { "id": 9, "citation": "Precedence Research — P2P Payment Market to $16.21T by 2034", "url": "https://www.precedenceresearch.com/p2p-payment-market", "accessed": "2026-03-26" }
+    {
+      "id": 1,
+      "citation": "CNBC \u2014 Zelle payments top $1 trillion in 2024",
+      "url": "https://www.cnbc.com/2025/02/12/zelle-payments-top-1-trillion-in-2024.html",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 2,
+      "citation": "Zelle press release \u2014 $806B in 2023",
+      "url": "https://www.zelle.com/press-releases/zelle-soars-806-billion-transaction-volume-28-prior-year",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "PayPal 10-K FY2024",
+      "url": "https://www.sec.gov/Archives/edgar/data/1633917/000163391725000019/pypl-20241231.htm",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "Block 10-K FY2024",
+      "url": "https://www.sec.gov/Archives/edgar/data/1512673/000162828025007376/sq-20241231.htm",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "BusinessOfApps \u2014 Venmo Statistics 2026",
+      "url": "https://www.businessofapps.com/data/venmo-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "BusinessOfApps \u2014 Cash App Statistics 2026",
+      "url": "https://www.businessofapps.com/data/cash-app-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "CoinLaw \u2014 Zelle vs Venmo Statistics 2026",
+      "url": "https://coinlaw.io/zelle-vs-venmo-statistics/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 8,
+      "citation": "eMarketer \u2014 US Mobile P2P Payments Forecast 2024",
+      "url": "https://www.emarketer.com/content/us-mobile-p2p-payments-forecast-2024",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 9,
+      "citation": "Precedence Research \u2014 P2P Payment Market to $16.21T by 2034",
+      "url": "https://www.precedenceresearch.com/p2p-payment-market",
+      "accessed": "2026-03-26"
+    }
   ]
 }

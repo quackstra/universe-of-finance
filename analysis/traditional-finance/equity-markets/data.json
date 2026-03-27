@@ -1,143 +1,254 @@
 {
   "category": "Equity Markets (Stock Exchanges)",
+  "slug": "equity-markets",
   "sector": "Traditional Finance",
-  "priority": 6,
   "last_updated": "2026-03-26",
-  "methodology_version": "1.0",
-
-  "current_tps": {
-    "average_tps": 3500,
-    "peak_tps": 50000,
-    "peak_tps_range": {"low": 30000, "high": 80000},
-    "confidence": "medium",
-    "notes": "Average across all global exchanges during trading hours. Peak during volatility events (e.g., Aug 2024 VIX spike, Oct 2024 China stimulus).",
-    "sources": [
-      "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024",
-      "https://focus.world-exchanges.org/issue/december-2024/dashboard"
-    ]
-  },
-
-  "annual_volume_2024": {
-    "total_trades_billions": 61.5,
-    "confidence": "medium",
-    "derivation": "Triangulated from WFE Dec 2024 monthly data, H1 2024 APAC totals, and 2023 baseline + growth rates",
-    "sources": [
-      "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024",
-      "https://www.world-exchanges.org/news/articles/wfe-data-trading-value-and-volumes-surge-investors-flock-markets",
-      "https://focus.world-exchanges.org/issue/december-2024/dashboard"
-    ]
-  },
-
-  "annual_value_2024": {
-    "total_usd_trillions": 106.53,
-    "confidence": "high",
-    "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
-    "notes": "World Bank 'Stocks traded, total value (current US$)'. WFE broader measure yields ~$140-155T including all member activity."
-  },
-
-  "historic_timeseries": {
-    "metric": "total_value_traded_usd_trillions",
-    "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
-    "confidence": "high",
-    "data": [
-      {"year": 2015, "value_usd_trillions": 101.17, "est_trades_billions": 45},
-      {"year": 2016, "value_usd_trillions": 77.67, "est_trades_billions": 35},
-      {"year": 2017, "value_usd_trillions": 77.70, "est_trades_billions": 37},
-      {"year": 2018, "value_usd_trillions": 84.27, "est_trades_billions": 40},
-      {"year": 2019, "value_usd_trillions": 75.07, "est_trades_billions": 38},
-      {"year": 2020, "value_usd_trillions": 102.94, "est_trades_billions": 52},
-      {"year": 2021, "value_usd_trillions": 120.65, "est_trades_billions": 58},
-      {"year": 2022, "value_usd_trillions": 104.39, "est_trades_billions": 50},
-      {"year": 2023, "value_usd_trillions": 94.08, "est_trades_billions": 49},
-      {"year": 2024, "value_usd_trillions": 106.53, "est_trades_billions": 61.5}
-    ]
-  },
-
-  "subcategory_breakdown_2024": {
-    "by_exchange": [
-      {"name": "NSE India", "est_trades_billions": 18.0, "share_pct": 29.3, "yoy_growth_pct": 74.3, "confidence": "medium", "source": "https://www.world-exchanges.org/news/articles/wfe-fy24-market-data-americas-region-leading-global-markets-despite-lowest-level-ipos-worldwide-last-5-years"},
-      {"name": "Shenzhen SE", "est_trades_billions": 10.5, "share_pct": 17.1, "yoy_growth_pct": 21.4, "confidence": "medium", "source": "https://www.ceicdata.com/en/china/shanghai-stock-exchange-turnover-volume"},
-      {"name": "Shanghai SE", "est_trades_billions": 8.5, "share_pct": 13.8, "yoy_growth_pct": 24.2, "confidence": "medium", "source": "https://english.sse.com.cn/access/stockconnect/statistics/month/"},
-      {"name": "NASDAQ (all venues)", "est_trades_billions": 5.0, "share_pct": 8.1, "confidence": "medium", "source": "https://www.nasdaqtrader.com/trader.aspx?id=FullVolumeSummary"},
-      {"name": "NYSE (all venues)", "est_trades_billions": 4.5, "share_pct": 7.3, "confidence": "medium", "source": "https://www.nyse.com/trade/us-equity-volumes"},
-      {"name": "JPX (Tokyo)", "est_trades_billions": 4.2, "share_pct": 6.8, "yoy_growth_pct": 30.9, "confidence": "medium", "source": "https://www.jpx.co.jp/english/corporate/news/news-releases/0063/20241230-01.html"},
-      {"name": "Korea Exchange", "est_trades_billions": 3.0, "share_pct": 4.9, "confidence": "low", "source": "Estimated from WFE APAC data"},
-      {"name": "LSE Group", "est_trades_billions": 1.5, "share_pct": 2.4, "confidence": "medium", "source": "https://www.lseg.com/en/investor-relations/trading-statistics"},
-      {"name": "HKEX", "est_trades_billions": 1.2, "share_pct": 2.0, "yoy_growth_pct": 31.1, "confidence": "low", "source": "https://www.hkex.com.hk/-/media/HKEX-Market/Market-Data/Statistics/Consolidated-Reports/Annual-Market-Statistics/2024FY-Ann-Mkt-Stat_eng.pdf"},
-      {"name": "Taiwan SE", "est_trades_billions": 1.0, "share_pct": 1.6, "yoy_growth_pct": 41.6, "confidence": "low", "source": "WFE APAC data"},
-      {"name": "Other", "est_trades_billions": 4.1, "share_pct": 6.7, "confidence": "low"}
-    ],
-    "by_venue_type_us": {
-      "lit_exchange_pct": 53,
-      "off_exchange_trf_pct": 47,
-      "source": "https://ir.cboe.com/news/news-details/2025/Cboe-Global-Markets-Reports-Trading-Volume-for-December-and-Full-Year-2024/default.aspx",
-      "confidence": "high",
-      "notes": "US-specific. Globally, off-exchange share estimated at 25-30%."
+  "current": {
+    "avg_tps": {
+      "value": 3500,
+      "source": "",
+      "url": "",
+      "confidence": "medium"
     },
-    "by_region": {
-      "apac": {"share_pct": 65, "est_trades_billions": 40.0, "yoy_growth_pct": 47.8},
-      "americas": {"share_pct": 22, "est_trades_billions": 13.5},
-      "emea": {"share_pct": 13, "est_trades_billions": 8.0, "yoy_growth_pct": 4.8}
+    "peak_tps": {
+      "value": 50000,
+      "source": "",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_volume": {
+      "value": 61500000000,
+      "source": "Triangulated from WFE Dec 2024 monthly data, H1 2024 APAC totals, and 2023 baseline + growth rates",
+      "url": "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024",
+      "confidence": "medium"
+    },
+    "annual_value_usd": {
+      "value": 106530000000000,
+      "source": "World Bank 'Stocks traded, total value (current US$)'. WFE broader measure yields ~$140-155T including all member activity.",
+      "url": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    "daily_volume": {
+      "value": 168493150,
+      "source": "Derived: annual_volume / 365",
+      "url": "",
+      "confidence": "medium"
     }
   },
-
-  "growth_rates": {
-    "value_traded_5yr_cagr_pct": 7.26,
-    "value_traded_10yr_cagr_pct": 0.57,
-    "trade_count_5yr_cagr_pct": 10.3,
-    "trade_count_10yr_cagr_pct": 3.6,
-    "notes": "10-year value CAGR suppressed by anomalously high 2015 base (China bubble). 5-year trade count CAGR elevated by India/China retail boom.",
-    "source": "Derived from World Bank and WFE data"
-  },
-
+  "historic": [
+    {
+      "year": 2015,
+      "annual_volume": 45000000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    {
+      "year": 2016,
+      "annual_volume": 35000000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    {
+      "year": 2017,
+      "annual_volume": 37000000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    {
+      "year": 2018,
+      "annual_volume": 40000000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    {
+      "year": 2019,
+      "annual_volume": 38000000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 52000000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 58000000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 50000000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 49000000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 61500000000,
+      "avg_tps": null,
+      "source": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "confidence": "high"
+    }
+  ],
   "projections": {
-    "baseline": {
-      "trade_count_cagr_pct": 6.0,
-      "value_cagr_pct": 5.0,
-      "milestones": [
-        {"year": 2025, "trades_billions": 65.2, "value_usd_trillions": 111.8},
-        {"year": 2030, "trades_billions": 87.3, "value_usd_trillions": 142.7},
-        {"year": 2035, "trades_billions": 116.8, "value_usd_trillions": 182.1}
-      ],
-      "assumptions": "Moderate EM growth, fractional shares standard, no major regulatory disruption"
-    },
-    "high_growth": {
-      "trade_count_cagr_pct": 9.0,
-      "value_cagr_pct": 7.5,
-      "milestones": [
-        {"year": 2025, "trades_billions": 67.0, "value_usd_trillions": 114.5},
-        {"year": 2030, "trades_billions": 103.1, "value_usd_trillions": 164.3},
-        {"year": 2035, "trades_billions": 158.7, "value_usd_trillions": 235.9}
-      ],
-      "assumptions": "Retail boom, fractional shares global, tokenized equities, EM modernization, 24/7 trading"
-    },
-    "conservative": {
-      "trade_count_cagr_pct": 3.0,
-      "value_cagr_pct": 3.0,
-      "milestones": [
-        {"year": 2025, "trades_billions": 63.3, "value_usd_trillions": 109.7},
-        {"year": 2030, "trades_billions": 73.4, "value_usd_trillions": 127.1},
-        {"year": 2035, "trades_billions": 85.1, "value_usd_trillions": 147.3}
-      ],
-      "assumptions": "HFT regulation, PFOF ban, tick size reform, geopolitical fragmentation"
-    }
+    "baseline": [
+      {
+        "year": 2025,
+        "tps": 2067,
+        "annual_volume": 65200000000
+      },
+      {
+        "year": 2030,
+        "tps": 2768,
+        "annual_volume": 87300000000
+      },
+      {
+        "year": 2035,
+        "tps": 3704,
+        "annual_volume": 116800000000
+      }
+    ],
+    "high_growth": [
+      {
+        "year": 2025,
+        "tps": 2125,
+        "annual_volume": 67000000000
+      },
+      {
+        "year": 2030,
+        "tps": 3269,
+        "annual_volume": 103100000000
+      },
+      {
+        "year": 2035,
+        "tps": 5032,
+        "annual_volume": 158700000000
+      }
+    ],
+    "conservative": [
+      {
+        "year": 2025,
+        "tps": 2007,
+        "annual_volume": 63300000000
+      },
+      {
+        "year": 2030,
+        "tps": 2327,
+        "annual_volume": 73400000000
+      },
+      {
+        "year": 2035,
+        "tps": 2699,
+        "annual_volume": 85100000000
+      }
+    ]
   },
-
-  "market_context": {
-    "global_market_cap_usd_trillions": 125.71,
-    "listed_companies": 49054,
-    "us_market_cap_usd_trillions": 67.8,
-    "us_equity_holdings_household_trillions": 39.4,
-    "us_equity_holdings_institutional_trillions": 54.8,
-    "retail_share_of_volume": {
-      "us_uk_korea": "20-35%",
-      "india_china": "40-50%"
+  "overlap": {
+    "overlaps_with": [],
+    "overlap_type": "none",
+    "overlap_note": ""
+  },
+  "sources": [
+    {
+      "id": 1,
+      "citation": "wfe-market-highlights-fy-2024",
+      "url": "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024",
+      "accessed": "2026-03-26"
     },
-    "em_market_share_projection": {
-      "2024": "27%",
-      "2030": "35%",
-      "2050": "47%",
-      "source": "https://www.goldmansachs.com/insights/articles/emerging-stock-markets-projected-to-overtake-the-us-by-2030"
+    {
+      "id": 2,
+      "citation": "dashboard",
+      "url": "https://focus.world-exchanges.org/issue/december-2024/dashboard",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 3,
+      "citation": "wfe-data-trading-value-and-volumes-surge-investors-flock-markets",
+      "url": "https://www.world-exchanges.org/news/articles/wfe-data-trading-value-and-volumes-surge-investors-flock-markets",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 4,
+      "citation": "CM.MKT.TRAD.CD",
+      "url": "https://data.worldbank.org/indicator/CM.MKT.TRAD.CD",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 5,
+      "citation": "wfe-fy24-market-data-americas-region-leading-global-markets-despite-lowest-level-ipos-worldwide-last-5-years",
+      "url": "https://www.world-exchanges.org/news/articles/wfe-fy24-market-data-americas-region-leading-global-markets-despite-lowest-level-ipos-worldwide-last-5-years",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 6,
+      "citation": "shanghai-stock-exchange-turnover-volume",
+      "url": "https://www.ceicdata.com/en/china/shanghai-stock-exchange-turnover-volume",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 7,
+      "citation": "",
+      "url": "https://english.sse.com.cn/access/stockconnect/statistics/month/",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 8,
+      "citation": "trader.aspx?id=FullVolumeSummary",
+      "url": "https://www.nasdaqtrader.com/trader.aspx?id=FullVolumeSummary",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 9,
+      "citation": "us-equity-volumes",
+      "url": "https://www.nyse.com/trade/us-equity-volumes",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 10,
+      "citation": "20241230-01.html",
+      "url": "https://www.jpx.co.jp/english/corporate/news/news-releases/0063/20241230-01.html",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 11,
+      "citation": "trading-statistics",
+      "url": "https://www.lseg.com/en/investor-relations/trading-statistics",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 12,
+      "citation": "2024FY-Ann-Mkt-Stat_eng.pdf",
+      "url": "https://www.hkex.com.hk/-/media/HKEX-Market/Market-Data/Statistics/Consolidated-Reports/Annual-Market-Statistics/2024FY-Ann-Mkt-Stat_eng.pdf",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 13,
+      "citation": "default.aspx",
+      "url": "https://ir.cboe.com/news/news-details/2025/Cboe-Global-Markets-Reports-Trading-Volume-for-December-and-Full-Year-2024/default.aspx",
+      "accessed": "2026-03-26"
+    },
+    {
+      "id": 14,
+      "citation": "emerging-stock-markets-projected-to-overtake-the-us-by-2030",
+      "url": "https://www.goldmansachs.com/insights/articles/emerging-stock-markets-projected-to-overtake-the-us-by-2030",
+      "accessed": "2026-03-26"
     }
-  }
+  ]
 }
