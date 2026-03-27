@@ -1,67 +1,68 @@
 # Last Session Notes — 2026-03-26
 
-## Capsules Produced: 24 (across 2 sessions)
+## Runs Completed: 3
 
-First session (interrupted by rate limit): 5 capsules
-Second session (resumed): 19 capsules
+### Run 1: Initial 24-Category Pass
+- All 24 taxonomy categories researched with full capsules (REPORT.md + data.json + workings/)
+- First-pass Big Number estimate: ~76,000 TPS (pre-overlap)
 
-## Categories Researched
+### Run 2: Overlap Quantification + Open Questions
+- Created `analysis/payments/OVERLAP_ANALYSIS.md` — quantified all 6 payment-sector overlaps
+- Created `analysis/OVERLAP_MATRIX.md` — cross-sector de-duplication methodology
+- De-duplicated global TPS: ~70,600 (payment infrastructure) / ~71,600 (all economic events)
+- Added "Open Questions & Triangulation Opportunities" to all 24 capsule REPORTs
+- Key finding: raw payment sum overstates by 14% (1,945B → 1,679B unique txns)
+- Biggest single overlap: UPI at 172B txns counted in both wallets and bank transfers
 
-### Payments (6)
-- **consumer-cards**: Full capsule — 24,501 avg TPS, 772.7B annual txns. Visa/UnionPay/Mastercard triopoly.
-- **digital-wallets**: Full capsule — 19,660 avg TPS, 620B annual txns. UPI is the global champion at 172B txns/year.
-- **bank-transfers**: Full capsule — 15,338 avg TPS, 484B annual txns. Real-time payments growing fast.
-- **ecommerce**: Full capsule — ~1,800 avg TPS, ~57.5B annual txns. Heavy overlap with card payments.
-- **p2p-transfers**: Full capsule — 270 avg TPS, 8.5B annual txns. Zelle hit $1T in 2024.
-- **remittances**: Full capsule — 57 avg TPS, 1.8B annual txns. Value data is strong but txn counts are a data gap.
+### Run 3: Deep Triangulation + Tooling
+7 agents dispatched (4 resumed after rate limit):
 
-### Traditional Finance (6)
-- **etd**: Full capsule — ~9,500 avg TPS, 205.3B contracts. 6th consecutive annual record, +51% YoY.
-- **equity-markets**: Full capsule — ~3,500 avg TPS (trading hours), 61.5B trades. India +74.3% YoY surge.
-- **commodities**: Full capsule — ~330 avg TPS, ~10.4B contracts. CME, ICE, LME dominate.
-- **forex**: Full capsule — ~35 avg TPS, ~750M trades. $9.6T daily turnover but low txn count.
-- **fixed-income**: Full capsule — ~7 avg TPS (cash bonds), ~220M trades. Bonds rarely trade.
-- **otc-derivatives**: Full capsule — ~0.6 avg TPS, ~15M trades. Lowest TPS despite $665T notional.
+1. **China triangulation model** (`analysis/payments/digital-wallets/workings/china-model.md`)
+   - 6 independent estimation methods converging at 280B ±20B (narrowed from ±50B)
+   - Methods: PBOC reported, GDP ratio, population, Alipay+WeChat bottom-up, e-commerce, mobile internet
 
-### Digital Assets (4)
-- **cex**: Full capsule — ~4,000 avg TPS (est.), $77.3T combined volume. Wash trading flagged.
-- **blockchain-l1-l2**: Full capsule — ~900 avg TPS, ~27B on-chain txns. Solana dominates by count.
-- **defi**: Full capsule — $4.16T DEX volume. Subset of L1/L2. DEX-to-CEX ratio growing.
-- **stablecoins**: Full capsule — ~520 avg TPS, $27.6T raw volume. Subset of L1/L2.
+2. **Stablecoin decomposition** (`analysis/digital-assets/stablecoins/workings/volume-decomposition.md`)
+   - $27.6T raw → $5.7T Visa-adjusted after filtering wash/MEV/arb
+   - Category gap analysis showing where adjusted volume goes
 
-### Banking (2)
-- **interbank-rtgs**: Full capsule — 13.4 avg TPS, 423M txns, $2,150T value. CLS is the hidden giant.
-- **securities-settlement**: Full capsule — ~41-48 avg TPS, ~1.3-1.5B txns, $3.7 quadrillion (DTCC alone).
+3. **Visualization suite** (`tools/charts.py` → `analysis/charts/`)
+   - TPS bar chart, value-vs-count scatter, dedup waterfall, consumer cards timeseries
 
-### Gaming (2)
-- **gaming-microtx**: Full capsule — ~389 avg TPS, ~12.3B txns, $114B. Mobile dominates.
-- **gaming-sales**: Full capsule — ~92 avg TPS, ~2.9B txns, $60.2B. Digital 84-96%.
+4. **Solana vote filter** (`analysis/digital-assets/blockchain-l1-l2/workings/solana-filter.md`)
+   - L1/L2 TPS revised from ~900 to ~350-480 after filtering Solana vote transactions
+   - Vote txns are ~80% of Solana's reported TPS
 
-### Government (1)
-- **government-payments**: Full capsule — ~793 avg TPS, ~25B txns. Benefits disbursements dominate count.
+5. **Missing RTGS systems** (`analysis/banking/interbank-rtgs/workings/missing-systems.md`)
+   - Added 8 RTGS systems (China CNAPS, India RTGS, Russia BESP, etc.)
+   - Interbank total tripled: 423M → ~1.5B transactions
 
-### Emerging (3)
-- **iot-m2m**: Full capsule — ~634 avg TPS, ~20B txns. Already large but invisible.
-- **rwa-tokenisation**: Full capsule — ~2.4 avg TPS, ~75M txns. $24B TVL, growing fast.
-- **ai-agents**: Full capsule — ~0.66 avg TPS. Most speculative category. x402 data available.
+6. **Government bottom-up model** (`analysis/government/government-payments/workings/bottom-up-model.md`)
+   - US IRS+SSA+Treasury, India DBT, EU models
+   - Revised from 25B to ~31.6B (TPS ~1,002)
+   - India DBT alone generates 7.4B transactions
 
-## Key Findings
-- **Consumer cards + digital wallets + bank transfers account for ~80% of global financial TPS**
-- The "Big Number" first-pass estimate is ~76,000 TPS across non-overlapping categories
-- Double-counting between digital wallets and card payments is the biggest methodological challenge
-- Value and count rankings diverge dramatically (forex is massive by value, tiny by count)
-- UPI (India) alone processes more transactions than all global equity markets combined
+7. **Schema normalization + Big Number calculator**
+   - All 24 data.json normalized to consistent schema (slug, overlap, current/historic/projections/sources)
+   - `tools/big_number.py` — de-duplicated global TPS: ~71,105
+   - `tools/validate_schema.py` — 24/24 passing
+   - `tools/normalize_schemas.py` — conversion utility
 
-## Taxonomy Changes
-- No changes to TAXONOMY.md needed — all 24 categories fit well
-- Potential future addition: "Insurance Premiums" (not currently tracked)
-- Potential future addition: "Payroll Payments" (currently lumped into bank transfers)
+## Key Findings Across All 3 Runs
 
-## Issues Found in Prior Research
-- None (first research pass)
+1. **Payments dominate**: 75% of global financial TPS is payment transactions
+2. **The overlap problem is smaller than feared**: 14% overcount in raw sum
+3. **UPI is the single largest overlap**: 172B txns in both wallets and bank transfers
+4. **90% of digital wallet txns are incremental to cards** (counterintuitive — because UPI, China, M-Pesa are non-card)
+5. **Solana vote transactions inflate L1/L2 TPS by 2-3×**
+6. **Missing RTGS systems tripled interbank count**
+7. **E-commerce is a commerce layer, not a payment layer** (95% overlay)
+8. **China triangulation narrowed uncertainty from ±50B to ±20B**
 
-## Unfinished Work
-- data.json schemas vary across agents — need normalisation pass
-- Some capsules have more detailed projections than others
-- Historic data for many categories only goes back to 2019 (protocol requests deeper historics for inside-out expansion)
-- Double-counting quantification needed: how much of digital wallets is truly incremental vs. card-rail overlap?
+## Git Commits
+1. `80d7d82` — 5 capsules from interrupted session
+2. `e7ae1d5` — 19 new capsules (all 24 categories)
+3. `63a53b8` — Session notes, README index, backlog update
+4. `20dae58` — Run 2: overlap analysis, open questions, data gap fills
+5. `3603019` — Run 3 partial: China model, stablecoin decomposition, charts
+6. `bac48fc` — Run 3: Solana filter, missing RTGS, gov bottom-up
+7. `29b4997` — Run 3: Schema normalization + Big Number calculator
