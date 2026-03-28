@@ -1,0 +1,213 @@
+{
+  "category": "Insurance Premium Payments",
+  "slug": "insurance-premiums",
+  "sector": "Payments",
+  "last_updated": "2026-03-28",
+  "current": {
+    "avg_tps": {
+      "value": 444,
+      "source": "Derived: ~14B annual / 31,536,000 seconds",
+      "url": "",
+      "confidence": "low",
+      "note": "Bottom-up model from policy counts × payment frequency. No direct source for transaction counts."
+    },
+    "peak_tps": {
+      "value": 700,
+      "source": "Estimated: billing cycle peaks on 1st/15th of month at ~1.5-1.8x average",
+      "url": "",
+      "confidence": "low",
+      "note": "Insurance premiums cluster around month-start due dates"
+    },
+    "daily_volume": {
+      "value": 38356000,
+      "source": "Derived: 14B / 365 days",
+      "url": "",
+      "confidence": "low"
+    },
+    "annual_volume": {
+      "value": 14000000000,
+      "source": "Bottom-up model: global policies in force × payment frequency",
+      "url": "",
+      "confidence": "medium",
+      "note": "Range: 12-16B. Central estimate 14B."
+    },
+    "annual_value_usd": {
+      "value": 7200000000000,
+      "source": "Swiss Re sigma No. 3/2025 — global gross written premiums 2024",
+      "url": "https://www.swissre.com/institute/research/sigma-research/sigma-2025-03.html",
+      "confidence": "high"
+    }
+  },
+  "historic": [
+    {
+      "year": 2015,
+      "annual_volume": 9500000000,
+      "avg_tps": 301,
+      "annual_value_usd": 4600000000000,
+      "source": "Swiss Re sigma (premiums); txn count modeled",
+      "confidence": "low"
+    },
+    {
+      "year": 2018,
+      "annual_volume": 10600000000,
+      "avg_tps": 336,
+      "annual_value_usd": 5200000000000,
+      "source": "Swiss Re sigma (premiums); txn count modeled",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 11300000000,
+      "avg_tps": 358,
+      "annual_value_usd": 5600000000000,
+      "source": "Swiss Re sigma (premiums); txn count modeled",
+      "confidence": "low"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 12500000000,
+      "avg_tps": 396,
+      "annual_value_usd": 6300000000000,
+      "source": "Swiss Re sigma (premiums); txn count modeled",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 13300000000,
+      "avg_tps": 422,
+      "annual_value_usd": 6800000000000,
+      "source": "Swiss Re sigma (premiums); txn count modeled",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 14000000000,
+      "avg_tps": 444,
+      "annual_value_usd": 7200000000000,
+      "source": "Swiss Re sigma (premiums); txn count modeled",
+      "confidence": "medium"
+    }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2026, "tps": 488, "annual_volume": 15400000000 },
+      { "year": 2028, "tps": 537, "annual_volume": 16900000000 },
+      { "year": 2030, "tps": 591, "annual_volume": 18600000000 },
+      { "year": 2035, "tps": 753, "annual_volume": 23800000000 }
+    ],
+    "high_growth": [
+      { "year": 2026, "tps": 520, "annual_volume": 16400000000 },
+      { "year": 2028, "tps": 613, "annual_volume": 19300000000 },
+      { "year": 2030, "tps": 722, "annual_volume": 22800000000 },
+      { "year": 2035, "tps": 1045, "annual_volume": 33000000000 }
+    ],
+    "conservative": [
+      { "year": 2026, "tps": 466, "annual_volume": 14700000000 },
+      { "year": 2028, "tps": 494, "annual_volume": 15600000000 },
+      { "year": 2030, "tps": 524, "annual_volume": 16500000000 },
+      { "year": 2035, "tps": 613, "annual_volume": 19300000000 }
+    ]
+  },
+  "segments": {
+    "auto_motor": {
+      "policies_billions": 1.5,
+      "annual_txns_billions": 4.4,
+      "avg_payment_usd": 150,
+      "payment_frequency": "70% monthly, 30% annual",
+      "confidence": "medium"
+    },
+    "health": {
+      "covered_lives_billions": 2.5,
+      "annual_txns_billions": 3.5,
+      "avg_payment_usd": 250,
+      "payment_frequency": "60% monthly, 40% per-claim/copay",
+      "confidence": "low",
+      "note": "Excludes single-payer public systems with no consumer premium payment"
+    },
+    "property_home": {
+      "policies_billions": 0.5,
+      "annual_txns_billions": 1.2,
+      "avg_payment_usd": 500,
+      "payment_frequency": "50% annual, 30% quarterly, 20% monthly",
+      "confidence": "medium"
+    },
+    "life": {
+      "policies_billions": 2.0,
+      "annual_txns_billions": 3.2,
+      "avg_payment_usd": 200,
+      "payment_frequency": "50% monthly, 30% annual, 20% quarterly",
+      "confidence": "low"
+    },
+    "commercial_specialty": {
+      "policies_billions": 0.2,
+      "annual_txns_billions": 0.8,
+      "avg_payment_usd": 10000,
+      "payment_frequency": "40% annual, 40% quarterly, 20% monthly",
+      "confidence": "low"
+    }
+  },
+  "overlap": {
+    "overlaps_with": [
+      "consumer-cards",
+      "bank-transfers",
+      "digital-wallets"
+    ],
+    "overlap_type": "high",
+    "overlap_pct": 90,
+    "incremental_txns_billions": 1.4,
+    "incremental_tps": 44,
+    "overlap_note": "~90% of insurance premium payments flow through card rails or direct debit/ACH systems already counted in other capsules. Only cash/agent collections (~10%) are truly incremental to infrastructure load."
+  },
+  "sources": [
+    {
+      "id": 1,
+      "citation": "Swiss Re — sigma No. 3/2025: World Insurance Premium Overview",
+      "url": "https://www.swissre.com/institute/research/sigma-research/sigma-2025-03.html",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 2,
+      "citation": "IAIS — Global Insurance Market Report 2024",
+      "url": "https://www.iaisweb.org/activities-topics/financial-stability/global-insurance-market-report/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 3,
+      "citation": "Insurance Europe — European Insurance in Figures 2024",
+      "url": "https://www.insuranceeurope.eu/statistics",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 4,
+      "citation": "NAIC — US Insurance Industry at a Glance 2024",
+      "url": "https://content.naic.org/cipr-topics/insurance-industry-glance",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 5,
+      "citation": "Lloyd's of London — Annual Report 2024",
+      "url": "https://www.lloyds.com/about-lloyds/investor-relations/financial-performance/annual-reports",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 6,
+      "citation": "IRDAI — Annual Report 2023-24 (India)",
+      "url": "https://irdai.gov.in/annual-report",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 7,
+      "citation": "McKinsey — Global Insurance Report 2025",
+      "url": "https://www.mckinsey.com/industries/financial-services/our-insights/global-insurance-report",
+      "accessed": "2026-03-28"
+    }
+  ],
+  "confidence": {
+    "score": 52,
+    "source_quality": 18,
+    "data_recency": 15,
+    "triangulation": 8,
+    "coverage": 11,
+    "notes": "Premium VALUE data is high quality (Swiss Re sigma is authoritative). Transaction COUNT data is entirely modeled — no single source publishes global insurance payment transaction counts. Confidence is constrained by bottom-up model assumptions."
+  }
+}

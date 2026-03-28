@@ -1,0 +1,274 @@
+{
+  "category": "Buy Now Pay Later (BNPL)",
+  "slug": "bnpl",
+  "sector": "Payments",
+  "last_updated": "2026-03-28",
+  "current": {
+    "avg_tps_purchase": {
+      "value": 175,
+      "source": "Derived: ~5.5B purchases / 31,536,000 seconds",
+      "url": "",
+      "confidence": "medium",
+      "note": "Purchase-level counting: 1 BNPL checkout = 1 transaction"
+    },
+    "avg_tps_installment": {
+      "value": 634,
+      "source": "Derived: ~20B installment events / 31,536,000 seconds",
+      "url": "",
+      "confidence": "medium",
+      "note": "Installment-level counting: each biweekly/monthly payment = 1 transaction"
+    },
+    "peak_tps": {
+      "value": 1200,
+      "source": "Estimated: installment-level avg × 1.9 (payday + month-start clustering)",
+      "url": "",
+      "confidence": "low"
+    },
+    "daily_volume_purchases": {
+      "value": 15068000,
+      "source": "Derived: 5.5B / 365 days",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_volume_purchases": {
+      "value": 5500000000,
+      "source": "Aggregated from major provider disclosures + market estimates",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_volume_installments": {
+      "value": 20000000000,
+      "source": "5.5B purchases × 3.6 weighted-avg installments per purchase",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_value_usd": {
+      "value": 450000000000,
+      "source": "Aggregated from Klarna, Affirm, Block, PayPal filings + market estimates",
+      "url": "",
+      "confidence": "medium"
+    },
+    "avg_purchase_value_usd": {
+      "value": 82,
+      "source": "Derived: $450B / 5.5B purchases",
+      "confidence": "medium"
+    },
+    "installment_multiplier": {
+      "value": 3.6,
+      "source": "Weighted average: 60% Pay-in-4 (4.0x) + 15% Pay-in-3 (3.0x) + 15% long-term (8x avg) + 10% pay-after (1.0x)",
+      "confidence": "medium"
+    }
+  },
+  "key_players": [
+    {
+      "name": "Klarna",
+      "annual_purchases_billions": 0.9,
+      "daily_txns_millions": 2.5,
+      "gmv_billions_usd": 100,
+      "avg_order_usd": 111,
+      "markets": 45,
+      "confidence": "high",
+      "source": "Klarna H1 2024 investor presentation"
+    },
+    {
+      "name": "Afterpay (Block)",
+      "annual_purchases_billions": 0.4,
+      "daily_txns_millions": 1.1,
+      "gmv_billions_usd": 25,
+      "avg_order_usd": 63,
+      "markets": 5,
+      "confidence": "high",
+      "source": "Block 10-K FY2024"
+    },
+    {
+      "name": "Affirm",
+      "annual_purchases_billions": 0.2,
+      "daily_txns_millions": 0.5,
+      "gmv_billions_usd": 28,
+      "avg_order_usd": 140,
+      "markets": 2,
+      "confidence": "high",
+      "source": "Affirm 10-K FY2024"
+    },
+    {
+      "name": "PayPal Pay Later",
+      "annual_purchases_billions": 0.8,
+      "daily_txns_millions": 2.2,
+      "gmv_billions_usd": 65,
+      "avg_order_usd": 81,
+      "markets": 10,
+      "confidence": "medium",
+      "source": "PayPal 10-K FY2024"
+    },
+    {
+      "name": "Zip",
+      "annual_purchases_billions": 0.08,
+      "daily_txns_millions": 0.2,
+      "gmv_billions_usd": 8,
+      "avg_order_usd": 100,
+      "markets": 3,
+      "confidence": "high",
+      "source": "Zip FY2024 filings"
+    },
+    {
+      "name": "China BNPL (Huabei, Baitiao)",
+      "annual_purchases_billions": 2.0,
+      "daily_txns_millions": 5.5,
+      "gmv_billions_usd": 150,
+      "avg_order_usd": 75,
+      "markets": 1,
+      "confidence": "low",
+      "source": "Industry estimates"
+    }
+  ],
+  "historic": [
+    {
+      "year": 2018,
+      "annual_purchases": 800000000,
+      "annual_installments": 2900000000,
+      "avg_tps_purchase": 25,
+      "gmv_usd": 40000000000,
+      "source": "Back-extrapolated from Klarna early growth + market estimates",
+      "confidence": "low"
+    },
+    {
+      "year": 2019,
+      "annual_purchases": 1300000000,
+      "annual_installments": 4700000000,
+      "avg_tps_purchase": 41,
+      "gmv_usd": 70000000000,
+      "source": "Estimated",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_purchases": 2000000000,
+      "annual_installments": 7200000000,
+      "avg_tps_purchase": 63,
+      "gmv_usd": 120000000000,
+      "source": "Worldpay GPR 2021 + provider disclosures",
+      "confidence": "medium"
+    },
+    {
+      "year": 2021,
+      "annual_purchases": 3000000000,
+      "annual_installments": 10800000000,
+      "avg_tps_purchase": 95,
+      "gmv_usd": 200000000000,
+      "source": "Worldpay GPR 2022 + provider disclosures",
+      "confidence": "medium"
+    },
+    {
+      "year": 2022,
+      "annual_purchases": 3800000000,
+      "annual_installments": 13700000000,
+      "avg_tps_purchase": 120,
+      "gmv_usd": 280000000000,
+      "source": "Worldpay GPR 2023 + provider disclosures",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_purchases": 4500000000,
+      "annual_installments": 16200000000,
+      "avg_tps_purchase": 143,
+      "gmv_usd": 360000000000,
+      "source": "Worldpay GPR 2024 + provider disclosures",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_purchases": 5500000000,
+      "annual_installments": 20000000000,
+      "avg_tps_purchase": 175,
+      "gmv_usd": 450000000000,
+      "source": "Aggregated from provider filings + market estimates",
+      "confidence": "medium"
+    }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2026, "tps_purchase": 228, "tps_installment": 822, "annual_purchases": 7200000000 },
+      { "year": 2028, "tps_purchase": 290, "tps_installment": 1044, "annual_purchases": 9100000000 },
+      { "year": 2030, "tps_purchase": 364, "tps_installment": 1310, "annual_purchases": 11500000000 },
+      { "year": 2035, "tps_purchase": 578, "tps_installment": 2081, "annual_purchases": 18200000000 }
+    ],
+    "high_growth": [
+      { "year": 2026, "tps_purchase": 278, "tps_installment": 1002, "annual_purchases": 8800000000 },
+      { "year": 2028, "tps_purchase": 418, "tps_installment": 1505, "annual_purchases": 13200000000 },
+      { "year": 2030, "tps_purchase": 613, "tps_installment": 2208, "annual_purchases": 19300000000 },
+      { "year": 2035, "tps_purchase": 1235, "tps_installment": 4446, "annual_purchases": 38900000000 }
+    ],
+    "conservative": [
+      { "year": 2026, "tps_purchase": 198, "tps_installment": 713, "annual_purchases": 6300000000 },
+      { "year": 2028, "tps_purchase": 222, "tps_installment": 798, "annual_purchases": 7000000000 },
+      { "year": 2030, "tps_purchase": 248, "tps_installment": 892, "annual_purchases": 7800000000 },
+      { "year": 2035, "tps_purchase": 313, "tps_installment": 1126, "annual_purchases": 9900000000 }
+    ]
+  },
+  "overlap": {
+    "overlaps_with": [
+      "consumer-cards",
+      "bank-transfers",
+      "digital-wallets"
+    ],
+    "overlap_type": "complete",
+    "overlap_pct": 100,
+    "overlap_note": "100% of BNPL installment payments flow through card rails or bank transfers. BNPL is a credit/application layer product, not a payment rail. However, BNPL creates NET INCREMENTAL transactions: a purchase that would be 1 card transaction becomes 3-4 installment transactions. Net incremental in 2024: ~14.5B transactions (~460 TPS).",
+    "net_incremental_txns_billions": 14.5,
+    "net_incremental_tps": 460,
+    "multiplier_effect": "Each BNPL purchase replaces 1 payment with ~3.6 payments, creating ~2.6 net new payment events per purchase on underlying rails"
+  },
+  "sources": [
+    {
+      "id": 1,
+      "citation": "Klarna — H1 2024 Results / Investor Presentation",
+      "url": "https://www.klarna.com/international/press/klarna-reports-strong-first-half-of-2024/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 2,
+      "citation": "Block Inc. — 10-K FY2024 (Afterpay segment)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001512673",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 3,
+      "citation": "Affirm Holdings — 10-K FY2024",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001820953",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 4,
+      "citation": "PayPal Holdings — 10-K FY2024 (Pay Later volumes)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001633917",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 5,
+      "citation": "Worldpay — Global Payments Report 2024 (BNPL section)",
+      "url": "https://worldpay.globalpaymentsreport.com/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 6,
+      "citation": "Juniper Research — BNPL Market Forecasts 2024-2029",
+      "url": "https://www.juniperresearch.com/research/fintech-payments/buy-now-pay-later/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 7,
+      "citation": "CFPB — Buy Now, Pay Later: Market Trends and Consumer Impacts (2024)",
+      "url": "https://www.consumerfinance.gov/data-research/research-reports/",
+      "accessed": "2026-03-28"
+    }
+  ],
+  "confidence": {
+    "score": 58,
+    "source_quality": 17,
+    "data_recency": 16,
+    "triangulation": 12,
+    "coverage": 13,
+    "notes": "Top 5 Western providers have good SEC-filed data. China BNPL is poorly documented. No single industry source aggregates total global BNPL transactions. The installment multiplier (3.6x) is a model assumption, not an observed figure."
+  }
+}

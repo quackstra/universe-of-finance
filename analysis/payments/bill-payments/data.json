@@ -1,0 +1,273 @@
+{
+  "category": "Bill Payments",
+  "slug": "bill-payments",
+  "sector": "Payments",
+  "last_updated": "2026-03-28",
+  "current": {
+    "avg_tps": {
+      "value": 3012,
+      "source": "Derived: ~95B annual / 31,536,000 seconds",
+      "url": "",
+      "confidence": "medium",
+      "note": "Bottom-up model from utility accounts, telecom subs, digital subs, rent."
+    },
+    "peak_tps": {
+      "value": 6000,
+      "source": "Estimated: month-start direct debit processing at ~2x average",
+      "url": "",
+      "confidence": "low",
+      "note": "Bill payments cluster heavily around 1st/15th of month"
+    },
+    "daily_volume": {
+      "value": 260274000,
+      "source": "Derived: 95B / 365 days",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_volume": {
+      "value": 95000000000,
+      "source": "Bottom-up model: utility accounts + telecom subs + digital subs + rent",
+      "url": "",
+      "confidence": "medium",
+      "note": "Range: 80-110B. Central estimate 95B. Excludes insurance premiums (separate capsule)."
+    },
+    "annual_value_usd": {
+      "value": 6000000000000,
+      "source": "Derived: segment volumes × average payment amounts",
+      "url": "",
+      "confidence": "low",
+      "note": "Highly approximate. Range: $5.5-6.5T."
+    }
+  },
+  "segments": {
+    "utilities_electricity": {
+      "accounts_billions": 2.0,
+      "annual_txns_billions": 22,
+      "avg_payment_usd": 70,
+      "payment_frequency": "Monthly",
+      "confidence": "medium",
+      "source": "IEA electricity access + household size estimate"
+    },
+    "utilities_gas": {
+      "accounts_billions": 0.8,
+      "annual_txns_billions": 7,
+      "avg_payment_usd": 60,
+      "payment_frequency": "Monthly (seasonal)",
+      "confidence": "medium"
+    },
+    "utilities_water": {
+      "accounts_billions": 1.2,
+      "annual_txns_billions": 10,
+      "avg_payment_usd": 35,
+      "payment_frequency": "Monthly/Quarterly",
+      "confidence": "low"
+    },
+    "utilities_waste_other": {
+      "accounts_billions": 0.5,
+      "annual_txns_billions": 4,
+      "avg_payment_usd": 25,
+      "payment_frequency": "Monthly/Quarterly",
+      "confidence": "low"
+    },
+    "telecoms_mobile": {
+      "subscriptions_billions": 5.5,
+      "postpaid_share_pct": 45,
+      "annual_txns_billions": 18,
+      "avg_payment_usd": 30,
+      "payment_frequency": "Monthly (postpaid) / irregular (prepaid top-ups)",
+      "confidence": "medium",
+      "source": "GSMA: 5.5B connections; includes postpaid bills + prepaid top-ups",
+      "note": "18B = ~2.5B postpaid × 12 months + ~3B prepaid × ~2 top-ups/month"
+    },
+    "telecoms_broadband": {
+      "subscriptions_billions": 1.5,
+      "annual_txns_billions": 12,
+      "avg_payment_usd": 45,
+      "payment_frequency": "Monthly",
+      "confidence": "medium",
+      "source": "ITU fixed broadband statistics"
+    },
+    "telecoms_cable_tv": {
+      "subscriptions_billions": 0.8,
+      "annual_txns_billions": 5,
+      "avg_payment_usd": 55,
+      "payment_frequency": "Monthly",
+      "confidence": "low"
+    },
+    "digital_subscriptions": {
+      "active_subscriptions_billions": 2.0,
+      "annual_txns_billions": 10,
+      "avg_payment_usd": 12,
+      "payment_frequency": "Monthly",
+      "confidence": "medium",
+      "note": "Netflix 260M, Spotify 236M, Amazon Prime 200M, Disney+ 150M, plus hundreds of smaller services. Adjusted for household-level billing.",
+      "source": "Individual service subscriber counts aggregated"
+    },
+    "rent_payments": {
+      "renter_households_billions": 0.6,
+      "annual_txns_billions": 7,
+      "avg_payment_usd": 800,
+      "payment_frequency": "Monthly",
+      "confidence": "low",
+      "note": "Highly uncertain. Digital rent payment penetration estimated at ~40% globally; cash rent is untracked."
+    }
+  },
+  "historic": [
+    {
+      "year": 2015,
+      "annual_volume": 60000000000,
+      "avg_tps": 1902,
+      "source": "Modeled from NACHA/BACS/SEPA + segment estimates",
+      "confidence": "low"
+    },
+    {
+      "year": 2018,
+      "annual_volume": 72000000000,
+      "avg_tps": 2283,
+      "source": "Modeled",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 78000000000,
+      "avg_tps": 2473,
+      "source": "Modeled; COVID muted impact",
+      "confidence": "low"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 86000000000,
+      "avg_tps": 2727,
+      "source": "Modeled; SEPA DD + NACHA + BBPS data points",
+      "confidence": "medium"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 90000000000,
+      "avg_tps": 2853,
+      "source": "Modeled",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 95000000000,
+      "avg_tps": 3012,
+      "source": "Modeled from segment data",
+      "confidence": "medium"
+    }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2026, "tps": 3329, "annual_volume": 105000000000 },
+      { "year": 2028, "tps": 3647, "annual_volume": 115000000000 },
+      { "year": 2030, "tps": 3996, "annual_volume": 126000000000 },
+      { "year": 2035, "tps": 5095, "annual_volume": 161000000000 }
+    ],
+    "high_growth": [
+      { "year": 2026, "tps": 3583, "annual_volume": 113000000000 },
+      { "year": 2028, "tps": 4265, "annual_volume": 134000000000 },
+      { "year": 2030, "tps": 5095, "annual_volume": 161000000000 },
+      { "year": 2035, "tps": 7930, "annual_volume": 250000000000 }
+    ],
+    "conservative": [
+      { "year": 2026, "tps": 3171, "annual_volume": 100000000000 },
+      { "year": 2028, "tps": 3329, "annual_volume": 105000000000 },
+      { "year": 2030, "tps": 3488, "annual_volume": 110000000000 },
+      { "year": 2035, "tps": 3964, "annual_volume": 125000000000 }
+    ]
+  },
+  "overlap": {
+    "overlaps_with": [
+      "consumer-cards",
+      "bank-transfers",
+      "digital-wallets"
+    ],
+    "overlap_type": "high",
+    "overlap_pct": 90,
+    "incremental_txns_billions": 9.5,
+    "incremental_tps": 301,
+    "overlap_note": "~90% of bill payments flow through direct debit (bank transfers), card-on-file (consumer cards), or mobile money/wallet rails already counted in other capsules. Only cash/check bill payments (~10%) are incremental. Insurance premiums excluded (separate capsule)."
+  },
+  "sources": [
+    {
+      "id": 1,
+      "citation": "NACHA — ACH Network Volume and Value Statistics 2024",
+      "url": "https://www.nacha.org/content/ach-network-volume-and-value-statistics",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 2,
+      "citation": "BACS Payment Schemes — Annual Report 2024 (UK Direct Debit)",
+      "url": "https://www.bacs.co.uk/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 3,
+      "citation": "European Central Bank — Payment Statistics (SEPA Direct Debit)",
+      "url": "https://www.ecb.europa.eu/stats/payment_statistics/large_value_and_retail/html/index.en.html",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 4,
+      "citation": "NPCI — Bharat Bill Payment System (BBPS) Statistics FY2024",
+      "url": "https://www.npci.org.in/what-we-do/bharat-billpay/product-statistics",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 5,
+      "citation": "GSMA — The State of Mobile Internet Connectivity Report 2024",
+      "url": "https://www.gsma.com/r/somic/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 6,
+      "citation": "ITU — Facts and Figures: Focus on Connectivity 2024",
+      "url": "https://www.itu.int/en/ITU-D/Statistics/Pages/facts/default.aspx",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 7,
+      "citation": "IEA — World Energy Outlook 2024",
+      "url": "https://www.iea.org/reports/world-energy-outlook-2024",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 8,
+      "citation": "Netflix — Q4 2024 Earnings (260M subscribers)",
+      "url": "https://ir.netflix.net/ir/doc/quarterly-earnings",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 9,
+      "citation": "Spotify — Q4 2024 Earnings (236M premium subscribers)",
+      "url": "https://investors.spotify.com/financials/quarterly-results",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 10,
+      "citation": "US Census Bureau — Quarterly Residential Vacancies Q4 2024",
+      "url": "https://www.census.gov/housing/hvs/index.html",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 11,
+      "citation": "Eurostat — Housing Statistics 2024",
+      "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Housing_statistics",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 12,
+      "citation": "ACI Worldwide — Bill Payment Trends 2024",
+      "url": "https://www.aciworldwide.com/insights/expert-view",
+      "accessed": "2026-03-28"
+    }
+  ],
+  "confidence": {
+    "score": 48,
+    "source_quality": 14,
+    "data_recency": 14,
+    "triangulation": 10,
+    "coverage": 10,
+    "notes": "No single source publishes global bill payment transaction counts. Estimate is bottom-up from segment data with significant assumptions about account counts and payment frequencies. National payment system data (NACHA, BACS, SEPA, BBPS) provides strong anchor points for developed markets. Emerging market data is weak."
+  }
+}
