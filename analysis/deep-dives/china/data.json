@@ -1,0 +1,441 @@
+{
+  "report": "China Opacity Analysis",
+  "last_updated": "2026-03-28",
+  "categories": [
+    {
+      "category": "Digital Wallets",
+      "slug": "digital-wallets",
+      "opacity_score": 25,
+      "china_annual_txns": {
+        "low": 224000000000,
+        "central": 280000000000,
+        "high": 336000000000,
+        "source": "PBOC / Statista — China mobile payment transactions 2024",
+        "url": "https://www.statista.com/statistics/244538/number-of-mobile-payment-transactions-in-china/",
+        "confidence": "medium"
+      },
+      "china_tps": {
+        "low": 7100,
+        "central": 8878,
+        "high": 10650
+      },
+      "global_tps": 19660,
+      "china_share_pct": {
+        "low": 36,
+        "central": 45,
+        "high": 54
+      },
+      "key_players": ["Alipay", "WeChat Pay", "UnionPay QuickPass", "Bank apps"],
+      "known_data": [
+        "PBOC aggregate mobile payment total (~280B)",
+        "Alipay estimated ~44B transactions",
+        "WeChat Pay estimated ~130B transactions",
+        "969M mobile payment users (mid-2024)",
+        "92.7% QR code penetration"
+      ],
+      "unknown_data": [
+        "Platform-level official transaction counts",
+        "Transaction size distribution",
+        "Merchant vs P2P split",
+        "Urban vs rural breakdown",
+        "Overlap quantum with bank transfers"
+      ]
+    },
+    {
+      "category": "Consumer Cards (UnionPay)",
+      "slug": "consumer-cards",
+      "opacity_score": 40,
+      "china_annual_txns": {
+        "low": 220000000000,
+        "central": 247000000000,
+        "high": 275000000000,
+        "source": "Nilson Report / CoinLaw — UnionPay transaction volume",
+        "url": "https://coinlaw.io/unionpay-statistics/",
+        "confidence": "medium"
+      },
+      "china_tps": {
+        "low": 6975,
+        "central": 7830,
+        "high": 8715
+      },
+      "global_tps": 24501,
+      "china_share_pct": {
+        "low": 28,
+        "central": 32,
+        "high": 35
+      },
+      "key_players": ["UnionPay"],
+      "known_data": [
+        "UnionPay ~247B branded transactions (2024)",
+        "10+ billion cards issued globally",
+        "~$23.4T transaction value (2024)",
+        "~32% global market share by count"
+      ],
+      "unknown_data": [
+        "Debit vs credit transaction split",
+        "Domestic vs international count breakdown",
+        "Average transaction value by segment",
+        "Overlap with digital wallet settlements"
+      ]
+    },
+    {
+      "category": "Bank Transfers (CNAPS/IBPS)",
+      "slug": "bank-transfers",
+      "opacity_score": 55,
+      "china_annual_txns": {
+        "low": 56000000000,
+        "central": 95000000000,
+        "high": 130000000000,
+        "source": "PBOC Payment System Report 2024 — IBPS 16.65B + HVPS + BEPS estimates",
+        "url": "https://www.pbc.gov.cn/en/3688247/3688978/3709143/2025080817520765198/2025040114593718714.pdf",
+        "confidence": "low"
+      },
+      "china_tps": {
+        "low": 1775,
+        "central": 3010,
+        "high": 4120
+      },
+      "global_tps": 15338,
+      "china_share_pct": {
+        "low": 18,
+        "central": 23,
+        "high": 30
+      },
+      "key_players": ["CNAPS HVPS", "IBPS", "BEPS", "CIPS", "NetsUnion (NUCC)"],
+      "known_data": [
+        "IBPS: 16.651B transactions in 2024",
+        "IBPS value: RMB 290.24T (2024)",
+        "PBOC quarterly non-cash totals published",
+        "CIPS cross-border volumes growing"
+      ],
+      "unknown_data": [
+        "CNAPS HVPS annual transaction count",
+        "Cross-system routing and double-count risk",
+        "Third-party clearing through NetsUnion vs direct CNAPS",
+        "Full annual breakdown by payment type (Chinese-language only)"
+      ]
+    },
+    {
+      "category": "Equity Markets",
+      "slug": "equity-markets",
+      "opacity_score": 75,
+      "china_annual_txns": {
+        "low": 17000000000,
+        "central": 19000000000,
+        "high": 21000000000,
+        "source": "SSE/SZSE exchange statistics + WFE data",
+        "url": "https://www.ceicdata.com/en/china/shanghai-stock-exchange-turnover-volume",
+        "confidence": "medium"
+      },
+      "china_tps": {
+        "low": 539,
+        "central": 602,
+        "high": 665
+      },
+      "global_tps": 3500,
+      "china_share_pct": {
+        "low": 28,
+        "central": 31,
+        "high": 34
+      },
+      "key_players": ["Shanghai Stock Exchange", "Shenzhen Stock Exchange"],
+      "known_data": [
+        "SSE: 10.12T shares traded in 2024",
+        "SSE: ~8.5B estimated trades",
+        "SZSE: ~10.5B estimated trades",
+        "Monthly statistics published by both exchanges",
+        "Record RMB 3.45T single-day turnover (Oct 2024)"
+      ],
+      "unknown_data": [
+        "Block trade / negotiated deal volumes",
+        "Algorithmic trading share",
+        "Exact retail vs institutional split"
+      ]
+    },
+    {
+      "category": "Exchange-Traded Derivatives",
+      "slug": "etd",
+      "opacity_score": 70,
+      "china_annual_txns": {
+        "low": 8000000000,
+        "central": 9500000000,
+        "high": 11000000000,
+        "source": "FIA + individual exchange reports (ZCE 2.6B, DCE 2.3B, SHFE/CFFEX estimated)",
+        "url": "https://www.fia.org/marketvoice/articles/china-further-expands-international-access-its-commodity-markets",
+        "confidence": "medium"
+      },
+      "china_tps": {
+        "low": 253,
+        "central": 301,
+        "high": 349
+      },
+      "global_tps": 9505,
+      "china_share_pct": {
+        "low": 35,
+        "central": 38,
+        "high": 42
+      },
+      "key_players": ["ZCE", "DCE", "SHFE", "CFFEX"],
+      "known_data": [
+        "ZCE: 2.6B lots, RMB 85.1T turnover (2024)",
+        "DCE: 2.3B lots (record, 2024)",
+        "FIA includes Chinese exchange data in global totals",
+        "China expanding international access to commodity futures"
+      ],
+      "unknown_data": [
+        "SHFE and CFFEX individual 2024 lot counts",
+        "Contract multiplier to transaction mapping",
+        "Retail vs institutional proportion",
+        "Exact overlap with FIA global figures"
+      ]
+    },
+    {
+      "category": "Fixed Income",
+      "slug": "fixed-income",
+      "opacity_score": 20,
+      "china_annual_txns": {
+        "low": 1200000,
+        "central": 1740000,
+        "high": 2500000,
+        "source": "Estimated from CCDC/Statista monthly repo data annualized",
+        "url": "https://www.statista.com/statistics/456767/china-interbank-market-pledged-repo-trading-volume/",
+        "confidence": "low"
+      },
+      "china_tps": {
+        "low": 0.04,
+        "central": 0.055,
+        "high": 0.08
+      },
+      "global_tps": 10.5,
+      "china_share_pct": {
+        "low": 3,
+        "central": 5,
+        "high": 10
+      },
+      "key_players": ["CCDC", "SHCH", "CFETS"],
+      "known_data": [
+        "RMB 157.35T outstanding bonds",
+        "RMB 73.41T annual issuances (2024)",
+        "Banks hold 67.8% of CCDC bond holdings",
+        "March 2024 pledged repo: >145K transactions"
+      ],
+      "unknown_data": [
+        "Annual interbank bond trading transaction count",
+        "Repo transaction frequency across all types",
+        "Bond Connect transaction counts",
+        "CCDC vs SHCH clearing volume split"
+      ]
+    },
+    {
+      "category": "CEX Crypto",
+      "slug": "cex",
+      "opacity_score": 10,
+      "china_annual_txns": {
+        "low": 1000000000,
+        "central": 5000000000,
+        "high": 10000000000,
+        "source": "Estimated — officially banned, OTC/offshore activity continues",
+        "url": "",
+        "confidence": "very_low"
+      },
+      "china_tps": {
+        "low": 32,
+        "central": 158,
+        "high": 317
+      },
+      "global_tps": 3210,
+      "china_share_pct": {
+        "low": 1,
+        "central": 5,
+        "high": 10
+      },
+      "key_players": ["Offshore exchanges via VPN", "OTC desks", "Hong Kong licensed exchanges"],
+      "known_data": [
+        "Officially banned September 2021",
+        "Hong Kong regulated framework launched 2023-2024",
+        "Pre-ban Chinese exchanges were global leaders"
+      ],
+      "unknown_data": [
+        "Current OTC trading volume",
+        "VPN-based offshore exchange usage",
+        "Mining-related transaction volumes",
+        "USDT/stablecoin grey market usage"
+      ]
+    },
+    {
+      "category": "E-Commerce",
+      "slug": "ecommerce",
+      "opacity_score": 30,
+      "china_annual_txns": {
+        "low": 48000000000,
+        "central": 63000000000,
+        "high": 79000000000,
+        "source": "Derived from GMV / estimated average order value ($15-25)",
+        "url": "https://www.mordorintelligence.com/industry-reports/china-ecommerce-market",
+        "confidence": "low"
+      },
+      "china_tps": {
+        "low": 1521,
+        "central": 1997,
+        "high": 2504
+      },
+      "global_tps": 1823,
+      "china_share_pct": {
+        "low": 45,
+        "central": 55,
+        "high": 65
+      },
+      "key_players": ["Taobao/Tmall", "JD.com", "Pinduoduo", "Douyin/TikTok Shop"],
+      "known_data": [
+        "~$1.19T GMV (2024)",
+        "Market share: Taobao/Tmall 44%, JD 24%, PDD 19%",
+        "Singles' Day 2024: RMB 1.44T (+26.6%)",
+        "MAU: Taobao 960M, PDD 720M, JD 570M"
+      ],
+      "unknown_data": [
+        "Transaction/order COUNT (platforms report GMV only)",
+        "Return/refund transaction counts",
+        "Douyin live-commerce transaction counts",
+        "Average order value by platform"
+      ]
+    },
+    {
+      "category": "Gaming",
+      "slug": "gaming",
+      "opacity_score": 35,
+      "china_annual_txns": {
+        "low": 15000000000,
+        "central": 30000000000,
+        "high": 45000000000,
+        "source": "Derived from revenue / estimated average microtransaction ($1-3)",
+        "url": "https://www.scmp.com/tech/tech-trends/article/3337112/chinas-video-game-sales-reach-record-2025-amid-overseas-expansion-ai-investment",
+        "confidence": "low"
+      },
+      "china_tps": {
+        "low": 475,
+        "central": 951,
+        "high": 1426
+      },
+      "global_tps": 389,
+      "china_share_pct": {
+        "low": 40,
+        "central": 55,
+        "high": 70
+      },
+      "key_players": ["Tencent", "NetEase", "miHoYo"],
+      "known_data": [
+        "CNY 325.8B ($44.8B) gaming revenue (2024)",
+        "Mobile games: 73.3% of revenue",
+        "Tencent >50% market share, NetEase ~17%",
+        "Loot box probability disclosure mandated"
+      ],
+      "unknown_data": [
+        "In-game microtransaction counts",
+        "Gacha/loot box transaction frequency",
+        "Virtual currency exchange volumes",
+        "Average transaction value by game type"
+      ]
+    },
+    {
+      "category": "Digital Yuan (e-CNY)",
+      "slug": "e-cny",
+      "opacity_score": 45,
+      "china_annual_txns": {
+        "low": 1500000000,
+        "central": 1750000000,
+        "high": 2000000000,
+        "source": "Estimated annual from cumulative 3.48B through Nov 2025",
+        "url": "https://www.atlanticcouncil.org/cbdctracker/",
+        "confidence": "low"
+      },
+      "china_tps": {
+        "low": 48,
+        "central": 55,
+        "high": 63
+      },
+      "global_tps": null,
+      "china_share_pct": {
+        "low": null,
+        "central": null,
+        "high": null
+      },
+      "key_players": ["PBOC", "Major state banks", "Pilot city merchants"],
+      "known_data": [
+        "Cumulative 3.48B transactions through Nov 2025",
+        "Cumulative RMB 16.7T value (~$2.37T)",
+        ">800% growth vs 2023",
+        "Transitioning to interest-bearing deposit money (Jan 2026)",
+        "12 new banks added to e-CNY system (2025)"
+      ],
+      "unknown_data": [
+        "Annual (not cumulative) transaction count",
+        "Merchant vs P2P vs government disbursement split",
+        "Regional breakdown (pilot cities vs nationwide)",
+        "Substitution rate vs Alipay/WeChat Pay",
+        "Double-counting with existing PBOC payment statistics"
+      ]
+    },
+    {
+      "category": "ATM Withdrawals",
+      "slug": "atm-withdrawals",
+      "opacity_score": 50,
+      "china_annual_txns": {
+        "low": 10000000000,
+        "central": 12000000000,
+        "high": 14000000000,
+        "source": "Estimated from global ATM data and China ATM count / utilization trends",
+        "url": "",
+        "confidence": "low"
+      },
+      "china_tps": {
+        "low": 317,
+        "central": 380,
+        "high": 444
+      },
+      "global_tps": 1557,
+      "china_share_pct": {
+        "low": 20,
+        "central": 24,
+        "high": 29
+      },
+      "key_players": ["Major state banks (ICBC, CCB, ABC, BOC)"],
+      "known_data": [
+        "~700K ATMs in 2024 (down from 1.1M in 2018)",
+        "~12B estimated annual withdrawals",
+        "-8% annual decline rate",
+        "24.4% of global ATM withdrawals"
+      ],
+      "unknown_data": [
+        "PBOC does not isolate ATM withdrawals from card transactions",
+        "Cash withdrawal vs deposit vs other ATM transactions",
+        "Rural vs urban ATM usage split"
+      ]
+    }
+  ],
+  "aggregate": {
+    "china_gross_tps": {
+      "low": 19000,
+      "central": 24065,
+      "high": 30000
+    },
+    "china_dedup_tps": {
+      "low": 14000,
+      "central": 20000,
+      "high": 26000
+    },
+    "share_of_big_number_pct": {
+      "low": 19,
+      "central": 27,
+      "high": 35
+    },
+    "uncertainty_band_tps": 12000,
+    "note": "China is the single largest source of uncertainty in the Big Number. The +/- 6,000 TPS swing from central estimate exceeds the entire Digital Assets sector."
+  },
+  "structural_opacity_factors": [
+    "State-owned payment infrastructure with discretionary publication",
+    "Corporate confidentiality (Ant Group / Tencent do not disclose transaction counts)",
+    "Language barrier (full PBOC reports in Chinese only)",
+    "Aggregation in published statistics obscures category-level detail",
+    "Post-2020 tech crackdown reduced corporate metric disclosure"
+  ]
+}
