@@ -164,6 +164,35 @@ Government payment transaction counts grow more slowly than consumer payments be
 
 ---
 
+## Depth Research Update (Run 6, 2026-03-28)
+
+> Full depth research: [workings/depth-research.md](workings/depth-research.md)
+
+### Key Revisions
+
+1. **US IRS Data Book FY2024 provides unprecedented detail**: 266M+ returns/forms processed, 4.6B information returns, $5.1T gross collections (first time >$5T), 219.9M e-filed. Derived US tax transaction count: ~680-690M/year (including employer withholding deposits).
+
+2. **US benefits transactions derived from hard data**: 71M Social Security recipients x 12 = 852M; 42M SNAP x 12 = 504M; plus Medicare, unemployment, veterans, SSI = ~3.2B US benefits disbursements/year. Total US government payments: ~3.9B.
+
+3. **India GSTN hard data**: 15.1M active GST registrations filing ~25 returns/year = ~362M GST filings. GSTR-3B compliance >95%. Combined with 7.4B+ DBT transactions, India government payments = ~8.7B/year.
+
+4. **UK DWP**: Universal Credit recipients surged to 8.4M (Dec 2025), up from 7.36M a year earlier. Plus State Pension (12.5M) and other benefits. Total UK government payments: ~420-450M/year.
+
+5. **Brazil Pix integration**: 63.4B total Pix transactions in 2024 (53% YoY growth), with government payments increasingly flowing through Pix rails. Brazil tax reform mandating Pix-to-invoice integration.
+
+6. **Nacha ACH cross-validation**: 8.74B direct deposits in 2025 (includes payroll + Social Security + tax refunds). Government share (~30-35%) = 2.6-3.1B, consistent with the 3.9B US total from different methodology.
+
+7. **Confidence revised from 50 to 60** (+10 points). The REPORT.md headline figure of ~25B is stale; the data.json bottom-up model of ~31.6B (now validated at ~32B) is the correct reference.
+
+### Revised Current Metrics
+
+| Metric | REPORT.md (stale) | data.json (validated) |
+|--------|-------------------|----------------------|
+| Annual transactions | ~25B | **~32B** (range: 28-38B) |
+| Average TPS | ~790 | **~1,015** |
+
+---
+
 ## Data Quality & Limitations
 
 - **No single global dataset exists** for government payment transactions. This analysis is constructed from national statistics, OECD aggregate data, and estimation. Overall confidence is :red_circle: Low for transaction counts.

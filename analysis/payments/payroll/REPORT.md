@@ -157,6 +157,37 @@ Automation reduces headcount; aging demographics in China/EU/Japan shrink workfo
 
 ---
 
+## Depth Research Update (Run 6, 2026-03-28)
+
+> Full depth research: [workings/depth-research.md](workings/depth-research.md)
+
+### Key Revisions
+
+1. **US pay frequency corrected via BLS 2023 data**: The original model assumed 70% biweekly, but BLS shows 43% biweekly, 27% weekly, 19.8% semi-monthly, 10.3% monthly. The semi-monthly category (19.8% of workers x 24 pays) was entirely missing. Net effect: US payroll transactions revised from 3.4B to **4.68B** (+38%).
+
+2. **Nacha ACH provides independent US ceiling**: 8.74B direct deposits in 2025 (all types). Payroll estimated at 60-70% = 5.2-6.1B. This cross-validates the BLS-derived 4.68B (paychecks only, excluding supplemental deposits).
+
+3. **UK pay frequency confirmed**: 96.6% of UK establishments operate monthly payroll. 30M UK employees x 12 = 360M UK payroll transactions.
+
+4. **Informal sector revised downward**: Original estimate of 18B informal/cash wage transactions reduced to ~14.3B, reflecting more conservative assumptions about payment frequency for informal workers (sporadic rather than monthly).
+
+5. **Gig economy payout data gathered**: Uber offers daily cashout (up to 6x/day), DoorDash offers daily Fast Pay, Lyft offers Express Pay (5x/day). With ~150-200M global platform workers averaging 2x/month payouts = ~3.6-4.8B transactions in the grey zone between payroll and P2P. Not included in the payroll total.
+
+6. **Four triangulation methods converge on 38-46B**: Employment x frequency (38.8B), ACH extrapolation (41-46B), wage bill cross-check (40.7-54B), ADP coverage extrapolation (~4.2B US, consistent). Central estimate: ~39B.
+
+7. **Confidence revised from 35 to 48** (+13 points). BLS pay frequency data and Nacha ACH data provide two hard anchors for the US, which drives the largest single-country payroll volume.
+
+### Revised Current Metrics
+
+| Metric | Previous | Revised |
+|--------|----------|---------|
+| Annual transactions | 41.2B | **~39B** (range: 38-46B) |
+| Average TPS | 1,305 | **~1,236** (range: 1,205-1,460) |
+| US component | 3.4B | **4.68B** (+38%, BLS-corrected) |
+| Informal component | 18.0B | **14.3B** (-21%) |
+
+---
+
 ## Data Quality & Limitations
 
 - **No direct data source exists.** There is no institution that counts global payroll transactions. This entire capsule is model-derived from employment statistics and pay frequency assumptions.
