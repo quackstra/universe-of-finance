@@ -5,10 +5,10 @@
 
 ## The Big Number
 
-### **~70,741 de-duplicated global financial TPS**
+### **~73,750 de-duplicated global financial TPS**
 
-That's ~2.2 trillion transactions per year flowing through the world's financial infrastructure.
-Range: 64,000–80,000 TPS depending on overlap assumptions.
+That's ~2.3 trillion transactions per year flowing through the world's financial infrastructure.
+Range: 67,000–83,000 TPS depending on overlap assumptions.
 
 **Coordinated global peak: ~147,000–246,000 TPS** (flash crash on a busy quarter-end).
 
