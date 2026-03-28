@@ -1,0 +1,182 @@
+{
+  "country": "India",
+  "iso_code": "IN",
+  "population": 1440000000,
+  "gdp_usd_trillion": 3.9,
+  "last_updated": "2026-03-28",
+  "total_tps_contribution": 12850,
+  "share_of_global_tps": "17.4%",
+  "global_tps_reference": 73750,
+  "categories": {
+    "digital-wallets": {
+      "india_tps": 5454,
+      "india_annual_txns_billions": 172.0,
+      "share_of_category": "27.7%",
+      "share_of_india_total": "42.4%",
+      "key_systems": ["UPI (via PhonePe, Google Pay, Paytm)", "Paytm Wallet"],
+      "notes": "UPI processed 172B transactions in CY2024, 228.3B in CY2025. Classified under bank transfers for de-duplication (UPI is architecturally a bank transfer rail). India figure here is gross before overlap netting.",
+      "sources": [
+        {"citation": "NPCI UPI Product Statistics", "url": "https://www.npci.org.in/product/upi/product-statistics"},
+        {"citation": "PIB — UPI as World's Largest Real-Time Payment System", "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569"}
+      ]
+    },
+    "bank-transfers": {
+      "india_tps": 5630,
+      "india_annual_txns_billions": 177.6,
+      "share_of_category": "36.7%",
+      "share_of_india_total": "43.8%",
+      "key_systems": ["UPI", "IMPS", "NEFT", "RTGS", "NACH"],
+      "notes": "UPI 172B (CY2024) + NEFT 9.27B + IMPS ~4.9B + RTGS 0.30B + NACH ~6.5B (est.). UPI dominates. NEFT tripled from 2.6B (2019) to 9.3B (2024). India is 36.7% of global bank transfer volume.",
+      "sources": [
+        {"citation": "NPCI UPI Product Statistics", "url": "https://www.npci.org.in/product/upi/product-statistics"},
+        {"citation": "RBI Payment System Report H2 2024", "url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/PSR270120251BEE95CF47F2426B9740075D405FA070.PDF"},
+        {"citation": "Business Standard — Digital payments 99.7%", "url": "https://www.business-standard.com/industry/news/digital-payments-make-up-99-7-of-transaction-volume-in-2024-rbi-report-125102301064_1.html"}
+      ]
+    },
+    "etd": {
+      "india_tps": 5890,
+      "india_annual_txns_billions": 127.5,
+      "share_of_category": "62.1%",
+      "share_of_india_total": "45.8%",
+      "key_systems": ["NSE (equity index options)", "BSE (growing derivatives)", "MCX (commodity derivatives)"],
+      "notes": "NSE alone traded 84.8B contracts in CY2023 (FIA), estimated 130B+ in CY2024. BSE added ~20B+ in FY2024-25. India accounts for the vast majority of global options volume growth. MCX had record ADT of Rs 2.19 lakh crore in FY2024-25 (+101% YoY). TPS calculated using 252 trading days x 21.6h weighted hours.",
+      "sources": [
+        {"citation": "FIA — Meteoric rise of India's equity derivatives", "url": "https://www.fia.org/marketvoice/articles/explainer-meteoric-rise-indias-equity-derivatives-volume"},
+        {"citation": "FIA 2024 Annual ETD Volume Review", "url": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review"},
+        {"citation": "MCX India", "url": "https://www.mcxindia.com"}
+      ]
+    },
+    "equity-markets": {
+      "india_tps": 1024,
+      "india_annual_txns_billions": 18.0,
+      "share_of_category": "29.3%",
+      "share_of_india_total": "8.0%",
+      "key_systems": ["NSE (National Stock Exchange)", "BSE (Bombay Stock Exchange)"],
+      "notes": "NSE is #3 globally by equity trade count. India grew 74.3% YoY in 2024 equity trades. 500M+ demat accounts (CDSL/NSDL). India accounts for 29.3% of global equity trades on just 4% of global market cap.",
+      "sources": [
+        {"citation": "WFE FY 2024 Market Highlights", "url": "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024"},
+        {"citation": "NSE India", "url": "https://www.nseindia.com/"}
+      ]
+    },
+    "consumer-cards": {
+      "india_tps": 197,
+      "india_annual_txns_billions": 6.21,
+      "share_of_category": "0.8%",
+      "share_of_india_total": "1.5%",
+      "key_systems": ["RuPay", "Visa", "Mastercard"],
+      "notes": "Credit card txns: 4.47B (2024), debit card txns: 1.74B (2024, declining). RuPay has 700M+ cards issued, 18% credit card market share. Card usage declining as UPI dominates. India has low card penetration vs global average.",
+      "sources": [
+        {"citation": "RBI Payment Systems Statistics", "url": "https://www.rbi.org.in/Scripts/ATMView.aspx"},
+        {"citation": "CoinLaw — RuPay Statistics 2026", "url": "https://coinlaw.io/rupay-statistics/"}
+      ]
+    },
+    "government-payments": {
+      "india_tps": 276,
+      "india_annual_txns_billions": 8.7,
+      "share_of_category": "27.2%",
+      "share_of_india_total": "2.1%",
+      "key_systems": ["DBT (Direct Benefit Transfer)", "GST Network (GSTN)", "PM-KISAN", "MGNREGS"],
+      "notes": "DBT processed 7.4B+ txns in FY2023-24 across 320+ schemes reaching 176 crore beneficiaries. GSTN has 1.53 crore active taxpayers, 164 crore+ cumulative returns filed. GST collected record Rs 22.08 lakh crore in FY2024-25.",
+      "sources": [
+        {"citation": "DBT Bharat Portal", "url": "https://dbtbharat.gov.in/"},
+        {"citation": "PIB — GST @ 8 Years Report", "url": "https://www.pib.gov.in/PressNoteDetails.aspx?id=154789"},
+        {"citation": "PIB — India's DBT Boosting Welfare Efficiency", "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192"}
+      ]
+    },
+    "bill-payments": {
+      "india_tps": 95,
+      "india_annual_txns_billions": 3.0,
+      "share_of_category": "3.2%",
+      "share_of_india_total": "0.7%",
+      "key_systems": ["BBPS (Bharat Bill Payment System)", "State utility boards", "Telecom operators"],
+      "notes": "BBPS is NPCI's centralized bill payment platform covering electricity, gas, water, telecom, insurance, and more. BBPS volumes growing rapidly as more billers onboard. Most bill payments in India now flow through UPI or BBPS.",
+      "sources": [
+        {"citation": "NPCI BBPS Product Statistics", "url": "https://www.npci.org.in/what-we-do/bharat-billpay/product-statistics"}
+      ]
+    },
+    "atm-withdrawals": {
+      "india_tps": 190,
+      "india_annual_txns_billions": 6.0,
+      "share_of_category": "12.2%",
+      "share_of_india_total": "1.5%",
+      "key_systems": ["Bank ATMs (~215K)", "White-label ATMs"],
+      "notes": "India has ~215K ATMs. Despite UPI dominance, ATM withdrawals remain ~6B/year. Cash demand sticky for rural and small-ticket transactions. Monthly withdrawal values still grew 5.5% in FY2024 even as transaction counts declined. Average withdrawal ~$40 (Rs 3,300).",
+      "sources": [
+        {"citation": "RBI ATM/POS Statistics", "url": "https://www.rbi.org.in/Scripts/ATMView.aspx"},
+        {"citation": "CoinLaw — UPI vs ATM Statistics", "url": "https://coinlaw.io/upi-vs-atm-transactions-statistics/"}
+      ]
+    },
+    "cex": {
+      "india_tps": 8,
+      "india_annual_txns_billions": 0.25,
+      "share_of_category": "0.2%",
+      "share_of_india_total": "0.1%",
+      "key_systems": ["CoinDCX", "WazirX", "Bitbns"],
+      "notes": "India crypto market valued at $1.61B (2024). Heavily suppressed by 30% capital gains tax + 1% TDS on transfers (introduced 2022). WazirX suffered $235M hack in July 2024, relaunched Oct 2025. CoinDCX largest by user base (16M users). Bitbns leads market share (79%) by volume.",
+      "sources": [
+        {"citation": "IMARC — India Cryptocurrency Exchange Market", "url": "https://www.imarcgroup.com/india-cryptocurrency-exchange-market"},
+        {"citation": "CoinGecko — Top India Crypto Exchanges", "url": "https://www.coingecko.com/research/publications/india-crypto-exchanges"}
+      ]
+    },
+    "gaming-microtx": {
+      "india_tps": 25,
+      "india_annual_txns_billions": 0.79,
+      "share_of_category": "6.4%",
+      "share_of_india_total": "0.2%",
+      "key_systems": ["Mobile gaming (BGMI, Free Fire, etc.)", "Google Play", "Apple App Store"],
+      "notes": "India mobile gaming market $3.02B (2024). 8.45B game downloads in FY2024-25. 148M paying gamers. IAP revenue ~$400M. In-game purchases are 63.5% of gaming revenue. ARPPU rose from $2-5 to $25-30. Most transactions are small mobile MTX.",
+      "sources": [
+        {"citation": "IMARC — India Mobile Gaming Market", "url": "https://www.imarcgroup.com/india-mobile-gaming-market"},
+        {"citation": "Sensor Tower — India Mobile Game Insights 2025", "url": "https://sensortower.com/blog/india-mobile-game-insights-2025"}
+      ]
+    },
+    "commodities": {
+      "india_tps": 32,
+      "india_annual_txns_billions": 0.7,
+      "share_of_category": "6.4%",
+      "share_of_india_total": "0.2%",
+      "key_systems": ["MCX (Multi Commodity Exchange)", "NCDEX"],
+      "notes": "MCX holds 97.84% of Indian commodity derivatives market. Record ADT of Rs 2.19 lakh crore in FY2024-25 (+101% YoY). MCX is world's 3rd largest commodity options exchange by contracts. Trades bullion, base metals, energy, and agricultural commodities.",
+      "sources": [
+        {"citation": "MCX India", "url": "https://www.mcxindia.com"}
+      ]
+    },
+    "interbank-rtgs": {
+      "india_tps": 9,
+      "india_annual_txns_billions": 0.30,
+      "share_of_category": "19.0%",
+      "share_of_india_total": "0.1%",
+      "key_systems": ["RBI RTGS", "CCIL (Clearing Corporation of India)"],
+      "notes": "India RTGS processed 29.53 crore (295.3M) transactions worth Rs 1,938 lakh crore in CY2024. CCIL clears government securities, forex, and money market instruments. RTGS minimum Rs 2 lakh per transaction.",
+      "sources": [
+        {"citation": "RBI Payment System Report H2 2024", "url": "https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/PSR270120251BEE95CF47F2426B9740075D405FA070.PDF"},
+        {"citation": "CCIL India", "url": "https://www.ccilindia.com/"}
+      ]
+    }
+  },
+  "de_duplicated_india_tps": {
+    "value": 12850,
+    "methodology": "Sum of de-duplicated contributions: Bank Transfers (5,630 — primary rail, includes UPI) + ETD (5,890) + Equity Markets (1,024) + Consumer Cards (197, non-UPI card transactions) + Government Payments (incremental ~110, 40% not on bank rails) + ATM Withdrawals (190, zero overlap) + Gaming (incremental ~5) + Commodities (32) + Interbank RTGS (9) + CEX (8). Digital Wallets excluded (UPI already in Bank Transfers). Bill Payments excluded (90% on existing rails). Adjusted total after overlap: ~13,095 gross, ~12,850 de-duplicated.",
+    "range_low": 11500,
+    "range_high": 14200,
+    "notes": "Range reflects uncertainty in ETD contract counts (NSE/BSE overlap), UPI classification, and government payment rail attribution."
+  },
+  "key_metrics": {
+    "upi_txns_per_capita_2024": 123,
+    "demat_accounts_millions": 500,
+    "jan_dhan_accounts_millions": 530,
+    "aadhaar_ids_billions": 1.4,
+    "digital_payment_share_pct": 99.7,
+    "gst_active_taxpayers_millions": 15.3,
+    "dbt_beneficiaries_crore": 176,
+    "dbt_schemes": 320
+  },
+  "confidence": {
+    "score": 72,
+    "source_quality": 22,
+    "data_recency": 18,
+    "triangulation": 16,
+    "coverage": 16,
+    "notes": "Strong data for UPI/NPCI systems (NPCI publishes monthly). Good FIA/WFE data for ETD/equities. RBI Payment System Report provides card/ATM/NEFT/RTGS. Government data (DBT, GST) is published but aggregated. Crypto data is weakest — fragmented and suppressed by regulation."
+  }
+}
