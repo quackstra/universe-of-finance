@@ -36,6 +36,9 @@ A payments economist at the BIS and a crypto forensics analyst at Chainalysis ap
 | 11 | `gaming-economy-analyst` | Gaming & Virtual Economy Analyst | Gaming | Low — well-sized but niche |
 | 12 | `emerging-tech-forecaster` | Emerging Tech & Machine Economy Forecaster | Emerging | High — lowest-confidence categories |
 | 13 | `rwa-tokenisation-analyst` | Real-World Asset Tokenisation Analyst | Digital Assets, Traditional Finance | Medium — fastest-growing niche |
+| 14 | `market-sizing-specialist` | Market Sizing & TAM Methodology Lead | **Cross-cutting (methodology)** | Critical — every category needs sizing |
+| 15 | `measurement-standards-expert` | Financial Data Standards Specialist | **Cross-cutting (methodology)** | Critical — definition consistency across all categories |
+| 16 | `statistical-methodologist` | Economic Measurement Methodologist | **Cross-cutting (methodology)** | Critical — confidence intervals and extrapolation for all estimates |
 
 ---
 
@@ -77,6 +80,18 @@ A payments economist at the BIS and a crypto forensics analyst at Chainalysis ap
 | AI Agent Transactions | `emerging-tech-forecaster` | `crypto-forensics-analyst` |
 | RWA Tokenisation | `rwa-tokenisation-analyst` | `fixed-income-specialist` |
 
+### Cross-Cutting Methodology SLEs
+
+The following three SLEs are **methodology specialists**, not category specialists. They are available as secondary SLEs for ANY category when the question involves their area of expertise. They do not replace category-specific SLEs — they augment them.
+
+| Methodology SLE | Trigger | Role When Deployed |
+|----------------|---------|-------------------|
+| `market-sizing-specialist` | Any "size the market" or "what's the TAM?" question | Provides TAM/SAM/SOM framework, top-down vs. bottom-up reconciliation, proxy variable selection. Works alongside category primary to ensure sizing methodology is rigorous |
+| `measurement-standards-expert` | Any "what counts as a transaction?" or "are these numbers comparable?" question | Provides transaction lifecycle mapping, double-counting rules, definitional alignment across sources. Ensures the category primary's count is based on a consistent, explicit definition |
+| `statistical-methodologist` | Any "how confident are we?" or "how do we extrapolate from 60% coverage?" question | Provides confidence intervals, imputation methodology, coverage gap modeling, uncertainty quantification. Ensures the final estimate has a defensible uncertainty statement |
+
+These three SLEs can be deployed individually or as a panel (see Methodology Review Protocol below).
+
 ### Question-Type Routing
 
 | Question Archetype | Lead SLE | Supporting SLE(s) |
@@ -90,6 +105,12 @@ A payments economist at the BIS and a crypto forensics analyst at Chainalysis ap
 | "What's the regulatory outlook?" | `central-bank-economist` (payments/banking) / `government-statistician` (fiscal) | Category primary |
 | "What's the real number behind opaque data?" | Category primary (triangulation lead) | `market-research-analyst` + nearest adjacent SLE |
 | "How does this compare across regions?" | `market-research-analyst` | Category primary |
+| "How big is this market? What's the TAM?" | `market-sizing-specialist` | Category primary, `market-research-analyst` |
+| "What counts as a transaction in X?" | `measurement-standards-expert` | Category primary |
+| "How confident are we in this estimate?" | `statistical-methodologist` | Category primary, `market-sizing-specialist` |
+| "How do we extrapolate from partial data?" | `statistical-methodologist` | `market-sizing-specialist`, Category primary |
+| "Are these two numbers measuring the same thing?" | `measurement-standards-expert` | `statistical-methodologist` |
+| "What's the methodology behind this number?" | `measurement-standards-expert` | `statistical-methodologist`, Category primary |
 
 ---
 
@@ -101,6 +122,38 @@ When a research question requires multiple SLEs:
 2. **Secondary expert(s) provide specific inputs** — they contribute data points, alternative methodologies, or challenge assumptions from their domain
 3. **Market Research Analyst arbitrates** — when lead and secondary disagree, the market-research-analyst resolves using cross-source triangulation
 4. **Blind spots are cross-checked** — each SLE's documented biases are explicitly reviewed against the findings
+
+## Methodology Review Protocol
+
+When a category estimate is high-stakes (feeds into the headline UoF total) or low-confidence (score below 50), deploy the three methodology SLEs as a **Methodology Review Panel**. This is the measurement equivalent of a code review — the category specialist produces the estimate, and the panel stress-tests it.
+
+### When to Convene the Panel
+
+- **Mandatory**: Any category contributing >5% of the global TPS total (currently: Consumer Cards, Digital Wallets, Bank Transfers)
+- **Mandatory**: Any category with confidence score below 50 after the primary research run
+- **Recommended**: Any category where top-down and bottom-up estimates diverge by >25%
+- **Recommended**: Any cross-category aggregation (e.g., "total global financial TPS") where double-counting risk is high
+- **On request**: When a category SLE flags uncertainty about definitions, methodology, or data quality
+
+### Panel Review Sequence
+
+1. **`measurement-standards-expert` goes first** — Reviews the definition of "transaction" used by the category SLE. Checks: Is the counting point explicit (authorization vs. clearing vs. settlement)? Are double-counting rules stated? Are sources using consistent definitions? If not, the expert harmonizes definitions before any numbers are discussed
+
+2. **`market-sizing-specialist` goes second** — Reviews the sizing methodology. Checks: Was both a top-down and bottom-up approach used? How large is the reconciliation gap? Are proxy variables documented with fidelity estimates? Is the growth rate decomposed into drivers or just a naked CAGR? If the methodology has gaps, the specialist identifies them and proposes fixes
+
+3. **`statistical-methodologist` goes third** — Reviews the uncertainty quantification. Checks: What is the coverage fraction (what % of the market is directly observed)? How was the unobserved portion estimated? Is the confidence interval realistic (accounts for coverage error, not just sampling error)? Are imputation methods appropriate for the missing data pattern? The methodologist produces the final uncertainty statement
+
+### Panel Output
+
+The panel produces a **Methodology Review Note** appended to the research capsule, containing:
+
+- **Definition audit**: Is "transaction" consistently defined? (Pass/Fail with notes)
+- **Methodology audit**: Top-down/bottom-up reconciliation quality (Pass/Conditional/Fail)
+- **Uncertainty audit**: Confidence interval realism (Pass/Conditional/Fail)
+- **Revised confidence score**: Panel-adjusted confidence score (may be higher or lower than initial)
+- **Action items**: Specific data collection or methodology improvements needed for the next run
+
+A "Conditional" on any audit means the estimate is publishable with caveats. A "Fail" means the estimate needs rework before inclusion in the UoF total.
 
 ## When to Add a New SLE
 
