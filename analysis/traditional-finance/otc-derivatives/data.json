@@ -2,18 +2,18 @@
   "category": "OTC Derivatives",
   "slug": "otc-derivatives",
   "sector": "Traditional Finance",
-  "last_updated": "2026-03-27",
+  "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 0.15,
-      "source": "Segmented model: 4.7M trades/year (excl. FX) / (365.25 x 86400). See workings/count-triangulation.md",
+      "value": 0.17,
+      "source": "Segmented model: 5.3M trades/year (excl. FX) / (365.25 x 86400). Equity OTC revised to 1.2M via structural model. See workings/equity-otc-model.md",
       "url": "",
       "confidence": "medium",
-      "note": "Excl. FX derivatives (counted in FX category). Incl. FX: 0.31 TPS."
+      "note": "Excl. FX derivatives (counted in FX category). Incl. FX: 0.33 TPS. Equity OTC revised upward from 0.6M to 1.2M."
     },
     "avg_tps_incl_fx": {
-      "value": 0.31,
-      "source": "9.7M trades/year (incl. FX derivatives) / (365.25 x 86400)",
+      "value": 0.33,
+      "source": "10.3M trades/year (incl. FX derivatives) / (365.25 x 86400)",
       "url": "",
       "confidence": "low"
     },
@@ -24,14 +24,14 @@
       "confidence": "low"
     },
     "annual_volume": {
-      "value": 4700000,
-      "source": "Segmented model: IRD 3.1M + CDS 0.6M + Equity OTC 0.6M + Commodity OTC 0.4M. Excl. FX derivatives.",
+      "value": 5300000,
+      "source": "Segmented model: IRD 3.1M + CDS 0.6M + Equity OTC 1.2M + Commodity OTC 0.4M. Excl. FX derivatives. Equity OTC revised via workings/equity-otc-model.md",
       "url": "https://www.isda.org/2025/02/20/swapsinfo-full-year-2024-and-the-fourth-quarter-of-2024/",
       "confidence": "medium"
     },
     "annual_volume_incl_fx": {
-      "value": 9700000,
-      "source": "4.7M (excl. FX) + 5.0M FX derivatives",
+      "value": 10300000,
+      "source": "5.3M (excl. FX) + 5.0M FX derivatives",
       "url": "",
       "confidence": "low"
     },
@@ -42,8 +42,8 @@
       "confidence": "high"
     },
     "daily_volume": {
-      "value": 18651,
-      "source": "4.7M / 252 trading days. Excl. FX derivatives.",
+      "value": 21032,
+      "source": "5.3M / 252 trading days. Excl. FX derivatives. Equity OTC revised upward.",
       "url": "",
       "confidence": "medium"
     },
@@ -73,10 +73,16 @@
         }
       },
       "equity_otc": {
-        "annual_volume": 600000,
-        "daily_volume": 2381,
-        "confidence": "low",
-        "source": "Estimated from BIS notional, proportional scaling, SEC SBSDR coverage"
+        "annual_volume": 1200000,
+        "daily_volume": 4762,
+        "confidence": "low-medium",
+        "source": "Structural model: institutional TRS/exotics 250K + institutional CFDs 500K + structured product hedging 400K + misc 50K. See workings/equity-otc-model.md",
+        "breakdown": {
+          "institutional_trades": 250000,
+          "institutional_cfds": 500000,
+          "structured_product_hedging": 400000,
+          "misc_dividend_correlation": 50000
+        }
       },
       "commodity_otc": {
         "annual_volume": 400000,
@@ -159,8 +165,8 @@
     },
     {
       "year": 2024,
-      "annual_volume": 4700000,
-      "avg_tps": 0.15,
+      "annual_volume": 5300000,
+      "avg_tps": 0.17,
       "source": "Segmented triangulation model. See workings/count-triangulation.md",
       "confidence": "medium"
     }
@@ -276,6 +282,6 @@
     "data_recency": 16,
     "triangulation": 14,
     "coverage": 16,
-    "notes": "BIS data on notional outstanding is authoritative. Transaction count now triangulated via ISDA SwapsInfo segmented data. IRD and CDS well-anchored; equity and commodity OTC remain low-confidence."
+    "notes": "BIS data on notional outstanding is authoritative. Transaction count triangulated via ISDA SwapsInfo (IRD/CDS) and structural equity OTC model (Run 5). Equity OTC revised to 1.2M via product decomposition (TRS, CFDs, structured product hedging). IRD and CDS well-anchored; equity OTC improved to low-medium confidence; commodity OTC remains low."
   }
 }

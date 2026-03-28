@@ -2,76 +2,108 @@
   "category": "Centralised Crypto Exchanges",
   "slug": "cex",
   "sector": "Digital Assets",
-  "last_updated": "2026-03-27",
+  "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 3040,
-      "source": "Tiered wash trading model: Tier 1 (regulated, 3.5% wash), Tier 2 (semi-regulated, 20%), Tier 3 (lower-tier trusted, 45%). See workings/wash-trading-filter.md",
+      "value": 3210,
+      "source": "Regional wash trading model: 6 geographic regions with region-specific wash rates. See workings/regional-wash-model.md",
       "url": "",
-      "confidence": "medium-low",
-      "note": "Central estimate from tiered model. Range: 2,685-3,275. 25% blended wash trading reduction from reported ~4,050 TPS. Narrowed from prior 2,450-3,700 range."
+      "confidence": "medium",
+      "note": "Central estimate from regional model. Range: 2,890-3,450. 20.6% blended wash trading reduction from reported ~4,050 TPS. Tier model cross-check: 3,040 TPS (25% blended). Regional model is primary."
     },
     "wash_adjusted": {
       "reported_tps": 4050,
-      "adjusted_tps": 3040,
-      "adjusted_tps_low": 2685,
-      "adjusted_tps_high": 3275,
-      "blended_wash_pct": 25.0,
-      "blended_wash_pct_low": 19.0,
-      "blended_wash_pct_high": 33.8,
-      "tier_1": {
-        "exchanges": [
-          "Coinbase",
-          "Kraken",
-          "Bitstamp",
-          "Gemini",
-          "Upbit"
-        ],
-        "volume_share_pct": 15,
-        "wash_pct": 3.5,
-        "wash_pct_range": [
-          2,
-          5
-        ]
+      "adjusted_tps": 3210,
+      "adjusted_tps_low": 2890,
+      "adjusted_tps_high": 3450,
+      "blended_wash_pct": 20.6,
+      "blended_wash_pct_low": 14.8,
+      "blended_wash_pct_high": 28.5,
+      "model": "regional",
+      "regional": {
+        "us": {
+          "volume_share_pct": 8,
+          "volume_usd_t": 6.2,
+          "wash_pct": 2,
+          "wash_pct_range": [1, 3],
+          "key_exchanges": ["Coinbase", "Kraken", "Gemini"]
+        },
+        "korea": {
+          "volume_share_pct": 7,
+          "volume_usd_t": 5.4,
+          "wash_pct": 5,
+          "wash_pct_range": [3, 8],
+          "key_exchanges": ["Upbit", "Bithumb"]
+        },
+        "japan_sg_hk": {
+          "volume_share_pct": 6,
+          "volume_usd_t": 4.6,
+          "wash_pct": 3,
+          "wash_pct_range": [2, 5],
+          "key_exchanges": ["bitFlyer", "GMO Coin", "HashKey"]
+        },
+        "europe": {
+          "volume_share_pct": 10,
+          "volume_usd_t": 7.7,
+          "wash_pct": 5,
+          "wash_pct_range": [3, 8],
+          "key_exchanges": ["Bitstamp", "Binance FR", "Bitpanda"]
+        },
+        "china_offshore": {
+          "volume_share_pct": 25,
+          "volume_usd_t": 19.3,
+          "wash_pct": 35,
+          "wash_pct_range": [25, 45],
+          "key_exchanges": ["Binance (CN cohort)", "OKX", "Bybit", "HTX", "Gate.io", "MEXC"]
+        },
+        "middle_east_africa": {
+          "volume_share_pct": 15,
+          "volume_usd_t": 11.6,
+          "wash_pct": 30,
+          "wash_pct_range": [20, 40],
+          "key_exchanges": ["Binance (ME)", "OKX (ME)", "regional exchanges"]
+        },
+        "latin_america": {
+          "volume_share_pct": 10,
+          "volume_usd_t": 7.7,
+          "wash_pct": 15,
+          "wash_pct_range": [10, 25],
+          "key_exchanges": ["Binance (LatAm)", "Mercado Bitcoin", "Bitso"]
+        },
+        "sea_oceania": {
+          "volume_share_pct": 12,
+          "volume_usd_t": 9.3,
+          "wash_pct": 20,
+          "wash_pct_range": [15, 30],
+          "key_exchanges": ["Binance (SEA)", "Crypto.com", "Indodax", "BTC Markets"]
+        },
+        "other": {
+          "volume_share_pct": 7,
+          "volume_usd_t": 5.5,
+          "wash_pct": 35,
+          "wash_pct_range": [25, 45]
+        }
       },
-      "tier_2": {
-        "exchanges": [
-          "Binance",
-          "OKX",
-          "Bybit",
-          "Crypto.com"
-        ],
-        "volume_share_pct": 55,
-        "wash_pct": 20,
-        "wash_pct_range": [
-          15,
-          30
-        ]
+      "tier_crosscheck": {
+        "tier_1_wash_pct": 3.5,
+        "tier_2_wash_pct": 20,
+        "tier_3_wash_pct": 45,
+        "tier_blended_wash_pct": 25.0,
+        "tier_adjusted_tps": 3040,
+        "methodology": "workings/wash-trading-filter.md"
       },
-      "tier_3": {
-        "exchanges": [
-          "HTX",
-          "KuCoin",
-          "Gate.io",
-          "MEXC",
-          "Bitfinex",
-          "others"
-        ],
-        "volume_share_pct": 30,
-        "wash_pct": 45,
-        "wash_pct_range": [
-          35,
-          55
-        ]
-      },
-      "methodology": "workings/wash-trading-filter.md",
+      "methodology": "workings/regional-wash-model.md",
       "sources": [
         "NBER WP 30783 (Cong et al. 2023)",
         "CEPR/Kocenda 2024",
         "Bitwise SEC 2019",
         "Forbes/BTI 2022",
         "Kaiko 2024",
-        "CryptoCompare Exchange Benchmark 2024"
+        "CryptoCompare Exchange Benchmark 2024",
+        "Chainalysis Geography of Cryptocurrency 2024",
+        "Korea FSC Virtual Asset User Protection Act 2024",
+        "Japan FSA Registered Exchanges",
+        "Triple-A Crypto Ownership 2024"
       ]
     },
     "peak_tps": {
@@ -266,6 +298,6 @@
     "data_recency": 18,
     "triangulation": 12,
     "coverage": 14,
-    "notes": "Wash trading inflates volumes at some exchanges. No regulatory audit of transaction counts."
+    "notes": "Regional wash model (Run 5) improved from tiered model. China offshore (25% volume, 35% wash) and ME/Africa (15% volume, 30% wash) are primary uncertainty drivers."
   }
 }

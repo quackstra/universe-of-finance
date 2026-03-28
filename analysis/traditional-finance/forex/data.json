@@ -2,14 +2,14 @@
   "category": "Foreign Exchange",
   "slug": "forex",
   "sector": "Traditional Finance",
-  "last_updated": "2026-03-27",
+  "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
       "value": 40,
       "source": "Six-approach triangulation: CLS settlement, BIS counterparty decomposition, electronic platform aggregation, retail FX, CME futures comparable, algo/HFT multiplier. See workings/count-triangulation.md",
       "url": "",
       "confidence": "medium",
-      "note": "Institutional-only estimate: ~35 TPS (3.0M trades/day). Including retail: ~150 TPS (13M trades/day). Primary estimate uses institutional-only for economic consistency."
+      "note": "Institutional-only estimate: ~35 TPS (3.0M trades/day). Including retail: ~127 TPS (11M trades/day, revised from 13M via broker aggregation). Primary estimate uses institutional-only for economic consistency."
     },
     "peak_tps": {
       "value": 160,
@@ -41,13 +41,20 @@
         2300000,
         4000000
       ],
-      "retail_trades_per_day": 10000000,
+      "retail_trades_per_day": 8000000,
       "retail_trades_range": [
-        8000000,
-        12000000
+        5800000,
+        11400000
       ],
-      "total_inclusive_per_day": 13000000,
-      "total_inclusive_tps": 150,
+      "retail_broker_aggregation": {
+        "japan": 3200000,
+        "europe": 1700000,
+        "north_america": 750000,
+        "rest_of_world": 2350000,
+        "methodology": "workings/retail-broker-aggregation.md"
+      },
+      "total_inclusive_per_day": 11000000,
+      "total_inclusive_tps": 127,
       "institutional_only_tps": 35,
       "approaches": {
         "cls_settlement": {
@@ -75,12 +82,13 @@
           "confidence": "medium-low"
         },
         "retail_fx": {
-          "central": 10000000,
+          "central": 8000000,
           "range": [
-            8000000,
-            12000000
+            5800000,
+            11400000
           ],
-          "confidence": "low"
+          "confidence": "low-medium",
+          "note": "Revised downward from 10M via broker aggregation. See workings/retail-broker-aggregation.md"
         },
         "cme_futures_comparable": {
           "central": 5500000,
