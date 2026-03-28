@@ -1,238 +1,154 @@
 # Universe of Finance
 
-> An autonomous research framework that measures, categorises, and forecasts
-> the total volume of financial transactions across the entire global economy —
-> from DeFi to stock exchanges, consumer payments to video game microtransactions.
-
-**Goal**: Answer the question — *what is the total addressable market for
-financial transactions, measured in transactions per second?*
-
-## Disclaimer
-
-This is a research project. Numbers are estimates derived from public data,
-industry reports, and statistical modelling. They should not be used as the
-sole basis for investment decisions. All sources are cited. All models are
-transparent and reproducible.
-
-## Why This Exists
-
-Every financial infrastructure project — from Visa to Solana to Radix — needs
-to understand the scale of the problem it's trying to solve. But there is no
-single source that measures **all** transaction types across the global economy
-on a consistent basis.
-
-Universe of Finance fills that gap by:
-
-1. **Cataloguing** every major transaction type in the global economy
-2. **Measuring** historic and current transaction volumes (TPS) per category
-3. **Projecting** future volumes under multiple growth scenarios
-4. **Publishing** all findings as open research with charts, data, and methodology
-
-## Transaction Taxonomy
-
-See `TAXONOMY.md` for the full breakdown. Summary:
-
-### Level 0 — Sectors (top-level groupings)
-
-| Sector | Description |
-|--------|-------------|
-| Traditional Finance | Stock exchanges, bond markets, derivatives, forex |
-| Payments | Consumer payments, P2P, merchant processing, remittances |
-| Banking | Interbank transfers, RTGS, ACH, wire transfers |
-| Digital Assets | Crypto exchanges, DeFi, NFTs, stablecoins |
-| Gaming & Virtual | In-game transactions, virtual goods, esports |
-| Government & Public | Tax payments, benefits disbursement, public procurement |
-| Emerging | IoT micropayments, machine-to-machine, AI agent transactions |
-
-### Level 1 — Categories (within each sector)
-
-Each sector decomposes into 5-15 specific transaction categories, each
-independently researched and measured.
-
-### Level 2 — Subcategories (granular breakdowns)
-
-Individual protocols, networks, or platforms within each category.
-
-## Inside-Out Research Strategy
-
-Research expands outward from the centre like ripples:
-
-```
-THE CENTRE → biggest categories TODAY (current TPS)
-    Ring 1 → expand depth (historic, subcategories, projections)
-    Ring 2 → medium-scale categories
-    Ring 3 → smaller & emerging categories
-    Ring 4 → nascent & speculative categories
-```
-
-We measure consumer cards and bank transfers before IoT micropayments
-because the top 5 categories likely represent 80%+ of global TPS. Context
-from the giants calibrates everything else.
-
-## Research Capsules
-
-A **research capsule** is the atomic unit of output: one measurement of
-transactions for one category over one time period, plus all accompanying
-analysis. Each Elf run targets **48+ capsules** before assessing taxonomy
-gaps and preparing the next session's agenda.
-
-See `elves/run_protocol.md` for the full 5-step run process (A-E).
-
-## Pipeline
-
-```
-┌──────────┐     ┌────────────┐     ┌──────────┐     ┌───────────┐
-│  Scout   │────▶│  Architect │────▶│  Elves   │────▶│  Publish  │
-│          │     │            │     │          │     │           │
-│ Find     │     │ Design     │     │ Execute  │     │ Generate  │
-│ data     │     │ research   │     │ research │     │ reports,  │
-│ sources  │     │ methodology│     │ & model  │     │ charts,   │
-│          │     │            │     │          │     │ forecasts │
-└──────────┘     └────────────┘     └──────────┘     └───────────┘
-```
-
-### 1. Scout (automated, recurring)
-
-Discovers and validates data sources for transaction volume data:
-- Central bank reports (BIS, Federal Reserve, ECB, etc.)
-- Industry associations (Visa, Mastercard annual reports, WFE, FIA)
-- Blockchain explorers and analytics platforms
-- Gaming industry reports (Newzoo, SuperData)
-- Academic papers and government statistics
-- API endpoints for real-time data where available
-
-Output: prioritised backlog of **categories** to research, with known data sources.
-
-### 2. Architect (research design)
-
-Takes a category and produces a research methodology:
-- Identifies the best available data sources
-- Defines measurement methodology (what counts as a "transaction"?)
-- Designs the data collection approach
-- Specifies the projection models to use
-- Sets quality criteria for the research
-
-Output per category:
-- `METHODOLOGY.md` — data sources, collection plan, measurement definitions
-- Updates to `TAXONOMY.md` if new categories are identified
-
-### 3. Elves (autonomous researchers)
-
-Execute the research plan:
-- Collect data from identified sources
-- Normalise to consistent units (TPS, daily volume, annual volume)
-- Build historic timeseries where possible
-- Generate projection models (baseline, high-growth, conservative)
-- Produce charts and visualisations
-- Write analysis reports
-
-### 4. Publish (output)
-
-All findings published to the repo:
-- `analysis/<category>/REPORT.md` — full research report
-- `analysis/<category>/data.json` — structured data
-- `analysis/<category>/charts/` — generated visualisations
-- `analysis/README.md` — master index with summary table
-- `models/` — projection model definitions and outputs
-
-## Projection Models
-
-Three scenarios are maintained for every category:
-
-| Model | Assumptions |
-|-------|-------------|
-| **Baseline** | Current growth rates continue, no major disruptions |
-| **High Growth** | Accelerating digitalisation, DeFi adoption, emerging market growth |
-| **Conservative** | Regulatory headwinds, market consolidation, slower adoption |
-
-Each model projects out to **2030** and **2035** with explicit assumptions documented.
-
-## Repo Structure
-
-```
-universe-of-finance/
-├── README.md                    # This file
-├── BRIEF.md                     # Mission & methodology
-├── TAXONOMY.md                  # Transaction category taxonomy
-├── AGENTS.md                    # AI agent discovery (agents.md standard)
-├── CLAUDE.md                    # Claude Code operating instructions
-├── run.sh                       # Pipeline orchestration
-├── scout/                       # Data source discovery
-│   ├── scout.py                 # Source scanner
-│   ├── analyzer.py              # Report generator
-│   ├── charts.py                # Visualisation engine
-│   ├── config.yaml              # Sources, categories, filters
-│   └── backlog.yaml             # Discovered categories (output)
-├── architect/                   # Research methodology design
-│   ├── SKILL.md                 # Architect agent instructions
-│   └── references/
-│       ├── methodology.md       # Research methodology patterns
-│       └── quality_gates.md     # Research quality checklist
-├── elves/                       # Autonomous research agents
-│   ├── survival_guide.md        # Standing brief for research elves
-│   ├── run_protocol.md          # Standard run protocol (Steps A-E)
-│   └── validation_gates.sh      # Data validation script
-├── notes/                       # Inter-session continuity
-│   ├── research_agenda.md       # Next run's work queue
-│   └── last_session.md          # Previous run's notes
-├── categories/                  # Category specs (Architect output)
-│   ├── traditional-finance/
-│   │   ├── stock-exchanges/METHODOLOGY.md
-│   │   ├── derivatives/METHODOLOGY.md
-│   │   └── ...
-│   ├── payments/
-│   │   ├── consumer-cards/METHODOLOGY.md
-│   │   ├── remittances/METHODOLOGY.md
-│   │   └── ...
-│   ├── digital-assets/
-│   │   ├── defi/METHODOLOGY.md
-│   │   ├── crypto-exchanges/METHODOLOGY.md
-│   │   └── ...
-│   └── ...
-├── analysis/                    # Generated research reports
-│   ├── README.md                # Master index
-│   └── <category>/
-│       ├── REPORT.md            # Clean, reader-facing analysis
-│       ├── data.json            # Structured data with source URLs
-│       ├── charts/              # Generated visualisations
-│       └── workings/            # Full calculations, source notes, assumptions
-├── models/                      # Projection models
-│   ├── baseline/
-│   ├── high-growth/
-│   └── conservative/
-├── data/                        # Collected raw data (structured)
-├── tools/                       # Utility scripts
-└── logs/                        # Run logs
-```
-
-## Key Metrics
-
-For each transaction category, we measure:
-
-| Metric | Unit | Description |
-|--------|------|-------------|
-| **Peak TPS** | tx/sec | Maximum observed transactions per second |
-| **Average TPS** | tx/sec | Average sustained throughput |
-| **Daily Volume** | tx/day | Total daily transaction count |
-| **Annual Volume** | tx/year | Total annual transaction count |
-| **Annual Value** | USD/year | Total annual transaction value |
-| **Growth Rate** | %/year | Year-over-year volume growth |
+> Measuring every financial transaction on Earth — from Visa swipes to repo trades,
+> UPI taps to video game loot boxes — expressed as one number: transactions per second.
 
 ## The Big Number
 
-The ultimate deliverable is **The Big Number** — the sum total of all
-financial transactions happening across the global economy, expressed as TPS.
-This number is recalculated as each category completes research.
+### **~70,741 de-duplicated global financial TPS**
 
-Current estimate: **TBD** (research in progress)
+That's ~2.2 trillion transactions per year flowing through the world's financial infrastructure.
+Range: 64,000–80,000 TPS depending on overlap assumptions.
 
-## Contributing
+**Coordinated global peak: ~147,000–246,000 TPS** (flash crash on a busy quarter-end).
 
-This is an open research project. To contribute:
-1. Identify a transaction category not yet covered
-2. Find reliable data sources for that category
-3. Open an issue or PR with the data and methodology
+| Fact | Value |
+|------|-------|
+| Categories measured | **29** across 7 sectors |
+| Confidence scores | 34–91 (median 67) |
+| Time-series | 2015–2025 (10 years, all categories) |
+| Growth rate | **6.7× in a decade** (12,900 → 86,900 gross TPS) |
+| Data points | 29 capsules × ~12 data fields each |
+
+## TPS Leaderboard
+
+| # | Category | Avg TPS | Annual Txns | Sector |
+|---|----------|---------|-------------|--------|
+| 1 | Consumer Cards | 24,501 | 772.7B | Payments |
+| 2 | Digital Wallets | 19,660 | 620B | Payments |
+| 3 | Bank Transfers | 15,338 | 484B | Payments |
+| 4 | ETD (Derivatives) | 9,500 | 205.3B | Traditional Finance |
+| 5 | Equity Markets | 3,500 | 61.5B | Traditional Finance |
+| 6 | CEX (Crypto) | 3,210 | ~101B | Digital Assets |
+| 7 | Bill Payments | 3,012 | ~95B | Payments |
+| 8 | E-Commerce | 1,800 | ~57.5B | Payments |
+| 9 | ATM Withdrawals | 1,557 | ~49.1B | Payments |
+| 10 | IoT & M2M | 1,538 | 48.5B | Emerging |
+
+The top 3 categories (cards + wallets + bank transfers) account for **~80% of global financial TPS**.
+
+## Key Findings
+
+- **Payments dominate**: 75% of global TPS is payment transactions
+- **India is everywhere**: #1 in equity trades (28% of global), #1 in real-time payments (UPI), growing fast in cards (RuPay)
+- **Double-counting is ~14%**: Smaller than expected. UPI (172B txns) is the biggest single overlap
+- **Gaming and e-commerce are commerce layers, not payment layers**: 82% and 95% of their transactions are already counted in cards/bank transfers
+- **BNPL is a transaction multiplier**: Each purchase creates 3.6× payment events on underlying rails
+- **ATM is the only declining category**: -3% CAGR, down from 63B peak — the slow death of cash
+- **Recessions barely move the Big Number** (-0.3%): Trading surges offset payment declines. Pandemics actually *increase* it (+18-28%)
+- **Solana vote transactions inflate L1/L2 by 2-3×**: Real meaningful blockchain TPS is ~350-480, not ~900
+- **CEX wash trading is ~20.6%** (blended): Regulated regions (<8%) vs. offshore (30-45%)
+
+## Project Structure
+
+```
+universe-of-finance/
+├── analysis/                    # 29 research capsules + cross-cutting analyses
+│   ├── README.md                # Master index with full leaderboard
+│   ├── OVERLAP_MATRIX.md        # Cross-sector de-duplication methodology
+│   ├── CONFIDENCE_SCORECARD.md  # 0-100 confidence scores for all categories
+│   ├── PEAK_TPS.md              # Peak load analysis + calendar co-occurrence
+│   ├── SCENARIOS.md             # Recession / pandemic / crypto winter stress tests
+│   ├── DATA_FRESHNESS.md        # Source staleness tracker
+│   ├── timeseries/              # 2015-2025 annual TPS for all categories
+│   └── <sector>/<category>/     # Individual capsules
+│       ├── REPORT.md            # Reader-facing analysis
+│       ├── data.json            # Structured data (normalized schema)
+│       └── workings/            # Full calculations, assumptions, source notes
+├── souls/                       # Intergalactic Recruiter — 13 expert personas
+│   ├── RECRUITER.md             # Dispatch matrix + framework
+│   └── <persona>/SOUL.md        # Expert persona grounded in real JDs
+├── tools/                       # Analysis tooling
+│   ├── big_number.py            # De-duplicated global TPS calculator
+│   ├── confidence_score.py      # 0-100 confidence scoring engine
+│   ├── validate_schema.py       # data.json schema validator (29/29 passing)
+│   ├── data_freshness.py        # Source staleness detector
+│   ├── charts.py                # Visualization suite (4 chart types)
+│   └── normalize_schemas.py     # data.json schema migration tool
+├── scout/                       # Data source discovery
+├── architect/                   # Research methodology design
+├── elves/                       # Autonomous research agent protocol
+├── notes/                       # Inter-session continuity
+├── TAXONOMY.md                  # Full transaction category taxonomy
+└── BRIEF.md                     # Mission & methodology
+```
+
+## 29 Categories Across 7 Sectors
+
+| Sector | Categories | Combined Gross TPS |
+|--------|-----------|-------------------|
+| **Payments** (11) | Consumer Cards, Digital Wallets, Bank Transfers, E-Commerce, P2P, Remittances, Bill Payments, Insurance Premiums, BNPL, Payroll, ATM Withdrawals | ~67,600 |
+| **Traditional Finance** (6) | ETD, Equities, Commodities, Forex, Fixed Income, OTC Derivatives | ~13,400 |
+| **Digital Assets** (4) | CEX, L1/L2 Blockchain, Stablecoins, DeFi | ~4,100 |
+| **Banking** (2) | Interbank RTGS, Securities Settlement | ~100 |
+| **Gaming** (2) | Microtransactions, Game Sales | ~480 |
+| **Government** (1) | Tax & Government Payments | ~1,000 |
+| **Emerging** (3) | IoT/M2M, RWA Tokenisation, AI Agents | ~1,540 |
+
+*Note: Gross TPS sums include overlaps. De-duplicated total is ~70,741 TPS.*
+
+## Research Methodology
+
+Each category is researched using a **triangulation-first** approach:
+1. Find 2-3 independent data sources that measure the same thing differently
+2. Build bottom-up AND top-down models, then reconcile
+3. Document assumptions, blind spots, and confidence explicitly
+4. Quantify overlaps with other categories to enable accurate de-duplication
+
+Research is guided by **Soul Less Employees** — 13 expert personas grounded in real job descriptions from organizations like Visa, BIS, Chainalysis, DTCC, and Gartner. Each persona brings domain-specific mental models, data sources, and documented biases to check against.
+
+See [`souls/RECRUITER.md`](souls/RECRUITER.md) for the dispatch matrix.
+
+## Macro Scenario Stress Tests
+
+| Scenario | Big Number Impact | Key Driver |
+|----------|------------------|------------|
+| **Recession** (2008-style) | **-0.3%** (~70,500) | Trading surge offsets payment decline |
+| **Pandemic** (2020-style) | **+18-28%** (~83,700-90,500) | Cash-to-digital migration |
+| **Crypto Winter** | **-3.0%** (~68,600) | Crypto is only ~5% of total TPS |
+
+## Time-Series: A Decade of Growth
+
+Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR):
+
+| Category | 2020-25 CAGR | Driver |
+|----------|-------------|--------|
+| RWA Tokenisation | 119% | Institutional adoption (BlackRock BUIDL) |
+| Stablecoins | 103% | Settlement rail emergence |
+| L1/L2 Blockchain | 77% | Solana throughput + L2 rollups |
+| Digital Wallets | 21% | UPI + PIX hockey sticks |
+| ETD | 18% | India NSE options explosion |
+
+## Completed Research Runs
+
+| Run | Focus | Key Output |
+|-----|-------|------------|
+| 1 | Initial 24-category pass | First Big Number (~76,000 gross) |
+| 2 | Overlap quantification | De-duplicated to ~70,600. Open questions for all categories. |
+| 3 | Deep triangulation + tooling | China model (±20B), Solana filter, Big Number calculator |
+| 4 | Confidence upgrades + regional decomposition | Scorecard (34-91), cards/transfers/equities breakdowns |
+| 5 | New categories + time-series + scenarios | 29 categories, 2015-2025 series, peak TPS, stress tests |
+
+## Explore the Data
+
+- **[Full Research Index](analysis/README.md)** — All 29 categories with TPS, confidence, and links
+- **[Overlap Matrix](analysis/OVERLAP_MATRIX.md)** — How we de-duplicate the Big Number
+- **[Confidence Scorecard](analysis/CONFIDENCE_SCORECARD.md)** — 0-100 scores with methodology
+- **[Time-Series](analysis/timeseries/TIMESERIES.md)** — 2015-2025 data for all categories
+- **[Peak TPS Analysis](analysis/PEAK_TPS.md)** — When does the world's financial infrastructure max out?
+- **[Scenario Analysis](analysis/SCENARIOS.md)** — What happens in a recession, pandemic, or crypto winter?
+- **[SLE Framework](souls/RECRUITER.md)** — The expert personas behind the research
 
 ## License
 
-Research outputs are published under CC BY 4.0. Code is MIT licensed.
+Research outputs: CC BY 4.0. Code: MIT.
