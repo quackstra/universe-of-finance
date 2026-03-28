@@ -2,24 +2,24 @@
   "category": "Fixed Income / Bond Markets",
   "slug": "fixed-income",
   "sector": "Traditional Finance",
-  "last_updated": "2026-03-27",
+  "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
       "value": 3.6,
       "source": "Bottom-up segmented model: 112.9M cash bond trades/year. See workings/count-triangulation.md",
       "url": "",
       "confidence": "medium",
-      "note": "Cash bonds only. Including repo: ~6.2 TPS."
+      "note": "Cash bonds only. Including repo: ~10.5 TPS."
     },
     "avg_tps_incl_repo": {
-      "value": 6.2,
-      "source": "Cash bonds (112.9M) + repo (83.8M) = 196.7M / (365.25 x 86400). See workings/count-triangulation.md",
+      "value": 10.5,
+      "source": "Cash bonds (112.9M) + repo (218.7M) = 331.6M / (365.25 x 86400). Run 5 repo deep dive. See workings/repo-deep-dive.md",
       "url": "",
-      "confidence": "low"
+      "confidence": "medium"
     },
     "peak_tps": {
-      "value": 50,
-      "source": "Estimated: 3-5x average during high-vol days (rate decisions, auctions). See workings/count-triangulation.md",
+      "value": 80,
+      "source": "Estimated from FICC GSD peak day (1.206M transactions Apr 9, 2025). Peak day repo alone = ~48 TPS + cash bonds ~32 TPS.",
       "url": "",
       "confidence": "low"
     },
@@ -37,10 +37,14 @@
       "confidence": "medium"
     },
     "annual_volume_incl_repo": {
-      "value": 196700000,
-      "source": "Cash bonds 112.9M + global repo 83.8M. Repo estimate is highly uncertain (sensitive to avg trade size assumption).",
+      "value": 331636000,
+      "source": "Cash bonds 112.9M + global repo 218.7M. Run 5 repo deep dive anchored by FICC GSD (1.206M peak transactions) and LCH RepoClear (14.6M trade sides/year).",
       "url": "",
-      "confidence": "low"
+      "confidence": "medium",
+      "confidence_interval": {
+        "low": 201000000,
+        "high": 518000000
+      }
     },
     "daily_volume": {
       "value": 448016,
@@ -49,10 +53,10 @@
       "confidence": "medium"
     },
     "daily_volume_incl_repo": {
-      "value": 780596,
-      "source": "196.7M / 252 trading days. Including repo.",
+      "value": 1316016,
+      "source": "Cash bonds 448K + repo 868K. Run 5 deep dive.",
       "url": "",
-      "confidence": "low"
+      "confidence": "medium"
     },
     "segments": {
       "us_cash_bonds": {
@@ -79,14 +83,21 @@
         "source": "Estimated from regional market sizes and trading patterns"
       },
       "global_repo": {
-        "annual_volume": 83800000,
-        "daily_volume": 332580,
-        "confidence": "low",
-        "source": "Modeled from OFR US repo ($12.6T daily), ICMA European repo, avg trade size assumptions",
+        "annual_volume": 218736000,
+        "daily_volume": 868000,
+        "confidence": "medium",
+        "source": "Run 5 deep dive. Anchored by FICC GSD hard transaction counts (peak 1.206M/day) and LCH RepoClear (14.6M trade sides/year). See workings/repo-deep-dive.md",
+        "confidence_interval": {
+          "low": 113400000,
+          "high": 378000000
+        },
         "breakdown": {
-          "us_repo": 27110160,
-          "european_repo": 31500000,
-          "apac_repo": 25200000
+          "us_repo": 126000000,
+          "european_repo": 25200000,
+          "china_repo": 50400000,
+          "japan_repo": 3276000,
+          "uk_repo_bilateral": 3780000,
+          "rest_of_world_repo": 10080000
         }
       }
     }
@@ -130,8 +141,10 @@
     {
       "year": 2024,
       "annual_volume": 112900000,
+      "annual_volume_incl_repo": 331636000,
       "avg_tps": 3.6,
-      "source": "Segmented triangulation model. See workings/count-triangulation.md",
+      "avg_tps_incl_repo": 10.5,
+      "source": "Run 5 deep dive. Cash bonds from count-triangulation.md; repo from repo-deep-dive.md",
       "confidence": "medium"
     }
   ],
@@ -140,13 +153,13 @@
       {
         "year": 2030,
         "tps": 5.0,
-        "tps_incl_repo": 8.6,
+        "tps_incl_repo": 14.7,
         "annual_volume": 157000000
       },
       {
         "year": 2035,
         "tps": 6.9,
-        "tps_incl_repo": 11.8,
+        "tps_incl_repo": 20.2,
         "annual_volume": 217000000
       }
     ],
@@ -154,13 +167,13 @@
       {
         "year": 2030,
         "tps": 6.4,
-        "tps_incl_repo": 11.0,
+        "tps_incl_repo": 18.7,
         "annual_volume": 201000000
       },
       {
         "year": 2035,
         "tps": 11.3,
-        "tps_incl_repo": 19.4,
+        "tps_incl_repo": 33.0,
         "annual_volume": 356000000
       }
     ],
@@ -168,13 +181,13 @@
       {
         "year": 2030,
         "tps": 4.2,
-        "tps_incl_repo": 7.2,
+        "tps_incl_repo": 12.2,
         "annual_volume": 132000000
       },
       {
         "year": 2035,
         "tps": 4.9,
-        "tps_incl_repo": 8.4,
+        "tps_incl_repo": 14.4,
         "annual_volume": 154000000
       }
     ]
@@ -231,39 +244,87 @@
       "id": 8,
       "citation": "OFR — Sizing the US Repo Market (Dec 2025)",
       "url": "https://www.financialresearch.gov/the-ofr-blog/2025/12/04/sizing-us-repo-market/",
-      "accessed": "2026-03-27"
+      "accessed": "2026-03-28"
     },
     {
       "id": 9,
-      "citation": "DTCC — FICC GSD Record Activity",
-      "url": "https://www.dtcc.com/news/2024/october/03/ficcs-government-securities-division-surpasses",
-      "accessed": "2026-03-27"
+      "citation": "DTCC — FICC GSD Record $11.8T (Jul 2025)",
+      "url": "https://fxnewsgroup.com/forex-news/institutional/ficc-successfully-processes-11-8-trillion-in-daily-volume/",
+      "accessed": "2026-03-28"
     },
     {
       "id": 10,
+      "citation": "DTCC — FICC Peak 1.206M Transactions (Apr 2025)",
+      "url": "https://fxnewsgroup.com/forex-news/institutional/dtcc-processes-record-volumes-across-services-amid-market-volatility/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 11,
+      "citation": "LCH RepoClear Q4 2024 Dashboard — 14.6M trade sides",
+      "url": "https://www.lseg.com/content/dam/post-trade/en_us/documents/lch/resources/repoclear-dashboard-q4-2024.pdf",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 12,
+      "citation": "ECB Euro Money Market Study 2024",
+      "url": "https://www.ecb.europa.eu/press/euromoneymarket/html/ecb.euromoneymarket202504.en.html",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 13,
+      "citation": "Eurex Repo — Full Year 2024/2025 Figures",
+      "url": "https://www.eurex.com/ex-en/find/news-center/news/Full-year-and-December-2025-figures-at-Eurex-4891494",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 14,
+      "citation": "JSCC JGB Daily Statistics",
+      "url": "https://www.jpx.co.jp/jscc/en/cash/jgbcc/jgb_daily_statistics_e.html",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 15,
+      "citation": "PBOC Financial Market Report 2024",
+      "url": "https://www.pbc.gov.cn/en/3688247/3688978/3709134/5579031/2025013009512017217.pdf",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 16,
+      "citation": "BOJ Securities Financing Transactions Statistics",
+      "url": "https://www.boj.or.jp/en/statistics/bis/repo/index.htm",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 17,
       "citation": "Coalition Greenwich — US Corporate Bond Trading 2024",
       "url": "https://coalitiongreenwich.crisil.com/",
       "accessed": "2026-03-27"
     },
     {
-      "id": 11,
+      "id": 18,
       "citation": "EMTA — Volume Surveys 2024",
       "url": "https://www.emta.org/activities-and-services/volume-surveys/",
       "accessed": "2026-03-27"
     },
     {
-      "id": 12,
+      "id": 19,
       "citation": "MSRB — 2025 Municipal Market Year in Review",
       "url": "https://www.msrb.org/sites/default/files/2026-01/MSRB-2025-Municipal-Market-Year-in-Review.pdf",
       "accessed": "2026-03-27"
+    },
+    {
+      "id": 20,
+      "citation": "NY Fed — Liberty Street Economics: Rise of Sponsored Repo (Oct 2025)",
+      "url": "https://libertystreeteconomics.newyorkfed.org/2025/10/the-rise-of-sponsored-service-for-clearing-repo/",
+      "accessed": "2026-03-28"
     }
   ],
   "confidence": {
-    "score": 60,
-    "source_quality": 18,
-    "data_recency": 16,
-    "triangulation": 14,
-    "coverage": 12,
-    "notes": "Bond trading is predominantly OTC, making transaction counts difficult. US TRACE data is good; global coverage is patchy."
+    "score": 68,
+    "source_quality": 20,
+    "data_recency": 18,
+    "triangulation": 17,
+    "coverage": 13,
+    "notes": "Run 5 improved confidence significantly: FICC GSD hard transaction counts and LCH RepoClear trade sides anchor US and European repo. China exchange repo and bilateral segments remain uncertain. Overall confidence raised from 60 to 68."
   }
 }
