@@ -5,31 +5,31 @@
   "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 1236,
-      "source": "Derived: ~39B annual / 31,557,600 seconds. BLS-corrected US pay frequency + revised informal sector. See workings/depth-research.md.",
+      "value": 1014,
+      "source": "Derived: ~32B annual / 31,557,600 seconds. ILO 2026: 2.1B informal workers (58%) bounds formal sector. Nacha 2025: 7.31B commercial direct deposits anchors US. See workings/confidence-uplift-run7.md.",
       "url": "",
       "confidence": "low",
-      "note": "Range: 1,205-1,460 TPS. US component revised upward (+38%) by BLS data but informal sector revised downward (-21%)."
+      "note": "Range: 792-1,173 TPS. Four triangulation methods converge on 25-37B annual. Previous 39B estimate revised down due to ILO informal employment data constraining electronic payroll universe."
     },
     "peak_tps": {
-      "value": 6180,
+      "value": 5070,
       "source": "Estimated: avg TPS x 5.0 peak multiplier (payday concentration)",
       "url": "",
       "confidence": "low",
       "note": "Payroll is extremely peaky — US biweekly payday Fridays concentrate ~50% of monthly volume into 2 days. Month-end in EU/Asia adds further spikes."
     },
     "daily_volume": {
-      "value": 106800000,
-      "source": "Derived: ~39B / 365.25 days",
+      "value": 87700000,
+      "source": "Derived: ~32B / 365.25 days",
       "url": "",
       "confidence": "low"
     },
     "annual_volume": {
-      "value": 39000000000,
-      "source": "BLS-corrected US pay frequency (43% biweekly, 27% weekly, 19.8% semi-monthly, 10.3% monthly) + revised informal sector estimate. See workings/depth-research.md.",
+      "value": 32000000000,
+      "source": "ILO 2026: 3.6B employed, 2.1B informal (58%). Formal ~1.5B × pay frequency model = ~22B. Informal electronic ~3-6B. Nacha 2025: 7.31B commercial direct deposits (US). Four triangulation methods converge on 25-37B. See workings/confidence-uplift-run7.md.",
       "url": "",
       "confidence": "low",
-      "note": "Range: 38-46B. US revised to 4.68B (up from 3.4B) via BLS data. Informal sector revised to ~14.3B (down from 18B). Nacha ACH 8.74B direct deposits cross-validates US estimate."
+      "note": "Range: 25-37B. Central 32B. US 95% electronic payroll adoption confirms Nacha anchor. ILO informal data (2.1B workers) is key constraint."
     },
     "annual_value_usd": {
       "value": 32000000000000,
@@ -302,11 +302,11 @@
     }
   ],
   "confidence": {
-    "score": 48,
-    "source_quality": 12,
-    "data_recency": 14,
-    "triangulation": 12,
+    "score": 53,
+    "source_quality": 14,
+    "data_recency": 15,
+    "triangulation": 14,
     "coverage": 10,
-    "notes": "Depth research (Run 6): BLS 2023 pay frequency data corrects US model (biweekly 43%, weekly 27%, semi-monthly 19.8%, monthly 10.3%). Nacha ACH 8.74B direct deposits (2025) provides independent US ceiling. UK 96.6% monthly confirmed. Four triangulation methods converge on 38-46B. Main gap: China/Africa pay frequency data."
+    "notes": "Run 7 uplift: ILO 2026 confirms 2.1B informal workers (58% of 3.6B employed), bounding formal electronic payroll. Nacha 2025 splits commercial (7.31B) from government (1.43B) direct deposits. US 95% electronic payroll adoption validates Nacha anchor. Four methods converge on 25-37B (narrowed from 38-46B). Main gap: China/Africa pay frequency data."
   }
 }

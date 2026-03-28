@@ -5,8 +5,8 @@
   "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 1015,
-      "source": "Depth research bottom-up: US (4.1B) + India (8.7B) + EU (5.0B) + UK (0.5B) + Brazil (0.7B) + China (3.8B) + Japan (0.7B) + RoW (8.5B) = ~32B / 31,536,000 sec. See workings/depth-research.md.",
+      "value": 983,
+      "source": "Refined bottom-up: US (4.1B) + India (7.4B) + EU (5.0B) + UK (0.5B) + Brazil (0.7B) + China (3.8B) + Japan (0.7B) + RoW (8.5B) = ~31B / 31,536,000 sec. Four methods converge on 29-33B. See workings/confidence-uplift-run7.md.",
       "url": "",
       "confidence": "medium"
     },
@@ -18,17 +18,17 @@
       "note": "Extreme seasonality — tax deadlines and benefits payment days create spikes 5-10x average"
     },
     "daily_volume": {
-      "value": 87700000,
-      "source": "Derived: ~32B / 365 days",
+      "value": 84900000,
+      "source": "Derived: ~31B / 365 days",
       "url": "",
       "confidence": "medium"
     },
     "annual_volume": {
-      "value": 32000000000,
-      "source": "Depth research bottom-up: US 4.1B (IRS Data Book FY2024 + SSA), India 8.7B (GSTN + DBT), EU 5.0B, UK 0.5B (DWP), Brazil 0.7B (Pix), China 3.8B, Japan 0.7B, RoW 8.5B. See workings/depth-research.md.",
+      "value": 31000000000,
+      "source": "Refined bottom-up: US 4.1B (IRS 165M returns 2025 + Nacha 1.43B gov direct deposits + SSA), India 7.4B (DBT 6.4B FY26 dashboard + GST 240M), EU 5.0B, UK 0.5B (HMRC 12M SA), Brazil 0.7B, China 3.8B, Japan 0.7B, RoW 8.5B. See workings/confidence-uplift-run7.md.",
       "url": "",
       "confidence": "medium",
-      "note": "Range: 28-38B. Four triangulation methods converge (top-down GDP, bottom-up country, payment system cross-check, India DBT anchor). US, India, UK now have hard data anchors."
+      "note": "Range: 29-33B (narrowed from 28-38B). Four triangulation methods converge: bottom-up country (30.7B), GDP top-down (29B), payment system cross-check (33B), India DBT anchor (30B)."
     },
     "annual_value_usd": {
       "value": 27500000000000,
@@ -326,11 +326,11 @@
     }
   ],
   "confidence": {
-    "score": 60,
-    "source_quality": 18,
-    "data_recency": 16,
-    "triangulation": 14,
-    "coverage": 12,
-    "notes": "Depth research (Run 6): IRS Data Book FY2024 (266M+ returns, $5.1T collections), India GSTN (15.1M active, 164.43cr cumulative returns), India DBT (7.4B txns), UK DWP (8.4M UC recipients), Nacha ACH (8.74B direct deposits 2025), Brazil Pix (63.4B total txns). Four triangulation methods converge on 28-38B range."
+    "score": 65,
+    "source_quality": 19,
+    "data_recency": 17,
+    "triangulation": 16,
+    "coverage": 13,
+    "notes": "Run 7 uplift: India DBT live dashboard shows 5.88B txns FY2025-26 YTD (full year ~6.4-7.0B). Nacha 2025 isolates 1.43B government direct deposits (of 8.74B total). IRS 2025: 165M returns, 94% e-filed. HMRC: 11.48M SA returns. Range narrowed from 28-38B to 29-33B. Four methods converge tightly."
   }
 }

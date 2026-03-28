@@ -276,11 +276,11 @@
     }
   ],
   "confidence": {
-    "score": 38,
-    "source_quality": 10,
+    "score": 42,
+    "source_quality": 12,
     "data_recency": 16,
-    "triangulation": 7,
+    "triangulation": 9,
     "coverage": 5,
-    "notes": "Pre-market category. Depth research (Run 6) revealed x402 daily value is ~$28K (50% wash trading), not the implied $600M/yr. LLM API ceiling (2-3T calls/yr), on-chain observable, and infrastructure estimates provide three-way triangulation. Fundamental immaturity (<2 years data) caps confidence."
+    "notes": "Run 7 uplift: McKinsey ($3-5T by 2030), Morgan Stanley ($190-385B US e-commerce by 2030), Visa (100+ partners, 'hundreds' of pilot transactions) add tier-1 sources. Stripe SPT launched with major brands but no volume data. Revenue-derived method ($9.14B agentic AI ecosystem × 5% = $457M → 0.3-3 TPS) adds third triangulation. Pre-market flag recommended. Coverage remains weakest — no payment network publishes agent transaction counts."
   }
 }

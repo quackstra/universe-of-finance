@@ -5,11 +5,11 @@
   "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 3012,
-      "source": "Derived: ~95B annual / 31,536,000 seconds",
+      "value": 3076,
+      "source": "Derived: ~97B annual / 31,536,000 seconds. Three methods converge: bottom-up segment (96B), regional hard data aggregation (97B), per-capita with electronic penetration (97B). See workings/confidence-uplift-run7.md.",
       "url": "",
       "confidence": "medium",
-      "note": "Bottom-up model from utility accounts, telecom subs, digital subs, rent."
+      "note": "Range: 2,600-3,551 TPS. Hard data anchors: US ACH 17.17B consumer bills, EU SEPA DD 22.7B, UK BACS DD 5.0B, India BBPS 3.0B."
     },
     "peak_tps": {
       "value": 6000,
@@ -25,11 +25,11 @@
       "confidence": "medium"
     },
     "annual_volume": {
-      "value": 95000000000,
-      "source": "Bottom-up model: utility accounts + telecom subs + digital subs + rent",
+      "value": 97000000000,
+      "source": "Three converging methods: bottom-up segment (96B), regional hard data aggregation (97B), per-capita scaling (97B). Hard data: US Nacha 17.17B consumer ACH bills, EU SEPA DD 22.7B, UK BACS DD 5.0B, India BBPS 3.0B/yr. See workings/confidence-uplift-run7.md.",
       "url": "",
       "confidence": "medium",
-      "note": "Range: 80-110B. Central estimate 95B. Excludes insurance premiums (separate capsule)."
+      "note": "Range: 82-112B. Central 97B. Three methods converge within 1%. Excludes insurance premiums (separate capsule)."
     },
     "annual_value_usd": {
       "value": 6000000000000,
@@ -311,11 +311,11 @@
     }
   ],
   "confidence": {
-    "score": 48,
-    "source_quality": 14,
-    "data_recency": 14,
-    "triangulation": 10,
-    "coverage": 10,
-    "notes": "No single source publishes global bill payment transaction counts. Bottom-up from segment data with significant assumptions about account counts and payment frequencies."
+    "score": 60,
+    "source_quality": 18,
+    "data_recency": 16,
+    "triangulation": 15,
+    "coverage": 11,
+    "notes": "Run 7 uplift: Three hard data anchors — US Nacha ACH 17.17B consumer bills (2025), EU ECB SEPA DD 22.7B (H1 2025 annualized), UK BACS DD 5.0B (2024/25). India BBPS 3.0B/yr (NPCI Q1 FY26 annualized, 73% CAGR). Three triangulation methods converge on 95-97B within 1%. US+EU+UK+India = ~55% of addressable population covered by hard data."
   }
 }

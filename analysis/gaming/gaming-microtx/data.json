@@ -5,31 +5,31 @@
   "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 475,
-      "source": "Derived: ~15B annual / 31,557,600 seconds. Genre-segmented ATV model. See workings/depth-research.md.",
+      "value": 539,
+      "source": "Derived: ~17B annual / 31,557,600 seconds. Revised mobile ATV from $7.60 to $5.00 based on new all-app IAP average of $1.08. See workings/confidence-uplift-run7.md.",
       "url": "",
       "confidence": "low",
-      "note": "Range: 380-634 TPS. Four triangulation methods converge on 12-20B annual transactions."
+      "note": "Range: 444-761 TPS. Five triangulation methods converge on 14-24B annual transactions."
     },
     "peak_tps": {
-      "value": 950,
+      "value": 1078,
       "source": "Estimated: avg TPS x 2.0 peak multiplier",
       "url": "",
       "confidence": "low",
       "note": "No platform publishes transaction counts. Peak based on holiday/event stacking."
     },
     "daily_volume": {
-      "value": 41100000,
-      "source": "Derived: ~15B / 365.25 days",
+      "value": 46600000,
+      "source": "Derived: ~17B / 365.25 days",
       "url": "",
       "confidence": "low"
     },
     "annual_volume": {
-      "value": 15000000000,
-      "source": "Genre-segmented ATV model: casual $2.50, mid-core $6, gacha $12, PC $10, console $12. Weighted ATV ~$7.60. Revenue $114B / $7.60 = ~15B. Cross-validated via download-conversion model and Roblox extrapolation. See workings/depth-research.md.",
+      "value": 17000000000,
+      "source": "Revised ATV model: mobile $5.00, PC $8.00, console $12.00. Revenue: mobile $82B, PC $8B, console $15B = $105B / weighted ATV. New all-app IAP average of $1.08 pushed mobile ATV down. Roblox ($6.6B bookings, 1.8M daily payers) and Steam ($4.4B DLC+microtx) provide platform anchors. See workings/confidence-uplift-run7.md.",
       "url": "",
       "confidence": "low",
-      "note": "Range: 12-20B. Central estimate moved up from 12.3B after genre segmentation revealed casual mobile undercounting."
+      "note": "Range: 14-24B. Central 17B. Revised up from 15B after mobile ATV correction from $7.60 to $5.00 increased mobile transaction count."
     },
     "annual_value_usd": {
       "value": 114000000000,
@@ -307,11 +307,11 @@
     }
   ],
   "confidence": {
-    "score": 55,
-    "source_quality": 12,
+    "score": 60,
+    "source_quality": 14,
     "data_recency": 16,
-    "triangulation": 15,
-    "coverage": 12,
-    "notes": "Depth research (Run 6): Four independent models converge on 12-20B txns (segmented ATV, download-conversion, Roblox extrapolation, blended ATV). Roblox hard data (3.7B virtual txns, $6.79B bookings, 36.7M monthly payers) and Fortnite (~$5-6B/yr) provide individual game anchors. Genre-segmented ATV resolves whale distortion."
+    "triangulation": 17,
+    "coverage": 13,
+    "notes": "Run 7 uplift: All-app IAP average $1.08 is first hard data on transaction size (Business of Apps). Roblox 10-K: 1.8M daily paying users, $10.36/paying user/day, $6.6B bookings FY2025. Steam: $16.2B revenue (DLC+microtx $4.4B = 27%). Five triangulation methods converge on 14-24B. Mobile ATV revised from $7.60 to $5.00."
   }
 }
