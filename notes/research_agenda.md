@@ -1,69 +1,72 @@
-# Research Agenda — Next Run (Run 5)
+# Research Agenda — Next Run (Run 6)
 
-> Updated 2026-03-27 after completing Run 4 (confidence upgrades + regional decomposition).
+> Updated 2026-03-28 after completing Run 5 (new categories + time-series + peak/scenarios).
 
-## Status: Run 4 Complete
+## Status: Run 5 Complete
 
-All 24 categories now have confidence scores (34-91, median 62). Tier 1 confidence
-upgrades done for CEX, Forex, Fixed Income, OTC Derivatives, IoT/M2M. Regional
-decomposition complete for top 3 categories. Big Number: ~70,741 de-duplicated TPS.
+29 categories (5 new). Time-series 2015-2025 built. Peak TPS and scenario analysis done.
+Repo deep dive, CEX regional model, retail forex aggregation, equity OTC model complete.
+Gaming overlap quantified (82% already counted). Intergalactic Recruiter operational.
 
-## What Run 5 Should Target
+## What Run 6 Should Target
 
-### Tier 1: Remaining Confidence Gaps (highest ROI)
+### Tier 1: Reconciliation & Big Number Update (CRITICAL)
 
-1. **Repo market deep dive** — Repo adds ~83.8M trades/year to fixed income but carries 4× uncertainty (40M-160M). Fed ON RRP, DTCC GCF, ECB MRO data could anchor this. This is the single largest remaining uncertainty by absolute count.
+1. **Re-run big_number.py with 29 categories** — Current Big Number (~70,741) is based on 24 categories. Need to add 5 new categories with proper overlap deductions. Also incorporate: revised repo (+135M txns), revised CEX wash (20.6%), revised retail FX (8M/day), revised equity OTC (1.2M).
 
-2. **CEX regional wash trading** — Current model uses global tiers. Regional analysis (Korea premium, China OTC, Middle East unregulated) could refine Tier 2/3 estimates.
+2. **Update OVERLAP_MATRIX.md** — Add gaming overlap quantification (82%), new category overlaps (insurance 90%, BNPL 100% infrastructure, bill payments 90%, payroll 90%, ATM 0%).
 
-3. **Retail forex count validation** — ~10M/day estimate is extrapolated from limited broker data. FXCM, IG, Plus500, CMC Markets all report trade counts in annual reports — aggregate them.
+3. **Update README.md** — Expand to 29-category leaderboard. Update Big Number.
 
-4. **Equity OTC derivatives** — Most opaque sub-segment at 0.6M/year. Coalition Greenwich institutional surveys may have data.
+4. **Update TAXONOMY.md** — Add 5 new categories formally.
 
-5. **Gaming overlap quantification** — Gaming purchases overlap with cards/wallets. Quantify: what % flows through Apple/Google in-app (counted in wallet?) vs. direct card charge.
+5. **Re-run confidence_score.py** — Score the 5 new categories and refresh all 29.
 
-### Tier 2: New Category Expansion
+### Tier 2: Depth on Weakest Categories
 
-6. **Insurance premiums** — ~$7T global, unknown transaction count. Lloyd's, Swiss Re sigma data. Potentially billions of auto-debit premium collections.
+6. **AI Agent Transactions** (confidence 34) — x402 protocol data, Stripe agent billing, OpenAI function calling volume estimates. This is the most speculative category.
 
-7. **BNPL** — Klarna (~2.5M txns/day), Afterpay, Affirm, PayPal BNPL. Growing fast, partially overlapping cards. Model the overlap.
+7. **In-Game Microtransactions** (confidence 44) — Publisher-level data mining. Apple/Google app store review data could help.
 
-8. **Bill payments** — Utilities, telecoms, subscriptions. Potentially 50-100B annual. NACHA biller data, UK Direct Debit stats, EU SEPA DD volumes.
+8. **Tax & Government Payments** (confidence 50) — India GST portal data, US IRS e-file statistics, UK self-assessment data. Bottom-up from tax authority digital stats.
 
-9. **Payroll** — Implicit in bank transfers. ADP processes ~100M paychecks/year in US alone. Global estimate unknown.
+9. **Payroll** (confidence 35) — ADP quarterly reports, Paychex data, UK RTI/PAYE data, EU payroll provider data.
 
-10. **ATM withdrawals** — Declining (~50B/year?). ATM Industry Association data. Overlap with bank transfers for cash-out.
+10. **Bill Payments** (confidence 48) — India BBPS is a goldmine (centralized bill payment data). UK BACS Direct Debit stats. EU SEPA DD volumes.
 
-### Tier 3: Temporal & Scenario Analysis
+### Tier 3: Cross-Category Analysis
 
-11. **Backtest projections** — For categories with 5+ years of history, did our projection brackets capture reality? Run backtests.
+11. **The Payment Stack visualization** — Show how commerce-layer categories (e-commerce, gaming, insurance, BNPL, bills) stack on top of payment-rail categories (cards, bank transfers, wallets). Quantify each layer.
 
-12. **Macro-scenario stress tests** — Recession, pandemic, crypto winter, fintech disruption — how does the Big Number shift?
+12. **India deep dive** — India appears in nearly every category's top list. Build a country-level capsule showing India's contribution to global TPS across all categories.
 
-13. **Time-series construction** — Build 2015-2025 annual TPS for all 24 categories using historic data already in capsules. Enable growth rate comparison.
+13. **China opacity report** — Quantify what we don't know about China across all categories. Extend the digital wallets China model to other categories.
 
-14. **Peak TPS analysis** — Black Friday, Singles' Day, crypto crashes, options expiry — what's the coordinated global peak?
+14. **Declining categories analysis** — ATM withdrawals are declining. Are any others? Fixed income cash bond trading? Check/cheque payments? Build a "sunset watch" list.
 
-### Tier 4: Tooling & Presentation
+### Tier 4: Presentation & Tooling
 
-15. **Interactive dashboard** — Web-based Big Number visualization with drill-down by sector/category/region.
+15. **Update charts.py** — Add time-series chart, peak TPS calendar heatmap, overlap Sankey diagram.
 
-16. **API endpoint** — Serve data.json programmatically for downstream projects (Blokenet context).
+16. **Interactive dashboard** — Web-based Big Number visualization with drill-down.
 
-17. **Time-series animation** — Animated chart: TPS by category 2015→2035.
+17. **Automated pipeline** — Script that runs big_number + confidence_score + data_freshness + validate_schema in one command.
 
-18. **Automated confidence updater** — Script that re-scores confidence as new workings files are added.
+18. **Category comparison tool** — Given two categories, show side-by-side: TPS, value, growth rate, confidence, overlap.
 
-19. **Data freshness tracker** — Flag categories where sources are >12 months old.
+### Tier 5: Publication Preparation
+
+19. **Executive summary** — One-page summary of all findings suitable for external sharing.
+
+20. **Methodology paper** — Formal write-up of the measurement methodology, overlap deduction approach, and confidence scoring.
+
+21. **Data dictionary** — Document every field in data.json schema for downstream consumers.
 
 ## Data Sources to Investigate
 
-- **DTCC GCF Repo Index** — US repo market daily data
-- **Fed ON RRP** — Overnight reverse repo facility usage
-- **ECB Money Market Statistical Reporting** — Euro repo data
-- **Coalition Greenwich** — Institutional trading surveys (equity OTC, FX)
-- **FXCM/IG/Plus500 Annual Reports** — Retail forex trade counts
-- **ATM Industry Association** — Global ATM withdrawal statistics
-- **ADP Research** — Payroll transaction volumes
-- **Swiss Re sigma** — Insurance premium data
-- **Klarna/Affirm 10-K** — BNPL transaction counts
+- **x402 Protocol Metrics** — AI agent transaction data (for AI agents category)
+- **India BBPS** — Bharat Bill Payment System (centralized bill payment data)
+- **Apple App Store / Google Play Console** — In-app purchase statistics
+- **India GST Portal** — Tax transaction data
+- **ADP Quarterly Reports** — Payroll transaction volumes
+- **UK BACS/FPS Statistics** — Direct debit and faster payment data

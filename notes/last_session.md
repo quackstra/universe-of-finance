@@ -1,51 +1,69 @@
-# Last Session Notes — 2026-03-27
+# Last Session Notes — 2026-03-28
 
-## Runs Completed This Session: Run 3 (finish) + Run 4
+## Runs Completed This Session: Run 4 (finish) + Run 5 + Intergalactic Recruiter
 
-### Run 3 Completion (carried from prior session)
-- Committed schema normalization: all 24 data.json to consistent schema
-- Added tools: big_number.py (~71,105 TPS), validate_schema.py (24/24), normalize_schemas.py
+### Intergalactic Recruiter
+- Built SLE (Soul Less Employee) framework: 13 expert personas grounded in real job descriptions
+- RECRUITER.md dispatch matrix maps all categories to primary/secondary SLEs
+- Integrated into Elf pipeline via activation phrases
 
-### Run 4: Confidence Upgrades + Regional Decomposition (5 parallel agents)
+### Run 5: Full Elf Run (6 parallel agents, 29 categories)
 
-#### Agent 1: CEX Wash Trading Filter + Forex Count Triangulation
-- **CEX wash trading**: Tiered model (Tier 1: 3.5%, Tier 2: 20%, Tier 3: 45%) → blended 25% → TPS 4,050 → **3,040** (range 2,685–3,275). 9 academic/industry sources. Confidence interval narrowed 2.1×.
-- **Forex count**: 6 independent methods. Institutional: ~3.0M trades/day (~35 TPS). Including retail: ~13M/day (~150 TPS). Dealer-to-other-financial ticket size ($1.5M-$4.0M) is the pivotal assumption. Confidence: Low → Medium.
+#### Agent 1: Repo Market Deep Dive (SLE: fixed-income-specialist)
+- Repo revised 2.6× up: 84M → **219M trades/year** (~10.5 TPS incl. repo)
+- FICC GSD peaked at 1.206M transactions on Apr 9, 2025 (hard DTCC data)
+- China exchange-traded repo adds ~160-200K trades/day (retail-accessible segment)
+- Confidence interval narrowed from 4× to 3×
 
-#### Agent 2: Fixed Income + OTC Derivatives Count Refinement
-- **Fixed income**: Cash bonds revised to ~3.6 TPS (from ~7). US is ~70% of global trade count despite 33% of outstanding. TRACE (52M) + MSRB (14.5M) + Treasury (12.6M) = 79.1M/year US alone. Repo adds ~83.8M/year but carries 4× uncertainty. Total incl. repo: ~6.2 TPS.
-- **OTC derivatives**: Revised to ~0.15 TPS excl. FX (from ~0.3). IRD (3.1M) and CDS (0.6M) well-anchored via ISDA SwapsInfo. Equity and commodity OTC most opaque. FX derivatives (~5M/year) excluded to avoid double-counting with forex category. H1 2025 shows +27.5% IRD growth.
+#### Agent 2: CEX Regional + Retail Forex + Equity OTC (SLE: crypto-forensics + forex)
+- CEX wash rate refined: 25% → **20.6%** via regional decomposition. TPS 3,040 → **3,210**
+- Retail FX validated at **8M trades/day** via broker aggregation. Japan = 40% of global retail FX
+- Equity OTC doubled: 600K → **1.2M trades/year** via CFD + structured product modeling
 
-#### Agent 3: IoT/M2M Triangulation + Confidence Scoring Model
-- **IoT/M2M**: Revised 2.4× up: 634 → **1,538 TPS** (20B → 48.5B txns). Toll collection (27B, driven by China 12-15B + India FASTag 4B), vending (9.5B via Cantaloupe data), smart meters (8.5B), EV charging (3B per IEA).
-- **Confidence scorecard**: All 24 categories scored 0-100 across source quality, recency, triangulation, coverage. Consumer Cards tops at 91, AI Agents lowest at 34, median 62. All data.json updated with confidence blocks.
+#### Agent 3: New Categories — Insurance + BNPL + Bill Payments (SLE: market-research-analyst)
+- **Insurance premiums**: ~14B txns/year (~444 TPS), 90% overlap with cards/bank transfers
+- **BNPL**: ~5.5B purchases generating ~20B installment events (~634 TPS). 100% infrastructure overlap but creates genuine transaction multiplication (3.6×)
+- **Bill payments**: ~95B txns/year (~3,012 TPS) across 9 segments. 90% overlap with direct debit/card-on-file
 
-#### Agent 4: Regional Decomposition
-- **Cards by network**: Visa 303B, UnionPay ~247B, Mastercard ~185B, plus domestic networks (RuPay, Mir, Elo) = ~819B adjusted total. Reconciles within 0.4%.
-- **Bank transfers by system**: UPI (172B) + PIX (66B) = 63% of real-time payments. Nigeria NIP (11.2B) > UK + EU + US combined. ~60B unattributed.
-- **Equities by exchange**: India (NSE+BSE) = 28-29% of global trades despite 4% market cap. Zero-DTE options explosion. Sum reconciles within 0.6%.
+#### Agent 4: New Categories — Payroll + ATM + Gaming Overlap (SLE: govt-statistician + gaming-economy)
+- **Payroll**: ~41.2B txns/year (~1,305 TPS), 90% overlap with bank transfers
+- **ATM withdrawals**: ~49.1B txns/year (~1,557 TPS), declining at -3% CAGR. **Zero overlap** — unique cash-out category
+- **Gaming overlap**: 82% of gaming transactions already counted in cards/wallets. Only ~2.77B incremental (~88 TPS)
 
-#### Agent 5: Reconcile OVERLAP_MATRIX + README
-- L1/L2 TPS: 900 → 415 (Solana vote filter)
-- Government TPS: 793 → 1,002 (bottom-up model)
-- Interbank RTGS: 13.4 → 50.1 TPS; 423M → 1,581M txns
-- De-duplicated Big Number: **~70,741 TPS**
+#### Agent 5: Time-Series 2015-2025 (SLE: market-research-analyst)
+- Full 2015-2025 annual TPS for all 24 categories
+- Global gross TPS grew 6.7× in a decade: ~12,900 (2015) → ~86,900 (2025)
+- Fastest growers (2020-25 CAGR): RWA tokenisation 119%, stablecoins 103%, L1/L2 77%
+- India Effect: drove ETD from ~800 to ~9,500 TPS single-handedly
 
-## Git Commits (Run 4)
-1. `47acaa5` — Reconcile OVERLAP_MATRIX + README with Run 3 estimates
-2. `c12494a` — IoT/M2M triangulation + confidence scoring model
-3. `5940ffa` — Regional decomposition (cards/transfers/equities)
-4. `a386fa8` — CEX wash trading filter + forex count triangulation
-5. `040de28` — Fixed income + OTC derivatives count triangulation
+#### Agent 6: Peak TPS + Scenarios + Freshness Tool (SLE: emerging-tech-forecaster)
+- Coordinated global peak: ~147K–246K TPS (2.1–3.5× average Big Number)
+- Recession: Big Number barely moves (−0.3%); Pandemic: +18-28%; Crypto winter: −3%
+- Data freshness tool operational (tools/data_freshness.py)
 
-## Cumulative Key Findings (Runs 1-4)
-1. **De-duplicated global financial TPS: ~70,741** (programmatic via big_number.py)
-2. Payments = 75% of global TPS; consumer cards + digital wallets + bank transfers = 80%
-3. UPI alone (172B) > all global equity markets (61.5B) combined
-4. Double-counting between categories is ~14% (smaller than feared)
-5. Solana vote transactions inflate L1/L2 by 2-3×
-6. IoT/M2M is 2.4× larger than initial estimate (toll collection was massively underweighted)
-7. CEX wash trading ~25% blended (tiered model with regulated/unregulated split)
-8. Forex institutional count is only ~3M trades/day despite $7.5T turnover
-9. India dominates by count: #1 in equity trades (28%), #1 in real-time payments (UPI), growing in cards (RuPay)
-10. Confidence scores range 34-91 with median 62 — most opaque: AI agents, OTC derivatives, IoT/M2M
+## Taxonomy Expansion: 5 New Categories
+1. Insurance Premiums (payments sector)
+2. BNPL (payments sector)
+3. Bill Payments (payments sector)
+4. Payroll (payments sector)
+5. ATM Withdrawals (payments sector)
+
+Total categories: **29** (was 24)
+
+## Git Commits (Run 5)
+1. `74b282c` — Peak TPS analysis, macro scenarios, data freshness tool
+2. `cfbe103` — Time-series 2015-2025 + repo deep dive
+3. `b6f3801` — CEX regional wash, retail forex, equity OTC
+4. `2c50244` — Payroll, ATM withdrawals, gaming overlap
+5. `5d39d95` — Insurance premiums, BNPL, bill payments
+
+## Cumulative Key Findings (Runs 1-5)
+1. **De-duplicated global financial TPS: ~70,741** (needs re-running with 29 categories + revisions)
+2. 5 new categories add ~6,552 gross TPS but most overlaps with existing: incremental ~1,900 TPS (ATM + partial insurance/bills/payroll cash + BNPL multiplication)
+3. Repo market is 2.6× larger than estimated — fixed income TPS doubles
+4. Gaming is a commerce layer (82% overlap), like e-commerce (95% overlap)
+5. BNPL is a credit multiplier — creates 3.6× transactions on underlying payment rails
+6. ATM is the only declining category (-3% CAGR) and the only new category with zero overlap
+7. Global TPS grew 6.7× in a decade (2015-2025)
+8. Flash crash on quarter-end could push coordinated global peak to ~246K TPS
+9. Recessions barely affect the Big Number; pandemics increase it
