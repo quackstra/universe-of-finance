@@ -1,6 +1,6 @@
 # Last Session Notes — 2026-03-28
 
-## Runs Completed This Session: Run 4 (finish) + Run 5 + Intergalactic Recruiter
+## Runs Completed This Session: Run 4 (finish) + Run 5 + Intergalactic Recruiter + Run 6
 
 ### Intergalactic Recruiter
 - Built SLE (Soul Less Employee) framework: 13 expert personas grounded in real job descriptions
@@ -8,62 +8,66 @@
 - Integrated into Elf pipeline via activation phrases
 
 ### Run 5: Full Elf Run (6 parallel agents, 29 categories)
+- 5 new payment categories (insurance, BNPL, bill payments, payroll, ATM)
+- Time-series 2015-2025 for all categories
+- Peak TPS analysis, macro scenarios, data freshness tool
+- CEX wash rate refined (25% → 20.6%), repo market 2.6× larger than estimated
 
-#### Agent 1: Repo Market Deep Dive (SLE: fixed-income-specialist)
-- Repo revised 2.6× up: 84M → **219M trades/year** (~10.5 TPS incl. repo)
-- FICC GSD peaked at 1.206M transactions on Apr 9, 2025 (hard DTCC data)
-- China exchange-traded repo adds ~160-200K trades/day (retail-accessible segment)
-- Confidence interval narrowed from 4× to 3×
+### Run 6: Methodology + Measurement Overhaul (6 parallel agents)
 
-#### Agent 2: CEX Regional + Retail Forex + Equity OTC (SLE: crypto-forensics + forex)
-- CEX wash rate refined: 25% → **20.6%** via regional decomposition. TPS 3,040 → **3,210**
-- Retail FX validated at **8M trades/day** via broker aggregation. Japan = 40% of global retail FX
-- Equity OTC doubled: 600K → **1.2M trades/year** via CFD + structured product modeling
+#### Agent 1: 29-Category Reconciliation
+- Full overlap recalculation with all 29 categories
+- **New Big Number: ~73,750 de-duplicated TPS** (was ~70,741)
+- Range: 67,000–83,000 TPS
+- 17.4% gross-to-net deduction ratio
+- Updated OVERLAP_MATRIX.md with 15 deduction rules
 
-#### Agent 3: New Categories — Insurance + BNPL + Bill Payments (SLE: market-research-analyst)
-- **Insurance premiums**: ~14B txns/year (~444 TPS), 90% overlap with cards/bank transfers
-- **BNPL**: ~5.5B purchases generating ~20B installment events (~634 TPS). 100% infrastructure overlap but creates genuine transaction multiplication (3.6×)
-- **Bill payments**: ~95B txns/year (~3,012 TPS) across 9 segments. 90% overlap with direct debit/card-on-file
+#### Agent 2: Global + Sector Methodology Docs
+- GLOBAL_METHODOLOGY.md with full triangulation visual (top-down vs bottom-up)
+- 7 sector-level methodology docs (SECTOR_PAYMENTS.md through SECTOR_EMERGING.md)
+- All include ASCII art triangulation funnels, overlap waterfalls, source matrices
 
-#### Agent 4: New Categories — Payroll + ATM + Gaming Overlap (SLE: govt-statistician + gaming-economy)
-- **Payroll**: ~41.2B txns/year (~1,305 TPS), 90% overlap with bank transfers
-- **ATM withdrawals**: ~49.1B txns/year (~1,557 TPS), declining at -3% CAGR. **Zero overlap** — unique cash-out category
-- **Gaming overlap**: 82% of gaming transactions already counted in cards/wallets. Only ~2.77B incremental (~88 TPS)
+#### Agent 3: Payments Category Methodology (11 files)
+- METHODOLOGY.md for all 11 payments categories
+- Each includes triangulation funnel, source confidence matrix, regional heatmap
+- Follows VISUAL_TEMPLATE.md standards
 
-#### Agent 5: Time-Series 2015-2025 (SLE: market-research-analyst)
-- Full 2015-2025 annual TPS for all 24 categories
-- Global gross TPS grew 6.7× in a decade: ~12,900 (2015) → ~86,900 (2025)
-- Fastest growers (2020-25 CAGR): RWA tokenisation 119%, stablecoins 103%, L1/L2 77%
-- India Effect: drove ETD from ~800 to ~9,500 TPS single-handedly
+#### Agent 4: TradFi + Digital Assets Methodology (10 files)
+- METHODOLOGY.md for 6 TradFi + 4 Digital Assets categories
+- 1,937 lines of methodology documentation with visuals
 
-#### Agent 6: Peak TPS + Scenarios + Freshness Tool (SLE: emerging-tech-forecaster)
-- Coordinated global peak: ~147K–246K TPS (2.1–3.5× average Big Number)
-- Recession: Big Number barely moves (−0.3%); Pandemic: +18-28%; Crypto winter: −3%
-- Data freshness tool operational (tools/data_freshness.py)
+#### Agent 5: Banking + Gaming + Govt + Emerging Methodology (8 files)
+- METHODOLOGY.md for Banking (2), Gaming (2), Government (1), Emerging (3) categories
 
-## Taxonomy Expansion: 5 New Categories
-1. Insurance Premiums (payments sector)
-2. BNPL (payments sector)
-3. Bill Payments (payments sector)
-4. Payroll (payments sector)
-5. ATM Withdrawals (payments sector)
+#### Agent 6: Depth Research on Weakest Categories
+- **AI Agent Transactions** (conf: 34): Additional triangulation from Visa/Mastercard AI commerce, Stripe agent billing data
+- **In-Game Microtransactions** (conf: 44): Cross-validated with mobile analytics platforms
+- **Government Payments** (conf: 50): Added IRS/HMRC filing volume data
+- **Payroll** (conf: 35): ILO employment data + banking batch frequency model
 
-Total categories: **29** (was 24)
+#### New SLEs (3 methodology specialists)
+- `market-sizing-specialist` — TAM/SAM/SOM framework, top-down vs bottom-up reconciliation
+- `measurement-standards-expert` — Transaction lifecycle mapping, definitional alignment
+- `statistical-methodologist` — Confidence intervals, imputation, coverage gap modeling
+- All three form the Methodology Review Panel for high-stakes estimates
 
-## Git Commits (Run 5)
-1. `74b282c` — Peak TPS analysis, macro scenarios, data freshness tool
-2. `cfbe103` — Time-series 2015-2025 + repo deep dive
-3. `b6f3801` — CEX regional wash, retail forex, equity OTC
-4. `2c50244` — Payroll, ATM withdrawals, gaming overlap
-5. `5d39d95` — Insurance premiums, BNPL, bill payments
+## Git Commits (Run 6)
+1. `83469bb` — Recruit 3 measurement SLEs
+2. `905d825` — Reconcile Big Number for 29 categories
+3. `075a66e` — Methodology docs: Banking, Gaming, Govt, Emerging + Global + Sector
+4. `3e25e6e` — Methodology docs: 11 payments categories
+5. `e596952` — Methodology docs: TradFi + Digital Assets (10 categories)
+6. `eea61db` — Depth research on 4 weakest categories
+7. `e1c30a9` — Update root README Big Number
 
-## Cumulative Key Findings (Runs 1-5)
-1. **De-duplicated global financial TPS: ~70,741** (needs re-running with 29 categories + revisions)
-2. 5 new categories add ~6,552 gross TPS but most overlaps with existing: incremental ~1,900 TPS (ATM + partial insurance/bills/payroll cash + BNPL multiplication)
-3. Repo market is 2.6× larger than estimated — fixed income TPS doubles
-4. Gaming is a commerce layer (82% overlap), like e-commerce (95% overlap)
-5. BNPL is a credit multiplier — creates 3.6× transactions on underlying payment rails
-6. ATM is the only declining category (-3% CAGR) and the only new category with zero overlap
-7. Global TPS grew 6.7× in a decade (2015-2025)
-8. Flash crash on quarter-end could push coordinated global peak to ~246K TPS
-9. Recessions barely affect the Big Number; pandemics increase it
+## Cumulative Key Findings (Runs 1-6)
+1. **De-duplicated global financial TPS: ~73,750** (range 67K-83K)
+2. 29 categories across 7 sectors, all with METHODOLOGY.md + triangulation visuals
+3. 16 Soul Less Employees (13 domain + 3 methodology) with dispatch matrix
+4. Full 2015-2025 time-series: global TPS grew 6.7× in a decade
+5. Coordinated global peak: ~147K–246K TPS
+6. Top 3 categories (cards + wallets + bank transfers) = ~80% of global TPS
+7. Gaming and e-commerce are commerce layers (82% and 95% overlap with payment rails)
+8. ATM is the only declining category (-3% CAGR) and only category with zero overlap
+9. Recessions barely affect the Big Number (-0.3%); pandemics increase it (+18-28%)
+10. Confidence scores range 34 (AI agents) to 91 (consumer cards), median 62
