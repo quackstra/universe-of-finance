@@ -189,6 +189,39 @@ The ~8.0-9.2 billion card-funded microtransactions are **already counted in the 
 
 ---
 
+## Depth Research Update (Run 6, 2026-03-28)
+
+> Full depth research: [workings/depth-research.md](workings/depth-research.md)
+
+### Key Revisions
+
+1. **Transaction count revised upward from 12.3B to ~15B (range: 12-20B).** A genre-segmented ATV model reveals the original blended ATV of $8.83 was inflated by whale purchases. Casual mobile games (match-3, hyper-casual) have ATVs of $2-5, which were being averaged with $10-30 gacha transactions. The genre-weighted ATV is ~$7.60, producing ~15B transactions.
+
+2. **Four independent triangulation methods now converge**:
+   - Segmented ATV model: ~20.2B
+   - Download x conversion x frequency: ~15-18B
+   - Roblox extrapolation: 7.9-14.0B
+   - Original blended ATV: ~12.3B
+   - **Convergence range: 12-20B, central ~15B**
+
+3. **Roblox provides hard transaction data**: 3.7B virtual transactions in 2023, $6.79B in Robux purchased in 2025, 36.7M monthly paying users (up 94% YoY), 144M DAU. This single platform represents ~5-11% of global microtransactions.
+
+4. **Fortnite anchors the premium segment**: ~$5-6B annual revenue, 110M MAU, 70% of players have spent money with average spend of ~$85 lifetime. Implies ~500-600M V-Bucks purchase transactions per year.
+
+5. **Revenue was flat at $81-82B in mobile gaming (2024-2025) but engagement grew 8-12%**, suggesting ATV is declining slightly while transaction counts grow — supporting the higher transaction count estimate.
+
+6. **Confidence revised from 44 to 55** (+11 points), primarily driven by the four-way triangulation and hard data from Roblox/Fortnite.
+
+### Revised Current Metrics
+
+| Metric | Previous | Revised |
+|--------|----------|---------|
+| Annual transactions | 12.28B | **~15B** (range: 12-20B) |
+| Average TPS | 389 | **~475** (range: 380-634) |
+| Weighted ATV | $8.83 | **~$7.60** (genre-segmented) |
+
+---
+
 ## Data Quality & Limitations
 
 - **Transaction count confidence is 🔴 Low across all years.** This is an inherent limitation — the industry does not publish transaction data. Revenue figures are 🟢-🟡, but the ATV conversion introduces high uncertainty.

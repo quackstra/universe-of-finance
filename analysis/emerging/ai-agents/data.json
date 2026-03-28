@@ -2,37 +2,37 @@
   "category": "AI Agent Transactions",
   "slug": "ai-agents",
   "sector": "Emerging",
-  "last_updated": "2026-03-26",
+  "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 0.66,
-      "source": "x402 current daily volume (Mar 2026): ~57K / 86,400 seconds",
-      "url": "https://blog.millionero.com/blog/ai-agents-in-crypto-how-autonomous-finance-is-becoming-real-in-2026/",
-      "confidence": "medium",
-      "note": "Post-hype correction; -92% from Dec 2025 peak"
+      "value": 3.5,
+      "source": "x402 organic ~65K/day + estimated non-x402 protocols ~130-325K/day = ~195-390K total / 86,400 sec. Midpoint ~3.5 TPS.",
+      "url": "https://phemex.com/news/article/x402-protocols-daily-transactions-lag-despite-ai-payment-hype-65787",
+      "confidence": "low",
+      "note": "Range: 2-5 TPS. x402 data verified on-chain but ~50% is wash trading. Non-x402 protocols (AP2, Stripe SPT) have no published volume data."
     },
     "peak_tps": {
-      "value": 8.5,
-      "source": "x402 peak daily volume (Dec 2025): ~731K / 86,400 seconds",
-      "url": "https://blog.millionero.com/blog/ai-agents-in-crypto-how-autonomous-finance-is-becoming-real-in-2026/",
-      "confidence": "medium",
-      "note": "x402 protocol only; does not include AP2 or custom enterprise solutions"
+      "value": 44,
+      "source": "x402 Feb 2026 spike: 3.8M txns in a day (infrastructure testing), plus non-x402 estimated 2-5x",
+      "url": "https://phemex.com/news/article/x402-protocols-daily-transactions-lag-despite-ai-payment-hype-65787",
+      "confidence": "low",
+      "note": "Feb 2026 spike was primarily infrastructure testing, not organic demand"
     },
     "daily_volume": {
-      "value": 57000,
-      "source": "x402 daily transactions (Mar 2026)",
-      "url": "https://blog.millionero.com/blog/ai-agents-in-crypto-how-autonomous-finance-is-becoming-real-in-2026/",
-      "confidence": "medium"
+      "value": 195000,
+      "source": "x402 organic ~65K + estimated non-x402 ~130K = ~195K midpoint. See workings/depth-research.md.",
+      "url": "https://www.coindesk.com/markets/2026/03/11/coinbase-backed-ai-payments-protocol-wants-to-fix-micropayment-but-demand-is-just-not-there-yet",
+      "confidence": "low"
     },
     "annual_value_usd": {
-      "value": 600000000,
-      "source": "x402 annual payment volume (2025)",
-      "url": "",
-      "confidence": "medium"
+      "value": 25000000,
+      "source": "x402 genuine daily value ~$14K × 365 = $5.1M. Other protocols estimated 2-5x. Midpoint ~$25M. Original $600M figure was inflated by wash trading and testing.",
+      "url": "https://www.coindesk.com/markets/2026/03/11/coinbase-backed-ai-payments-protocol-wants-to-fix-micropayment-but-demand-is-just-not-there-yet",
+      "confidence": "low"
     },
     "annual_volume": {
-      "value": null,
-      "source": "",
+      "value": 71000000,
+      "source": "x402 organic ~24M/year + non-x402 estimated ~48M = ~72M. See workings/depth-research.md triangulation funnel.",
       "url": "",
       "confidence": "low"
     }
@@ -276,11 +276,11 @@
     }
   ],
   "confidence": {
-    "score": 34,
-    "source_quality": 8,
+    "score": 38,
+    "source_quality": 10,
     "data_recency": 16,
-    "triangulation": 5,
+    "triangulation": 7,
     "coverage": 5,
-    "notes": "Pre-market category. Most data is projections, not measurements. Very low base makes any estimate unreliable."
+    "notes": "Pre-market category. Depth research (Run 6) revealed x402 daily value is ~$28K (50% wash trading), not the implied $600M/yr. LLM API ceiling (2-3T calls/yr), on-chain observable, and infrastructure estimates provide three-way triangulation. Fundamental immaturity (<2 years data) caps confidence."
   }
 }

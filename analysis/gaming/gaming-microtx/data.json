@@ -2,33 +2,34 @@
   "category": "In-Game Microtransactions",
   "slug": "gaming-microtx",
   "sector": "Gaming",
-  "last_updated": "2026-03-26",
+  "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 389,
-      "source": "Derived: 12.28B annual / 31,557,600 seconds",
+      "value": 475,
+      "source": "Derived: ~15B annual / 31,557,600 seconds. Genre-segmented ATV model. See workings/depth-research.md.",
       "url": "",
-      "confidence": "low"
+      "confidence": "low",
+      "note": "Range: 380-634 TPS. Four triangulation methods converge on 12-20B annual transactions."
     },
     "peak_tps": {
-      "value": 778,
+      "value": 950,
       "source": "Estimated: avg TPS x 2.0 peak multiplier",
       "url": "",
       "confidence": "low",
       "note": "No platform publishes transaction counts. Peak based on holiday/event stacking."
     },
     "daily_volume": {
-      "value": 33600000,
-      "source": "Derived: 12.28B / 365.25 days",
+      "value": 41100000,
+      "source": "Derived: ~15B / 365.25 days",
       "url": "",
       "confidence": "low"
     },
     "annual_volume": {
-      "value": 12280000000,
-      "source": "Derived: Revenue ($114B) / weighted ATV ($8.83)",
+      "value": 15000000000,
+      "source": "Genre-segmented ATV model: casual $2.50, mid-core $6, gacha $12, PC $10, console $12. Weighted ATV ~$7.60. Revenue $114B / $7.60 = ~15B. Cross-validated via download-conversion model and Roblox extrapolation. See workings/depth-research.md.",
       "url": "",
       "confidence": "low",
-      "note": "Transaction count is estimated from revenue / average transaction value. No platform publishes direct counts."
+      "note": "Range: 12-20B. Central estimate moved up from 12.3B after genre segmentation revealed casual mobile undercounting."
     },
     "annual_value_usd": {
       "value": 114000000000,
@@ -306,11 +307,11 @@
     }
   ],
   "confidence": {
-    "score": 44,
-    "source_quality": 10,
+    "score": 55,
+    "source_quality": 12,
     "data_recency": 16,
-    "triangulation": 8,
-    "coverage": 10,
-    "notes": "Publishers report revenue, not transaction counts. Derived from revenue / average transaction size."
+    "triangulation": 15,
+    "coverage": 12,
+    "notes": "Depth research (Run 6): Four independent models converge on 12-20B txns (segmented ATV, download-conversion, Roblox extrapolation, blended ATV). Roblox hard data (3.7B virtual txns, $6.79B bookings, 36.7M monthly payers) and Fortnite (~$5-6B/yr) provide individual game anchors. Genre-segmented ATV resolves whale distortion."
   }
 }

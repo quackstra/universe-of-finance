@@ -162,6 +162,32 @@ Growth rate analysis is premature for a category this young. The meaningful ques
 
 ---
 
+## Depth Research Update (Run 6, 2026-03-28)
+
+> Full depth research: [workings/depth-research.md](workings/depth-research.md)
+
+### Key Revisions
+
+1. **x402 actual daily value is ~$28,000, not an implied $1.6M/day from the $600M annual figure.** On-chain verification via CoinDesk, Phemex, and MEXC reveals that x402 processes ~131,000 daily transactions worth ~$28,000, with approximately 50% being wash trading/artificial volume. Genuine organic volume is ~65,000 transactions/day at ~$14,000/day.
+
+2. **Annual payment volume revised dramatically downward**: from $600M to ~$5-50M across all agent payment protocols. The $600M figure was inflated by including wash trading and infrastructure testing spikes.
+
+3. **LLM API calls provide a ceiling estimate**: OpenAI processes 2.2B+ API calls/day, ChatGPT handles 2.5B queries/day. Total major LLM API calls estimated at 2-3T/year. If 0.1-1% involve a payment action, that implies 2-30B potential agent payment transactions/year as an absolute upper bound.
+
+4. **Infrastructure is ahead of volume**: Stripe launched Agentic Commerce Suite and x402 USDC support; Microsoft has 160,000+ orgs building agents via Copilot Studio; Visa partnered with Paradigm for agent payments. But none publish transaction volumes.
+
+5. **Confidence revised from 34 to 38** (+4 points). The modest increase reflects a paradox: we now have better data, but that data shows the original estimates were too optimistic.
+
+### Revised Current Metrics
+
+| Metric | Previous | Revised |
+|--------|----------|---------|
+| Current avg TPS | 0.66 | 2-5 (including estimated non-x402) |
+| Annual value | $600M | ~$5-50M (genuine, all protocols) |
+| x402 daily genuine transactions | ~57,000 | ~65,000 (after removing wash trading) |
+
+---
+
 ## Data Quality & Limitations
 
 - **Extremely nascent category** — less than 2 years of production data exists. All analysis is preliminary.

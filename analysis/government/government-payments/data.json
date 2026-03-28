@@ -2,11 +2,11 @@
   "category": "Tax & Government Payments",
   "slug": "government-payments",
   "sector": "Government",
-  "last_updated": "2026-03-26",
+  "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 1002,
-      "source": "Bottom-up model: US (5.09B) + India (8.19B) + EU (5.84B) + RoW (12.5B) = ~31.6B / 31,536,000 sec. See workings/bottom-up-model.md.",
+      "value": 1015,
+      "source": "Depth research bottom-up: US (4.1B) + India (8.7B) + EU (5.0B) + UK (0.5B) + Brazil (0.7B) + China (3.8B) + Japan (0.7B) + RoW (8.5B) = ~32B / 31,536,000 sec. See workings/depth-research.md.",
       "url": "",
       "confidence": "medium"
     },
@@ -18,17 +18,17 @@
       "note": "Extreme seasonality — tax deadlines and benefits payment days create spikes 5-10x average"
     },
     "daily_volume": {
-      "value": 86600000,
-      "source": "Derived: ~31.6B / 365 days",
+      "value": 87700000,
+      "source": "Derived: ~32B / 365 days",
       "url": "",
       "confidence": "medium"
     },
     "annual_volume": {
-      "value": 31600000000,
-      "source": "Bottom-up model across US (5.09B), India (8.19B), EU (5.84B), and tiered RoW extrapolation. See workings/bottom-up-model.md.",
+      "value": 32000000000,
+      "source": "Depth research bottom-up: US 4.1B (IRS Data Book FY2024 + SSA), India 8.7B (GSTN + DBT), EU 5.0B, UK 0.5B (DWP), Brazil 0.7B (Pix), China 3.8B, Japan 0.7B, RoW 8.5B. See workings/depth-research.md.",
       "url": "",
       "confidence": "medium",
-      "note": "Range: 28-32B. Three independent country models anchor the estimate, covering ~46% of global GDP."
+      "note": "Range: 28-38B. Four triangulation methods converge (top-down GDP, bottom-up country, payment system cross-check, India DBT anchor). US, India, UK now have hard data anchors."
     },
     "annual_value_usd": {
       "value": 27500000000000,
@@ -326,11 +326,11 @@
     }
   ],
   "confidence": {
-    "score": 50,
-    "source_quality": 16,
-    "data_recency": 14,
-    "triangulation": 10,
-    "coverage": 10,
-    "notes": "Tax payment counts are published by some revenue authorities but aggregation is difficult. Social benefit disbursements better documented."
+    "score": 60,
+    "source_quality": 18,
+    "data_recency": 16,
+    "triangulation": 14,
+    "coverage": 12,
+    "notes": "Depth research (Run 6): IRS Data Book FY2024 (266M+ returns, $5.1T collections), India GSTN (15.1M active, 164.43cr cumulative returns), India DBT (7.4B txns), UK DWP (8.4M UC recipients), Nacha ACH (8.74B direct deposits 2025), Brazil Pix (63.4B total txns). Four triangulation methods converge on 28-38B range."
   }
 }

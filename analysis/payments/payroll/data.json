@@ -5,30 +5,31 @@
   "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 1305,
-      "source": "Derived: 41.2B annual / 31,557,600 seconds",
+      "value": 1236,
+      "source": "Derived: ~39B annual / 31,557,600 seconds. BLS-corrected US pay frequency + revised informal sector. See workings/depth-research.md.",
       "url": "",
-      "confidence": "low"
+      "confidence": "low",
+      "note": "Range: 1,205-1,460 TPS. US component revised upward (+38%) by BLS data but informal sector revised downward (-21%)."
     },
     "peak_tps": {
-      "value": 6525,
+      "value": 6180,
       "source": "Estimated: avg TPS x 5.0 peak multiplier (payday concentration)",
       "url": "",
       "confidence": "low",
       "note": "Payroll is extremely peaky — US biweekly payday Fridays concentrate ~50% of monthly volume into 2 days. Month-end in EU/Asia adds further spikes."
     },
     "daily_volume": {
-      "value": 112900000,
-      "source": "Derived: 41.2B / 365.25 days",
+      "value": 106800000,
+      "source": "Derived: ~39B / 365.25 days",
       "url": "",
       "confidence": "low"
     },
     "annual_volume": {
-      "value": 41200000000,
-      "source": "Derived: Regional employment × pay frequency model (see workings/calculations.md)",
+      "value": 39000000000,
+      "source": "BLS-corrected US pay frequency (43% biweekly, 27% weekly, 19.8% semi-monthly, 10.3% monthly) + revised informal sector estimate. See workings/depth-research.md.",
       "url": "",
       "confidence": "low",
-      "note": "No single source publishes global payroll transaction counts. Derived from ILO employment, BLS, Eurostat, NBS China, and national labor statistics."
+      "note": "Range: 38-46B. US revised to 4.68B (up from 3.4B) via BLS data. Informal sector revised to ~14.3B (down from 18B). Nacha ACH 8.74B direct deposits cross-validates US estimate."
     },
     "annual_value_usd": {
       "value": 32000000000000,
@@ -301,11 +302,11 @@
     }
   ],
   "confidence": {
-    "score": 35,
-    "source_quality": 8,
-    "data_recency": 10,
-    "triangulation": 7,
+    "score": 48,
+    "source_quality": 12,
+    "data_recency": 14,
+    "triangulation": 12,
     "coverage": 10,
-    "notes": "No single source counts global payroll transactions. Derived from employment × frequency model. Formal-sector bias is severe."
+    "notes": "Depth research (Run 6): BLS 2023 pay frequency data corrects US model (biweekly 43%, weekly 27%, semi-monthly 19.8%, monthly 10.3%). Nacha ACH 8.74B direct deposits (2025) provides independent US ceiling. UK 96.6% monthly confirmed. Four triangulation methods converge on 38-46B. Main gap: China/Africa pay frequency data."
   }
 }
