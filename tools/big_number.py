@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Universe of Finance — Big Number Calculator
 
-Reads all 24 normalized data.json files and computes de-duplicated global financial TPS.
+Reads all 29 normalized data.json files and computes de-duplicated global financial TPS.
 """
 
 import argparse
@@ -16,6 +16,7 @@ ANALYSIS_ROOT = Path(__file__).resolve().parent.parent / "analysis"
 # "exclude": entire category excluded from TPS sum
 # "pct": reduce annual_volume by X%
 # "flat_vol": subtract flat number from annual_volume
+# "incremental_tps": use a fixed incremental TPS instead of raw
 DEDUCTIONS = {
     "digital-wallets": {
         "type": "flat_vol",
@@ -28,11 +29,25 @@ DEDUCTIONS = {
     "defi": {"type": "exclude", "reason": "Full subset of L1/L2 blockchain transactions"},
     "stablecoins": {"type": "exclude", "reason": "Full subset of L1/L2 blockchain transactions"},
     "government-payments": {"type": "pct", "pct": 60, "reason": "~60% flows via ACH/bank transfers"},
-    "gaming-microtx": {"type": "exclude_tps", "reason": "Commerce layer; settles on card rails (65-75%)"},
-    "gaming-sales": {"type": "exclude_tps", "reason": "Commerce layer; settles on card rails (70-80%)"},
+    "gaming-microtx": {"type": "incremental_tps", "tps": 70, "reason": "82% on card/wallet rails; ~18% incremental (~70 TPS)"},
+    "gaming-sales": {"type": "incremental_tps", "tps": 18, "reason": "84% on card/wallet rails; ~16% incremental (~18 TPS)"},
     "iot-m2m": {"type": "pct", "pct": 75, "reason": "~75% settles on existing card/bank rails"},
     "rwa-tokenisation": {"type": "exclude", "reason": "Full subset of L1/L2 blockchain transactions"},
     "ai-agents": {"type": "exclude", "reason": "Full subset of L1/L2 blockchain transactions"},
+    # --- Run 6: 5 new category deductions ---
+    "insurance-premiums": {"type": "pct", "pct": 90, "reason": "~90% flows via card/direct debit rails already counted"},
+    "bnpl": {"type": "incremental_tps", "tps": 460, "reason": "100% infra overlap, but 3.6x multiplier creates ~14.5B net new installment events (~460 TPS)"},
+    "bill-payments": {"type": "pct", "pct": 90, "reason": "~90% flows via direct debit/card-on-file rails already counted"},
+    "payroll": {"type": "pct", "pct": 90, "reason": "~90% is ACH/BACS/SEPA batch already counted in bank transfers"},
+    "atm-withdrawals": {"type": "pct", "pct": 0, "reason": "0% overlap — unique cash-out events, not counted elsewhere"},
+}
+
+# Run 5 revised estimates: override avg_tps for categories where the
+# data.json primary field is conservative but the revised figure is more accurate.
+# These overrides apply BEFORE deductions.
+REVISED_TPS_OVERRIDES = {
+    "forex": 127,            # Was ~40 (institutional-only); revised incl. retail: ~127
+    "fixed-income": 10.5,    # Was ~3.6 (cash bonds only); revised incl. repo: ~10.5
 }
 
 SECONDS_PER_YEAR = 31_536_000
@@ -55,9 +70,32 @@ def load_all_categories() -> list[dict]:
 
 
 def get_val(cat: dict, field: str):
-    """Get a numeric value from the current metrics."""
+    """Get a numeric value from the current metrics.
+
+    Special handling:
+    - BNPL uses avg_tps_installment instead of avg_tps (installment-level counting)
+    - BNPL uses annual_volume_installments instead of annual_volume
+    - Forex/fixed-income have REVISED_TPS_OVERRIDES applied
+    """
+    slug = cat.get("slug", "")
+
+    # BNPL: use installment-level metrics (these are the real payment events)
+    if slug == "bnpl":
+        if field == "avg_tps":
+            v = cat.get("current", {}).get("avg_tps_installment", {}).get("value")
+            return v if v is not None else 0
+        if field == "annual_volume":
+            v = cat.get("current", {}).get("annual_volume_installments", {}).get("value")
+            return v if v is not None else 0
+
     v = cat.get("current", {}).get(field, {}).get("value")
-    return v if v is not None else 0
+    val = v if v is not None else 0
+
+    # Apply TPS overrides for categories with revised Run 5 estimates
+    if field == "avg_tps" and slug in REVISED_TPS_OVERRIDES:
+        val = REVISED_TPS_OVERRIDES[slug]
+
+    return val
 
 
 def compute_raw(categories: list[dict]) -> dict:
@@ -131,6 +169,12 @@ def compute_deduped(categories: list[dict]) -> dict:
                 effective_vol = 0
                 deducted = True
                 deduction_log.append(f"  {slug:25s}  EXCLUDED from TPS  ({deduction['reason']})")
+            elif dtype == "incremental_tps":
+                inc_tps = deduction["tps"]
+                effective_tps = inc_tps
+                effective_vol = int(inc_tps * SECONDS_PER_YEAR)
+                deducted = True
+                deduction_log.append(f"  {slug:25s}  INCREMENTAL  TPS: {avg_tps:>10.1f} -> {effective_tps:>10.1f}  ({deduction['reason']})")
             elif dtype == "pct":
                 pct = deduction["pct"]
                 removed_tps = avg_tps * pct / 100
@@ -260,8 +304,12 @@ def run_sensitivity(categories: list[dict]):
         ("Digital wallets -100B (vs -212B)", "digital-wallets", {"type": "flat_vol", "deductions": [{"amount": 100_000_000_000, "reason": "test"}]}),
         ("Government -40% (vs -60%)", "government-payments", {"type": "pct", "pct": 40, "reason": "test"}),
         ("IoT -50% (vs -75%)", "iot-m2m", {"type": "pct", "pct": 50, "reason": "test"}),
-        ("Include gaming in TPS", "gaming-microtx", None),
+        ("Include gaming full TPS", "gaming-microtx", None),
         ("Include DeFi (not subset)", "defi", None),
+        ("Bill payments 80% overlap (vs 90%)", "bill-payments", {"type": "pct", "pct": 80, "reason": "test"}),
+        ("Payroll 80% overlap (vs 90%)", "payroll", {"type": "pct", "pct": 80, "reason": "test"}),
+        ("Insurance 80% overlap (vs 90%)", "insurance-premiums", {"type": "pct", "pct": 80, "reason": "test"}),
+        ("BNPL incremental 600 TPS (vs 460)", "bnpl", {"type": "incremental_tps", "tps": 600, "reason": "test"}),
     ]
 
     print(f"  {'Scenario':45s} {'TPS':>12s} {'Delta':>12s} {'% Change':>10s}")

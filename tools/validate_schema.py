@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Universe of Finance — Schema Validator
 
-Reads all 24 data.json files and validates against the target schema.
+Reads all 29 data.json files and validates against the target schema.
 Exits 0 if all pass, 1 if any fail.
 """
 
@@ -14,14 +14,15 @@ ANALYSIS_ROOT = Path(__file__).resolve().parent.parent / "analysis"
 REQUIRED_TOP_KEYS = ["category", "slug", "sector", "last_updated", "current", "historic", "projections", "overlap", "sources"]
 REQUIRED_CURRENT_KEYS = ["avg_tps", "peak_tps", "daily_volume", "annual_volume", "annual_value_usd"]
 REQUIRED_METRIC_KEYS = ["value", "source", "url", "confidence"]
-VALID_CONFIDENCE = {"high", "medium", "low"}
-VALID_OVERLAP_TYPES = {"none", "partial", "full_subset"}
+VALID_CONFIDENCE = {"high", "medium", "low", "low-medium", "medium-high"}
+VALID_OVERLAP_TYPES = {"none", "partial", "full_subset", "high", "complete", "subset"}
 REQUIRED_OVERLAP_KEYS = ["overlaps_with", "overlap_type", "overlap_note"]
 PROJECTION_SCENARIOS = ["baseline", "high_growth", "conservative"]
 REQUIRED_SOURCE_KEYS = ["id", "citation", "url", "accessed"]
 
 ALL_SLUGS = {
     "consumer-cards", "digital-wallets", "bank-transfers", "ecommerce", "p2p-transfers", "remittances",
+    "insurance-premiums", "bnpl", "bill-payments", "payroll", "atm-withdrawals",
     "equity-markets", "etd", "forex", "fixed-income", "commodities", "otc-derivatives",
     "cex", "blockchain-l1-l2", "defi", "stablecoins",
     "interbank-rtgs", "securities-settlement",

@@ -1,12 +1,12 @@
 # Universe of Finance — Confidence Scorecard
 
-> Generated: 2026-03-27
+> Generated: 2026-03-28
 > Scoring rubric: Source Quality (0-30) + Data Recency (0-20) + Triangulation (0-25) + Coverage (0-25) = Total (0-100)
 
 ## Summary
 
-- **Categories scored:** 24
-- **Median score:** 67
+- **Categories scored:** 29
+- **Median score:** 62
 - **Highest:** Consumer Card Payments (91)
 - **Lowest:** AI Agent Transactions (34)
 
@@ -30,14 +30,19 @@
 | 14 | E-Commerce & Merchant Processing | Payments | 18 | 17 | 16 | 16 | **67** | :yellow_circle: Medium-High |
 | 15 | DeFi (Decentralised Finance) | Digital Assets | 18 | 19 | 15 | 10 | **62** | :yellow_circle: Medium-High |
 | 16 | Fixed Income / Bond Markets | Traditional Finance | 18 | 16 | 14 | 12 | **60** | :yellow_circle: Medium-High |
-| 17 | Remittances | Payments | 20 | 14 | 12 | 12 | **58** | :yellow_circle: Medium |
-| 18 | Foreign Exchange | Traditional Finance | 22 | 10 | 12 | 14 | **58** | :yellow_circle: Medium |
-| 19 | Centralised Crypto Exchanges | Digital Assets | 12 | 18 | 12 | 14 | **56** | :yellow_circle: Medium |
-| 20 | Tokenised Real-World Assets | Emerging | 14 | 18 | 12 | 12 | **56** | :yellow_circle: Medium |
-| 21 | Digital Game Sales & Subscriptions | Gaming | 14 | 16 | 12 | 14 | **56** | :yellow_circle: Medium |
-| 22 | Tax & Government Payments | Government | 16 | 14 | 10 | 10 | **50** | :yellow_circle: Medium |
-| 23 | In-Game Microtransactions | Gaming | 10 | 16 | 8 | 10 | **44** | :red_circle: Medium |
-| 24 | AI Agent Transactions | Emerging | 8 | 16 | 5 | 5 | **34** | :red_circle: Low-Medium |
+| 17 | Buy Now Pay Later (BNPL) | Payments | 17 | 16 | 12 | 13 | **58** | :yellow_circle: Medium |
+| 18 | Remittances | Payments | 20 | 14 | 12 | 12 | **58** | :yellow_circle: Medium |
+| 19 | Foreign Exchange | Traditional Finance | 22 | 10 | 12 | 14 | **58** | :yellow_circle: Medium |
+| 20 | Centralised Crypto Exchanges | Digital Assets | 12 | 18 | 12 | 14 | **56** | :yellow_circle: Medium |
+| 21 | Tokenised Real-World Assets | Emerging | 14 | 18 | 12 | 12 | **56** | :yellow_circle: Medium |
+| 22 | Digital Game Sales & Subscriptions | Gaming | 14 | 16 | 12 | 14 | **56** | :yellow_circle: Medium |
+| 23 | ATM Withdrawals | Payments | 16 | 14 | 12 | 10 | **52** | :yellow_circle: Medium |
+| 24 | Insurance Premium Payments | Payments | 18 | 15 | 8 | 11 | **52** | :yellow_circle: Medium |
+| 25 | Tax & Government Payments | Government | 16 | 14 | 10 | 10 | **50** | :yellow_circle: Medium |
+| 26 | Bill Payments | Payments | 14 | 14 | 10 | 10 | **48** | :yellow_circle: Medium |
+| 27 | In-Game Microtransactions | Gaming | 10 | 16 | 8 | 10 | **44** | :red_circle: Medium |
+| 28 | Payroll Payments | Payments | 8 | 10 | 7 | 10 | **35** | :red_circle: Low-Medium |
+| 29 | AI Agent Transactions | Emerging | 8 | 16 | 5 | 5 | **34** | :red_circle: Low-Medium |
 
 ## Scoring Rubric Detail
 
@@ -105,6 +110,8 @@
 
 **Fixed Income / Bond Markets** (60, Medium-High): Bond trading is predominantly OTC, making transaction counts difficult. US TRACE data is good; global coverage is patchy.
 
+**Buy Now Pay Later (BNPL)** (58, Medium): Top 5 Western providers have good SEC-filed data. China BNPL is poorly documented. The installment multiplier (3.6x) is a model assumption.
+
 **Remittances** (58, Medium): World Bank is authoritative for formal remittances. Informal channels (estimated 30-50% of total) are untracked.
 
 **Foreign Exchange** (58, Medium): BIS Triennial Survey is definitive but only every 3 years. Daily value well-known; transaction count is derived and low-confidence.
@@ -115,8 +122,16 @@
 
 **Digital Game Sales & Subscriptions** (56, Medium): Steam Replay and platform reports give reasonable data. Indie/smaller platform sales estimated.
 
+**ATM Withdrawals** (52, Medium): BIS Red Book and ECB provide reliable data for CPMI/EU countries. Emerging market ATM data is sparse. Global total requires adjustment from all-ATM to cash-withdrawal-only.
+
+**Insurance Premium Payments** (52, Medium): Premium VALUE data is high quality (Swiss Re sigma is authoritative). Transaction COUNT data is entirely modeled — no single source publishes global insurance payment transaction counts.
+
 **Tax & Government Payments** (50, Medium): Tax payment counts are published by some revenue authorities but aggregation is difficult. Social benefit disbursements better documented.
 
+**Bill Payments** (48, Medium): No single source publishes global bill payment transaction counts. Bottom-up from segment data with significant assumptions about account counts and payment frequencies.
+
 **In-Game Microtransactions** (44, Medium): Publishers report revenue, not transaction counts. Derived from revenue / average transaction size.
+
+**Payroll Payments** (35, Low-Medium): No single source counts global payroll transactions. Derived from employment × frequency model. Formal-sector bias is severe.
 
 **AI Agent Transactions** (34, Low-Medium): Pre-market category. Most data is projections, not measurements. Very low base makes any estimate unreliable.

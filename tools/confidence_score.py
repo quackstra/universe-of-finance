@@ -2,7 +2,7 @@
 """
 Confidence Scoring Model for Universe of Finance data.json files.
 
-Reads all 24 data.json files, scores each on a 0-100 rubric across four
+Reads all 29 data.json files, scores each on a 0-100 rubric across four
 dimensions, writes scores back into each data.json, and generates
 analysis/CONFIDENCE_SCORECARD.md.
 
@@ -124,7 +124,44 @@ SCORES: dict[str, dict] = {
         "notes": "Tax payment counts are published by some revenue authorities but aggregation is difficult. Social benefit disbursements better documented.",
     },
 
-    # ── Payments ─────────────────────────────────────────────────────────
+    # ── Payments (new Run 5 categories) ──────────────────────────────────
+    "insurance-premiums": {
+        "source_quality": 18,   # Swiss Re sigma is authoritative for premium VALUE; txn count is modeled
+        "data_recency": 15,     # 2024 premium data; txn count from model
+        "triangulation": 8,     # Single method — bottom-up from policy counts
+        "coverage": 11,         # Premium value well covered; txn count is entirely estimated
+        "notes": "Premium VALUE data is high quality (Swiss Re sigma is authoritative). Transaction COUNT data is entirely modeled — no single source publishes global insurance payment transaction counts.",
+    },
+    "bnpl": {
+        "source_quality": 17,   # Top 5 Western providers have SEC filings; China BNPL poorly documented
+        "data_recency": 16,     # 2024 provider filings
+        "triangulation": 12,    # Provider sum + Worldpay GPR cross-check
+        "coverage": 13,         # Western providers ~60%; China/EM estimated
+        "notes": "Top 5 Western providers have good SEC-filed data. China BNPL is poorly documented. The installment multiplier (3.6x) is a model assumption.",
+    },
+    "bill-payments": {
+        "source_quality": 14,   # No single source; segment-level data from NACHA/BACS/BBPS
+        "data_recency": 14,     # Mix of 2023-2024 segment data
+        "triangulation": 10,    # Bottom-up model from segments; limited cross-validation
+        "coverage": 10,         # Developed market bill pay well anchored; EM data weak
+        "notes": "No single source publishes global bill payment transaction counts. Bottom-up from segment data with significant assumptions about account counts and payment frequencies.",
+    },
+    "payroll": {
+        "source_quality": 8,    # Derived entirely from employment × frequency model
+        "data_recency": 10,     # ILO 2024 employment data
+        "triangulation": 7,     # Single method — employment × pay frequency
+        "coverage": 10,         # Formal sector only; 2B+ informal workers invisible
+        "notes": "No single source counts global payroll transactions. Derived from employment × frequency model. Formal-sector bias is severe.",
+    },
+    "atm-withdrawals": {
+        "source_quality": 16,   # BIS CPMI, ECB, RBI — good primary data for major markets
+        "data_recency": 14,     # 2023-2024 BIS/ECB data; US Fed triennial (last 2021)
+        "triangulation": 12,    # BIS + ECB + RBI + ATMIA cross-check
+        "coverage": 10,         # CPMI/EU well covered; Africa/SE Asia sparse
+        "notes": "BIS Red Book and ECB provide reliable data for CPMI/EU countries. Emerging market ATM data is sparse. Global total requires adjustment from all-ATM to cash-withdrawal-only.",
+    },
+
+    # ── Payments (original) ────────────────────────────────────────────────
     "bank-transfers": {
         "source_quality": 24,   # BIS CPMI statistics; national payment system data
         "data_recency": 16,     # 2023-2024 BIS data (1-2 year lag)

@@ -90,22 +90,70 @@
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "tps": 488, "annual_volume": 15400000000 },
-      { "year": 2028, "tps": 537, "annual_volume": 16900000000 },
-      { "year": 2030, "tps": 591, "annual_volume": 18600000000 },
-      { "year": 2035, "tps": 753, "annual_volume": 23800000000 }
+      {
+        "year": 2026,
+        "tps": 488,
+        "annual_volume": 15400000000
+      },
+      {
+        "year": 2028,
+        "tps": 537,
+        "annual_volume": 16900000000
+      },
+      {
+        "year": 2030,
+        "tps": 591,
+        "annual_volume": 18600000000
+      },
+      {
+        "year": 2035,
+        "tps": 753,
+        "annual_volume": 23800000000
+      }
     ],
     "high_growth": [
-      { "year": 2026, "tps": 520, "annual_volume": 16400000000 },
-      { "year": 2028, "tps": 613, "annual_volume": 19300000000 },
-      { "year": 2030, "tps": 722, "annual_volume": 22800000000 },
-      { "year": 2035, "tps": 1045, "annual_volume": 33000000000 }
+      {
+        "year": 2026,
+        "tps": 520,
+        "annual_volume": 16400000000
+      },
+      {
+        "year": 2028,
+        "tps": 613,
+        "annual_volume": 19300000000
+      },
+      {
+        "year": 2030,
+        "tps": 722,
+        "annual_volume": 22800000000
+      },
+      {
+        "year": 2035,
+        "tps": 1045,
+        "annual_volume": 33000000000
+      }
     ],
     "conservative": [
-      { "year": 2026, "tps": 466, "annual_volume": 14700000000 },
-      { "year": 2028, "tps": 494, "annual_volume": 15600000000 },
-      { "year": 2030, "tps": 524, "annual_volume": 16500000000 },
-      { "year": 2035, "tps": 613, "annual_volume": 19300000000 }
+      {
+        "year": 2026,
+        "tps": 466,
+        "annual_volume": 14700000000
+      },
+      {
+        "year": 2028,
+        "tps": 494,
+        "annual_volume": 15600000000
+      },
+      {
+        "year": 2030,
+        "tps": 524,
+        "annual_volume": 16500000000
+      },
+      {
+        "year": 2035,
+        "tps": 613,
+        "annual_volume": 19300000000
+      }
     ]
   },
   "segments": {
@@ -208,6 +256,6 @@
     "data_recency": 15,
     "triangulation": 8,
     "coverage": 11,
-    "notes": "Premium VALUE data is high quality (Swiss Re sigma is authoritative). Transaction COUNT data is entirely modeled — no single source publishes global insurance payment transaction counts. Confidence is constrained by bottom-up model assumptions."
+    "notes": "Premium VALUE data is high quality (Swiss Re sigma is authoritative). Transaction COUNT data is entirely modeled — no single source publishes global insurance payment transaction counts."
   }
 }

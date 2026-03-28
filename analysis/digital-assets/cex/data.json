@@ -25,63 +25,125 @@
           "volume_share_pct": 8,
           "volume_usd_t": 6.2,
           "wash_pct": 2,
-          "wash_pct_range": [1, 3],
-          "key_exchanges": ["Coinbase", "Kraken", "Gemini"]
+          "wash_pct_range": [
+            1,
+            3
+          ],
+          "key_exchanges": [
+            "Coinbase",
+            "Kraken",
+            "Gemini"
+          ]
         },
         "korea": {
           "volume_share_pct": 7,
           "volume_usd_t": 5.4,
           "wash_pct": 5,
-          "wash_pct_range": [3, 8],
-          "key_exchanges": ["Upbit", "Bithumb"]
+          "wash_pct_range": [
+            3,
+            8
+          ],
+          "key_exchanges": [
+            "Upbit",
+            "Bithumb"
+          ]
         },
         "japan_sg_hk": {
           "volume_share_pct": 6,
           "volume_usd_t": 4.6,
           "wash_pct": 3,
-          "wash_pct_range": [2, 5],
-          "key_exchanges": ["bitFlyer", "GMO Coin", "HashKey"]
+          "wash_pct_range": [
+            2,
+            5
+          ],
+          "key_exchanges": [
+            "bitFlyer",
+            "GMO Coin",
+            "HashKey"
+          ]
         },
         "europe": {
           "volume_share_pct": 10,
           "volume_usd_t": 7.7,
           "wash_pct": 5,
-          "wash_pct_range": [3, 8],
-          "key_exchanges": ["Bitstamp", "Binance FR", "Bitpanda"]
+          "wash_pct_range": [
+            3,
+            8
+          ],
+          "key_exchanges": [
+            "Bitstamp",
+            "Binance FR",
+            "Bitpanda"
+          ]
         },
         "china_offshore": {
           "volume_share_pct": 25,
           "volume_usd_t": 19.3,
           "wash_pct": 35,
-          "wash_pct_range": [25, 45],
-          "key_exchanges": ["Binance (CN cohort)", "OKX", "Bybit", "HTX", "Gate.io", "MEXC"]
+          "wash_pct_range": [
+            25,
+            45
+          ],
+          "key_exchanges": [
+            "Binance (CN cohort)",
+            "OKX",
+            "Bybit",
+            "HTX",
+            "Gate.io",
+            "MEXC"
+          ]
         },
         "middle_east_africa": {
           "volume_share_pct": 15,
           "volume_usd_t": 11.6,
           "wash_pct": 30,
-          "wash_pct_range": [20, 40],
-          "key_exchanges": ["Binance (ME)", "OKX (ME)", "regional exchanges"]
+          "wash_pct_range": [
+            20,
+            40
+          ],
+          "key_exchanges": [
+            "Binance (ME)",
+            "OKX (ME)",
+            "regional exchanges"
+          ]
         },
         "latin_america": {
           "volume_share_pct": 10,
           "volume_usd_t": 7.7,
           "wash_pct": 15,
-          "wash_pct_range": [10, 25],
-          "key_exchanges": ["Binance (LatAm)", "Mercado Bitcoin", "Bitso"]
+          "wash_pct_range": [
+            10,
+            25
+          ],
+          "key_exchanges": [
+            "Binance (LatAm)",
+            "Mercado Bitcoin",
+            "Bitso"
+          ]
         },
         "sea_oceania": {
           "volume_share_pct": 12,
           "volume_usd_t": 9.3,
           "wash_pct": 20,
-          "wash_pct_range": [15, 30],
-          "key_exchanges": ["Binance (SEA)", "Crypto.com", "Indodax", "BTC Markets"]
+          "wash_pct_range": [
+            15,
+            30
+          ],
+          "key_exchanges": [
+            "Binance (SEA)",
+            "Crypto.com",
+            "Indodax",
+            "BTC Markets"
+          ]
         },
         "other": {
           "volume_share_pct": 7,
           "volume_usd_t": 5.5,
           "wash_pct": 35,
-          "wash_pct_range": [25, 45]
+          "wash_pct_range": [
+            25,
+            45
+          ]
         }
       },
       "tier_crosscheck": {
@@ -298,6 +360,6 @@
     "data_recency": 18,
     "triangulation": 12,
     "coverage": 14,
-    "notes": "Regional wash model (Run 5) improved from tiered model. China offshore (25% volume, 35% wash) and ME/Africa (15% volume, 30% wash) are primary uncertainty drivers."
+    "notes": "Wash trading inflates volumes at some exchanges. No regulatory audit of transaction counts."
   }
 }

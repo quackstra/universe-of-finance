@@ -84,40 +84,160 @@
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "tps": 1357, "annual_volume": 42800000000 },
-      { "year": 2027, "tps": 1384, "annual_volume": 43700000000 },
-      { "year": 2028, "tps": 1411, "annual_volume": 44500000000 },
-      { "year": 2029, "tps": 1438, "annual_volume": 45400000000 },
-      { "year": 2030, "tps": 1467, "annual_volume": 46300000000 },
-      { "year": 2031, "tps": 1496, "annual_volume": 47200000000 },
-      { "year": 2032, "tps": 1525, "annual_volume": 48100000000 },
-      { "year": 2033, "tps": 1555, "annual_volume": 49100000000 },
-      { "year": 2034, "tps": 1586, "annual_volume": 50100000000 },
-      { "year": 2035, "tps": 1618, "annual_volume": 51100000000 }
+      {
+        "year": 2026,
+        "tps": 1357,
+        "annual_volume": 42800000000
+      },
+      {
+        "year": 2027,
+        "tps": 1384,
+        "annual_volume": 43700000000
+      },
+      {
+        "year": 2028,
+        "tps": 1411,
+        "annual_volume": 44500000000
+      },
+      {
+        "year": 2029,
+        "tps": 1438,
+        "annual_volume": 45400000000
+      },
+      {
+        "year": 2030,
+        "tps": 1467,
+        "annual_volume": 46300000000
+      },
+      {
+        "year": 2031,
+        "tps": 1496,
+        "annual_volume": 47200000000
+      },
+      {
+        "year": 2032,
+        "tps": 1525,
+        "annual_volume": 48100000000
+      },
+      {
+        "year": 2033,
+        "tps": 1555,
+        "annual_volume": 49100000000
+      },
+      {
+        "year": 2034,
+        "tps": 1586,
+        "annual_volume": 50100000000
+      },
+      {
+        "year": 2035,
+        "tps": 1618,
+        "annual_volume": 51100000000
+      }
     ],
     "high_growth": [
-      { "year": 2026, "tps": 1411, "annual_volume": 44500000000 },
-      { "year": 2027, "tps": 1467, "annual_volume": 46300000000 },
-      { "year": 2028, "tps": 1525, "annual_volume": 48100000000 },
-      { "year": 2029, "tps": 1586, "annual_volume": 50100000000 },
-      { "year": 2030, "tps": 1649, "annual_volume": 52000000000 },
-      { "year": 2031, "tps": 1714, "annual_volume": 54100000000 },
-      { "year": 2032, "tps": 1783, "annual_volume": 56300000000 },
-      { "year": 2033, "tps": 1854, "annual_volume": 58500000000 },
-      { "year": 2034, "tps": 1928, "annual_volume": 60900000000 },
-      { "year": 2035, "tps": 2006, "annual_volume": 63300000000 }
+      {
+        "year": 2026,
+        "tps": 1411,
+        "annual_volume": 44500000000
+      },
+      {
+        "year": 2027,
+        "tps": 1467,
+        "annual_volume": 46300000000
+      },
+      {
+        "year": 2028,
+        "tps": 1525,
+        "annual_volume": 48100000000
+      },
+      {
+        "year": 2029,
+        "tps": 1586,
+        "annual_volume": 50100000000
+      },
+      {
+        "year": 2030,
+        "tps": 1649,
+        "annual_volume": 52000000000
+      },
+      {
+        "year": 2031,
+        "tps": 1714,
+        "annual_volume": 54100000000
+      },
+      {
+        "year": 2032,
+        "tps": 1783,
+        "annual_volume": 56300000000
+      },
+      {
+        "year": 2033,
+        "tps": 1854,
+        "annual_volume": 58500000000
+      },
+      {
+        "year": 2034,
+        "tps": 1928,
+        "annual_volume": 60900000000
+      },
+      {
+        "year": 2035,
+        "tps": 2006,
+        "annual_volume": 63300000000
+      }
     ],
     "conservative": [
-      { "year": 2026, "tps": 1325, "annual_volume": 41800000000 },
-      { "year": 2027, "tps": 1338, "annual_volume": 42200000000 },
-      { "year": 2028, "tps": 1351, "annual_volume": 42600000000 },
-      { "year": 2029, "tps": 1365, "annual_volume": 43100000000 },
-      { "year": 2030, "tps": 1378, "annual_volume": 43500000000 },
-      { "year": 2031, "tps": 1392, "annual_volume": 43900000000 },
-      { "year": 2032, "tps": 1406, "annual_volume": 44400000000 },
-      { "year": 2033, "tps": 1420, "annual_volume": 44800000000 },
-      { "year": 2034, "tps": 1434, "annual_volume": 45300000000 },
-      { "year": 2035, "tps": 1449, "annual_volume": 45700000000 }
+      {
+        "year": 2026,
+        "tps": 1325,
+        "annual_volume": 41800000000
+      },
+      {
+        "year": 2027,
+        "tps": 1338,
+        "annual_volume": 42200000000
+      },
+      {
+        "year": 2028,
+        "tps": 1351,
+        "annual_volume": 42600000000
+      },
+      {
+        "year": 2029,
+        "tps": 1365,
+        "annual_volume": 43100000000
+      },
+      {
+        "year": 2030,
+        "tps": 1378,
+        "annual_volume": 43500000000
+      },
+      {
+        "year": 2031,
+        "tps": 1392,
+        "annual_volume": 43900000000
+      },
+      {
+        "year": 2032,
+        "tps": 1406,
+        "annual_volume": 44400000000
+      },
+      {
+        "year": 2033,
+        "tps": 1420,
+        "annual_volume": 44800000000
+      },
+      {
+        "year": 2034,
+        "tps": 1434,
+        "annual_volume": 45300000000
+      },
+      {
+        "year": 2035,
+        "tps": 1449,
+        "annual_volume": 45700000000
+      }
     ]
   },
   "overlap": {
@@ -186,6 +306,6 @@
     "data_recency": 10,
     "triangulation": 7,
     "coverage": 10,
-    "notes": "No single source counts global payroll transactions. Derived entirely from employment × frequency model. Formal-sector bias is severe — ILO estimates 2B+ informal workers whose cash wages are invisible to payment systems."
+    "notes": "No single source counts global payroll transactions. Derived from employment × frequency model. Formal-sector bias is severe."
   }
 }

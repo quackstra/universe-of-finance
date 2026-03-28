@@ -94,13 +94,53 @@ research track with independent data collection, analysis, and projections.
 | P2P transfers (domestic) | Venmo, Zelle, Cash App | Company reports |
 | Remittances | Cross-border personal transfers | World Bank, BIS |
 
-### 2.5 Merchant & Commerce
+### 2.5 Insurance Premiums
+
+| Subcategory | Description | Key Sources |
+|-------------|-------------|-------------|
+| Auto/motor premiums | Vehicle insurance payments | Swiss Re sigma, IAIS |
+| Health premiums | Health insurance payments | Swiss Re sigma, IRDAI |
+| Property/home premiums | Homeowner/renter insurance | Swiss Re sigma |
+| Life premiums | Life insurance payments | Swiss Re sigma |
+| Commercial/specialty | Business insurance payments | Lloyd's, NAIC |
+
+### 2.6 Buy Now Pay Later (BNPL)
+
+| Subcategory | Description | Key Sources |
+|-------------|-------------|-------------|
+| Pay-in-4 installments | Short-term BNPL (Klarna, Afterpay) | Provider 10-K filings |
+| Long-term installments | Extended payment plans (Affirm) | Provider 10-K filings |
+| Pay-after delivery | Post-delivery payment (Klarna) | Provider filings |
+
+### 2.7 Bill Payments
+
+| Subcategory | Description | Key Sources |
+|-------------|-------------|-------------|
+| Utility bills | Electricity, gas, water, waste | IEA, national utilities |
+| Telecom bills | Mobile, broadband, cable | GSMA, ITU |
+| Digital subscriptions | Streaming, SaaS, cloud | Platform subscriber counts |
+| Rent payments | Residential rent transfers | Census, Eurostat |
+
+### 2.8 Payroll
+
+| Subcategory | Description | Key Sources |
+|-------------|-------------|-------------|
+| Formal-sector payroll | Salary/wage disbursements | ILO, BLS, Eurostat |
+| Gig/contractor payments | Freelance/platform payouts | Industry reports |
+
+### 2.9 ATM Withdrawals
+
+| Subcategory | Description | Key Sources |
+|-------------|-------------|-------------|
+| Cash withdrawals | ATM cash-out transactions | BIS CPMI, ECB, RBI, ATMIA |
+| Balance inquiries | Non-cash ATM operations (excluded from TPS) | ATMIA |
+
+### 2.10 Merchant & Commerce
 
 | Subcategory | Description | Key Sources |
 |-------------|-------------|-------------|
 | E-commerce checkout | Online purchase transactions | Shopify, Stripe reports |
 | Point-of-sale (POS) | In-store electronic payments | Industry reports |
-| Buy-now-pay-later | BNPL transactions | Klarna, Affirm, Afterpay |
 | Recurring/subscription | Automated recurring charges | Industry estimates |
 
 ---

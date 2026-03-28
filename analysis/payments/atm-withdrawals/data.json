@@ -112,40 +112,160 @@
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "tps": 1434, "annual_volume": 45300000000 },
-      { "year": 2027, "tps": 1377, "annual_volume": 43500000000 },
-      { "year": 2028, "tps": 1322, "annual_volume": 41700000000 },
-      { "year": 2029, "tps": 1269, "annual_volume": 40000000000 },
-      { "year": 2030, "tps": 1218, "annual_volume": 38400000000 },
-      { "year": 2031, "tps": 1170, "annual_volume": 36900000000 },
-      { "year": 2032, "tps": 1123, "annual_volume": 35400000000 },
-      { "year": 2033, "tps": 1078, "annual_volume": 34000000000 },
-      { "year": 2034, "tps": 1035, "annual_volume": 32700000000 },
-      { "year": 2035, "tps": 994, "annual_volume": 31400000000 }
+      {
+        "year": 2026,
+        "tps": 1434,
+        "annual_volume": 45300000000
+      },
+      {
+        "year": 2027,
+        "tps": 1377,
+        "annual_volume": 43500000000
+      },
+      {
+        "year": 2028,
+        "tps": 1322,
+        "annual_volume": 41700000000
+      },
+      {
+        "year": 2029,
+        "tps": 1269,
+        "annual_volume": 40000000000
+      },
+      {
+        "year": 2030,
+        "tps": 1218,
+        "annual_volume": 38400000000
+      },
+      {
+        "year": 2031,
+        "tps": 1170,
+        "annual_volume": 36900000000
+      },
+      {
+        "year": 2032,
+        "tps": 1123,
+        "annual_volume": 35400000000
+      },
+      {
+        "year": 2033,
+        "tps": 1078,
+        "annual_volume": 34000000000
+      },
+      {
+        "year": 2034,
+        "tps": 1035,
+        "annual_volume": 32700000000
+      },
+      {
+        "year": 2035,
+        "tps": 994,
+        "annual_volume": 31400000000
+      }
     ],
     "high_growth": [
-      { "year": 2026, "tps": 1507, "annual_volume": 47600000000 },
-      { "year": 2027, "tps": 1482, "annual_volume": 46800000000 },
-      { "year": 2028, "tps": 1458, "annual_volume": 46000000000 },
-      { "year": 2029, "tps": 1434, "annual_volume": 45300000000 },
-      { "year": 2030, "tps": 1411, "annual_volume": 44500000000 },
-      { "year": 2031, "tps": 1388, "annual_volume": 43800000000 },
-      { "year": 2032, "tps": 1365, "annual_volume": 43100000000 },
-      { "year": 2033, "tps": 1343, "annual_volume": 42400000000 },
-      { "year": 2034, "tps": 1322, "annual_volume": 41700000000 },
-      { "year": 2035, "tps": 1300, "annual_volume": 41000000000 }
+      {
+        "year": 2026,
+        "tps": 1507,
+        "annual_volume": 47600000000
+      },
+      {
+        "year": 2027,
+        "tps": 1482,
+        "annual_volume": 46800000000
+      },
+      {
+        "year": 2028,
+        "tps": 1458,
+        "annual_volume": 46000000000
+      },
+      {
+        "year": 2029,
+        "tps": 1434,
+        "annual_volume": 45300000000
+      },
+      {
+        "year": 2030,
+        "tps": 1411,
+        "annual_volume": 44500000000
+      },
+      {
+        "year": 2031,
+        "tps": 1388,
+        "annual_volume": 43800000000
+      },
+      {
+        "year": 2032,
+        "tps": 1365,
+        "annual_volume": 43100000000
+      },
+      {
+        "year": 2033,
+        "tps": 1343,
+        "annual_volume": 42400000000
+      },
+      {
+        "year": 2034,
+        "tps": 1322,
+        "annual_volume": 41700000000
+      },
+      {
+        "year": 2035,
+        "tps": 1300,
+        "annual_volume": 41000000000
+      }
     ],
     "conservative": [
-      { "year": 2026, "tps": 1335, "annual_volume": 42100000000 },
-      { "year": 2027, "tps": 1235, "annual_volume": 39000000000 },
-      { "year": 2028, "tps": 1143, "annual_volume": 36100000000 },
-      { "year": 2029, "tps": 1059, "annual_volume": 33400000000 },
-      { "year": 2030, "tps": 980, "annual_volume": 30900000000 },
-      { "year": 2031, "tps": 907, "annual_volume": 28600000000 },
-      { "year": 2032, "tps": 839, "annual_volume": 26500000000 },
-      { "year": 2033, "tps": 777, "annual_volume": 24500000000 },
-      { "year": 2034, "tps": 719, "annual_volume": 22700000000 },
-      { "year": 2035, "tps": 666, "annual_volume": 21000000000 }
+      {
+        "year": 2026,
+        "tps": 1335,
+        "annual_volume": 42100000000
+      },
+      {
+        "year": 2027,
+        "tps": 1235,
+        "annual_volume": 39000000000
+      },
+      {
+        "year": 2028,
+        "tps": 1143,
+        "annual_volume": 36100000000
+      },
+      {
+        "year": 2029,
+        "tps": 1059,
+        "annual_volume": 33400000000
+      },
+      {
+        "year": 2030,
+        "tps": 980,
+        "annual_volume": 30900000000
+      },
+      {
+        "year": 2031,
+        "tps": 907,
+        "annual_volume": 28600000000
+      },
+      {
+        "year": 2032,
+        "tps": 839,
+        "annual_volume": 26500000000
+      },
+      {
+        "year": 2033,
+        "tps": 777,
+        "annual_volume": 24500000000
+      },
+      {
+        "year": 2034,
+        "tps": 719,
+        "annual_volume": 22700000000
+      },
+      {
+        "year": 2035,
+        "tps": 666,
+        "annual_volume": 21000000000
+      }
     ]
   },
   "overlap": {
@@ -228,6 +348,6 @@
     "data_recency": 14,
     "triangulation": 12,
     "coverage": 10,
-    "notes": "BIS Red Book and ECB provide reliable data for CPMI/EU countries. US Fed data is triennial (last: 2021). Emerging market ATM data (Africa, SE Asia) is sparse. Global total ~86.7B includes non-cash ATM transactions; withdrawal-only figure requires adjustment."
+    "notes": "BIS Red Book and ECB provide reliable data for CPMI/EU countries. Emerging market ATM data is sparse. Global total requires adjustment from all-ATM to cash-withdrawal-only."
   }
 }

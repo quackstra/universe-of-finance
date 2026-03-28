@@ -320,11 +320,11 @@
     }
   ],
   "confidence": {
-    "score": 68,
-    "source_quality": 20,
-    "data_recency": 18,
-    "triangulation": 17,
-    "coverage": 13,
-    "notes": "Run 5 improved confidence significantly: FICC GSD hard transaction counts and LCH RepoClear trade sides anchor US and European repo. China exchange repo and bilateral segments remain uncertain. Overall confidence raised from 60 to 68."
+    "score": 60,
+    "source_quality": 18,
+    "data_recency": 16,
+    "triangulation": 14,
+    "coverage": 12,
+    "notes": "Bond trading is predominantly OTC, making transaction counts difficult. US TRACE data is good; global coverage is patchy."
   }
 }

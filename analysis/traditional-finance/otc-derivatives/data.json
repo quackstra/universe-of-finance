@@ -180,7 +180,7 @@
       },
       {
         "year": 2035,
-        "tps": 0.30,
+        "tps": 0.3,
         "annual_volume": 9500000
       }
     ],
@@ -210,7 +210,9 @@
     ]
   },
   "overlap": {
-    "overlaps_with": ["fx"],
+    "overlaps_with": [
+      "fx"
+    ],
     "overlap_type": "partial",
     "overlap_note": "FX derivatives (forwards, swaps, options) are OTC derivatives but counted in the FX category. Our OTC derivatives figure EXCLUDES FX derivatives (~5M trades/year) to avoid double-counting."
   },
@@ -282,6 +284,6 @@
     "data_recency": 16,
     "triangulation": 14,
     "coverage": 16,
-    "notes": "BIS data on notional outstanding is authoritative. Transaction count triangulated via ISDA SwapsInfo (IRD/CDS) and structural equity OTC model (Run 5). Equity OTC revised to 1.2M via product decomposition (TRS, CFDs, structured product hedging). IRD and CDS well-anchored; equity OTC improved to low-medium confidence; commodity OTC remains low."
+    "notes": "BIS data on notional outstanding is authoritative. Transaction count is extremely low-confidence — OTC trades are large, bespoke, and infrequent."
   }
 }

@@ -1,11 +1,11 @@
 # Universe of Finance — Global Overlap Matrix & De-Duplicated TPS
 
 > Cross-category overlap analysis for accurate total global financial TPS.
-> **Last Updated**: 2026-03-27 (Run 3 reconciliation)
+> **Last Updated**: 2026-03-28 (Run 6 — full 29-category reconciliation)
 
 ## The Big Number (De-Duplicated)
 
-**Estimated Global Financial TPS: ~70,700** (non-overlapping, all sectors)
+**Estimated Global Financial TPS: ~73,750** (non-overlapping, all 29 categories)
 
 This is derived by summing de-duplicated TPS across all 7 sectors, accounting for
 overlaps within payments, subsets within digital assets, and the settlement-vs-trading
@@ -15,7 +15,7 @@ boundary in banking.
 
 ## Sector-by-Sector De-Duplication
 
-### 1. Payments — ~53,200 TPS (de-duplicated)
+### 1. Payments — ~55,690 TPS (de-duplicated)
 
 See [payments/OVERLAP_ANALYSIS.md](payments/OVERLAP_ANALYSIS.md) for full methodology.
 
@@ -23,45 +23,50 @@ See [payments/OVERLAP_ANALYSIS.md](payments/OVERLAP_ANALYSIS.md) for full method
 |----------|---------|------------|-------|
 | Consumer Cards | 24,501 | 24,501 | Base layer |
 | Bank Transfers | 15,338 | 15,338 | Base layer (includes UPI) |
-| Digital Wallets | 19,660 | 12,930 | Minus UPI (in bank transfers) and card-rail wallets |
-| E-Commerce | 1,800 | 143 | ~95% overlay on cards/wallets/bank |
-| P2P Transfers | 270 | 254 | Minor wallet overlap |
-| Remittances | 57 | 32 | Minor bank/P2P overlap |
-| **Payments Total** | **61,626** | **53,198** | **14% overcount in raw sum** |
+| Digital Wallets | 19,660 | 12,938 | Minus UPI (in bank transfers) and card-rail wallets |
+| ATM Withdrawals | 1,557 | 1,557 | **Zero overlap** — cash-out, unique event type |
+| BNPL | 634 | 460 | 100% infra overlap, but 3.6x multiplier → ~460 TPS incremental |
+| Bill Payments | 3,012 | 301 | ~90% via direct debit/card-on-file rails |
+| E-Commerce | 1,823 | 91 | ~95% overlay on cards/wallets/bank |
+| P2P Transfers | 270 | 270 | Minor wallet overlap |
+| Payroll | 1,305 | 131 | ~90% is ACH/BACS/SEPA batch (in bank transfers) |
+| Insurance Premiums | 444 | 44 | ~90% via card/direct debit rails |
+| Remittances | 57 | 57 | Minor bank/P2P overlap |
+| **Payments Total** | **68,601** | **55,688** | **19% overcount in raw sum** |
 
-### 2. Traditional Finance — ~13,400 TPS
+### 2. Traditional Finance — ~13,473 TPS
 
 No significant intra-sector overlaps. ETD and OTC derivatives are distinct markets
 (exchange-traded vs. bilateral). Forex is independent of equity/bond trading.
 
 | Category | TPS | Notes |
 |----------|-----|-------|
-| Exchange-Traded Derivatives | 9,500 | Independent — futures/options on exchanges |
+| Exchange-Traded Derivatives | 9,505 | Independent — futures/options on exchanges |
 | Equity Markets | 3,500 | Independent — stock trades |
 | Commodities | 330 | Independent — commodity futures |
-| Foreign Exchange | 35 | Independent — currency trades (high-value, low-count) |
-| Fixed Income (cash bonds) | 7 | Independent — bond trades |
-| OTC Derivatives | 0.6 | Independent — bilateral contracts |
-| **TradFi Total** | **~13,373** | **No intra-sector overlaps** |
+| Foreign Exchange | 127 | **Revised Run 5**: incl. ~8M retail trades/day (was ~35 institutional-only) |
+| Fixed Income (incl. repo) | 10.5 | **Revised Run 5**: incl. 219M repo transactions (was ~3.6 cash-only) |
+| OTC Derivatives | 0.2 | Independent — bilateral contracts |
+| **TradFi Total** | **~13,473** | **No intra-sector overlaps** |
 
 **Cross-sector overlap with Payments**: Minimal. TradFi transactions settle through
 banking infrastructure (RTGS, CSD) but are counted separately per taxonomy rules.
 The settlement is downstream, not a duplicate of the trade.
 
-### 3. Digital Assets — ~3,515 TPS (de-duplicated)
+### 3. Digital Assets — ~3,625 TPS (de-duplicated)
 
 Critical overlap: DeFi and Stablecoins are *subsets* of L1/L2 on-chain transactions.
 CEX trades are off-chain (no overlap with L1/L2).
 
 | Category | Raw TPS | De-Dup TPS | Notes |
 |----------|---------|------------|-------|
-| CEX (wash-adjusted) | 3,100 | 3,100 | Off-chain, no L1/L2 overlap |
-| L1/L2 Blockchain | 415 | 0 | *Subsumed — DeFi + Stablecoins + other on-chain ARE L1/L2* |
+| CEX (wash-adjusted) | 3,210 | 3,210 | Off-chain, no L1/L2 overlap. **Run 5**: revised from 3,040 |
+| L1/L2 Blockchain | 415 | 415 | On-chain (DeFi + Stablecoins are subsets, not additive) |
 | DeFi | *(subset)* | *(included in L1/L2)* | ~30-40% of L1/L2 transactions |
 | Stablecoins | *(subset)* | *(included in L1/L2)* | ~15-25% of L1/L2 transactions |
-| **Digital Assets Total** | — | **~3,515** | **CEX + L1/L2 (which contains DeFi + stablecoins)** |
+| **Digital Assets Total** | — | **~3,625** | **CEX + L1/L2 (which contains DeFi + stablecoins)** |
 
-The correct de-duplication is: CEX (off-chain, 3,100 TPS) + L1/L2 (on-chain, 415 TPS) = **3,515 TPS**.
+The correct de-duplication is: CEX (off-chain, 3,210 TPS) + L1/L2 (on-chain, 415 TPS) = **3,625 TPS**.
 DeFi and Stablecoins don't add because they're subsets of L1/L2.
 
 **Run 3 revision**: L1/L2 TPS revised from ~900 to ~415 (range: 350-480) after filtering
@@ -86,22 +91,21 @@ Payments. Per taxonomy double-counting rules, a stock trade counts as ONE trade
 (in Equity Markets) and the resulting settlement counts separately (in Securities
 Settlement). Both are real transactions on different infrastructure.
 
-### 5. Gaming — ~481 TPS
+### 5. Gaming — ~88 TPS (incremental)
 
-| Category | TPS | Notes |
-|----------|-----|-------|
-| Microtransactions | 389 | ~65-75% paid via card rails (overlap with Payments) |
-| Game Sales | 92 | ~70-80% paid via card rails |
-| **Gaming Total** | **~481** | |
+| Category | Raw TPS | De-Dup TPS | Notes |
+|----------|---------|------------|-------|
+| Microtransactions | 389 | 70 | 82% on card/wallet rails → ~18% incremental |
+| Game Sales | 92 | 18 | 84% on card/wallet rails → ~16% incremental |
+| **Gaming Total** | **~481** | **~88** | |
 
-**Cross-sector overlap with Payments**: Gaming purchases (~10-11.5B/year) are paid
+**Cross-sector overlap with Payments**: Gaming purchases (~15.2B/year) are paid
 via cards/wallets/bank transfers. These payment transactions are ALREADY counted in
 the Payments sector. Gaming counts the **commerce events**, not the payment flows.
-For pure TPS aggregation, gaming should be treated as a commerce layer (like e-commerce)
-unless we want to count the economic activity rather than payment infrastructure throughput.
 
-**Decision**: Exclude gaming from the "payment TPS" total but include in the
-"economic transaction TPS" total.
+**Run 6 revision**: Instead of fully excluding gaming, we now count the ~18% of
+gaming transactions that use non-card/non-wallet rails (gift cards, platform credit,
+direct carrier billing, crypto). This gives ~88 TPS incremental.
 
 ### 6. Government — ~1,002 TPS
 
@@ -123,18 +127,18 @@ government payments are economic events paid via existing payment rails.
 payment transactions are already counted in bank transfers (ACH disbursements).
 Incremental: ~401 TPS.
 
-### 7. Emerging — ~637 TPS
+### 7. Emerging — ~385 TPS (incremental)
 
-| Category | TPS | Notes |
-|----------|-----|-------|
-| IoT/M2M | 634 | Most ride on card/bank rails |
-| RWA Tokenisation | 2.4 | On-chain (subset of L1/L2) |
-| AI Agents | 0.66 | Mostly on-chain (x402) |
-| **Emerging Total** | **~637** | |
+| Category | Raw TPS | De-Dup TPS | Notes |
+|----------|---------|------------|-------|
+| IoT/M2M | 1,538 | 385 | **Run 5**: revised from ~634 to ~1,538; 75% on card/bank rails |
+| RWA Tokenisation | 2.4 | 0 | On-chain (subset of L1/L2) |
+| AI Agents | 0.66 | 0 | Mostly on-chain (x402, subset of L1/L2) |
+| **Emerging Total** | **~1,541** | **~385** | |
 
-**Cross-sector overlap**: IoT payments (~70-80%) ride on existing card/bank rails.
+**Cross-sector overlap**: IoT payments (~75%) ride on existing card/bank rails.
 RWA and AI agent transactions are on-chain (subset of L1/L2). Incremental emerging
-TPS: ~127-190 (IoT non-card portion only).
+TPS: ~385 (IoT non-card portion only).
 
 ---
 
@@ -148,11 +152,11 @@ on those rails.
 
 | Sector | De-Dup TPS | Notes |
 |--------|-----------|-------|
-| Payments (de-dup) | 53,200 | Cards + Bank Transfers + incremental Wallets |
-| Traditional Finance | 13,373 | Trading activity on exchanges/OTC |
-| Digital Assets | 3,515 | CEX (off-chain) + L1/L2 (on-chain, vote/spam filtered) |
-| Banking/Settlement | 95 | RTGS (13 systems) + Securities Settlement |
-| **Total** | **~70,200** | |
+| Payments (de-dup) | 55,690 | Cards + Bank Transfers + incremental Wallets + ATM + BNPL incremental + Bill/Payroll/Insurance incrementals |
+| Traditional Finance | 13,473 | Trading activity on exchanges/OTC (revised forex + fixed income) |
+| Digital Assets | 3,625 | CEX (off-chain, wash-adjusted) + L1/L2 (on-chain, vote/spam filtered) |
+| Banking/Settlement | 94 | RTGS (13 systems) + Securities Settlement |
+| **Total** | **~72,880** | |
 
 ### Method B: Economic Transaction TPS (all unique economic events)
 
@@ -161,71 +165,145 @@ Includes commerce layers but de-duplicates payment overlaps.
 
 | Sector | De-Dup TPS | Notes |
 |--------|-----------|-------|
-| Payments (de-dup) | 53,200 | |
-| Traditional Finance | 13,373 | |
-| Digital Assets | 3,515 | |
-| Banking/Settlement | 95 | |
-| Gaming (incremental) | 481 | Commerce events (payment already in Payments) |
+| Payments (de-dup) | 55,690 | |
+| Traditional Finance | 13,473 | |
+| Digital Assets | 3,625 | |
+| Banking/Settlement | 94 | |
+| Gaming (incremental) | 88 | ~18% not on card/wallet rails |
 | Government (incremental) | 401 | ~40% not in bank transfers |
-| IoT/M2M (incremental) | 159 | ~25% not on existing rails |
+| IoT/M2M (incremental) | 385 | ~25% not on existing rails |
 | RWA + AI Agents | 3 | On-chain but tiny |
-| **Total** | **~71,200** | |
+| **Total** | **~73,760** | |
 
 ### The Range
 
 | Metric | Low Estimate | Central | High Estimate |
 |--------|-------------|---------|---------------|
-| Payment Infrastructure TPS | 64,000 | 70,200 | 78,000 |
-| Economic Transaction TPS | 65,000 | 71,200 | 80,000 |
+| Payment Infrastructure TPS | 66,000 | 72,900 | 82,000 |
+| Economic Transaction TPS | 67,000 | 73,750 | 83,000 |
 
-The ~1,000 TPS gap between Method A and Method B reflects commerce layers
+The ~870 TPS gap between Method A and Method B reflects commerce/activity layers
 (gaming, government, IoT) that generate real economic events but whose
 payment flows are already counted in the Payments sector.
 
 ### Programmatic Validation
 
-`tools/big_number.py` computes **~70,741 TPS** de-duplicated. This sits between
-Method A (~70,200) and Method B (~71,200) because the script includes government
-and IoT incremental contributions but excludes gaming, RWA, and AI agents. The
-~500 TPS gap between the script and Method A is the government (401 TPS) and
-IoT (159 TPS) incrementals minus rounding differences. All three figures are
-internally consistent.
+`tools/big_number.py` computes **~73,753 TPS** de-duplicated across all 29 categories.
+This aligns with Method B (~73,760) because the script now includes all incremental
+contributions: gaming (88), government (401), IoT (385), plus the 5 new payment
+categories with deductions. All three figures are internally consistent.
+
+### Run 6 vs Run 3 Reconciliation
+
+| Change | Impact |
+|--------|--------|
+| 5 new payment categories (ATM, bills, payroll, insurance, BNPL) | +2,493 TPS (after deductions) |
+| Gaming: exclude → incremental | +88 TPS |
+| Forex: institutional → incl. retail | +87 TPS |
+| Fixed income: cash → incl. repo | +6.9 TPS |
+| CEX wash adjustment: 3,040 → 3,210 | +110 TPS (already in Run 5) |
+| IoT: 634 → 1,538 (×0.25) | +226 TPS (already in Run 5) |
+| **Net change from Run 3 (~70,741)** | **+~3,012 TPS → ~73,753** |
+
+---
+
+## New Category Overlap Details (Run 6)
+
+### Gaming Overlap
+
+- **Raw TPS**: ~481 (microtx 389 + sales 92)
+- **Overlap**: 82% of gaming transactions settle on card/wallet rails
+- **Incremental**: ~88 TPS (gift cards, platform credit, carrier billing, crypto)
+- **Rationale**: Gaming is a commerce layer like e-commerce. Most purchases use
+  cards (40-50%), digital wallets (25-30%), or bank transfers (5-10%). The ~18%
+  incremental comes from platform-specific payment methods not captured elsewhere.
+
+### Insurance Premium Overlap
+
+- **Raw TPS**: ~444 (14B annual premium payments)
+- **Overlap**: 90% flows via card auto-pay or direct debit/ACH
+- **Incremental**: ~44 TPS (~1.4B transactions via cash/agent collections)
+- **Rationale**: Most insurance premiums are recurring payments on existing rails.
+  Cash premium collection (common in India, Africa) is the only incremental portion.
+
+### BNPL Overlap
+
+- **Raw TPS**: ~634 (installment-level, 20B events/year)
+- **Overlap**: 100% infrastructure overlap — every installment settles via card or bank
+- **Incremental**: ~460 TPS (~14.5B net new payment events)
+- **Rationale**: BNPL is unique — it has complete infrastructure overlap but creates
+  genuine new transaction events. A single purchase becomes 3-4 installment payments
+  on the underlying rail. The 5.5B purchases would have been 5.5B card transactions
+  anyway; the ~14.5B additional installment events (20B - 5.5B) are net new TPS on
+  the payment infrastructure.
+
+### Bill Payments Overlap
+
+- **Raw TPS**: ~3,012 (95B annual bill payments)
+- **Overlap**: 90% flows via direct debit, card-on-file, or mobile money
+- **Incremental**: ~301 TPS (~9.5B cash/check bill payments)
+- **Rationale**: Utility bills, telecom, and digital subscriptions are overwhelmingly
+  paid via automated channels already counted in bank transfers (direct debit) or
+  consumer cards (card-on-file). Cash bill payments at agent networks (common in
+  emerging markets) are the incremental portion.
+
+### Payroll Overlap
+
+- **Raw TPS**: ~1,305 (41.2B annual payroll disbursements)
+- **Overlap**: 90% is ACH/BACS/SEPA batch transfers already in bank transfers
+- **Incremental**: ~131 TPS (~4.2B cash wages and check payroll)
+- **Rationale**: Formal-sector payroll is essentially a subset of bank transfers.
+  The ~10% incremental represents cash wages (informal sector, emerging markets)
+  and remaining check payroll (declining in developed markets).
+
+### ATM Withdrawals (Zero Overlap)
+
+- **Raw TPS**: ~1,557 (49.1B annual cash withdrawals)
+- **Overlap**: 0% — ATM withdrawals are cash-out events, not payments
+- **Incremental**: ~1,557 TPS (full count)
+- **Rationale**: ATM cash withdrawals create a unique transaction type not captured
+  anywhere else. They use card rails for authentication but the transaction itself is
+  a cash disbursement. When the consumer later spends that cash, the spending is
+  untracked. Card network statistics exclude ATM withdrawals from purchase counts.
 
 ---
 
 ## Key Insights
 
-1. **Payments dominate**: 76% of global financial TPS is payment transactions
-   (cards, bank transfers, wallets). Trading, settlement, and everything else is 24%.
+1. **Payments dominate**: 75% of global financial TPS is payment transactions
+   (cards, bank transfers, wallets, ATM, bills, payroll, BNPL, insurance). Trading, settlement, and everything else is 25%.
 
-2. **The overlap problem is smaller than feared**: Raw sum across all 24 categories
-   would yield ~81,000+ TPS. De-duplication reduces this by ~13% to ~70,200.
+2. **The overlap problem is material but manageable**: Raw sum across all 29 categories
+   yields ~89,300 TPS. De-duplication reduces this by ~17% to ~73,750.
    The biggest single overlap is UPI (172B transactions in both wallets and bank transfers).
 
-3. **E-commerce is NOT a payment category**: It's a commerce layer. 95% of e-commerce
-   payment flows are already counted in cards/wallets/bank transfers. Same applies
-   to gaming and government payments.
+3. **ATM withdrawals are a significant overlooked category**: At ~1,557 TPS with zero
+   overlap, ATM cash-outs are the third-largest payment category by TPS and are
+   entirely incremental to the total.
 
-4. **Digital assets are smaller than headline numbers suggest**: At ~3,515 TPS
-   (after Solana vote/spam filtering), crypto (CEX + on-chain) is ~5% of global
-   financial TPS. Solana's headline ~900 TPS drops to ~350-480 after removing vote
-   transactions, failed transactions, and MEV spam.
+4. **BNPL creates genuine new infrastructure load**: Despite 100% infrastructure overlap,
+   the 3.6x installment multiplier generates ~14.5B net new payment events (~460 TPS).
+   This is a rare case where overlap does not mean deduction.
 
-5. **TradFi trading is surprisingly large**: At ~13,400 TPS, trading (especially
-   derivatives at 9,500 TPS) is a bigger transaction generator than most people realise.
-   ETD volume has been growing ~15%+ annually.
+5. **Bill payments are massive but mostly captured**: At ~95B annual transactions (~3,012 TPS),
+   bill payments are a huge category but ~90% flows through direct debit and card-on-file
+   rails already counted elsewhere.
 
-6. **Interbank settlement is larger than previously captured**: Expanding from 5 to 13
-   RTGS systems tripled the count from ~423M to ~1,581M annual transactions. China's
-   CNAPS-HVPS (382M) and India's RTGS (295M) are both larger than any Western system
-   except Fedwire.
+6. **Digital assets are smaller than headline numbers suggest**: At ~3,625 TPS
+   (after Solana vote/spam filtering and CEX wash adjustment), crypto is ~5% of global
+   financial TPS.
 
-7. **Government payments are higher than top-down estimates**: Bottom-up modelling
-   reveals ~31.6B annual transactions (up from ~25B), driven by India's DBT platform
-   (7.4B transactions across 1,206+ schemes) and EU social security contributions.
+7. **TradFi trading is surprisingly large**: At ~13,473 TPS, trading (especially
+   derivatives at 9,505 TPS) is a bigger transaction generator than most people realise.
+   Forex revised upward to ~127 TPS (from ~35) with retail inclusion; fixed income
+   revised to ~10.5 TPS (from ~3.6) with repo inclusion.
+
+8. **IoT is growing fast**: Revised from ~634 to ~1,538 TPS in Run 5, with toll
+   collection and vending machines as the dominant segments. After 75% rail overlap
+   deduction, contributes ~385 TPS incremental.
 
 ---
 
 *This analysis will be refined as individual capsule data improves. Key uncertainties:
-China digital wallet volume (±50B), CEX wash trading adjustment (±30%), and
-IoT payment rail attribution.*
+China digital wallet volume (±50B), CEX wash trading adjustment (±30%),
+bill payment cash/digital split (±10%), and IoT payment rail attribution.*

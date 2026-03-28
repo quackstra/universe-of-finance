@@ -4,6 +4,13 @@
   "sector": "Payments",
   "last_updated": "2026-03-28",
   "current": {
+    "avg_tps": {
+      "value": 634,
+      "source": "Derived: ~20B installment events / 31,536,000 seconds",
+      "url": "",
+      "confidence": "medium",
+      "note": "Installment-level counting: each biweekly/monthly payment = 1 transaction. Purchase-level: ~175 TPS."
+    },
     "avg_tps_purchase": {
       "value": 175,
       "source": "Derived: ~5.5B purchases / 31,536,000 seconds",
@@ -23,6 +30,19 @@
       "source": "Estimated: installment-level avg × 1.9 (payday + month-start clustering)",
       "url": "",
       "confidence": "low"
+    },
+    "daily_volume": {
+      "value": 54795000,
+      "source": "Derived: 20B installments / 365 days",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_volume": {
+      "value": 20000000000,
+      "source": "5.5B purchases × 3.6 weighted-avg installments per purchase",
+      "url": "",
+      "confidence": "medium",
+      "note": "Installment-level volume. Purchase-level: 5.5B."
     },
     "daily_volume_purchases": {
       "value": 15068000,
@@ -124,6 +144,8 @@
   "historic": [
     {
       "year": 2018,
+      "annual_volume": 2900000000,
+      "avg_tps": 92,
       "annual_purchases": 800000000,
       "annual_installments": 2900000000,
       "avg_tps_purchase": 25,
@@ -133,6 +155,8 @@
     },
     {
       "year": 2019,
+      "annual_volume": 4700000000,
+      "avg_tps": 149,
       "annual_purchases": 1300000000,
       "annual_installments": 4700000000,
       "avg_tps_purchase": 41,
@@ -142,6 +166,8 @@
     },
     {
       "year": 2020,
+      "annual_volume": 7200000000,
+      "avg_tps": 228,
       "annual_purchases": 2000000000,
       "annual_installments": 7200000000,
       "avg_tps_purchase": 63,
@@ -151,6 +177,8 @@
     },
     {
       "year": 2021,
+      "annual_volume": 10800000000,
+      "avg_tps": 342,
       "annual_purchases": 3000000000,
       "annual_installments": 10800000000,
       "avg_tps_purchase": 95,
@@ -160,6 +188,8 @@
     },
     {
       "year": 2022,
+      "annual_volume": 13700000000,
+      "avg_tps": 434,
       "annual_purchases": 3800000000,
       "annual_installments": 13700000000,
       "avg_tps_purchase": 120,
@@ -169,6 +199,8 @@
     },
     {
       "year": 2023,
+      "annual_volume": 16200000000,
+      "avg_tps": 514,
       "annual_purchases": 4500000000,
       "annual_installments": 16200000000,
       "avg_tps_purchase": 143,
@@ -178,6 +210,8 @@
     },
     {
       "year": 2024,
+      "annual_volume": 20000000000,
+      "avg_tps": 634,
       "annual_purchases": 5500000000,
       "annual_installments": 20000000000,
       "avg_tps_purchase": 175,
@@ -188,22 +222,82 @@
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "tps_purchase": 228, "tps_installment": 822, "annual_purchases": 7200000000 },
-      { "year": 2028, "tps_purchase": 290, "tps_installment": 1044, "annual_purchases": 9100000000 },
-      { "year": 2030, "tps_purchase": 364, "tps_installment": 1310, "annual_purchases": 11500000000 },
-      { "year": 2035, "tps_purchase": 578, "tps_installment": 2081, "annual_purchases": 18200000000 }
+      {
+        "year": 2026,
+        "tps_purchase": 228,
+        "tps_installment": 822,
+        "annual_purchases": 7200000000
+      },
+      {
+        "year": 2028,
+        "tps_purchase": 290,
+        "tps_installment": 1044,
+        "annual_purchases": 9100000000
+      },
+      {
+        "year": 2030,
+        "tps_purchase": 364,
+        "tps_installment": 1310,
+        "annual_purchases": 11500000000
+      },
+      {
+        "year": 2035,
+        "tps_purchase": 578,
+        "tps_installment": 2081,
+        "annual_purchases": 18200000000
+      }
     ],
     "high_growth": [
-      { "year": 2026, "tps_purchase": 278, "tps_installment": 1002, "annual_purchases": 8800000000 },
-      { "year": 2028, "tps_purchase": 418, "tps_installment": 1505, "annual_purchases": 13200000000 },
-      { "year": 2030, "tps_purchase": 613, "tps_installment": 2208, "annual_purchases": 19300000000 },
-      { "year": 2035, "tps_purchase": 1235, "tps_installment": 4446, "annual_purchases": 38900000000 }
+      {
+        "year": 2026,
+        "tps_purchase": 278,
+        "tps_installment": 1002,
+        "annual_purchases": 8800000000
+      },
+      {
+        "year": 2028,
+        "tps_purchase": 418,
+        "tps_installment": 1505,
+        "annual_purchases": 13200000000
+      },
+      {
+        "year": 2030,
+        "tps_purchase": 613,
+        "tps_installment": 2208,
+        "annual_purchases": 19300000000
+      },
+      {
+        "year": 2035,
+        "tps_purchase": 1235,
+        "tps_installment": 4446,
+        "annual_purchases": 38900000000
+      }
     ],
     "conservative": [
-      { "year": 2026, "tps_purchase": 198, "tps_installment": 713, "annual_purchases": 6300000000 },
-      { "year": 2028, "tps_purchase": 222, "tps_installment": 798, "annual_purchases": 7000000000 },
-      { "year": 2030, "tps_purchase": 248, "tps_installment": 892, "annual_purchases": 7800000000 },
-      { "year": 2035, "tps_purchase": 313, "tps_installment": 1126, "annual_purchases": 9900000000 }
+      {
+        "year": 2026,
+        "tps_purchase": 198,
+        "tps_installment": 713,
+        "annual_purchases": 6300000000
+      },
+      {
+        "year": 2028,
+        "tps_purchase": 222,
+        "tps_installment": 798,
+        "annual_purchases": 7000000000
+      },
+      {
+        "year": 2030,
+        "tps_purchase": 248,
+        "tps_installment": 892,
+        "annual_purchases": 7800000000
+      },
+      {
+        "year": 2035,
+        "tps_purchase": 313,
+        "tps_installment": 1126,
+        "annual_purchases": 9900000000
+      }
     ]
   },
   "overlap": {
@@ -269,6 +363,6 @@
     "data_recency": 16,
     "triangulation": 12,
     "coverage": 13,
-    "notes": "Top 5 Western providers have good SEC-filed data. China BNPL is poorly documented. No single industry source aggregates total global BNPL transactions. The installment multiplier (3.6x) is a model assumption, not an observed figure."
+    "notes": "Top 5 Western providers have good SEC-filed data. China BNPL is poorly documented. The installment multiplier (3.6x) is a model assumption."
   }
 }

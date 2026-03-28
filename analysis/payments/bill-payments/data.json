@@ -158,22 +158,70 @@
   ],
   "projections": {
     "baseline": [
-      { "year": 2026, "tps": 3329, "annual_volume": 105000000000 },
-      { "year": 2028, "tps": 3647, "annual_volume": 115000000000 },
-      { "year": 2030, "tps": 3996, "annual_volume": 126000000000 },
-      { "year": 2035, "tps": 5095, "annual_volume": 161000000000 }
+      {
+        "year": 2026,
+        "tps": 3329,
+        "annual_volume": 105000000000
+      },
+      {
+        "year": 2028,
+        "tps": 3647,
+        "annual_volume": 115000000000
+      },
+      {
+        "year": 2030,
+        "tps": 3996,
+        "annual_volume": 126000000000
+      },
+      {
+        "year": 2035,
+        "tps": 5095,
+        "annual_volume": 161000000000
+      }
     ],
     "high_growth": [
-      { "year": 2026, "tps": 3583, "annual_volume": 113000000000 },
-      { "year": 2028, "tps": 4265, "annual_volume": 134000000000 },
-      { "year": 2030, "tps": 5095, "annual_volume": 161000000000 },
-      { "year": 2035, "tps": 7930, "annual_volume": 250000000000 }
+      {
+        "year": 2026,
+        "tps": 3583,
+        "annual_volume": 113000000000
+      },
+      {
+        "year": 2028,
+        "tps": 4265,
+        "annual_volume": 134000000000
+      },
+      {
+        "year": 2030,
+        "tps": 5095,
+        "annual_volume": 161000000000
+      },
+      {
+        "year": 2035,
+        "tps": 7930,
+        "annual_volume": 250000000000
+      }
     ],
     "conservative": [
-      { "year": 2026, "tps": 3171, "annual_volume": 100000000000 },
-      { "year": 2028, "tps": 3329, "annual_volume": 105000000000 },
-      { "year": 2030, "tps": 3488, "annual_volume": 110000000000 },
-      { "year": 2035, "tps": 3964, "annual_volume": 125000000000 }
+      {
+        "year": 2026,
+        "tps": 3171,
+        "annual_volume": 100000000000
+      },
+      {
+        "year": 2028,
+        "tps": 3329,
+        "annual_volume": 105000000000
+      },
+      {
+        "year": 2030,
+        "tps": 3488,
+        "annual_volume": 110000000000
+      },
+      {
+        "year": 2035,
+        "tps": 3964,
+        "annual_volume": 125000000000
+      }
     ]
   },
   "overlap": {
@@ -268,6 +316,6 @@
     "data_recency": 14,
     "triangulation": 10,
     "coverage": 10,
-    "notes": "No single source publishes global bill payment transaction counts. Estimate is bottom-up from segment data with significant assumptions about account counts and payment frequencies. National payment system data (NACHA, BACS, SEPA, BBPS) provides strong anchor points for developed markets. Emerging market data is weak."
+    "notes": "No single source publishes global bill payment transaction counts. Bottom-up from segment data with significant assumptions about account counts and payment frequencies."
   }
 }

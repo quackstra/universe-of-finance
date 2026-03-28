@@ -4,10 +4,11 @@
 
 ## The Big Number
 
-**De-Duplicated Global Financial TPS: ~70,741**
+**De-Duplicated Global Financial TPS: ~73,750**
 
-*Range: 64,000–80,000 TPS. Programmatic validation via `tools/big_number.py`.*
+*Range: 67,000–83,000 TPS. Programmatic validation via `tools/big_number.py`.*
 *Coordinated global peak: ~147,000–246,000 TPS ([Peak TPS Analysis](PEAK_TPS.md)).*
+*Run 6: Full 29-category reconciliation with 5 new payment categories and revised estimates.*
 
 ## Completed Analyses
 
@@ -106,4 +107,4 @@ These categories overlap — the [Overlap Matrix](OVERLAP_MATRIX.md) details de-
 
 ---
 
-*Last updated: 2026-03-28 (Run 5). 29 categories, 5 runs completed.*
+*Last updated: 2026-03-28 (Run 6). 29 categories, 6 runs completed.*
