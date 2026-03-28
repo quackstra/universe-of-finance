@@ -39,6 +39,7 @@ A payments economist at the BIS and a crypto forensics analyst at Chainalysis ap
 | 14 | `market-sizing-specialist` | Market Sizing & TAM Methodology Lead | **Cross-cutting (methodology)** | Critical — every category needs sizing |
 | 15 | `measurement-standards-expert` | Financial Data Standards Specialist | **Cross-cutting (methodology)** | Critical — definition consistency across all categories |
 | 16 | `statistical-methodologist` | Economic Measurement Methodologist | **Cross-cutting (methodology)** | Critical — confidence intervals and extrapolation for all estimates |
+| 17 | `transaction-lifecycle-analyst` | Transaction Lifecycle & MEST Analyst | **Cross-cutting (MEST analysis)** | Critical — MEST multiplier estimation for all categories |
 
 ---
 
@@ -92,6 +93,21 @@ The following three SLEs are **methodology specialists**, not category specialis
 
 These three SLEs can be deployed individually or as a panel (see Methodology Review Protocol below).
 
+### MEST Analysis Dispatch
+
+**MEST = Mutual Economic State Transition**: any change to a holding of economically valuable assets where more than one party has a material interest in the record or accounting of that change and its result.
+
+The `transaction-lifecycle-analyst` SLE is a **cross-cutting MEST specialist** that applies to ALL categories. Every transaction in the Big Number generates multiple MESTs downstream — the MEST Number captures the full cascade of bilateral state changes across the economy.
+
+| When to Deploy | How to Deploy | What It Produces |
+|---------------|---------------|-----------------|
+| **MEST multiplier estimation** — for any category, estimate how many bilateral state transitions each transaction generates | Deploy `transaction-lifecycle-analyst` as secondary SLE alongside the category primary. The category SLE provides the transaction count; the lifecycle analyst maps the downstream cascade | A MEST multiplier range (e.g., "8-12x for equity trades") with documented lifecycle stages and party enumeration |
+| **MEST-aware research runs** — when building or updating a category capsule | Add `transaction-lifecycle-analyst` to the SLE panel after the primary research is complete. The lifecycle analyst reads the capsule and adds a "MEST Analysis" section | A MEST section appended to the capsule: base multiplier, exception amplifier, regulatory tail, and total MEST estimate for the category |
+| **Global MEST aggregation** — when computing the total MEST Number across all categories | Deploy `transaction-lifecycle-analyst` as lead, with `measurement-standards-expert` (for definition consistency) and `statistical-methodologist` (for confidence intervals) as secondary | The MEST Number: total bilateral state transitions per second across the global financial system, with uncertainty bounds |
+| **Cross-category MEST comparison** — when comparing the operational intensity of different transaction types | Deploy `transaction-lifecycle-analyst` as lead with relevant category primaries | Comparative MEST multiplier table showing which categories generate the most downstream state changes per originating transaction |
+
+**Key principle**: The `transaction-lifecycle-analyst` never replaces the category primary SLE. It always works alongside them. The category SLE knows the transaction count and market structure; the lifecycle analyst knows what happens after the trigger event and how many bilateral state changes cascade from it.
+
 ### Question-Type Routing
 
 | Question Archetype | Lead SLE | Supporting SLE(s) |
@@ -111,6 +127,9 @@ These three SLEs can be deployed individually or as a panel (see Methodology Rev
 | "How do we extrapolate from partial data?" | `statistical-methodologist` | `market-sizing-specialist`, Category primary |
 | "Are these two numbers measuring the same thing?" | `measurement-standards-expert` | `statistical-methodologist` |
 | "What's the methodology behind this number?" | `measurement-standards-expert` | `statistical-methodologist`, Category primary |
+| "How many MESTs does this transaction generate?" | `transaction-lifecycle-analyst` | Category primary, `measurement-standards-expert` |
+| "What's the MEST multiplier for this category?" | `transaction-lifecycle-analyst` | Category primary, `statistical-methodologist` |
+| "What happens after the transaction is initiated?" | `transaction-lifecycle-analyst` | Category primary, `post-trade-specialist` |
 
 ---
 
