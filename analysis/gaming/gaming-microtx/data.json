@@ -242,10 +242,18 @@
   },
   "overlap": {
     "overlaps_with": [
-      "consumer-cards"
+      "consumer-cards",
+      "digital-wallets",
+      "bank-transfers"
     ],
     "overlap_type": "partial",
-    "overlap_note": "65-75% of microtransactions settle on card rails"
+    "overlap_note": "68.8% of microtransactions settle on card rails (8.45B of 12.28B). An additional 9.1% flow through non-card digital wallets, 3.3% through bank transfers. Only ~19% (2.3B) are truly incremental — primarily carrier billing (9.3%) and gift card redemptions (5.1%).",
+    "card_rail_overlap_billions": 8.45,
+    "wallet_overlap_billions": 2.55,
+    "bank_transfer_overlap_billions": 0.41,
+    "incremental_billions": 2.32,
+    "incremental_pct": 18.9,
+    "detail": "See workings/payment-overlap.md for full channel decomposition by platform (mobile/PC/console) and payment method."
   },
   "sources": [
     {

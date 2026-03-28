@@ -242,10 +242,18 @@
   },
   "overlap": {
     "overlaps_with": [
-      "consumer-cards"
+      "consumer-cards",
+      "digital-wallets",
+      "bank-transfers"
     ],
     "overlap_type": "partial",
-    "overlap_note": "70-80% of digital game sales settle on card rails"
+    "overlap_note": "63.6% of digital game sales settle on card rails (1.84B of 2.89B). An additional 11.9% flow through non-card digital wallets, 3.6% through bank transfers. Only ~15% (446M) are truly incremental — primarily gift card redemptions, carrier billing, and platform wallet spend.",
+    "card_rail_overlap_billions": 1.84,
+    "wallet_overlap_billions": 0.42,
+    "bank_transfer_overlap_billions": 0.11,
+    "incremental_billions": 0.45,
+    "incremental_pct": 15.4,
+    "detail": "See workings/payment-overlap.md for full channel decomposition by platform and payment method."
   },
   "sources": [
     {

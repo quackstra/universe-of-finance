@@ -1,0 +1,191 @@
+{
+  "category": "Payroll Payments",
+  "slug": "payroll",
+  "sector": "Payments",
+  "last_updated": "2026-03-28",
+  "current": {
+    "avg_tps": {
+      "value": 1305,
+      "source": "Derived: 41.2B annual / 31,557,600 seconds",
+      "url": "",
+      "confidence": "low"
+    },
+    "peak_tps": {
+      "value": 6525,
+      "source": "Estimated: avg TPS x 5.0 peak multiplier (payday concentration)",
+      "url": "",
+      "confidence": "low",
+      "note": "Payroll is extremely peaky — US biweekly payday Fridays concentrate ~50% of monthly volume into 2 days. Month-end in EU/Asia adds further spikes."
+    },
+    "daily_volume": {
+      "value": 112900000,
+      "source": "Derived: 41.2B / 365.25 days",
+      "url": "",
+      "confidence": "low"
+    },
+    "annual_volume": {
+      "value": 41200000000,
+      "source": "Derived: Regional employment × pay frequency model (see workings/calculations.md)",
+      "url": "",
+      "confidence": "low",
+      "note": "No single source publishes global payroll transaction counts. Derived from ILO employment, BLS, Eurostat, NBS China, and national labor statistics."
+    },
+    "annual_value_usd": {
+      "value": 32000000000000,
+      "source": "ILO Global Wage Report — total global wage bill estimated at ~$32T (2024)",
+      "url": "https://www.ilo.org/publications/flagship-reports/global-wage-report",
+      "confidence": "medium",
+      "note": "Includes only formal-sector wages. Informal-sector cash wages not counted."
+    }
+  },
+  "historic": [
+    {
+      "year": 2019,
+      "annual_volume": 37500000000,
+      "avg_tps": 1189,
+      "source": "Derived from ILO 2019 employment (~3.3B) × pay frequency model",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 35800000000,
+      "avg_tps": 1135,
+      "source": "Derived — COVID employment contraction (~-5% global formal employment)",
+      "confidence": "low"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 37200000000,
+      "avg_tps": 1179,
+      "source": "Derived — partial recovery",
+      "confidence": "low"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 39100000000,
+      "avg_tps": 1239,
+      "source": "Derived — employment recovery above 2019 levels",
+      "confidence": "low"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 40200000000,
+      "avg_tps": 1274,
+      "source": "Derived — continued growth",
+      "confidence": "low"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 41200000000,
+      "avg_tps": 1305,
+      "source": "Derived — ILO 3.5B employed, pay frequency model",
+      "confidence": "low"
+    }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2026, "tps": 1357, "annual_volume": 42800000000 },
+      { "year": 2027, "tps": 1384, "annual_volume": 43700000000 },
+      { "year": 2028, "tps": 1411, "annual_volume": 44500000000 },
+      { "year": 2029, "tps": 1438, "annual_volume": 45400000000 },
+      { "year": 2030, "tps": 1467, "annual_volume": 46300000000 },
+      { "year": 2031, "tps": 1496, "annual_volume": 47200000000 },
+      { "year": 2032, "tps": 1525, "annual_volume": 48100000000 },
+      { "year": 2033, "tps": 1555, "annual_volume": 49100000000 },
+      { "year": 2034, "tps": 1586, "annual_volume": 50100000000 },
+      { "year": 2035, "tps": 1618, "annual_volume": 51100000000 }
+    ],
+    "high_growth": [
+      { "year": 2026, "tps": 1411, "annual_volume": 44500000000 },
+      { "year": 2027, "tps": 1467, "annual_volume": 46300000000 },
+      { "year": 2028, "tps": 1525, "annual_volume": 48100000000 },
+      { "year": 2029, "tps": 1586, "annual_volume": 50100000000 },
+      { "year": 2030, "tps": 1649, "annual_volume": 52000000000 },
+      { "year": 2031, "tps": 1714, "annual_volume": 54100000000 },
+      { "year": 2032, "tps": 1783, "annual_volume": 56300000000 },
+      { "year": 2033, "tps": 1854, "annual_volume": 58500000000 },
+      { "year": 2034, "tps": 1928, "annual_volume": 60900000000 },
+      { "year": 2035, "tps": 2006, "annual_volume": 63300000000 }
+    ],
+    "conservative": [
+      { "year": 2026, "tps": 1325, "annual_volume": 41800000000 },
+      { "year": 2027, "tps": 1338, "annual_volume": 42200000000 },
+      { "year": 2028, "tps": 1351, "annual_volume": 42600000000 },
+      { "year": 2029, "tps": 1365, "annual_volume": 43100000000 },
+      { "year": 2030, "tps": 1378, "annual_volume": 43500000000 },
+      { "year": 2031, "tps": 1392, "annual_volume": 43900000000 },
+      { "year": 2032, "tps": 1406, "annual_volume": 44400000000 },
+      { "year": 2033, "tps": 1420, "annual_volume": 44800000000 },
+      { "year": 2034, "tps": 1434, "annual_volume": 45300000000 },
+      { "year": 2035, "tps": 1449, "annual_volume": 45700000000 }
+    ]
+  },
+  "overlap": {
+    "overlaps_with": [
+      "bank-transfers"
+    ],
+    "overlap_type": "subset",
+    "overlap_note": "Payroll payments are a SUBSET of bank transfers. ~95%+ of formal payroll in developed markets settles via ACH/BACS/SEPA batch transfers. In emerging markets, cash wages reduce the overlap. Estimated 85-90% of the 41.2B payroll transactions are already counted in the 484B bank transfer total.",
+    "estimated_overlap_billions": 37,
+    "incremental_billions": 4.2,
+    "incremental_note": "Only ~4.2B payroll transactions (cash wages, check payroll, informal sector) are not captured in bank transfers."
+  },
+  "sources": [
+    {
+      "id": 1,
+      "citation": "ILO — World Employment and Social Outlook 2024",
+      "url": "https://www.ilo.org/sites/default/files/wcmsp5/groups/public/@dgreports/@inst/documents/publication/wcms_908142.pdf",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 2,
+      "citation": "ILOSTAT — Employment Statistics",
+      "url": "https://ilostat.ilo.org/topics/employment/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 3,
+      "citation": "BLS — Current Employment Statistics (CES)",
+      "url": "https://www.bls.gov/ces/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 4,
+      "citation": "Eurostat — Employment Annual Statistics 2024",
+      "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Employment_-_annual_statistics",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 5,
+      "citation": "ADP — Global Payroll Survey 2024",
+      "url": "https://www.adp.com/-/media/adp/resourcehub/pdf/potential-payroll-survey-2024-us-en.pdf",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 6,
+      "citation": "Statista — Employment in China 2024",
+      "url": "https://www.statista.com/topics/1317/employment-in-china/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 7,
+      "citation": "Nacha — ACH Network Volume and Value Statistics",
+      "url": "https://www.nacha.org/content/ach-network-volume-and-value-statistics",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 8,
+      "citation": "CloudPay — Global Payroll Complexities and Trends 2024",
+      "url": "https://www.cloudpay.com/blog/global-payroll-complexity-trends-by-region-2024/",
+      "accessed": "2026-03-28"
+    }
+  ],
+  "confidence": {
+    "score": 35,
+    "source_quality": 8,
+    "data_recency": 10,
+    "triangulation": 7,
+    "coverage": 10,
+    "notes": "No single source counts global payroll transactions. Derived entirely from employment × frequency model. Formal-sector bias is severe — ILO estimates 2B+ informal workers whose cash wages are invisible to payment systems."
+  }
+}

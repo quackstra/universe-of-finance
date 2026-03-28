@@ -1,0 +1,233 @@
+{
+  "category": "ATM Withdrawals",
+  "slug": "atm-withdrawals",
+  "sector": "Payments",
+  "last_updated": "2026-03-28",
+  "current": {
+    "avg_tps": {
+      "value": 1557,
+      "source": "Derived: 49.1B annual / 31,557,600 seconds",
+      "url": "",
+      "confidence": "medium"
+    },
+    "peak_tps": {
+      "value": 3114,
+      "source": "Estimated: avg TPS x 2.0 peak multiplier (holiday/weekend cash demand)",
+      "url": "",
+      "confidence": "low",
+      "note": "Peak driven by pre-holiday weekends, pay days, and festival periods in cash-heavy markets."
+    },
+    "daily_volume": {
+      "value": 134500000,
+      "source": "Derived: 49.1B / 365.25 days",
+      "url": "",
+      "confidence": "medium"
+    },
+    "annual_volume": {
+      "value": 49100000000,
+      "source": "Derived from BIS CPMI data, ECB payments statistics, RBI data, and ATMIA/Datos Insights estimates",
+      "url": "https://data.bis.org/topics/CPMI_CT",
+      "confidence": "medium",
+      "note": "Cash withdrawals represent ~69% of all ATM transactions; balance inquiries and other non-cash operations add ~22B more but are excluded."
+    },
+    "annual_value_usd": {
+      "value": 7700000000000,
+      "source": "Derived: 49.1B withdrawals × $157 avg withdrawal value (Fed/ATMIA data)",
+      "url": "https://www.atmia.com/",
+      "confidence": "medium",
+      "note": "Average withdrawal value varies widely: US $198, EU ~$140, India ~$40, global weighted avg ~$157"
+    }
+  },
+  "historic": [
+    {
+      "year": 2015,
+      "annual_volume": 62000000000,
+      "avg_tps": 1965,
+      "source": "Estimated from BIS/RBR data — near-peak era",
+      "confidence": "low"
+    },
+    {
+      "year": 2016,
+      "annual_volume": 63000000000,
+      "avg_tps": 1997,
+      "source": "ATMIA — ATM cash withdrawal volume grew 6% in 2016",
+      "confidence": "medium"
+    },
+    {
+      "year": 2017,
+      "annual_volume": 62000000000,
+      "avg_tps": 1965,
+      "source": "Estimated — plateau before decline",
+      "confidence": "low"
+    },
+    {
+      "year": 2018,
+      "annual_volume": 60000000000,
+      "avg_tps": 1902,
+      "source": "Derived from Fed study (US 5.1B) + BIS + ECB",
+      "confidence": "medium"
+    },
+    {
+      "year": 2019,
+      "annual_volume": 57000000000,
+      "avg_tps": 1807,
+      "source": "Estimated — decline accelerating with digital payments",
+      "confidence": "low"
+    },
+    {
+      "year": 2020,
+      "annual_volume": 42000000000,
+      "avg_tps": 1331,
+      "source": "Estimated — COVID lockdowns devastated ATM usage (~-26%)",
+      "confidence": "low"
+    },
+    {
+      "year": 2021,
+      "annual_volume": 46000000000,
+      "avg_tps": 1458,
+      "source": "Derived — partial recovery; US declined to 3.7B (Fed)",
+      "confidence": "low"
+    },
+    {
+      "year": 2022,
+      "annual_volume": 50000000000,
+      "avg_tps": 1585,
+      "source": "Estimated — recovery continued but below pre-COVID",
+      "confidence": "low"
+    },
+    {
+      "year": 2023,
+      "annual_volume": 51000000000,
+      "avg_tps": 1617,
+      "source": "Derived from BIS/ECB/RBI; global total ~86.7B incl. non-cash",
+      "confidence": "medium"
+    },
+    {
+      "year": 2024,
+      "annual_volume": 49100000000,
+      "avg_tps": 1557,
+      "source": "BIS/ECB/RBI — cash withdrawals fell ~3% in 2024",
+      "confidence": "medium"
+    }
+  ],
+  "projections": {
+    "baseline": [
+      { "year": 2026, "tps": 1434, "annual_volume": 45300000000 },
+      { "year": 2027, "tps": 1377, "annual_volume": 43500000000 },
+      { "year": 2028, "tps": 1322, "annual_volume": 41700000000 },
+      { "year": 2029, "tps": 1269, "annual_volume": 40000000000 },
+      { "year": 2030, "tps": 1218, "annual_volume": 38400000000 },
+      { "year": 2031, "tps": 1170, "annual_volume": 36900000000 },
+      { "year": 2032, "tps": 1123, "annual_volume": 35400000000 },
+      { "year": 2033, "tps": 1078, "annual_volume": 34000000000 },
+      { "year": 2034, "tps": 1035, "annual_volume": 32700000000 },
+      { "year": 2035, "tps": 994, "annual_volume": 31400000000 }
+    ],
+    "high_growth": [
+      { "year": 2026, "tps": 1507, "annual_volume": 47600000000 },
+      { "year": 2027, "tps": 1482, "annual_volume": 46800000000 },
+      { "year": 2028, "tps": 1458, "annual_volume": 46000000000 },
+      { "year": 2029, "tps": 1434, "annual_volume": 45300000000 },
+      { "year": 2030, "tps": 1411, "annual_volume": 44500000000 },
+      { "year": 2031, "tps": 1388, "annual_volume": 43800000000 },
+      { "year": 2032, "tps": 1365, "annual_volume": 43100000000 },
+      { "year": 2033, "tps": 1343, "annual_volume": 42400000000 },
+      { "year": 2034, "tps": 1322, "annual_volume": 41700000000 },
+      { "year": 2035, "tps": 1300, "annual_volume": 41000000000 }
+    ],
+    "conservative": [
+      { "year": 2026, "tps": 1335, "annual_volume": 42100000000 },
+      { "year": 2027, "tps": 1235, "annual_volume": 39000000000 },
+      { "year": 2028, "tps": 1143, "annual_volume": 36100000000 },
+      { "year": 2029, "tps": 1059, "annual_volume": 33400000000 },
+      { "year": 2030, "tps": 980, "annual_volume": 30900000000 },
+      { "year": 2031, "tps": 907, "annual_volume": 28600000000 },
+      { "year": 2032, "tps": 839, "annual_volume": 26500000000 },
+      { "year": 2033, "tps": 777, "annual_volume": 24500000000 },
+      { "year": 2034, "tps": 719, "annual_volume": 22700000000 },
+      { "year": 2035, "tps": 666, "annual_volume": 21000000000 }
+    ]
+  },
+  "overlap": {
+    "overlaps_with": [],
+    "overlap_type": "none",
+    "overlap_note": "ATM withdrawals are cash-out events, not payments. They are NOT double-counted with any other payment category. A consumer withdrawing cash at an ATM creates one ATM transaction; when they later spend that cash, it is an untracked cash payment — not captured in cards, wallets, or bank transfers.",
+    "relationship_to_cards": "ATM withdrawals use card rails for authentication (card inserted/tapped, PIN verified) but the transaction is a cash disbursement, not a purchase. Card network statistics typically exclude ATM withdrawals from purchase transaction counts but include them in total card volume by value."
+  },
+  "sources": [
+    {
+      "id": 1,
+      "citation": "BIS — CPMI Retail Payment Statistics (Red Book)",
+      "url": "https://data.bis.org/topics/CPMI_CT",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 2,
+      "citation": "ECB — Payments Statistics: Second Half of 2024",
+      "url": "https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2024h2~5ada0087d2.en.html",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 3,
+      "citation": "ECB — Payments Statistics: First Half of 2024",
+      "url": "https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2024h1~5263055ced.en.html",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 4,
+      "citation": "RBI — Bankwise ATM/POS/Card Statistics",
+      "url": "https://rbi.org.in/scripts/atmview.aspx",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 5,
+      "citation": "Federal Reserve — Payments Study 2022 Triennial Release",
+      "url": "https://www.federalreserve.gov/paymentsystems/2023-April-The-Federal-Reserve-Payments-Study.htm",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 6,
+      "citation": "ATMIA — Industry Statistics and Reports",
+      "url": "https://www.atmia.com/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 7,
+      "citation": "Datos Insights — ATM Industry Trends A-Z Guide",
+      "url": "https://datos-insights.com/blog/atm-industry-trends-a-z-guide-global-market-evolution/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 8,
+      "citation": "ATM Marketplace — ATM Cash Withdrawal Volume Statistics",
+      "url": "https://www.atmmarketplace.com/news/atm-cash-withdrawal-volume-grows-6-percent-in-2016/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 9,
+      "citation": "BIS — Tap, Click and Pay: How Digital Payments Seize the Day (Feb 2024)",
+      "url": "https://www.bis.org/statistics/payment_stats/commentary2402.pdf",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 10,
+      "citation": "Sci-Tech Today — ATM Statistics 2025",
+      "url": "https://www.sci-tech-today.com/stats/atm-statistics-updated/",
+      "accessed": "2026-03-28"
+    },
+    {
+      "id": 11,
+      "citation": "World Bank — ATMs per 100,000 Adults",
+      "url": "https://data.worldbank.org/indicator/FB.ATM.TOTL.P5",
+      "accessed": "2026-03-28"
+    }
+  ],
+  "confidence": {
+    "score": 52,
+    "source_quality": 16,
+    "data_recency": 14,
+    "triangulation": 12,
+    "coverage": 10,
+    "notes": "BIS Red Book and ECB provide reliable data for CPMI/EU countries. US Fed data is triennial (last: 2021). Emerging market ATM data (Africa, SE Asia) is sparse. Global total ~86.7B includes non-cash ATM transactions; withdrawal-only figure requires adjustment."
+  }
+}
