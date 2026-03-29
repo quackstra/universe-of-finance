@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Universe of Finance — Measuring every financial transaction on Earth</title>
-<meta name="description" content="Interactive dashboard mapping global financial transaction throughput across 29 categories and 7 sectors. ~73,750 TPS. ~545,000 MEST/s.">
+<meta name="description" content="Interactive dashboard mapping global financial transaction throughput across 29 categories and 7 sectors. ~73,750 TPS. ~545,000 MEST/s. ~47B tokenizable resources worth ~$867T.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
   --card-border: #1e293b;
   --accent-blue: #3b82f6;
   --accent-green: #10b981;
+  --accent-emerald: #10b981;
   --accent-amber: #f59e0b;
   --accent-purple: #8b5cf6;
   --accent-red: #ef4444;
@@ -167,6 +168,7 @@ h2 {
 
 .hero-stat .big-number.tps { color: var(--accent-blue); }
 .hero-stat .big-number.mest { color: var(--accent-purple); }
+.hero-stat .big-number.ttr { color: var(--accent-emerald, #10b981); }
 
 .hero-stat .unit {
   font-size: clamp(1rem, 2vw, 1.3rem);
@@ -611,6 +613,89 @@ tbody td {
   line-height: 1.5;
 }
 
+/* ─── TTR Section ─── */
+.ttr-hero-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.ttr-hero-stat {
+  text-align: center;
+}
+
+.ttr-hero-stat .ttr-big {
+  font-family: var(--mono);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--accent-emerald);
+  line-height: 1.1;
+}
+
+.ttr-hero-stat .ttr-unit {
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.ttr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.ttr-gap-card {
+  text-align: center;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));
+  border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 16px;
+  margin-top: 32px;
+}
+
+.ttr-gap-card .gap-visual {
+  position: relative;
+  height: 32px;
+  background: rgba(16,185,129,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0 16px;
+}
+
+.ttr-gap-card .gap-filled {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  min-width: 2px;
+  background: var(--accent-emerald);
+  border-radius: 8px 0 0 8px;
+  box-shadow: 0 0 8px rgba(16,185,129,0.6);
+}
+
+.ttr-gap-card .gap-callout {
+  font-family: var(--mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-amber);
+  margin-bottom: 4px;
+}
+
+.ttr-gap-card .gap-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .ttr-grid { grid-template-columns: 1fr; }
+  .ttr-hero-numbers { flex-direction: column; gap: 24px; }
+}
+
 /* ─── Footer ─── */
 footer {
   border-top: 1px solid var(--card-border);
@@ -705,6 +790,7 @@ nav .nav-links a:hover { color: var(--text); }
     <div class="brand">Universe of Finance</div>
     <ul class="nav-links">
       <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#ttr">TTR</a></li>
       <li><a href="#mest-cascade">MEST</a></li>
       <li><a href="#mest-advantage">Advantage</a></li>
       <li><a href="#charts">Charts</a></li>
@@ -730,6 +816,11 @@ nav .nav-links a:hover { color: var(--text); }
         <div class="big-number mest mono">~<span id="counterMEST">0</span></div>
         <div class="unit">MEST/s</div>
         <div class="sub">Mutual Economic State Transitions</div>
+      </div>
+      <div class="hero-stat">
+        <div class="big-number ttr mono">~<span id="counterTTR">0</span>B</div>
+        <div class="unit">TTR</div>
+        <div class="sub">$<span id="counterTTRValue">0</span>T tokenizable resources</div>
       </div>
     </div>
     <div class="hero-mest-explain">
@@ -762,6 +853,47 @@ nav .nav-links a:hover { color: var(--text); }
         </thead>
         <tbody id="leaderboardBody"></tbody>
       </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TTR (Total Tokenizable Resources) ═══════ -->
+<section id="ttr">
+  <div class="container">
+    <h2 style="color:var(--accent-emerald);">Total Tokenizable Resources</h2>
+    <p class="section-subtitle">Every asset, right, and record that can be represented as a token on a ledger. The full universe of what DLT can address.</p>
+    <div class="ttr-hero-numbers">
+      <div class="ttr-hero-stat">
+        <div class="ttr-big mono">~<span id="counterTTRSection">0</span>B</div>
+        <div class="ttr-unit">Discrete Tokenizable Resources</div>
+      </div>
+      <div class="ttr-hero-stat">
+        <div class="ttr-big mono">$<span id="counterTTRValueSection">0</span>T</div>
+        <div class="ttr-unit">Total Value of Tokenizable Assets</div>
+      </div>
+    </div>
+    <div class="ttr-grid">
+      <div class="chart-card">
+        <h3 style="color:var(--accent-emerald);">TTR Tier Breakdown by Value</h3>
+        <div class="chart-canvas-wrap" style="height:340px;">
+          <canvas id="ttrTierChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3 style="color:var(--accent-emerald);">TTR Tier Composition</h3>
+        <div class="chart-canvas-wrap">
+          <canvas id="ttrDoughnut"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="ttr-gap-card">
+      <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:4px;">The Tokenization Gap</h3>
+      <p class="gap-desc" style="margin-bottom:8px;">Current RWA tokenization (~$20B) vs Total Tokenizable Resources (~$867T)</p>
+      <div class="gap-visual">
+        <div class="gap-filled"></div>
+      </div>
+      <div class="gap-callout">&lt; 0.01% tokenized</div>
+      <p class="gap-desc">$20B of $867T &mdash; the opportunity is almost entirely untapped</p>
     </div>
   </div>
 </section>
@@ -895,23 +1027,26 @@ nav .nav-links a:hover { color: var(--text); }
         <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-high">78</span></span></div>
         <div class="spotlight-quote">"The ECB's TIPS instant payment volume grew 402% in 2024. The EU is building the world's most regulated &mdash; and most measurable &mdash; financial system."</div>
       </div>
-      <div class="spotlight-card spotlight-japan coming-soon">
+      <div class="spotlight-card spotlight-japan">
         <div class="flag">&#127471;&#127477;</div>
         <h3>Japan</h3>
-        <span class="coming-soon-badge">Deep Dive Coming Soon</span>
-        <div class="spotlight-stat"><span class="label">Est. share of global TPS</span><span class="value muted">~4-6%</span></div>
-        <div class="spotlight-stat"><span class="label">Key systems</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">Zengin, JPX, JSCC</span></div>
-        <div class="spotlight-stat"><span class="label">Notable</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">3rd largest equity market</span></div>
-        <div class="spotlight-quote">"JPX is #3 globally by equity market cap. Zengin processes real-time transfers for 120M+ accounts. Full deep dive in Run 11."</div>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">4.6%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~3,420</span></div>
+        <div class="spotlight-stat"><span class="label">JPX equity rank</span><span class="value mono">#3 Global</span></div>
+        <div class="spotlight-stat"><span class="label">PayPay users</span><span class="value mono">65M</span></div>
+        <div class="spotlight-stat"><span class="label">Cash-to-digital shift</span><span class="value mono accent-green">42%</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-mid">68</span></span></div>
+        <div class="spotlight-quote">"JPX is #3 globally by equity market cap. PayPay has 65M users driving Japan's cash-to-digital transition &mdash; 42% of consumer payments are now cashless."</div>
       </div>
-      <div class="spotlight-card spotlight-uk coming-soon">
+      <div class="spotlight-card spotlight-uk">
         <div class="flag">&#127468;&#127463;</div>
         <h3>United Kingdom</h3>
-        <span class="coming-soon-badge">Deep Dive Coming Soon</span>
-        <div class="spotlight-stat"><span class="label">Est. share of global TPS</span><span class="value muted">~5-7%</span></div>
-        <div class="spotlight-stat"><span class="label">Key systems</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">Faster Payments, LSE, LCH</span></div>
-        <div class="spotlight-stat"><span class="label">Notable</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">#1 FX trading centre</span></div>
-        <div class="spotlight-quote">"London clears 37% of global FX volume. LCH is the world's largest interest rate swap CCP. Full deep dive in Run 11."</div>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">5.7%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~4,200</span></div>
+        <div class="spotlight-stat"><span class="label">Share of global FX</span><span class="value mono">38.1%</span></div>
+        <div class="spotlight-stat"><span class="label">Key innovation</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">Faster Payments pioneer</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-high">75</span></span></div>
+        <div class="spotlight-quote">"London clears 38.1% of global FX volume. The UK pioneered Faster Payments in 2008 &mdash; a model replicated by 60+ countries. LCH is the world's largest interest rate swap CCP."</div>
       </div>
     </div>
   </div>
@@ -929,7 +1064,7 @@ nav .nav-links a:hover { color: var(--text); }
 <!-- ═══════ FOOTER ═══════ -->
 <footer>
   <div class="container">
-    <p>Research methodology: Triangulation-first, 17 Soul Less Employees, 29 categories, 7 sectors &middot; Run 10</p>
+    <p>Research methodology: Triangulation-first, 17 Soul Less Employees, 29 categories, 7 sectors &middot; Run 11</p>
     <p><a href="https://github.com/quackstra/universe-of-finance" target="_blank" rel="noopener">View the full research on GitHub</a> &middot; <a href="versions/" rel="noopener">Version History</a></p>
     <p style="margin-top:16px;">&copy; 2026 Universe of Finance &middot; <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
   </div>
@@ -1042,7 +1177,22 @@ function fmtComma(n) { return n.toLocaleString('en-US'); }
 document.addEventListener('DOMContentLoaded', () => {
   animateCounter(document.getElementById('counterTPS'), 73750, 2200, fmtComma);
   animateCounter(document.getElementById('counterMEST'), 545000, 2400, fmtComma);
+  animateCounter(document.getElementById('counterTTR'), 47, 2000, fmtComma);
+  animateCounter(document.getElementById('counterTTRValue'), 867, 2200, fmtComma);
 });
+
+/* TTR section counters — triggered on scroll into view */
+const ttrSectionObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(document.getElementById('counterTTRSection'), 47, 2000, fmtComma);
+      animateCounter(document.getElementById('counterTTRValueSection'), 867, 2200, fmtComma);
+      ttrSectionObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const ttrSection = document.getElementById('ttr');
+if (ttrSection) ttrSectionObs.observe(ttrSection);
 
 /* ═══════════════════════════════════════════
    NAV SHOW ON SCROLL
@@ -1410,6 +1560,89 @@ new Chart(wfCtx, {
             borderRadius: 6,
             padding: { x: 12, y: 6 },
           }
+        }
+      }
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════
+   TTR CHARTS
+   ═══════════════════════════════════════════ */
+const TTR_TIERS = {
+  labels: ['Financial Assets', 'Real Assets', 'Rights & Claims', 'Digital Native', 'Government Records'],
+  values: [415, 380, 45, 15, 12],
+  colors: ['#10b981', '#34d399', '#6ee7b7', '#a7f3d0', '#d1fae5']
+};
+
+// TTR Horizontal Bar
+new Chart(document.getElementById('ttrTierChart'), {
+  type: 'bar',
+  data: {
+    labels: TTR_TIERS.labels,
+    datasets: [{
+      label: 'Value ($T)',
+      data: TTR_TIERS.values,
+      backgroundColor: TTR_TIERS.colors.map(c => c + 'cc'),
+      borderColor: TTR_TIERS.colors,
+      borderWidth: 1,
+      borderRadius: 4,
+      barPercentage: 0.7,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: {
+          callback: v => '$' + v + 'T',
+          font: { family: "'JetBrains Mono', monospace", size: 11 }
+        }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 12 } }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => '$' + ctx.parsed.x + ' trillion'
+        }
+      }
+    }
+  }
+});
+
+// TTR Doughnut
+new Chart(document.getElementById('ttrDoughnut'), {
+  type: 'doughnut',
+  data: {
+    labels: TTR_TIERS.labels,
+    datasets: [{
+      data: TTR_TIERS.values,
+      backgroundColor: TTR_TIERS.colors,
+      borderColor: '#111827',
+      borderWidth: 3,
+      hoverBorderColor: '#f9fafb',
+      hoverBorderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '62%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { padding: 14, usePointStyle: true, pointStyleWidth: 12, font: { size: 11 } }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => `${ctx.label}: $${ctx.parsed}T (${((ctx.parsed / 867) * 100).toFixed(1)}%)`
         }
       }
     }
