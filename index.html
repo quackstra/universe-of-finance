@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Universe of Finance — Measuring every financial transaction on Earth</title>
+<meta name="description" content="Interactive dashboard mapping global financial transaction throughput across 29 categories and 7 sectors. ~73,750 TPS. ~545,000 MEST/s.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+<style>
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0e1a;
+  --card: #111827;
+  --card-border: #1e293b;
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-purple: #8b5cf6;
+  --accent-red: #ef4444;
+  --accent-pink: #ec4899;
+  --accent-cyan: #06b6d4;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Utilities ─── */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.accent-blue { color: var(--accent-blue); }
+.accent-green { color: var(--accent-green); }
+.accent-amber { color: var(--accent-amber); }
+.accent-purple { color: var(--accent-purple); }
+
+section {
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 40px;
+  max-width: 640px;
+}
+
+/* ─── Hero ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 50% 30%, rgba(59,130,246,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 70%, rgba(139,92,246,0.06) 0%, transparent 50%);
+  pointer-events: none;
+  animation: heroGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-3%, 2%) scale(1.05); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(59,130,246,0.12);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent-blue);
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.hero .tagline {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.hero-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .big-number {
+  font-family: var(--mono);
+  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.hero-stat .big-number.tps { color: var(--accent-blue); }
+.hero-stat .big-number.mest { color: var(--accent-purple); }
+
+.hero-stat .unit {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-weight: 400;
+}
+
+.hero-stat .sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.hero-mest-explain {
+  max-width: 620px;
+  text-align: center;
+  margin-top: 48px;
+  position: relative;
+}
+
+.hero-mest-explain .label {
+  font-weight: 700;
+  color: var(--accent-purple);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.hero-mest-explain p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  color: var(--muted);
+  font-size: 1.5rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+  50% { transform: translateX(-50%) translateY(10px); opacity: 1; }
+}
+
+/* ─── Leaderboard ─── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--muted);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover { border-color: var(--accent-blue); color: var(--text); }
+.filter-btn.active {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #fff;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+thead th {
+  background: rgba(255,255,255,0.04);
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.2s;
+}
+
+thead th:hover { color: var(--text); }
+thead th .sort-arrow { margin-left: 4px; font-size: 0.7rem; }
+thead th.sort-active { color: var(--accent-blue); }
+
+tbody tr {
+  border-top: 1px solid var(--card-border);
+  transition: background 0.15s;
+}
+tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+tbody td {
+  padding: 12px 16px;
+  white-space: nowrap;
+}
+
+.td-name { font-weight: 600; }
+.td-number { font-family: var(--mono); font-weight: 500; }
+.td-sector {
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.sector-payments { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
+.sector-tradfi { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.sector-digital { background: rgba(139,92,246,0.15); color: var(--accent-purple); }
+.sector-banking { background: rgba(6,182,212,0.15); color: var(--accent-cyan); }
+.sector-gaming { background: rgba(236,72,153,0.15); color: var(--accent-pink); }
+.sector-government { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+.sector-emerging { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+
+.conf-badge {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.conf-high { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+.conf-mid { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.conf-low { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+
+/* ─── MEST Cascade ─── */
+.cascade-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cascade-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 0;
+  position: relative;
+  opacity: 0.35;
+  transition: opacity 0.4s, transform 0.4s;
+  transform: translateX(-10px);
+}
+
+.cascade-step.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cascade-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: rgba(139,92,246,0.15);
+  color: var(--accent-purple);
+  border: 2px solid rgba(139,92,246,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.cascade-step.active .cascade-num {
+  background: var(--accent-purple);
+  color: #fff;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 20px rgba(139,92,246,0.4);
+}
+
+.cascade-line {
+  position: absolute;
+  left: 19px;
+  top: 60px;
+  bottom: 0;
+  width: 2px;
+  background: var(--card-border);
+}
+
+.cascade-step:last-child .cascade-line { display: none; }
+
+.cascade-body h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.cascade-body .parties {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.cascade-body .parties span {
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.cascade-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.cascade-btn {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cascade-btn:hover { border-color: var(--accent-purple); }
+.cascade-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.cascade-trigger-card {
+  text-align: center;
+  padding: 24px;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08));
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 12px;
+}
+
+.cascade-trigger-card .emoji { font-size: 2rem; margin-bottom: 8px; }
+.cascade-trigger-card h3 { font-size: 1.2rem; margin-bottom: 4px; }
+.cascade-trigger-card p { color: var(--muted); font-size: 0.9rem; }
+
+/* ─── Charts ─── */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.chart-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.chart-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.chart-canvas-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* ─── Spotlights ─── */
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.spotlight-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.spotlight-india::before { background: linear-gradient(90deg, #ff9933, #fff, #138808); }
+.spotlight-china::before { background: linear-gradient(90deg, #de2910, #ffde00); }
+
+.spotlight-card .flag { font-size: 2.5rem; margin-bottom: 16px; }
+.spotlight-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; }
+
+.spotlight-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 0.9rem;
+}
+
+.spotlight-stat:last-child { border-bottom: none; }
+.spotlight-stat .label { color: var(--muted); }
+.spotlight-stat .value { font-family: var(--mono); font-weight: 600; }
+
+.spotlight-quote {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255,255,255,0.03);
+  border-left: 3px solid var(--accent-amber);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ─── Insights ─── */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.insight-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.insight-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+.insight-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(59,130,246,0.1);
+}
+
+.insight-card p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ─── Footer ─── */
+footer {
+  border-top: 1px solid var(--card-border);
+  padding: 48px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 2;
+}
+
+footer a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+footer a:hover { text-decoration: underline; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  section { padding: 56px 0; }
+  .chart-grid, .spotlight-grid { grid-template-columns: 1fr; }
+  .hero-numbers { flex-direction: column; gap: 32px; }
+  h2 { font-size: 1.6rem; }
+  .card { padding: 20px; }
+  table { font-size: 0.8rem; }
+  thead th, tbody td { padding: 10px 10px; }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+/* ─── Nav ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10,14,26,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 0 24px;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+}
+
+nav.visible { transform: translateY(0); }
+
+nav .inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+nav .brand {
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+nav .nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav .nav-links a:hover { color: var(--text); }
+
+@media (max-width: 640px) {
+  nav .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="inner">
+    <div class="brand">Universe of Finance</div>
+    <ul class="nav-links">
+      <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#mest-cascade">MEST</a></li>
+      <li><a href="#charts">Charts</a></li>
+      <li><a href="#spotlights">Spotlights</a></li>
+      <li><a href="#insights">Insights</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero visible" id="hero">
+  <div class="container" style="display:flex;flex-direction:column;align-items:center;">
+    <div class="hero-badge">Open Research Project</div>
+    <h1>Universe of Finance</h1>
+    <p class="tagline">Measuring every financial transaction on Earth</p>
+    <div class="hero-numbers">
+      <div class="hero-stat">
+        <div class="big-number tps mono">~<span id="counterTPS">0</span></div>
+        <div class="unit">TPS</div>
+        <div class="sub">~2.3 trillion transactions per year</div>
+      </div>
+      <div class="hero-stat">
+        <div class="big-number mest mono">~<span id="counterMEST">0</span></div>
+        <div class="unit">MEST/s</div>
+        <div class="sub">Mutual Economic State Transitions</div>
+      </div>
+    </div>
+    <div class="hero-mest-explain">
+      <div class="label">What is a MEST?</div>
+      <p>Every transaction triggers a cascade of bilateral state changes. A single card swipe generates ~7 MESTs: authorization, clearing, interchange, settlement on both sides, merchant credit, and statement update. MEST measures what the financial system <em>actually</em> processes.</p>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">&#8595;</div>
+</section>
+
+<!-- ═══════ LEADERBOARD ═══════ -->
+<section id="leaderboard">
+  <div class="container">
+    <h2>TPS Leaderboard</h2>
+    <p class="section-subtitle">28 categories ranked by throughput. Click column headers to sort. Filter by sector.</p>
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="table-wrap">
+      <table id="leaderboardTable">
+        <thead>
+          <tr>
+            <th data-key="rank">#</th>
+            <th data-key="name" data-type="string">Category</th>
+            <th data-key="tps" data-type="number" class="sort-active">TPS <span class="sort-arrow">&#9660;</span></th>
+            <th data-key="txnYear" data-type="string">Txns/yr</th>
+            <th data-key="sector" data-type="string">Sector</th>
+            <th data-key="confidence" data-type="number">Confidence <span class="sort-arrow"></span></th>
+            <th data-key="mestMult" data-type="number">MEST Mult <span class="sort-arrow"></span></th>
+            <th data-key="mestPerSec" data-type="number">MEST/s <span class="sort-arrow"></span></th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MEST CASCADE ═══════ -->
+<section id="mest-cascade">
+  <div class="container">
+    <h2>The MEST Cascade</h2>
+    <p class="section-subtitle">One card purchase. Seven bilateral state changes. Step through the cascade.</p>
+    <div class="cascade-trigger-card">
+      <div class="emoji">&#128179;</div>
+      <h3>$42.00 Coffee Shop Purchase</h3>
+      <p>Tap. Approved. But behind the scenes, 7 state transitions fire across 5 institutions.</p>
+    </div>
+    <div class="cascade-container" id="cascadeContainer"></div>
+    <div class="cascade-controls">
+      <button class="cascade-btn" id="cascadePrev" disabled>&#8592; Back</button>
+      <button class="cascade-btn" id="cascadeNext">Next Step &#8594;</button>
+      <button class="cascade-btn" id="cascadeAll">Show All</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CHARTS ═══════ -->
+<section id="charts">
+  <div class="container">
+    <h2>Visual Breakdown</h2>
+    <p class="section-subtitle">Sector composition and historical growth.</p>
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>Sector Share of Global TPS</h3>
+        <div class="chart-canvas-wrap">
+          <canvas id="sectorDoughnut"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Global Gross TPS (2015 - 2025)</h3>
+        <div class="chart-canvas-wrap">
+          <canvas id="timeSeriesLine"></canvas>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:24px;">
+      <div class="chart-card">
+        <h3>MEST Multiplier by Category</h3>
+        <div class="chart-canvas-wrap" style="height:620px;">
+          <canvas id="mestBarChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SPOTLIGHTS ═══════ -->
+<section id="spotlights">
+  <div class="container">
+    <h2>Country Spotlights</h2>
+    <p class="section-subtitle">Two nations that defy proportional expectations.</p>
+    <div class="spotlight-grid">
+      <div class="spotlight-card spotlight-india">
+        <div class="flag">&#127470;&#127475;</div>
+        <h3>India</h3>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">17.4%</span></div>
+        <div class="spotlight-stat"><span class="label">Share of global GDP</span><span class="value">3.5%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~12,850</span></div>
+        <div class="spotlight-stat"><span class="label">UPI txns/year</span><span class="value mono">228B</span></div>
+        <div class="spotlight-stat"><span class="label">NSE share of global ETD</span><span class="value mono">62%</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-high">72</span></span></div>
+        <div class="spotlight-quote">"India skipped the card era entirely — leapfrogging straight to real-time mobile payments."</div>
+      </div>
+      <div class="spotlight-card spotlight-china">
+        <div class="flag">&#127464;&#127475;</div>
+        <h3>China</h3>
+        <div class="spotlight-stat"><span class="label">TPS uncertainty band</span><span class="value accent-amber">&plusmn;6,000 TPS</span></div>
+        <div class="spotlight-stat"><span class="label">Context</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">Larger than entire Digital Assets sector</span></div>
+        <div class="spotlight-stat"><span class="label">Opacity: crypto</span><span class="value"><span class="conf-badge conf-low">10</span></span></div>
+        <div class="spotlight-stat"><span class="label">Opacity: equities</span><span class="value"><span class="conf-badge conf-high">75</span></span></div>
+        <div class="spotlight-quote">"The biggest blind spot in global finance. China's uncertainty band alone exceeds most sectors."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ INSIGHTS ═══════ -->
+<section id="insights">
+  <div class="container">
+    <h2>Key Insights</h2>
+    <p class="section-subtitle">What the data tells us about how the world moves money.</p>
+    <div class="insights-grid" id="insightsGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container">
+    <p>Research methodology: Triangulation-first, 17 Soul Less Employees, 29 categories, 7 sectors</p>
+    <p><a href="https://github.com/quackstra/universe-of-finance" target="_blank" rel="noopener">View the full research on GitHub</a></p>
+    <p style="margin-top:16px;">&copy; 2026 Universe of Finance &middot; <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA
+   ═══════════════════════════════════════════ */
+const DATA = [
+  { name:"Consumer Cards", tps:24501, txnYear:"772.7B", sector:"Payments", confidence:91, mestMult:7, mestPerSec:171507 },
+  { name:"Digital Wallets", tps:19660, txnYear:"620B", sector:"Payments", confidence:67, mestMult:5, mestPerSec:98300 },
+  { name:"Bank Transfers", tps:15338, txnYear:"484B", sector:"Payments", confidence:78, mestMult:5, mestPerSec:76690 },
+  { name:"ETD (Derivatives)", tps:9505, txnYear:"205.3B", sector:"Traditional Finance", confidence:88, mestMult:10, mestPerSec:95050 },
+  { name:"Equity Markets", tps:3500, txnYear:"61.5B", sector:"Traditional Finance", confidence:86, mestMult:10, mestPerSec:35000 },
+  { name:"CEX (Crypto)", tps:3210, txnYear:"101B", sector:"Digital Assets", confidence:56, mestMult:4, mestPerSec:12840 },
+  { name:"Bill Payments", tps:3076, txnYear:"97B", sector:"Payments", confidence:60, mestMult:4, mestPerSec:12304 },
+  { name:"E-Commerce", tps:1823, txnYear:"57.5B", sector:"Payments", confidence:67, mestMult:3, mestPerSec:5469 },
+  { name:"ATM Withdrawals", tps:1557, txnYear:"49.1B", sector:"Payments", confidence:52, mestMult:4, mestPerSec:6228 },
+  { name:"IoT & M2M", tps:1538, txnYear:"48.5B", sector:"Emerging", confidence:67, mestMult:3, mestPerSec:4614 },
+  { name:"Payroll", tps:1014, txnYear:"32B", sector:"Payments", confidence:53, mestMult:5, mestPerSec:5070 },
+  { name:"Government Payments", tps:983, txnYear:"31B", sector:"Government", confidence:65, mestMult:5, mestPerSec:4915 },
+  { name:"BNPL", tps:634, txnYear:"20B", sector:"Payments", confidence:58, mestMult:6, mestPerSec:3804 },
+  { name:"Microtransactions", tps:539, txnYear:"17B", sector:"Gaming", confidence:60, mestMult:3, mestPerSec:1617 },
+  { name:"Stablecoins", tps:520, txnYear:"16.4B", sector:"Digital Assets", confidence:75, mestMult:3, mestPerSec:1560 },
+  { name:"L1/L2 Blockchain", tps:415, txnYear:"13.1B", sector:"Digital Assets", confidence:76, mestMult:2, mestPerSec:830 },
+  { name:"Insurance Premiums", tps:444, txnYear:"14B", sector:"Payments", confidence:52, mestMult:5, mestPerSec:2220 },
+  { name:"Commodities", tps:330, txnYear:"10.4B", sector:"Traditional Finance", confidence:74, mestMult:9, mestPerSec:2970 },
+  { name:"P2P Transfers", tps:270, txnYear:"8.5B", sector:"Payments", confidence:69, mestMult:3, mestPerSec:810 },
+  { name:"Forex", tps:127, txnYear:"4B", sector:"Traditional Finance", confidence:58, mestMult:8, mestPerSec:1016 },
+  { name:"Game Sales", tps:92, txnYear:"2.9B", sector:"Gaming", confidence:56, mestMult:3, mestPerSec:276 },
+  { name:"Remittances", tps:57, txnYear:"1.8B", sector:"Payments", confidence:58, mestMult:7, mestPerSec:399 },
+  { name:"Interbank RTGS", tps:50.1, txnYear:"1.6B", sector:"Banking", confidence:82, mestMult:3, mestPerSec:150 },
+  { name:"Securities Settlement", tps:44, txnYear:"1.4B", sector:"Banking", confidence:74, mestMult:4, mestPerSec:176 },
+  { name:"Fixed Income", tps:10.5, txnYear:"0.33B", sector:"Traditional Finance", confidence:60, mestMult:8, mestPerSec:84 },
+  { name:"AI Agents", tps:3.5, txnYear:"0.11B", sector:"Emerging", confidence:42, mestMult:3, mestPerSec:11 },
+  { name:"RWA Tokenisation", tps:2.4, txnYear:"0.076B", sector:"Emerging", confidence:56, mestMult:6, mestPerSec:14 },
+  { name:"OTC Derivatives", tps:0.17, txnYear:"0.005B", sector:"Traditional Finance", confidence:68, mestMult:12, mestPerSec:2 },
+];
+
+const SECTORS = ["All","Payments","Traditional Finance","Digital Assets","Banking","Gaming","Government","Emerging"];
+
+const SECTOR_LABELS = {
+  "Payments":"Payments","Traditional Finance":"TradFi","Digital Assets":"Digital Assets",
+  "Banking":"Banking","Gaming":"Gaming","Government":"Government","Emerging":"Emerging"
+};
+
+const SECTOR_COLORS = {
+  "Payments": "#3b82f6",
+  "Traditional Finance": "#f59e0b",
+  "Digital Assets": "#8b5cf6",
+  "Banking": "#06b6d4",
+  "Gaming": "#ec4899",
+  "Government": "#10b981",
+  "Emerging": "#ef4444"
+};
+
+const SECTOR_CLASSES = {
+  "Payments":"sector-payments","Traditional Finance":"sector-tradfi","Digital Assets":"sector-digital",
+  "Banking":"sector-banking","Gaming":"sector-gaming","Government":"sector-government","Emerging":"sector-emerging"
+};
+
+const SECTOR_CHART_DATA = {
+  labels: ["Payments","TradFi","Digital Assets","Banking","Gaming","Government","Emerging"],
+  values: [55690, 13473, 3625, 95, 480, 983, 1540],
+  colors: ["#3b82f6","#f59e0b","#8b5cf6","#06b6d4","#ec4899","#10b981","#ef4444"]
+};
+
+const TIME_SERIES = {
+  labels: [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+  values: [12900,15200,18400,22100,26500,28800,38500,53100,66400,79800,86900]
+};
+
+const CASCADE_STEPS = [
+  { title:"Authorization Request", parties:["Merchant POS","Card Network"], desc:"Terminal sends auth request through network" },
+  { title:"Issuer Authorization", parties:["Card Network","Issuing Bank"], desc:"Bank checks funds, approves, places hold" },
+  { title:"Clearing", parties:["Acquirer","Card Network"], desc:"Batch transaction details submitted for clearing" },
+  { title:"Interchange Fee", parties:["Acquirer","Issuing Bank"], desc:"Interchange fee calculated and allocated" },
+  { title:"Issuer Settlement", parties:["Card Network","Issuing Bank"], desc:"Cardholder account debited, funds released" },
+  { title:"Acquirer Settlement", parties:["Card Network","Acquiring Bank"], desc:"Net settlement amount transferred to acquirer" },
+  { title:"Merchant Credit", parties:["Acquiring Bank","Merchant Account"], desc:"Funds deposited minus merchant discount rate" },
+];
+
+const INSIGHTS = [
+  { icon:"&#128179;", text:"Payments dominate: 75% of global TPS comes from payments infrastructure." },
+  { icon:"&#128200;", text:"Double-counting is only ~14% \u2014 most categories have clean boundaries." },
+  { icon:"&#128640;", text:"Growth outpaces decline 38:1 \u2014 financial throughput almost never shrinks." },
+  { icon:"&#128201;", text:"Recessions barely move the number \u2014 2020 saw only a -0.3% dip before roaring back." },
+  { icon:"&#9939;&#65039;", text:"Crypto\u2019s MEST advantage: 60\u201380% fewer state changes per transaction than traditional rails." },
+  { icon:"&#127470;&#127475;", text:"India is 5\u00d7 overweight in TPS vs GDP \u2014 the most transaction-dense large economy." },
+];
+
+/* ═══════════════════════════════════════════
+   COUNTER ANIMATION
+   ═══════════════════════════════════════════ */
+function animateCounter(el, target, duration, format) {
+  const start = performance.now();
+  const step = (now) => {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    const val = Math.round(ease * target);
+    el.textContent = format(val);
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function fmtComma(n) { return n.toLocaleString('en-US'); }
+
+document.addEventListener('DOMContentLoaded', () => {
+  animateCounter(document.getElementById('counterTPS'), 73750, 2200, fmtComma);
+  animateCounter(document.getElementById('counterMEST'), 545000, 2400, fmtComma);
+});
+
+/* ═══════════════════════════════════════════
+   NAV SHOW ON SCROLL
+   ═══════════════════════════════════════════ */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+}, { passive: true });
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('section:not(.hero)').forEach(s => observer.observe(s));
+
+/* ═══════════════════════════════════════════
+   LEADERBOARD
+   ═══════════════════════════════════════════ */
+let sortKey = 'tps';
+let sortDir = -1; // -1 = desc
+let activeFilter = 'All';
+
+function confClass(c) { return c > 70 ? 'conf-high' : c >= 50 ? 'conf-mid' : 'conf-low'; }
+
+function renderTable() {
+  const filtered = activeFilter === 'All' ? [...DATA] : DATA.filter(d => d.sector === activeFilter);
+  filtered.sort((a, b) => {
+    let av = a[sortKey], bv = b[sortKey];
+    if (typeof av === 'string') return sortDir * av.localeCompare(bv);
+    return sortDir * (av - bv);
+  });
+
+  const tbody = document.getElementById('leaderboardBody');
+  tbody.innerHTML = filtered.map((d, i) => `
+    <tr>
+      <td class="td-number muted">${i + 1}</td>
+      <td class="td-name">${d.name}</td>
+      <td class="td-number">${d.tps.toLocaleString('en-US')}</td>
+      <td class="td-number muted">${d.txnYear}</td>
+      <td><span class="td-sector ${SECTOR_CLASSES[d.sector]}">${SECTOR_LABELS[d.sector] || d.sector}</span></td>
+      <td><span class="conf-badge ${confClass(d.confidence)}">${d.confidence}</span></td>
+      <td class="td-number">${d.mestMult}x</td>
+      <td class="td-number">${d.mestPerSec.toLocaleString('en-US')}</td>
+    </tr>
+  `).join('');
+}
+
+// Filter buttons
+const filterBar = document.getElementById('filterBar');
+SECTORS.forEach(s => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn' + (s === 'All' ? ' active' : '');
+  btn.textContent = s === 'Traditional Finance' ? 'TradFi' : s;
+  btn.addEventListener('click', () => {
+    activeFilter = s;
+    filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTable();
+  });
+  filterBar.appendChild(btn);
+});
+
+// Sort headers
+document.querySelectorAll('#leaderboardTable thead th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.key;
+    if (key === 'rank') return;
+    if (sortKey === key) { sortDir *= -1; } else { sortKey = key; sortDir = -1; }
+    document.querySelectorAll('#leaderboardTable thead th').forEach(h => {
+      h.classList.remove('sort-active');
+      const arrow = h.querySelector('.sort-arrow');
+      if (arrow) arrow.textContent = '';
+    });
+    th.classList.add('sort-active');
+    const arrow = th.querySelector('.sort-arrow');
+    if (arrow) arrow.textContent = sortDir === -1 ? '\u25BC' : '\u25B2';
+    renderTable();
+  });
+});
+
+renderTable();
+
+/* ═══════════════════════════════════════════
+   MEST CASCADE
+   ═══════════════════════════════════════════ */
+let cascadeStep = -1;
+const cascadeEl = document.getElementById('cascadeContainer');
+
+CASCADE_STEPS.forEach((s, i) => {
+  cascadeEl.innerHTML += `
+    <div class="cascade-step" id="cstep${i}">
+      <div class="cascade-num">${i + 1}</div>
+      <div class="cascade-body">
+        <h4>${s.title}</h4>
+        <p class="parties"><span>${s.parties[0]}</span> &harr; <span>${s.parties[1]}</span></p>
+        <p class="muted" style="font-size:0.85rem;margin-top:4px;">${s.desc}</p>
+      </div>
+      <div class="cascade-line"></div>
+    </div>
+  `;
+});
+
+function updateCascade() {
+  CASCADE_STEPS.forEach((_, i) => {
+    document.getElementById(`cstep${i}`).classList.toggle('active', i <= cascadeStep);
+  });
+  document.getElementById('cascadePrev').disabled = cascadeStep < 0;
+  document.getElementById('cascadeNext').disabled = cascadeStep >= CASCADE_STEPS.length - 1;
+}
+
+document.getElementById('cascadeNext').addEventListener('click', () => {
+  if (cascadeStep < CASCADE_STEPS.length - 1) { cascadeStep++; updateCascade(); }
+});
+document.getElementById('cascadePrev').addEventListener('click', () => {
+  if (cascadeStep >= 0) { cascadeStep--; updateCascade(); }
+});
+document.getElementById('cascadeAll').addEventListener('click', () => {
+  cascadeStep = CASCADE_STEPS.length - 1; updateCascade();
+});
+
+/* ═══════════════════════════════════════════
+   CHARTS
+   ═══════════════════════════════════════════ */
+Chart.defaults.color = '#9ca3af';
+Chart.defaults.borderColor = '#1e293b';
+Chart.defaults.font.family = "'Inter', sans-serif";
+
+// Sector doughnut
+new Chart(document.getElementById('sectorDoughnut'), {
+  type: 'doughnut',
+  data: {
+    labels: SECTOR_CHART_DATA.labels,
+    datasets: [{
+      data: SECTOR_CHART_DATA.values,
+      backgroundColor: SECTOR_CHART_DATA.colors,
+      borderColor: '#111827',
+      borderWidth: 3,
+      hoverBorderColor: '#f9fafb',
+      hoverBorderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '62%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { padding: 16, usePointStyle: true, pointStyleWidth: 12, font: { size: 12 } }
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.label}: ${ctx.parsed.toLocaleString()} TPS`
+        }
+      }
+    }
+  }
+});
+
+// Time series
+const tsCtx = document.getElementById('timeSeriesLine').getContext('2d');
+const gradient = tsCtx.createLinearGradient(0, 0, 0, 350);
+gradient.addColorStop(0, 'rgba(59,130,246,0.3)');
+gradient.addColorStop(1, 'rgba(59,130,246,0.0)');
+
+new Chart(tsCtx, {
+  type: 'line',
+  data: {
+    labels: TIME_SERIES.labels,
+    datasets: [{
+      label: 'Global Gross TPS',
+      data: TIME_SERIES.values,
+      borderColor: '#3b82f6',
+      backgroundColor: gradient,
+      borderWidth: 3,
+      fill: true,
+      tension: 0.35,
+      pointBackgroundColor: '#3b82f6',
+      pointBorderColor: '#111827',
+      pointBorderWidth: 2,
+      pointRadius: 4,
+      pointHoverRadius: 7,
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: { callback: v => (v/1000) + 'k', font: { family: "'JetBrains Mono', monospace", size: 11 } }
+      },
+      x: {
+        grid: { display: false },
+        ticks: { font: { size: 11 } }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' TPS' }
+      },
+      annotation: {
+        annotations: {
+          growth: {
+            type: 'label',
+            xValue: 2020,
+            yValue: 72000,
+            content: ['6.7\u00d7 growth in a decade'],
+            color: '#f59e0b',
+            font: { size: 13, weight: '700', family: "'Inter', sans-serif" },
+            backgroundColor: 'rgba(245,158,11,0.1)',
+            borderRadius: 6,
+            padding: { x: 10, y: 6 },
+          }
+        }
+      }
+    }
+  }
+});
+
+// MEST multiplier horizontal bar — sorted by multiplier desc
+const mestSorted = [...DATA].sort((a, b) => b.mestMult - a.mestMult);
+
+new Chart(document.getElementById('mestBarChart'), {
+  type: 'bar',
+  data: {
+    labels: mestSorted.map(d => d.name),
+    datasets: [{
+      label: 'MEST Multiplier',
+      data: mestSorted.map(d => d.mestMult),
+      backgroundColor: mestSorted.map(d => SECTOR_COLORS[d.sector] + 'cc'),
+      borderColor: mestSorted.map(d => SECTOR_COLORS[d.sector]),
+      borderWidth: 1,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: { callback: v => v + 'x', font: { family: "'JetBrains Mono', monospace", size: 11 } }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 11 }, autoSkip: false }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const d = mestSorted[ctx.dataIndex];
+            return `${d.mestMult}x multiplier \u2014 ${d.sector}`;
+          }
+        }
+      }
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════
+   INSIGHTS
+   ═══════════════════════════════════════════ */
+const insightsGrid = document.getElementById('insightsGrid');
+INSIGHTS.forEach(ins => {
+  insightsGrid.innerHTML += `
+    <div class="insight-card">
+      <div class="insight-icon">${ins.icon}</div>
+      <p>${ins.text}</p>
+    </div>
+  `;
+});
+</script>
+</body>
+</html>
