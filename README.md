@@ -31,6 +31,23 @@ Every transaction triggers a cascade of bilateral state changes — authorizatio
 
 See [`analysis/MEST.md`](analysis/MEST.md) for the full framework.
 
+## The TTR Number
+
+### **~170 billion Total Tokenizable Resources**
+
+Every property deed, patent, carbon credit, loyalty point, vehicle registration, and insurance policy is a discrete resource that *could* live on a programmable ledger — but <0.3% currently does. The TTR Number measures the total universe of things that could be tokens.
+
+| Metric | Value |
+|--------|-------|
+| Total tokenizable resources | **~170 billion** |
+| Total tokenizable value | **~$890 trillion** |
+| Currently tokenized | **<0.3%** (~498M on-chain) |
+| Largest tier by count | Digital Native (~115B items) |
+| Largest tier by value | Real Assets (~$510T, mostly real estate) |
+| Tokenization of TTR would add | **~28,000 TPS** to the Big Number |
+
+See [`analysis/TTR.md`](analysis/TTR.md) for the full framework and [`analysis/TTR_VALUATION.md`](analysis/TTR_VALUATION.md) for valuations.
+
 | Fact | Value |
 |------|-------|
 | Categories measured | **29** across 7 sectors |
@@ -162,6 +179,7 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 | 8 | GitHub Pages + USA deep dive + MEST validation | Interactive dashboard, USA capsule, multiplier validation |
 | 9 | MEST Advantage + Brazil/EU deep dives + panel review | DLT compression thesis, Brazil & EU capsules, top-3 methodology review, confidence uplift (ATM/Insurance/Payroll), site polish |
 | 10 | Executive Summary + Japan/UK deep dives + MEST by country | Shareable research brief, Japan & UK capsules, per-country MEST multipliers, Dashboard v2, confidence uplift (AI Agents/Microtx/Bills) |
+| 11 | TTR framework + Africa deep dive + methodology paper | Total Tokenizable Resources (~170B items, ~$890T value), Africa capsule, formal methodology, data dictionary, Dashboard v3 |
 
 ## Explore the Data
 
@@ -183,6 +201,11 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 - **[UK Deep Dive](analysis/deep-dives/uk/REPORT.md)** — FX capital of the world (38.1% of global FX), 5.7% of global TPS
 - **[Executive Summary](analysis/EXECUTIVE_SUMMARY.md)** — Shareable research brief with all key findings
 - **[MEST by Country](analysis/MEST_BY_COUNTRY.md)** — Per-country multiplier analysis (Brazil most efficient, USA least)
+- **[TTR Framework](analysis/TTR.md)** — Total Tokenizable Resources (~170B items, <0.3% tokenized)
+- **[TTR Valuation](analysis/TTR_VALUATION.md)** — Global tokenizable asset value (~$890T, 0.002% penetration)
+- **[Africa Deep Dive](analysis/deep-dives/africa/REPORT.md)** — Mobile money capital, M-Pesa pioneer, 3.9% of global TPS
+- **[Methodology Paper](analysis/METHODOLOGY_PAPER.md)** — Formal citable research methodology
+- **[Data Dictionary](analysis/DATA_DICTIONARY.md)** — Schema documentation for all data.json files
 - **[SLE Framework](souls/RECRUITER.md)** — 17 expert personas behind the research
 
 ## License
