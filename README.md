@@ -12,10 +12,29 @@ Range: 67,000–83,000 TPS depending on overlap assumptions.
 
 **Coordinated global peak: ~147,000–246,000 TPS** (flash crash on a busy quarter-end).
 
+## The MEST Number
+
+### **~545,000 Mutual Economic State Transitions per second**
+
+Every transaction triggers a cascade of bilateral state changes — authorization events, clearing legs, settlement instructions, custody updates, reconciliation entries, regulatory reports. A single card swipe generates ~7 MESTs. An OTC derivative trade generates ~12.
+
+**MEST** = any change to an economically valuable holding where more than one party has a material interest in the record. The Big Number counts transactions. The MEST Number counts what the financial system *actually does*.
+
+| Metric | Value |
+|--------|-------|
+| Global MEST/s | **~545,000** (range: 410K–720K) |
+| MEST multiplier | **7.4×** the Big Number |
+| Annual MESTs | **~17.2 trillion** |
+| Highest multiplier | OTC Derivatives (12×) |
+| Highest total MESTs | Consumer Cards (~171K MEST/s) |
+| Crypto MEST advantage | 60-80% fewer state changes per economic event |
+
+See [`analysis/MEST.md`](analysis/MEST.md) for the full framework.
+
 | Fact | Value |
 |------|-------|
 | Categories measured | **29** across 7 sectors |
-| Confidence scores | 34–91 (median 67) |
+| Confidence scores | 34–91 (median 62) |
 | Time-series | 2015–2025 (10 years, all categories) |
 | Growth rate | **6.7× in a decade** (12,900 → 86,900 gross TPS) |
 | Data points | 29 capsules × ~12 data fields each |
@@ -65,7 +84,7 @@ universe-of-finance/
 │       ├── REPORT.md            # Reader-facing analysis
 │       ├── data.json            # Structured data (normalized schema)
 │       └── workings/            # Full calculations, assumptions, source notes
-├── souls/                       # Intergalactic Recruiter — 13 expert personas
+├── souls/                       # Intergalactic Recruiter — 17 expert personas
 │   ├── RECRUITER.md             # Dispatch matrix + framework
 │   └── <persona>/SOUL.md        # Expert persona grounded in real JDs
 ├── tools/                       # Analysis tooling
@@ -95,7 +114,7 @@ universe-of-finance/
 | **Government** (1) | Tax & Government Payments | ~1,000 |
 | **Emerging** (3) | IoT/M2M, RWA Tokenisation, AI Agents | ~1,540 |
 
-*Note: Gross TPS sums include overlaps. De-duplicated total is ~70,741 TPS.*
+*Note: Gross TPS sums include overlaps. De-duplicated total is ~73,750 TPS.*
 
 ## Research Methodology
 
@@ -105,7 +124,7 @@ Each category is researched using a **triangulation-first** approach:
 3. Document assumptions, blind spots, and confidence explicitly
 4. Quantify overlaps with other categories to enable accurate de-duplication
 
-Research is guided by **Soul Less Employees** — 13 expert personas grounded in real job descriptions from organizations like Visa, BIS, Chainalysis, DTCC, and Gartner. Each persona brings domain-specific mental models, data sources, and documented biases to check against.
+Research is guided by **Soul Less Employees** — 17 expert personas grounded in real job descriptions from organizations like Visa, BIS, Chainalysis, DTCC, BNY Mellon, and Gartner. Each persona brings domain-specific mental models, data sources, and documented biases to check against.
 
 See [`souls/RECRUITER.md`](souls/RECRUITER.md) for the dispatch matrix.
 
@@ -138,6 +157,8 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 | 3 | Deep triangulation + tooling | China model (±20B), Solana filter, Big Number calculator |
 | 4 | Confidence upgrades + regional decomposition | Scorecard (34-91), cards/transfers/equities breakdowns |
 | 5 | New categories + time-series + scenarios | 29 categories, 2015-2025 series, peak TPS, stress tests |
+| 6 | Methodology overhaul + measurement SLEs | METHODOLOGY.md for all 29 categories, 3 new measurement SLEs |
+| 7 | MEST framework + deep dives + confidence uplift | MEST Number (~545K/s), India & China deep dives, Sunset Watch |
 
 ## Explore the Data
 
@@ -147,7 +168,11 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 - **[Time-Series](analysis/timeseries/TIMESERIES.md)** — 2015-2025 data for all categories
 - **[Peak TPS Analysis](analysis/PEAK_TPS.md)** — When does the world's financial infrastructure max out?
 - **[Scenario Analysis](analysis/SCENARIOS.md)** — What happens in a recession, pandemic, or crypto winter?
-- **[SLE Framework](souls/RECRUITER.md)** — The expert personas behind the research
+- **[MEST Framework](analysis/MEST.md)** — Mutual Economic State Transitions (~545K/s)
+- **[India Deep Dive](analysis/deep-dives/india/REPORT.md)** — 17.4% of global TPS on 3.5% of GDP
+- **[China Opacity Report](analysis/deep-dives/china/REPORT.md)** — The ±6,000 TPS blind spot
+- **[Sunset Watch](analysis/SUNSET_WATCH.md)** — Declining categories (growth outpaces decline 38:1)
+- **[SLE Framework](souls/RECRUITER.md)** — 17 expert personas behind the research
 
 ## License
 
