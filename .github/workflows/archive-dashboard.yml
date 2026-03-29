@@ -1,0 +1,60 @@
+name: Archive Dashboard Version
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'analysis/**/data.json'
+      - 'analysis/MEST.md'
+      - 'analysis/OVERLAP_MATRIX.md'
+      - 'analysis/CONFIDENCE_SCORECARD.md'
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get version metadata
+        id: meta
+        run: |
+          SHA_SHORT=$(git rev-parse --short HEAD)
+          DATE=$(date -u +%Y-%m-%d)
+          TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          COMMIT_MSG=$(git log -1 --pretty=%s)
+          RUN_NUM=$(ls versions/*.html 2>/dev/null | grep -v index.html | wc -l)
+          RUN_NUM=$((RUN_NUM + 1))
+          VERSION_FILE="v${RUN_NUM}-${DATE}-${SHA_SHORT}.html"
+          echo "sha_short=$SHA_SHORT" >> "$GITHUB_OUTPUT"
+          echo "date=$DATE" >> "$GITHUB_OUTPUT"
+          echo "timestamp=$TIMESTAMP" >> "$GITHUB_OUTPUT"
+          echo "commit_msg=$COMMIT_MSG" >> "$GITHUB_OUTPUT"
+          echo "run_num=$RUN_NUM" >> "$GITHUB_OUTPUT"
+          echo "version_file=$VERSION_FILE" >> "$GITHUB_OUTPUT"
+
+      - name: Archive current dashboard
+        run: |
+          mkdir -p versions
+          cp index.html "versions/${{ steps.meta.outputs.version_file }}"
+
+      - name: Build version index
+        run: |
+          python3 tools/build_version_index.py
+
+      - name: Commit archived version
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add versions/
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "[Chore] Archive dashboard v${{ steps.meta.outputs.run_num }} (${{ steps.meta.outputs.sha_short }})"
+            git push
+          fi
