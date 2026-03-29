@@ -1,0 +1,204 @@
+{
+  "country": "Japan",
+  "iso_code": "JP",
+  "population": 124000000,
+  "gdp_usd_trillion": 4.4,
+  "last_updated": "2026-03-29",
+  "total_tps_contribution": 3420,
+  "share_of_global_tps": "4.6%",
+  "global_tps_reference": 73750,
+  "categories": {
+    "consumer-cards": {
+      "japan_tps": 1299,
+      "japan_annual_txns_billions": 41.0,
+      "share_of_category": "5.3%",
+      "share_of_japan_total": "38.0%",
+      "key_systems": ["JCB", "Visa", "Mastercard", "Suica/PASMO (IC cards)"],
+      "notes": "Credit cards (~310M in circulation) dominate cashless payments at ~74% of cashless value. JCB is Japan's indigenous global card network (~3.5% of global card txns). Contactless IC transit cards (Suica, PASMO, etc.) contribute ~3.5B annual transactions at retail/vending. Debit cards (~3.5B txns) are a smaller segment. Cashless ratio reached ~42% by value in 2024, up from 18% in 2015.",
+      "sources": [
+        {"citation": "METI — Cashless Vision", "url": "https://www.meti.go.jp/english/policy/economy/cashless/"},
+        {"citation": "Japan Credit Association — Statistics", "url": "https://www.j-credit.or.jp/information/statistics/"}
+      ]
+    },
+    "bank-transfers": {
+      "japan_tps": 634,
+      "japan_annual_txns_billions": 20.0,
+      "share_of_category": "4.1%",
+      "share_of_japan_total": "18.5%",
+      "key_systems": ["Zengin System", "Koufuri (direct debit)", "BOJ-NET (RTGS)"],
+      "notes": "Zengin system handles ~2.2B interbank transfers annually. Koufuri (direct debit) is the backbone of recurring payments with ~7.5B annual transactions covering utilities, rent, insurance, and subscriptions. Zengin has offered 24/7 instant transfers since 2018 but high fees (200-400 yen) limit P2P adoption. BOJ-NET handles ~18M high-value RTGS transactions annually (~38,000 trillion yen value).",
+      "sources": [
+        {"citation": "BOJ — Payment and Settlement Statistics", "url": "https://www.boj.or.jp/en/paym/psss/index.htm"},
+        {"citation": "JBA — Zengin System Overview", "url": "https://www.zenginkyo.or.jp/en/"}
+      ]
+    },
+    "digital-wallets": {
+      "japan_tps": 507,
+      "japan_annual_txns_billions": 16.0,
+      "share_of_category": "2.6%",
+      "share_of_japan_total": "14.8%",
+      "key_systems": ["PayPay (65M users)", "d Barai (56M users)", "LINE Pay", "Rakuten Pay", "au PAY"],
+      "notes": "PayPay is dominant with 65M+ users and 4.1M merchant acceptance points. QR code payments represent ~7% of cashless value but growing at ~35% YoY. Five competing QR systems create fragmentation. Most QR code payments settle via bank transfer or card rails, creating ~60% overlap with bank-transfers and consumer-cards categories. For de-duplication, ~60% of wallet volume is excluded.",
+      "sources": [
+        {"citation": "PayPay Corporation — About PayPay", "url": "https://about.paypay.ne.jp/en/"},
+        {"citation": "METI — Cashless Payment Statistics", "url": "https://www.meti.go.jp/english/policy/economy/cashless/"}
+      ]
+    },
+    "etd": {
+      "japan_tps": 362,
+      "japan_annual_txns_billions": 3.1,
+      "share_of_category": "1.5%",
+      "share_of_japan_total": "10.6%",
+      "key_systems": ["Osaka Exchange (Nikkei 225 futures/options, TOPIX futures, JGB futures)"],
+      "notes": "OSE is the sole derivatives venue for JPX. Nikkei 225 futures and mini-futures are flagship products. JGB futures gaining volume as BOJ exits yield curve control. OSE total annual contract volume ~3.1B including minis and options. Japan accounts for ~1.5% of global ETD by contract count. TPS calculated using 245 trading days x 5.5h weighted hours.",
+      "sources": [
+        {"citation": "JPX — Market Statistics", "url": "https://www.jpx.co.jp/english/markets/statistics-equities/"},
+        {"citation": "FIA — 2024 Annual ETD Volume Review", "url": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review"}
+      ]
+    },
+    "equity-markets": {
+      "japan_tps": 219,
+      "japan_annual_txns_billions": 3.9,
+      "share_of_category": "6.3%",
+      "share_of_japan_total": "6.4%",
+      "key_systems": ["Tokyo Stock Exchange (TSE Prime, Standard, Growth)"],
+      "notes": "TSE is #5 globally by market cap (~$6.3T). ~3,900 listed companies. Foreign investors account for 60-70% of trading value. Nikkei 225 surpassed its 1989 bubble high in February 2024 for the first time in 34 years, triggering global capital reallocation. TSE corporate governance reforms (P/B < 1 improvement plans) are driving structural equity demand. Annual equity trades ~3.9B, average daily ~15.5M trades.",
+      "sources": [
+        {"citation": "JPX — Equity Market Statistics", "url": "https://www.jpx.co.jp/english/markets/statistics-equities/"},
+        {"citation": "WFE — FY 2024 Market Highlights", "url": "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024"}
+      ]
+    },
+    "bill-payments": {
+      "japan_tps": 127,
+      "japan_annual_txns_billions": 4.0,
+      "share_of_category": "4.2%",
+      "share_of_japan_total": "3.7%",
+      "key_systems": ["Konbini bill payments (~1.5B)", "Direct debit (koufuri, counted in bank transfers)", "Credit card recurring"],
+      "notes": "Konbini bill payment is uniquely Japanese: consumers pay paper bills with barcodes at 56,000 convenience stores. ~1.5B konbini bill payments annually covering utilities, e-commerce, taxes, and insurance. Additional bill payments via credit card recurring and online banking. Koufuri direct debit volume counted under bank transfers to avoid double-counting.",
+      "sources": [
+        {"citation": "Japan Franchise Association — Convenience Store Statistics", "url": "https://www.jfa-fc.or.jp/particle/320.html"},
+        {"citation": "BOJ — Payment Statistics", "url": "https://www.boj.or.jp/en/paym/psss/index.htm"}
+      ]
+    },
+    "atm-withdrawals": {
+      "japan_tps": 127,
+      "japan_annual_txns_billions": 4.0,
+      "share_of_category": "8.2%",
+      "share_of_japan_total": "3.7%",
+      "key_systems": ["Bank ATMs", "Seven Bank (27K ATMs in 7-Eleven)", "Japan Post Bank ATMs"],
+      "notes": "Japan has ~190K ATMs (declining from 200K+ peak). Cash-in-circulation/GDP ratio ~20% — highest among G7. ATM withdrawals declining ~5% YoY as cashless adoption accelerates. Seven Bank (7-Eleven ATMs) is a uniquely Japanese model: a bank built entirely on ATM operations. Average withdrawal ~30,000 yen (~$200). Cash persistence driven by safety, demographics (29% over 65), small business cash-only culture, and privacy preferences.",
+      "sources": [
+        {"citation": "ATMIA — Global ATM Market Report", "url": "https://www.atmia.com/"},
+        {"citation": "Seven Bank — Corporate Overview", "url": "https://www.sevenbank.co.jp/english/"}
+      ]
+    },
+    "government-payments": {
+      "japan_tps": 63,
+      "japan_annual_txns_billions": 2.0,
+      "share_of_category": "6.3%",
+      "share_of_japan_total": "1.8%",
+      "key_systems": ["National Pension (NENKIN)", "National Health Insurance", "Child Allowance", "My Number system"],
+      "notes": "Pension-dominated: ~40M beneficiaries, ~57 trillion yen annually, bi-monthly payments. National health insurance processes ~2.2B claims/year. Tax filings: ~24M individual + ~3M corporate annually. My Number card penetration reached ~79% (98M holders). Digital Agency (est. 2021) driving government payment digitization. Child allowance covers ~14M children.",
+      "sources": [
+        {"citation": "MHLW — Pension Statistics", "url": "https://www.mhlw.go.jp/english/policy/pension/pension.html"},
+        {"citation": "Digital Agency — My Number", "url": "https://www.digital.go.jp/en/"}
+      ]
+    },
+    "fixed-income": {
+      "japan_tps": 32,
+      "japan_annual_txns_billions": 1.0,
+      "share_of_category": "30.5%",
+      "share_of_japan_total": "0.9%",
+      "key_systems": ["JGB secondary market", "Corporate bonds (JSDA)", "JASDEC (settlement)"],
+      "notes": "JGB outstanding ~1,100 trillion yen (~$7.3T), making Japan #2 globally in government bond market size. Debt-to-GDP ~260% (highest developed nation). BOJ holds ~53% of outstanding JGBs. Secondary market daily turnover ~30 trillion yen (~$200B). BOJ YCC exit in March 2024 is increasing trading activity as price discovery returns. 10yr JGB yield risen from near-zero to ~1.2-1.5%. Annual JGB issuance ~210 trillion yen.",
+      "sources": [
+        {"citation": "MOF — JGB Issuance Plans", "url": "https://www.mof.go.jp/english/policy/jgbs/index.html"},
+        {"citation": "JSDA — Bond Market Statistics", "url": "https://www.jsda.or.jp/en/statistics/"}
+      ]
+    },
+    "interbank-rtgs": {
+      "japan_tps": 2,
+      "japan_annual_txns_billions": 0.018,
+      "share_of_category": "4.0%",
+      "share_of_japan_total": "0.1%",
+      "key_systems": ["BOJ-NET"],
+      "notes": "BOJ-NET is Japan's RTGS system handling ~18M transactions annually with ~38,000 trillion yen in value (~$253T). Low transaction count but massive per-transaction values. Among the largest RTGS systems by value globally, reflecting Japan's JGB market size and interbank activity.",
+      "sources": [
+        {"citation": "BOJ — Payment and Settlement Statistics", "url": "https://www.boj.or.jp/en/paym/psss/index.htm"}
+      ]
+    },
+    "cex": {
+      "japan_tps": 22,
+      "japan_annual_txns_billions": 0.7,
+      "share_of_category": "0.7%",
+      "share_of_japan_total": "0.6%",
+      "key_systems": ["bitFlyer", "Coincheck", "GMO Coin", "SBI VC Trade"],
+      "notes": "29 JFSA-licensed exchanges. Japan was first major economy to regulate crypto (April 2017), catalyzed by Mt. Gox collapse (2014). Combined domestic CEX volume ~$100B in 2024. Punitive tax rate (up to 55% as miscellaneous income) suppresses domestic volume and pushes sophisticated traders offshore. ~10M crypto users. Web3 declared national strategy in 2023. Stablecoin legislation passed June 2023.",
+      "sources": [
+        {"citation": "JFSA — Crypto-Asset Service Providers", "url": "https://www.fsa.go.jp/en/policy/virtual_currency/"},
+        {"citation": "JVCEA — Self-Regulatory Statistics", "url": "https://jvcea.or.jp/en/"}
+      ]
+    },
+    "gaming-microtx": {
+      "japan_tps": 18,
+      "japan_annual_txns_billions": 0.575,
+      "share_of_category": "4.6%",
+      "share_of_japan_total": "0.5%",
+      "key_systems": ["Mobile gaming (Monster Strike, Fate/Grand Order, Pokemon GO)", "Console (Nintendo, PlayStation)", "Arcade"],
+      "notes": "Japan is #3 gaming market globally (~$22B). Highest mobile game ARPU in the world (~$120/year). 'Gacha' (randomized loot box) spending culture deeply embedded. Mobile gaming revenue ~$13B. ~4,000 game arcades still operating — uniquely Japanese payment stream. Console heritage (Nintendo, Sony) adds physical and digital game sales.",
+      "sources": [
+        {"citation": "Newzoo — Global Games Market Report 2024", "url": "https://newzoo.com/resources/trend-reports/newzoo-global-games-market-report-2024"},
+        {"citation": "Sensor Tower — Japan Mobile Gaming", "url": "https://sensortower.com/"}
+      ]
+    },
+    "commodities": {
+      "japan_tps": 5,
+      "japan_annual_txns_billions": 0.04,
+      "share_of_category": "1.5%",
+      "share_of_japan_total": "0.1%",
+      "key_systems": ["TOCOM (now part of OSE)", "OSE commodity derivatives"],
+      "notes": "TOCOM (Tokyo Commodity Exchange) merged into OSE in 2020. Trades gold, platinum, rubber, and energy derivatives. Volume modest compared to CME/ICE. Japan is a major physical commodity importer (energy, metals, food) but commodity derivatives trading is relatively small. Most commodity ETD counted in broader ETD category.",
+      "sources": [
+        {"citation": "JPX — Commodity Derivatives", "url": "https://www.jpx.co.jp/english/markets/derivatives/commodity/"}
+      ]
+    }
+  },
+  "de_duplicated_japan_tps": {
+    "value": 3420,
+    "methodology": "Sum of de-duplicated contributions: Consumer Cards (1,299 — credit, debit, IC cards) + Bank Transfers (634 — Zengin, koufuri, BOJ-NET) + Digital Wallets (incremental ~200 — ~40% of gross QR code volume not on card/bank rails) + ETD (362) + Equity Markets (219) + Bill Payments (incremental ~80 — konbini cash payments not on other rails) + ATM Withdrawals (127, zero overlap) + Government Payments (incremental ~40 — not already on bank rails) + Fixed Income (32) + CEX (22) + Gaming (incremental ~10) + Commodities (5) + Interbank RTGS (2). Digital Wallets heavily discounted (~60% overlap with cards/bank transfers). Konbini bill payments partially overlap with bank-transfer-settled bills.",
+    "range_low": 2900,
+    "range_high": 4100,
+    "notes": "Range reflects major uncertainty in cash transaction volume (unmeasured, could add 30-50% to total), QR code payment rail attribution, konbini payment volume estimates, and IC card transaction count extrapolation. Card data from JCA is well-sourced. JPX equity/derivatives data is authoritative. BOJ payment statistics are high quality. Largest blind spot is cash: ~58% of consumer payments by value are still cash."
+  },
+  "key_metrics": {
+    "cashless_ratio_2024_pct": 42,
+    "cashless_ratio_2015_pct": 18,
+    "government_cashless_target_2025_pct": 40,
+    "government_cashless_target_2030_pct": 80,
+    "cash_in_circulation_gdp_pct": 20,
+    "population_over_65_pct": 29,
+    "median_age": 49,
+    "credit_cards_millions": 310,
+    "paypay_users_millions": 65,
+    "my_number_card_holders_millions": 98,
+    "atms_thousands": 190,
+    "konbini_stores_thousands": 56,
+    "vending_machines_millions": 4.2,
+    "nikkei_225_ath": 42426,
+    "nikkei_225_ath_date": "2024-07",
+    "tse_market_cap_usd_trillion": 6.3,
+    "jgb_outstanding_usd_trillion": 7.3,
+    "debt_to_gdp_pct": 260,
+    "boj_jgb_holdings_pct": 53,
+    "jfsa_licensed_exchanges": 29,
+    "digital_yen_status": "pilot_phase_2"
+  },
+  "confidence": {
+    "score": 68,
+    "source_quality": 19,
+    "data_recency": 18,
+    "triangulation": 16,
+    "coverage": 15,
+    "notes": "BOJ, JPX, and METI publish excellent statistics for formal financial transactions. JCA credit card data is authoritative. JFSA crypto data is solid. Key weakness: cash transactions (~58% of consumer payments by value) are inherently unmeasurable, creating the largest blind spot. QR code payment volumes are inconsistently reported across providers. Konbini payment totals require estimation. JGB secondary market trade counts require derivation from turnover data. IC card retail transaction volumes are estimated from limited public data."
+  }
+}
