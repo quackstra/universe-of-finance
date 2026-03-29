@@ -160,6 +160,7 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 | 6 | Methodology overhaul + measurement SLEs | METHODOLOGY.md for all 29 categories, 3 new measurement SLEs |
 | 7 | MEST framework + deep dives + confidence uplift | MEST Number (~545K/s), India & China deep dives, Sunset Watch |
 | 8 | GitHub Pages + USA deep dive + MEST validation | Interactive dashboard, USA capsule, multiplier validation |
+| 9 | MEST Advantage + Brazil/EU deep dives + panel review | DLT compression thesis, Brazil & EU capsules, top-3 methodology review, confidence uplift (ATM/Insurance/Payroll), site polish |
 
 ## Explore the Data
 
@@ -174,6 +175,9 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 - **[India Deep Dive](analysis/deep-dives/india/REPORT.md)** — 17.4% of global TPS on 3.5% of GDP
 - **[China Opacity Report](analysis/deep-dives/china/REPORT.md)** — The ±6,000 TPS blind spot
 - **[Sunset Watch](analysis/SUNSET_WATCH.md)** — Declining categories (growth outpaces decline 38:1)
+- **[MEST Advantage Paper](analysis/MEST_ADVANTAGE.md)** — DLT compression thesis: crypto reduces MESTs 60-80%
+- **[Brazil Deep Dive](analysis/deep-dives/brazil/REPORT.md)** — Pix #2 globally, 6.3% of global TPS
+- **[EU Deep Dive](analysis/deep-dives/eu/REPORT.md)** — 18.2% of global TPS, TIPS +402% YoY
 - **[SLE Framework](souls/RECRUITER.md)** — 17 expert personas behind the research
 
 ## License

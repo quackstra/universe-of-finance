@@ -1,68 +1,84 @@
-# Research Agenda — Next Run (Run 8)
+# Research Agenda — Next Run (Run 10)
 
-> Updated 2026-03-29 after completing Run 7 (MEST framework + deep dives + confidence uplift).
+> Updated 2026-03-29 after completing Run 9 (MEST Advantage + Brazil/EU + panel review + site polish).
 
-## Status: Run 7 Complete
+## Status: Run 9 Complete
 
-MEST framework established (~545K/s, 7.4× Big Number). India deep dive (17.4% of global TPS).
-China opacity mapped (±6K TPS uncertainty). Sunset Watch built. Bottom 5 confidence scores
-improved (bill payments +12 to 60, payroll +5 to 53, microtx +5 to 60, govt +5 to 65, AI agents +4 to 42).
-17 SLEs operational including MEST-specialized transaction lifecycle analyst.
+MEST Advantage paper published (DLT compression thesis). Brazil deep dive (Pix #2, 6.3% global TPS).
+EU deep dive (18.2% global TPS, TIPS +402% YoY). Top-3 methodology panel review completed.
+Confidence uplift: ATM 52→58, Insurance 52→57, Payroll 53→59. About page and cross-cutting index added.
+5 country/region deep dives now complete (India, China, USA, Brazil, EU).
 
-## What Run 8 Should Target
+## What Run 10 Should Target
 
-### Tier 1: MEST Deep Dives
+### Tier 1: Publication & Polish
 
-1. **MEST multiplier validation** — The current multipliers are modeled. Validate against real clearing/settlement data:
-   - Visa VisaNet processing stats (auth + clearing + settlement legs per transaction)
-   - DTCC settlement-to-trade ratios
-   - CLS daily settlement counts vs. FX trade counts
-   - On-chain transaction traces (DeFi composability = observable MEST cascades)
+1. **Executive Summary** — One-page findings document with Big Number, MEST Number, key charts.
+   Target audience: financial regulators, infrastructure builders, DLT skeptics.
+   Should stand alone as a shareable PDF.
 
-2. **MEST by country** — Apply MEST multipliers to India and China deep dives. India's MEST advantage (simpler UPI stack = lower multiplier per txn). China's potential MEST hidden volume.
+2. **Data Dictionary** — Document every field in the data.json schema. Machine-readable.
+   Powers future API/dashboard work.
 
-3. **MEST time-series** — Has the MEST multiplier changed over time? Real-time settlement (UPI, FedNow) reduces MESTs vs. batch (ACH). Crypto eliminates intermediary MESTs. Trend: is the world getting more or less MEST-intensive?
+3. **Methodology Paper** — Formal write-up of triangulation-first approach, MEST framework,
+   overlap de-duplication rules. Citable format.
 
-### Tier 2: Confidence Uplift (remaining sub-50 categories)
+### Tier 2: New Deep Dives
 
-4. **AI Agent Transactions** (conf: 42) — Still the weakest. Need to decide: keep in Big Number as "pre-market" or create a separate "Emerging/Speculative" tier?
+4. **Japan deep dive** — 3rd largest economy, unique payment culture (cash-heavy but
+   rapidly digitizing), JPX derivatives, JGB market, PayPay adoption.
 
-5. **Payroll** (conf: 53) — ADP processes 1 in 6 US private-sector paychecks. Their 10-K has run counts. Expand with Paychex, Gusto (combined: ~50% of US market).
+5. **UK deep dive** — Faster Payments pioneer, CHAPS/BACS, FCA regulatory data,
+   London as FX/derivatives hub. Strong data availability.
 
-6. **ATM Withdrawals** (conf: 52) — ATMIA global data. RBI publishes detailed India ATM stats. ECB Blue Book for Europe.
+6. **Africa deep dive** — M-Pesa as original mobile money, fragmented but growing.
+   Kenya, Nigeria, South Africa. Mobile money ≠ digital wallet distinction.
 
-7. **Insurance Premiums** (conf: 52) — Swiss Re sigma gives premium VALUE. Need transaction COUNT from IRDAI (India), NAIC (US), EIOPA (EU).
+### Tier 3: MEST Extensions
 
-### Tier 3: New Deep Dives
+7. **MEST by country** — Apply multipliers to all 5 deep-dive countries.
+   India's MEST advantage (simpler UPI stack = lower multiplier).
+   Create MEST leaderboard by country.
 
-8. **USA deep dive** — India is 17.4% of TPS; what's the US? Card-heavy, ACH-heavy, dominant in TradFi. Build the mirror of the India capsule.
+8. **MEST cost modeling** — Extend MEST Advantage paper with real cost data.
+   Visa interchange + scheme fees per MEST vs. on-chain gas per MEST.
+   Build the cost-per-MEST comparison table.
 
-9. **Brazil deep dive** — Pix is the #2 real-time payment system globally. Brazil's market structure is unique (high banking concentration + Pix disruption).
+9. **MEST regulatory load** — Quantify how regulation drives MEST growth.
+   KYC/AML reporting creates MESTs. MiCA vs. no-regulation MEST differential.
 
-10. **EU deep dive** — SEPA unification, PSD2/PSD3 impact, TARGET2 volumes. Fragmented but well-documented.
+### Tier 4: Confidence & Data Quality
 
-### Tier 4: The Payment Stack Visualization
+10. **AI Agent Transactions** (conf: 34) — Still the weakest. Consider splitting into
+    "measured" (x402, Stripe agent billing) vs. "projected" tiers.
 
-11. **Payment Stack diagram** — Show how commerce-layer categories (e-commerce, gaming, insurance, BNPL, bills) stack on top of payment-rail categories (cards, bank transfers, wallets). Quantify each layer. This is the key visual for explaining overlaps.
+11. **In-Game Microtransactions** (conf: 44) — Publishers report revenue not counts.
+    Epic Games Store + Roblox quarterly reports may yield transaction counts.
 
-12. **MEST Cascade Visualizer** — Interactive or detailed static version showing how a single transaction in each category cascades through the financial system.
+12. **Bill Payments** (conf: 48) — No single global source. Bottom-up from:
+    utility connections (IEA), telecom subs (GSMA), streaming subs (platforms).
 
-### Tier 5: Publication Preparation
+### Tier 5: Interactive Dashboard Updates
 
-13. **Executive summary** — One-page findings document with both Big Number and MEST Number.
+13. **Dashboard v2** — Add Brazil and EU to country spotlight cards.
+    Add MEST Advantage visualization (compression waterfall chart).
+    Add version history link in footer.
 
-14. **Methodology paper** — Formal write-up leveraging 29 METHODOLOGY.md files + MEST framework.
+14. **Payment Stack Visualization** — Show how commerce layers stack on payment rails.
+    Interactive Sankey or waterfall showing overlap flows.
 
-15. **Data dictionary** — Document every field in data.json schema.
+15. **Category Explorer** — Click any category → see methodology, data sources,
+    confidence breakdown, time-series chart, MEST cascade.
 
 ## Data Sources to Investigate
 
-- **Visa VisaNet stats** — Auth + clearing + settlement counts for MEST validation
-- **DTCC Annual Report** — Settlement-to-trade ratios
-- **CLS Settlement Statistics** — FX MEST validation
-- **ADP 10-K / Paychex 10-K** — Payroll run counts
-- **ATMIA Global ATM Market** — ATM transaction trends
-- **Swiss Re sigma + IRDAI** — Insurance transaction counts
-- **Pix statistics (BCB)** — Brazil real-time payments
-- **ECB Blue Book** — EU payment statistics
-- **Federal Reserve Payments Study** — US payments landscape
+- **Epic Games Store / Roblox 10-K** — Microtransaction counts
+- **JPX Annual Report** — Japan derivatives + equity volumes
+- **Bank of Japan Payment Statistics** — Japan payment infrastructure
+- **PayPay investor materials** — Japan mobile payments adoption
+- **FCA Payment Statistics** — UK payment volumes
+- **BACS/Faster Payments annual data** — UK real-time payments
+- **Central Bank of Kenya** — M-Pesa transaction data
+- **CBN (Nigeria)** — NIP instant payment volumes
+- **SARB (South Africa)** — Payment system statistics
+- **Visa/Mastercard 10-K** — Per-MEST cost derivation
