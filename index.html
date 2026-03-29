@@ -460,8 +460,12 @@ tbody td {
 /* ─── Spotlights ─── */
 .spotlight-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+}
+
+@media (min-width: 1100px) {
+  .spotlight-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .spotlight-card {
@@ -484,6 +488,61 @@ tbody td {
 
 .spotlight-india::before { background: linear-gradient(90deg, #ff9933, #fff, #138808); }
 .spotlight-china::before { background: linear-gradient(90deg, #de2910, #ffde00); }
+.spotlight-brazil::before { background: linear-gradient(90deg, #009c3b, #ffdf00, #002776); }
+.spotlight-eu::before { background: linear-gradient(90deg, #003399, #ffcc00, #003399); }
+.spotlight-japan::before { background: linear-gradient(90deg, #fff, #bc002d, #fff); }
+.spotlight-uk::before { background: linear-gradient(90deg, #012169, #c8102e, #fff); }
+
+.spotlight-card.coming-soon { opacity: 0.7; }
+.spotlight-card.coming-soon .coming-soon-badge {
+  display: inline-block;
+  background: rgba(245,158,11,0.15);
+  color: var(--accent-amber);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── MEST Advantage Waterfall ─── */
+.waterfall-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.waterfall-stat-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.waterfall-stat-card .big {
+  font-family: var(--mono);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.waterfall-stat-card .big.green { color: var(--accent-green); }
+.waterfall-stat-card .big.purple { color: var(--accent-purple); }
+.waterfall-stat-card .big.amber { color: var(--accent-amber); }
+
+.waterfall-stat-card .desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .waterfall-summary { grid-template-columns: 1fr; }
+}
 
 .spotlight-card .flag { font-size: 2.5rem; margin-bottom: 16px; }
 .spotlight-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; }
@@ -647,6 +706,7 @@ nav .nav-links a:hover { color: var(--text); }
     <ul class="nav-links">
       <li><a href="#leaderboard">Leaderboard</a></li>
       <li><a href="#mest-cascade">MEST</a></li>
+      <li><a href="#mest-advantage">Advantage</a></li>
       <li><a href="#charts">Charts</a></li>
       <li><a href="#spotlights">Spotlights</a></li>
       <li><a href="#insights">Insights</a></li>
@@ -725,6 +785,36 @@ nav .nav-links a:hover { color: var(--text); }
   </div>
 </section>
 
+<!-- ═══════ MEST ADVANTAGE ═══════ -->
+<section id="mest-advantage">
+  <div class="container">
+    <h2>The MEST Advantage</h2>
+    <p class="section-subtitle">If every category shifted to DLT-native infrastructure, 63% of bilateral state changes disappear. Here's where the compression comes from.</p>
+    <div class="chart-grid">
+      <div class="chart-card" style="grid-column: 1 / -1;">
+        <h3>MEST Compression Waterfall: Traditional &rarr; DLT</h3>
+        <div class="chart-canvas-wrap" style="height:420px;">
+          <canvas id="mestWaterfallChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="waterfall-summary">
+      <div class="waterfall-stat-card">
+        <div class="big purple">545K</div>
+        <div class="desc">Current MEST/s</div>
+      </div>
+      <div class="waterfall-stat-card">
+        <div class="big green">~200K</div>
+        <div class="desc">After full DLT compression</div>
+      </div>
+      <div class="waterfall-stat-card">
+        <div class="big amber">$150-250B</div>
+        <div class="desc">Estimated annual savings</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══════ CHARTS ═══════ -->
 <section id="charts">
   <div class="container">
@@ -759,7 +849,7 @@ nav .nav-links a:hover { color: var(--text); }
 <section id="spotlights">
   <div class="container">
     <h2>Country Spotlights</h2>
-    <p class="section-subtitle">Two nations that defy proportional expectations.</p>
+    <p class="section-subtitle">Six economies that shape global transaction throughput.</p>
     <div class="spotlight-grid">
       <div class="spotlight-card spotlight-india">
         <div class="flag">&#127470;&#127475;</div>
@@ -781,6 +871,48 @@ nav .nav-links a:hover { color: var(--text); }
         <div class="spotlight-stat"><span class="label">Opacity: equities</span><span class="value"><span class="conf-badge conf-high">75</span></span></div>
         <div class="spotlight-quote">"The biggest blind spot in global finance. China's uncertainty band alone exceeds most sectors."</div>
       </div>
+      <div class="spotlight-card spotlight-brazil">
+        <div class="flag">&#127463;&#127479;</div>
+        <h3>Brazil</h3>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">6.3%</span></div>
+        <div class="spotlight-stat"><span class="label">Share of global GDP</span><span class="value">3.0%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~4,680</span></div>
+        <div class="spotlight-stat"><span class="label">Pix txns/year</span><span class="value mono">68.7B</span></div>
+        <div class="spotlight-stat"><span class="label">Pix adult adoption</span><span class="value mono">93%</span></div>
+        <div class="spotlight-stat"><span class="label">B3 ETD rank</span><span class="value mono">#2 Global</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-mid">68</span></span></div>
+        <div class="spotlight-quote">"Pix processed 68.7B transactions in 2024 &mdash; 93% of Brazilian adults use it. The fastest real-time payments adoption in history."</div>
+      </div>
+      <div class="spotlight-card spotlight-eu">
+        <div class="flag">&#127466;&#127482;</div>
+        <h3>European Union</h3>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">18.2%</span></div>
+        <div class="spotlight-stat"><span class="label">Share of global GDP</span><span class="value">24.8%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~13,400</span></div>
+        <div class="spotlight-stat"><span class="label">Non-cash txns 2024</span><span class="value mono">149.7B</span></div>
+        <div class="spotlight-stat"><span class="label">TIPS growth (YoY)</span><span class="value mono accent-green">+402%</span></div>
+        <div class="spotlight-stat"><span class="label">MiCA compliance</span><span class="value mono">65%+</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-high">78</span></span></div>
+        <div class="spotlight-quote">"The ECB's TIPS instant payment volume grew 402% in 2024. The EU is building the world's most regulated &mdash; and most measurable &mdash; financial system."</div>
+      </div>
+      <div class="spotlight-card spotlight-japan coming-soon">
+        <div class="flag">&#127471;&#127477;</div>
+        <h3>Japan</h3>
+        <span class="coming-soon-badge">Deep Dive Coming Soon</span>
+        <div class="spotlight-stat"><span class="label">Est. share of global TPS</span><span class="value muted">~4-6%</span></div>
+        <div class="spotlight-stat"><span class="label">Key systems</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">Zengin, JPX, JSCC</span></div>
+        <div class="spotlight-stat"><span class="label">Notable</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">3rd largest equity market</span></div>
+        <div class="spotlight-quote">"JPX is #3 globally by equity market cap. Zengin processes real-time transfers for 120M+ accounts. Full deep dive in Run 11."</div>
+      </div>
+      <div class="spotlight-card spotlight-uk coming-soon">
+        <div class="flag">&#127468;&#127463;</div>
+        <h3>United Kingdom</h3>
+        <span class="coming-soon-badge">Deep Dive Coming Soon</span>
+        <div class="spotlight-stat"><span class="label">Est. share of global TPS</span><span class="value muted">~5-7%</span></div>
+        <div class="spotlight-stat"><span class="label">Key systems</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">Faster Payments, LSE, LCH</span></div>
+        <div class="spotlight-stat"><span class="label">Notable</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">#1 FX trading centre</span></div>
+        <div class="spotlight-quote">"London clears 37% of global FX volume. LCH is the world's largest interest rate swap CCP. Full deep dive in Run 11."</div>
+      </div>
     </div>
   </div>
 </section>
@@ -797,7 +929,7 @@ nav .nav-links a:hover { color: var(--text); }
 <!-- ═══════ FOOTER ═══════ -->
 <footer>
   <div class="container">
-    <p>Research methodology: Triangulation-first, 17 Soul Less Employees, 29 categories, 7 sectors</p>
+    <p>Research methodology: Triangulation-first, 17 Soul Less Employees, 29 categories, 7 sectors &middot; Run 10</p>
     <p><a href="https://github.com/quackstra/universe-of-finance" target="_blank" rel="noopener">View the full research on GitHub</a> &middot; <a href="versions/" rel="noopener">Version History</a></p>
     <p style="margin-top:16px;">&copy; 2026 Universe of Finance &middot; <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
   </div>
@@ -1171,6 +1303,112 @@ new Chart(document.getElementById('mestBarChart'), {
           label: ctx => {
             const d = mestSorted[ctx.dataIndex];
             return `${d.mestMult}x multiplier \u2014 ${d.sector}`;
+          }
+        }
+      }
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════
+   MEST ADVANTAGE WATERFALL
+   ═══════════════════════════════════════════ */
+const WATERFALL_DATA = {
+  labels: [
+    'Current\nMEST/s',
+    'Cards\n(-122.5K)',
+    'ETD\n(-66.5K)',
+    'Wallets\n(-59.2K)',
+    'Bank Xfer\n(-46.0K)',
+    'Equities\n(-28.0K)',
+    'Other\n(-22.3K)',
+    'After DLT\nMEST/s'
+  ],
+  // running totals for waterfall effect
+  bases:  [0, 422495, 355960, 296780, 250766, 222766, 200455, 0],
+  values: [545000, 122505,  66535,  59180,  46014,  28000,  22311, 200455],
+};
+
+const wfCtx = document.getElementById('mestWaterfallChart').getContext('2d');
+
+// Invisible base bars (stacked under visible bars to create waterfall effect)
+const baseDataset = {
+  label: '_base',
+  data: WATERFALL_DATA.bases,
+  backgroundColor: 'transparent',
+  borderWidth: 0,
+  barPercentage: 0.65,
+};
+
+const valueDataset = {
+  label: 'MEST/s',
+  data: WATERFALL_DATA.values,
+  backgroundColor: WATERFALL_DATA.labels.map((_, i) => {
+    if (i === 0) return '#8b5cf6'; // start — purple
+    if (i === WATERFALL_DATA.labels.length - 1) return '#10b981'; // end — green
+    return '#ef4444cc'; // reductions — red
+  }),
+  borderColor: WATERFALL_DATA.labels.map((_, i) => {
+    if (i === 0) return '#8b5cf6';
+    if (i === WATERFALL_DATA.labels.length - 1) return '#10b981';
+    return '#ef4444';
+  }),
+  borderWidth: 1,
+  borderRadius: 4,
+  barPercentage: 0.65,
+};
+
+new Chart(wfCtx, {
+  type: 'bar',
+  data: {
+    labels: WATERFALL_DATA.labels,
+    datasets: [baseDataset, valueDataset]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        stacked: true,
+        grid: { display: false },
+        ticks: { font: { size: 11 }, maxRotation: 0 }
+      },
+      y: {
+        stacked: true,
+        beginAtZero: true,
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: {
+          callback: v => (v/1000).toFixed(0) + 'K',
+          font: { family: "'JetBrains Mono', monospace", size: 11 }
+        }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        filter: (item) => item.datasetIndex === 1,
+        callbacks: {
+          title: (items) => items[0].label.replace(/\n/g, ' '),
+          label: (ctx) => {
+            const i = ctx.dataIndex;
+            if (i === 0) return 'Current: ' + ctx.parsed.y.toLocaleString() + ' MEST/s';
+            if (i === WATERFALL_DATA.labels.length - 1) return 'After DLT: ' + ctx.parsed.y.toLocaleString() + ' MEST/s';
+            return '-' + ctx.parsed.y.toLocaleString() + ' MEST/s eliminated';
+          }
+        }
+      },
+      annotation: {
+        annotations: {
+          compressionLabel: {
+            type: 'label',
+            xValue: 3.5,
+            yValue: 490000,
+            content: ['63% fewer state changes with DLT'],
+            color: '#10b981',
+            font: { size: 13, weight: '700', family: "'Inter', sans-serif" },
+            backgroundColor: 'rgba(16,185,129,0.1)',
+            borderRadius: 6,
+            padding: { x: 12, y: 6 },
           }
         }
       }
