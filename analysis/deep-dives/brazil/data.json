@@ -1,0 +1,182 @@
+{
+  "country": "Brazil",
+  "iso_code": "BR",
+  "population": 213000000,
+  "gdp_usd_trillion": 2.2,
+  "last_updated": "2026-03-29",
+  "total_tps_contribution": 4680,
+  "share_of_global_tps": "6.3%",
+  "global_tps_reference": 73750,
+  "categories": {
+    "digital-wallets": {
+      "brazil_tps": 2179,
+      "brazil_annual_txns_billions": 68.7,
+      "share_of_category": "11.1%",
+      "share_of_brazil_total": "46.6%",
+      "key_systems": ["Pix (via bank apps, Nubank, PicPay, Inter)"],
+      "notes": "Pix processed 68.7B transactions in CY2024, +52% YoY. 170M+ active users (93% of adults). Classified under bank transfers for de-duplication (Pix is architecturally an account-to-account rail via BCB's SPI). Brazil figure here is gross before overlap netting.",
+      "sources": [
+        {"citation": "Global Finance — Pix Top Transaction Method", "url": "https://gfmag.com/transaction-banking/pix-becomes-brazils-top-transaction-method/"},
+        {"citation": "EBANX — Pix Five Years On", "url": "https://insights.ebanx.com/en/five-years-on-pix-approaches-8-monthly-transactions/"}
+      ]
+    },
+    "bank-transfers": {
+      "brazil_tps": 2179,
+      "brazil_annual_txns_billions": 68.7,
+      "share_of_category": "14.2%",
+      "share_of_brazil_total": "46.6%",
+      "key_systems": ["Pix", "TED", "Boleto Bancario"],
+      "notes": "Pix 68.7B (CY2024) dominates. TED ~780M/year (65M/month), declining as Pix absorbs. Boleto ~4-5B/year (declining). Combined ~74B but Pix is the overwhelming majority. Bank Transfers TPS based on Pix volume as primary rail.",
+      "sources": [
+        {"citation": "Global Finance — Pix Top Transaction Method", "url": "https://gfmag.com/transaction-banking/pix-becomes-brazils-top-transaction-method/"},
+        {"citation": "BCB — Banco Central do Brasil", "url": "https://www.bcb.gov.br/en"}
+      ]
+    },
+    "etd": {
+      "brazil_tps": 541,
+      "brazil_annual_txns_billions": 9.5,
+      "share_of_category": "4.6%",
+      "share_of_brazil_total": "11.6%",
+      "key_systems": ["B3 (interest rate futures, FX futures, equity index options)"],
+      "notes": "B3 traded 8.3B contracts in CY2023 (FIA), estimated ~9.5B in CY2024 based on 36% Dec YoY growth. B3 is #2 globally by contract volume. LatAm traded 9.96B ETD contracts in 2024; B3 accounts for ~95%. Product mix dominated by DI (interest rate) futures, unlike India's equity options dominance. TPS calculated using 252 trading days x 6.5h weighted hours.",
+      "sources": [
+        {"citation": "FIA — Global ETD Volume 2023", "url": "https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023"},
+        {"citation": "FIA — ETD Volume December 2024", "url": "https://www.fia.org/fia/articles/etd-volume-december-2024"}
+      ]
+    },
+    "equity-markets": {
+      "brazil_tps": 57,
+      "brazil_annual_txns_billions": 1.8,
+      "share_of_category": "1.6%",
+      "share_of_brazil_total": "1.2%",
+      "key_systems": ["B3 (formerly BM&FBOVESPA)"],
+      "notes": "B3 is Latin America's largest stock exchange by market cap (~$0.8T). Dec 2024 ADTV R$29B ($4.8B). Cash equity ADTV declined 3.8% in 2024 due to monetary tightening. 5.26M individual investors. BDR volume +47% YoY, ETF +16%. Annual equity trades estimated ~1.8B from ADTV data.",
+      "sources": [
+        {"citation": "Rio Times — B3 December 2024", "url": "https://www.riotimesonline.com/b3-stock-exchange-sees-20-6-jump-in-december-trading-volume/"},
+        {"citation": "WFE — FY 2024 Market Highlights", "url": "https://www.world-exchanges.org/our-work/articles/wfe-fy24-market-data-americas-region-leading-global-markets-despite-lowest-level-ipos-worldwide-last-5-years"}
+      ]
+    },
+    "consumer-cards": {
+      "brazil_tps": 1459,
+      "brazil_annual_txns_billions": 46.0,
+      "share_of_category": "6.0%",
+      "share_of_brazil_total": "31.2%",
+      "key_systems": ["Mastercard (51%)", "Visa (31%)", "Elo (14%)"],
+      "notes": "Q3 2024: 11.5B card transactions (5.0B credit, 4.1B debit, 2.4B prepaid). Annualized ~46B. Credit growing +13.1% YoY, debit declining -2.5%. Contactless at 61.1% of card payments. Installment culture (parcelamento) protects credit cards from Pix displacement. Elo is Brazilian domestic brand created by top 3 banks.",
+      "sources": [
+        {"citation": "ABECS / Rankings LatAm Q3 2024", "url": "https://rankingslatam.com/blogs/industry-news/brazil-payment-cards-market-trends-and-performance-insights-2024-09-overview-1"},
+        {"citation": "Statista — Card Scheme Market Share Brazil", "url": "https://www.statista.com/statistics/1312242/biggest-card-schemes-in-brazil/"}
+      ]
+    },
+    "government-payments": {
+      "brazil_tps": 101,
+      "brazil_annual_txns_billions": 3.2,
+      "share_of_category": "10.0%",
+      "share_of_brazil_total": "2.2%",
+      "key_systems": ["Bolsa Familia", "INSS Pensions", "FGTS", "Federal/State salaries"],
+      "notes": "Bolsa Familia: 20.8M families (55.1M people), ~$32B annually, R$600/month minimum. INSS pensions: ~37M beneficiaries. Combined ~3.2B annual government payment transactions. Bolsa Familia is world's largest conditional cash transfer program by per-capita disbursement.",
+      "sources": [
+        {"citation": "Policy Basket — Bolsa Familia", "url": "https://policybasket.endhungerandpoverty.org/index.php/Brazil:_Bolsa_Fam%C3%ADlia"},
+        {"citation": "World Bank — Bolsa Familia Implementation", "url": "https://documents1.worldbank.org/curated/en/099122325091047035/pdf/P179365-218b8a3a-c4c3-423d-a024-f315d7d216e9.pdf"}
+      ]
+    },
+    "bill-payments": {
+      "brazil_tps": 190,
+      "brazil_annual_txns_billions": 6.0,
+      "share_of_category": "6.3%",
+      "share_of_brazil_total": "4.1%",
+      "key_systems": ["Boleto Bancario (utility bills)", "Direct debit", "Pix (bill payments)"],
+      "notes": "Estimated ~6B annual bill payment transactions covering electricity (R$114.6B sector revenue in 2024), water, telecom, insurance, and municipal fees. Boleto historically dominant for bills but Pix increasingly absorbing this use case. Electricity sector alone serves ~90M consumer units.",
+      "sources": [
+        {"citation": "Canal Solar — Brazilian Electricity Sector 2024", "url": "https://canalsolar.com.br/en/Brazilian-electricity-sector-114-billion/"},
+        {"citation": "PCMI — Payments Brazil 2024", "url": "https://paymentscmi.com/insights/payments-ecommerce-trends-brazil-2024/"}
+      ]
+    },
+    "atm-withdrawals": {
+      "brazil_tps": 127,
+      "brazil_annual_txns_billions": 4.0,
+      "share_of_category": "8.2%",
+      "share_of_brazil_total": "2.7%",
+      "key_systems": ["Bank ATMs (~178K)", "Banco24Horas network"],
+      "notes": "Brazil had ~3.94B ATM withdrawals in 2023, estimated ~4.0B in 2024. ~178K ATMs nationwide. Growth slowing (CAGR declining from 2.92% to forecast 0.99%). Cash usage persisting in informal economy despite Pix dominance.",
+      "sources": [
+        {"citation": "ReportLinker — ATM Cash Withdrawals Brazil", "url": "https://www.reportlinker.com/dataset/5ad11e5a2afe7aced9c8e9c38a9c8bf3f16b83bd"},
+        {"citation": "IMARC — Brazil ATM Market", "url": "https://www.imarcgroup.com/brazil-atm-market"}
+      ]
+    },
+    "cex": {
+      "brazil_tps": 10,
+      "brazil_annual_txns_billions": 0.32,
+      "share_of_category": "0.3%",
+      "share_of_brazil_total": "0.2%",
+      "key_systems": ["Binance (79% share)", "Mercado Bitcoin", "Foxbit"],
+      "notes": "Brazil is LatAm's largest crypto market, 7th globally by fiat trade volume. $6B BRL-denominated trading Jan-May 2024. $319B total crypto flows 2024-25 (Chainalysis). Nearly 50% of trades are stablecoins (USDT). Mercado Bitcoin has 1.5M+ users. More moderate regulation than India.",
+      "sources": [
+        {"citation": "Chainalysis — Brazil Crypto Volumes", "url": "https://newsletter.brazilcrypto.io/p/210-brazil-crypto-volumes-at-319"},
+        {"citation": "CoinMarketCap — Mercado Bitcoin", "url": "https://coinmarketcap.com/exchanges/mercado-bitcoin/"}
+      ]
+    },
+    "gaming-microtx": {
+      "brazil_tps": 12,
+      "brazil_annual_txns_billions": 0.38,
+      "share_of_category": "3.1%",
+      "share_of_brazil_total": "0.3%",
+      "key_systems": ["Mobile gaming (Free Fire, etc.)", "Google Play", "Apple App Store", "Steam"],
+      "notes": "Brazil gaming market $5.64B (2025). Mobile is 52.8% of revenue. 3.5B mobile game downloads in 2024. IAP is 61.3% of gaming revenue. Brazil ranks #5 Android, #10 iOS for IAP globally. Average 5+ hours daily mobile gaming. Largest gaming market in LatAm.",
+      "sources": [
+        {"citation": "IMARC — Brazil Gaming Market", "url": "https://www.imarcgroup.com/brazil-gaming-market"},
+        {"citation": "Tenjin — Mobile Gaming Brazil 2025", "url": "https://tenjin.com/blog/the-state-of-mobile-gaming-in-brazil-2025-data-trends-and-market-analysis/"}
+      ]
+    },
+    "commodities": {
+      "brazil_tps": 3,
+      "brazil_annual_txns_billions": 0.05,
+      "share_of_category": "0.9%",
+      "share_of_brazil_total": "0.1%",
+      "key_systems": ["B3 (agricultural and commodity derivatives)"],
+      "notes": "B3 trades commodity derivatives including sugar, coffee, corn, ethanol, and cattle. Volume is modest compared to B3's financial derivatives. Most commodity ETD volume is counted in the broader ETD category. This represents physical commodity spot and small OTC commodity transactions.",
+      "sources": [
+        {"citation": "B3 — Products and Services", "url": "https://www.b3.com.br/en_us/products-and-services/"}
+      ]
+    },
+    "interbank-rtgs": {
+      "brazil_tps": 2,
+      "brazil_annual_txns_billions": 0.06,
+      "share_of_category": "4.0%",
+      "share_of_brazil_total": "0.0%",
+      "key_systems": ["STR (Sistema de Transferencia de Reservas)", "Selic (securities settlement)"],
+      "notes": "STR processed R$13.68 trillion in 2024 value. Low transaction count but massive per-transaction values. TED (large-value wire transfer via STR) handles ~65M transactions/month (~780M/year). Selic settles government securities.",
+      "sources": [
+        {"citation": "BCB — STR System", "url": "https://www.bcb.gov.br/Pom/Spb/Ing/InterbankFundsTransfer/ISTR.asp?frame=1"},
+        {"citation": "BCB — Banco Central do Brasil", "url": "https://www.bcb.gov.br/en"}
+      ]
+    }
+  },
+  "de_duplicated_brazil_tps": {
+    "value": 4680,
+    "methodology": "Sum of de-duplicated contributions: Bank Transfers (2,179 — primary rail, includes Pix) + ETD (541) + Consumer Cards (1,459, non-Pix card transactions) + Bill Payments (incremental ~95, ~50% not already on Pix/card rails) + Equity Markets (57) + Government Payments (incremental ~50, ~50% not on bank rails) + ATM Withdrawals (127, zero overlap) + Gaming (incremental ~6) + CEX (10) + Commodities (3) + Interbank RTGS (2). Digital Wallets excluded (Pix already in Bank Transfers). Significant overlap between Pix and Bill Payments. Adjusted total after overlap: ~4,680 de-duplicated.",
+    "range_low": 4100,
+    "range_high": 5300,
+    "notes": "Range reflects uncertainty in card transaction annualization (Q3 extrapolated to full year), Boleto volume estimates, bill payment rail attribution, and B3 2024 contract estimates. Pix data is well-sourced (BCB publishes monthly). Card data from ABECS quarterly reports."
+  },
+  "key_metrics": {
+    "pix_txns_per_capita_2024": 323,
+    "pix_active_users_millions": 170,
+    "pix_adult_adoption_pct": 93,
+    "b3_individual_investors_millions": 5.26,
+    "bolsa_familia_families_millions": 20.8,
+    "bolsa_familia_people_millions": 55.1,
+    "card_contactless_share_pct": 61.1,
+    "pix_share_of_all_transactions_pct": 47,
+    "atms_thousands": 178,
+    "drex_status": "pilot_phase_2"
+  },
+  "confidence": {
+    "score": 68,
+    "source_quality": 20,
+    "data_recency": 18,
+    "triangulation": 15,
+    "coverage": 15,
+    "notes": "Strong data for Pix (BCB publishes monthly via SPI reports). Good ABECS quarterly data for cards. FIA provides ETD volume but B3 2024 annual total requires estimation from monthly/quarterly data. Bolsa Familia data well-documented. Boleto and bill payment volumes are weakest — no single authoritative source for total transaction counts. Crypto data fragmented across exchanges. B3 equity trade count requires derivation from ADTV."
+  }
+}
