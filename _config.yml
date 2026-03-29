@@ -1,0 +1,50 @@
+title: Universe of Finance
+description: "Measuring every financial transaction on Earth — ~73,750 TPS, ~545,000 MEST/s"
+remote_theme: just-the-docs/just-the-docs@v0.10.0
+color_scheme: dark
+search_enabled: true
+heading_anchors: true
+baseurl: /universe-of-finance
+
+exclude:
+  - notes/
+  - scout/
+  - architect/
+  - elves/
+  - BRIEF.md
+  - CONVERSATION_SO_FAR.md
+  - MASTER_PROMPT.md
+  - AGENTS.md
+  - CLAUDE.md
+  - .claude/
+  - tools/*.py
+  - Gemfile
+  - Gemfile.lock
+  - "*.jsonl"
+  - data/
+  - logs/
+  - run.sh
+  - README.md
+
+defaults:
+  - scope:
+      path: "analysis"
+    values:
+      layout: default
+  - scope:
+      path: "souls"
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+include:
+  - versions/
+
+nav_external_links:
+  - title: Interactive Dashboard
+    url: /universe-of-finance/
+    hide_icon: true

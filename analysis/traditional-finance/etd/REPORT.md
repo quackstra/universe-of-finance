@@ -1,3 +1,10 @@
+---
+title: "Exchange-Traded Derivatives — Report"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 4
+---
+
 # Exchange-Traded Derivatives (ETD)
 
 > **Category**: Traditional Finance | **Priority**: #3

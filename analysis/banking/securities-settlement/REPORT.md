@@ -1,3 +1,10 @@
+---
+title: "Securities Settlement — Report"
+parent: Banking
+grand_parent: Explore
+nav_order: 2
+---
+
 # Securities Settlement — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

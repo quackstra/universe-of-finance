@@ -1,3 +1,10 @@
+---
+title: "MEST Validation"
+parent: Methodology
+grand_parent: Explore
+nav_order: 11
+---
+
 # MEST Multiplier Validation
 
 > Real-world data validation of the MEST multiplier estimates from Run 7,

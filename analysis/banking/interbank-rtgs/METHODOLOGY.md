@@ -1,3 +1,10 @@
+---
+title: "Interbank Settlement (RTGS) — Methodology"
+parent: Banking
+grand_parent: Explore
+nav_order: 101
+---
+
 # Interbank Settlement (RTGS) -- Measurement Methodology
 
 ## Transaction Definition

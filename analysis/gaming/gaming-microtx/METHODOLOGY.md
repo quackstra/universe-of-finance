@@ -1,3 +1,10 @@
+---
+title: "In-Game Microtransactions — Methodology"
+parent: Gaming
+grand_parent: Explore
+nav_order: 101
+---
+
 # In-Game Microtransactions -- Measurement Methodology
 
 ## Transaction Definition

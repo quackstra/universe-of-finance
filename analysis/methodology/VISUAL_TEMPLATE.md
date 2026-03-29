@@ -1,3 +1,10 @@
+---
+title: "Visual Template"
+parent: Methodology
+grand_parent: Explore
+nav_order: 9
+---
+
 # Methodology Visual Template
 
 > Standard visual formats for all category and sector methodology documentation.

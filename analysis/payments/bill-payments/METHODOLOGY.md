@@ -1,3 +1,10 @@
+---
+title: "Bill Payments — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 107
+---
+
 # Bill Payments — Measurement Methodology
 
 ## Transaction Definition

@@ -1,3 +1,10 @@
+---
+title: "Remittances — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 106
+---
+
 # Remittances — Measurement Methodology
 
 ## Transaction Definition

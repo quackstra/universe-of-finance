@@ -1,3 +1,10 @@
+---
+title: "Remittances — Report"
+parent: Payments
+grand_parent: Explore
+nav_order: 6
+---
+
 # Remittances — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

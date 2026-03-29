@@ -1,3 +1,10 @@
+---
+title: "TPS Time Series"
+parent: MEST Framework
+grand_parent: Explore
+nav_order: 2
+---
+
 # Universe of Finance — Time-Series 2015-2025
 
 > Annual average TPS and transaction counts for all 24 categories, compiled from

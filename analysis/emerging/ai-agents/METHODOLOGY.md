@@ -1,3 +1,10 @@
+---
+title: "AI Agent Transactions — Methodology"
+parent: Emerging
+grand_parent: Explore
+nav_order: 103
+---
+
 # AI Agent Transactions -- Measurement Methodology
 
 ## Transaction Definition

@@ -1,3 +1,10 @@
+---
+title: "Fixed Income & Bond Markets — Methodology"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 102
+---
+
 # Fixed Income / Bond Markets — Measurement Methodology
 
 ## Transaction Definition

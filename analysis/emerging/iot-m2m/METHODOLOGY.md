@@ -1,3 +1,10 @@
+---
+title: "IoT & Machine-to-Machine — Methodology"
+parent: Emerging
+grand_parent: Explore
+nav_order: 101
+---
+
 # IoT & Machine-to-Machine Payments -- Measurement Methodology
 
 ## Transaction Definition

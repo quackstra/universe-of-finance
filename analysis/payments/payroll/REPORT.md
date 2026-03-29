@@ -1,3 +1,10 @@
+---
+title: "Payroll Payments — Report"
+parent: Payments
+grand_parent: Explore
+nav_order: 10
+---
+
 # Payroll Payments — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

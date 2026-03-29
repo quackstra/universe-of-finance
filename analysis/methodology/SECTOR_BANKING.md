@@ -1,3 +1,10 @@
+---
+title: "Sector: Banking"
+parent: Methodology
+grand_parent: Explore
+nav_order: 5
+---
+
 # Sector Methodology: Banking & Interbank
 
 > How we measure settlement infrastructure throughput — 2 categories, ~92-98 TPS.

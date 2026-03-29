@@ -1,3 +1,10 @@
+---
+title: "Centralised Crypto Exchanges — Methodology"
+parent: Digital Assets
+grand_parent: Explore
+nav_order: 101
+---
+
 # Centralised Crypto Exchanges (CEX) — Measurement Methodology
 
 ## Transaction Definition

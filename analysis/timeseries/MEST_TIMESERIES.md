@@ -1,3 +1,10 @@
+---
+title: "MEST Time Series"
+parent: MEST Framework
+grand_parent: Explore
+nav_order: 3
+---
+
 # MEST Time-Series Analysis
 
 > Is the global economy getting more or less MEST-intensive over time?

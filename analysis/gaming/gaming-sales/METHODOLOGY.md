@@ -1,3 +1,10 @@
+---
+title: "Digital Game Sales — Methodology"
+parent: Gaming
+grand_parent: Explore
+nav_order: 102
+---
+
 # Digital Game Sales & Subscriptions -- Measurement Methodology
 
 ## Transaction Definition

@@ -1,3 +1,10 @@
+---
+title: "Bank Transfers — Report"
+parent: Payments
+grand_parent: Explore
+nav_order: 3
+---
+
 # Bank Transfers (ACH/RTGS) — Universe of Finance Analysis
 
 **Category**: Payments > Bank Transfers

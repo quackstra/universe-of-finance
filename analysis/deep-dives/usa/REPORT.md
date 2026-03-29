@@ -1,3 +1,10 @@
+---
+title: "USA Deep Dive"
+parent: Deep Dives
+grand_parent: Explore
+nav_order: 3
+---
+
 # USA Deep Dive — Country-Level TPS Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

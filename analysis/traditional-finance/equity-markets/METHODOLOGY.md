@@ -1,3 +1,10 @@
+---
+title: "Equity Markets — Methodology"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 101
+---
+
 # Equity Markets (Stock Exchanges) — Measurement Methodology
 
 ## Transaction Definition

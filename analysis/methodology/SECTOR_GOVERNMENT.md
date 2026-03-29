@@ -1,3 +1,10 @@
+---
+title: "Sector: Government"
+parent: Methodology
+grand_parent: Explore
+nav_order: 7
+---
+
 # Sector Methodology: Government & Public Sector
 
 > How we measure tax receipts, benefits disbursements, and public sector payments — 1 category, ~1,002 TPS.

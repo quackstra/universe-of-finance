@@ -1,3 +1,10 @@
+---
+title: "Bank Transfers — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 103
+---
+
 # Bank Transfers (ACH/RTGS) — Measurement Methodology
 
 ## Transaction Definition

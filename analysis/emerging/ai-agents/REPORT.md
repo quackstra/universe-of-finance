@@ -1,3 +1,10 @@
+---
+title: "AI Agent Transactions — Report"
+parent: Emerging
+grand_parent: Explore
+nav_order: 3
+---
+
 # AI Agent Transactions — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

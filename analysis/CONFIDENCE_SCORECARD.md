@@ -1,3 +1,7 @@
+---
+title: "Confidence Scorecard"
+---
+
 # Universe of Finance — Confidence Scorecard
 
 > Generated: 2026-03-28

@@ -1,3 +1,8 @@
+---
+title: "Transaction Taxonomy"
+nav_order: 3
+---
+
 # Universe of Finance — Transaction Taxonomy
 
 > A living catalogue of every financial transaction type in the global economy,

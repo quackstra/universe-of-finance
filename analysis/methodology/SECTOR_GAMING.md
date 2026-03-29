@@ -1,3 +1,10 @@
+---
+title: "Sector: Gaming"
+parent: Methodology
+grand_parent: Explore
+nav_order: 6
+---
+
 # Sector Methodology: Gaming & Virtual Economies
 
 > How we measure gaming transaction activity — 2 categories, ~481 TPS.

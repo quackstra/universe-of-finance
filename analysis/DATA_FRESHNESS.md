@@ -1,3 +1,7 @@
+---
+title: "Data Freshness"
+---
+
 # Data Freshness Report
 
 > Generated: 2026-03-28

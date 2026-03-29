@@ -1,3 +1,10 @@
+---
+title: "Digital Game Sales — Report"
+parent: Gaming
+grand_parent: Explore
+nav_order: 2
+---
+
 # Digital Game Sales & Subscriptions — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

@@ -1,3 +1,10 @@
+---
+title: "Foreign Exchange — Report"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 3
+---
+
 # Foreign Exchange (FX) — Transaction Volume Analysis
 
 > **Category**: Traditional Finance | **Priority**: #4

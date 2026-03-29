@@ -1,3 +1,10 @@
+---
+title: "Commodities — Methodology"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 105
+---
+
 # Commodities — Measurement Methodology
 
 ## Transaction Definition

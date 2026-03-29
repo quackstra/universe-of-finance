@@ -1,3 +1,7 @@
+---
+title: "Overlap Matrix"
+---
+
 # Universe of Finance — Global Overlap Matrix & De-Duplicated TPS
 
 > Cross-category overlap analysis for accurate total global financial TPS.

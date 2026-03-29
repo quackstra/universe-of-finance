@@ -1,3 +1,10 @@
+---
+title: "Stablecoins — Report"
+parent: Digital Assets
+grand_parent: Explore
+nav_order: 3
+---
+
 # Stablecoins — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

@@ -1,3 +1,10 @@
+---
+title: "Buy Now Pay Later (BNPL) — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 109
+---
+
 # Buy Now Pay Later (BNPL) — Measurement Methodology
 
 ## Transaction Definition

@@ -1,3 +1,10 @@
+---
+title: "Sector: Emerging"
+parent: Methodology
+grand_parent: Explore
+nav_order: 8
+---
+
 # Sector Methodology: Emerging Transaction Types
 
 > How we measure IoT payments, tokenized real-world assets, and AI agent transactions — 3 categories, ~637 TPS.

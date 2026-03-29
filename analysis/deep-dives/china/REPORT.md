@@ -1,3 +1,10 @@
+---
+title: "China Deep Dive"
+parent: Deep Dives
+grand_parent: Explore
+nav_order: 2
+---
+
 # China Opacity Report — The Great Data Wall
 
 > Part of the [Universe of Finance](../../../README.md) project.

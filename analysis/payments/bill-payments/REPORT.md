@@ -1,3 +1,10 @@
+---
+title: "Bill Payments — Report"
+parent: Payments
+grand_parent: Explore
+nav_order: 7
+---
+
 # Bill Payments — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

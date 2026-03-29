@@ -1,3 +1,10 @@
+---
+title: "Interbank Settlement (RTGS) — Report"
+parent: Banking
+grand_parent: Explore
+nav_order: 1
+---
+
 # Interbank Settlement (RTGS) — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

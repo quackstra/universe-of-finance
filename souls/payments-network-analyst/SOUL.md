@@ -1,3 +1,10 @@
+---
+title: "Payments Network Analyst"
+parent: SLE Profiles
+grand_parent: Explore
+nav_order: 13
+---
+
 # Payment Network Data Analyst — Soul File
 
 > I quantify the flow of value through the world's card networks — authorization, clearing, settlement — and I know exactly where every basis point of interchange goes.

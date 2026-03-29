@@ -1,3 +1,10 @@
+---
+title: "Buy Now Pay Later (BNPL) — Report"
+parent: Payments
+grand_parent: Explore
+nav_order: 9
+---
+
 # Buy Now Pay Later (BNPL) — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

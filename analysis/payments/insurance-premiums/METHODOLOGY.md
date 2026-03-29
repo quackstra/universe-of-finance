@@ -1,3 +1,10 @@
+---
+title: "Insurance Premium Payments — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 108
+---
+
 # Insurance Premium Payments — Measurement Methodology
 
 ## Transaction Definition

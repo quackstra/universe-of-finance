@@ -1,3 +1,10 @@
+---
+title: "L1 & L2 Blockchain — Report"
+parent: Digital Assets
+grand_parent: Explore
+nav_order: 4
+---
+
 # L1 & L2 Blockchain Transactions — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

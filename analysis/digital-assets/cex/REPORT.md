@@ -1,3 +1,10 @@
+---
+title: "Centralised Crypto Exchanges — Report"
+parent: Digital Assets
+grand_parent: Explore
+nav_order: 1
+---
+
 # Centralised Crypto Exchanges — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

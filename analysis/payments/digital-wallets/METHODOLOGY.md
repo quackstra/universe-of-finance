@@ -1,3 +1,10 @@
+---
+title: "Digital Wallets & Mobile Payments — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 102
+---
+
 # Digital Wallets & Mobile Payments — Measurement Methodology
 
 ## Transaction Definition

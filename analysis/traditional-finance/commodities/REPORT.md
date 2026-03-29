@@ -1,3 +1,10 @@
+---
+title: "Commodities — Report"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 5
+---
+
 # Commodities — Transaction Volume Analysis
 
 > **Category**: Traditional Finance | **Priority**: #6

@@ -1,3 +1,10 @@
+---
+title: "India Deep Dive"
+parent: Deep Dives
+grand_parent: Explore
+nav_order: 1
+---
+
 # India Deep Dive — Country-Level TPS Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

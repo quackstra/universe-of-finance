@@ -1,3 +1,10 @@
+---
+title: "Recruiter Overview"
+parent: SLE Profiles
+grand_parent: Explore
+nav_order: 100
+---
+
 # Intergalactic Recruiter — Soul Less Employee Framework
 
 > "The right question, asked by the right mind, with the right tools."

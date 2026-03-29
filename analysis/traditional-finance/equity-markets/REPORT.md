@@ -1,3 +1,10 @@
+---
+title: "Equity Markets — Report"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 1
+---
+
 # Equity Markets (Stock Exchanges) — Transaction Analysis
 
 **Category Priority**: #6 | **Sector**: Traditional Finance

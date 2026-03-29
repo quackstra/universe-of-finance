@@ -1,3 +1,10 @@
+---
+title: "OTC Derivatives — Methodology"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 106
+---
+
 # OTC Derivatives — Measurement Methodology
 
 ## Transaction Definition

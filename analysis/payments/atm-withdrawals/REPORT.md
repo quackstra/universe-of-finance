@@ -1,3 +1,10 @@
+---
+title: "ATM Withdrawals — Report"
+parent: Payments
+grand_parent: Explore
+nav_order: 11
+---
+
 # ATM Withdrawals — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

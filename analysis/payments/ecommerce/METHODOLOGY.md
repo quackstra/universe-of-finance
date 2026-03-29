@@ -1,3 +1,10 @@
+---
+title: "E-Commerce & Merchant Processing — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 104
+---
+
 # E-Commerce & Merchant Processing — Measurement Methodology
 
 ## Transaction Definition

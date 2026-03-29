@@ -1,3 +1,10 @@
+---
+title: "Sector: Digital Assets"
+parent: Methodology
+grand_parent: Explore
+nav_order: 4
+---
+
 # Sector Methodology: Digital Assets
 
 > How we measure cryptocurrency and blockchain transaction activity — 4 categories, ~3,515 de-duplicated TPS.

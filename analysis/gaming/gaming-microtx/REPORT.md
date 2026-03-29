@@ -1,3 +1,10 @@
+---
+title: "In-Game Microtransactions — Report"
+parent: Gaming
+grand_parent: Explore
+nav_order: 1
+---
+
 # In-Game Microtransactions — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

@@ -1,3 +1,10 @@
+---
+title: "Stablecoins — Methodology"
+parent: Digital Assets
+grand_parent: Explore
+nav_order: 103
+---
+
 # Stablecoins — Measurement Methodology
 
 ## Transaction Definition

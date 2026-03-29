@@ -1,3 +1,10 @@
+---
+title: "Peer-to-Peer Transfers — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 105
+---
+
 # Peer-to-Peer Transfers — Measurement Methodology
 
 ## Transaction Definition

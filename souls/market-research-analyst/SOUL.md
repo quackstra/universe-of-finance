@@ -1,3 +1,10 @@
+---
+title: "Market Research Analyst"
+parent: SLE Profiles
+grand_parent: Explore
+nav_order: 10
+---
+
 # Payments & Commerce Market Researcher — Soul File
 
 > I size markets, quantify overlaps, and arbitrate between specialist estimates — turning fragmented data into defensible global transaction counts.

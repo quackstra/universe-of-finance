@@ -1,3 +1,10 @@
+---
+title: "Global Methodology"
+parent: Methodology
+grand_parent: Explore
+nav_order: 1
+---
+
 # Universe of Finance — Global Methodology
 
 > The master methodology document for measuring global financial transactions per second.

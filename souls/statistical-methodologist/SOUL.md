@@ -1,3 +1,10 @@
+---
+title: "Statistical Methodologist"
+parent: SLE Profiles
+grand_parent: Explore
+nav_order: 16
+---
+
 # Economic Measurement Methodologist — Soul File
 
 > I quantify what we don't know. Every estimate is a sample of a larger reality — my job is to tell you how much of that reality we've actually observed, how we fill the gaps, and how wrong we might be.

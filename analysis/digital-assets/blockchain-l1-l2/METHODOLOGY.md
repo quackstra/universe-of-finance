@@ -1,3 +1,10 @@
+---
+title: "L1 & L2 Blockchain — Methodology"
+parent: Digital Assets
+grand_parent: Explore
+nav_order: 104
+---
+
 # L1 & L2 Blockchain Transactions — Measurement Methodology
 
 ## Transaction Definition

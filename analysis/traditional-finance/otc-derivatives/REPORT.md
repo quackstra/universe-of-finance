@@ -1,3 +1,10 @@
+---
+title: "OTC Derivatives — Report"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 6
+---
+
 # OTC Derivatives — Transaction Volume Analysis
 
 > **Category**: Traditional Finance | **Priority**: #7

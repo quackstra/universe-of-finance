@@ -1,3 +1,10 @@
+---
+title: "Sector: Payments"
+parent: Methodology
+grand_parent: Explore
+nav_order: 2
+---
+
 # Sector Methodology: Payments
 
 > How we measure the world's payment transactions — 11 categories, ~53,200 de-duplicated TPS.

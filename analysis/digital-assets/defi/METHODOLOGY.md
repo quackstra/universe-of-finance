@@ -1,3 +1,10 @@
+---
+title: "DeFi (Decentralised Finance) — Methodology"
+parent: Digital Assets
+grand_parent: Explore
+nav_order: 102
+---
+
 # DeFi (Decentralised Finance) — Measurement Methodology
 
 ## Transaction Definition

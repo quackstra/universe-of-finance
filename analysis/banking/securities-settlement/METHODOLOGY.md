@@ -1,3 +1,10 @@
+---
+title: "Securities Settlement — Methodology"
+parent: Banking
+grand_parent: Explore
+nav_order: 102
+---
+
 # Securities Settlement -- Measurement Methodology
 
 ## Transaction Definition

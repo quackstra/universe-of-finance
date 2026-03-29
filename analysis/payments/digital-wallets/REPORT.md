@@ -1,3 +1,10 @@
+---
+title: "Digital Wallets & Mobile Payments — Report"
+parent: Payments
+grand_parent: Explore
+nav_order: 2
+---
+
 # Digital Wallets & Mobile Payments — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

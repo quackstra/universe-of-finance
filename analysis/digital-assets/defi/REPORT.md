@@ -1,3 +1,10 @@
+---
+title: "DeFi (Decentralised Finance) — Report"
+parent: Digital Assets
+grand_parent: Explore
+nav_order: 2
+---
+
 # DeFi (Decentralised Finance) — Transaction Volume Analysis
 
 > Part of the [Universe of Finance](../../../README.md) project.

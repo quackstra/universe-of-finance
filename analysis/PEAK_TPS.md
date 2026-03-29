@@ -1,3 +1,7 @@
+---
+title: "Peak TPS Analysis"
+---
+
 # Peak TPS Analysis — Coordinated Global Maximum
 
 > What happens when multiple categories hit peak load simultaneously?

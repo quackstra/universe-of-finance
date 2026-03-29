@@ -1,3 +1,10 @@
+---
+title: "Exchange-Traded Derivatives — Methodology"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 104
+---
+
 # Exchange-Traded Derivatives (ETD) — Measurement Methodology
 
 ## Transaction Definition

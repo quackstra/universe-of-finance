@@ -1,3 +1,10 @@
+---
+title: "Payroll Payments — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 110
+---
+
 # Payroll Payments — Measurement Methodology
 
 ## Transaction Definition

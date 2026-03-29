@@ -1,3 +1,10 @@
+---
+title: "MEST Methodology"
+parent: Methodology
+grand_parent: Explore
+nav_order: 10
+---
+
 # MEST Estimation Methodology
 
 > How we estimate the number of Mutual Economic State Transitions

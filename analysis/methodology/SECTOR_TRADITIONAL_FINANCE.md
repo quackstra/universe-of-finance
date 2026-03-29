@@ -1,3 +1,10 @@
+---
+title: "Sector: Traditional Finance"
+parent: Methodology
+grand_parent: Explore
+nav_order: 3
+---
+
 # Sector Methodology: Traditional Finance
 
 > How we measure trading activity across equity, fixed income, derivatives, FX, and commodity markets — 6 categories, ~13,373 TPS.

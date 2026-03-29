@@ -1,3 +1,10 @@
+---
+title: "ATM Withdrawals — Methodology"
+parent: Payments
+grand_parent: Explore
+nav_order: 111
+---
+
 # ATM Withdrawals — Measurement Methodology
 
 ## Transaction Definition

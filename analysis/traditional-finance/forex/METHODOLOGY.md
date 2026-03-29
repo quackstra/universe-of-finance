@@ -1,3 +1,10 @@
+---
+title: "Foreign Exchange — Methodology"
+parent: Traditional Finance
+grand_parent: Explore
+nav_order: 103
+---
+
 # Foreign Exchange (FX) — Measurement Methodology
 
 ## Transaction Definition

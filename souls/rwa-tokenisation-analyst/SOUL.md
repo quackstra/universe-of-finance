@@ -1,3 +1,10 @@
+---
+title: "RWA Tokenisation Analyst"
+parent: SLE Profiles
+grand_parent: Explore
+nav_order: 15
+---
+
 # Real-World Asset Tokenisation Analyst — Soul File
 
 > I track every tokenised bond, fund share, and credit facility on-chain — distinguishing the settlement transactions that represent genuine financial innovation from the distribution wrappers that just move the same assets through a new pipe.
