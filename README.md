@@ -161,6 +161,7 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 | 7 | MEST framework + deep dives + confidence uplift | MEST Number (~545K/s), India & China deep dives, Sunset Watch |
 | 8 | GitHub Pages + USA deep dive + MEST validation | Interactive dashboard, USA capsule, multiplier validation |
 | 9 | MEST Advantage + Brazil/EU deep dives + panel review | DLT compression thesis, Brazil & EU capsules, top-3 methodology review, confidence uplift (ATM/Insurance/Payroll), site polish |
+| 10 | Executive Summary + Japan/UK deep dives + MEST by country | Shareable research brief, Japan & UK capsules, per-country MEST multipliers, Dashboard v2, confidence uplift (AI Agents/Microtx/Bills) |
 
 ## Explore the Data
 
@@ -178,6 +179,10 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 - **[MEST Advantage Paper](analysis/MEST_ADVANTAGE.md)** — DLT compression thesis: crypto reduces MESTs 60-80%
 - **[Brazil Deep Dive](analysis/deep-dives/brazil/REPORT.md)** — Pix #2 globally, 6.3% of global TPS
 - **[EU Deep Dive](analysis/deep-dives/eu/REPORT.md)** — 18.2% of global TPS, TIPS +402% YoY
+- **[Japan Deep Dive](analysis/deep-dives/japan/REPORT.md)** — Cash-to-digital transition, JPX renaissance, 4.6% of global TPS
+- **[UK Deep Dive](analysis/deep-dives/uk/REPORT.md)** — FX capital of the world (38.1% of global FX), 5.7% of global TPS
+- **[Executive Summary](analysis/EXECUTIVE_SUMMARY.md)** — Shareable research brief with all key findings
+- **[MEST by Country](analysis/MEST_BY_COUNTRY.md)** — Per-country multiplier analysis (Brazil most efficient, USA least)
 - **[SLE Framework](souls/RECRUITER.md)** — 17 expert personas behind the research
 
 ## License
