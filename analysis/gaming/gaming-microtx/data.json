@@ -2,7 +2,7 @@
   "category": "In-Game Microtransactions",
   "slug": "gaming-microtx",
   "sector": "Gaming",
-  "last_updated": "2026-03-28",
+  "last_updated": "2026-03-29",
   "current": {
     "avg_tps": {
       "value": 539,
@@ -304,14 +304,44 @@
       "citation": "Business of Apps — Genshin Impact Statistics",
       "url": "https://www.businessofapps.com/data/genshin-impact-statistics/",
       "accessed": "2026-03-26"
+    },
+    {
+      "id": 9,
+      "citation": "Roblox — Q1 2025 Financial Results (SEC filing)",
+      "url": "https://ir.roblox.com/news/news-details/2025/Roblox-Reports-First-Quarter-2025-Financial-Results/default.aspx",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 10,
+      "citation": "Roblox — Q2 2025 Financial Results (SEC filing)",
+      "url": "https://ir.roblox.com/news/news-details/2025/Roblox-Reports-Second-Quarter-2025-Financial-Results/default.aspx",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 11,
+      "citation": "Tencent — Q3 2025 Financial Results",
+      "url": "https://variety.com/2025/biz/news/tencent-q3-2025-financial-results-1236581788/",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 12,
+      "citation": "Epic Games Store — 2025 Year in Review",
+      "url": "https://store.epicgames.com/en-US/news/epic-games-store-2025-year-in-review",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 13,
+      "citation": "PocketGamer — Global mobile IAP revenue $167B in 2025",
+      "url": "https://www.pocketgamer.biz/global-mobile-in-app-purchase-revenue-hit-167bn-in-2025/",
+      "accessed": "2026-03-29"
     }
   ],
   "confidence": {
-    "score": 60,
-    "source_quality": 14,
-    "data_recency": 16,
-    "triangulation": 17,
+    "score": 65,
+    "source_quality": 17,
+    "data_recency": 17,
+    "triangulation": 18,
     "coverage": 13,
-    "notes": "Run 7 uplift: All-app IAP average $1.08 is first hard data on transaction size (Business of Apps). Roblox 10-K: 1.8M daily paying users, $10.36/paying user/day, $6.6B bookings FY2025. Steam: $16.2B revenue (DLC+microtx $4.4B = 27%). Five triangulation methods converge on 14-24B. Mobile ATV revised from $7.60 to $5.00."
+    "notes": "Run 10 uplift: Roblox Q1-Q3 2025 SEC filings — 20.2M monthly unique payers, $19.92 avg bookings/payer, 111.8M DAU (Q2). Tencent Q1-Q3 2025 — domestic games $22B annualized, Honor of Kings >$1.1B. Steam $16.2B revenue confirmed ($4.4B DLC+microtx = 27%). Epic Games Store $1.16B in 2025. Mobile IAP $81.75B (Sensor Tower 2026). Six triangulation methods converge on 14-24B with 17B central."
   }
 }

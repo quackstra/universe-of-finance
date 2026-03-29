@@ -195,6 +195,48 @@ Growth rate analysis is premature for a category this young. The meaningful ques
 
 ---
 
+## Depth Research Update (Run 10, 2026-03-29)
+
+> Full workings: [../../workings/confidence-uplift-run10.md](../../workings/confidence-uplift-run10.md)
+
+### Key Revisions
+
+1. **x402 cumulative transactions now at 161.32M with $43.57M total value.** Nevermined's on-chain data provides the most detailed breakdown yet: 417,010 unique buyers, 83,000 unique sellers, average transaction of $0.27. Base leads with 68M+ x402 transactions, Solana at 32M+.
+
+2. **140M agent payments completed over 9 months in 2025**, averaging $0.31 per transaction. This implies a run-rate of ~520K/day or ~6 TPS — higher than the previous 2-5 TPS estimate.
+
+3. **Stripe launched Machine Payments Protocol (MPP) in March 2026**, co-authored with Tempo. No volume data yet, but Stripe processed $19T in payments in 2025 — this is the largest traditional payment processor entering agent payments with a dedicated protocol. Early use cases include per-session browser infrastructure and agent-initiated physical mail.
+
+4. **Visa confirmed "hundreds" of live production agent transactions** in December 2025. Working with 100+ partners; 30+ building in sandbox; 20+ agents/enablers integrating. Visa predicts "millions of consumer AI purchases by 2026 holiday season."
+
+5. **Consumer trust constraint identified:** Only 16% of US consumers trust AI to make payments (Nevermined survey). This hard constraint limits consumer-facing adoption speed.
+
+6. **Confidence revised from 42 to 49** (+7 points), driven by three independent volume anchors (x402 on-chain, Nevermined agent payments, Visa pilot scale confirmation) and the Stripe MPP launch adding a tier-1 infrastructure signal.
+
+### Measured vs. Projected Distinction
+
+| Tier | Volume | Source | Confidence |
+|------|--------|--------|------------|
+| **Measured (on-chain)** | 161.32M cumulative x402 txns; ~6 TPS run-rate | Nevermined on-chain data | :yellow_circle: Medium |
+| **Measured (off-chain pilot)** | "Hundreds" of Visa agent txns; Stripe MPP just launched | Company disclosures | :red_circle: Low |
+| **Projected (2028)** | 50-500 TPS (315M-15.8B annual) | Gartner, McKinsey, MarketsAndMarkets | :red_circle: Low |
+
+The gap between measured (~6 TPS) and projected (50-5,000 TPS by 2028) is 1-3 orders of magnitude.
+
+### Revised Current Metrics
+
+| Metric | Previous | Revised |
+|--------|----------|---------|
+| x402 cumulative transactions | ~100M+ | **161.32M** |
+| x402 total value | ~$25M est. | **$43.57M** |
+| Unique x402 buyers | unknown | **417,010** |
+| Unique x402 sellers | unknown | **83,000** |
+| Agent payment run-rate TPS | 2-5 | **~6** |
+| Visa production agent txns | N/A | **"Hundreds"** |
+| Stripe MPP volume | N/A | **Just launched (Mar 2026)** |
+
+---
+
 ## Data Quality & Limitations
 
 - **Extremely nascent category** — less than 2 years of production data exists. All analysis is preliminary.
@@ -252,3 +294,8 @@ Growth rate analysis is premature for a category this young. The meaningful ques
 12. [Master of Code — 150+ AI Agent Statistics (2026)](https://masterofcode.com/blog/ai-agent-statistics)
 13. [OneReach — Agentic AI Stats 2026: Adoption Rates, ROI, Market Trends](https://onereach.ai/blog/agentic-ai-adoption-rates-roi-market-trends/)
 14. [CoinDesk — The RWA Yield Infrastructure Trade](https://www.coindesk.com/research/the-rwa-yield-infrastructure-trade)
+15. [Nevermined — 31 AI Agent Payment Statistics](https://nevermined.ai/blog/ai-agent-payment-statistics)
+16. [Nevermined — 35 AI Micropayment Infrastructure Statistics](https://nevermined.ai/blog/ai-micropayment-infrastructure-statistics)
+17. [Stripe — Introducing the Machine Payments Protocol (MPP)](https://stripe.com/blog/machine-payments-protocol)
+18. [Visa — Visa and Partners Complete Secure AI Transactions (Dec 2025)](https://investor.visa.com/news/news-details/2025/Visa-and-Partners-Complete-Secure-AI-Transactions-Setting-the-Stage-for-Mainstream-Adoption-in-2026/default.aspx)
+19. [MEXC — Solana narrows gap with Base as x402 payments surge across blockchains](https://www.mexc.com/en-NG/news/476898)

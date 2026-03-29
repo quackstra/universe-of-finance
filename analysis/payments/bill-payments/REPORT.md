@@ -283,6 +283,48 @@ Bill payments are almost entirely processed through existing payment rails:
 
 ---
 
+## Depth Research Update (Run 10, 2026-03-29)
+
+> Full workings: [../../workings/confidence-uplift-run10.md](../../workings/confidence-uplift-run10.md)
+
+### Key Revisions
+
+1. **GSMA Mobile Economy 2026: 5.8B unique mobile subscribers** (8.8B connections). Postpaid share ~45% = ~2.6B postpaid subscribers generating monthly bills (31.2B annual). Slightly higher than previous 5.5B connection estimate.
+
+2. **GSMA mobile money: $99B in bill payments via mobile money in 2025.** First bill-payment-specific value figure from GSMA. At $15-25 average mobile money bill payment in emerging markets, this implies 4-6.6B mobile money bill payment transactions — a new independent anchor for emerging market bill payment digitization.
+
+3. **Digital subscription segment significantly underestimated.** Enumerating top 9 streaming services alone yields ~962M billing accounts x 12 = ~11.5B annual billing events. Adding gaming subscriptions (Xbox Game Pass ~40M, PS Plus ~50M), cloud storage (iCloud ~100M, Google One ~100M), and SaaS (~285M) brings total to ~15B annual digital subscription billing events — up from previous 10B estimate. Adjusted for 20% annual billing: ~15B.
+
+4. **Updated streaming subscriber counts (Q1-Q2 2025):** Netflix 301.6M, Spotify 276M, Amazon Prime 200M+, Disney+ 125M, YouTube Premium 100M+, HBO Max ~100M, Paramount+ 72M, Apple TV+ ~40M, Peacock ~36M.
+
+5. **India BBPS at 3B annualized (Q1 FY26: 750M transactions).** Up from 1.3B in FY2024. 73% CAGR confirmed. Single-day record: 10.8M transactions (June 30, 2025).
+
+6. **Revised total from 97B to 102B annual transactions** (+5.2%). Digital subscriptions +5B, telecoms +2B, other segments unchanged.
+
+7. **Confidence revised from 60 to 66** (+6 points), driven by streaming subscriber enumeration, GSMA $99B mobile money bill payment anchor, and India BBPS growth confirmation.
+
+### Revised Segment Summary
+
+| Segment | Previous Txns (B) | Revised Txns (B) | Change |
+|---------|-------------------|-------------------|--------|
+| Utilities (elec/gas/water/waste) | 43 | 43 | — |
+| Telecoms (mobile/broadband/TV) | 35 | 37 | +2B (GSMA 5.8B subs) |
+| Digital Subscriptions | 10 | 15 | +5B (streaming enumeration) |
+| Rent | 7 | 7 | — |
+| **Total** | **95-97** | **102** | **+5-7B** |
+
+### Revised Current Metrics
+
+| Metric | Previous | Revised |
+|--------|----------|---------|
+| Annual transactions | 97B | **102B** |
+| Average TPS | 3,076 | **3,232** |
+| Digital subscription txns | 10B | **15B** |
+| India BBPS annual | 1.3B (FY2024) | **3B (FY2026 annualized)** |
+| Mobile money bill payments | unknown | **$99B / 4-6.6B txns** |
+
+---
+
 ## Sources
 
 1. [NACHA — ACH Network Volume and Value Statistics 2024](https://www.nacha.org/content/ach-network-volume-and-value-statistics)
@@ -298,3 +340,9 @@ Bill payments are almost entirely processed through existing payment rails:
 11. [US Census Bureau — Quarterly Residential Vacancies and Homeownership Q4 2024](https://www.census.gov/housing/hvs/index.html)
 12. [Eurostat — Housing Statistics 2024](https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Housing_statistics)
 13. [ACI Worldwide — Bill Payment Trends and Benchmarks 2024](https://www.aciworldwide.com/insights/expert-view)
+14. [GSMA — The Mobile Economy 2026](https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-economy/)
+15. [GSMA — State of the Industry Report on Mobile Money 2026](https://www.gsma.com/mobile-money-metrics/)
+16. [Sensor Tower — State of Mobile 2026](https://sensortower.com/blog/state-of-mobile-2026)
+17. [DemandSage — Netflix Subscribers 2026](https://www.demandsage.com/netflix-subscribers/)
+18. [SQ Magazine — Digital Platform Subscription Statistics 2026](https://sqmagazine.co.uk/digital-platform-subscription-statistics/)
+19. [Evoca — Streaming Service Market Share 2026](https://evoca.tv/streaming-service-market-share/)

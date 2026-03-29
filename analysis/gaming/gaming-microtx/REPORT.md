@@ -270,6 +270,38 @@ The ~8.0-9.2 billion card-funded microtransactions are **already counted in the 
 
 ---
 
+## Depth Research Update (Run 10, 2026-03-29)
+
+> Full workings: [../../workings/confidence-uplift-run10.md](../../workings/confidence-uplift-run10.md)
+
+### Key Revisions
+
+1. **Roblox Q1-Q3 2025 SEC filings provide hard payer-count data.** Q1 2025: 20.2M monthly unique payers (+29% YoY), avg bookings/payer $19.92. Q2 2025: bookings $1.438B (+51% YoY), DAU 111.8M (+41%). At a $5-7 Robux bundle ATV, Roblox generates ~730M-970M annual transactions — 4-6% of global microtransactions.
+
+2. **Tencent Q1-Q3 2025 confirms massive China gaming scale.** Domestic games Q3: RMB 42.8B ($6B, +15% YoY). Honor of Kings >$1.1B in 2025. At Chinese mobile ATV of $3-5, Tencent's domestic portfolio implies 4.4-7.3B annual transactions.
+
+3. **Steam 2025 revenue estimated at $16.2B (+50% YoY).** DLC + microtransactions = 27% = $4.4B. At $8-12 ATV, this implies 367-550M Steam microtransactions — anchoring the PC segment. 147M MAU, 42M peak concurrent (Jan 2026).
+
+4. **Epic Games Store: $1.16B total in 2025** (+6% YoY), 317M PC users, 78M MAU. But 35% of third-party game hours use own payment solutions (excluded from EGS revenue).
+
+5. **Global mobile gaming IAP confirmed at $81.75B in 2025** (+1.3% YoY, near-flat). Total mobile IAP across all apps: $167B. 3B mobile gamers globally (+4.5%).
+
+6. **Six triangulation methods now converge on 14-24B range** with 17B central estimate (unchanged). New methods: Tencent domestic extrapolation (15-24B) and Steam+EGS PC extrapolation (supports 1.5B PC estimate).
+
+7. **Confidence revised from 60 to 65** (+5 points), driven by SEC filing data from Roblox (payer counts) and Tencent (quarterly domestic gaming revenue), plus Steam revenue breakdown.
+
+### Revised Current Metrics
+
+| Metric | Previous | Revised |
+|--------|----------|---------|
+| Annual transactions | 17B | **17B (confirmed)** |
+| Average TPS | 539 | **539 (confirmed)** |
+| Roblox annual txns | ~570-800M est. | **730M-970M** (from 20.2M payers data) |
+| Steam microtx revenue | $4.4B est. | **$4.4B confirmed** (27% of $16.2B) |
+| Tencent domestic annual | unknown | **~$22B annualized** (Q3 run-rate) |
+
+---
+
 ## Sources
 
 1. [Sensor Tower — State of Mobile Gaming 2025](https://sensortower.com/blog/state-of-mobile-gaming-2025)
@@ -284,3 +316,10 @@ The ~8.0-9.2 billion card-funded microtransactions are **already counted in the 
 10. [PocketGamer — Mobile app downloads hit 136 billion in 2024](https://www.pocketgamer.biz/mobile-app-downloads-hit-136-billion-in-2024-as-revenue-surges-to-150bn/)
 11. [Icon Era — Gaming Industry Revenue Statistics](https://icon-era.com/statistics/gaming-industry-revenue-statistics/)
 12. [Statista — Video Game Monetization](https://www.statista.com/topics/3436/gaming-monetization/)
+13. [Roblox — Q1 2025 Financial Results](https://ir.roblox.com/news/news-details/2025/Roblox-Reports-First-Quarter-2025-Financial-Results/default.aspx)
+14. [Roblox — Q2 2025 Financial Results](https://ir.roblox.com/news/news-details/2025/Roblox-Reports-Second-Quarter-2025-Financial-Results/default.aspx)
+15. [Tencent — Q3 2025 Financial Results (Variety)](https://variety.com/2025/biz/news/tencent-q3-2025-financial-results-1236581788/)
+16. [Epic Games Store — 2025 Year in Review](https://store.epicgames.com/en-US/news/epic-games-store-2025-year-in-review)
+17. [Steam Statistics 2025 (SQ Magazine)](https://sqmagazine.co.uk/steam-statistics/)
+18. [PocketGamer — Global mobile in-app purchase revenue hit $167B in 2025](https://www.pocketgamer.biz/global-mobile-in-app-purchase-revenue-hit-167bn-in-2025/)
+19. [Sensor Tower — State of Mobile 2026](https://sensortower.com/blog/state-of-mobile-2026)

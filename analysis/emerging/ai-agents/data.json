@@ -2,14 +2,14 @@
   "category": "AI Agent Transactions",
   "slug": "ai-agents",
   "sector": "Emerging",
-  "last_updated": "2026-03-28",
+  "last_updated": "2026-03-29",
   "current": {
     "avg_tps": {
-      "value": 3.5,
-      "source": "x402 organic ~65K/day + estimated non-x402 protocols ~130-325K/day = ~195-390K total / 86,400 sec. Midpoint ~3.5 TPS.",
-      "url": "https://phemex.com/news/article/x402-protocols-daily-transactions-lag-despite-ai-payment-hype-65787",
+      "value": 6,
+      "source": "140M agent payments over 9 months (Nevermined) = ~520K/day = ~6 TPS. x402 cumulative 161.32M txns across Base (68M+) and Solana (32M+). Stripe MPP launched Mar 2026 (no volume data yet).",
+      "url": "https://nevermined.ai/blog/ai-micropayment-infrastructure-statistics",
       "confidence": "low",
-      "note": "Range: 2-5 TPS. x402 data verified on-chain but ~50% is wash trading. Non-x402 protocols (AP2, Stripe SPT) have no published volume data."
+      "note": "Range: 4-8 TPS. x402 on-chain data verified; Nevermined 140M over 9mo provides independent anchor. Visa confirmed 'hundreds' of production agent txns. Consumer trust constraint: 16% US."
     },
     "peak_tps": {
       "value": 44,
@@ -19,21 +19,21 @@
       "note": "Feb 2026 spike was primarily infrastructure testing, not organic demand"
     },
     "daily_volume": {
-      "value": 195000,
-      "source": "x402 organic ~65K + estimated non-x402 ~130K = ~195K midpoint. See workings/depth-research.md.",
-      "url": "https://www.coindesk.com/markets/2026/03/11/coinbase-backed-ai-payments-protocol-wants-to-fix-micropayment-but-demand-is-just-not-there-yet",
+      "value": 520000,
+      "source": "140M agent payments over 9 months (Nevermined) = ~520K/day. x402 alone: 161.32M cumulative. Stripe MPP and Visa production pilots not yet at scale.",
+      "url": "https://nevermined.ai/blog/ai-micropayment-infrastructure-statistics",
       "confidence": "low"
     },
     "annual_value_usd": {
-      "value": 25000000,
-      "source": "x402 genuine daily value ~$14K × 365 = $5.1M. Other protocols estimated 2-5x. Midpoint ~$25M. Original $600M figure was inflated by wash trading and testing.",
-      "url": "https://www.coindesk.com/markets/2026/03/11/coinbase-backed-ai-payments-protocol-wants-to-fix-micropayment-but-demand-is-just-not-there-yet",
+      "value": 43570000,
+      "source": "x402 total value: $43.57M (Nevermined on-chain). Avg txn $0.27. Other protocols (MPP, Visa pilots) add negligible value currently.",
+      "url": "https://nevermined.ai/blog/ai-micropayment-infrastructure-statistics",
       "confidence": "low"
     },
     "annual_volume": {
-      "value": 71000000,
-      "source": "x402 organic ~24M/year + non-x402 estimated ~48M = ~72M. See workings/depth-research.md triangulation funnel.",
-      "url": "",
+      "value": 187000000,
+      "source": "140M over 9 months (Nevermined) annualized to ~187M. x402 cumulative: 161.32M with 417K buyers and 83K sellers. See workings/confidence-uplift-run10.md.",
+      "url": "https://nevermined.ai/blog/ai-agent-payment-statistics",
       "confidence": "low"
     }
   },
@@ -273,14 +273,38 @@
       "citation": "Calmops — x402 Protocol Complete Guide 2026",
       "url": "https://calmops.com/web3/x402-protocol-programmable-payments-ai-agents-2026/",
       "accessed": "2026-03-26"
+    },
+    {
+      "id": 9,
+      "citation": "Nevermined — 31 AI Agent Payment Statistics",
+      "url": "https://nevermined.ai/blog/ai-agent-payment-statistics",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 10,
+      "citation": "Nevermined — 35 AI Micropayment Infrastructure Statistics",
+      "url": "https://nevermined.ai/blog/ai-micropayment-infrastructure-statistics",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 11,
+      "citation": "Stripe — Machine Payments Protocol (MPP) Launch",
+      "url": "https://stripe.com/blog/machine-payments-protocol",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 12,
+      "citation": "Visa — Secure AI Transactions Pilot (Dec 2025)",
+      "url": "https://investor.visa.com/news/news-details/2025/Visa-and-Partners-Complete-Secure-AI-Transactions-Setting-the-Stage-for-Mainstream-Adoption-in-2026/default.aspx",
+      "accessed": "2026-03-29"
     }
   ],
   "confidence": {
-    "score": 42,
-    "source_quality": 12,
-    "data_recency": 16,
-    "triangulation": 9,
-    "coverage": 5,
-    "notes": "Run 7 uplift: McKinsey ($3-5T by 2030), Morgan Stanley ($190-385B US e-commerce by 2030), Visa (100+ partners, 'hundreds' of pilot transactions) add tier-1 sources. Stripe SPT launched with major brands but no volume data. Revenue-derived method ($9.14B agentic AI ecosystem × 5% = $457M → 0.3-3 TPS) adds third triangulation. Pre-market flag recommended. Coverage remains weakest — no payment network publishes agent transaction counts."
+    "score": 49,
+    "source_quality": 14,
+    "data_recency": 17,
+    "triangulation": 12,
+    "coverage": 6,
+    "notes": "Run 10 uplift: Nevermined provides first detailed x402 breakdown — 161.32M cumulative txns, $43.57M total value, 417K buyers, 83K sellers, avg $0.27/txn. 140M agent payments over 9 months in 2025 at $0.31 avg = ~6 TPS run-rate. Stripe launched MPP (Mar 2026) — no volume yet but tier-1 infrastructure signal. Visa confirmed 'hundreds' of production agent txns (Dec 2025). Three independent volume anchors: x402 on-chain, Nevermined agent payments, Visa pilot. Consumer trust constraint: only 16% of US consumers trust AI payments."
   }
 }
