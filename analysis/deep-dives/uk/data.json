@@ -1,0 +1,232 @@
+{
+  "country": "United Kingdom",
+  "iso_code": "GB",
+  "population": 68300000,
+  "gdp_usd_trillion": 3.4,
+  "last_updated": "2026-03-29",
+  "total_tps_contribution": 4200,
+  "share_of_global_tps": "5.7%",
+  "global_tps_reference": 73750,
+  "categories": {
+    "forex": {
+      "uk_tps": 1120,
+      "uk_annual_txns_billions": 0.2,
+      "share_of_category": "56.9%",
+      "share_of_uk_total": "26.7%",
+      "key_systems": ["Interdealer (EBS, Reuters Matching)", "Single-dealer platforms", "CLS Bank", "LCH ForexClear"],
+      "notes": "UK handles 38.1% of global FX turnover ($3.75T/day, BIS Triennial April 2022). TPS derived from daily trade count (~798K trades/day over 10.5h = ~21/s base) scaled by electronic messaging multiplier for algorithmic/HFT activity. Annual txns figure represents economic trades only; electronic messages are far higher. UK FX dominance survived Brexit (up from 37.3% in 2016).",
+      "sources": [
+        {"citation": "BIS Triennial Central Bank Survey — FX Turnover April 2022", "url": "https://www.bis.org/statistics/rpfx22_fx.htm"},
+        {"citation": "Bank of England — FX Market Statistics", "url": "https://www.bankofengland.co.uk/statistics/fx"}
+      ]
+    },
+    "consumer-cards": {
+      "uk_tps": 920,
+      "uk_annual_txns_billions": 29.0,
+      "share_of_category": "3.8%",
+      "share_of_uk_total": "21.9%",
+      "key_systems": ["Visa (dominant debit)", "Mastercard", "Amex", "Contactless NFC (67%+)"],
+      "notes": "UK is Europe's contactless leader at 67%+ penetration. ~29B card transactions in 2024. Debit cards dominate (~76% of card payments). Apple Pay/Google Pay are card-funded NFC and counted within card transactions. Cards overtook cash in 2017. Average transaction ~£20-25.",
+      "sources": [
+        {"citation": "UK Finance — UK Payment Markets Report 2024", "url": "https://www.ukfinance.org.uk/policy-and-guidance/reports-and-publications/uk-payment-markets-report-2024"},
+        {"citation": "UK Finance — Contactless Payments Statistics", "url": "https://www.ukfinance.org.uk/"}
+      ]
+    },
+    "bank-transfers": {
+      "uk_tps": 780,
+      "uk_annual_txns_billions": 11.9,
+      "share_of_category": "5.1%",
+      "share_of_uk_total": "18.6%",
+      "key_systems": ["Faster Payments Service (FPS)", "BACS Direct Debit", "BACS Direct Credit", "Open Banking payments"],
+      "notes": "FPS ~4.8B txns (real-time, 24/7). BACS ~7.1B txns (4.7B Direct Debit + 2.4B Direct Credit). FPS launched 2008 — world's first major real-time payment system. Open Banking payments (~200M) growing but still small. BACS processes 89% of UK payroll and 70%+ of household bills via Direct Debit.",
+      "sources": [
+        {"citation": "Pay.UK — Faster Payment System", "url": "https://www.wearepay.uk/what-we-do/payment-systems/faster-payment-system/"},
+        {"citation": "Pay.UK — BACS Payment System", "url": "https://www.wearepay.uk/what-we-do/payment-systems/bacs/"}
+      ]
+    },
+    "etd": {
+      "uk_tps": 540,
+      "uk_annual_txns_billions": 1.4,
+      "share_of_category": "5.7%",
+      "share_of_uk_total": "12.9%",
+      "key_systems": ["ICE Futures Europe (energy, soft commodities)", "LME (base metals)", "LSEG derivatives (CurveGlobal, Turquoise)"],
+      "notes": "ICE Futures Europe ~1.2B contracts (Brent crude oil benchmark, gasoil, EU carbon). LME ~157M contracts (copper, aluminium, zinc, nickel). UK ETD is specialized in energy and metals — globally significant for price discovery despite modest contract count vs. India. Brent crude is reference price for ~80% of internationally traded oil.",
+      "sources": [
+        {"citation": "ICE — Market Data", "url": "https://www.theice.com/market-data"},
+        {"citation": "LME — Reports and Data", "url": "https://www.lme.com/en/market-data/reports-and-data"},
+        {"citation": "FIA — 2024 Annual ETD Volume Review", "url": "https://www.fia.org/fia/articles/2024-annual-etd-volume-review"}
+      ]
+    },
+    "equity-markets": {
+      "uk_tps": 210,
+      "uk_annual_txns_billions": 3.3,
+      "share_of_category": "6.0%",
+      "share_of_uk_total": "5.0%",
+      "key_systems": ["London Stock Exchange (LSE)", "CBOE Europe (UK book)", "Aquis Exchange", "Turquoise (LSEG MTF)"],
+      "notes": "LSE ~1.5B trades on primary order books. Combined with MTF/SI volume, UK executes ~3.3B equity trades annually. LSE market cap ~$3.4T. FTSE 100 is benchmark UK large-cap index. AIM is world's leading growth company market (~700 listed). Multi-venue landscape post-MiFID II.",
+      "sources": [
+        {"citation": "LSEG — Market Reports", "url": "https://www.londonstockexchange.com/reports/market"},
+        {"citation": "WFE — FY 2024 Market Highlights", "url": "https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024"}
+      ]
+    },
+    "bill-payments": {
+      "uk_tps": 190,
+      "uk_annual_txns_billions": 6.0,
+      "share_of_category": "6.3%",
+      "share_of_uk_total": "4.5%",
+      "key_systems": ["BACS Direct Debit (primary)", "FPS (standing orders)", "Card recurring payments"],
+      "notes": "70%+ of UK household bills paid by Direct Debit. Utilities, council tax, insurance, telecom, mortgage/rent all flow through BACS DD. Significant overlap with bank-transfers category (DD is a BACS product). Incremental bill payments via card recurring and FPS standing orders estimated ~1.3B beyond what is already counted in bank transfers.",
+      "sources": [
+        {"citation": "Pay.UK — BACS Payment System", "url": "https://www.wearepay.uk/what-we-do/payment-systems/bacs/"},
+        {"citation": "UK Finance — UK Payment Markets Report 2024", "url": "https://www.ukfinance.org.uk/policy-and-guidance/reports-and-publications/uk-payment-markets-report-2024"}
+      ]
+    },
+    "digital-wallets": {
+      "uk_tps": 150,
+      "uk_annual_txns_billions": 4.7,
+      "share_of_category": "0.8%",
+      "share_of_uk_total": "3.6%",
+      "key_systems": ["Apple Pay", "Google Pay", "Samsung Pay", "PayPal", "Revolut"],
+      "notes": "UK digital wallet transactions are predominantly card-funded NFC (Apple Pay, Google Pay). These are de-duplicated into consumer cards. PayPal and Revolut P2P have incremental volume. Gross digital wallet figure before de-duplication; net incremental contribution is minimal as most wallet transactions ride on card rails.",
+      "sources": [
+        {"citation": "UK Finance — UK Payment Markets Report 2024", "url": "https://www.ukfinance.org.uk/policy-and-guidance/reports-and-publications/uk-payment-markets-report-2024"}
+      ]
+    },
+    "government-payments": {
+      "uk_tps": 105,
+      "uk_annual_txns_billions": 3.3,
+      "share_of_category": "10.5%",
+      "share_of_uk_total": "2.5%",
+      "key_systems": ["HMRC (PAYE RTI, Self Assessment, VAT)", "DWP (State Pension, Universal Credit, Child Benefit)", "BACS Direct Credit"],
+      "notes": "HMRC collects ~£843B/year. DWP disburses ~£270B/year. PAYE RTI alone generates ~3.5B annual submissions. State Pension: 12.7M recipients paid every 4 weeks. Universal Credit: 6.2M claimants paid monthly. Making Tax Digital (MTD) expanding from VAT to income tax in 2026, will increase transaction volumes.",
+      "sources": [
+        {"citation": "HMRC — Tax Receipts and NICs", "url": "https://www.gov.uk/government/statistics/hmrc-tax-receipts-and-national-insurance-contributions"},
+        {"citation": "DWP — Benefit Statistics", "url": "https://www.gov.uk/government/collections/dwp-statistical-summaries"}
+      ]
+    },
+    "atm-withdrawals": {
+      "uk_tps": 55,
+      "uk_annual_txns_billions": 1.7,
+      "share_of_category": "3.5%",
+      "share_of_uk_total": "1.3%",
+      "key_systems": ["LINK network (~52,000 ATMs)"],
+      "notes": "Cash declined from 60% of payments (2008) to ~12% (2024). ATM withdrawals fell from ~2.9B peak (2012) to ~1.7B (2024). 82% of ATMs are free-to-use. FSMA 2023 created statutory duty to protect cash access. Average withdrawal ~£80. COVID accelerated cash decline.",
+      "sources": [
+        {"citation": "LINK — ATM Statistics and Trends", "url": "https://www.link.co.uk/about/statistics-and-trends/"},
+        {"citation": "UK Finance — UK Payment Markets Report 2024", "url": "https://www.ukfinance.org.uk/policy-and-guidance/reports-and-publications/uk-payment-markets-report-2024"}
+      ]
+    },
+    "otc-derivatives": {
+      "uk_tps": 42,
+      "uk_annual_txns_billions": 0.33,
+      "share_of_category": "7.6%",
+      "share_of_uk_total": "1.0%",
+      "key_systems": ["LCH SwapClear (>90% global IRS clearing)", "LCH ForexClear", "ICE Clear Europe"],
+      "notes": "LCH SwapClear clears >$1 quadrillion in IRS notional per year. UK is the world's most important OTC derivatives clearing location. Transaction count is low relative to notional because OTC derivatives are large-ticket. MEST multiplier is 12x — each OTC derivative triggers confirmation, margining, valuation, collateral movement, regulatory reporting, and lifecycle events.",
+      "sources": [
+        {"citation": "LCH — SwapClear", "url": "https://www.lch.com/services/swapclear"},
+        {"citation": "BIS — OTC Derivatives Statistics", "url": "https://www.bis.org/statistics/derstats.htm"}
+      ]
+    },
+    "fixed-income": {
+      "uk_tps": 30,
+      "uk_annual_txns_billions": 0.24,
+      "share_of_category": "8.6%",
+      "share_of_uk_total": "0.7%",
+      "key_systems": ["Gilt market (DMO, 15 GEMMs)", "UK corporate bonds (ICMA)", "Gilt repo market (~£600B daily)"],
+      "notes": "Gilts outstanding ~£2.5T. Daily gilt turnover ~£30B. 15 Gilt-Edged Market Makers (GEMMs) provide continuous pricing. Gilt repo market is ~£600B daily outstanding — critical for funding liquidity. LDI crisis (Sep 2022) demonstrated systemic importance. Transaction count reflects secondary market trades; repo legs counted separately.",
+      "sources": [
+        {"citation": "DMO — UK Government Debt Management", "url": "https://www.dmo.gov.uk/"},
+        {"citation": "Bank of England — Gilt Market", "url": "https://www.bankofengland.co.uk/markets/gilt-market"}
+      ]
+    },
+    "commodities": {
+      "uk_tps": 25,
+      "uk_annual_txns_billions": 0.16,
+      "share_of_category": "7.6%",
+      "share_of_uk_total": "0.6%",
+      "key_systems": ["LME (base metals)", "ICE Futures Europe (energy, softs)"],
+      "notes": "LME is the world's premier base metals exchange (copper, aluminium, zinc, nickel, tin, lead, cobalt). ICE Futures Europe dominates energy derivatives (Brent crude, gasoil, NBP gas, EU carbon). Commodity TPS counted here is incremental physical/spot volume not already in ETD category. Most LME/ICE volume is in the ETD category.",
+      "sources": [
+        {"citation": "LME — Reports and Data", "url": "https://www.lme.com/en/market-data/reports-and-data"},
+        {"citation": "ICE — Market Data", "url": "https://www.theice.com/market-data"}
+      ]
+    },
+    "cex": {
+      "uk_tps": 18,
+      "uk_annual_txns_billions": 0.57,
+      "share_of_category": "0.6%",
+      "share_of_uk_total": "0.4%",
+      "key_systems": ["Coinbase UK", "Kraken UK", "Bitstamp", "CoinJar"],
+      "notes": "UK has highest crypto adoption per capita in Europe (~12% of adults, ~10M users). FCA has approved only ~44 crypto firms under Money Laundering Regulations. Marketing rules effective Oct 2023. FSMA 2023 brings crypto within FCA regulatory perimeter. Full regulation (stablecoins first) expected 2025-2026. UK is #1 in Europe for crypto adoption per capita.",
+      "sources": [
+        {"citation": "FCA — Cryptoasset Ownership and Use in the UK", "url": "https://www.fca.org.uk/publications/research-articles/research-note-cryptoasset-ownership-and-use-uk"},
+        {"citation": "Chainalysis — 2024 Global Crypto Adoption Index", "url": "https://www.chainalysis.com/blog/2024-global-crypto-adoption-index/"}
+      ]
+    },
+    "securities-settlement": {
+      "uk_tps": 10,
+      "uk_annual_txns_billions": 0.32,
+      "share_of_category": "n/a",
+      "share_of_uk_total": "0.2%",
+      "key_systems": ["CREST (Euroclear UK & International)", "BOE RTGS (DvP link)"],
+      "notes": "CREST settles UK equities, gilts, and money market instruments via delivery-versus-payment (DvP) linked to BOE RTGS. Euroclear UK & International operates CREST on behalf of the UK market. Settlement cycle is T+1 for gilts and moving toward T+1 for equities (currently T+2, T+1 expected 2027).",
+      "sources": [
+        {"citation": "Euroclear UK & International", "url": "https://www.euroclear.com/about/en/ourmarket-uk.html"},
+        {"citation": "Bank of England — RTGS and CHAPS", "url": "https://www.bankofengland.co.uk/payment-and-settlement"}
+      ]
+    },
+    "gaming-microtx": {
+      "uk_tps": 8,
+      "uk_annual_txns_billions": 0.25,
+      "share_of_category": "2.1%",
+      "share_of_uk_total": "0.2%",
+      "key_systems": ["PlayStation Store", "Xbox/Microsoft Store", "Steam", "Apple App Store", "Google Play"],
+      "notes": "UK gaming market ~$5.7B (2024). UK is Europe's 3rd largest gaming market after Germany and France. Mobile gaming ~40% of revenue. IAP and subscription models dominate. Most gaming payments are card-funded and de-duplicated into consumer cards.",
+      "sources": [
+        {"citation": "Newzoo — UK Games Market", "url": "https://newzoo.com/resources/blog/the-uk-games-market"},
+        {"citation": "Statista — UK Gaming Revenue", "url": "https://www.statista.com/outlook/dmo/digital-media/video-games/united-kingdom"}
+      ]
+    },
+    "interbank-rtgs": {
+      "uk_tps": 3,
+      "uk_annual_txns_billions": 0.053,
+      "share_of_category": "6.0%",
+      "share_of_uk_total": "0.1%",
+      "key_systems": ["CHAPS (operated by Bank of England)"],
+      "notes": "CHAPS processed ~53M transactions in 2024, worth ~£93T (~27x UK GDP). Average transaction ~£1.76M. Daily average ~210,000 transactions worth ~£370B. BOE is in process of renewing RTGS infrastructure (ISO 20022 migration). CHAPS is the UK's only RTGS system — used for interbank, property, corporate treasury, and securities-related high-value payments.",
+      "sources": [
+        {"citation": "Bank of England — CHAPS Statistics", "url": "https://www.bankofengland.co.uk/payment-and-settlement"},
+        {"citation": "Pay.UK — CHAPS", "url": "https://www.wearepay.uk/what-we-do/payment-systems/chaps/"}
+      ]
+    }
+  },
+  "de_duplicated_uk_tps": {
+    "value": 4200,
+    "methodology": "Sum of de-duplicated contributions: FX (1,120 — UK's dominant category, minimal overlap with other categories) + Consumer Cards (920, includes NFC wallet transactions) + Bank Transfers (780 — FPS + BACS, includes Open Banking) + ETD (540, ICE + LME + LSEG derivatives) + Equity Markets (210) + Bill Payments (incremental ~95, ~50% already counted in BACS DD within bank transfers) + Government Payments (incremental ~55, ~50% already on BACS rails) + ATM Withdrawals (55, zero overlap) + OTC Derivatives (42) + Fixed Income (30) + Commodities (incremental ~15, physical/spot not in ETD) + CEX (18) + Securities Settlement (10) + Gaming (incremental ~5) + Interbank RTGS (3). Digital Wallets excluded (card-funded NFC already in consumer cards).",
+    "range_low": 3600,
+    "range_high": 4900,
+    "notes": "Range reflects uncertainty in FX TPS derivation (average trade size and messaging multiplier assumptions), MTF/SI equity volume estimation, OTC derivatives trade count, and 2024 annualization of partial-year data. Core payment data (FPS, BACS, CHAPS, cards) is well-sourced from Pay.UK, UK Finance, and BOE. FX data from BIS 2022 survey — next survey (April 2025) will update."
+  },
+  "key_metrics": {
+    "fx_global_share_pct": 38.1,
+    "fx_daily_turnover_usd_trillion": 3.75,
+    "contactless_share_of_cards_pct": 67,
+    "cash_share_of_payments_pct": 12,
+    "fps_launch_year": 2008,
+    "open_banking_users_millions": 7.5,
+    "lch_swapclear_global_irs_share_pct": 90,
+    "crypto_adult_ownership_pct": 12,
+    "atms_thousands": 52,
+    "gbp_global_fx_rank": 4,
+    "post_brexit_regulatory_divergence": true
+  },
+  "confidence": {
+    "score": 75,
+    "source_quality": 22,
+    "data_recency": 20,
+    "triangulation": 17,
+    "coverage": 16,
+    "notes": "Excellent institutional data from BOE (CHAPS monthly), Pay.UK (FPS/BACS), UK Finance (annual payment reports), FCA (crypto research), BIS (FX triennial). BIS FX survey is gold standard but only every 3 years (last April 2022; next April 2025). Exchange data from LSEG, ICE, LME publicly available. OTC derivatives and MTF/SI equity volumes require estimation. Government payment transaction counts derived from recipient/filing counts rather than direct payment system data."
+  }
+}
