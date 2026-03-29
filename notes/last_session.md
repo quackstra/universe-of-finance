@@ -1,73 +1,75 @@
-# Last Session Notes — 2026-03-28
+# Last Session Notes — 2026-03-29
 
-## Runs Completed This Session: Run 4 (finish) + Run 5 + Intergalactic Recruiter + Run 6
+## Runs Completed This Session: Run 7
 
-### Intergalactic Recruiter
-- Built SLE (Soul Less Employee) framework: 13 expert personas grounded in real job descriptions
-- RECRUITER.md dispatch matrix maps all categories to primary/secondary SLEs
-- Integrated into Elf pipeline via activation phrases
+### Run 7: MEST Framework + Deep Dives + Confidence Uplift (5 parallel agents)
 
-### Run 5: Full Elf Run (6 parallel agents, 29 categories)
-- 5 new payment categories (insurance, BNPL, bill payments, payroll, ATM)
-- Time-series 2015-2025 for all categories
-- Peak TPS analysis, macro scenarios, data freshness tool
-- CEX wash rate refined (25% → 20.6%), repo market 2.6× larger than estimated
+#### Agent 1: MEST Foundation (Mutual Economic State Transitions)
+- **The MEST Number: ~545,000 MEST/s** (~17.2 trillion/year)
+- 7.4× the Big Number — every transaction cascades into multiple bilateral state changes
+- Per-category multiplier table for all 29 categories
+- Consumer Cards generate most total MESTs (171K/s, 7× multiplier)
+- OTC Derivatives have deepest multiplier (12×)
+- Crypto has "MEST advantage" — 60-80% fewer state changes per economic event
+- Created: analysis/MEST.md, analysis/methodology/MEST_METHODOLOGY.md
 
-### Run 6: Methodology + Measurement Overhaul (6 parallel agents)
+#### Agent 2: Confidence Uplift on 5 Weakest Categories
+| Category | Conf Before → After | TPS Before → After | Key Finding |
+|----------|:---:|:---:|---|
+| AI Agents | 38 → **42** | 3.5 → 3.5 | McKinsey/Morgan Stanley sources; pre-market flag recommended |
+| Payroll | 48 → **53** | 1,236 → **1,014** (-18%) | ILO: 58% of workers are informal (2.1B), can't receive e-payroll |
+| Microtx | 55 → **60** | 475 → **539** (+13%) | First hard IAP transaction size data ($1.08 all-app) |
+| Bills | 48 → **60** (+12) | 3,012 → **3,076** (+2%) | US ACH 17.17B + EU SEPA DD 22.7B + UK BACS DD 5B = hard anchors |
+| Govt | 60 → **65** | 1,015 → **983** (-3%) | India DBT live: 5.88B FY2025-26, range narrowed from 10B to 4B spread |
 
-#### Agent 1: 29-Category Reconciliation
-- Full overlap recalculation with all 29 categories
-- **New Big Number: ~73,750 de-duplicated TPS** (was ~70,741)
-- Range: 67,000–83,000 TPS
-- 17.4% gross-to-net deduction ratio
-- Updated OVERLAP_MATRIX.md with 15 deduction rules
+#### Agent 3: India Deep Dive
+- **India = ~12,850 TPS (17.4% of global)** on 3.5% of world GDP (5× overweight)
+- UPI: 228.3B transactions/year, world's largest real-time payment system
+- NSE: single-handedly drove ETD from ~800 to ~9,500 TPS
+- India skipped the card era (0.8% of global card txns)
+- JAM Trinity enables 7.4B+ annual government benefit transfers
+- Created: analysis/deep-dives/india/REPORT.md, analysis/deep-dives/india/data.json
 
-#### Agent 2: Global + Sector Methodology Docs
-- GLOBAL_METHODOLOGY.md with full triangulation visual (top-down vs bottom-up)
-- 7 sector-level methodology docs (SECTOR_PAYMENTS.md through SECTOR_EMERGING.md)
-- All include ASCII art triangulation funnels, overlap waterfalls, source matrices
+#### Agent 4: China Opacity Report + Sunset Watch
+**China:**
+- Uncertainty band: **±6,000 TPS** — larger than entire Digital Assets sector
+- Most opaque: Fixed income (20/100), Crypto (10/100), Digital wallets (25/100)
+- Most transparent: Equity markets (75/100), ETD (70/100)
+- Created: analysis/deep-dives/china/REPORT.md, analysis/deep-dives/china/data.json
 
-#### Agent 3: Payments Category Methodology (11 files)
-- METHODOLOGY.md for all 11 payments categories
-- Each includes triangulation funnel, source confidence matrix, regional heatmap
-- Follows VISUAL_TEMPLATE.md standards
+**Sunset Watch:**
+- Growth outpaces decline **38:1** — only ATM is genuinely declining (-3.5% CAGR)
+- "Sunset Paradox": COD dying actually increases Big Number (moves to tracked rails)
+- Cheques, SWIFT MT, physical floors — format migration, not volume loss
+- Created: analysis/SUNSET_WATCH.md
 
-#### Agent 4: TradFi + Digital Assets Methodology (10 files)
-- METHODOLOGY.md for 6 TradFi + 4 Digital Assets categories
-- 1,937 lines of methodology documentation with visuals
+#### Agent 5: MEST SLE Recruitment
+- New SLE #17: `transaction-lifecycle-analyst` (post-trade operations, MEST cascade analysis)
+- Grounded in: BNY Mellon, JPMorgan, DTCC, FIS, Fiserv roles
+- Updated RECRUITER.md with MEST Analysis Dispatch section
+- Updated 3 methodology SLEs with MEST Integration capabilities
 
-#### Agent 5: Banking + Gaming + Govt + Emerging Methodology (8 files)
-- METHODOLOGY.md for Banking (2), Gaming (2), Government (1), Emerging (3) categories
+### New Concept: MEST (Mutual Economic State Transitions)
+Definition: Any change to a holding of economically valuable assets where more than one party has a material interest in the record or accounting of that change and its result.
 
-#### Agent 6: Depth Research on Weakest Categories
-- **AI Agent Transactions** (conf: 34): Additional triangulation from Visa/Mastercard AI commerce, Stripe agent billing data
-- **In-Game Microtransactions** (conf: 44): Cross-validated with mobile analytics platforms
-- **Government Payments** (conf: 50): Added IRS/HMRC filing volume data
-- **Payroll** (conf: 35): ILO employment data + banking batch frequency model
+The Big Number (73,750 TPS) measures transactions. The MEST Number (545,000/s) measures what the financial system actually does.
 
-#### New SLEs (3 methodology specialists)
-- `market-sizing-specialist` — TAM/SAM/SOM framework, top-down vs bottom-up reconciliation
-- `measurement-standards-expert` — Transaction lifecycle mapping, definitional alignment
-- `statistical-methodologist` — Confidence intervals, imputation, coverage gap modeling
-- All three form the Methodology Review Panel for high-stakes estimates
+## Git Commits (Run 7)
+1. `b7876a8` — Recruit Transaction Lifecycle & MEST Analyst SLE (#17)
+2. `407aa96` — India deep dive
+3. `b625e77` — MEST framework
+4. `1e16927` — China opacity report + Sunset Watch
+5. `bdcb4d6` — Confidence uplift on 5 weakest categories
+6. `95d0b3f` — README update with MEST, deep dive links
 
-## Git Commits (Run 6)
-1. `83469bb` — Recruit 3 measurement SLEs
-2. `905d825` — Reconcile Big Number for 29 categories
-3. `075a66e` — Methodology docs: Banking, Gaming, Govt, Emerging + Global + Sector
-4. `3e25e6e` — Methodology docs: 11 payments categories
-5. `e596952` — Methodology docs: TradFi + Digital Assets (10 categories)
-6. `eea61db` — Depth research on 4 weakest categories
-7. `e1c30a9` — Update root README Big Number
-
-## Cumulative Key Findings (Runs 1-6)
+## Cumulative Key Findings (Runs 1-7)
 1. **De-duplicated global financial TPS: ~73,750** (range 67K-83K)
-2. 29 categories across 7 sectors, all with METHODOLOGY.md + triangulation visuals
-3. 16 Soul Less Employees (13 domain + 3 methodology) with dispatch matrix
-4. Full 2015-2025 time-series: global TPS grew 6.7× in a decade
-5. Coordinated global peak: ~147K–246K TPS
-6. Top 3 categories (cards + wallets + bank transfers) = ~80% of global TPS
-7. Gaming and e-commerce are commerce layers (82% and 95% overlap with payment rails)
-8. ATM is the only declining category (-3% CAGR) and only category with zero overlap
-9. Recessions barely affect the Big Number (-0.3%); pandemics increase it (+18-28%)
-10. Confidence scores range 34 (AI agents) to 91 (consumer cards), median 62
+2. **MEST Number: ~545,000/s** (7.4× Big Number, ~17.2 trillion/year)
+3. 29 categories, 7 sectors, 17 SLEs, full methodology docs
+4. India = 17.4% of global TPS on 3.5% of GDP
+5. China = ±6,000 TPS uncertainty (larger than Digital Assets sector)
+6. Growth outpaces decline 38:1 — only ATM genuinely declining
+7. Crypto has 60-80% fewer MESTs per economic event ("MEST advantage")
+8. Top 3 categories (cards + wallets + bank transfers) = ~80% of TPS
+9. Confidence range: 34 (AI agents) to 91 (consumer cards), median 62
+10. Coordinated global peak: ~147K–246K TPS

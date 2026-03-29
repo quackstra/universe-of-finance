@@ -1,64 +1,68 @@
-# Research Agenda — Next Run (Run 7)
+# Research Agenda — Next Run (Run 8)
 
-> Updated 2026-03-28 after completing Run 6 (methodology overhaul + measurement SLEs + reconciliation).
+> Updated 2026-03-29 after completing Run 7 (MEST framework + deep dives + confidence uplift).
 
-## Status: Run 6 Complete
+## Status: Run 7 Complete
 
-29 categories with full METHODOLOGY.md files including triangulation visuals. 16 SLEs (13 domain + 3 methodology). Big Number reconciled to ~73,750 TPS. Global + 7 sector methodology docs complete. Depth research on 4 weakest categories done.
+MEST framework established (~545K/s, 7.4× Big Number). India deep dive (17.4% of global TPS).
+China opacity mapped (±6K TPS uncertainty). Sunset Watch built. Bottom 5 confidence scores
+improved (bill payments +12 to 60, payroll +5 to 53, microtx +5 to 60, govt +5 to 65, AI agents +4 to 42).
+17 SLEs operational including MEST-specialized transaction lifecycle analyst.
 
-## What Run 7 Should Target
+## What Run 8 Should Target
 
-### Tier 1: Confidence Uplift (weakest categories still below 50)
+### Tier 1: MEST Deep Dives
 
-1. **AI Agent Transactions** (conf: 34) — Still the weakest. Need primary data from x402 protocol, Stripe agent billing API, actual measured volumes rather than projections. Consider whether this category should be flagged as "pre-market" and excluded from the Big Number.
+1. **MEST multiplier validation** — The current multipliers are modeled. Validate against real clearing/settlement data:
+   - Visa VisaNet processing stats (auth + clearing + settlement legs per transaction)
+   - DTCC settlement-to-trade ratios
+   - CLS daily settlement counts vs. FX trade counts
+   - On-chain transaction traces (DeFi composability = observable MEST cascades)
 
-2. **Payroll** (conf: 35) — ADP processes ~1 in 6 US private-sector paychecks. Their quarterly reports + BLS data could anchor a much better US estimate. Expand internationally via ILO + Eurostat.
+2. **MEST by country** — Apply MEST multipliers to India and China deep dives. India's MEST advantage (simpler UPI stack = lower multiplier per txn). China's potential MEST hidden volume.
 
-3. **In-Game Microtransactions** (conf: 44) — Apple/Google app store review data could provide hard platform transaction counts. Sensor Tower or data.ai as alternatives.
+3. **MEST time-series** — Has the MEST multiplier changed over time? Real-time settlement (UPI, FedNow) reduces MESTs vs. batch (ACH). Crypto eliminates intermediary MESTs. Trend: is the world getting more or less MEST-intensive?
 
-4. **Bill Payments** (conf: 48) — India BBPS is a goldmine (centralized, publishes stats). UK BACS Direct Debit gives excellent UK data. EU SEPA DD volumes are BIS-published.
+### Tier 2: Confidence Uplift (remaining sub-50 categories)
 
-5. **Tax & Government Payments** (conf: 50) — India GST portal, US IRS e-file statistics, UK HMRC self-assessment filing counts. Bottom-up from tax authority digital stats.
+4. **AI Agent Transactions** (conf: 42) — Still the weakest. Need to decide: keep in Big Number as "pre-market" or create a separate "Emerging/Speculative" tier?
 
-### Tier 2: Cross-Category Deep Dives
+5. **Payroll** (conf: 53) — ADP processes 1 in 6 US private-sector paychecks. Their 10-K has run counts. Expand with Paychex, Gusto (combined: ~50% of US market).
 
-6. **India deep dive** — India appears in nearly every category's top list. Build a country-level capsule showing India's contribution across all categories (UPI, NSE, RuPay, GST, BBPS).
+6. **ATM Withdrawals** (conf: 52) — ATMIA global data. RBI publishes detailed India ATM stats. ECB Blue Book for Europe.
 
-7. **China opacity report** — Quantify what we don't know about China across all categories. Extend the digital wallets China model to other sectors.
+7. **Insurance Premiums** (conf: 52) — Swiss Re sigma gives premium VALUE. Need transaction COUNT from IRDAI (India), NAIC (US), EIOPA (EU).
 
-8. **Declining categories analysis** — ATM is declining at -3% CAGR. Are others? Check/cheque payments, cash-on-delivery, traditional wire transfers. Build a "sunset watch" list.
+### Tier 3: New Deep Dives
 
-### Tier 3: Methodology Review Panel Deployment
+8. **USA deep dive** — India is 17.4% of TPS; what's the US? Card-heavy, ACH-heavy, dominant in TradFi. Build the mirror of the India capsule.
 
-9. **Panel review of top 3 TPS contributors** — Consumer Cards, Digital Wallets, Bank Transfers account for ~80% of global TPS. Deploy the full 3-SLE Methodology Review Panel for each. These are mandatory per the panel protocol.
+9. **Brazil deep dive** — Pix is the #2 real-time payment system globally. Brazil's market structure is unique (high banking concentration + Pix disruption).
 
-10. **Panel review of categories below conf:50** — Mandatory per protocol. AI agents, payroll, in-game microtx, bill payments need formal panel review.
+10. **EU deep dive** — SEPA unification, PSD2/PSD3 impact, TARGET2 volumes. Fragmented but well-documented.
 
-### Tier 4: Presentation & Tooling
+### Tier 4: The Payment Stack Visualization
 
-11. **Update charts.py** — Add time-series chart, peak TPS calendar heatmap, overlap Sankey diagram.
+11. **Payment Stack diagram** — Show how commerce-layer categories (e-commerce, gaming, insurance, BNPL, bills) stack on top of payment-rail categories (cards, bank transfers, wallets). Quantify each layer. This is the key visual for explaining overlaps.
 
-12. **Interactive dashboard** — Web-based Big Number visualization with drill-down capability.
+12. **MEST Cascade Visualizer** — Interactive or detailed static version showing how a single transaction in each category cascades through the financial system.
 
-13. **Automated pipeline** — Single script that runs big_number + confidence_score + data_freshness + validate_schema.
+### Tier 5: Publication Preparation
 
-14. **Category comparison tool** — Side-by-side comparison of any two categories.
+13. **Executive summary** — One-page findings document with both Big Number and MEST Number.
 
-### Tier 5: Publication
+14. **Methodology paper** — Formal write-up leveraging 29 METHODOLOGY.md files + MEST framework.
 
-15. **Executive summary** — One-page findings summary suitable for external sharing.
-
-16. **Methodology paper** — Formal write-up leveraging the new METHODOLOGY.md files and visual template.
-
-17. **Data dictionary** — Document every field in data.json schema for downstream consumers.
+15. **Data dictionary** — Document every field in data.json schema.
 
 ## Data Sources to Investigate
 
-- **x402 Protocol Metrics** — AI agent transaction data
-- **India BBPS** — Bharat Bill Payment System (centralized bill payment data)
-- **Apple App Store / Google Play Console** — In-app purchase statistics
-- **India GST Portal** — Tax transaction data
-- **ADP Quarterly Reports** — Payroll transaction volumes
-- **UK BACS/FPS Statistics** — Direct debit and faster payment data
-- **Sensor Tower / data.ai** — Mobile gaming transaction analytics
-- **ILO ILOSTAT** — Global employment data for payroll modeling
+- **Visa VisaNet stats** — Auth + clearing + settlement counts for MEST validation
+- **DTCC Annual Report** — Settlement-to-trade ratios
+- **CLS Settlement Statistics** — FX MEST validation
+- **ADP 10-K / Paychex 10-K** — Payroll run counts
+- **ATMIA Global ATM Market** — ATM transaction trends
+- **Swiss Re sigma + IRDAI** — Insurance transaction counts
+- **Pix statistics (BCB)** — Brazil real-time payments
+- **ECB Blue Book** — EU payment statistics
+- **Federal Reserve Payments Study** — US payments landscape
