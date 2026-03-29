@@ -1,0 +1,232 @@
+{
+  "country": "Africa",
+  "iso_code": "AF",
+  "population": 1450000000,
+  "gdp_usd_trillion": 3.4,
+  "last_updated": "2026-03-29",
+  "total_tps_contribution": 2870,
+  "share_of_global_tps": "3.9%",
+  "global_tps_reference": 73750,
+  "categories": {
+    "digital-wallets": {
+      "africa_tps": 1380,
+      "africa_annual_txns_billions": 43.5,
+      "share_of_category": "7.0%",
+      "share_of_africa_total": "48.1%",
+      "key_systems": ["M-Pesa (Kenya, Tanzania, DRC, Mozambique)", "MTN MoMo (Ghana, Uganda, Cameroon)", "Orange Money (West/Central Africa)", "Airtel Money (multiple markets)", "Wave (Senegal, Cote d'Ivoire)"],
+      "notes": "Mobile money is the dominant financial rail in Sub-Saharan Africa. GSMA reports 1.75B registered accounts, ~400M active (90-day), $832B transaction value in 2023. Mobile money works via USSD on feature phones — no smartphone or internet required. 12M+ agents serve as human ATMs. Classified under Bank Transfers for de-duplication (account-to-account value transfer). Africa figure here is gross before overlap netting.",
+      "sources": [
+        {"citation": "GSMA — State of the Industry Report on Mobile Money 2024", "url": "https://www.gsma.com/mobilemoneymetrics/"},
+        {"citation": "Safaricom — M-Pesa Statistics", "url": "https://www.safaricom.co.ke/about/media-centre"}
+      ]
+    },
+    "bank-transfers": {
+      "africa_tps": 1380,
+      "africa_annual_txns_billions": 43.5,
+      "share_of_category": "9.0%",
+      "share_of_africa_total": "48.1%",
+      "key_systems": ["Mobile Money (M-Pesa, MTN MoMo, Orange Money, Airtel Money)", "NIP (Nigeria Instant Payment)", "EFT (South Africa)", "PayShap (South Africa)", "PAPSS (cross-border)"],
+      "notes": "Combined mobile money (~43.5B txns) and formal bank transfers (~5B NIP Nigeria, ~3.5B EFT South Africa). Mobile money dominates volume. NIP processed 5B+ transactions in 2023. Bank Transfers TPS based on mobile money volume as primary rail, with Nigerian NIP and South African EFT as secondary. De-duplicated: mobile money classified here rather than in Digital Wallets.",
+      "sources": [
+        {"citation": "GSMA — Mobile Money Metrics", "url": "https://www.gsma.com/mobilemoneymetrics/"},
+        {"citation": "NIBSS — Nigeria Instant Payment Statistics", "url": "https://nibss-plc.com.ng/"}
+      ]
+    },
+    "consumer-cards": {
+      "africa_tps": 285,
+      "africa_annual_txns_billions": 9.0,
+      "share_of_category": "1.2%",
+      "share_of_africa_total": "9.9%",
+      "key_systems": ["Visa (dominant)", "Mastercard", "Verve (Nigeria domestic)", "South Africa domestic schemes"],
+      "notes": "Africa's card market is small (~9B annual transactions, 1.2% of global). South Africa dominates (~4.5B, 50%). Nigeria ~2.5B. Egypt ~800M. Cards are less relevant because mobile money bypassed them for most of the population. Card penetration is 5-8% of adults in SSA (vs. 60-70% in developed markets). Verve is Nigeria's domestic card scheme (similar to RuPay in India).",
+      "sources": [
+        {"citation": "BankservAfrica — Payment Statistics", "url": "https://www.bankservafrica.com/"},
+        {"citation": "NIBSS — Card Statistics Nigeria", "url": "https://nibss-plc.com.ng/"}
+      ]
+    },
+    "bill-payments": {
+      "africa_tps": 210,
+      "africa_annual_txns_billions": 6.6,
+      "share_of_category": "7.0%",
+      "share_of_africa_total": "7.3%",
+      "key_systems": ["M-Pesa Paybill (Kenya)", "Mobile money bill payments (multiple markets)", "Fawry (Egypt)", "Prepaid electricity (South Africa, Nigeria)"],
+      "notes": "Estimated ~6.6B annual bill payment transactions across Africa. Electricity (prepaid meter top-ups), water, telecom airtime, and pay-TV (DStv/GOtv) are the main categories. Mobile money is the dominant bill payment channel in East and West Africa. Fawry processes ~2B transactions annually in Egypt across 250K+ outlets. Prepaid electricity is a uniquely African model — customers buy electricity credits in advance.",
+      "sources": [
+        {"citation": "GSMA — Mobile Money Use Cases", "url": "https://www.gsma.com/mobilemoneymetrics/"},
+        {"citation": "Fawry — Company Reports", "url": "https://fawry.com/"}
+      ]
+    },
+    "atm-withdrawals": {
+      "africa_tps": 175,
+      "africa_annual_txns_billions": 5.5,
+      "share_of_category": "11.2%",
+      "share_of_africa_total": "6.1%",
+      "key_systems": ["South Africa bank ATMs (~70K)", "Nigeria bank ATMs (~20K)", "Egypt ATMs (~18K)", "Shared ATM networks"],
+      "notes": "Africa has ~230K ATMs serving 1.45B people (1 per 6,300 vs. 1 per 700 globally). South Africa and Nigeria dominate ATM usage. Mobile money agents (~12M) functionally replace ATMs in most of SSA — agent cash-out transactions are counted in mobile money volumes, not ATM volumes. The 52:1 agent-to-ATM ratio is unique to Africa.",
+      "sources": [
+        {"citation": "ATMIA — Global ATM Market Report", "url": "https://www.atmia.com/"},
+        {"citation": "SABRIC — South Africa Banking Risk Information Centre", "url": "https://www.sabric.co.za/"}
+      ]
+    },
+    "government-payments": {
+      "africa_tps": 135,
+      "africa_annual_txns_billions": 4.25,
+      "share_of_category": "13.5%",
+      "share_of_africa_total": "4.7%",
+      "key_systems": ["SASSA (South Africa social grants, ~18M recipients)", "Nigeria NASSCO (social register, ~25M households)", "Kenya Inua Jamii (~1.1M beneficiaries)", "Ethiopia PSNP (~8M beneficiaries)", "Rwanda VUP"],
+      "notes": "Africa has extensive social protection programs, many World Bank/development partner supported. South Africa's SASSA distributes grants to ~18M recipients monthly (ZAR 250B+ annually). Nigeria's social register targets 25M+ households. Mobile money increasingly used for disbursement — M-Pesa delivers government payments in Kenya, mobile money used in Rwanda, Uganda. Combined ~4.25B annual transactions including social grants, pensions, civil service salaries.",
+      "sources": [
+        {"citation": "SASSA — South African Social Security Agency", "url": "https://www.sassa.gov.za/"},
+        {"citation": "World Bank — Social Protection in Africa", "url": "https://www.worldbank.org/en/topic/socialprotection"}
+      ]
+    },
+    "equity-markets": {
+      "africa_tps": 18,
+      "africa_annual_txns_billions": 0.56,
+      "share_of_category": "0.5%",
+      "share_of_africa_total": "0.6%",
+      "key_systems": ["JSE (Johannesburg, ~$1T market cap)", "NGX (Nigeria, ~$55B)", "EGX (Egypt, ~$45B)", "NSE Kenya (~$20B)", "BRVM (West Africa regional, ~$15B)"],
+      "notes": "Africa's combined equity market cap is ~$1.4T (1.3% of global). JSE accounts for ~70%. Annual equity trades estimated ~560M across all African exchanges. Low liquidity outside JSE. BRVM is the world's only exchange serving 8 countries (WAEMU francophone bloc). Retail participation is very low outside South Africa. TPS calculated using 252 trading days x 6.5h weighted hours.",
+      "sources": [
+        {"citation": "JSE — Johannesburg Stock Exchange", "url": "https://www.jse.co.za/"},
+        {"citation": "ASEA — African Securities Exchanges Association", "url": "https://african-exchanges.org/"}
+      ]
+    },
+    "etd": {
+      "africa_tps": 11,
+      "africa_annual_txns_billions": 0.12,
+      "share_of_category": "0.1%",
+      "share_of_africa_total": "0.4%",
+      "key_systems": ["JSE Derivatives (equity index, commodity, currency)", "FMDQ (Nigeria OTC)"],
+      "notes": "Exchange-traded derivatives in Africa are essentially a JSE-only story. JSE trades ~120M contracts annually across equity index futures/options, commodity derivatives (gold, platinum, maize), and currency derivatives. Nigeria's FMDQ handles some OTC derivatives (FX forwards) but minimal ETD. No other African exchange has meaningful derivatives volume. TPS calculated using 252 trading days x 6.5h weighted hours.",
+      "sources": [
+        {"citation": "JSE — Derivatives Market", "url": "https://www.jse.co.za/"},
+        {"citation": "FIA — Global ETD Volume", "url": "https://www.fia.org/"}
+      ]
+    },
+    "interbank-rtgs": {
+      "africa_tps": 1,
+      "africa_annual_txns_billions": 0.03,
+      "share_of_category": "2.0%",
+      "share_of_africa_total": "0.0%",
+      "key_systems": ["SAMOS (South Africa RTGS)", "CIFTS (Nigeria RTGS)", "KEPSS (Kenya RTGS)", "PAPSS (cross-border)"],
+      "notes": "Each major African economy operates its own RTGS system for high-value interbank settlement. South Africa's SAMOS (South African Multiple Option Settlement) is the most sophisticated. Nigeria's CIFTS handles naira-denominated large-value transfers. PAPSS adds a cross-border settlement layer. Low transaction count but high per-transaction values.",
+      "sources": [
+        {"citation": "SARB — South African Reserve Bank", "url": "https://www.resbank.co.za/"},
+        {"citation": "CBN — Central Bank of Nigeria", "url": "https://www.cbn.gov.ng/"}
+      ]
+    },
+    "cex": {
+      "africa_tps": 340,
+      "africa_annual_txns_billions": 10.7,
+      "share_of_category": "10.6%",
+      "share_of_africa_total": "11.8%",
+      "key_systems": ["Binance P2P (dominant)", "Luno (South Africa)", "Quidax (Nigeria)", "Yellow Card (pan-African)", "Paxful (P2P, now closed)"],
+      "notes": "Africa has the highest P2P crypto adoption rate globally (Chainalysis 2023). ~$117B in crypto value received in SSA (2022-23). ~60%+ of volume is P2P (vs. ~35% globally). Primary use cases: remittance cost arbitrage (7.9% avg fees to SSA), currency devaluation hedging (NGN lost ~70% vs USD 2022-2024), cross-border business payments. Nigeria (~30M users), South Africa (~6M), Kenya (~5M) lead. P2P volume is partially estimated from Chainalysis on-chain data. Regulatory landscape varies: SA regulated, Nigeria emerging framework, Kenya unregulated.",
+      "sources": [
+        {"citation": "Chainalysis — Geography of Cryptocurrency 2023", "url": "https://www.chainalysis.com/blog/2023-global-crypto-adoption-index/"},
+        {"citation": "Triple-A — Crypto Ownership Data", "url": "https://triple-a.io/crypto-ownership/"}
+      ]
+    },
+    "gaming-microtx": {
+      "africa_tps": 8,
+      "africa_annual_txns_billions": 0.25,
+      "share_of_category": "2.1%",
+      "share_of_africa_total": "0.3%",
+      "key_systems": ["Mobile gaming (Free Fire, PUBG Mobile)", "Google Play", "Sports betting platforms (Betway, SportPesa, Bet9ja)"],
+      "notes": "Africa gaming market ~$2B (2025 est.). Mobile gaming is ~75% of revenue. Low ARPU compared to developed markets. Sports betting platforms are significant transaction generators (particularly Nigeria, Kenya) but categorized separately from pure gaming microtransactions. Nigeria (~$600M), South Africa (~$550M), Egypt (~$350M) are largest markets.",
+      "sources": [
+        {"citation": "Newzoo — Global Games Market Report", "url": "https://newzoo.com/resources/trend-reports/newzoo-global-games-market-report"},
+        {"citation": "Statista — Gaming in Africa", "url": "https://www.statista.com/outlook/dmo/digital-media/video-games/africa"}
+      ]
+    },
+    "commodities": {
+      "africa_tps": 5,
+      "africa_annual_txns_billions": 0.08,
+      "share_of_category": "1.5%",
+      "share_of_africa_total": "0.2%",
+      "key_systems": ["JSE Commodity Derivatives (gold, platinum, maize)", "ECX (Ethiopia Commodity Exchange)", "AFEX (Nigeria commodity exchange)"],
+      "notes": "Africa is a major commodity producer (gold, platinum, oil, cocoa, coffee) but most commodity trading occurs on global exchanges (CME, LME, ICE), not African exchanges. JSE trades gold, platinum, maize, and other commodity derivatives. ECX (Ethiopia) trades coffee, sesame, and pulses. AFEX (Nigeria) focuses on agricultural commodities. Physical commodity spot transactions are largely informal and unmeasured.",
+      "sources": [
+        {"citation": "JSE — Commodity Derivatives", "url": "https://www.jse.co.za/"},
+        {"citation": "ECX — Ethiopia Commodity Exchange", "url": "https://www.ecx.com.et/"}
+      ]
+    }
+  },
+  "de_duplicated_africa_tps": {
+    "value": 2870,
+    "methodology": "Sum of de-duplicated contributions: Bank Transfers (1,380 — primary rail, includes mobile money and NIP) + Consumer Cards (285, minimal overlap with mobile money) + Bill Payments (incremental ~105, ~50% not already on mobile money/card rails) + ATM Withdrawals (175, zero overlap — physical cash-out from bank ATMs only, agent cash-out counted in mobile money) + Government Payments (incremental ~68, ~50% not on bank/mobile money rails already counted) + Equity Markets (18) + ETD (11) + Commodities (5) + Interbank RTGS (1) + CEX (340, crypto P2P is a distinct rail) + Gaming (incremental ~4) + Agent cash-out overlap removed. Digital Wallets excluded (mobile money already in Bank Transfers). Significant overlap between mobile money and bill payments.",
+    "range_low": 2200,
+    "range_high": 3700,
+    "notes": "Wide range reflects Africa's structural measurement challenges: (1) mobile money data is excellent via GSMA but informal economy transactions are unmeasured, (2) card and banking data outside South Africa and Nigeria is patchy, (3) crypto P2P volume estimates are inherently uncertain, (4) 54 countries with varying data quality — South Africa/Kenya/Nigeria have good data, most others are estimated. Low end assumes significant double-counting between mobile money and bill payments/government payments. High end includes conservative informal economy uplift."
+  },
+  "key_metrics": {
+    "mobile_money_registered_accounts_billions": 1.75,
+    "mobile_money_active_accounts_millions": 400,
+    "mobile_money_annual_value_usd_billions": 832,
+    "mobile_money_agents_millions": 12,
+    "agent_to_atm_ratio": 52,
+    "nigeria_nip_annual_txns_billions": 5.0,
+    "jse_market_cap_usd_trillion": 1.0,
+    "combined_african_exchange_market_cap_usd_trillion": 1.4,
+    "remittance_inflows_usd_billions": 54,
+    "avg_remittance_cost_pct": 7.9,
+    "financial_inclusion_ssa_pct": 55,
+    "informal_economy_avg_pct_gdp": 45,
+    "p2p_crypto_adoption_rank": 1,
+    "papss_status": "operational_early_adoption",
+    "enaira_status": "launched_low_adoption",
+    "countries": 54,
+    "currencies": 42,
+    "atms_thousands": 230,
+    "feature_phone_payment_capable": true
+  },
+  "top_markets": {
+    "kenya": {
+      "population_millions": 54,
+      "gdp_usd_billions": 115,
+      "mpesa_active_users_millions": 35,
+      "mpesa_annual_value_usd_billions": 300,
+      "financial_inclusion_pct": 92,
+      "role": "Mobile money birthplace. M-Pesa launched 2007. Highest mobile money penetration globally."
+    },
+    "nigeria": {
+      "population_millions": 224,
+      "gdp_usd_billions": 475,
+      "nip_annual_txns_billions": 5.0,
+      "fintech_users_millions": 100,
+      "enaira_wallets_millions": 13,
+      "role": "Africa's largest economy. NIP is Africa's largest instant payment system. Fintech explosion (OPay, Paystack, Flutterwave). eNaira CBDC."
+    },
+    "south_africa": {
+      "population_millions": 62,
+      "gdp_usd_billions": 400,
+      "jse_market_cap_usd_trillion": 1.0,
+      "card_txns_annual_billions": 4.5,
+      "social_grant_recipients_millions": 18,
+      "role": "Africa's TradFi hub. JSE is largest African exchange. Most developed card market. PayShap real-time payments."
+    },
+    "egypt": {
+      "population_millions": 105,
+      "gdp_usd_billions": 395,
+      "fawry_annual_txns_billions": 2.0,
+      "egx_market_cap_usd_billions": 45,
+      "role": "Fawry dominates bill payments. Large informal economy. EGX is second-largest African exchange by activity."
+    },
+    "ghana": {
+      "population_millions": 33,
+      "gdp_usd_billions": 76,
+      "mobile_money_annual_value_usd_billions": 110,
+      "mobile_money_interoperability": true,
+      "role": "Mobile money interoperability pioneer. MTN MoMo dominant. Ghana Interbank Payment and Settlement System (GhIPSS)."
+    }
+  },
+  "confidence": {
+    "score": 58,
+    "source_quality": 16,
+    "data_recency": 15,
+    "triangulation": 12,
+    "coverage": 15,
+    "notes": "Mobile money data is excellent (GSMA collects systematically from operators across SSA). Nigeria NIP data good (NIBSS publishes). South Africa data strong (JSE, BankservAfrica, SARB all publish regularly). Beyond these three markets, data quality drops sharply. Crypto P2P estimates are inherently uncertain (Chainalysis on-chain analysis, not exchange-reported). Informal economy (40-60% of GDP) is entirely unmeasured. Card data outside SA/Nigeria is estimated. Capital markets data for smaller exchanges is sparse. 54-country fragmentation means no single data source covers the continent. Coverage score reflects the gap between what is measured and what actually transacts."
+  }
+}
