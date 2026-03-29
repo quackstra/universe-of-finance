@@ -5,8 +5,8 @@
   "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 1557,
-      "source": "Derived: 49.1B annual / 31,557,600 seconds",
+      "value": 1538,
+      "source": "Derived: 48.5B annual / 31,557,600 seconds",
       "url": "",
       "confidence": "medium"
     },
@@ -18,21 +18,21 @@
       "note": "Peak driven by pre-holiday weekends, pay days, and festival periods in cash-heavy markets."
     },
     "daily_volume": {
-      "value": 134500000,
-      "source": "Derived: 49.1B / 365.25 days",
+      "value": 132900000,
+      "source": "Derived: 48.5B / 365.25 days",
       "url": "",
       "confidence": "medium"
     },
     "annual_volume": {
-      "value": 49100000000,
-      "source": "Derived from BIS CPMI data, ECB payments statistics, RBI data, and ATMIA/Datos Insights estimates",
+      "value": 48500000000,
+      "source": "Derived from BIS CPMI data, ECB H1+H2 2024, RBI monthly data (Jan 2025: 488.3M), and ATMIA/Datos Insights estimates",
       "url": "https://data.bis.org/topics/CPMI_CT",
       "confidence": "medium",
-      "note": "Cash withdrawals represent ~69% of all ATM transactions; balance inquiries and other non-cash operations add ~22B more but are excluded."
+      "note": "Cash withdrawals represent ~56-60% of all ATM transactions (86.7B total). Run 9 revision: India reduced to 5.7B (RBI shows -7.4% YoY), EU reduced to 7.2B (ECB faster adoption)."
     },
     "annual_value_usd": {
-      "value": 7700000000000,
-      "source": "Derived: 49.1B withdrawals × $157 avg withdrawal value (Fed/ATMIA data)",
+      "value": 7600000000000,
+      "source": "Derived: 48.5B withdrawals × $157 avg withdrawal value (Fed/ATMIA data)",
       "url": "https://www.atmia.com/",
       "confidence": "medium",
       "note": "Average withdrawal value varies widely: US $198, EU ~$140, India ~$40, global weighted avg ~$157"
@@ -340,14 +340,26 @@
       "citation": "World Bank — ATMs per 100,000 Adults",
       "url": "https://data.worldbank.org/indicator/FB.ATM.TOTL.P5",
       "accessed": "2026-03-28"
+    },
+    {
+      "id": 12,
+      "citation": "Electroiq — ATM Statistics 2025 (global totals, regional breakdown)",
+      "url": "https://electroiq.com/stats/atm-statistics/",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 13,
+      "citation": "CoinLaw — ATM Usage Decline Statistics 2025",
+      "url": "https://coinlaw.io/atm-usage-decline-statistics/",
+      "accessed": "2026-03-29"
     }
   ],
   "confidence": {
-    "score": 52,
-    "source_quality": 16,
-    "data_recency": 14,
-    "triangulation": 12,
-    "coverage": 10,
-    "notes": "BIS Red Book and ECB provide reliable data for CPMI/EU countries. Emerging market ATM data is sparse. Global total requires adjustment from all-ATM to cash-withdrawal-only."
+    "score": 58,
+    "source_quality": 18,
+    "data_recency": 15,
+    "triangulation": 14,
+    "coverage": 11,
+    "notes": "Run 9 uplift: RBI Jan 2025 confirms -7.4% YoY decline in India ATM withdrawals. ECB H1+H2 2024 provides Euro area anchor. India revised to 5.7B (from 6.0B), EU to 7.2B (from 7.5B). Global total revised to 48.5B. US data still stale (2021 Fed study). See workings/confidence-uplift-run9.md."
   }
 }

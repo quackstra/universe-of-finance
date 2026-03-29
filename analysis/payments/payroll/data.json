@@ -5,31 +5,31 @@
   "last_updated": "2026-03-28",
   "current": {
     "avg_tps": {
-      "value": 1014,
-      "source": "Derived: ~32B annual / 31,557,600 seconds. ILO 2026: 2.1B informal workers (58%) bounds formal sector. Nacha 2025: 7.31B commercial direct deposits anchors US. See workings/confidence-uplift-run7.md.",
+      "value": 983,
+      "source": "Derived: ~31B annual / 31,557,600 seconds. ILO 2026: 2.1B informal workers (58%) bounds formal sector. Nacha 2025: 7.31B commercial direct deposits anchors US. ADP (26M workers) + Paychex (1/11 US private sector) provide provider cross-check. See workings/confidence-uplift-run9.md.",
       "url": "",
       "confidence": "low",
-      "note": "Range: 792-1,173 TPS. Four triangulation methods converge on 25-37B annual. Previous 39B estimate revised down due to ILO informal employment data constraining electronic payroll universe."
+      "note": "Range: 792-1,173 TPS. Four US methods converge on 3.3-5.1B (midpoint 4.0B). UK ONS confirms 30.3M payrolled employees. Global central estimate 31B (range 25-37B)."
     },
     "peak_tps": {
-      "value": 5070,
+      "value": 4915,
       "source": "Estimated: avg TPS x 5.0 peak multiplier (payday concentration)",
       "url": "",
       "confidence": "low",
       "note": "Payroll is extremely peaky — US biweekly payday Fridays concentrate ~50% of monthly volume into 2 days. Month-end in EU/Asia adds further spikes."
     },
     "daily_volume": {
-      "value": 87700000,
-      "source": "Derived: ~32B / 365.25 days",
+      "value": 84900000,
+      "source": "Derived: ~31B / 365.25 days",
       "url": "",
       "confidence": "low"
     },
     "annual_volume": {
-      "value": 32000000000,
-      "source": "ILO 2026: 3.6B employed, 2.1B informal (58%). Formal ~1.5B × pay frequency model = ~22B. Informal electronic ~3-6B. Nacha 2025: 7.31B commercial direct deposits (US). Four triangulation methods converge on 25-37B. See workings/confidence-uplift-run7.md.",
+      "value": 31000000000,
+      "source": "ILO 2026: 3.6B employed, 2.1B informal (58%). Nacha 2025: 7.31B commercial direct deposits (US). ADP (26M workers/500K employers) + Paychex (1/11 US private sector) cross-check yields US midpoint ~4.0B. UK ONS: 30.3M payrolled employees. See workings/confidence-uplift-run9.md.",
       "url": "",
       "confidence": "low",
-      "note": "Range: 25-37B. Central 32B. US 95% electronic payroll adoption confirms Nacha anchor. ILO informal data (2.1B workers) is key constraint."
+      "note": "Range: 25-37B. Central 31B. Four US methods (BLS frequency, Nacha share, provider extrapolation, direct deposit rate) converge on 3.3-5.1B. US revised to 4.0B midpoint (from 4.68B)."
     },
     "annual_value_usd": {
       "value": 32000000000000,
@@ -299,14 +299,32 @@
       "citation": "CloudPay — Global Payroll Complexities and Trends 2024",
       "url": "https://www.cloudpay.com/blog/global-payroll-complexity-trends-by-region-2024/",
       "accessed": "2026-03-28"
+    },
+    {
+      "id": 9,
+      "citation": "ONS — Earnings and employment from PAYE RTI (April 2025: 30.3M payrolled employees)",
+      "url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/earningsandemploymentfrompayasyouearnrealtimeinformationuk/april2025",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 10,
+      "citation": "Paychex — FY2025 Annual Report (800K customers, 1/11 US private sector)",
+      "url": "https://investor.paychex.com/sec-filings/annual-reports",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 11,
+      "citation": "SSR — 60+ Payroll Statistics and Trends for 2026 (BLS pay frequency, direct deposit rates)",
+      "url": "https://www.selectsoftwarereviews.com/blog/payroll-statistics",
+      "accessed": "2026-03-29"
     }
   ],
   "confidence": {
-    "score": 53,
-    "source_quality": 14,
+    "score": 59,
+    "source_quality": 16,
     "data_recency": 15,
-    "triangulation": 14,
-    "coverage": 10,
-    "notes": "Run 7 uplift: ILO 2026 confirms 2.1B informal workers (58% of 3.6B employed), bounding formal electronic payroll. Nacha 2025 splits commercial (7.31B) from government (1.43B) direct deposits. US 95% electronic payroll adoption validates Nacha anchor. Four methods converge on 25-37B (narrowed from 38-46B). Main gap: China/Africa pay frequency data."
+    "triangulation": 16,
+    "coverage": 12,
+    "notes": "Run 9 uplift: ADP (26M workers, 500K+ employers) and Paychex (1/11 US private sector) provide provider-based US cross-check. Four US methods converge on 3.3-5.1B range. UK ONS/HMRC confirms 30.3M payrolled employees at 96.6% monthly. Revised US payroll to ~4.0B midpoint, global to 31B. Main gap: China/Africa pay frequency data."
   }
 }

@@ -248,14 +248,38 @@
       "citation": "McKinsey — Global Insurance Report 2025",
       "url": "https://www.mckinsey.com/industries/financial-services/our-insights/global-insurance-report",
       "accessed": "2026-03-28"
+    },
+    {
+      "id": 8,
+      "citation": "Swiss Re — sigma 2/2025: World insurance in 2025: a riskier, more fragmented world order",
+      "url": "https://www.swissre.com/institute/research/sigma-research/sigma-2025-02-world-insurance-riskier-fragmented-world.html",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 9,
+      "citation": "Swiss Re — sigma 5/2025: Shifting sands: global economic and insurance market outlook",
+      "url": "https://www.swissre.com/institute/research/sigma-research/sigma-2025-05-global-economic-insurance-outlook-shifting-sands.html",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 10,
+      "citation": "NAIC — 2024 Market Share Data (P&C premiums, policy counts)",
+      "url": "https://content.naic.org/article/naic-releases-2024-market-share-data",
+      "accessed": "2026-03-29"
+    },
+    {
+      "id": 11,
+      "citation": "OECD — Global Insurance Market Trends 2025",
+      "url": "https://www.oecd.org/en/publications/global-insurance-market-trends-2025_0d11ecf4-en/full-report/component-5.html",
+      "accessed": "2026-03-29"
     }
   ],
   "confidence": {
-    "score": 52,
-    "source_quality": 18,
-    "data_recency": 15,
-    "triangulation": 8,
-    "coverage": 11,
-    "notes": "Premium VALUE data is high quality (Swiss Re sigma is authoritative). Transaction COUNT data is entirely modeled — no single source publishes global insurance payment transaction counts."
+    "score": 57,
+    "source_quality": 20,
+    "data_recency": 16,
+    "triangulation": 11,
+    "coverage": 10,
+    "notes": "Run 9 uplift: Swiss Re sigma 2/2025 confirms 5.2% real premium growth in 2024. NAIC 2024 provides first hard policy-count anchor (US auto ~215M policies). US auto premium txn model cross-validates within 1% of NAIC-derived estimate. Swiss Re 2035 life forecast ($4.8T) consistent with projections. Transaction count still modeled. See workings/confidence-uplift-run9.md."
   }
 }
