@@ -159,6 +159,7 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 | 5 | New categories + time-series + scenarios | 29 categories, 2015-2025 series, peak TPS, stress tests |
 | 6 | Methodology overhaul + measurement SLEs | METHODOLOGY.md for all 29 categories, 3 new measurement SLEs |
 | 7 | MEST framework + deep dives + confidence uplift | MEST Number (~545K/s), India & China deep dives, Sunset Watch |
+| 8 | GitHub Pages + USA deep dive + MEST validation | Interactive dashboard, USA capsule, multiplier validation |
 
 ## Explore the Data
 
@@ -169,6 +170,7 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 - **[Peak TPS Analysis](analysis/PEAK_TPS.md)** — When does the world's financial infrastructure max out?
 - **[Scenario Analysis](analysis/SCENARIOS.md)** — What happens in a recession, pandemic, or crypto winter?
 - **[MEST Framework](analysis/MEST.md)** — Mutual Economic State Transitions (~545K/s)
+- **[USA Deep Dive](analysis/deep-dives/usa/REPORT.md)** — TradFi dominance + card-heavy payments
 - **[India Deep Dive](analysis/deep-dives/india/REPORT.md)** — 17.4% of global TPS on 3.5% of GDP
 - **[China Opacity Report](analysis/deep-dives/china/REPORT.md)** — The ±6,000 TPS blind spot
 - **[Sunset Watch](analysis/SUNSET_WATCH.md)** — Declining categories (growth outpaces decline 38:1)
