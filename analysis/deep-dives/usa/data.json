@@ -1,0 +1,259 @@
+{
+  "country": "United States",
+  "iso_code": "US",
+  "population": 335000000,
+  "gdp_usd_trillion": 28.8,
+  "last_updated": "2026-03-29",
+  "total_tps_contribution": 18200,
+  "share_of_global_tps": "24.7%",
+  "global_tps_reference": 73750,
+  "categories": {
+    "consumer-cards": {
+      "usa_tps": 5040,
+      "usa_annual_txns_billions": 159.0,
+      "share_of_category": "20.6%",
+      "share_of_usa_total": "27.7%",
+      "key_systems": ["Visa", "Mastercard", "American Express", "Discover"],
+      "notes": "USA is the world's #1 card market. ~480 card transactions per capita per year (2.7x EU average). Card spend exceeded $10T for the first time in 2024. Merchant processing fees $187.2B. Credit cards = 35%, debit = 30% of consumer payments (Federal Reserve Payments Study). 153.3B GP card transactions in 2022 (latest Fed data).",
+      "sources": [
+        {"citation": "Payments Dive / Nilson — US card market share 20.6%", "url": "https://www.paymentsdive.com/news/credit-card-us-market-payments-outpaced-by-other-world-regions/740595/"},
+        {"citation": "GlobeNewsWire / Nilson — US card spend exceeded $10T", "url": "https://www.globenewswire.com/news-release/2025/02/25/3032247/0/en/Amex-Discover-Mastercard-and-Visa-Card-Spending-Exceeded-10-Trillion-in-2024.html"},
+        {"citation": "Federal Reserve Payments Study Nov 2024", "url": "https://www.federalreserve.gov/paymentsystems/2024-November-The-Federal-Reserve-Payments-Study.htm"}
+      ]
+    },
+    "bank-transfers": {
+      "usa_tps": 1116,
+      "usa_annual_txns_billions": 35.2,
+      "share_of_category": "7.3%",
+      "share_of_usa_total": "6.1%",
+      "key_systems": ["ACH (Nacha)", "Fedwire", "CHIPS", "FedNow", "Same Day ACH"],
+      "notes": "ACH 35.2B transactions in 2025 ($93T value). Including off-network: 42.1B. Same Day ACH: 1.4B (+16.7% YoY). B2B ACH: 8.1B (+9.9%). Fedwire: 209.9M txns ($1,133T). CHIPS: ~126M txns est. ($454T est.). FedNow: ~415K txns total in first 8 months. US is 7.3% of global bank transfers by count but dominant by value (Fedwire alone = $1,133T).",
+      "sources": [
+        {"citation": "Nacha — ACH Network Volume 2025 exceeded 42B", "url": "https://www.nacha.org/news/nachas-top-50-ach-originators-and-receivers-2025-now-available-total-ach-payment-volume-2025"},
+        {"citation": "Nacha — ACH Volume Statistics", "url": "https://www.nacha.org/content/ach-network-volume-and-value-statistics"},
+        {"citation": "FRB Services — Fedwire Annual Statistics", "url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html"},
+        {"citation": "FRB Services — FedNow Quarterly Statistics", "url": "https://www.frbservices.org/resources/financial-services/fednow/quarterly-volume-value-stats"}
+      ]
+    },
+    "digital-wallets": {
+      "usa_tps": 633,
+      "usa_annual_txns_billions": 20.0,
+      "share_of_category": "3.2%",
+      "share_of_usa_total": "3.5%",
+      "key_systems": ["Apple Pay", "Google Pay", "Samsung Pay"],
+      "notes": "US digital wallets are predominantly card-rail overlays. Apple Pay ~20B transactions (2023 est.), Google Pay non-UPI US ~2-3B, Samsung Pay ~1B. Nearly all ride on Visa/Mastercard rails = double-counted with Consumer Cards. For de-duplication, only non-card-rail wallet transactions count (~2-3B incremental). Gross figure shown here for category comparison.",
+      "sources": [
+        {"citation": "Electroiq — Apple Pay Statistics", "url": "https://electroiq.com/stats/apple-pay-statistics/"}
+      ]
+    },
+    "p2p-transfers": {
+      "usa_tps": 244,
+      "usa_annual_txns_billions": 7.7,
+      "share_of_category": "90.6%",
+      "share_of_usa_total": "4.2%",
+      "key_systems": ["Zelle", "Venmo", "Cash App", "PayPal P2P"],
+      "notes": "USA dominates global P2P (>90% of dedicated P2P volume). Zelle: 3.6B txns, $1.04T (crossed $1T for first time in 2024). Venmo: ~2.3B txns, ~$280B. Cash App: ~1.5B txns, ~$283B. PayPal P2P: ~0.3B. UPI/WeChat P2P classified separately under Digital Wallets. Zelle avg transfer $289 vs UPI avg $17.",
+      "sources": [
+        {"citation": "CNBC — Zelle Payments Top $1 Trillion in 2024", "url": "https://www.cnbc.com/2025/02/12/zelle-payments-top-1-trillion-in-2024.html"},
+        {"citation": "BusinessOfApps — Venmo Statistics", "url": "https://www.businessofapps.com/data/venmo-statistics/"},
+        {"citation": "BusinessOfApps — Cash App Statistics", "url": "https://www.businessofapps.com/data/cash-app-statistics/"}
+      ]
+    },
+    "ecommerce": {
+      "usa_tps": 380,
+      "usa_annual_txns_billions": 12.0,
+      "share_of_category": "20.8%",
+      "share_of_usa_total": "2.1%",
+      "key_systems": ["Amazon", "Shopify merchants", "Walmart.com", "eBay", "Various DTC"],
+      "notes": "US e-commerce ~$1.2T GMV in 2024. Amazon: ~4.5B orders/year. Shopify US merchants: ~1B+ (est.). US is #2 e-commerce market after China. E-commerce ~16% of US retail. Overlay with card payments (most e-commerce paid by card).",
+      "sources": [
+        {"citation": "Capital One Shopping — Amazon orders per day", "url": "https://capitaloneshopping.com/research/amazon-orders-per-day/"}
+      ]
+    },
+    "bnpl": {
+      "usa_tps": 49,
+      "usa_annual_txns_billions": 1.55,
+      "share_of_category": "28.0%",
+      "share_of_usa_total": "0.9%",
+      "key_systems": ["Affirm", "Afterpay (Block)", "Klarna US", "PayPal Pay Later", "Zip"],
+      "notes": "US BNPL: Affirm ~0.2B purchases ($28B GMV), Afterpay ~0.4B ($25B), Klarna US portion, PayPal Pay Later US portion. US is ~28% of global BNPL purchases by count. Each purchase generates ~3.6 installment events. Overlap with card/bank rails is near-complete.",
+      "sources": [
+        {"citation": "Affirm 10-K FY2024", "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001820953&type=10-K"},
+        {"citation": "Block 10-K FY2024 (Afterpay)", "url": "https://www.sec.gov/Archives/edgar/data/1512673/000162828025007376/sq-20241231.htm"}
+      ]
+    },
+    "bill-payments": {
+      "usa_tps": 633,
+      "usa_annual_txns_billions": 20.0,
+      "share_of_category": "21.0%",
+      "share_of_usa_total": "3.5%",
+      "key_systems": ["Nacha ACH (biller direct debit)", "Utility companies", "Telecom (AT&T, Verizon, T-Mobile)", "Digital subscriptions (Netflix, Spotify, etc.)"],
+      "notes": "~150M utility accounts x 12 = ~1.8B utility payments. ~350M telecom subscriptions x 12 = ~4.2B. ~200M+ digital subscriptions x 12 = ~2.4B. Plus rent, insurance premiums (separate capsule), and other recurring. Most flow through ACH direct debit or card-on-file. ~90%+ overlay with existing payment rails.",
+      "sources": [
+        {"citation": "Nacha — ACH biller data", "url": "https://www.nacha.org/content/ach-network-volume-and-value-statistics"}
+      ]
+    },
+    "payroll": {
+      "usa_tps": 108,
+      "usa_annual_txns_billions": 3.4,
+      "share_of_category": "8.3%",
+      "share_of_usa_total": "1.9%",
+      "key_systems": ["ADP", "Paychex", "Gusto", "Intuit/QuickBooks Payroll", "Bank ACH direct deposit"],
+      "notes": "~150M formal workers. 70% biweekly (26/yr), 20% weekly (52/yr), 10% monthly (12/yr). Total ~3.4B payroll transactions. ADP covers 26M+ employees (1 in 6 private sector). ~90%+ flows through ACH. US biweekly cycle generates 2.2x more transactions per worker than monthly-pay countries.",
+      "sources": [
+        {"citation": "ADP — Payroll and Employment Data", "url": "https://www.adp.com/"}
+      ]
+    },
+    "equity-markets": {
+      "usa_tps": 540,
+      "usa_annual_txns_billions": 9.5,
+      "share_of_category": "15.4%",
+      "share_of_usa_total": "3.0%",
+      "key_systems": ["NYSE", "NASDAQ", "Cboe Equities", "IEX", "Dark pools / ATS"],
+      "notes": "US equity ADV: 12.2B shares, ~37.7M trades/day est. Annual: ~9.5B trades. NYSE + NASDAQ combined market cap >$50T (world's two largest by cap). Off-exchange: 47% of TCV (record high). Options: 47.3M contracts ADV. ETF: 19.6% of equity volume. Retail: 17.9%. Average trade size ~$1,730 (vs India ~$500).",
+      "sources": [
+        {"citation": "Nasdaq — Top Trading Trends 2024", "url": "https://www.nasdaq.com/articles/top-trading-trends-2024"},
+        {"citation": "NYSE — US Equity Daily Volumes", "url": "https://www.nyse.com/trade/us-equity-volumes"},
+        {"citation": "Cboe — Full Year 2024 Volume", "url": "https://ir.cboe.com/news/news-details/2025/Cboe-Global-Markets-Reports-Trading-Volume-for-December-and-Full-Year-2024/default.aspx"}
+      ]
+    },
+    "etd": {
+      "usa_tps": 600,
+      "usa_annual_txns_billions": 13.0,
+      "share_of_category": "6.3%",
+      "share_of_usa_total": "3.3%",
+      "key_systems": ["CME Group", "Cboe Global Markets", "ICE", "Nasdaq Options"],
+      "notes": "CME ADV 26.5M (record, +9%). Cboe options 3.8B contracts (record 5th yr). ICE total 2B contracts (1.2B commodity). Combined US ETD ~13B contracts. US is 6.3% by contract count (India 62%) but ~45-50% by notional value. CME dominates interest rate derivatives (13.7M ADV) and sets global rate benchmarks.",
+      "sources": [
+        {"citation": "CME Group — Record 2024 ADV", "url": "https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html"},
+        {"citation": "Cboe — 2024 Trading Volume", "url": "https://ir.cboe.com/news/news-details/2025/Cboe-Global-Markets-Reports-Trading-Volume-for-December-and-Full-Year-2024/default.aspx"},
+        {"citation": "ICE — Record 2B Contracts 2024", "url": "https://ir.theice.com/press/news-details/2025/ICE-Announces-That-a-Record-2-Billion-Contracts-Traded-in-2024/default.aspx"}
+      ]
+    },
+    "commodities": {
+      "usa_tps": 178,
+      "usa_annual_txns_billions": 3.5,
+      "share_of_category": "53.9%",
+      "share_of_usa_total": "1.9%",
+      "key_systems": ["CME/NYMEX (energy)", "CME/COMEX (metals)", "CME/CBOT (agriculture)", "ICE (Brent, environmental)"],
+      "notes": "CME commodity segments ~3.5B contracts (energy, metals, agriculture all record in 2024). ICE commodity: 1.2B (oil 655M, environmental 20.4M). US dominates global commodity price discovery. Brent crude benchmark = 75% of internationally traded oil. Overlap with ETD category (commodities are a subset of ETD).",
+      "sources": [
+        {"citation": "CME Group — 2024 ADV", "url": "https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html"},
+        {"citation": "ICE — 2024 Record", "url": "https://ir.theice.com/press/news-details/2025/ICE-Announces-That-a-Record-2-Billion-Contracts-Traded-in-2024/default.aspx"}
+      ]
+    },
+    "forex": {
+      "usa_tps": 16,
+      "usa_annual_txns_billions": 0.5,
+      "share_of_category": "40.0%",
+      "share_of_usa_total": "0.9%",
+      "key_systems": ["NY Fed FX Committee dealer banks", "CME FX futures", "EBS/Refinitiv platforms"],
+      "notes": "USD is one side of 88% of all FX trades (BIS 2025). Global FX: $9.6T/day. US-attributed ~40% based on NY Fed FX Committee data. CME FX futures ADV 1.0-1.2M contracts (record). CLS settles $7.2T/day across 18 currencies. Attribution complex — USD involvement != US execution.",
+      "sources": [
+        {"citation": "BIS Triennial FX Survey 2025", "url": "https://www.bis.org/statistics/rpfx25_fx.htm"},
+        {"citation": "CME Group — 2024 FX ADV", "url": "https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html"}
+      ]
+    },
+    "fixed-income": {
+      "usa_tps": 74,
+      "usa_annual_txns_billions": 2.33,
+      "share_of_category": "70.5%",
+      "share_of_usa_total": "1.3%",
+      "key_systems": ["TRACE (corporate/agency bonds)", "MSRB (municipal bonds)", "BrokerTec/Tradeweb (Treasuries)", "FICC GSD (repo)"],
+      "notes": "Treasury ADV $1,055B (first time >$1T). Corporate bond ADV $57.9B (+11.5%). TRACE: ~52M bond trades/year. MSRB: 14.5M muni trades (record, 17.6M in 2025 +22%). Treasury: ~12.6M trades est. US = ~70% of global cash bond trade count. $36T+ Treasuries outstanding. Global outstanding $145T.",
+      "sources": [
+        {"citation": "SIFMA — US Treasury Statistics", "url": "https://www.sifma.org/research/statistics/us-treasury-securities-statistics"},
+        {"citation": "SIFMA — US Corporate Bonds Statistics", "url": "https://www.sifma.org/research/statistics/us-corporate-bonds-statistics"},
+        {"citation": "FINRA — TRACE Fixed Income Data", "url": "https://www.finra.org/finra-data/fixed-income"},
+        {"citation": "MSRB — 2024 Municipal Market Year in Review", "url": "https://www.msrb.org/sites/default/files/2025-01/MSRB-2024-Municipal-Market-Year-in-Review.pdf"}
+      ]
+    },
+    "otc-derivatives": {
+      "usa_tps": 2,
+      "usa_annual_txns_billions": 0.063,
+      "share_of_category": "40.0%",
+      "share_of_usa_total": "0.3%",
+      "key_systems": ["JPMorgan", "Goldman Sachs", "Citigroup", "Bank of America", "Morgan Stanley"],
+      "notes": "US hosts 4 of 5 largest OTC derivative dealer banks. ISDA SwapsInfo Q4 2024 US-only: 696.6K IRD trades (+14.1%). US share of ISDA-reported IRD: ~40-45%. CDS index + single-name: significant US share. Total excl. FX: ~1.9M US trades/year. Low-frequency but massive notional ($732T global outstanding).",
+      "sources": [
+        {"citation": "ISDA SwapsInfo — Full Year 2024", "url": "https://www.isda.org/2025/02/20/swapsinfo-full-year-2024-and-the-fourth-quarter-of-2024/"}
+      ]
+    },
+    "interbank-rtgs": {
+      "usa_tps": 7,
+      "usa_annual_txns_billions": 0.21,
+      "share_of_category": "50.0%",
+      "share_of_usa_total": "1.2%",
+      "key_systems": ["Fedwire Funds Service"],
+      "notes": "Fedwire: 209.9M transactions, $1,133T value in 2024. Daily avg: 836,322 txns, $4.5T. Avg transfer $5.4M. Fedwire = single highest-value payment system on Earth. US is ~50% of global RTGS by transaction count (210M of 423M). By value, Fedwire alone is ~53% of the 5 major RTGS systems combined.",
+      "sources": [
+        {"citation": "FRB Services — Fedwire Annual Statistics", "url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html"}
+      ]
+    },
+    "cex": {
+      "usa_tps": 149,
+      "usa_annual_txns_billions": 4.7,
+      "share_of_category": "4.9%",
+      "share_of_usa_total": "2.6%",
+      "key_systems": ["Coinbase", "Kraken", "Gemini", "Robinhood Crypto"],
+      "notes": "Coinbase: ~$1T+ trading volume (2024), largest US exchange, publicly traded. Kraken: $665B volume. Combined US ~$1.7T. US share ~4.9% of global $77.3T (adjusted). CME Bitcoin futures ADV +56% to 19K contracts. USDC (Circle, US-regulated) = 70% of stablecoin transfer volume. Post-regulation clarity attracting institutional capital.",
+      "sources": [
+        {"citation": "BusinessOfApps — Coinbase Statistics", "url": "https://www.businessofapps.com/data/coinbase-statistics/"},
+        {"citation": "Daily Hodl — Kraken 2024 Volume", "url": "https://dailyhodl.com/2025/01/31/us-based-crypto-exchange-kraken-reports-huge-boosts-in-revenue-and-trading-volume-in-2024/"}
+      ]
+    },
+    "government-payments": {
+      "usa_tps": 191,
+      "usa_annual_txns_billions": 6.0,
+      "share_of_category": "24.0%",
+      "share_of_usa_total": "3.3%",
+      "key_systems": ["IRS e-file", "Social Security Administration", "Medicare/Medicaid", "SNAP/EBT", "Federal/Military Payroll"],
+      "notes": "IRS e-filed returns (FY2024): 219.9M (all forms), 147.1M individual e-filed. E-file rate 96% (2025 season). Social Security: 71.6M beneficiaries, ~864M annual disbursements. SSI: 7.4M recipients. Medicare/Medicaid: ~1.5B claims. Federal/military payroll: ~3.4M workers, ~86M paychecks/yr. State benefits (unemployment, SNAP): ~2B+ est.",
+      "sources": [
+        {"citation": "IRS — Filing Season Statistics", "url": "https://www.irs.gov/newsroom/filing-season-statistics-by-year"},
+        {"citation": "SSA — Fast Facts 2024", "url": "https://www.ssa.gov/policy/docs/chartbooks/fast_facts/2024/fast_facts24.html"}
+      ]
+    },
+    "atm-withdrawals": {
+      "usa_tps": 238,
+      "usa_annual_txns_billions": 7.5,
+      "share_of_category": "15.3%",
+      "share_of_usa_total": "4.1%",
+      "key_systems": ["Bank ATMs", "Independent ATM deployers"],
+      "notes": "~470K ATMs (most of any country). ~7.5B withdrawals in 2024 (-6% YoY). Avg withdrawal $198 (among highest globally). Declining as card/digital payments substitute. Zero overlap with electronic payments — ATM transactions are cash-out events.",
+      "sources": [
+        {"citation": "BIS / ATM Industry Association", "url": "https://www.atmia.com/"}
+      ]
+    }
+  },
+  "de_duplicated_usa_tps": {
+    "value": 18200,
+    "methodology": "Sum of de-duplicated contributions: Consumer Cards (5,040 — primary payment rail, excludes overlay wallets) + Bank Transfers/ACH (1,116 — non-card bank transfers; Fedwire/CHIPS counted under RTGS) + P2P Transfers (244 — Zelle/Venmo/CashApp, partially on bank rails but distinct economic transactions) + E-Commerce (incremental ~50 — 90%+ already on card/bank rails) + BNPL (incremental ~10 — near-complete overlay) + Bill Payments (incremental ~150 — portion not on card/ACH) + Payroll (incremental ~30 — portion not already in ACH) + Equity Markets (540) + ETD (600) + Commodities (overlap with ETD, not double-counted) + Forex (16) + Fixed Income (74) + OTC Derivatives (2) + Interbank RTGS (7) + CEX (149) + Government Payments (incremental ~100 — portion not on existing rails) + ATM Withdrawals (238 — zero overlap). Adjusted for card-wallet overlap, bill-payment rail overlap, payroll-ACH overlap.",
+    "range_low": 16000,
+    "range_high": 20500,
+    "notes": "Range reflects uncertainty in card-wallet de-duplication (Apple Pay overlay), bill payment rail attribution, government payment channel mix, and FX/OTC attribution methodology. Reserve currency effect adds ~3,000-4,000 TPS to US attribution across FX, fixed income, and derivatives."
+  },
+  "key_metrics": {
+    "card_transactions_per_capita_2024": 475,
+    "ach_transactions_billions_2025": 35.2,
+    "ach_value_trillions_2025": 93,
+    "fedwire_value_trillions_2024": 1133,
+    "fedwire_avg_transfer_millions": 5.4,
+    "fednow_transactions_2024": 414827,
+    "treasury_adv_billions_2024": 1055,
+    "card_spend_trillions_2024": 10,
+    "social_security_beneficiaries_millions": 71.6,
+    "irs_returns_filed_millions_2024": 219.9,
+    "zelle_value_trillions_2024": 1.04,
+    "atms_thousands": 470,
+    "nyse_nasdaq_market_cap_trillions": 50
+  },
+  "confidence": {
+    "score": 78,
+    "source_quality": 25,
+    "data_recency": 20,
+    "triangulation": 17,
+    "coverage": 16,
+    "notes": "Strong data quality from regulated US institutions: Nacha (ACH), FRB Services (Fedwire/FedNow), SIFMA (bonds), FINRA TRACE, MSRB, CME Group, Cboe, IRS, SSA. Card data anchored by Nilson Report and Federal Reserve Payments Study. Weakest areas: digital wallet transaction counts (Apple Pay doesn't disclose), FX and OTC attribution (USD involvement != US execution), government payment disaggregation. P2P data strong from Zelle (public company), weaker for Venmo/Cash App (estimated from parent company filings)."
+  }
+}
