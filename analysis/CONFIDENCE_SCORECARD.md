@@ -9,10 +9,11 @@ title: "Confidence Scorecard"
 
 ## Summary
 
-- **Categories scored:** 29
+- **Categories scored:** 29 (+ 4 new opaque-market categories tracked but not yet scored)
 - **Median score:** 62
 - **Highest:** Consumer Card Payments (91)
 - **Lowest:** AI Agent Transactions (34)
+- **Run 12 changes:** Equity Markets 86→88, Digital Wallets 67→70, FX 58→60, OTC Derivatives 68→66, Insurance 52→55, Remittances 58→55
 
 ## Scorecard
 
@@ -20,7 +21,7 @@ title: "Confidence Scorecard"
 |---|----------|--------|-------------|-------------|-------------|---------------|-----------|------|
 | 1 | Consumer Card Payments | Payments | 28 | 19 | 22 | 22 | **91** | :green_circle: High |
 | 2 | Exchange-Traded Derivatives | Traditional Finance | 27 | 19 | 20 | 22 | **88** | :green_circle: High |
-| 3 | Equity Markets (Stock Exchanges) | Traditional Finance | 26 | 18 | 22 | 20 | **86** | :green_circle: High |
+| 3 | Equity Markets (Stock Exchanges) | Traditional Finance | 26 | 18 | 24 | 20 | **88** | :green_circle: High |
 | 4 | Interbank Settlement (RTGS) | Banking | 26 | 18 | 20 | 18 | **82** | :green_circle: High |
 | 5 | Bank Transfers (ACH/RTGS) | Payments | 24 | 16 | 20 | 18 | **78** | :green_circle: Medium-High |
 | 6 | L1 & L2 Blockchain Transactions | Digital Assets | 22 | 19 | 20 | 15 | **76** | :green_circle: Medium-High |
@@ -28,20 +29,20 @@ title: "Confidence Scorecard"
 | 8 | Securities Settlement | Banking | 24 | 16 | 18 | 16 | **74** | :green_circle: Medium-High |
 | 9 | Commodities | Traditional Finance | 22 | 18 | 18 | 16 | **74** | :green_circle: Medium-High |
 | 10 | Peer-to-Peer Transfers | Payments | 20 | 17 | 16 | 16 | **69** | :yellow_circle: Medium-High |
-| 11 | OTC Derivatives | Traditional Finance | 22 | 16 | 14 | 16 | **68** | :yellow_circle: Medium-High |
+| 11 | OTC Derivatives | Traditional Finance | 22 | 16 | 12 | 16 | **66** | :yellow_circle: Medium-High |
 | 12 | IoT & Machine-to-Machine Payments | Emerging | 16 | 17 | 20 | 14 | **67** | :yellow_circle: Medium-High |
-| 13 | Digital Wallets & Mobile Payments | Payments | 18 | 17 | 16 | 16 | **67** | :yellow_circle: Medium-High |
+| 13 | Digital Wallets & Mobile Payments | Payments | 18 | 18 | 18 | 16 | **70** | :yellow_circle: Medium-High |
 | 14 | E-Commerce & Merchant Processing | Payments | 18 | 17 | 16 | 16 | **67** | :yellow_circle: Medium-High |
 | 15 | DeFi (Decentralised Finance) | Digital Assets | 18 | 19 | 15 | 10 | **62** | :yellow_circle: Medium-High |
 | 16 | Fixed Income / Bond Markets | Traditional Finance | 18 | 16 | 14 | 12 | **60** | :yellow_circle: Medium-High |
 | 17 | Buy Now Pay Later (BNPL) | Payments | 17 | 16 | 12 | 13 | **58** | :yellow_circle: Medium |
-| 18 | Remittances | Payments | 20 | 14 | 12 | 12 | **58** | :yellow_circle: Medium |
-| 19 | Foreign Exchange | Traditional Finance | 22 | 10 | 12 | 14 | **58** | :yellow_circle: Medium |
+| 18 | Remittances | Payments | 20 | 14 | 10 | 11 | **55** | :yellow_circle: Medium |
+| 19 | Foreign Exchange | Traditional Finance | 22 | 10 | 14 | 14 | **60** | :yellow_circle: Medium-High |
 | 20 | Centralised Crypto Exchanges | Digital Assets | 12 | 18 | 12 | 14 | **56** | :yellow_circle: Medium |
 | 21 | Tokenised Real-World Assets | Emerging | 14 | 18 | 12 | 12 | **56** | :yellow_circle: Medium |
 | 22 | Digital Game Sales & Subscriptions | Gaming | 14 | 16 | 12 | 14 | **56** | :yellow_circle: Medium |
 | 23 | ATM Withdrawals | Payments | 16 | 14 | 12 | 10 | **52** | :yellow_circle: Medium |
-| 24 | Insurance Premium Payments | Payments | 18 | 15 | 8 | 11 | **52** | :yellow_circle: Medium |
+| 24 | Insurance Premium Payments | Payments | 18 | 15 | 10 | 12 | **55** | :yellow_circle: Medium |
 | 25 | Tax & Government Payments | Government | 16 | 14 | 10 | 10 | **50** | :yellow_circle: Medium |
 | 26 | Bill Payments | Payments | 14 | 14 | 10 | 10 | **48** | :yellow_circle: Medium |
 | 27 | In-Game Microtransactions | Gaming | 10 | 16 | 8 | 10 | **44** | :red_circle: Medium |

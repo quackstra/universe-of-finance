@@ -284,13 +284,58 @@ research track with independent data collection, analysis, and projections.
 | Tokenised real estate | Fractional property ownership | Platform data |
 | Tokenised commodities | Digital commodity tokens | Platform data |
 
-### 7.3 Embedded Finance
+### 7.3 Central Bank Digital Currencies (CBDCs)
+
+| Subcategory | Description | Key Sources |
+|-------------|-------------|-------------|
+| e-CNY (Digital Yuan) | China's CBDC pilot — 3.48B cumulative txns through Nov 2025 | PBOC statistics |
+| Other CBDC pilots | e-Naira, Sand Dollar, DCash, Digital Euro (pilot) | Central bank reports |
+
+> **Added Run 12**: e-CNY has reached sufficient scale (~130-160 TPS) to warrant
+> its own taxonomy entry. Partially overlaps with Digital Wallets (Alipay/WeChat
+> support e-CNY). Other CBDCs are pre-scale but tracked for completeness.
+
+### 7.4 Embedded Finance
 
 | Subcategory | Description | Key Sources |
 |-------------|-------------|-------------|
 | Embedded payments | Payments within non-financial apps | Industry reports |
 | Embedded lending | Credit at point of sale | BNPL and fintech reports |
 | Embedded insurance | Contextual insurance purchases | Insurtech reports |
+
+---
+
+---
+
+## Identified Blind Spots (Run 12 — Opaque Markets Investigation)
+
+> These are transaction types that exist but are NOT currently measured in the Big
+> Number due to data opacity. They are documented here for transparency, not as
+> formal categories with TPS estimates.
+
+### Shadow Banking Transactions (China)
+- WMP subscriptions/redemptions, trust loans, entrusted loans
+- Estimated ~48-78 TPS but 🔴 Low confidence
+- Potential future category under Banking & Interbank
+
+### Informal Remittances
+- Hawala, fei-qian, hundi, underground banking networks
+- Estimated ~22-36 TPS but 🔴 Low confidence
+- Would extend existing Remittances category
+
+### Insurance Claims Processing
+- Claims filings, adjustments, and payouts (~55-148 TPS est.)
+- Distinct from premium payments (already captured)
+- Potential new sub-category under Payments → Insurance
+
+### Cash Economy
+- Transactions mediated by physical currency in shadow economies
+- Estimated ~2,000-3,450 TPS but too speculative for the Big Number
+- Serves as the primary structural blind spot acknowledgment
+
+### Private Markets
+- Private credit, PE/VC, real estate — high value, very low count (<1 TPS each)
+- Not material to TPS but significant for value-weighted analysis
 
 ---
 

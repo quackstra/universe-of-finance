@@ -1,0 +1,108 @@
+{
+  "metadata": {
+    "run": 12,
+    "date": "2026-04-11",
+    "theme": "Opaque Markets — Forensic Accountant + Shadow Economy Economist Investigation",
+    "sle_leads": ["forensic-accountant", "shadow-economy-economist"],
+    "capsules_produced": 48
+  },
+  "opacity_premium": {
+    "conservative_tps": {
+      "value": 3192,
+      "range": [2130, 4254],
+      "confidence": "medium",
+      "components": {
+        "china_net_new": { "value": 3000, "range": [2000, 4000] },
+        "informal_remittances": { "value": 29, "range": [22, 36] },
+        "insurance_claims_net": { "value": 55, "range": [30, 80] },
+        "ecny_net": { "value": 45, "range": [30, 60] },
+        "shadow_banking_china": { "value": 63, "range": [48, 78] }
+      }
+    },
+    "aggressive_tps": {
+      "value": 6350,
+      "range": [4200, 8500],
+      "confidence": "low"
+    },
+    "cash_economy_informational": {
+      "value": 2725,
+      "range": [2000, 3450],
+      "confidence": "very_low",
+      "note": "Not added to Big Number — too speculative"
+    }
+  },
+  "revised_big_number": {
+    "conservative": {
+      "value": 76900,
+      "range": [75880, 77954],
+      "change_pct": 4.3
+    },
+    "aggressive": {
+      "value": 80100,
+      "range": [77950, 82250],
+      "change_pct": 8.6
+    }
+  },
+  "china_revised": {
+    "prior_estimate_tps": { "value": 11000, "range": [8000, 14000] },
+    "updated_estimate_tps": { "value": 19450, "range": [18900, 20000] },
+    "uncertainty_band_prior": 6000,
+    "uncertainty_band_updated": 2250,
+    "improvement_pct": 62.5
+  },
+  "new_categories": {
+    "shadow_banking_china": {
+      "gross_tps": { "value": 63, "range": [48, 78] },
+      "annual_transactions": { "value": 2000000000, "range": [1500000000, 2400000000] },
+      "confidence_score": 25,
+      "sources": ["BBVA Research China Banking Monitor 2025", "PBOC Financial Stability Report"]
+    },
+    "informal_remittances": {
+      "gross_tps": { "value": 29, "range": [22, 36] },
+      "annual_transactions": { "value": 913000000, "range": [683000000, 1140000000] },
+      "confidence_score": 30,
+      "sources": ["World Bank Migration Brief 40", "IMF Occasional Paper 222"]
+    },
+    "ecny_cbdc": {
+      "gross_tps": { "value": 145, "range": [130, 160] },
+      "net_new_tps": { "value": 45, "range": [30, 60] },
+      "cumulative_transactions": 3480000000,
+      "cumulative_value_usd": 2370000000000,
+      "wallets_personal": 230000000,
+      "wallets_business": 19000000,
+      "confidence_score": 72,
+      "sources": ["PBOC/Gov.cn October 2025"]
+    },
+    "insurance_claims": {
+      "gross_tps": { "value": 101, "range": [55, 148] },
+      "annual_transactions": { "value": 3200000000, "range": [1700000000, 4700000000] },
+      "confidence_score": 35,
+      "sources": ["Swiss Re sigma 3/2024", "IAIS GIMAR 2025"]
+    }
+  },
+  "already_counted": {
+    "hft": {
+      "share_of_us_equity": { "value": 0.575, "range": [0.50, 0.65] },
+      "share_of_eu_equity": { "value": 0.375, "range": [0.35, 0.40] },
+      "share_of_asia_equity": { "value": 0.075, "range": [0.05, 0.10] },
+      "note": "Already included in equity market volumes — zero additional TPS"
+    },
+    "dark_pools": {
+      "us_off_exchange_share": { "value": 0.518, "source": "Bloomberg/FINRA Jan 2025" },
+      "eu_dark_share": { "value": 0.09, "range": [0.08, 0.10] },
+      "note": "Already counted in consolidated tape volumes"
+    },
+    "prop_trading": {
+      "share_of_exchange_volume": { "value": 0.175, "range": [0.15, 0.20] },
+      "note": "Trades execute on exchanges — already counted"
+    }
+  },
+  "confidence_revisions": {
+    "equity_markets": { "current": 86, "proposed": 88, "delta": 2, "reason": "Dark pool triangulation source added" },
+    "digital_wallets": { "current": 67, "proposed": 70, "delta": 3, "reason": "PBOC 2024 data + Ant restructuring" },
+    "foreign_exchange": { "current": 58, "proposed": 60, "delta": 2, "reason": "BIS survey + HFT composition" },
+    "otc_derivatives": { "current": 68, "proposed": 66, "delta": -2, "reason": "Wider uncertainty revealed by forensic analysis" },
+    "insurance_premiums": { "current": 52, "proposed": 55, "delta": 3, "reason": "Claims data adds lifecycle understanding" },
+    "remittances": { "current": 58, "proposed": 55, "delta": -3, "reason": "Informal share larger than modeled" }
+  }
+}
