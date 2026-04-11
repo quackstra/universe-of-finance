@@ -1,84 +1,84 @@
-# Research Agenda — Next Run (Run 10)
+# Research Agenda — Next Run (Run 13)
 
-> Updated 2026-03-29 after completing Run 9 (MEST Advantage + Brazil/EU + panel review + site polish).
+> Updated 2026-04-11 after completing Run 12 (Opaque Markets forensic investigation).
 
-## Status: Run 9 Complete
+## Status: Run 12 Complete
 
-MEST Advantage paper published (DLT compression thesis). Brazil deep dive (Pix #2, 6.3% global TPS).
-EU deep dive (18.2% global TPS, TIPS +402% YoY). Top-3 methodology panel review completed.
-Confidence uplift: ATM 52→58, Insurance 52→57, Payroll 53→59. About page and cross-cutting index added.
-5 country/region deep dives now complete (India, China, USA, Brazil, EU).
+Opaque Markets deep dive published. 48 capsules. Two new SLEs (#18 Forensic Accountant,
+#19 Shadow Economy Economist). Conservative Big Number revision to ~76,900 TPS (+4.3%).
+China opacity band narrowed 60%. CBDC category added to taxonomy.
 
-## What Run 10 Should Target
+## What Run 13 Should Target
 
-### Tier 1: Publication & Polish
+### Tier 1: Big Number Integration
 
-1. **Executive Summary** — One-page findings document with Big Number, MEST Number, key charts.
-   Target audience: financial regulators, infrastructure builders, DLT skeptics.
-   Should stand alone as a shareable PDF.
+1. **Official Big Number Revision** — Integrate the Run 12 conservative revision
+   (~76,900 TPS) into the Executive Summary, dashboard, and all cross-cutting
+   analyses. This requires updating: EXECUTIVE_SUMMARY.md, index.html, MEST.md,
+   OVERLAP_MATRIX.md.
 
-2. **Data Dictionary** — Document every field in the data.json schema. Machine-readable.
-   Powers future API/dashboard work.
+2. **Overlap Matrix v2** — The China revised estimate and new categories (shadow
+   banking, e-CNY, informal remittances) need overlap rules. Key questions:
+   - How much e-CNY overlaps with Digital Wallets?
+   - How much shadow banking WMP activity overlaps with Bank Transfers?
+   - Insurance claims — what fraction settles on bank/card rails?
 
-3. **Methodology Paper** — Formal write-up of triangulation-first approach, MEST framework,
-   overlap de-duplication rules. Citable format.
+3. **MEST Recalculation** — Recompute MEST Number with updated Big Number and
+   new category multipliers. New MEST categories: shadow banking (5-8x),
+   informal remittances (2-3x), insurance claims (4-6x), physical commodity OTC (15-20x).
 
-### Tier 2: New Deep Dives
+### Tier 2: Deepen Opaque Market Estimates
 
-4. **Japan deep dive** — 3rd largest economy, unique payment culture (cash-heavy but
-   rapidly digitizing), JPX derivatives, JGB market, PayPay adoption.
+4. **Hawala Corridor Mapping** — Map the 10 highest-volume informal remittance
+   corridors with per-corridor TPS estimates. Use shadow economy economist
+   corridor analysis method. Key corridors: Gulf→India, India→Nepal,
+   US→Mexico (informal), Gulf→Pakistan, Gulf→Philippines.
 
-5. **UK deep dive** — Faster Payments pioneer, CHAPS/BACS, FCA regulatory data,
-   London as FX/derivatives hub. Strong data availability.
+5. **China Shadow Banking v2** — Get 2025 WMP data when PBOC releases annual
+   report (typically March). Refine investor-based transaction count estimate.
 
-6. **Africa deep dive** — M-Pesa as original mobile money, fragmented but growing.
-   Kenya, Nigeria, South Africa. Mobile money ≠ digital wallet distinction.
+6. **Insurance Claims Deep Dive** — This is the most surprising finding from
+   Run 12 (55-148 TPS is significant). Needs its own dedicated research run
+   with better claims frequency data from NAIC (US), Lloyd's (UK), IRDAI (India).
 
-### Tier 3: MEST Extensions
+7. **e-CNY Tracking** — Monitor PBOC quarterly milestones. The Jan 2026 deposit
+   framework change may accelerate adoption significantly.
 
-7. **MEST by country** — Apply multipliers to all 5 deep-dive countries.
-   India's MEST advantage (simpler UPI stack = lower multiplier).
-   Create MEST leaderboard by country.
+### Tier 3: Country Deep Dives (Remaining)
 
-8. **MEST cost modeling** — Extend MEST Advantage paper with real cost data.
-   Visa interchange + scheme fees per MEST vs. on-chain gas per MEST.
-   Build the cost-per-MEST comparison table.
+8. **Japan deep dive** ��� Still pending from Run 10 agenda. 3rd largest economy,
+   cash-to-digital transition, JPX, JGB market.
 
-9. **MEST regulatory load** — Quantify how regulation drives MEST growth.
-   KYC/AML reporting creates MESTs. MiCA vs. no-regulation MEST differential.
+9. **UK deep dive** — Still pending. FX capital, Faster Payments pioneer.
 
-### Tier 4: Confidence & Data Quality
+10. **Middle East deep dive** �� NEW priority after opaque markets research.
+    UAE/Saudi/Qatar — rapid digitization, large informal remittance origin,
+    sovereign wealth fund transactions.
 
-10. **AI Agent Transactions** (conf: 34) — Still the weakest. Consider splitting into
-    "measured" (x402, Stripe agent billing) vs. "projected" tiers.
+### Tier 4: MEST Extensions
 
-11. **In-Game Microtransactions** (conf: 44) — Publishers report revenue not counts.
-    Epic Games Store + Roblox quarterly reports may yield transaction counts.
+11. **MEST cost modeling** — Still pending from Run 10 agenda. Per-category
+    cost-per-MEST. Now enriched by physical commodity OTC data (15-20x MEST
+    at high cost).
 
-12. **Bill Payments** (conf: 48) — No single global source. Bottom-up from:
-    utility connections (IEA), telecom subs (GSMA), streaming subs (platforms).
+12. **MEST regulatory load** — Still pending. Quantify how regulation drives
+    MEST growth. Now with MiCA data from EU deep dive.
 
-### Tier 5: Interactive Dashboard Updates
+### Tier 5: Dashboard & Publication
 
-13. **Dashboard v2** — Add Brazil and EU to country spotlight cards.
-    Add MEST Advantage visualization (compression waterfall chart).
-    Add version history link in footer.
+13. **Dashboard v4** — Add opaque markets visualization. Idea: "iceberg chart"
+    showing Big Number above the waterline, opacity premium below.
 
-14. **Payment Stack Visualization** — Show how commerce layers stack on payment rails.
-    Interactive Sankey or waterfall showing overlap flows.
-
-15. **Category Explorer** — Click any category → see methodology, data sources,
-    confidence breakdown, time-series chart, MEST cascade.
+14. **Opaque Markets standalone paper** — Like the MEST Advantage paper,
+    publish the opaque markets analysis as a standalone shareable document.
 
 ## Data Sources to Investigate
 
-- **Epic Games Store / Roblox 10-K** — Microtransaction counts
-- **JPX Annual Report** — Japan derivatives + equity volumes
-- **Bank of Japan Payment Statistics** — Japan payment infrastructure
-- **PayPay investor materials** — Japan mobile payments adoption
-- **FCA Payment Statistics** — UK payment volumes
-- **BACS/Faster Payments annual data** — UK real-time payments
-- **Central Bank of Kenya** — M-Pesa transaction data
-- **CBN (Nigeria)** — NIP instant payment volumes
-- **SARB (South Africa)** — Payment system statistics
-- **Visa/Mastercard 10-K** — Per-MEST cost derivation
+- **NAIC (US) Insurance Statistics** — Claims count data by line
+- **Lloyd's Statistics** — London market claims data
+- **IRDAI Annual Report** — Indian insurance claims
+- **PBOC 2025 Annual Report** — Updated WMP, shadow banking, e-CNY data
+- **JPX Annual Report** — Japan equity + derivatives volumes
+- **BACS / UK Finance** — UK payment infrastructure data
+- **Central Bank of UAE** — UAE payment system volumes
+- **SAMA (Saudi Arabia)** — SADAD, mada payment data

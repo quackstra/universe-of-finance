@@ -47,6 +47,8 @@ A payments economist at the BIS and a crypto forensics analyst at Chainalysis ap
 | 15 | `measurement-standards-expert` | Financial Data Standards Specialist | **Cross-cutting (methodology)** | Critical — definition consistency across all categories |
 | 16 | `statistical-methodologist` | Economic Measurement Methodologist | **Cross-cutting (methodology)** | Critical — confidence intervals and extrapolation for all estimates |
 | 17 | `transaction-lifecycle-analyst` | Transaction Lifecycle & MEST Analyst | **Cross-cutting (MEST analysis)** | Critical — MEST multiplier estimation for all categories |
+| 18 | `forensic-accountant` | Forensic Accountant & Financial Investigator | **Cross-cutting (opacity)** | Critical — opaque market volume estimation via proxy chains and fee-income analysis |
+| 19 | `shadow-economy-economist` | Shadow Economy Economist & Illicit Finance Researcher | **Cross-cutting (opacity)** | Critical — informal sector sizing via MIMIC, currency demand, and trade misinvoicing |
 
 ---
 
@@ -100,6 +102,31 @@ The following three SLEs are **methodology specialists**, not category specialis
 
 These three SLEs can be deployed individually or as a panel (see Methodology Review Protocol below).
 
+### Opacity & Shadow Economy Dispatch (NEW — Run 12)
+
+The following two SLEs are **opacity specialists** — forensic and economic researchers who estimate transaction volumes where conventional data sources fail. They are deployed when a category has low transparency, self-reported data of questionable reliability, or significant informal/shadow economy components.
+
+| Opacity SLE | Trigger | Role When Deployed |
+|------------|---------|-------------------|
+| `forensic-accountant` | Any "the reported number doesn't add up" or "how do we verify opaque data?" question. Also: China, HFT, proprietary trading, off-balance-sheet vehicles, any category where fee income can proxy for transaction volume | Uses proxy chains (fee income → implied volume, settlement throughput → implied trades, regulatory filings → cross-reference). Applies Benford's Law, round-trip detection, and jurisdictional opacity gradients. Produces a triangulated estimate with explicit opacity discount |
+| `shadow-economy-economist` | Any "how much activity is informal/unreported?" or "what's the shadow economy component?" question. Also: informal remittances, cash economy, underground banking, developing country opacity, HFT volume estimation | Uses MIMIC models, currency demand gaps, electricity consumption proxies, and trade misinvoicing analysis. Converts shadow economy GDP to transaction counts via sector-specific velocity. Produces a range estimate with ±20-30% inherent uncertainty |
+
+**Key principle**: These SLEs deploy alongside category primaries, not in place of them. The category SLE provides the "official" estimate; the opacity SLEs estimate what's missing.
+
+**Dispatch rules for opaque categories**:
+
+| Category | Opacity SLE Assignment | Why |
+|----------|----------------------|-----|
+| Digital Wallets (China) | `forensic-accountant` | Ant/Tencent corporate-confidential data; PBOC aggregates need forensic decomposition |
+| Foreign Exchange | `forensic-accountant` + `shadow-economy-economist` | BIS triennial = snapshot; daily transaction count is derived; informal FX in emerging markets |
+| OTC Derivatives | `forensic-accountant` | Bilateral contracts; BIS notional outstanding ≠ transaction count; ISDA data gaps |
+| Centralised Crypto Exchanges | `forensic-accountant` | Wash trading discount; offshore exchange opacity |
+| Informal Remittances | `shadow-economy-economist` | Hawala, fei-qian, underground banking — entirely outside formal reporting |
+| Cash Economy (new) | `shadow-economy-economist` | Currency demand method; formalization shock analysis |
+| HFT / Dark Pools (new) | `forensic-accountant` + `market-microstructure-analyst` | Order flow internalization; FINRA ATS data; SEC Rule 605 |
+| China (country-level) | `forensic-accountant` + `shadow-economy-economist` | Both formal opacity (corporate-confidential) and shadow banking |
+| Private Credit / PE | `forensic-accountant` | No exchange reporting; fund-level transaction counts from AUM × turnover |
+
 ### MEST Analysis Dispatch
 
 **MEST = Mutual Economic State Transition**: any change to a holding of economically valuable assets where more than one party has a material interest in the record or accounting of that change and its result.
@@ -126,7 +153,10 @@ The `transaction-lifecycle-analyst` SLE is a **cross-cutting MEST specialist** t
 | "What data sources exist for X?" | Category primary | `market-research-analyst` |
 | "How does settlement/clearing work?" | `post-trade-specialist` | Category primary |
 | "What's the regulatory outlook?" | `central-bank-economist` (payments/banking) / `government-statistician` (fiscal) | Category primary |
-| "What's the real number behind opaque data?" | Category primary (triangulation lead) | `market-research-analyst` + nearest adjacent SLE |
+| "What's the real number behind opaque data?" | `forensic-accountant` | Category primary, `shadow-economy-economist` |
+| "How much informal/shadow activity is there?" | `shadow-economy-economist` | `forensic-accountant`, Category primary |
+| "Is this self-reported data reliable?" | `forensic-accountant` | Category primary, `statistical-methodologist` |
+| "What's the underground/informal version of this?" | `shadow-economy-economist` | `forensic-accountant`, Category primary |
 | "How does this compare across regions?" | `market-research-analyst` | Category primary |
 | "How big is this market? What's the TAM?" | `market-sizing-specialist` | Category primary, `market-research-analyst` |
 | "What counts as a transaction in X?" | `measurement-standards-expert` | Category primary |
