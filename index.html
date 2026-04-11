@@ -613,6 +613,126 @@ tbody td {
   line-height: 1.5;
 }
 
+/* ─── Hypothesis Generator ─── */
+.hyp-intro {
+  max-width: 780px;
+  margin-bottom: 32px;
+  line-height: 1.7;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+.hyp-intro strong { color: var(--text); }
+
+.hyp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.hyp-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.hyp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.hyp-card.tier-field::before { background: var(--accent-amber); }
+.hyp-card.tier-forensic::before { background: var(--accent-red); }
+.hyp-card.tier-structural::before { background: var(--accent-purple); }
+
+.hyp-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+.hyp-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hyp-id {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+.hyp-id.tier-field { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.hyp-id.tier-forensic { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+.hyp-id.tier-structural { background: rgba(139,92,246,0.15); color: var(--accent-purple); }
+
+.hyp-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.hyp-body {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.hyp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.hyp-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  color: var(--muted);
+}
+
+.hyp-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.hyp-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.hyp-legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hyp-caveat {
+  margin-top: 12px;
+  padding: 20px 24px;
+  background: rgba(245,158,11,0.06);
+  border: 1px solid rgba(245,158,11,0.15);
+  border-radius: 12px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.hyp-caveat strong { color: var(--accent-amber); }
+
 /* ─── TTR Section ─── */
 .ttr-hero-numbers {
   display: flex;
@@ -1061,10 +1181,53 @@ nav .nav-links a:hover { color: var(--text); }
   </div>
 </section>
 
+<!-- ═══════ HYPOTHESIS GENERATOR ═══════ -->
+<section id="hypotheses">
+  <div class="container">
+    <h2>Hypothesis Generator</h2>
+    <p class="section-subtitle">Where human investigators should look next.</p>
+
+    <div class="hyp-intro">
+      <p>
+        This research was produced by AI agents operating within public data.
+        Agents can triangulate published statistics, apply forensic proxy methods,
+        and estimate from observable shadows &mdash; but they <strong>cannot make phone calls,
+        file FOIA requests, conduct interviews, attend conferences, or access
+        paywalled databases</strong>. The hypotheses below identify specific questions
+        where human investigation would yield disproportionate insight &mdash; places
+        where a forensic accountant with a Bloomberg terminal, a central bank
+        economist with PBOC contacts, or an academic with survey access could
+        move the needle in ways an agent never will.
+      </p>
+    </div>
+
+    <div class="hyp-legend">
+      <div class="hyp-legend-item"><div class="hyp-legend-dot" style="background:var(--accent-amber)"></div> Field Research &mdash; requires interviews, site visits, or FOIA</div>
+      <div class="hyp-legend-item"><div class="hyp-legend-dot" style="background:var(--accent-red)"></div> Forensic Accounting &mdash; requires paywalled data or financial analysis</div>
+      <div class="hyp-legend-item"><div class="hyp-legend-dot" style="background:var(--accent-purple)"></div> Structural &mdash; challenges the framework itself</div>
+    </div>
+
+    <div class="hyp-grid" id="hypGrid"></div>
+
+    <div class="hyp-caveat">
+      <strong>On the limits of agentic research:</strong> Every number in this project
+      was produced by AI agents searching the open web and applying analytical frameworks.
+      The agents are honest about what they don't know &mdash; confidence scores, uncertainty
+      bands, and opacity gradients are all attempts to quantify ignorance. But there is
+      a category of knowledge that agents <em>cannot</em> access: the informal, relational,
+      institutional knowledge held by practitioners. A retired PBOC official knows things
+      about WMP transaction flows that will never appear in a research paper. A hawala
+      broker in Dubai knows the real volume of the Gulf&ndash;South Asia corridor. A
+      Citadel Securities engineer knows the true order-to-trade ratio. These hypotheses
+      are invitations to those people &mdash; or to researchers who can reach them.
+    </div>
+  </div>
+</section>
+
 <!-- ═══════ FOOTER ═══════ -->
 <footer>
   <div class="container">
-    <p>Research methodology: Triangulation-first, 17 Soul Less Employees, 29 categories, 7 sectors &middot; Run 11</p>
+    <p>Research methodology: Triangulation-first, 19 Soul Less Employees, 29 categories, 7 sectors &middot; Run 12</p>
     <p><a href="https://github.com/quackstra/universe-of-finance" target="_blank" rel="noopener">View the full research on GitHub</a> &middot; <a href="versions/" rel="noopener">Version History</a></p>
     <p style="margin-top:16px;">&copy; 2026 Universe of Finance &middot; <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
   </div>
@@ -1658,6 +1821,111 @@ INSIGHTS.forEach(ins => {
     <div class="insight-card">
       <div class="insight-icon">${ins.icon}</div>
       <p>${ins.text}</p>
+    </div>
+  `;
+});
+
+/* ═══════════════════════════════════════════
+   HYPOTHESIS GENERATOR
+   ═══════════════════════════════════════════ */
+const HYPOTHESES = [
+  {
+    id: "H-01", tier: "forensic",
+    title: "China\u2019s real mobile payment count is 30\u201340% higher than PBOC aggregates suggest",
+    body: "PBOC reports ~280B mobile payments (2024), but this may exclude certain QR-code micro-transactions below reporting thresholds, offline transactions settled in batch, and cross-platform transfers classified as bank transfers. A forensic audit of Ant Group\u2019s restructured entity disclosures (now required post-2024 regulation) could reveal the true count. If confirmed, the Big Number increases by 2,000\u20134,000 TPS.",
+    tags: ["China", "Digital Wallets", "+2K\u20134K TPS", "Conf: 67\u219270+"],
+    why: "Ant Group\u2019s 2024 restructuring into a financial holding company triggers new CBIRC reporting. These filings may contain transaction count data never before public."
+  },
+  {
+    id: "H-02", tier: "field",
+    title: "Hawala networks process 2\u20133\u00d7 the World Bank\u2019s informal remittance estimate",
+    body: "The World Bank estimates informal remittances at 30\u201350% of formal flows. But field researchers in the Gulf\u2013South Asia corridor consistently report higher ratios. A structured survey of hawala brokers in Dubai, Karachi, and Mumbai \u2014 using the methodology of Passas (2003) and El-Qorchi (2002) \u2014 could calibrate the true ratio. This would directly impact the Remittances category and potentially add 50\u2013100 TPS to the Big Number.",
+    tags: ["Remittances", "Shadow Economy", "+50\u2013100 TPS", "Field Survey"],
+    why: "No survey of hawala broker transaction volumes has been published since 2015. The corridor has grown 3\u00d7 since then."
+  },
+  {
+    id: "H-03", tier: "structural",
+    title: "The Big Number undercounts by 40\u201360% because it ignores intra-firm treasury transactions",
+    body: "Large corporations (Apple, Toyota, Shell) move money between subsidiaries thousands of times daily \u2014 intercompany loans, cash pooling, transfer pricing settlements, hedging transactions. These are real financial transactions with real MEST cascades (treasury system \u2192 bank \u2192 FX \u2192 counterparty bank). They don\u2019t appear in any external data source because they settle on internal ledgers or via SWIFT Category 2 messages that aren\u2019t publicly reported. A survey of Fortune 500 treasury operations could size this.",
+    tags: ["Structural Blind Spot", "MEST Impact", "Framework Challenge"],
+    why: "If true, this would be the single largest gap in the Big Number \u2014 bigger than all of China\u2019s opacity combined."
+  },
+  {
+    id: "H-04", tier: "forensic",
+    title: "Insurance claims generate more transactions than insurance premiums",
+    body: "Our Run 12 estimate suggests 55\u2013148 TPS in claims-related transactions vs. ~444 TPS in premium payments. But the claims estimate is based on population \u00d7 frequency models, not observed data. The US NAIC (National Association of Insurance Commissioners) publishes claims-level data that could validate or reject this. If health claims processing in the US alone matches our global estimate, the true number could be 3\u20135\u00d7 higher.",
+    tags: ["Insurance", "NAIC Data", "+55\u2013500 TPS", "Paywalled"],
+    why: "NAIC\u2019s Statistical Compilation is paywalled ($500+). An academic with access could extract claims transaction counts by line in an afternoon."
+  },
+  {
+    id: "H-05", tier: "field",
+    title: "China\u2019s interbank repo market processes more daily transactions than all US equity markets combined",
+    body: "PBOC reports RMB 9.67 trillion/day in interbank repo (July 2025). At typical interbank lot sizes, we estimate ~97,000 trades/day. But if smaller banks trade in smaller lots (which CFETS data would reveal), the true count could be 500K\u20131M trades/day \u2014 making China\u2019s repo market one of the highest-frequency financial markets on Earth. CFETS (China Foreign Exchange Trade System) data would resolve this.",
+    tags: ["China", "Banking", "CFETS Access", "Interbank"],
+    why: "CFETS publishes aggregate statistics but the trade-level granularity is available to member institutions. A contact at a Chinese bank could provide the distribution."
+  },
+  {
+    id: "H-06", tier: "forensic",
+    title: "Crypto OTC desks process 5\u201310\u00d7 more value than on-exchange, but in 1/100th the transactions",
+    body: "Our estimate of 500K\u20132M crypto OTC trades/year is based on limited data. Circle, Cumberland, and Galaxy Digital publish no transaction counts. But their disclosed trading revenue, combined with typical OTC spread data (2\u201310 bps), implies transaction sizes of $500K\u2013$50M. If the true average is at the lower end, OTC transaction counts could be 10\u00d7 our estimate \u2014 still negligible for TPS but important for the MEST analysis (each OTC trade generates 4\u20136 MESTs for settlement, custody, and compliance).",
+    tags: ["Digital Assets", "OTC", "MEST Impact", "Revenue Forensics"],
+    why: "Galaxy Digital is publicly traded and files 10-K with the SEC. Trading revenue / estimated spread = implied deal count."
+  },
+  {
+    id: "H-07", tier: "structural",
+    title: "The MEST multiplier is converging, not diverging \u2014 regulation adds MESTs but automation removes them",
+    body: "We project the MEST multiplier rising from 7.4\u00d7 to 7.8\u20138.2\u00d7 by 2030, driven by regulation. But this ignores a counterforce: automation is collapsing MEST cascades. Straight-through processing (STP) in securities settlement eliminates manual reconciliation MESTs. API-based payments (FedNow, TIPS) reduce the clearing cascade. If automation offsets regulation, the multiplier may be flat or declining. This is testable with DTCC\u2019s STP rate data and SWIFT\u2019s gpi completion metrics.",
+    tags: ["MEST Framework", "Automation vs Regulation", "DTCC Data"],
+    why: "If the multiplier is flat, the \u201cMEST Tax\u201d projections in the MEST Advantage paper need revision \u2014 and the DLT compression thesis weakens."
+  },
+  {
+    id: "H-08", tier: "field",
+    title: "India\u2019s UPI transaction count will surpass 500 billion/year by 2027, making it 1/4 of the global Big Number",
+    body: "UPI processed 172B transactions in CY2024 and ~228B in CY2025 \u2014 a 33% YoY growth rate. If this rate holds (and India\u2019s digital payment mandate + expanding merchant acceptance suggest it will), UPI alone will exceed 500B transactions/year by 2027. At that point, a single Indian payment rail would represent ~15,850 TPS \u2014 roughly 20% of the current global Big Number. This can be tracked in real-time via NPCI monthly disclosures.",
+    tags: ["India", "UPI", "Projection", "NPCI Data"],
+    why: "The policy question: does the Big Number grow because the world is transacting more, or because India is pulling the average up?"
+  },
+  {
+    id: "H-09", tier: "forensic",
+    title: "The e-CNY\u2019s January 2026 deposit framework will trigger a 5\u201310\u00d7 transaction volume increase within 12 months",
+    body: "China\u2019s e-CNY shifted from cash-like to deposit-like on January 1, 2026. Banks can now pay interest on e-CNY holdings. This changes the incentive structure fundamentally: instead of a digital cash substitute, e-CNY becomes a savings vehicle with payment functionality. If even 5% of China\u2019s RMB 130T+ household deposits migrate to e-CNY, transaction volume could surge from ~4\u20135B/year to 20\u201350B/year. Early 2026 PBOC data would confirm.",
+    tags: ["CBDC", "China", "e-CNY", "Policy Shock"],
+    why: "This is the most testable hypothesis \u2014 PBOC publishes quarterly milestones. By June 2026 we\u2019ll know."
+  },
+  {
+    id: "H-10", tier: "structural",
+    title: "Cash transactions outnumber all digital transactions combined in at least 15 countries",
+    body: "Our shadow economy analysis estimates 2,000\u20133,450 TPS in cash transactions \u2014 but this uses ATM withdrawals as the only proxy. In countries like Japan (cash-to-GDP ratio: 20%), Germany (15%), and much of Sub-Saharan Africa, cash still dominates daily transactions. If ECB and BOJ payment diary surveys are correct that the average person makes 1\u20133 cash transactions per day, then Japan alone generates ~400M cash transactions/day (~4,600 TPS). The Big Number\u2019s structural blind spot may be larger than the number itself.",
+    tags: ["Cash Economy", "Structural", "BOJ/ECB Surveys", "Framework Limit"],
+    why: "This challenges whether TPS is a useful metric at all for countries where most transactions leave no digital trace."
+  },
+  {
+    id: "H-11", tier: "field",
+    title: "Physical commodity OTC trades have the highest MEST multiplier in the entire financial system (15\u201325\u00d7)",
+    body: "A single physical oil cargo trade (Vitol selling 2M barrels to a refinery) triggers: letter of credit issuance, insurance policy, bill of lading, customs declaration, quality inspection certificate, price fixation, hedge execution, vessel charter, demurrage settlement, and final payment. That\u2019s 10\u201315 discrete MEST-generating events from one trade. If trade finance documentation is included, the multiplier could reach 25\u00d7. Interviewing a trade finance banker at a commodity-focused bank (Soci\u00e9t\u00e9 G\u00e9n\u00e9rale, ING, ABN AMRO) would validate this.",
+    tags: ["Commodities", "MEST", "Trade Finance", "15\u201325\u00d7"],
+    why: "At <1 TPS but 25\u00d7 MEST, physical commodity OTC generates more bilateral state changes than entire categories with higher TPS."
+  },
+  {
+    id: "H-12", tier: "forensic",
+    title: "Africa\u2019s mobile money transaction count is systematically under-reported by 20\u201330%",
+    body: "GSMA\u2019s State of the Industry report is the standard source for mobile money data. But GSMA counts only registered mobile money services in its database. Informal mobile money agents who operate outside licensed networks (common in DRC, Somalia, Myanmar) are excluded. Central bank of Kenya data for M-Pesa is reliable, but extending this to 50+ African markets introduces compounding gaps. Field validation in 3\u20135 key markets (Nigeria NIP, Ghana MoMo, Tanzania M-Pesa) against central bank data would calibrate the error.",
+    tags: ["Africa", "Mobile Money", "GSMA Gap", "Field Validation"],
+    why: "If Africa\u2019s true mobile money TPS is 20\u201330% higher, it shifts the Africa deep dive from 2.1% to 2.5\u20132.7% of global TPS."
+  },
+];
+
+const hypGrid = document.getElementById('hypGrid');
+HYPOTHESES.forEach(h => {
+  hypGrid.innerHTML += `
+    <div class="hyp-card tier-${h.tier}">
+      <div class="hyp-header">
+        <span class="hyp-id tier-${h.tier}">${h.id}</span>
+        <span class="hyp-title">${h.title}</span>
+      </div>
+      <div class="hyp-body">${h.body}</div>
+      <div class="hyp-body" style="color:var(--accent-${h.tier === 'field' ? 'amber' : h.tier === 'forensic' ? 'red' : 'purple'});font-size:0.82rem;font-weight:600;">Why a human: ${h.why}</div>
+      <div class="hyp-meta">${h.tags.map(t => `<span class="hyp-tag">${t}</span>`).join('')}</div>
     </div>
   `;
 });
