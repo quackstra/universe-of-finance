@@ -1,0 +1,183 @@
+{
+  "country": "Middle East",
+  "iso_code": "ME",
+  "scope": "GCC (Saudi Arabia, UAE, Qatar, Kuwait, Bahrain, Oman) + Israel + Levant (Jordan, Lebanon, Iraq). EXCLUDES Egypt (see Africa) and Turkey (analyzed separately).",
+  "population": 260000000,
+  "gdp_usd_trillion": 4.2,
+  "last_updated": "2026-07-19",
+  "run": 13,
+  "total_tps_contribution": 800,
+  "share_of_global_tps": "1.1%",
+  "global_tps_reference": 73720,
+  "signature": "Value without count — the structural inverse of Africa. Low transaction count, extreme value per transaction (SWFs, oil settlement, high-value remittances).",
+  "categories": {
+    "consumer-cards": {
+      "me_tps": 500,
+      "share_of_category": "2.0%",
+      "share_of_me_total": "62.5%",
+      "key_systems": ["mada (Saudi national scheme)", "KNET (Kuwait)", "Benefit (Bahrain)", "Visa/Mastercard (regional)", "UAE domestic"],
+      "notes": "Saudi mada alone processed 8.9B txns in 2024 (~282 TPS). Saudi blended non-cash retail = 12.6B txns (79% of retail electronic). UAE card VALUE Dh511.4B (+13.3% YoY), counts estimated from value/avg-ticket. High average ticket sizes across the Gulf.",
+      "sources": [
+        {"citation": "WhiteSight — Saudi Digital Payments Boom (mada 8.9B txns 2024)", "url": "https://whitesight.net/how-saudi-arabia-engineered-a-digital-payments-boom/"},
+        {"citation": "Khaleej Times — UAE card transactions Dh511.4B 2024", "url": "https://www.khaleejtimes.com/business/uae-card-transactions-set-to-surge-to-dh5655-billion"}
+      ]
+    },
+    "bank-transfers": {
+      "me_tps": 130,
+      "share_of_category": "0.8%",
+      "share_of_me_total": "16.3%",
+      "key_systems": ["sarie (Saudi instant, 593M txns 2024)", "Aani (UAE, launched Oct 2023)", "Fawran (Qatar, launched Mar 2024)", "Fawri+/BenefitPay (Bahrain, ~410M)", "SARIE RTGS"],
+      "notes": "Central-bank-built instant rails. sarie 593M txns/yr (50% CAGR); Aani 6x YoY growth, ~25k P2P/day; Bahrain Fawri+ ~410M/yr; Fawran nascent. All top-down sovereign infrastructure, not startup-driven.",
+      "sources": [
+        {"citation": "ClearingPost — Saudi sarie 593M txns 2024", "url": "https://clearingpost.com/insights/saudi-arabia-payment-infrastructure-guide-sarie-mada-sadad/"},
+        {"citation": "CBUAE — Aani 12.5M users, 6x YoY", "url": "https://www.centralbank.ae/en/news-and-publications/news-and-insights/press-release/aani-delivers-a-transformational-leap-in-the-uae-s-digital-payments-landscape-12-5-million-users-and-instant-transfers-in-3-seconds/"}
+      ]
+    },
+    "digital-wallets": {
+      "me_tps": 95,
+      "share_of_category": "0.5%",
+      "share_of_me_total": "11.9%",
+      "key_systems": ["STC Pay (Saudi)", "Apple Pay / Google Pay (regional overlay)", "BenefitPay (Bahrain)", "urpay, Barq (Saudi)"],
+      "notes": "Wallet activity largely overlays card and instant rails (de-duplicated into those categories). STC Pay is the largest domestic wallet. Figure is gross before overlap netting.",
+      "sources": [
+        {"citation": "PaymentBrief — Saudi Mada, SARIE & STC Pay", "url": "https://paymentbrief.com/articles/saudi-arabia-mada-sarie-payment-stack/"}
+      ]
+    },
+    "bill-payments": {
+      "me_tps": 30,
+      "share_of_category": "1.0%",
+      "share_of_me_total": "3.8%",
+      "key_systems": ["SADAD (Saudi, ~500M txns)", "utility/government billers"],
+      "notes": "SADAD reached ~364-500M+ txns in 2024 (8% CAGR). Dominant Saudi bill-payment rail.",
+      "sources": [
+        {"citation": "PaymentBrief — SADAD ~500M txns/yr", "url": "https://paymentbrief.com/articles/saudi-arabia-mada-sarie-payment-stack/"}
+      ]
+    },
+    "remittances": {
+      "me_tps": 7.5,
+      "share_of_category": "13.2%",
+      "share_of_me_total": "0.9%",
+      "value_share_of_global": "~25-30%",
+      "key_systems": ["Al Ansari Exchange", "LuLu Exchange", "Al Fardan", "Western Union", "digital apps (Botim, e& money)"],
+      "notes": "OUTSIZED VALUE, small count. UAE sent AED 183B (~$50B) in 2024; Saudi comparable. GCC is the world's largest remittance ORIGIN by value. India received $129.4B in 2024, much Gulf-sourced. ~28M migrant workers in GCC.",
+      "sources": [
+        {"citation": "Khaleej Times — UAE AED 183B outward remittances 2024", "url": "https://www.khaleejtimes.com/business/remittance-boom-uae-leads-gcc-as-india-hits-record-1294b-in-2024"},
+        {"citation": "PaymentsCMI — UAE Remittances Market Data", "url": "https://paymentscmi.com/insights/united-arab-emirates-remittances-market-data-overview/"}
+      ]
+    },
+    "equity-markets": {
+      "me_tps": 8,
+      "share_of_category": "0.2%",
+      "share_of_me_total": "1.0%",
+      "key_systems": ["Tadawul/Saudi Exchange (~$3T cap)", "ADX", "DFM", "QSE", "Boursa Kuwait", "TASE (Israel)"],
+      "notes": "Tadawul ADV ~$1.5B, ~$3T market cap, 239 main-market listings. Regional exchanges are high-value but low by trade count vs India/US. Estimated combined ~500-800k trades/day.",
+      "sources": [
+        {"citation": "Saudi Exchange (Tadawul)", "url": "https://www.saudiexchange.sa/wps/portal/tadawul/home/"}
+      ]
+    },
+    "interbank-rtgs": {
+      "me_tps": 3,
+      "share_of_category": "6.0%",
+      "share_of_me_total": "0.4%",
+      "value_share_note": "~5x the count share — oil settlement and wholesale flows",
+      "key_systems": ["SARIE (Saudi RTGS)", "UAEFTS", "regional USD correspondent rails", "Project mBridge (multi-CBDC)"],
+      "notes": "High value, low count. Oil exports (~18M bbl/day GCC) settle in large infrequent wholesale transactions. UAE + Saudi participate in Project mBridge multi-CBDC bridge.",
+      "sources": [
+        {"citation": "BIS — Project mBridge", "url": "https://www.bis.org/about/bisih/topics/cbdc/mcbdc_bridge.htm"}
+      ]
+    }
+  },
+  "countries": {
+    "saudi-arabia": {
+      "population_millions": 33,
+      "gdp_usd_billions": 1100,
+      "blended_retail_tps": 399.5,
+      "non_cash_retail_annual_txns_billions": 12.6,
+      "mada_annual_txns_billions": 8.9,
+      "sarie_annual_txns_millions": 593,
+      "electronic_retail_share": "79% (2024, up from 70% in 2023)",
+      "confidence": "high",
+      "role": "Regional digitization engine. Vision 2030 state program. Fastest cash-to-digital transition recorded."
+    },
+    "uae": {
+      "population_millions": 10,
+      "gdp_usd_billions": 510,
+      "estimated_tps": 155,
+      "card_value_dh_billions": 511.4,
+      "aani_users_millions": 12.5,
+      "aani_yoy_growth": "6x",
+      "outward_remittances_usd_billions": 50,
+      "confidence": "medium",
+      "role": "Financial + remittance capital. Highest value density. mBridge participant."
+    },
+    "qatar": {
+      "population_millions": 3,
+      "gdp_usd_billions": 220,
+      "estimated_tps": 35,
+      "fawran_launched": "2024-03",
+      "fawran_txns_millions_14mo": 5.5,
+      "confidence": "low",
+      "role": "Small wealthy population. Fawran instant rail nascent."
+    },
+    "kuwait": {
+      "population_millions": 4.9,
+      "gdp_usd_billions": 160,
+      "estimated_tps": 45,
+      "knet_online_share": "~80%",
+      "confidence": "low",
+      "role": "KNET debit monopoly. Comparatively cash-heavy for income level."
+    },
+    "bahrain": {
+      "population_millions": 1.5,
+      "gdp_usd_billions": 45,
+      "estimated_tps": 20,
+      "benefitpay_annual_txns_millions": 421,
+      "benefitpay_yoy_growth": "22%",
+      "confidence": "medium",
+      "role": "Highest per-capita instant-payment intensity in region (BenefitPay/Fawri+)."
+    },
+    "oman": {
+      "population_millions": 5,
+      "gdp_usd_billions": 110,
+      "estimated_tps": 15,
+      "confidence": "low",
+      "role": "OmanNet switch, mobile payments growing."
+    },
+    "israel": {
+      "population_millions": 9.8,
+      "gdp_usd_billions": 540,
+      "estimated_tps": 100,
+      "confidence": "medium",
+      "role": "Developed economy, high card usage, TASE. Often analyzed separately from Gulf."
+    },
+    "levant": {
+      "countries": ["Jordan", "Lebanon", "Iraq"],
+      "estimated_tps": 30,
+      "confidence": "low",
+      "role": "Largely cash. Jordan JoMoPay; Lebanon dollarized crisis economy; Iraq Qi Card government rails."
+    }
+  },
+  "sovereign_wealth": {
+    "total_aum_usd_trillion": "4-5",
+    "funds": {
+      "ADIA": {"country": "UAE", "aum_usd_billions": 1100},
+      "PIF": {"country": "Saudi Arabia", "aum_usd_billions": 925},
+      "KIA": {"country": "Kuwait", "aum_usd_billions": 800},
+      "QIA": {"country": "Qatar", "aum_usd_billions": 530},
+      "Mubadala": {"country": "UAE", "aum_usd_billions": 330},
+      "ADQ": {"country": "UAE", "aum_usd_billions": 250}
+    },
+    "notes": "Near-zero transaction COUNT, extreme value per transaction. The purest value/count decoupling in the Universe of Finance — the exact inverse of African mobile money.",
+    "sources": [
+      {"citation": "SWF Institute — Sovereign Wealth Fund Rankings", "url": "https://www.swfinstitute.org/"}
+    ]
+  },
+  "confidence": {
+    "score": 56,
+    "source_quality": 15,
+    "data_recency": 16,
+    "triangulation": 12,
+    "coverage": 13,
+    "notes": "Saudi data excellent (SAMA/Saudi Payments publish systematically) and very recent (2024/2025). UAE value data strong but transaction counts derived from value/avg-ticket (medium). Smaller Gulf switches (KNET, OmanNet) and the Levant do not publish annual counts — estimated from card base and GDP (low). SWF flows are directionally certain but transaction-count-invisible. Coverage penalized for Levant opacity and count-vs-value estimation uncertainty. Recency is a strength this run — most figures are 2024/2025."
+  }
+}

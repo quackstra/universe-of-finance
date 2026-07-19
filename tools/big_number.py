@@ -65,7 +65,12 @@ def load_all_categories() -> list[dict]:
             data_file = cat_dir / "data.json"
             if data_file.exists():
                 with open(data_file) as f:
-                    categories.append(json.load(f))
+                    data = json.load(f)
+                # Skip non-category data.json files (e.g. deep-dives/*, timeseries).
+                # Only true category files carry a "slug" and feed the Big Number sum.
+                if "slug" not in data:
+                    continue
+                categories.append(data)
     return categories
 
 
