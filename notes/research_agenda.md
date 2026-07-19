@@ -1,84 +1,66 @@
-# Research Agenda — Next Run (Run 13)
+# Research Agenda — Next Run (Run 14)
 
-> Updated 2026-04-11 after completing Run 12 (Opaque Markets forensic investigation).
+> Updated 2026-07-19 after completing Run 13 (The Gulf & the Corridors).
 
-## Status: Run 12 Complete
+## Status: Run 13 Complete
 
-Opaque Markets deep dive published. 48 capsules. Two new SLEs (#18 Forensic Accountant,
-#19 Shadow Economy Economist). Conservative Big Number revision to ~76,900 TPS (+4.3%).
-China opacity band narrowed 60%. CBDC category added to taxonomy.
+Middle East / Gulf deep dive published (last major regional gap filled). Insurance Claims
+and Remittance Corridors deep dives added. `tools/big_number.py` slug crash fixed. ~48
+capsules. No new counted categories; Sovereign Wealth added as a value-not-count blind spot.
 
-## What Run 13 Should Target
+## Priority Queue (inside-out order)
 
-### Tier 1: Big Number Integration
+### Tier 1: Resolve the Big Number reconciliation (carried from Run 13)
 
-1. **Official Big Number Revision** — Integrate the Run 12 conservative revision
-   (~76,900 TPS) into the Executive Summary, dashboard, and all cross-cutting
-   analyses. This requires updating: EXECUTIVE_SUMMARY.md, index.html, MEST.md,
-   OVERLAP_MATRIX.md.
+1. **Programmatic vs overlay gap.** The tool returns **73,716 TPS**; Run 12's "conservative
+   revision" claimed **~76,900 TPS**. These are not reconciled. Decide and execute ONE of:
+   - (a) Integrate the revision into category `data.json` (update China/insurance/
+     remittance values; add shadow-banking + e-CNY rows) so the tool returns ~76,900, OR
+   - (b) Formalize a "manual overlay" layer in `big_number.py` (a documented additive block
+     for opaque/net-new categories) so both the base 73,716 and the overlay total are
+     reported side by side.
+   Recommendation: (b) — keeps the audited base clean and makes the overlay explicit.
 
-2. **Overlap Matrix v2** — The China revised estimate and new categories (shadow
-   banking, e-CNY, informal remittances) need overlap rules. Key questions:
-   - How much e-CNY overlaps with Digital Wallets?
-   - How much shadow banking WMP activity overlaps with Bank Transfers?
-   - Insurance claims — what fraction settles on bank/card rails?
+2. **Add a CI smoke-test** that runs `tools/big_number.py` and asserts a non-crash + a
+   plausible total range. The slug bug went undetected for multiple runs; a 5-line test
+   prevents recurrence. (See `.github/` — a workflow likely already exists to extend.)
 
-3. **MEST Recalculation** — Recompute MEST Number with updated Big Number and
-   new category multipliers. New MEST categories: shadow banking (5-8x),
-   informal remittances (2-3x), insurance claims (4-6x), physical commodity OTC (15-20x).
+### Tier 2: Apply the Run 13 taxonomy notes
 
-### Tier 2: Deepen Opaque Market Estimates
+3. Apply `notes/taxonomy_changes.md`: add the Sovereign Wealth blind-spot entry to
+   TAXONOMY.md; add cross-references (Insurance Premiums↔Claims, Remittances↔Corridors).
 
-4. **Hawala Corridor Mapping** — Map the 10 highest-volume informal remittance
-   corridors with per-corridor TPS estimates. Use shadow economy economist
-   corridor analysis method. Key corridors: Gulf→India, India→Nepal,
-   US→Mexico (informal), Gulf→Pakistan, Gulf→Philippines.
+### Tier 3: Deepen the value/count framework
 
-5. **China Shadow Banking v2** — Get 2025 WMP data when PBOC releases annual
-   report (typically March). Refine investor-based transaction count estimate.
+4. **The Value/Count Spectrum paper** — Run 13 crystallized a strong organizing principle:
+   Africa (max count, min value) ↔ Middle East (min count, max value). Publish a standalone
+   cross-cutting paper plotting every category on this axis (value-per-transaction on one
+   axis, TPS on the other). This is a genuinely novel framing worth a shareable document
+   (like the MEST Advantage paper).
 
-6. **Insurance Claims Deep Dive** — This is the most surprising finding from
-   Run 12 (55-148 TPS is significant). Needs its own dedicated research run
-   with better claims frequency data from NAIC (US), Lloyd's (UK), IRDAI (India).
+5. **China Shadow Banking v2** — get 2025 PBOC WMP data (still pending from Run 12/13).
 
-7. **e-CNY Tracking** — Monitor PBOC quarterly milestones. The Jan 2026 deposit
-   framework change may accelerate adoption significantly.
+6. **e-CNY / mBridge tracking** — UAE + Saudi are mBridge participants (surfaced in the
+   Middle East deep dive). Track mBridge production milestones; this is where CBDC meets
+   high-value cross-border settlement.
 
-### Tier 3: Country Deep Dives (Remaining)
+### Tier 4: Remaining country/region deep dives
 
-8. **Japan deep dive** ��� Still pending from Run 10 agenda. 3rd largest economy,
-   cash-to-digital transition, JPX, JGB market.
+7. **Turkey** — deliberately excluded from the Middle East deep dive (Europe/Asia bridge,
+   huge lira transaction volumes, high inflation → high nominal TPS). Deserves its own dive.
+8. **Southeast Asia** (Indonesia/Vietnam/Philippines domestic) — QRIS, VietQR growth.
 
-9. **UK deep dive** — Still pending. FX capital, Faster Payments pioneer.
+## Revisions Needed
 
-10. **Middle East deep dive** �� NEW priority after opaque markets research.
-    UAE/Saudi/Qatar — rapid digitization, large informal remittance origin,
-    sovereign wealth fund transactions.
+- Integrate or overlay the Run 12 ~76,900 figure (Tier 1 above) — the single biggest
+  open inconsistency in the corpus.
+- Consider upgrading Remittances category confidence given the new corridor triangulation.
 
-### Tier 4: MEST Extensions
+## Data Sources to Investigate (carried + new)
 
-11. **MEST cost modeling** — Still pending from Run 10 agenda. Per-category
-    cost-per-MEST. Now enriched by physical commodity OTC data (15-20x MEST
-    at high cost).
-
-12. **MEST regulatory load** — Still pending. Quantify how regulation drives
-    MEST growth. Now with MiCA data from EU deep dive.
-
-### Tier 5: Dashboard & Publication
-
-13. **Dashboard v4** — Add opaque markets visualization. Idea: "iceberg chart"
-    showing Big Number above the waterline, opacity premium below.
-
-14. **Opaque Markets standalone paper** — Like the MEST Advantage paper,
-    publish the opaque markets analysis as a standalone shareable document.
-
-## Data Sources to Investigate
-
-- **NAIC (US) Insurance Statistics** — Claims count data by line
-- **Lloyd's Statistics** — London market claims data
-- **IRDAI Annual Report** — Indian insurance claims
-- **PBOC 2025 Annual Report** — Updated WMP, shadow banking, e-CNY data
-- **JPX Annual Report** — Japan equity + derivatives volumes
-- **BACS / UK Finance** — UK payment infrastructure data
-- **Central Bank of UAE** — UAE payment system volumes
-- **SAMA (Saudi Arabia)** — SADAD, mada payment data
+- **PBOC 2025 Annual Report** — WMP, shadow banking, e-CNY.
+- **BIS mBridge status updates** — production milestones.
+- **World Bank Migration & Development Brief 41** (next edition) — refreshed corridor data.
+- **NAIC / CAQH 2025 Index** — refine the insurance claim batch ratio (dominant uncertainty).
+- **SAMA / CBUAE / QCB annual reports** — firmer Gulf transaction counts to upgrade
+  Middle East confidence from 56.

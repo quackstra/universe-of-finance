@@ -204,6 +204,10 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 - **[TTR Framework](analysis/TTR.md)** — Total Tokenizable Resources (~170B items, <0.3% tokenized)
 - **[TTR Valuation](analysis/TTR_VALUATION.md)** — Global tokenizable asset value (~$890T, 0.002% penetration)
 - **[Africa Deep Dive](analysis/deep-dives/africa/REPORT.md)** — Mobile money capital, M-Pesa pioneer, 3.9% of global TPS
+- **[Middle East Deep Dive](analysis/deep-dives/middle-east/REPORT.md)** — Africa inverted: low count, extreme value (SWFs, oil, remittance origin), 1.1% of global TPS
+- **[Opaque Markets](analysis/deep-dives/opaque-markets/REPORT.md)** — What the Big Number misses: shadow banking, dark pools, hawala, e-CNY
+- **[Insurance Claims Deep Dive](analysis/deep-dives/insurance-claims/REPORT.md)** — The payout lifecycle: ~1,110 TPS of messages, ~95 TPS of net-new money
+- **[Remittance Corridors](analysis/deep-dives/remittance-corridors/REPORT.md)** — Top 10 flows (~18.7 TPS), the Gulf engine room, the hawala shadow
 - **[Methodology Paper](analysis/METHODOLOGY_PAPER.md)** — Formal citable research methodology
 - **[Data Dictionary](analysis/DATA_DICTIONARY.md)** — Schema documentation for all data.json files
 - **[SLE Framework](souls/RECRUITER.md)** — 17 expert personas behind the research
