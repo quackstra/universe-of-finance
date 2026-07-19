@@ -1,0 +1,46 @@
+{
+  "topic": "Remittance Corridors",
+  "type": "thematic-deep-dive",
+  "last_updated": "2026-07-19",
+  "run": 13,
+  "complements": ["middle-east", "payments/remittances"],
+  "global_context": {
+    "formal_lmic_remittances_2024_usd_billions": 685,
+    "true_incl_informal_usd_trillion": 1.1,
+    "informal_uplift_pct": 60,
+    "global_remittance_tps_net": 57,
+    "source": {"citation": "World Bank — 2024 remittances to LMICs $685B, true >$1.1T", "url": "https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar"}
+  },
+  "corridors": [
+    {"rank": 1, "corridor": "US->Mexico", "value_usd_billions": 65, "avg_ticket_usd": 340, "txns_millions": 191, "tps": 6.06, "informal_share_pct": 3, "confidence": "high"},
+    {"rank": 2, "corridor": "Nepal->India (incl hawala)", "value_usd_billions": 13.5, "avg_ticket_usd": 150, "txns_millions": 90, "tps": 2.85, "informal_share_pct": 40, "confidence": "low", "note": "~$8B formal + ~$5-6B open-border hawala/cash"},
+    {"rank": 3, "corridor": "UAE->India", "value_usd_billions": 30, "avg_ticket_usd": 400, "txns_millions": 75, "tps": 2.38, "informal_share_pct": 15, "confidence": "medium", "gulf_origin": true},
+    {"rank": 4, "corridor": "Saudi->India", "value_usd_billions": 12, "avg_ticket_usd": 250, "txns_millions": 48, "tps": 1.52, "informal_share_pct": 25, "confidence": "low", "gulf_origin": true},
+    {"rank": 5, "corridor": "US->India", "value_usd_billions": 28, "avg_ticket_usd": 700, "txns_millions": 40, "tps": 1.27, "informal_share_pct": 5, "confidence": "high", "note": "high ticket — skilled worker corridor"},
+    {"rank": 6, "corridor": "Saudi->Pakistan", "value_usd_billions": 9, "avg_ticket_usd": 250, "txns_millions": 36, "tps": 1.14, "informal_share_pct": 30, "confidence": "low", "gulf_origin": true},
+    {"rank": 7, "corridor": "US->Philippines", "value_usd_billions": 14, "avg_ticket_usd": 400, "txns_millions": 35, "tps": 1.11, "informal_share_pct": 8, "confidence": "high"},
+    {"rank": 8, "corridor": "UAE->Pakistan", "value_usd_billions": 6, "avg_ticket_usd": 300, "txns_millions": 20, "tps": 0.63, "informal_share_pct": 25, "confidence": "low", "gulf_origin": true},
+    {"rank": 9, "corridor": "UAE->Philippines", "value_usd_billions": 7, "avg_ticket_usd": 350, "txns_millions": 20, "tps": 0.63, "informal_share_pct": 12, "confidence": "medium", "gulf_origin": true},
+    {"rank": 10, "corridor": "Kuwait/Qatar->India (grouped)", "value_usd_billions": 10, "avg_ticket_usd": 280, "txns_millions": 36, "tps": 1.13, "informal_share_pct": 20, "confidence": "low", "gulf_origin": true}
+  ],
+  "totals": {
+    "value_usd_billions": 194.5,
+    "txns_millions": 591,
+    "tps": 18.72,
+    "share_of_global_remittance_count_pct": 33,
+    "blended_informal_share_pct": 17,
+    "informal_txn_uplift_tps": "5-8",
+    "gulf_originated_corridors": 6,
+    "gulf_corridor_value_usd_billions": 74,
+    "gulf_corridor_tps": 7.5,
+    "triangulation": "Gulf corridor TPS (~7.5) matches Middle East deep dive outbound remittance TPS (~7.5) — independent cross-check"
+  },
+  "run12_reconciliation": {
+    "informal_remittance_finding_tps": "22-36",
+    "note": "Top-10 corridor informal uplift (~5-8 TPS) is consistent with Run 12's global informal remittance estimate of +22-36 TPS across all corridors."
+  },
+  "confidence": {
+    "score": 54,
+    "notes": "US-originated corridors high confidence (formal, well-tracked). Gulf->South Asia medium-low (hawala share estimated). Nepal open-border lowest. Avg ticket sizes are corridor-typical estimates. Value figures anchored to World Bank / bilateral corridor data; transaction counts derived via value/ticket."
+  }
+}
