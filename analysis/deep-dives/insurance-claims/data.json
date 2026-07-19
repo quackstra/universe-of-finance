@@ -1,0 +1,75 @@
+{
+  "topic": "Insurance Claims",
+  "type": "thematic-deep-dive",
+  "last_updated": "2026-07-19",
+  "run": 13,
+  "follows_up": "opaque-markets (Run 12) — claims flagged at 55-148 TPS net-new",
+  "global_tps_reference": 73720,
+  "layers": {
+    "claim_events_administrative": {
+      "annual_volume_billions": 35,
+      "tps_gross": 1110,
+      "notes": "Submission + adjudication + status messages. Mostly EDI, not money movement. Dominated by US + global health (medical + pharmacy + dental)."
+    },
+    "settlement_payments_money_movement": {
+      "annual_volume_billions": "2.5-4",
+      "tps_gross": "80-130",
+      "notes": "Actual payouts. Shrunk from Layer 1 by ACH remittance batching (4-8 claims per payment) and denials/zero-pay (~25%)."
+    },
+    "net_new_to_big_number": {
+      "run12_range_tps": "55-148",
+      "refined_tps": "90-100",
+      "midpoint_tps": 95,
+      "notes": "Claim payments NOT already on counted bank/card rails: instant/push-to-card disbursements, RTP payouts, emerging-market cash/cross-border settlement. ~85-90% of settlement value already rides counted ACH/card rails."
+    }
+  },
+  "breakdown": {
+    "us_health": {
+      "medical_claims_billions": 6.0,
+      "pharmacy_claims_billions": 6.3,
+      "dental_claims_billions": 0.5,
+      "total_events_billions": 12.8,
+      "tps": 412,
+      "anchor": "CAQH 31.5B administrative verifications 2024 confirms order of magnitude",
+      "source": {"citation": "AJMC — 2024 CAQH Index", "url": "https://www.ajmc.com/view/2024-caqh-index-foresees-major-opportunity-for-health-care-savings"}
+    },
+    "global_health": {
+      "total_events_billions": 30,
+      "tps_gross": 950,
+      "notes": "US ~2.5x scale-up; single-payer systems adjudicate differently, so ratio < premium share"
+    },
+    "global_pc": {
+      "us_auto_claims_millions": "35-45",
+      "us_home_claims_millions": 4.5,
+      "us_total_millions": 60,
+      "global_total_millions": 200,
+      "tps_gross": 6,
+      "anchors": [
+        {"metric": "US auto collision frequency", "value": "6.2 per 100 insured vehicle-years", "source": "https://www.iihs.org/research-areas/auto-insurance"},
+        {"metric": "US home claim frequency", "value": "5.3% of insured homes (2023)", "source": "https://www.iii.org/fact-statistic/facts-statistics-homeowners-and-renters-insurance"}
+      ]
+    },
+    "global_life_annuity": {
+      "claims_millions": "50-100",
+      "tps_gross": "2-3",
+      "notes": "Low count, high value per payout — value/count inversion in miniature"
+    }
+  },
+  "batch_ratio": {
+    "claims_per_payment": "4-8",
+    "paid_share": 0.75,
+    "notes": "Dominant uncertainty. Health payers batch adjudicated claims into single ACH remittance (EFT/ERA). Small changes swing estimate +/- 40 TPS.",
+    "source": {"citation": "Nacha — Healthcare ACH Claim Payments 2024", "url": "https://www.nacha.org/news/ach-healthcare-claim-payments-rise-again-2024-continuing-11-year-climb"}
+  },
+  "recommendation": "Do NOT add as a standalone Big Number category. Treat as documented adjacency ~95 TPS net-new. Re-measure annually as push-to-card / RTP instant claim disbursement converts batched ACH (low count) to 1:1 instant (high count).",
+  "confidence": {
+    "score": 60,
+    "prior_score": 55,
+    "delta": "+5 (upgraded 🔴→🟡)",
+    "source_quality": 16,
+    "data_recency": 16,
+    "triangulation": 14,
+    "coverage": 14,
+    "notes": "Upgraded on CAQH (31.5B verifications) and NACHA healthcare-ACH anchors. Batch ratio (4-8x) remains the dominant uncertainty. Global (non-US) claim counts estimated. Life/annuity count is directional."
+  }
+}
