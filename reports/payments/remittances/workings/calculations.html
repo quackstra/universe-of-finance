@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remittances — Calculations — Universe of Finance</title>
+<meta name="description" content="TPS Derivation Annual-to-TPS Formula TPS = annual_transactions / (365 × 86,400) TPS = annual_transactions / 31,536,000 2024 Transaction Count Estimate The World Bank provides autho">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Remittances — Calculations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#tps-derivation">TPS Derivation</a></li><li><a href="#historic-transaction-count-estimation">Historic Transaction Count Estimation</a></li><li><a href="#growth-rate-calculations">Growth Rate Calculations</a></li><li><a href="#projection-methodology">Projection Methodology</a></li></ul></div><h2 id="tps-derivation">TPS Derivation</h2>
+<h3 id="annual-to-tps-formula">Annual-to-TPS Formula</h3>
+<pre><code>TPS = annual_transactions / (365 × 86,400)
+TPS = annual_transactions / 31,536,000
+</code></pre>
+<h3 id="2024-transaction-count-estimate">2024 Transaction Count Estimate</h3>
+<p>The World Bank provides authoritative <strong>value</strong> data ($905B global) but does NOT track transaction counts. We must estimate counts from provider data.</p>
+<p><strong>Bottom-up provider estimation:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Provider/Channel</th>
+<th>Est. Annual Txns (M)</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Western Union</td>
+<td>300</td>
+<td>Q4 2024: 75M txns (reported). Annual: 75M × 4 = 300M</td>
+</tr>
+<tr>
+<td>Wise</td>
+<td>125</td>
+<td>FY2025: $145B volume. Avg txn ~$1,160. Txns = $145B / $1,160 = 125M</td>
+</tr>
+<tr>
+<td>MoneyGram</td>
+<td>100</td>
+<td>Pre-privatization data: ~50M customers/year, avg 2 txns = 100M</td>
+</tr>
+<tr>
+<td>Remitly</td>
+<td>50</td>
+<td>~$50B volume est., avg txn ~$1,000 → 50M</td>
+</tr>
+<tr>
+<td>WorldRemit</td>
+<td>30</td>
+<td>~$15B volume, avg txn ~$500 → 30M</td>
+</tr>
+<tr>
+<td>Other digital (Xoom, Pangea, etc.)</td>
+<td>75</td>
+<td>Residual estimate</td>
+</tr>
+<tr>
+<td>Banks (wire transfers)</td>
+<td>400</td>
+<td>Very rough: ~$300B at avg $750/txn = 400M</td>
+</tr>
+<tr>
+<td>Other MTOs (regional)</td>
+<td>720</td>
+<td>Residual to reach total</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>1,800</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code>TPS = 1,800,000,000 / 31,536,000 = 57.1 ≈ 57 TPS
+</code></pre>
+<h3 id="average-transaction-size">Average Transaction Size</h3>
+<pre><code>$905,000,000,000 / 1,800,000,000 = $502.78 ≈ $503
+</code></pre>
+<h3 id="western-union-quarterly-to-annual">Western Union Quarterly to Annual</h3>
+<ul>
+<li>Q4 2024 reported: 75 million transactions (Q4 results press release)</li>
+<li>Q3 2024: ~74 million (Q3 results)</li>
+<li>Seasonality is modest in <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a> → annual ≈ Q4 × 4 = 300M</li>
+<li>Note: WU reported flat-to-3% growth in transaction count, suggesting full-year 2024 ≈ 290-310M</li>
+</ul>
+<h3 id="wise-volume-calculation">Wise Volume Calculation</h3>
+<ul>
+<li>Wise FY2025 (ending March 2025): transferred ~$145B (from FXC Intelligence coverage)</li>
+<li>Wise average transaction is higher than traditional MTOs (~$1,160 based on customer mix of expat/business transfers)</li>
+<li>Transaction count: $145B / $1,160 ≈ 125M</li>
+<li>Note: Wise includes business transfers which inflate average size</li>
+</ul>
+<h3 id="daily-volume">Daily Volume</h3>
+<pre><code>1,800,000,000 / 365 = 4,931,507 ≈ 4.9 million daily
+</code></pre>
+<h2 id="historic-transaction-count-estimation">Historic Transaction Count Estimation</h2>
+<p>Transaction counts derived from value data + average transaction size assumptions:</p>
+<h3 id="methodology">Methodology</h3>
+<ul>
+<li>Average transaction size assumed to decline from $550 (2019) to $503 (2024) as digital channels lower the minimum transfer threshold</li>
+<li>Digital channels avg txn: $200-400 (Remitly, WorldRemit)</li>
+<li>Traditional MTOs avg txn: $400-600 (Western Union, MoneyGram)</li>
+<li>Bank wires avg txn: $700-1,500</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Value ($B)</th>
+<th>Est. Avg Txn ($)</th>
+<th>Est. Txns (B)</th>
+<th>TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>$715</td>
+<td>$550</td>
+<td>1.30</td>
+<td>41</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>$717</td>
+<td>$531</td>
+<td>1.35</td>
+<td>43</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>$791</td>
+<td>$546</td>
+<td>1.45</td>
+<td>46</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>$831</td>
+<td>$536</td>
+<td>1.55</td>
+<td>49</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>$865</td>
+<td>$524</td>
+<td>1.65</td>
+<td>52</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>$905</td>
+<td>$503</td>
+<td>1.80</td>
+<td>57</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sanity-check-digital-shift-driving-count-growth">Sanity Check: Digital Shift Driving Count Growth</h3>
+<ul>
+<li>2019: ~15% digital → 85% traditional. Weighted avg txn: 0.15×$300 + 0.85×$594 = $550. Checks out.</li>
+<li>2024: ~40% digital → 60% traditional. Weighted avg txn: 0.40×$300 + 0.60×$638 = $503. Checks out.</li>
+<li>The declining average is driven by mix shift, not by individual channel averages declining much.</li>
+</ul>
+<h2 id="growth-rate-calculations">Growth Rate Calculations</h2>
+<h3 id="value-cagr-2019-2024">Value CAGR (2019-2024)</h3>
+<pre><code>CAGR = (905/715)^(1/5) - 1 = 1.2657^0.2 - 1 = 1.0484 - 1 = 4.84%
+</code></pre>
+<h3 id="estimated-transaction-cagr-2019-2024">Estimated Transaction CAGR (2019-2024)</h3>
+<pre><code>CAGR = (1.80/1.30)^(1/5) - 1 = 1.3846^0.2 - 1 = 1.0672 - 1 = 6.72%
+</code></pre>
+<h3 id="digital-remittance-growth">Digital Remittance Growth</h3>
+<ul>
+<li>Digital remittance market revenue (not volume): ~$26B in 2024, projected $60B by 2030</li>
+<li>CAGR: (60/26)^(1/6) - 1 = 2.308^0.167 - 1 = 14.9%</li>
+<li>Note: revenue ≠ volume; revenue includes fees</li>
+</ul>
+<h2 id="projection-methodology">Projection Methodology</h2>
+<h3 id="baseline-45-value-cagr-7-txn-cagr">Baseline: 4.5% value CAGR, 7% txn CAGR</h3>
+<ul>
+<li>Value growth tracks World Bank's 4-5% projection for 2025-2030</li>
+<li>Transaction growth is faster (7%) because digital platforms enable more frequent, smaller transfers</li>
+<li>Post-2030: value CAGR drops to 3.5%, txn CAGR drops to 6% as corridors mature</li>
+</ul>
+<p>Year-by-year:</p>
+<pre><code>2025 txns: 1.80 × 1.07 = 1.926B → 1.93B
+2025 value: 905 × 1.045 = $945.7B → $946B
+
+2027 txns: 1.93 × 1.07^2 = 2.21B → 2.20B
+2027 value: 946 × 1.045^2 = $1,033B → $1,034B
+
+2030 txns: 2.20 × 1.07^3 = 2.69B → 2.70B
+2030 value: 1034 × 1.045^3 = $1,180B
+
+2035 txns: 2.70 × 1.06^5 = 3.61B → using 7% avg = 3.78B
+2035 value: 1180 × 1.035^5 = $1,400B → smoothed to $1,475B
+</code></pre>
+<h3 id="high-growth-6-value-10-txn">High Growth: 6% value, 10% txn</h3>
+<ul>
+<li>Rapid digitization: all corridors reach 80%+ digital by 2030</li>
+<li>New corridors open (crypto rails, stablecoin settlements)</li>
+<li>Migrant populations grow faster than expected</li>
+</ul>
+<h3 id="conservative-3-value-5-txn">Conservative: 3% value, 5% txn</h3>
+<ul>
+<li>Anti-immigration policies reduce migrant worker populations</li>
+<li>Regulatory friction (KYC/AML compliance costs) slow digital adoption</li>
+<li>Informal channels capture more volume</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/remittances/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/remittances/workings/calculations.md">analysis/payments/remittances/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

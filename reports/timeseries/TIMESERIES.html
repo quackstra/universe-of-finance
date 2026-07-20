@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TPS Time Series — Universe of Finance</title>
+<meta name="description" content="Annual average TPS and transaction counts for all 24 categories, compiled from per-category capsule data with gap-filling via interpolation and back-extrapolation. Generated: 2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Timeseries</div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>TPS Time Series</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#summary-table-all-24-categories">Summary Table: All 24 Categories</a></li><li><a href="#growth-leaderboard-fastest-growing-categories-cagr-2020-2025">Growth Leaderboard: Fastest-Growing Categories (CAGR 2020-2025)</a></li><li><a href="#decline-watch-shrinking-or-stagnant-categories">Decline Watch: Shrinking or Stagnant Categories</a></li><li><a href="#regime-changes-non-linear-growth-patterns">Regime Changes: Non-Linear Growth Patterns</a></li><li><a href="#the-big-number-estimated-global-financial-tps-over-time">The Big Number: Estimated Global Financial TPS Over Time</a></li><li><a href="#concentration-analysis">Concentration Analysis</a></li><li><a href="#data-quality-notes">Data Quality Notes</a></li></ul></div><blockquote>
+<p>Annual average TPS and transaction counts for all 24 categories, compiled from
+per-category capsule data with gap-filling via interpolation and back-extrapolation.</p>
+</blockquote>
+<p><strong>Generated</strong>: 2026-03-28
+<strong>Data source</strong>: Per-category <code>data.json</code> files from Run 1-4 capsules
+<strong>Methodology</strong>: Extract historic arrays, fill gaps with sector growth rates, derive TPS from <code>annual_volume / 31,536,000</code></p>
+<hr/>
+<h2 id="summary-table-all-24-categories">Summary Table: All 24 Categories</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>Sector</th>
+<th>2015 TPS</th>
+<th>2020 TPS</th>
+<th>2025 TPS</th>
+<th>CAGR 15-25</th>
+<th>CAGR 20-25</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Consumer Cards</td>
+<td>Payments</td>
+<td>7,197</td>
+<td>12,049</td>
+<td>26,700</td>
+<td>14.0%</td>
+<td>17.2%</td>
+<td>91</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Digital Wallets</td>
+<td>Payments</td>
+<td>1,200</td>
+<td>6,980</td>
+<td>23,150</td>
+<td>34.4%</td>
+<td>27.1%</td>
+<td>67</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bank Transfers (RTP)</td>
+<td>Payments</td>
+<td>500</td>
+<td>3,330</td>
+<td>17,519</td>
+<td>42.3%</td>
+<td>39.5%</td>
+<td>78</td>
+</tr>
+<tr>
+<td>4</td>
+<td>E-Commerce</td>
+<td>Payments</td>
+<td>614</td>
+<td>1,282</td>
+<td>1,907</td>
+<td>12.4%</td>
+<td>9.0%</td>
+<td>67</td>
+</tr>
+<tr>
+<td>5</td>
+<td>IoT/M2M</td>
+<td>Emerging</td>
+<td>400</td>
+<td>900</td>
+<td>1,538</td>
+<td>14.4%</td>
+<td>11.3%</td>
+<td>67</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Government Payments</td>
+<td>Government</td>
+<td>700</td>
+<td>900</td>
+<td>1,002</td>
+<td>3.6%</td>
+<td>2.2%</td>
+<td>50</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Equity Markets</td>
+<td>Trad Finance</td>
+<td>1,427</td>
+<td>1,649</td>
+<td>2,067</td>
+<td>3.8%</td>
+<td>4.6%</td>
+<td>86</td>
+</tr>
+<tr>
+<td>8</td>
+<td>ETD (Futures/Options)</td>
+<td>Trad Finance</td>
+<td>786</td>
+<td>1,483</td>
+<td>9,505</td>
+<td>28.3%</td>
+<td>45.0%</td>
+<td>88</td>
+</tr>
+<tr>
+<td>9</td>
+<td>CEX (Crypto)</td>
+<td>Digital Assets</td>
+<td>30</td>
+<td>600</td>
+<td>3,500</td>
+<td>59.8%</td>
+<td>42.1%</td>
+<td>56</td>
+</tr>
+<tr>
+<td>10</td>
+<td>L1/L2 Blockchain</td>
+<td>Digital Assets</td>
+<td>7</td>
+<td>63</td>
+<td>1,100</td>
+<td>64.0%</td>
+<td>77.2%</td>
+<td>76</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Stablecoins</td>
+<td>Digital Assets</td>
+<td>~0</td>
+<td>20</td>
+<td>700</td>
+<td>n/a</td>
+<td>103.0%</td>
+<td>75</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Gaming Microtx</td>
+<td>Gaming</td>
+<td>200</td>
+<td>397</td>
+<td>415</td>
+<td>7.6%</td>
+<td>0.9%</td>
+<td>44</td>
+</tr>
+<tr>
+<td>13</td>
+<td>P2P Transfers</td>
+<td>Payments</td>
+<td>20</td>
+<td>124</td>
+<td>301</td>
+<td>31.2%</td>
+<td>19.5%</td>
+<td>69</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Commodities</td>
+<td>Trad Finance</td>
+<td>110</td>
+<td>174</td>
+<td>240</td>
+<td>7.9%</td>
+<td>6.4%</td>
+<td>74</td>
+</tr>
+<tr>
+<td>15</td>
+<td>DeFi</td>
+<td>Digital Assets</td>
+<td>0</td>
+<td>15</td>
+<td>130</td>
+<td>n/a</td>
+<td>54.2%</td>
+<td>62</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Gaming Sales</td>
+<td>Gaming</td>
+<td>40</td>
+<td>72</td>
+<td>97</td>
+<td>9.3%</td>
+<td>6.1%</td>
+<td>56</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Remittances</td>
+<td>Payments</td>
+<td>30</td>
+<td>43</td>
+<td>61</td>
+<td>7.4%</td>
+<td>7.4%</td>
+<td>58</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Securities Settlement</td>
+<td>Banking</td>
+<td>5.5</td>
+<td>8.4</td>
+<td>46.6</td>
+<td>23.7%</td>
+<td>40.8%</td>
+<td>74</td>
+</tr>
+<tr>
+<td>19</td>
+<td>FX (Institutional)</td>
+<td>Trad Finance</td>
+<td>25</td>
+<td>34</td>
+<td>42</td>
+<td>4.4%</td>
+<td>2.6%</td>
+<td>58</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Interbank RTGS</td>
+<td>Banking</td>
+<td>7.5</td>
+<td>10.0</td>
+<td>13.8</td>
+<td>6.3%</td>
+<td>6.8%</td>
+<td>82</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Fixed Income</td>
+<td>Trad Finance</td>
+<td>2.5</td>
+<td>3.1</td>
+<td>3.8</td>
+<td>4.1%</td>
+<td>4.1%</td>
+<td>60</td>
+</tr>
+<tr>
+<td>22</td>
+<td>RWA Tokenisation</td>
+<td>Emerging</td>
+<td>0</td>
+<td>0.05</td>
+<td>2.4</td>
+<td>n/a</td>
+<td>119.2%</td>
+<td>56</td>
+</tr>
+<tr>
+<td>23</td>
+<td>AI Agents</td>
+<td>Emerging</td>
+<td>0</td>
+<td>0</td>
+<td>0.66</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>34</td>
+</tr>
+<tr>
+<td>24</td>
+<td>OTC Derivatives</td>
+<td>Trad Finance</td>
+<td>0.11</td>
+<td>0.13</td>
+<td>0.16</td>
+<td>3.6%</td>
+<td>4.0%</td>
+<td>68</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="growth-leaderboard-fastest-growing-categories-cagr-2020-2025">Growth Leaderboard: Fastest-Growing Categories (CAGR 2020-2025)</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Category</th>
+<th>CAGR 2020-25</th>
+<th>2020 TPS</th>
+<th>2025 TPS</th>
+<th>Multiplier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>RWA Tokenisation</td>
+<td>119.2%</td>
+<td>0.05</td>
+<td>2.4</td>
+<td>48x</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Stablecoins</td>
+<td>103.0%</td>
+<td>20</td>
+<td>700</td>
+<td>35x</td>
+</tr>
+<tr>
+<td>3</td>
+<td>L1/L2 Blockchain</td>
+<td>77.2%</td>
+<td>63</td>
+<td>1,100</td>
+<td>17.5x</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DeFi</td>
+<td>54.2%</td>
+<td>15</td>
+<td>130</td>
+<td>8.7x</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ETD (Futures/Options)</td>
+<td>45.0%</td>
+<td>1,483</td>
+<td>9,505</td>
+<td>6.4x</td>
+</tr>
+<tr>
+<td>6</td>
+<td>CEX (Crypto)</td>
+<td>42.1%</td>
+<td>600</td>
+<td>3,500</td>
+<td>5.8x</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Securities Settlement</td>
+<td>40.8%</td>
+<td>8.4</td>
+<td>46.6</td>
+<td>5.5x</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Bank Transfers (RTP)</td>
+<td>39.5%</td>
+<td>3,330</td>
+<td>17,519</td>
+<td>5.3x</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Digital Wallets</td>
+<td>27.1%</td>
+<td>6,980</td>
+<td>23,150</td>
+<td>3.3x</td>
+</tr>
+<tr>
+<td>10</td>
+<td>P2P Transfers</td>
+<td>19.5%</td>
+<td>124</td>
+<td>301</td>
+<td>2.4x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: The top 3 fastest-growing categories are all blockchain-native. But the top 3 by <em>absolute TPS added</em> are <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">consumer cards</a> (+14,651), <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a> (+14,189), and <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a> (+16,170) -- the traditional payments infrastructure is still adding more raw throughput.</p>
+<hr/>
+<h2 id="decline-watch-shrinking-or-stagnant-categories">Decline Watch: Shrinking or Stagnant Categories</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>CAGR 2020-25</th>
+<th>Pattern</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gaming Microtx</td>
+<td>0.9%</td>
+<td>Stagnant</td>
+<td>Post-COVID normalization; 2020 was a COVID-inflated peak. Revenue growing but ATV rising faster than txn count</td>
+</tr>
+<tr>
+<td>Government Payments</td>
+<td>2.2%</td>
+<td>Slow growth</td>
+<td>Population growth + digitization vs. consolidation of payment batches</td>
+</tr>
+<tr>
+<td>FX (Institutional)</td>
+<td>2.6%</td>
+<td>Slow growth</td>
+<td>Mature market; daily value grows faster than trade count</td>
+</tr>
+<tr>
+<td>Remittances</td>
+<td>7.4%</td>
+<td>Steady</td>
+<td>Digital corridors growing but informal channels shrinking offsets</td>
+</tr>
+</tbody>
+</table>
+<p>No category is in outright decline over 2020-2025, though <a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">equity markets</a> dipped 2021-2023 before recovering in 2024.</p>
+<hr/>
+<h2 id="regime-changes-non-linear-growth-patterns">Regime Changes: Non-Linear Growth Patterns</h2>
+<h3 id="1-exchange-traded-derivatives-the-india-options-hockey-stick">1. Exchange-Traded Derivatives: The India Options Hockey Stick</h3>
+<ul>
+<li><strong>2015-2019</strong>: Flat (~25B contracts/year, ~800-1100 TPS)</li>
+<li><strong>2020-2022</strong>: Steady climb to 84B (COVID volatility + retail access)</li>
+<li><strong>2023-2025</strong>: Explosive to 205-300B (NSE zero-day options, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> retail explosion)</li>
+<li><strong>Regime change</strong>: India went from ~10% of global ETD to ~60%+ in 5 years</li>
+</ul>
+<h3 id="2-crypto-cycles-boom-bust-boom">2. Crypto Cycles: Boom-Bust-Boom</h3>
+<ul>
+<li><strong>CEX</strong>: 2017 spike (ICO), 2018 crash, 2021 supercycle, 2022 crash, 2024 recovery</li>
+<li><strong><a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a></strong>: Zero until 2020 "DeFi Summer", peaked 2021, crashed 2022, recovering 2024-25</li>
+<li><strong><a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">Stablecoins</a></strong>: Near-exponential through all cycles -- stablecoins grew even during crypto bear markets</li>
+</ul>
+<h3 id="3-real-time-payments-upipix-hockey-stick">3. Real-Time Payments: UPI/PIX Hockey Stick</h3>
+<ul>
+<li><strong>Bank Transfers (RTP)</strong>: 50B txns (2018) -&gt; 553B (2025 est.), driven by:</li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>: 2.7B (2017) -&gt; 172B (2024) -- <strong>64x in 7 years</strong></li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a>: 0 (pre-2020) -&gt; 66B (2024) -- <strong>zero to 66B in 4 years</strong></li>
+<li>These two systems alone account for ~62% of global RTP volume</li>
+</ul>
+<h3 id="4-covid-impact-2020">4. COVID Impact (2020)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Impact</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>-4.5% dip</td>
+<td>Travel/dining collapse</td>
+</tr>
+<tr>
+<td>E-Commerce</td>
+<td>+21% surge</td>
+<td>Physical-to-digital shift</td>
+</tr>
+<tr>
+<td>Equity Markets</td>
+<td>+37% surge</td>
+<td>Retail trading boom (Robinhood/GameStop precursor)</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>+36% surge</td>
+<td>Volatility drove hedging demand</td>
+</tr>
+<tr>
+<td>Gaming Microtx</td>
+<td>+22% surge</td>
+<td>Lockdown gaming</td>
+</tr>
+<tr>
+<td>Gaming Sales</td>
+<td>+33% surge</td>
+<td>Digital download acceleration</td>
+</tr>
+<tr>
+<td>P2P Transfers</td>
+<td>+44% surge</td>
+<td>Stimulus redistribution</td>
+</tr>
+<tr>
+<td>Government Payments</td>
+<td>+10% surge</td>
+<td>Stimulus disbursements</td>
+</tr>
+<tr>
+<td>Bank Transfers (RTP)</td>
+<td>+40% growth</td>
+<td>Accelerated digital adoption</td>
+</tr>
+<tr>
+<td>IoT/M2M</td>
+<td>-5% dip</td>
+<td>Toll collection decline</td>
+</tr>
+<tr>
+<td>Remittances</td>
+<td>+4%</td>
+<td>Resilient -- migrant workers kept sending</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-l1l2-blockchain-solana-effect-2024">5. L1/L2 Blockchain: Solana Effect (2024)</h3>
+<ul>
+<li>2023: 8B txns (254 TPS)</li>
+<li>2024: 27B txns (856 TPS) -- <strong>3.4x in one year</strong></li>
+<li>Driven by Solana going from ~30M to ~60M daily transactions (raw, pre-filter)</li>
+<li>L2 rollups (Base, Arbitrum, Optimism) collectively added billions more</li>
+</ul>
+<hr/>
+<h2 id="the-big-number-estimated-global-financial-tps-over-time">The Big Number: Estimated Global Financial TPS Over Time</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Gross TPS (all categories)</th>
+<th>Dedup Factor</th>
+<th>Est. Net TPS</th>
+<th>Annual Txns (gross)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td>~12,900</td>
+<td>0.82</td>
+<td>~10,600</td>
+<td>~407B</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>~18,400</td>
+<td>0.82</td>
+<td>~15,100</td>
+<td>~582B</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~29,400</td>
+<td>0.80</td>
+<td>~23,500</td>
+<td>~928B</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~50,700</td>
+<td>0.78</td>
+<td>~39,500</td>
+<td>~1,597B</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>~86,900</td>
+<td>0.75</td>
+<td>~65,200</td>
+<td>~2,741B</td>
+</tr>
+</tbody>
+</table>
+<p><strong>10-year story</strong>: Global financial TPS grew ~6.7x from 2015 to 2025 (gross) or ~6.2x after deduplication. The world added more transaction capacity in the last 5 years (2020-2025: +57,500 gross TPS) than existed in total in 2018.</p>
+<h3 id="dedup-factor-explanation">Dedup Factor Explanation</h3>
+<p>The dedup factor decreases over time because overlay layers (digital wallets on card rails, UPI counted in both wallets and bank transfers, <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a> settled on cards) are growing faster than unique-count categories. See <code>OVERLAP_MATRIX.md</code> for detailed dedup rules.</p>
+<hr/>
+<h2 id="concentration-analysis">Concentration Analysis</h2>
+<h3 id="top-5-categories-by-tps-2025">Top 5 Categories by TPS (2025)</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Category</th>
+<th>TPS</th>
+<th>Share of Gross</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Consumer Cards</td>
+<td>26,700</td>
+<td>30.7%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Digital Wallets</td>
+<td>23,150</td>
+<td>26.6%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bank Transfers (RTP)</td>
+<td>17,519</td>
+<td>20.2%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ETD</td>
+<td>9,505</td>
+<td>10.9%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>CEX (Crypto)</td>
+<td>3,500</td>
+<td>4.0%</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Top 5 total</strong></td>
+<td><strong>80,374</strong></td>
+<td><strong>92.5%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The top 3 payments categories account for 77.5% of all global financial TPS. Traditional finance (equity, bonds, FX, <a class="xref" href="/universe-of-finance/reports/traditional-finance/commodities/REPORT.html">commodities</a>, derivatives) contributes surprisingly little by transaction count -- massive by value, modest by frequency.</p>
+<h3 id="top-5-categories-by-tps-2015">Top 5 Categories by TPS (2015)</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Category</th>
+<th>TPS</th>
+<th>Share of Gross</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Consumer Cards</td>
+<td>7,197</td>
+<td>55.7%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Equity Markets</td>
+<td>1,427</td>
+<td>11.0%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Digital Wallets</td>
+<td>1,200</td>
+<td>9.3%</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ETD</td>
+<td>786</td>
+<td>6.1%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Government Payments</td>
+<td>700</td>
+<td>5.4%</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Top 5 total</strong></td>
+<td><strong>11,310</strong></td>
+<td><strong>87.6%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Shift 2015-&gt;2025</strong>: Consumer cards went from 56% to 31% share -- not because cards shrank, but because digital wallets and real-time payments exploded. The "big three" of 2025 (cards, wallets, RTP) barely existed as a trio in 2015.</p>
+<hr/>
+<h2 id="data-quality-notes">Data Quality Notes</h2>
+<h3 id="high-confidence-categories-score-80">High-Confidence Categories (score &gt;= 80)</h3>
+<ul>
+<li>Consumer Cards (91) -- Nilson Report gold standard</li>
+<li>ETD (88) -- FIA annual survey</li>
+<li>Equity Markets (86) -- WFE data</li>
+<li><a class="xref" href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">Interbank RTGS</a> (82) -- Central bank statistics</li>
+</ul>
+<h3 id="low-confidence-categories-score-50">Low-Confidence Categories (score &lt;= 50)</h3>
+<ul>
+<li><a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI Agents</a> (34) -- Pre-market, all projections</li>
+<li>Gaming Microtx (44) -- Revenue-derived, no published counts</li>
+<li><a class="xref" href="/universe-of-finance/reports/government/government-payments/REPORT.html">Government Payments</a> (50) -- Counts never published, model-estimated</li>
+</ul>
+<h3 id="methodological-caveats">Methodological Caveats</h3>
+<ol>
+<li><strong>2025 values are estimates</strong>: Most capsules have 2024 as latest actual data. 2025 uses baseline projections.</li>
+<li><strong>Back-extrapolation quality varies</strong>: 2015-2017 data for many categories is interpolated.</li>
+<li><strong>Crypto volatility</strong>: CEX/DeFi/Stablecoin figures swing wildly year-to-year. Single-year comparisons are misleading.</li>
+<li><strong><a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">Securities settlement</a> methodological break</strong>: Historic (2015-2024) covers Euroclear only; 2025 includes all CSDs.</li>
+<li><strong>Interbank RTGS coverage expansion</strong>: Historic covers 3 systems; current covers 13. Not directly comparable.</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/timeseries/TIMESERIES.md">analysis/timeseries/TIMESERIES.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

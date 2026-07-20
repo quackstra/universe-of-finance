@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RWA Tokenisation — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Tokenised real-world assets represent one of the most hyped yet genuinely transformative emerging categories in finance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Emerging<span class="sep">/</span>Rwa Tokenisation</div>
+  <div class="report-head"><span class="kind">Report</span><h1>RWA Tokenisation</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">2.4</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">56</div></div><div class="chip"><div class="k">Opacity</div><div class="v green">38</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#27/28</div></div></div>
+  <div class="chart-box"><h3>Emerging — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart10"></canvas></div></div><script>new Chart(document.getElementById("chart10"),{"type": "bar", "data": {"labels": ["IoT & M2M", "AI Agents", "RWA Tokenisation"], "datasets": [{"data": [1538, 3.5, 2.4], "backgroundColor": ["#334155", "#334155", "#3b82f6"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections">Projections</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Tokenised real-world assets represent one of the most hyped yet genuinely transformative emerging categories in finance. As of mid-2025, the on-chain RWA market holds <strong>~$24 billion in total value locked</strong> (excluding <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">stablecoins</a>), up from ~$5.5 billion at the start of the year. However, <strong>transaction counts remain minuscule</strong> — estimated at <strong>~50-100 million on-chain transactions per year</strong>, equivalent to roughly <strong>1.6-3.2 TPS</strong>. The value proposition is not current throughput but the potential to tokenise <strong>$400+ trillion</strong> in traditional assets (real estate, bonds, equities, <a class="xref" href="/universe-of-finance/reports/traditional-finance/commodities/REPORT.html">commodities</a>) and bring them onto programmable, 24/7 settlement rails. Industry projections range wildly from <strong>$3.5 trillion to $30 trillion</strong> in tokenised assets by 2030, with corresponding transaction volumes that could eventually rival traditional securities markets.</p>
+<h2 id="scope">Scope</h2>
+<p>This analysis covers assets that have been tokenised (represented as blockchain tokens) and are traded or settled on-chain:</p>
+<ol>
+<li><strong>Tokenised treasuries &amp; <a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">fixed income</a></strong> — US Treasury-backed tokens (BUIDL, OUSG, etc.)</li>
+<li><strong>Tokenised private credit</strong> — on-chain lending against real-world collateral (Centrifuge, Maple, Goldfinch)</li>
+<li><strong>Tokenised real estate</strong> — fractional property ownership tokens</li>
+<li><strong>Tokenised commodities</strong> — gold tokens (PAXG, XAUT), other commodity-backed tokens</li>
+<li><strong>Tokenised equities &amp; funds</strong> — on-chain representations of equity instruments</li>
+</ol>
+<p>Excluded: Stablecoins (covered separately), native crypto assets, NFTs without real-world asset backing, synthetic assets without direct collateral.</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume">Transaction Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avg TPS</td>
+<td>~1.6-3.2</td>
+<td>Derived from ~50-100M annual txns</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~10-20</td>
+<td>During major fund launches or market events</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Daily volume</td>
+<td>~140,000-275,000</td>
+<td>Derived from annual estimate</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Annual volume (est. 2025)</td>
+<td>~50-100 million</td>
+<td>On-chain transactions across all RWA protocols</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Total Value Locked (mid-2025)</td>
+<td>~$24 billion</td>
+<td><a href="https://app.rwa.xyz/">RWA.xyz</a> / DeFiLlama (excl. stablecoins)</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Off-chain backing</td>
+<td>~$400+ billion</td>
+<td>Total liquidity backing tokenised RWA sector</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Avg transaction value</td>
+<td>~$5,000-50,000</td>
+<td>Highly variable — institutional tranches vs retail</td>
+<td>:red_circle: Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="asset-class-breakdown-by-tvl-mid-2025">Asset Class Breakdown (by TVL, mid-2025)</h3>
+<table>
+<thead>
+<tr>
+<th>Asset Class</th>
+<th>TVL ($B)</th>
+<th>Share</th>
+<th>Key Protocols</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Private Credit</td>
+<td>~17</td>
+<td>~61%</td>
+<td>Centrifuge, Maple, Goldfinch</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>US Treasuries</td>
+<td>~7.3</td>
+<td>~26%</td>
+<td>BlackRock BUIDL, Ondo OUSG, Franklin Templeton</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Commodities (Gold)</td>
+<td>~1.5</td>
+<td>~5%</td>
+<td>Paxos (PAXG), Tether Gold (XAUT)</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Real Estate</td>
+<td>~0.5</td>
+<td>~2%</td>
+<td>RealT, Lofty, various regional platforms</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Institutional Funds</td>
+<td>~1.2</td>
+<td>~4%</td>
+<td>Various alternative fund tokens</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>~0.5</td>
+<td>~2%</td>
+<td>Carbon credits, art, collectibles</td>
+<td>:red_circle: Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-protocol-breakdown">Key Protocol Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Protocol/Fund</th>
+<th>TVL ($B)</th>
+<th>Chain(s)</th>
+<th>Launch</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BlackRock BUIDL</td>
+<td>~1.8</td>
+<td>Ethereum, others</td>
+<td>Mar 2024</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Ondo Finance (OUSG)</td>
+<td>~1.3</td>
+<td>Ethereum, Solana</td>
+<td>Jan 2023</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Centrifuge</td>
+<td>~1.0</td>
+<td>Ethereum, Centrifuge Chain</td>
+<td>2021</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Franklin Templeton (BENJI)</td>
+<td>~0.7</td>
+<td>Stellar, Polygon</td>
+<td>Oct 2021</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Maple Finance</td>
+<td>~0.5</td>
+<td>Ethereum, Solana</td>
+<td>May 2021</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="on-chain-rwa-tvl-excluding-stablecoins">On-Chain RWA TVL (Excluding Stablecoins)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>TVL ($B, est.)</th>
+<th>YoY Growth</th>
+<th>Notes</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~0.05</td>
+<td>—</td>
+<td>Nascent; Centrifuge Tinlake early</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~0.2</td>
+<td>+300%</td>
+<td>DeFi summer; early private credit</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~1.5</td>
+<td>+650%</td>
+<td>Maple, Goldfinch launch; RWA narrative begins</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~3.0</td>
+<td>+100%</td>
+<td>Treasury tokens emerge post-rate hikes</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~8.0</td>
+<td>+167%</td>
+<td>BlackRock enters; major TradFi validation</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~15.2</td>
+<td>+90%</td>
+<td>Institutional adoption accelerates</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>2025 (mid)</td>
+<td>~24.0</td>
+<td>+58% (annualised)</td>
+<td>RWA TVL overtakes DEX TVL</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key observations:</strong>
+- TVL has grown from effectively zero to $24B in ~5 years — an extraordinary growth rate
+- The TradFi-to-DeFi shift accelerated dramatically when BlackRock launched BUIDL in March 2024
+- Private credit dominates by TVL (61%) but Treasury tokens are growing fastest
+- RWA protocols overtook DEX protocols in TVL during 2025, a symbolic milestone</p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>CAGR (TVL)</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2020-2025</td>
+<td>~150%+</td>
+<td>From near-zero base; explosive but decelerating</td>
+</tr>
+<tr>
+<td>2023-2025</td>
+<td>~73%</td>
+<td>Post-TradFi validation; institutional capital entering</td>
+</tr>
+<tr>
+<td>Transaction count CAGR</td>
+<td>~80-120%</td>
+<td>Estimated; growing with TVL but more retail participation</td>
+</tr>
+</tbody>
+</table>
+<p>TVL growth is decelerating from triple-digit percentages to ~50-70% as the base grows, but this remains one of the fastest-growing categories in all of finance.</p>
+<hr/>
+<h2 id="projections">Projections</h2>
+<blockquote>
+<p><strong>Note:</strong> For this nascent category, projections are more important than current state. The range is extremely wide because the category's future depends on regulatory clarity, institutional adoption, and infrastructure maturation.</p>
+</blockquote>
+<h3 id="baseline-steady-institutional-adoption">Baseline (Steady Institutional Adoption)</h3>
+<p><strong>Assumptions:</strong>
+1. TVL reaches $500B by 2030, $2T by 2035 (aligned with BCG/21.co mid-range estimates)
+2. Transaction frequency grows with TVL — more protocols, more secondary trading, more <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> composability
+3. Average 200-500 on-chain transactions per $1M of TVL per year (comparable to current DeFi ratios)
+4. Regulatory frameworks (MiCA, US securities reform) provide clarity by 2027-2028</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Volume (M)</th>
+<th>TVL ($B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>8</td>
+<td>250</td>
+<td>50</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>30</td>
+<td>950</td>
+<td>150</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>100</td>
+<td>3,150</td>
+<td>500</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>500</td>
+<td>15,800</td>
+<td>2,000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-tokenisation-becomes-default">High Growth (Tokenisation Becomes Default)</h3>
+<p><strong>Assumptions:</strong>
+1. Major securities exchanges integrate tokenised settlement by 2028
+2. TVL reaches $5T by 2030, $16T by 2035 (BCG/Standard Chartered bull case)
+3. Secondary market trading on tokenised assets approaches traditional market frequency
+4. Cross-chain interoperability solved; institutional custody standardised</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Volume (M)</th>
+<th>TVL ($B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>15</td>
+<td>475</td>
+<td>80</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>100</td>
+<td>3,150</td>
+<td>500</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>800</td>
+<td>25,200</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>5,000</td>
+<td>157,700</td>
+<td>16,000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-regulatory-headwinds">Conservative (Regulatory Headwinds)</h3>
+<p><strong>Assumptions:</strong>
+1. Regulatory uncertainty persists; US securities law constrains tokenisation
+2. TVL reaches $100B by 2030, $500B by 2035
+3. Tokenised assets remain niche — primarily treasury tokens and private credit
+4. Transaction frequency stays low as institutional participants dominate</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Volume (M)</th>
+<th>TVL ($B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>5</td>
+<td>160</td>
+<td>35</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>12</td>
+<td>380</td>
+<td>70</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>30</td>
+<td>950</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>150</td>
+<td>4,730</td>
+<td>500</td>
+</tr>
+</tbody>
+</table>
+<p><em>Full projection tables: <a href="/universe-of-finance/reports/emerging/rwa-tokenisation/workings/calculations.html#4-projection-models">workings/calculations.md</a></em></p>
+<p><strong>2035 Range:</strong> Transaction volumes could range from <strong>~150 TPS (conservative) to ~5,000 TPS (high growth)</strong> by 2035. Even the bull case would place RWA tokenisation below current consumer card volumes, but the value per transaction would be orders of magnitude higher.</p>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>RWA tokenisation is value-rich, count-poor — for now.</strong> At ~$24B TVL with only ~50-100M annual transactions, the average on-chain RWA transaction is worth $5,000-50,000. This is an institutional-first market where transaction count is a poor measure of significance.</p>
+</li>
+<li>
+<p><strong>BlackRock's entry was the inflection point.</strong> The BUIDL fund launch in March 2024 was the moment tokenisation crossed from "crypto experiment" to "TradFi strategy." BUIDL grew from $40M at launch to $1.8B by late 2025.</p>
+</li>
+<li>
+<p><strong>Private credit dominates, but treasuries are the gateway drug.</strong> Private credit (61% of TVL) drives the most value, but tokenised Treasury products are the easiest for institutions to adopt and serve as the on-ramp to broader RWA exposure.</p>
+</li>
+<li>
+<p><strong>The $400B off-chain backing reveals the conversion opportunity.</strong> RWA.xyz tracks $402.5B in off-chain liquidity associated with RWA protocols — over 20x the on-chain TVL. This represents the near-term addressable market for further tokenisation.</p>
+</li>
+<li>
+<p><strong>Projection variance is extreme.</strong> Industry forecasts range from $3.5T to $30T by 2030. This 10x spread reflects genuine uncertainty about regulatory outcomes, institutional adoption pace, and technical infrastructure readiness.</p>
+</li>
+<li>
+<p><strong>Transaction counts will explode if secondary markets develop.</strong> Current low TPS reflects that most tokenised assets are buy-and-hold (Treasury tokens, private credit). If tokenised assets develop liquid secondary markets with DeFi composability, transaction counts could increase 100x without TVL changing.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>TVL data is reasonably reliable</strong> thanks to on-chain transparency and trackers like RWA.xyz and DeFiLlama. Confidence is :yellow_circle: Medium.</li>
+<li><strong>Transaction count data is :red_circle: Low confidence.</strong> No aggregator specifically tracks RWA transaction counts across all chains and protocols. Our estimate is derived from TVL-to-transaction ratios observed in DeFi.</li>
+<li><strong>"RWA" definition varies.</strong> Some trackers include stablecoins (which would add $150B+ to TVL); we exclude them to avoid double-counting with other categories.</li>
+<li><strong>Off-chain asset verification</strong> is a trust assumption — on-chain TVL figures depend on accurate off-chain collateral reporting.</li>
+<li><strong>Projection models are highly speculative.</strong> The 10x spread between conservative and bull case is unusual for this project but reflects the genuine state of uncertainty.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>Total on-chain RWA transaction count</strong>: No aggregator tracks RWA-specific transaction counts across all chains. TVL is visible; transaction volume is not.</li>
+<li><strong>Off-chain settlement that backs on-chain tokens</strong>: When BlackRock's BUIDL token is minted, there's an off-chain Treasury purchase and an on-chain token creation. The off-chain leg is invisible in blockchain data but represents real settlement activity.</li>
+<li><strong>Institutional vs retail transaction mix</strong>: Most RWA protocols serve institutional investors, but the transaction count split (few large institutional vs many small retail) is not published.</li>
+<li><strong>Secondary market trading volume for tokenised assets</strong>: Primary issuance is tracked; secondary market activity on DEXs and OTC desks is fragmented and poorly measured.</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On-chain transaction count</td>
+<td>Etherscan/Dune Analytics: query contract interactions for top 20 RWA protocols (BUIDL, OUSG, Centrifuge, Maple, etc.)</td>
+<td>On-chain data is fully transparent; requires protocol-specific contract addresses</td>
+<td>:green_circle:</td>
+</tr>
+<tr>
+<td>Future TVL trajectory</td>
+<td>TradFi AUM ($100T+ global) x tokenisation penetration curve. If tokenisation follows S-curve adoption, 0.1% penetration (2025) -&gt; 1% (2030) -&gt; 5% (2035) = $100B -&gt; $1T -&gt; $5T</td>
+<td>BlackRock/Fidelity allocation announcements; BCG/Standard Chartered projections</td>
+<td>:yellow_circle:</td>
+</tr>
+<tr>
+<td>Regulatory sandbox approvals as leading indicator</td>
+<td>Track MiCA (EU), SEC no-action letters (US), MAS sandbox (Singapore) approvals for tokenised securities. Each approval enables new protocols and TVL.</td>
+<td>EU MiCA implementation timeline; SEC Crypto Task Force announcements; MAS FinTech Sandbox registry</td>
+<td>:yellow_circle:</td>
+</tr>
+<tr>
+<td>Secondary market liquidity growth</td>
+<td>Compare DEX volume for RWA tokens (Uniswap, Curve pools) to primary issuance. Rising secondary/primary ratio signals maturing market and higher transaction frequency per TVL dollar.</td>
+<td>Dune Analytics dashboards; DeFiLlama DEX volume by token pair</td>
+<td>:green_circle:</td>
+</tr>
+<tr>
+<td>Institutional adoption pace</td>
+<td>Track number of TradFi institutions launching tokenised products: 2023 (~5), 2024 (~15), 2025 (~30+). Extrapolate product count x avg TVL per product.</td>
+<td>Press releases; RWA.xyz issuer directory; CoinGecko RWA Report</td>
+<td>:yellow_circle:</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li><strong>What is the transaction frequency per TVL dollar?</strong> Current DeFi averages ~200-500 on-chain transactions per $1M TVL/year. If RWA tokens develop liquid secondary markets, this ratio could increase 10-100x. If they remain buy-and-hold (Treasury tokens), it stays low. This is the key variable for converting TVL projections into TPS projections.</li>
+<li>The 10x spread in industry forecasts ($3.5T to $30T by 2030) is unusually wide. Can we narrow it by tracking leading indicators? Specific testable milestones: Does BUIDL reach $10B by 2027? Does Centrifuge reach $5B TVL? Does a major exchange (NYSE, LSE) list a tokenised security by 2028?</li>
+<li>How will tokenised RWA settlement interact with traditional <a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">securities settlement</a> (see securities-settlement capsule)? If DTCC's pilot tokenised settlement succeeds, tokenised assets could settle through existing infrastructure rather than creating new on-chain volume.</li>
+<li>What happens when tokenised assets become composable with DeFi? If BUIDL can be used as collateral on Aave, each collateralisation/liquidation event creates new transactions that don't exist in TradFi. This could multiply transaction counts without changing TVL.</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>BlackRock BUIDL as adoption bellwether</strong>: BUIDL grew from $40M at launch (March 2024) to $1.8B by late 2025 — a 45x increase in 18 months. If this growth rate applies to the broader RWA market, the $24B TVL could reach $1T by 2028. However, BUIDL's growth may not be representative — it benefits from BlackRock's brand and distribution.</li>
+<li><strong>ETF adoption curve as analogy</strong>: The first US equity ETF (SPY) launched in 1993 with $6.5M AUM. By 2003 ($400B AUM), ETFs had achieved ~2% of US equity market cap. By 2024 ($10T+), ETFs held ~30% of US equity assets. If tokenised assets follow a similar 30-year S-curve, we're in the "1993-1998" phase.</li>
+<li><strong>Stablecoin precedent</strong>: Stablecoins (excluded from this capsule) grew from $5B (2020) to $150B+ (2025) in 5 years. They demonstrate that on-chain financial instruments can achieve massive scale, but also that growth can plateau for years before the next breakout.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://app.rwa.xyz/">RWA.xyz — Analytics on Tokenized Real-World Assets</a></li>
+<li><a href="https://thedefiant.io/news/defi/rwas-became-wall-street-s-gateway-to-crypto-in-2025">The Defiant — RWAs Became Wall Street's Gateway to Crypto in 2025</a></li>
+<li><a href="https://finance.yahoo.com/news/real-world-asset-rwa-defi-201504989.html">Yahoo Finance — RWA DeFi Protocols Overtake DEXs in TVL</a></li>
+<li><a href="https://blog.redstone.finance/2025/06/26/real-world-assets-in-onchain-finance-report/">RedStone — Real-World Assets in Onchain Finance Report</a></li>
+<li><a href="https://electroiq.com/stats/tokenized-assets-statistics/">ElectroIQ — Tokenized Assets Statistics 2025</a></li>
+<li><a href="https://assets.coingecko.com/reports/2025/CoinGecko-2025-RWA-Report.pdf">CoinGecko — 2025 RWA Report</a></li>
+<li><a href="https://coinpedia.org/research-report/top-real-world-asset-rwa-projects/">CoinPedia — RWA Tokenization Could Reach $30T by 2030</a></li>
+<li><a href="https://www.mintlayer.org/blogs/16-30-trillion-by-2030-unlocking-the-rwa-opportunity">Mintlayer — $16-30 Trillion by 2030: Unlocking the RWA Opportunity</a></li>
+<li><a href="https://www.binaryx.com/blog/rwa-outlook-2025-asset-tokenization-market-to-reach-3-5-10t-by-2030">BinaryX — Asset Tokenization Market to Reach $3.5-10T by 2030</a></li>
+<li><a href="https://finance.yahoo.com/news/rwa-tokenization-market-reach-16t-000429613.html">Yahoo Finance / Skynet — RWA Tokenization Market to Reach $16T by 2030</a></li>
+<li><a href="https://www.nextmsc.com/report/tokenized-real-world-assets-rwas-market-bf3345">NextMSC — Global Tokenized RWAs Market Growth Trends and 2030 Forecast</a></li>
+<li><a href="https://www.brickken.com/post/rwa-tokenization-trends-2025">Brickken — RWA Tokenization Trends 2025</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/emerging/rwa-tokenisation/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/emerging/rwa-tokenisation/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/emerging/rwa-tokenisation/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/emerging/rwa-tokenisation/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/emerging/rwa-tokenisation/REPORT.md">analysis/emerging/rwa-tokenisation/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

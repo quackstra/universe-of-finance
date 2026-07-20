@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEX Regional Wash Trading Model — Universe of Finance</title>
+<meta name="description" content="Refinement of the tiered wash trading filter with regional volume attribution. Part of the Universe of Finance project. Last updated: 2026-03-28 Motivation The tiered wash trading">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>CEX Regional Wash Trading Model</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#motivation">Motivation</a></li><li><a href="#data-sources">Data Sources</a></li><li><a href="#regional-volume-attribution-model">Regional Volume Attribution Model</a></li><li><a href="#regional-wash-trading-rates">Regional Wash Trading Rates</a></li><li><a href="#revised-blended-model">Revised Blended Model</a></li><li><a href="#sensitivity-by-region">Sensitivity by Region</a></li><li><a href="#reconciliation-regional-vs-tier-model">Reconciliation: Regional vs. Tier Model</a></li><li><a href="#open-questions-data-gaps">Open Questions & Data Gaps</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Refinement of the tiered wash trading filter with regional volume attribution.
+Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+Last updated: 2026-03-28</p>
+</blockquote>
+<hr/>
+<h2 id="motivation">Motivation</h2>
+<p>The <a href="/universe-of-finance/reports/digital-assets/cex/workings/wash-trading-filter.html">tiered wash trading filter</a> applies global tier-level discounts (Tier 1: 3.5%, Tier 2: 20%, Tier 3: 45%). But wash trading behaviour is fundamentally regional — driven by local regulatory regimes, exchange licensing, retail trading culture, and enforcement capacity. A Korean retail trader on Upbit and a Nigerian trader on a no-KYC offshore exchange inhabit completely different trust environments, even if their trades flow through the same CoinGecko top-15 rankings.</p>
+<p>This analysis decomposes the global tier model into <strong>six geographic regions</strong>, assigns region-specific wash trading rates, and produces a refined blended estimate.</p>
+<hr/>
+<h2 id="data-sources">Data Sources</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Source</th>
+<th>Key Finding</th>
+<th>Year</th>
+<th>Accessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Chainalysis — Geography of Cryptocurrency Report 2024 (<a href="https://www.chainalysis.com/blog/2024-global-crypto-adoption-index/">Chainalysis</a>)</td>
+<td>Regional crypto adoption indices. Central &amp; Southern Asia + Oceania leads adoption. Sub-Saharan Africa fastest growing.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Kaiko — Regional Exchange Volume Analysis (<a href="https://research.kaiko.com/">Kaiko Research</a>)</td>
+<td>Volume-to-depth ratios vary dramatically by exchange domicile. Asian exchanges show highest dispersion.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Korea FSC — Virtual Asset User Protection Act (<a href="https://www.fsc.go.kr/eng/">FSC</a>)</td>
+<td>Mandatory exchange registration, real-name banking, volume reporting to FSC since July 2024. Five registered exchanges (Upbit, Bithumb, Coinone, Korbit, Gopax).</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Japan FSA — Registered Crypto Asset Exchange Service Providers (<a href="https://www.fsa.go.jp/en/">JFSA</a>)</td>
+<td>29 registered exchanges under Japan's Payment Services Act. Strict KYC, cold wallet custody rules, annual audits.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>5</td>
+<td>MAS — Payment Services Act / Digital Payment Token licensing (<a href="https://www.mas.gov.sg/">MAS</a>)</td>
+<td>Singapore licenses DPT service providers. Licensed exchanges include Crypto.com, Independent Reserve, Coinhako.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Coinbase 10-K FY2024 (<a href="https://investor.coinbase.com/">Coinbase IR</a>)</td>
+<td>$1.16T trading volume. US-domiciled, SEC-regulated, NASDAQ-listed.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Forbes — Binance Volume Analysis (<a href="https://www.forbes.com/">Forbes</a>)</td>
+<td>40-65% volume discount applied to Binance. Significant offshore attribution.</td>
+<td>2022</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>8</td>
+<td>CEPR / Kocenda et al. — Regional wash trading variation (<a href="https://cepr.org/voxeu/columns/wash-trading-centralised-crypto-exchanges-need-transparency-and-accountability">VoxEU</a>)</td>
+<td>53.4% average on "unregulated Tier 1" exchanges. Regional enforcement correlates strongly with wash rates.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>9</td>
+<td>CoinGecko — 2024 Annual Crypto Industry Report (<a href="https://www.coingecko.com/research/publications/2024-annual-crypto-report">CoinGecko</a>)</td>
+<td>Exchange market share data. Binance 39% spot. Regional volume breakdowns.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>10</td>
+<td>TokenInsight — Regional CEX Market Share 2024 (<a href="https://tokeninsight.com/">TokenInsight</a>)</td>
+<td>Spot + derivatives volume by exchange with regional attribution.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Bitwise Asset Management — SEC Filing (<a href="https://bitwiseinvestments.com/">Bitwise</a>)</td>
+<td>95% of unregulated exchange volume is suspect. Regional patterns in order book depth vs. volume.</td>
+<td>2019</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Triple-A — Crypto Ownership by Country (<a href="https://triple-a.io/crypto-ownership-data/">Triple-A</a>)</td>
+<td>South Korea: 13.8M owners (26.7% of population). Nigeria: 33M owners. UAE: 3.6M owners. Japan: 7.8M owners.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="regional-volume-attribution-model">Regional Volume Attribution Model</h2>
+<h3 id="step-1-map-exchanges-to-primary-regions">Step 1: Map Exchanges to Primary Regions</h3>
+<p>Each major exchange has a "home region" where the majority of its user base and volume originates. Some exchanges (notably Binance) have significant multi-region presence and must be split.</p>
+<table>
+<thead>
+<tr>
+<th>Exchange</th>
+<th>Tier</th>
+<th>Primary Region</th>
+<th>Secondary Region</th>
+<th>Volume Split (Primary/Secondary)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coinbase</td>
+<td>1</td>
+<td>US</td>
+<td>Europe</td>
+<td>80/20</td>
+</tr>
+<tr>
+<td>Kraken</td>
+<td>1</td>
+<td>US</td>
+<td>Europe</td>
+<td>65/35</td>
+</tr>
+<tr>
+<td>Bitstamp</td>
+<td>1</td>
+<td>Europe (UK)</td>
+<td>US</td>
+<td>60/40</td>
+</tr>
+<tr>
+<td>Gemini</td>
+<td>1</td>
+<td>US</td>
+<td>—</td>
+<td>100/0</td>
+</tr>
+<tr>
+<td>Upbit</td>
+<td>1</td>
+<td>Korea</td>
+<td>—</td>
+<td>95/5</td>
+</tr>
+<tr>
+<td>Binance</td>
+<td>2</td>
+<td>Global (split below)</td>
+<td>—</td>
+<td>See breakdown</td>
+</tr>
+<tr>
+<td>OKX</td>
+<td>2</td>
+<td>China (offshore)/HK</td>
+<td>ME/SEA</td>
+<td>60/40</td>
+</tr>
+<tr>
+<td>Bybit</td>
+<td>2</td>
+<td>China (offshore)</td>
+<td>ME/SEA</td>
+<td>55/45</td>
+</tr>
+<tr>
+<td>Crypto.com</td>
+<td>2</td>
+<td>SEA/Global</td>
+<td>US</td>
+<td>60/40</td>
+</tr>
+<tr>
+<td>HTX</td>
+<td>3</td>
+<td>China (offshore)</td>
+<td>—</td>
+<td>85/15</td>
+</tr>
+<tr>
+<td>KuCoin</td>
+<td>3</td>
+<td>Global (offshore)</td>
+<td>—</td>
+<td>Split below</td>
+</tr>
+<tr>
+<td>Gate.io</td>
+<td>3</td>
+<td>China (offshore)</td>
+<td>—</td>
+<td>80/20</td>
+</tr>
+<tr>
+<td>MEXC</td>
+<td>3</td>
+<td>China (offshore)</td>
+<td>—</td>
+<td>75/25</td>
+</tr>
+<tr>
+<td>Bitfinex</td>
+<td>3</td>
+<td>Europe (offshore)</td>
+<td>—</td>
+<td>70/30</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Binance Regional Volume Split</strong> (39% of total spot = ~$7.1T of $18.2T spot, ~$30.2T of $59.1T derivatives):</p>
+<p>Based on Binance's known user geography, regulatory licensing, and trading pair volume analysis:</p>
+<table>
+<thead>
+<tr>
+<th>Binance Region</th>
+<th>% of Binance Volume</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>China (offshore users)</td>
+<td>25%</td>
+<td>Post-ban but persistent OTC-to-exchange pipeline. Largest single cohort.</td>
+</tr>
+<tr>
+<td>Middle East / Africa</td>
+<td>20%</td>
+<td>Binance has VASP licenses in Dubai, Bahrain. Major growth market.</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>15%</td>
+<td>MiCA-licensed entity (Binance France). Regulated flow.</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>15%</td>
+<td>Binance is #1 exchange in Brazil, Argentina, Mexico.</td>
+</tr>
+<tr>
+<td>Southeast Asia</td>
+<td>15%</td>
+<td>Thailand, Philippines, Indonesia. Licensed in some jurisdictions.</td>
+</tr>
+<tr>
+<td>Other (US-restricted, India, etc.)</td>
+<td>10%</td>
+<td>Residual from jurisdictions with partial access.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-2-aggregate-volume-by-region">Step 2: Aggregate Volume by Region</h3>
+<p>Using the $77.3T combined volume (spot + derivatives, 2024) and exchange market share data:</p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Volume Share (%)</th>
+<th>Volume ($T)</th>
+<th>Key Exchanges</th>
+<th>Regulatory Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>US</strong></td>
+<td>8%</td>
+<td>$6.2T</td>
+<td>Coinbase (80%), Kraken (65%), Gemini (100%), small Binance residual</td>
+<td>SEC/CFTC/FinCEN regulated. Public company oversight (Coinbase). BitLicense in NY.</td>
+</tr>
+<tr>
+<td><strong>Korea</strong></td>
+<td>7%</td>
+<td>$5.4T</td>
+<td>Upbit (dominant, ~80% Korean market), Bithumb, Coinone</td>
+<td>FSC Virtual Asset User Protection Act. Real-name banking mandate. Five registered exchanges.</td>
+</tr>
+<tr>
+<td><strong>Japan / Singapore / HK</strong></td>
+<td>6%</td>
+<td>$4.6T</td>
+<td>bitFlyer, Liquid, GMO Coin (Japan); Crypto.com, Coinhako (Singapore); HashKey, OSL (HK)</td>
+<td>Japan FSA (29 registered), MAS DPT licensing, HK SFC new regime (2024). Strictest KYC globally.</td>
+</tr>
+<tr>
+<td><strong>Europe</strong></td>
+<td>10%</td>
+<td>$7.7T</td>
+<td>Bitstamp, Kraken (35%), Binance FR, Bitpanda, Revolut Crypto</td>
+<td>MiCA framework active 2025. ESMA oversight. Pre-MiCA entities grandfathered.</td>
+</tr>
+<tr>
+<td><strong>China (offshore)</strong></td>
+<td>25%</td>
+<td>$19.3T</td>
+<td>Binance (25%), OKX (60%), Bybit (55%), HTX (85%), Gate.io (80%), MEXC (75%)</td>
+<td>Domestic trading banned since 2021. All activity via VPN/offshore entities. Zero domestic enforcement on users. OTC desk gateway model.</td>
+</tr>
+<tr>
+<td><strong>Middle East / Africa</strong></td>
+<td>15%</td>
+<td>$11.6T</td>
+<td>Binance (20%), OKX (20%), Bybit (25%), plus unranked regional exchanges</td>
+<td>UAE VARA licensing (emerging). South Africa FSCA. Nigeria SEC hostile. Most jurisdictions have minimal regulation.</td>
+</tr>
+<tr>
+<td><strong>Latin America</strong></td>
+<td>10%</td>
+<td>$7.7T</td>
+<td>Binance (15%), Mercado Bitcoin, Bitso, Ripio, Lemon Cash</td>
+<td>Brazil CVM framework (2024). Argentina unregulated. Mexico regulated for banks only. Highly fragmented.</td>
+</tr>
+<tr>
+<td><strong>Southeast Asia / Oceania</strong></td>
+<td>12%</td>
+<td>$9.3T</td>
+<td>Binance (15%), Crypto.com (SEA), coins.ph, Indodax, BTC Markets (AU)</td>
+<td>Australia ASIC (tightening). Thailand SEC (licensed). Philippines BSP. Indonesia Bappebti. Mixed regulation.</td>
+</tr>
+<tr>
+<td><strong>Other / Unattributed</strong></td>
+<td>7%</td>
+<td>$5.5T</td>
+<td>Smaller global exchanges, residual volume</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="regional-wash-trading-rates">Regional Wash Trading Rates</h2>
+<h3 id="rate-assignment-methodology">Rate Assignment Methodology</h3>
+<p>Each region is assigned a wash trading rate based on:</p>
+<ol>
+<li><strong>Regulatory enforcement intensity</strong> — Active surveillance and penalties vs. paper rules</li>
+<li><strong>Exchange registration/licensing</strong> — Mandatory registration with volume audit vs. voluntary compliance</li>
+<li><strong>Real-name banking integration</strong> — Tied bank accounts reduce Sybil/wash accounts</li>
+<li><strong>Market structure</strong> — Retail-dominated markets have less wash incentive than exchange-driven volume inflation</li>
+<li><strong>Historical evidence</strong> — Region-specific findings from Bitwise, CEPR, Kaiko, Forbes</li>
+</ol>
+<h3 id="regional-estimates">Regional Estimates</h3>
+<h4 id="us-8-of-volume-62t">US (8% of volume = $6.2T)</h4>
+<p><strong>Wash rate: 1-3% (central: 2%)</strong></p>
+<ul>
+<li>Coinbase is SEC-regulated and NASDAQ-listed. Volume manipulation = securities fraud with prison risk. Estimate: ~0-1%.</li>
+<li>Kraken and Gemini operate under state money transmitter licenses with regular audits.</li>
+<li>Market makers are registered and auditable.</li>
+<li>Residual wash: some algorithmic market-maker-to-market-maker trades that are technically legitimate but inflate visible activity.</li>
+<li>The US is the cleanest CEX market in the world by virtue of enforcement, not technology.</li>
+</ul>
+<h4 id="korea-7-of-volume-54t">Korea (7% of volume = $5.4T)</h4>
+<p><strong>Wash rate: 3-8% (central: 5%)</strong></p>
+<ul>
+<li>The "Kimchi premium" (Korean prices trading 2-10% above global) is driven by genuine retail demand behind capital controls — it is not wash trading. This premium confirms real demand.</li>
+<li>Korea's Virtual Asset User Protection Act (July 2024) mandates real-name banking, making wash trading via multiple accounts significantly harder.</li>
+<li>Upbit dominates (~80% of Korean volume) and reports to the FSC.</li>
+<li>However, Korean retail trading is extremely high-frequency by global standards — individual traders execute many small trades per day. This inflates count but is genuine activity.</li>
+<li>Risk: smaller Korean exchanges (Bithumb, Coinone) have had past wash trading allegations. Upbit itself is clean; the tail is less certain.</li>
+</ul>
+<h4 id="japan-singapore-hong-kong-6-of-volume-46t"><a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a> / Singapore / Hong Kong (6% of volume = $4.6T)</h4>
+<p><strong>Wash rate: 2-5% (central: 3%)</strong></p>
+<ul>
+<li>Japan: 29 FSA-registered exchanges with the strictest crypto regulatory regime globally. Cold wallet segregation, quarterly audits, mandatory AML reporting. Post-2018 reforms (after Coincheck hack) created genuine oversight.</li>
+<li>Singapore: MAS DPT licensing with capital requirements. Small number of licensed players.</li>
+<li>Hong Kong: New SFC licensing regime (2024) requires segregated accounts and surveillance. HashKey and OSL are the only fully licensed retail platforms.</li>
+<li>This trio represents the gold standard of Asian crypto regulation. Wash trading is present but minimal — primarily on margin products where spread compression creates incentive.</li>
+</ul>
+<h4 id="europe-10-of-volume-77t">Europe (10% of volume = $7.7T)</h4>
+<p><strong>Wash rate: 3-8% (central: 5%)</strong></p>
+<ul>
+<li>MiCA (Markets in Crypto-Assets Regulation) became fully effective January 2025. All CASPs must be authorized.</li>
+<li>Pre-MiCA, Europe was a mixed bag — some jurisdictions (Switzerland FINMA, Germany BaFin) were strict; others (Malta, Estonia) were permissive.</li>
+<li>Binance France is MiCA-licensed but carries legacy volume patterns from pre-regulation era.</li>
+<li>Bitstamp (acquired by Robinhood 2024) operates under Luxembourg/EU regulation.</li>
+<li>The transition period means current wash rates reflect a mix of old and new compliance standards.</li>
+<li>Central estimate of 5% reflects MiCA tightening but acknowledges grandfathered entities.</li>
+</ul>
+<h4 id="china-offshore-25-of-volume-193t"><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> Offshore (25% of volume = $19.3T)</h4>
+<p><strong>Wash rate: 25-45% (central: 35%)</strong></p>
+<p>This is the largest and most problematic region. Key dynamics:</p>
+<ul>
+<li><strong>Domestic ban context</strong>: China banned all crypto trading in September 2021. All Chinese user volume flows through offshore exchanges via VPN. There is zero domestic regulatory oversight of this activity.</li>
+<li><strong>OTC desk gateway model</strong>: Chinese users convert CNY to USDT via OTC desks (peer-to-peer), then trade on Binance/OKX/Bybit/HTX using USDT pairs. The OTC step is itself poorly regulated and creates volume without clear audit trails.</li>
+<li><strong>Exchange incentive alignment</strong>: Binance, OKX, Bybit, and HTX all compete for Chinese user flow. Volume rankings on CoinMarketCap/CoinGecko drive user acquisition. The incentive to inflate volume is strongest here because there is zero regulatory penalty for doing so.</li>
+<li><strong>HTX/Gate.io/MEXC</strong>: These exchanges are overwhelmingly Chinese-user-dominated and have been specifically flagged by Kaiko for wash trading patterns. HTX showed 4,200 round-number trades per 24h in PEPE-USDT alone.</li>
+<li><strong>Binance Chinese cohort</strong>: Even Binance's Chinese-attributed volume likely has higher wash rates than its European or Southeast Asian volume, because the Chinese cohort operates entirely outside any regulatory surveillance.</li>
+<li><strong>Why 35% and not higher?</strong>: Post-2023, Binance's settlement with DOJ/FinCEN and OKX's Hong Kong licensing created some compliance pressure even on offshore operations. The exchanges still want Chinese volume but are now more cautious about obviously fake volume that could jeopardize their licenses elsewhere.</li>
+</ul>
+<h4 id="middle-east-africa-15-of-volume-116t"><a class="xref" href="/universe-of-finance/reports/deep-dives/middle-east/REPORT.html">Middle East</a> / <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> (15% of volume = $11.6T)</h4>
+<p><strong>Wash rate: 20-40% (central: 30%)</strong></p>
+<ul>
+<li><strong>UAE (Dubai)</strong>: VARA (Virtual Assets Regulatory Authority) is emerging but enforcement is nascent. Dubai is a volume hub for exchanges seeking regulatory arbitrage — the license is easy to get, the oversight is light.</li>
+<li><strong>Binance Dubai</strong>: Binance has a VASP license but Dubai's oversight capacity is limited relative to the volume it facilitates.</li>
+<li><strong>Sub-Saharan Africa</strong>: Nigeria (33M crypto owners) has a hostile regulatory environment (SEC bans, Binance executives detained 2024). This pushes trading to P2P and unregulated platforms where wash trading is rampant.</li>
+<li><strong>Unregulated regional exchanges</strong>: Luno, Yellow Card, Quidax, and dozens of smaller African exchanges have minimal volume verification.</li>
+<li><strong>Incentive structure</strong>: Many ME/Africa exchanges offer trading fee rebates, referral commissions, and airdrops tied to volume — direct incentives for wash trading.</li>
+<li><strong>Genuine growth signal</strong>: Chainalysis reports Sub-Saharan Africa as the fastest-growing crypto region. Some of this volume is genuinely new retail adoption. But the lack of regulatory infrastructure means wash trading coexists with real growth.</li>
+</ul>
+<h4 id="latin-america-10-of-volume-77t">Latin America (10% of volume = $7.7T)</h4>
+<p><strong>Wash rate: 10-25% (central: 15%)</strong></p>
+<ul>
+<li><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a></strong>: The CVM (securities regulator) established a crypto regulatory framework in 2024. Mercado Bitcoin is the largest local exchange and is regulated.</li>
+<li><strong>Argentina</strong>: High crypto adoption driven by inflation hedging. Mostly through Binance (P2P) and local exchanges (Ripio, Lemon Cash). Regulation is minimal but adoption is genuine — Argentines use <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">stablecoins</a> as actual USD substitutes.</li>
+<li><strong>Mexico</strong>: Fintech Law covers some crypto operations. Bitso is the largest regional exchange with regulatory compliance.</li>
+<li><strong>Genuine use case signal</strong>: Latin American crypto volume is disproportionately stablecoin-driven (USDT, USDC, DAI) for inflation hedging and <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a>. This is real economic activity, not speculative wash trading.</li>
+<li><strong>The Binance factor</strong>: Binance's 15% Latin American attribution likely has a wash rate similar to its global average (~20%), while local regulated exchanges are much cleaner.</li>
+</ul>
+<h4 id="southeast-asia-oceania-12-of-volume-93t">Southeast Asia / Oceania (12% of volume = $9.3T)</h4>
+<p><strong>Wash rate: 15-30% (central: 20%)</strong></p>
+<ul>
+<li><strong>Australia</strong>: ASIC is tightening crypto regulation. Licensed exchanges (BTC Markets, Independent Reserve) are clean. But much Australian volume flows to offshore platforms.</li>
+<li><strong>Thailand</strong>: SEC-licensed exchanges (Bitkub, Satang). Regulated but market is dominated by retail speculation.</li>
+<li><strong>Philippines</strong>: BSP-registered VASPs (coins.ph). Growing but small.</li>
+<li><strong>Indonesia</strong>: Bappebti oversight of crypto commodity futures. Indodax is the largest regulated exchange.</li>
+<li><strong>The offshore problem</strong>: A significant share of SEA volume routes through Binance and Bybit rather than local regulated exchanges. This offshore flow has higher wash rates.</li>
+</ul>
+<h4 id="other-unattributed-7-of-volume-55t">Other / Unattributed (7% of volume = $5.5T)</h4>
+<p><strong>Wash rate: 25-45% (central: 35%)</strong></p>
+<p>Catch-all for volume that cannot be cleanly attributed. Assumed to follow China Offshore patterns given that unattributed volume is most likely from jurisdictions with weak regulatory signals.</p>
+<hr/>
+<h2 id="revised-blended-model">Revised Blended Model</h2>
+<h3 id="regional-volume-x-wash-rate-calculation">Regional Volume x Wash Rate Calculation</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Volume ($T)</th>
+<th>Share (%)</th>
+<th>Wash Rate (%)</th>
+<th>Wash Volume ($T)</th>
+<th>Clean Volume ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US</td>
+<td>$6.2</td>
+<td>8%</td>
+<td>2%</td>
+<td>$0.12</td>
+<td>$6.08</td>
+</tr>
+<tr>
+<td>Korea</td>
+<td>$5.4</td>
+<td>7%</td>
+<td>5%</td>
+<td>$0.27</td>
+<td>$5.13</td>
+</tr>
+<tr>
+<td>Japan/SG/HK</td>
+<td>$4.6</td>
+<td>6%</td>
+<td>3%</td>
+<td>$0.14</td>
+<td>$4.46</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>$7.7</td>
+<td>10%</td>
+<td>5%</td>
+<td>$0.39</td>
+<td>$7.31</td>
+</tr>
+<tr>
+<td>China (offshore)</td>
+<td>$19.3</td>
+<td>25%</td>
+<td>35%</td>
+<td>$6.76</td>
+<td>$12.54</td>
+</tr>
+<tr>
+<td>Middle East / Africa</td>
+<td>$11.6</td>
+<td>15%</td>
+<td>30%</td>
+<td>$3.48</td>
+<td>$8.12</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>$7.7</td>
+<td>10%</td>
+<td>15%</td>
+<td>$1.16</td>
+<td>$6.54</td>
+</tr>
+<tr>
+<td>SEA / Oceania</td>
+<td>$9.3</td>
+<td>12%</td>
+<td>20%</td>
+<td>$1.86</td>
+<td>$7.44</td>
+</tr>
+<tr>
+<td>Other / Unattributed</td>
+<td>$5.5</td>
+<td>7%</td>
+<td>35%</td>
+<td>$1.93</td>
+<td>$3.57</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$77.3</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>20.6% blended</strong></td>
+<td><strong>$16.11</strong></td>
+<td><strong>$61.19</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparison-with-tier-based-model">Comparison with Tier-Based Model</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Blended Wash %</th>
+<th>Adjusted Volume ($T)</th>
+<th>Adjusted TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier-based (prior)</strong></td>
+<td><strong>25.0%</strong></td>
+<td><strong>$58.0T</strong></td>
+<td><strong>~3,040</strong></td>
+</tr>
+<tr>
+<td><strong>Regional (this analysis)</strong></td>
+<td><strong>20.6%</strong></td>
+<td><strong>$61.2T</strong></td>
+<td><strong>~3,210</strong></td>
+</tr>
+<tr>
+<td>Difference</td>
+<td>-4.4pp</td>
+<td>+$3.2T</td>
+<td>+170</td>
+</tr>
+</tbody>
+</table>
+<h3 id="why-the-regional-model-is-lower">Why the Regional Model is Lower</h3>
+<p>The regional model produces a <strong>lower blended wash rate</strong> (20.6% vs. 25.0%) for two key reasons:</p>
+<ol>
+<li>
+<p><strong>Regulated region volume is larger than Tier 1 alone</strong>: The tier model assigns 15% to Tier 1 (regulated). The regional model reveals that US + Korea + Japan/SG/HK + Europe collectively represent <strong>31%</strong> of volume, all with wash rates under 8%. The tier model underweighted the regulated world by lumping Binance-Europe and Korean exchanges into Tier 2.</p>
+</li>
+<li>
+<p><strong>China offshore is the concentrated problem</strong>: The regional model isolates the true source of wash trading — Chinese offshore volume at 25% share with 35% wash rate. In the tier model, this Chinese volume was spread across Tier 2 and Tier 3, pulling the average up because it contaminated the rate applied to non-Chinese Tier 2 volume.</p>
+</li>
+<li>
+<p><strong>Latin America and SEA have genuine adoption signals</strong>: The tier model applied Tier 2 rates (20%) to much of this volume. The regional model recognizes that inflation-hedging stablecoin use (LatAm) and regulated local exchanges (SEA) bring these regions below the global Tier 2 average.</p>
+</li>
+</ol>
+<h3 id="adjusted-tps-derivation">Adjusted TPS Derivation</h3>
+<p>Using the same volume-to-trade-count methodology:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Reported</th>
+<th>Tier Model</th>
+<th>Regional Model</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Combined annual volume</td>
+<td>$77.3T</td>
+<td>$58.0T</td>
+<td>$61.2T</td>
+</tr>
+<tr>
+<td>Average daily volume</td>
+<td>~$212B</td>
+<td>~$159B</td>
+<td>~$168B</td>
+</tr>
+<tr>
+<td>Est. daily trade count</td>
+<td>~350M</td>
+<td>~263M</td>
+<td>~278M</td>
+</tr>
+<tr>
+<td><strong>Est. average TPS</strong></td>
+<td><strong>~4,050</strong></td>
+<td><strong>~3,040</strong></td>
+<td><strong>~3,210</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="confidence-intervals-regional-model">Confidence Intervals (Regional Model)</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Blended Wash %</th>
+<th>Adjusted TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimistic (post-regulation cleanup)</td>
+<td>14.8%</td>
+<td>~3,450</td>
+</tr>
+<tr>
+<td><strong>Central</strong></td>
+<td><strong>20.6%</strong></td>
+<td><strong>~3,210</strong></td>
+</tr>
+<tr>
+<td>Pessimistic (pre-regulation levels)</td>
+<td>28.5%</td>
+<td>~2,890</td>
+</tr>
+</tbody>
+</table>
+<p>Range: <strong>2,890 - 3,450 TPS</strong> (width: 560 TPS)</p>
+<p>This is narrower than the tier model range (2,685 - 3,275 = 590 TPS wide) while shifting the central estimate up by ~170 TPS.</p>
+<hr/>
+<h2 id="sensitivity-by-region">Sensitivity by Region</h2>
+<h3 id="which-regions-drive-the-most-uncertainty">Which regions drive the most uncertainty?</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>If Wash Rate +10pp</th>
+<th>Impact on Blended TPS</th>
+<th>Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>China offshore</strong></td>
+<td>35% -&gt; 45%</td>
+<td>-160 TPS</td>
+<td><strong>HIGH</strong> — 25% of volume</td>
+</tr>
+<tr>
+<td><strong>Middle East / Africa</strong></td>
+<td>30% -&gt; 40%</td>
+<td>-96 TPS</td>
+<td><strong>HIGH</strong> — 15% of volume</td>
+</tr>
+<tr>
+<td><strong>SEA / Oceania</strong></td>
+<td>20% -&gt; 30%</td>
+<td>-77 TPS</td>
+<td>MEDIUM — 12% of volume</td>
+</tr>
+<tr>
+<td><strong>Latin America</strong></td>
+<td>15% -&gt; 25%</td>
+<td>-64 TPS</td>
+<td>MEDIUM — 10% of volume</td>
+</tr>
+<tr>
+<td><strong>Europe</strong></td>
+<td>5% -&gt; 15%</td>
+<td>-64 TPS</td>
+<td>MEDIUM — 10% of volume</td>
+</tr>
+<tr>
+<td><strong>US</strong></td>
+<td>2% -&gt; 12%</td>
+<td>-41 TPS</td>
+<td>LOW — 8% of volume, but rate is well-bounded</td>
+</tr>
+<tr>
+<td><strong>Korea</strong></td>
+<td>5% -&gt; 15%</td>
+<td>-45 TPS</td>
+<td>LOW — 7% of volume</td>
+</tr>
+<tr>
+<td><strong>Japan/SG/HK</strong></td>
+<td>3% -&gt; 13%</td>
+<td>-38 TPS</td>
+<td>LOW — 6% of volume</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: China offshore and Middle East/Africa together are 40% of volume and drive 50%+ of wash trading uncertainty. If you could verify wash rates in these two regions alone, you'd collapse the confidence interval by half.</p>
+<hr/>
+<h2 id="reconciliation-regional-vs-tier-model">Reconciliation: Regional vs. Tier Model</h2>
+<p>The regional model is strictly more informative than the tier model:</p>
+<table>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Structural accuracy</strong></td>
+<td>Wash trading is a regulatory phenomenon. Regulation is geographic. Regional attribution matches the causal mechanism.</td>
+</tr>
+<tr>
+<td><strong>Binance decomposition</strong></td>
+<td>The tier model treats Binance as a monolith (Tier 2, 20% wash). The regional model splits Binance's volume across 6 regions with rates ranging from 2% (Binance regulated EU) to 35% (Binance Chinese cohort).</td>
+</tr>
+<tr>
+<td><strong>Genuine adoption signals</strong></td>
+<td>LatAm stablecoin use and Korean retail demand are visible in regional data but invisible in tier classifications.</td>
+</tr>
+<tr>
+<td><strong>Actionable data gaps</strong></td>
+<td>The regional model pinpoints where better data would help most: China offshore attribution and ME/Africa exchange audits.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recommended-primary-estimate">Recommended Primary Estimate</h3>
+<p><strong>Adopt the regional model as the primary wash trading adjustment:</strong>
+- <strong>Central TPS: ~3,210</strong> (range: 2,890 - 3,450)
+- <strong>Blended wash rate: 20.6%</strong> (range: 14.8% - 28.5%)</p>
+<p>The tier model should be retained as a <strong>cross-check</strong> — if both models diverge significantly, it signals a structural assumption error.</p>
+<hr/>
+<h2 id="open-questions-data-gaps">Open Questions &amp; Data Gaps</h2>
+<ol>
+<li>
+<p><strong>Binance regional volume attribution is estimated, not observed.</strong> Binance does not publish a geographic breakdown of its trading volume. Our 6-region split is based on user demographics, licensing, and trading pair analysis. If Binance disclosed regional volumes in a regulatory filing, this would be the single most valuable data point.</p>
+</li>
+<li>
+<p><strong>Chinese OTC desk volume.</strong> The CNY-to-USDT OTC pipeline is the gateway for Chinese offshore trading. If OTC desk transaction data were available (Chainalysis or Tether flow analysis), we could cross-validate the China offshore attribution.</p>
+</li>
+<li>
+<p><strong>UAE VARA audit data.</strong> VARA has licensing data for Dubai-based crypto operations. If VARA published aggregate volume audits, ME/Africa wash rates could be calibrated directly.</p>
+</li>
+<li>
+<p><strong>Korean FSC volume verification.</strong> The FSC collects volume data from all five registered Korean exchanges. If this data were cross-referenced with CoinGecko-reported Korean volume, we could verify the Korean wash rate precisely.</p>
+</li>
+<li>
+<p><strong>Post-MiCA European volume quality.</strong> MiCA's transaction reporting requirements will create a European equivalent of US TRACE data for crypto. When MiCA reporting matures (2026-2027), European wash rates can be measured rather than estimated.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>Chainalysis — Geography of Cryptocurrency Report 2024</li>
+<li>Kaiko — Regional Exchange Volume Analysis 2024</li>
+<li>Korea FSC — Virtual Asset User Protection Act (2024)</li>
+<li>Japan FSA — Registered Exchange Directory</li>
+<li>MAS — Payment Services Act DPT Licensing</li>
+<li>Coinbase — FY2024 10-K Annual Report</li>
+<li>Forbes — Binance Volume Analysis 2022</li>
+<li>CEPR / Kocenda et al. — Wash Trading in <a class="xref" href="/universe-of-finance/reports/digital-assets/cex/REPORT.html">Centralised Crypto Exchanges</a> 2024</li>
+<li>CoinGecko — 2024 Annual Crypto Industry Report</li>
+<li>TokenInsight — Regional CEX Market Share 2024</li>
+<li>Bitwise — SEC Filing on Wash Trading 2019</li>
+<li>Triple-A — Crypto Ownership by Country 2024</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/cex/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/cex/workings/regional-wash-model.md">analysis/digital-assets/cex/workings/regional-wash-model.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

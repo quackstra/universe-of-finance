@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payroll Payments — Source Notes — Universe of Finance</title>
+<meta name="description" content="Key Sources and Their Limitations 1. ILO World Employment and Social Outlook (WESO) What it provides: Global and regional employment counts, formal/informal splits, employment-to-p">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Payroll Payments — Source Notes</h1></div>
+  
+  
+  <article class="article">
+<h2 id="key-sources-and-their-limitations">Key Sources and Their Limitations</h2>
+<h3 id="1-ilo-world-employment-and-social-outlook-weso">1. ILO World Employment and Social Outlook (WESO)</h3>
+<ul>
+<li><strong>What it provides</strong>: Global and regional employment counts, formal/informal splits, employment-to-population ratios</li>
+<li><strong>What it lacks</strong>: Pay frequency data, transaction counts, electronic vs. cash payment channel data</li>
+<li><strong>Reliability</strong>: High for employment headcounts (based on national labor force surveys); medium for informal economy estimates</li>
+<li><strong>Last updated</strong>: May 2024 (covers 2023 data with 2024 projections)</li>
+</ul>
+<h3 id="2-bls-current-employment-statistics-ces">2. BLS Current Employment Statistics (CES)</h3>
+<ul>
+<li><strong>What it provides</strong>: US nonfarm <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a> employment by industry, monthly</li>
+<li><strong>What it lacks</strong>: Pay frequency distribution (must be sourced from American Payroll Association surveys)</li>
+<li><strong>Reliability</strong>: Very high — gold standard for US employment data</li>
+<li><strong>Frequency</strong>: Monthly</li>
+</ul>
+<h3 id="3-eurostat-employment-statistics">3. Eurostat Employment Statistics</h3>
+<ul>
+<li><strong>What it provides</strong>: EU-27 and member-state employment, employee vs. self-employed split</li>
+<li><strong>What it lacks</strong>: Payroll transaction counts; pay frequency assumed from labor law norms</li>
+<li><strong>Reliability</strong>: High</li>
+<li><strong>Note</strong>: 2024 data shows 197.6M employed aged 20-64 at 75.8% employment rate — highest on record</li>
+</ul>
+<h3 id="4-adp-global-payroll-survey-2024">4. ADP Global Payroll Survey 2024</h3>
+<ul>
+<li><strong>What it provides</strong>: Payroll industry trends, automation rates, pain points</li>
+<li><strong>What it lacks</strong>: Total transaction volumes — ADP does not publish aggregate paycheck counts</li>
+<li><strong>Reliability</strong>: Medium (survey-based, N=1,600 organizations)</li>
+<li><strong>Key stat</strong>: ADP processes payroll for ~26M US workers per pay period</li>
+</ul>
+<h3 id="5-nacha-ach-statistics">5. Nacha ACH Statistics</h3>
+<ul>
+<li><strong>What it provides</strong>: Total US ACH transaction volume and value, including payroll Direct Deposit share</li>
+<li><strong>What it lacks</strong>: Granular payroll-specific breakdown (payroll is a subset of "Direct Deposit")</li>
+<li><strong>Reliability</strong>: Very high — administrative data from the ACH network operator</li>
+<li><strong>2024 data</strong>: 33.6B total ACH transactions, $86.2T value</li>
+</ul>
+<h3 id="6-nbs-china-mospi-india">6. NBS China / MOSPI India</h3>
+<ul>
+<li><strong>What it provides</strong>: National employment figures</li>
+<li><strong>What it lacks</strong>: Payment channel data for payroll; formal/informal boundary is fuzzy in both countries</li>
+<li><strong>Reliability</strong>: Medium — <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> data has well-known issues with classification of migrant workers; <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> EPFO data is reliable but covers only formal sector</li>
+</ul>
+<h2 id="data-gaps">Data Gaps</h2>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No global payroll transaction count exists</td>
+<td>Entire estimate is model-derived</td>
+<td>Cross-check: US ACH payroll share (9.5%) × global bank transfers should approximate</td>
+</tr>
+<tr>
+<td>Pay frequency data is sparse outside US</td>
+<td>Regional assumptions may be wrong</td>
+<td>Used labor law norms + APA/CloudPay industry reports</td>
+</tr>
+<tr>
+<td>Informal economy size is uncertain</td>
+<td>Could be ±30% on cash wage estimate</td>
+<td>Used ILO central estimate; flagged as low confidence</td>
+</tr>
+<tr>
+<td>Gig economy boundary unclear</td>
+<td>Growing grey area between payroll and P2P</td>
+<td>Excluded; noted as open question</td>
+</tr>
+<tr>
+<td>No peak TPS data for payroll processing</td>
+<td>Peak multiplier is estimated</td>
+<td>Used US ACH window mechanics as calibration</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/payroll/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/payroll/workings/source_notes.md">analysis/payments/payroll/workings/source_notes.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

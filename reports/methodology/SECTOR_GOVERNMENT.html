@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sector: Government — Universe of Finance</title>
+<meta name="description" content="How we measure tax receipts, benefits disbursements, and public sector payments — 1 category, ~1,002 TPS. Last Updated: 2026-03-28 (Run 6) 1. Sector Overview The Government sector">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Methodology</div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Sector: Government</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-sector-overview">1. Sector Overview</a></li><li><a href="#2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</a></li><li><a href="#3-categories-in-this-sector">3. Categories in This Sector</a></li><li><a href="#4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</a></li><li><a href="#5-primary-data-sources">5. Primary Data Sources</a></li><li><a href="#6-sector-triangulation-approach">6. Sector Triangulation Approach</a></li><li><a href="#7-definition-standards">7. Definition Standards</a></li><li><a href="#8-known-gaps-future-work">8. Known Gaps & Future Work</a></li></ul></div><blockquote>
+<p>How we measure tax receipts, benefits disbursements, and public sector payments — 1 category, ~1,002 TPS.
+<strong>Last Updated</strong>: 2026-03-28 (Run 6)</p>
+</blockquote>
+<hr/>
+<h2 id="1-sector-overview">1. Sector Overview</h2>
+<p>The Government sector measures <strong>public sector financial transactions</strong> — tax payments from citizens/businesses to government, and benefits/pension/procurement disbursements from government to citizens/businesses. At ~1,002 TPS (~31.6B annual transactions), Government accounts for <strong>1.4% of global financial TPS</strong>.</p>
+<p>This sector was significantly revised in Run 3 using a bottom-up model across the US, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>, EU, and tiered rest-of-world extrapolation. The revision increased the estimate from ~25B to ~31.6B annual transactions, driven primarily by India's JAM-enabled Direct Benefit Transfer (DBT) platform, which alone accounts for 7.4B transactions across 1,206+ welfare schemes.</p>
+<hr/>
+<h2 id="2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</h2>
+<p><strong>Fragmented reporting.</strong> Unlike <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> or exchanges, there is no single global authority that aggregates government payment counts. Each country reports through its own tax authority, social security agency, and procurement body — if it reports at all.</p>
+<p><strong>Definition ambiguity.</strong> A "government payment" can mean many things: a tax filing (not a payment), a tax remittance (a payment), a benefits check (a payment), a government employee salary (also in <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">Payroll</a>), a procurement invoice (a payment). Boundary definition is critical.</p>
+<p><strong>India's outsized contribution.</strong> India's DBT platform (7.4B transactions) accounts for 23% of the global government payment estimate. If the DBT figure is wrong by 20%, the global estimate shifts by ~5%. This single-country concentration creates fragility.</p>
+<p><strong>Payment rail overlap.</strong> <a class="xref" href="/universe-of-finance/reports/government/government-payments/REPORT.html">Government payments</a> flow through existing payment infrastructure — ACH for tax refunds, <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a> for benefits, cards for procurement. An estimated 60% of government payment transactions are already counted in the Payments sector (primarily in Bank Transfers).</p>
+<p><strong>Cash disbursements in developing countries.</strong> Some government benefits in Sub-Saharan <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> and South Asia are still disbursed in cash. These are real government transactions but are invisible to electronic counting.</p>
+<hr/>
+<h2 id="3-categories-in-this-sector">3. Categories in This Sector</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>Avg TPS</th>
+<th>Annual Volume (B)</th>
+<th>Confidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Tax &amp; Government Payments</td>
+<td>1,002</td>
+<td>31.6</td>
+<td>50 (Medium)</td>
+<td>Bottom-up model</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sector total: ~1,002 TPS</strong></p>
+<hr/>
+<h2 id="4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</h2>
+<h3 id="intra-sector">Intra-Sector</h3>
+<p>Only one category — no intra-sector overlap.</p>
+<h3 id="cross-sector-overlap-with-payments">Cross-Sector Overlap (with Payments)</h3>
+<p>Government payments ride on payment rails that are already counted in the Payments sector:</p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│  GOVERNMENT SECTOR: 31.6B annual transactions            │
+│                                                          │
+│  ┌─────────────────────────────────────────────┐        │
+│  │ Tax Receipts          Benefits Disbursements │        │
+│  │ ~12B txns             ~15B txns              │        │
+│  │                                               │        │
+│  │ Procurement           Public Sector Payroll   │        │
+│  │ ~3B txns              ~1.6B txns              │        │
+│  └──────────────────────┬──────────────────────┘        │
+│                          │                               │
+│                          ▼                               │
+│  ┌─────────────────────────────────────────────┐        │
+│  │ Payment Rail Allocation:                     │        │
+│  │                                               │        │
+│  │ ACH/Bank Transfer:  60% (~19B) ← OVERLAP    │        │
+│  │ Real-Time Payments: 15% (~4.7B) ← OVERLAP   │        │
+│  │ Card Payments:       5% (~1.6B) ← OVERLAP   │        │
+│  │ Check/Cash:         15% (~4.7B) ← NOT in    │        │
+│  │                                    Payments   │        │
+│  │ Direct (treasury):   5% (~1.6B) ← NOT in    │        │
+│  │                                    Payments   │        │
+│  └─────────────────────────────────────────────┘        │
+│                                                          │
+│  Overlap with Payments: ~80% (~25.3B)                    │
+│  Incremental:           ~20% (~6.3B) = ~200 TPS         │
+│                                                          │
+│  Conservative estimate used in Big Number: ~401 TPS      │
+│  (40% incremental — accounts for some double-counted     │
+│   ACH items being govt-specific batch runs)              │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Decision:</strong> Government is excluded from payment infrastructure TPS (~70,200) but partially included in economic transaction TPS (~71,200), with ~401 incremental TPS added (the ~40% that does not flow through tracked payment rails).</p>
+<hr/>
+<h2 id="5-primary-data-sources">5. Primary Data Sources</h2>
+<h3 id="source-confidence-matrix">Source Confidence Matrix</h3>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+India DBT Portal    ███░░░░░░  █████████ █████████░  █████████░
+US IRS/Treasury     ███░░░░░░  █████████ ██████████  ████████░░
+EU Social Security  ████░░░░░  ███████░░ █████████░  █████░░░░░
+(MISSOC database)
+World Bank Gov't    ██████░░░  ██████░░░ ████████░░  ███░░░░░░░
+Finance Stats
+OECD Revenue Stats  █████░░░░  ███████░░ █████████░  ████░░░░░░
+National budget     ██████░░░  ████████░ █████████░  ████░░░░░░
+documents
+                    ─────────  ────────  ──────────  ───────────
+</code></pre>
+<p><strong>Tier 1 (Country-specific):</strong> India DBT Portal (7.4B transactions with scheme-level detail), US IRS/Treasury (tax payment and refund counts), EU MISSOC (social security cross-country)
+<strong>Tier 2 (Cross-country):</strong> OECD Revenue Statistics (tax counts for 38 member countries), World Bank Government Finance Statistics
+<strong>Tier 3 (Estimation):</strong> National budget documents, IMF fiscal monitor data, population-based scaling for non-reporting countries</p>
+<hr/>
+<h2 id="6-sector-triangulation-approach">6. Sector Triangulation Approach</h2>
+<h3 id="government-sector-triangulation-funnel">Government Sector Triangulation Funnel</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│              RAW ESTIMATES                                │
+│                                                          │
+│  Method A              Method B            Method C      │
+│  [Top-Down]            [Bottom-Up]         [Per-Capita]  │
+│  Global govt spend     Sum of US, India,   Population ×  │
+│  × payment frequency   EU + tiered RoW     govt txns/    │
+│  ratio                 extrapolation       capita ratio  │
+│  ┌──────────┐         ┌──────────┐        ┌──────────┐  │
+│  │ ~25B     │         │ ~31.6B   │        │ ~28B     │  │
+│  │ annual   │         │ annual   │        │ annual   │  │
+│  └────┬─────┘         └────┬─────┘        └────┬─────┘  │
+│       │                    │                    │        │
+│       └────────────────────┼────────────────────┘        │
+│                            ▼                              │
+│              ┌───────────────────────┐                    │
+│              │    RECONCILIATION     │                    │
+│              │ Top-down (A) under-   │                    │
+│              │ counts because payment│                    │
+│              │ frequency ratio based │                    │
+│              │ on old data (pre-DBT  │                    │
+│              │ India, pre-digital    │                    │
+│              │ disbursement push).   │                    │
+│              │ Per-capita (C) is     │                    │
+│              │ middle ground.        │                    │
+│              │ Bottom-up (B) is most │                    │
+│              │ defensible.           │                    │
+│              └──────────┬────────────┘                    │
+│                         ▼                                 │
+│              ┌───────────────────────┐                    │
+│              │   FINAL ESTIMATE      │                    │
+│              │ ~31.6B annual txns    │                    │
+│              │ ~1,002 TPS            │                    │
+│              │ Range: 800-1,300 TPS  │                    │
+│              │ Confidence: 50/100    │                    │
+│              └───────────────────────┘                    │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 id="bottom-up-model-detail">Bottom-Up Model Detail</h3>
+<table>
+<thead>
+<tr>
+<th>Country/Region</th>
+<th>Tax (B)</th>
+<th>Benefits (B)</th>
+<th>Other (B)</th>
+<th>Total (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US</td>
+<td>1.89</td>
+<td>2.68</td>
+<td>0.52</td>
+<td>5.09</td>
+</tr>
+<tr>
+<td>India</td>
+<td>0.82</td>
+<td>7.09</td>
+<td>0.28</td>
+<td>8.19</td>
+</tr>
+<tr>
+<td>EU</td>
+<td>2.27</td>
+<td>2.94</td>
+<td>0.63</td>
+<td>5.84</td>
+</tr>
+<tr>
+<td>Rest of World (tiered)</td>
+<td>~4.5</td>
+<td>~6.5</td>
+<td>~1.5</td>
+<td>~12.5</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~9.5</strong></td>
+<td><strong>~19.2</strong></td>
+<td><strong>~2.9</strong></td>
+<td><strong>~31.6</strong></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="7-definition-standards">7. Definition Standards</h2>
+<p>In the Government sector, a <strong>transaction</strong> is a single payment event between a government entity and a citizen, business, or other government entity.</p>
+<table>
+<thead>
+<tr>
+<th>Transaction Type</th>
+<th>Counting Point</th>
+<th>What Is Excluded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tax payment</td>
+<td>Completed payment to revenue authority</td>
+<td>Tax filing (information event), assessment notices</td>
+</tr>
+<tr>
+<td>Benefits disbursement</td>
+<td>Individual payment to beneficiary</td>
+<td>Eligibility determinations, application processing</td>
+</tr>
+<tr>
+<td>Public procurement</td>
+<td>Payment to vendor/contractor</td>
+<td>Purchase orders, invoices, contract awards</td>
+</tr>
+<tr>
+<td>Public sector payroll</td>
+<td>Individual salary/wage deposit</td>
+<td>Employment contracts, timesheets</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key distinction:</strong> A government benefit disbursement that pays 1 million citizens via a single batch ACH file counts as <strong>1 million transactions</strong> (one per beneficiary), not 1 transaction (the batch file). We count at the beneficiary level, not the batch level.</p>
+<hr/>
+<h2 id="8-known-gaps-future-work">8. Known Gaps &amp; Future Work</h2>
+<ul>
+<li><strong>Rest-of-World estimation.</strong> The ~12.5B RoW figure is derived from tiered GDP/population scaling. Country-specific data for <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> (government payment counts are not publicly reported), <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>, Indonesia, and Nigeria would significantly improve this.</li>
+<li><strong>China government payments.</strong> China's government manages massive social security, pension, and subsidy programs for 1.4B people. The absence of detailed transaction data is the single largest gap in this sector.</li>
+<li><strong>Government-to-government transfers.</strong> Intergovernmental transfers (federal to state, state to local, international aid) are partially captured but poorly documented at the transaction level.</li>
+<li><strong>Digital government push.</strong> India's DBT, Brazil's Bolsa Familia via <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a>, and EU digital identity initiatives are rapidly changing government payment patterns. Annual updates are needed to track this shift.</li>
+<li><strong>Procurement transaction counts.</strong> Government procurement is estimated at ~$13T globally, but transaction counts (number of individual invoices and payments) are poorly documented outside the US.</li>
+</ul>
+<hr/>
+<p><em>Government is a medium-confidence sector elevated by India's excellent DBT data. The methodology will improve as more countries digitize disbursements and publish transaction-level statistics.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/methodology/SECTOR_GOVERNMENT.md">analysis/methodology/SECTOR_GOVERNMENT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

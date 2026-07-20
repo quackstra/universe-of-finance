@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China Deep Dive — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Deep-dive into China's contribution to global financial TPS and the transparency gaps that make it the single largest source of uncertaint">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Deep Dives<span class="sep">/</span>China</div>
+  <div class="report-head"><span class="kind">Report</span><h1>China Deep Dive</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#category-by-category-analysis">Category-by-Category Analysis</a></li><li><a href="#aggregate-impact-on-the-big-number">Aggregate Impact on the Big Number</a></li><li><a href="#opacity-heatmap">Opacity Heatmap</a></li><li><a href="#why-china-is-so-opaque">Why China Is So Opaque</a></li><li><a href="#recommendations-for-the-big-number">Recommendations for the Big Number</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+Deep-dive into China's contribution to global financial TPS and the
+transparency gaps that make it the single largest source of uncertainty
+in the Big Number.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>China is the world's second-largest economy and, by several measures, the largest
+financial transaction generator on Earth. Yet it is also the single biggest blind
+spot in global transaction data. Chinese platforms process an estimated <strong>35-45%
+of global digital wallet transactions</strong>, <strong>32% of global card transactions</strong>
+(via UnionPay), and <strong>~31% of global equity trades</strong> (Shanghai + Shenzhen). For
+some categories, we rely on PBOC aggregate statistics that obscure platform-level
+detail. For others, we have almost nothing.</p>
+<p>This report quantifies what we know, what we don't, and what the gaps mean for
+the Big Number.</p>
+<h3 id="the-opacity-scorecard-summary">The Opacity Scorecard (Summary)</h3>
+<pre><code>Category                 Opacity   What We Know              What We Don't
+                         (0-100)
+──────────────────────── ──────── ─────────────────────────── ──────────────────────
+Digital Wallets            25     PBOC aggregates             Platform-level txn counts
+Consumer Cards (UnionPay)  40     Nilson/PBOC card totals     Debit vs credit split
+Bank Transfers (CNAPS)     55     PBOC HVPS/IBPS totals       Cross-system breakdown
+Equity Markets             75     Exchange-published data      Dark pool / block trades
+ETD (Commodity Futures)    70     FIA data + exchange reports  Retail vs institutional
+Fixed Income               20     Bond outstanding known       Interbank repo txn counts
+CEX Crypto                 10     Officially banned            True OTC/offshore volume
+E-Commerce                 30     GMV well-known               Transaction COUNT
+Gaming                     35     Revenue well-known           Microtransaction counts
+Digital Yuan (e-CNY)       45     Cumulative PBOC figures      Regional/merchant breakdown
+ATM Withdrawals            50     PBOC card stats              Cash withdrawal isolation
+──────────────────────── ──────── ─────────────────────────── ──────────────────────
+
+Opacity: 0 = completely opaque, 100 = fully transparent
+</code></pre>
+<hr/>
+<h2 id="category-by-category-analysis">Category-by-Category Analysis</h2>
+<h3 id="1-digital-wallets-the-biggest-known-unknown">1. Digital Wallets — The Biggest Known Unknown</h3>
+<p><strong>Opacity Score: 25/100</strong></p>
+<h4 id="what-we-know">What We KNOW</h4>
+<ul>
+<li>PBOC reports total mobile payment transactions across China: <strong>~280 billion
+  transactions</strong> in 2024, valued at ~RMB 346+ trillion (~$49 trillion).
+  [Source: <a href="https://www.statista.com/statistics/244538/number-of-mobile-payment-transactions-in-china/">Statista / PBOC</a>]</li>
+<li>Alipay (Ant Group) and WeChat Pay (Tencent) together control <strong>&gt;90%</strong> of the
+  mobile payments market.</li>
+<li>Alipay processes an estimated <strong>~44 billion</strong> transactions annually.
+  [Source: <a href="https://electroiq.com/stats/alipay-statistics/">Electroiq</a>]</li>
+<li>WeChat Pay processes an estimated <strong>~365 million daily</strong> transactions, implying
+  <strong>~130 billion</strong> annually.
+  [Source: <a href="https://www.businessofapps.com/data/wechat-statistics/">BusinessOfApps</a>]</li>
+<li>QR code payments have <strong>92.7% penetration</strong> in China.</li>
+<li>~969 million mobile payment users as of mid-2024.</li>
+</ul>
+<h4 id="what-we-dont-know">What We DON'T KNOW</h4>
+<ul>
+<li><strong>Platform-level transaction counts are corporate-confidential.</strong> Neither Ant
+  Group nor Tencent publishes official annual transaction counts. The 44B (Alipay)
+  and 130B (WeChat Pay) figures are industry estimates, not audited numbers.</li>
+<li><strong>The gap between platform estimates (174B) and PBOC total (280B) is ~106B
+  transactions</strong> — attributed to smaller platforms, bank apps, and UnionPay's
+  QuickPass, but the breakdown is unknown.</li>
+<li><strong>Transaction size distribution</strong> is unknown. We know total value and estimated
+  total count, but median transaction size, merchant vs P2P split, and urban vs
+  rural distribution are opaque.</li>
+<li><strong>Overlap with <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a></strong>: Some mobile wallet transactions settle via
+  bank transfer rails. The exact overlap percentage is estimated at ~30-40% but
+  not confirmed.</li>
+</ul>
+<h4 id="estimated-china-contribution-to-global-digital-wallet-tps">Estimated China Contribution to Global Digital Wallet TPS</h4>
+<pre><code>Global digital wallet TPS:     ~19,660
+China mobile payment TPS:      ~8,878 (280B / 31.56M seconds)
+China share of global:         ~45%
+Uncertainty range:             40-50% of global
+
+If China's true volume is ±20%:
+  Low:   224B txns → 7,100 TPS → 36% of global
+  High:  336B txns → 10,650 TPS → 54% of global
+
+Impact on Big Number: ±1,750 TPS (±2.4% of total)
+</code></pre>
+<hr/>
+<h3 id="2-consumer-cards-unionpay">2. Consumer Cards (UnionPay)</h3>
+<p><strong>Opacity Score: 40/100</strong></p>
+<h4 id="what-we-know_1">What We KNOW</h4>
+<ul>
+<li>UnionPay is the <strong>world's largest card network</strong> by transaction count: <strong>~247
+  billion</strong> branded transactions in 2024. [Source: Nilson Report / CoinLaw]</li>
+<li><strong>10+ billion cards</strong> issued globally (as of 2025), with 230+ million cards
+  issued outside mainland China across 81 countries.</li>
+<li>Total transaction value: <strong>~$23.4 trillion</strong> in 2024, growing ~8.5% YoY.
+  [Source: <a href="https://coinlaw.io/unionpay-statistics/">CoinLaw</a>]</li>
+<li>UnionPay holds <strong>~32% global market share</strong> by transaction count (vs Visa 39%,
+  Mastercard 24%).</li>
+<li>PBOC reports aggregate bank card statistics: at end-2024, total bankcard credit
+  line was RMB 22.90 trillion, outstanding balance RMB 8.71 trillion.</li>
+</ul>
+<h4 id="what-we-dont-know_1">What We DON'T KNOW</h4>
+<ul>
+<li><strong>Debit vs credit transaction split</strong>: UnionPay is overwhelmingly debit-card
+  based in China, but the exact debit/credit transaction count split is not
+  publicly available.</li>
+<li><strong>Domestic vs international breakdown</strong>: The 247B figure includes both domestic
+  China transactions and international usage. The international portion (~230M
+  cards abroad) is small by count but the exact number is unpublished.</li>
+<li><strong>Average transaction value by segment</strong>: The derived average (~$95) masks huge
+  variance between micro-QR payments and large purchases.</li>
+<li><strong>Overlap with <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a></strong>: Many Alipay/WeChat Pay transactions ultimately
+  settle on UnionPay rails. The overlap quantum is estimated at 30-50B
+  transactions but is not officially disclosed.</li>
+</ul>
+<h4 id="estimated-china-contribution-to-global-card-tps">Estimated China Contribution to Global Card TPS</h4>
+<pre><code>Global consumer card TPS:       ~24,501
+UnionPay TPS (all):             ~7,830 (247B / 31.56M seconds)
+UnionPay domestic China TPS:    ~7,200 (est. ~92% domestic)
+China share of global:          ~29-32%
+Uncertainty range:              28-35%
+
+Impact on Big Number: Well-captured via Nilson Report. Uncertainty ±500 TPS.
+</code></pre>
+<hr/>
+<h3 id="3-bank-transfers-cnaps-ibps">3. Bank Transfers (CNAPS / IBPS)</h3>
+<p><strong>Opacity Score: 55/100</strong></p>
+<h4 id="what-we-know_2">What We KNOW</h4>
+<ul>
+<li>China's payment clearing infrastructure consists of:</li>
+<li><strong>CNAPS HVPS</strong> (High-Value Payment System): Real-time gross settlement for
+    large-value interbank transfers</li>
+<li><strong>IBPS</strong> (Internet Banking Payment System): Real-time retail transfers. In
+    2024, IBPS processed <strong>16.651 billion transactions</strong> valued at RMB 290.24
+    trillion, declining 1.94% YoY.
+    [Source: <a href="https://www.pbc.gov.cn/en/3688247/3688978/3709143/2025080817520765198/2025040114593718714.pdf">PBOC Payment System Report 2024</a>]</li>
+<li><strong>BEPS</strong> (Bulk Electronic Payment System): Batch processing</li>
+<li><strong>CIPS</strong> (Cross-Border Interbank Payment System): RMB internationalization</li>
+<li>PBOC publishes quarterly Payment System Reports with transaction counts and
+  values for each system.</li>
+<li>Q2 2025 data: 149.789 billion total non-cash payment transactions, valued at
+  RMB 1,365.36 trillion (single quarter).</li>
+</ul>
+<h4 id="what-we-dont-know_2">What We DON'T KNOW</h4>
+<ul>
+<li><strong>CNAPS HVPS annual transaction count</strong>: The PBOC reports value throughput for
+  HVPS but transaction count data is less consistently published in English.</li>
+<li><strong>Cross-system routing</strong>: How many transactions touch multiple systems (e.g.,
+  IBPS to HVPS settlement) is unclear, creating potential double-count risk.</li>
+<li><strong>Third-party payment institution clearing</strong>: Alipay and WeChat Pay clear through
+  NetsUnion (NUCC) and UnionPay — the transaction volumes passing through these
+  intermediaries vs direct CNAPS are not separated in public data.</li>
+<li><strong>Full annual non-cash payment breakdown</strong>: The ~580B+ annual non-cash
+  transactions (extrapolated from Q2 2025 quarterly data) includes cards, mobile,
+  bank transfers, and commercial paper — the granular split is published in
+  Chinese but not fully in English.</li>
+</ul>
+<h4 id="estimated-china-contribution-to-global-bank-transfer-tps">Estimated China Contribution to Global Bank Transfer TPS</h4>
+<pre><code>Global bank transfer TPS:       ~15,338
+China IBPS alone:               ~528 TPS (16.65B annual)
+China total bank transfer est:  ~3,000-4,000 TPS (incl. HVPS, BEPS, other)
+China share of global:          ~20-26%
+Uncertainty range:              18-30%
+
+Impact on Big Number: ±500 TPS in bank transfer category alone.
+</code></pre>
+<hr/>
+<h3 id="4-equity-markets-shanghai-shenzhen">4. Equity Markets (Shanghai + Shenzhen)</h3>
+<p><strong>Opacity Score: 75/100</strong></p>
+<h4 id="what-we-know_3">What We KNOW</h4>
+<ul>
+<li><strong>Shanghai Stock Exchange (SSE)</strong>: 10.12 trillion shares traded in 2024
+  (annual), up from 7.32 trillion in 2023. Estimated <strong>~8.5 billion trades</strong>.
+  [Source: <a href="https://www.ceicdata.com/en/china/shanghai-stock-exchange-turnover-volume">CEIC / SSE</a>]</li>
+<li><strong>Shenzhen Stock Exchange (SZSE)</strong>: Estimated <strong>~10.5 billion trades</strong> in 2024.
+  [Source: WFE / Statista]</li>
+<li>Combined China equity trades: <strong>~19 billion</strong> in 2024, representing <strong>~31% of
+  global equity trades</strong> (61.5B total).</li>
+<li>Record single-day combined turnover of <strong>RMB 3.45 trillion</strong> ($488.9B) hit on
+  October 8, 2024. [Source: <a href="https://www.globaltimes.cn/page/202410/1320822.shtml">Global Times</a>]</li>
+<li>Both exchanges publish monthly statistics.</li>
+</ul>
+<h4 id="what-we-dont-know_3">What We DON'T KNOW</h4>
+<ul>
+<li><strong>Block trade / negotiated deal volumes</strong>: Off-exchange block trades in China are
+  not fully transparent.</li>
+<li><strong>Algorithmic trading share</strong>: Estimated at 30-40% of volume but no official
+  figure.</li>
+<li><strong>Retail vs institutional split</strong>: China has a famously retail-heavy market
+  (~60-70% retail by some estimates) but the exact current figure is debated.</li>
+</ul>
+<h4 id="estimated-china-contribution">Estimated China Contribution</h4>
+<pre><code>Global equity TPS:              ~3,500 (based on ~61.5B annual trades)
+China equity TPS:               ~602 (19B / 31.56M seconds)
+China share of global:          ~31%
+Uncertainty:                    ±5% (well-captured category)
+</code></pre>
+<p>This is one of the <strong>most transparent</strong> China categories. Exchange data is
+reasonably reliable and published regularly.</p>
+<hr/>
+<h3 id="5-exchange-traded-derivatives-commodity-futures">5. Exchange-Traded Derivatives (Commodity Futures)</h3>
+<p><strong>Opacity Score: 70/100</strong></p>
+<h4 id="what-we-know_4">What We KNOW</h4>
+<ul>
+<li>China has 4 major futures exchanges:</li>
+<li><strong>Zhengzhou Commodity Exchange (ZCE)</strong>: 2.6 billion lots in 2024, turnover
+    RMB 85.1 trillion ($11.8T)</li>
+<li><strong>Dalian Commodity Exchange (DCE)</strong>: Record 2.3 billion lots in 2024</li>
+<li><strong>Shanghai Futures Exchange (SHFE)</strong>: Major copper, gold, steel contracts</li>
+<li><strong>China Financial Futures Exchange (CFFEX)</strong>: Index futures and options</li>
+<li>FIA reports aggregate Chinese exchange-traded derivative volumes.</li>
+<li>China's commodity exchanges have become globally significant for price discovery
+  in copper, cotton, sugar, palm oil, iron ore, and more.
+  [Source: <a href="https://www.fia.org/marketvoice/articles/china-further-expands-international-access-its-commodity-markets">FIA</a>]</li>
+</ul>
+<h4 id="what-we-dont-know_4">What We DON'T KNOW</h4>
+<ul>
+<li><strong>Combined annual lot count for all 4 exchanges</strong>: The ZCE (2.6B) + DCE (2.3B)
+  figures are available, but SHFE and CFFEX 2024 lot counts are harder to find
+  in English sources.</li>
+<li><strong>Contract multiplier effect</strong>: Each "lot" may represent different contract sizes
+  depending on the instrument. The lot-to-transaction mapping is not 1:1.</li>
+<li><strong>Retail vs institutional proportion</strong>: China's futures markets have very high
+  retail participation — much higher than Western markets.</li>
+<li><strong>Relationship to FIA global totals</strong>: China's contribution to the 205.3B global
+  ETD contracts is estimated at ~35-40% but the exact overlap with FIA data is
+  not always clean.</li>
+</ul>
+<h4 id="estimated-china-contribution_1">Estimated China Contribution</h4>
+<pre><code>Global ETD TPS:                 ~9,505
+China commodity exchange lots:  ~8-10B (estimated all 4 exchanges)
+China ETD TPS:                  ~250-320 (lot-to-transaction adjusted)
+China share of global:          ~35-40% (by contract count via FIA)
+
+Note: The FIA total (205.3B contracts) already includes Chinese exchange data,
+so China is captured but the granular breakdown requires cross-referencing
+multiple exchange reports.
+</code></pre>
+<hr/>
+<h3 id="6-fixed-income-interbank-bond-market">6. Fixed Income (Interbank Bond Market)</h3>
+<p><strong>Opacity Score: 20/100</strong></p>
+<h4 id="what-we-know_5">What We KNOW</h4>
+<ul>
+<li>China's interbank bond market is the <strong>world's second-largest</strong> bond market with
+  outstanding bonds of <strong>RMB 157.35 trillion</strong> and <strong>RMB 73.41 trillion</strong> in
+  annual issuances (2024).
+  [Source: <a href="https://www.nafmii.org.cn/englishnew/news/">NAFMII</a>]</li>
+<li>Banks hold 67.8% of total bond holdings at CCDC (China Central Depository &amp;
+  Clearing).</li>
+<li>In March 2024, the interbank pledged repo market recorded <strong>&gt;145,000
+  transactions</strong>. [Source: <a href="https://www.statista.com/statistics/456767/china-interbank-market-pledged-repo-trading-volume/">Statista</a>]</li>
+<li>Exchange-traded repo (on SSE/SZSE) is more visible.</li>
+</ul>
+<h4 id="what-we-dont-know_5">What We DON'T KNOW</h4>
+<ul>
+<li><strong>Annual interbank bond trading transaction COUNT</strong>: China publishes bond
+  trading <em>value</em> comprehensively but transaction <em>count</em> data is extremely sparse.
+  The interbank market is bilateral and OTC-like — trades are large, bespoke,
+  and counted differently than exchange trades.</li>
+<li><strong>Repo transaction frequency</strong>: We have a monthly snapshot (~145K transactions
+  in March 2024 for pledged repo alone) but annualizing this across all repo
+  types (pledged, outright, reverse) is uncertain.</li>
+<li><strong>Bond Connect transaction counts</strong>: Northbound Bond Connect volumes are published
+  by value but not by transaction count.</li>
+<li><strong>CCDC vs SHCH clearing split</strong>: Settlement volumes are split between two
+  depositories with different reporting standards.</li>
+</ul>
+<h4 id="estimated-china-contribution_2">Estimated China Contribution</h4>
+<pre><code>Global fixed income TPS:        ~10.5
+China interbank bond market:    Massive by value (~$22T outstanding)
+China repo transactions:        ~1.7M/year (very rough estimate from monthly data)
+China fixed income TPS:         ~0.05-0.1 (individual trades are huge)
+China share:                    Unknown but likely significant by value, small by count
+
+This is the MOST OPAQUE major category for China.
+</code></pre>
+<hr/>
+<h3 id="7-cex-crypto">7. CEX Crypto</h3>
+<p><strong>Opacity Score: 10/100</strong></p>
+<h4 id="what-we-know_6">What We KNOW</h4>
+<ul>
+<li>China <strong>officially banned</strong> cryptocurrency trading in September 2021.</li>
+<li>Prior to the ban, Chinese exchanges (Huobi, OKEx, Binance CN) were among the
+  world's largest by volume.</li>
+<li>OTC and offshore trading continues via VPNs and Hong Kong-registered platforms.</li>
+<li>Hong Kong has introduced a regulated crypto framework (2023-2024) with licensed
+  exchanges.</li>
+</ul>
+<h4 id="what-we-dont-know_6">What We DON'T KNOW</h4>
+<ul>
+<li><strong>Current OTC trading volume</strong>: Completely opaque. Estimates range from $50B-200B
+  annually in P2P/OTC crypto trading by Chinese nationals.</li>
+<li><strong>VPN-based offshore exchange usage</strong>: Unknown how many Chinese traders use
+  Binance, OKX, Bybit via VPN. Chainalysis has estimated Chinese-origin
+  transaction flows but with wide uncertainty bands.</li>
+<li><strong>Mining-related transactions</strong>: Despite the mining ban, some activity persists
+  or has relocated to affiliated entities abroad.</li>
+<li><strong>Stablecoin usage</strong>: USDT usage in China for cross-border settlement (grey
+  market) is rumored to be significant but unquantifiable.</li>
+</ul>
+<h4 id="estimated-china-contribution_3">Estimated China Contribution</h4>
+<pre><code>Global CEX TPS:                 ~3,210 (wash-adjusted)
+China official:                 0 (banned)
+China actual (est):             ~100-300 TPS via offshore/OTC
+Uncertainty:                    ±200 TPS (massive)
+
+Impact on Big Number: Minimal at current estimate, but the uncertainty range
+is larger than many entire categories.
+</code></pre>
+<hr/>
+<h3 id="8-e-commerce">8. E-Commerce</h3>
+<p><strong>Opacity Score: 30/100</strong></p>
+<h4 id="what-we-know_7">What We KNOW</h4>
+<ul>
+<li>China is the <strong>world's largest <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a> market</strong>: ~$1.19 trillion GMV in 2024,
+  growing to ~$1.53 trillion in 2025.
+  [Source: <a href="https://www.mordorintelligence.com/industry-reports/china-ecommerce-market">Mordor Intelligence</a>]</li>
+<li>Major platforms: Taobao/Tmall (44% market share), JD.com (24%), Pinduoduo (19%),
+  Douyin/TikTok Shop (growing fast).</li>
+<li>2024 Singles' Day total sales: <strong>RMB 1.44 trillion</strong> ($197B), +26.6% YoY.</li>
+<li>Monthly active users: Taobao 960M, Pinduoduo 720M, JD.com 570M (Nov 2024).</li>
+</ul>
+<h4 id="what-we-dont-know_7">What We DON'T KNOW</h4>
+<ul>
+<li><strong>Transaction COUNT</strong>: This is the key gap. Platforms report GMV but almost never
+  disclose number of orders. If China's average order value is ~$15-25, then
+  $1.19T GMV implies ~48-79 billion orders annually. This is a huge range.</li>
+<li><strong>Return/refund transaction counts</strong>: China has notoriously high return rates
+  (especially Pinduoduo and Douyin). Each return generates additional payment
+  transactions but the volume is unknown.</li>
+<li><strong>Douyin (TikTok) commerce volume</strong>: Douyin's live-commerce GMV is estimated at
+  $200-300B but transaction counts are completely unavailable.</li>
+</ul>
+<h4 id="estimated-china-contribution_4">Estimated China Contribution</h4>
+<pre><code>Global e-commerce TPS:          ~1,823
+China e-commerce order TPS:     ~1,500-2,500 (est. 48-79B orders)
+China share of global:          ~45-55% (by order count)
+BUT: ~95% of e-commerce rides on card/wallet rails already counted.
+Incremental impact:             Minimal (e-commerce is a commerce layer)
+</code></pre>
+<hr/>
+<h3 id="9-gaming">9. Gaming</h3>
+<p><strong>Opacity Score: 35/100</strong></p>
+<h4 id="what-we-know_8">What We KNOW</h4>
+<ul>
+<li>China is the <strong>world's largest gaming market</strong>: record revenue of <strong>CNY 325.8
+  billion</strong> ($44.8B) in 2024, broken again in 2025 at CNY 350.8B ($49.8B).
+  [Source: <a href="https://www.scmp.com/tech/tech-trends/article/3337112/chinas-video-game-sales-reach-record-2025-amid-overseas-expansion-ai-investment">SCMP</a>]</li>
+<li>Mobile games: 73.3% of total gaming revenue = CNY 257.1B ($35.4B) in 2025.</li>
+<li>Tencent holds <strong>&gt;50%</strong> of the Chinese gaming market, NetEase ~17%.</li>
+<li>NetEase online game revenue: CNY 81.6B in 2023.</li>
+</ul>
+<h4 id="what-we-dont-know_8">What We DON'T KNOW</h4>
+<ul>
+<li><strong>In-game microtransaction counts</strong>: The critical gap. Revenue is well-documented
+  but number of individual transactions is never disclosed. If average
+  microtransaction is ~$1-3, China's $44.8B implies <strong>~15-45 billion</strong> gaming
+  transactions annually — an enormous range.</li>
+<li><strong>Gacha/loot box transaction frequency</strong>: China mandated loot box probability
+  disclosure but not transaction count disclosure.</li>
+<li><strong>Virtual currency exchange volumes</strong>: In-game currency trades (e.g., game gold
+  markets) are completely untracked.</li>
+</ul>
+<h4 id="estimated-china-contribution_5">Estimated China Contribution</h4>
+<pre><code>Global gaming microtx TPS:      ~389
+China gaming TPS (est):         ~475-1,425 (15-45B transactions)
+China share of global:          Likely &gt;50% of global gaming transactions
+BUT: ~82% rides on existing payment rails.
+Incremental impact:             ~85-255 TPS (China portion of gaming incremental)
+</code></pre>
+<hr/>
+<h3 id="10-digital-yuan-e-cny">10. Digital Yuan (e-CNY)</h3>
+<p><strong>Opacity Score: 45/100</strong></p>
+<h4 id="what-we-know_9">What We KNOW</h4>
+<ul>
+<li>Cumulative e-CNY transactions through end of November 2025: <strong>3.48 billion
+  transactions</strong> worth RMB 16.7 trillion (~$2.37T).
+  [Source: <a href="https://www.atlanticcouncil.org/cbdctracker/">Atlantic Council CBDC Tracker</a>]</li>
+<li>This represents <strong>&gt;800% growth</strong> compared to 2023 cumulative figures.</li>
+<li>By mid-2024, transaction volumes had reached RMB 7 trillion (~$986B).</li>
+<li>Starting January 1, 2026, e-CNY transitions from cash-equivalent to
+  interest-bearing digital deposit money.
+  [Source: <a href="https://english.news.cn/20251229/ea9329f8a07e4c91acf2579f6523c5fb/c.html">Xinhua</a>]</li>
+<li>PBOC added 12 new banks to the e-CNY system in 2025.</li>
+</ul>
+<h4 id="what-we-dont-know_9">What We DON'T KNOW</h4>
+<ul>
+<li><strong>Annual (not cumulative) transaction count</strong>: The 3.48B figure is cumulative
+  since pilot launch (~2020). Annual 2024 volume is estimated at ~1.5-2B
+  transactions but not officially broken out.</li>
+<li><strong>Merchant vs P2P vs government disbursement split</strong>: Unknown.</li>
+<li><strong>Regional breakdown</strong>: Pilot cities vs nationwide rollout adoption rates.</li>
+<li><strong>Overlap with existing mobile payments</strong>: Is e-CNY adding transactions or
+  replacing Alipay/WeChat Pay transactions? The substitution rate is unclear.</li>
+<li><strong>Double-counting risk</strong>: e-CNY settles on PBOC infrastructure, not on CNAPS.
+  Whether it appears in PBOC payment statistics alongside other mobile payments
+  is unclear.</li>
+</ul>
+<h4 id="estimated-e-cny-contribution">Estimated e-CNY Contribution</h4>
+<pre><code>e-CNY annual TPS (2024 est):   ~48-63 (1.5-2B annual transactions)
+Impact on Big Number:           Currently negligible
+Future potential:               If e-CNY scales to replace 10% of mobile payments,
+                                that's ~28B transactions/year → ~887 TPS
+                                (but would be substitutive, not additive)
+</code></pre>
+<hr/>
+<h3 id="11-atm-withdrawals">11. ATM Withdrawals</h3>
+<p><strong>Opacity Score: 50/100</strong></p>
+<h4 id="what-we-know_10">What We KNOW</h4>
+<ul>
+<li>China had <strong>~700,000 ATMs</strong> in 2024, down from a peak of <strong>1.1 million</strong> in 2018.</li>
+<li>Estimated <strong>~12 billion</strong> <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a> in 2024, declining at <strong>~8% annually</strong>.
+  This is the fastest ATM decline rate of any major market.</li>
+<li>China accounts for <strong>~24.4%</strong> of global ATM withdrawals.
+  [Source: Analysis from ATM withdrawals capsule]</li>
+<li>The decline is driven almost entirely by Alipay/WeChat Pay adoption.</li>
+</ul>
+<h4 id="what-we-dont-know_10">What We DON'T KNOW</h4>
+<ul>
+<li><strong>PBOC does not cleanly separate ATM withdrawals from other card transactions</strong>
+  in its English-language publications. The 12B figure is estimated from total
+  card transactions and withdrawal ratios, not directly published.</li>
+<li><strong>Cash withdrawal vs deposit transactions at ATMs</strong>: Only withdrawals are counted
+  in our taxonomy, but the PBOC may report combined ATM interactions.</li>
+<li><strong>Rural vs urban ATM usage</strong>: Urban ATMs are disappearing rapidly, but rural
+  ATMs still serve a cash-dependent population. The split is unknown.</li>
+</ul>
+<h4 id="estimated-china-contribution_6">Estimated China Contribution</h4>
+<pre><code>Global ATM withdrawal TPS:      ~1,557
+China ATM withdrawal TPS:       ~380 (12B / 31.56M seconds)
+China share of global:          ~24%
+Decline rate:                   -8% CAGR (vs -3% global)
+</code></pre>
+<hr/>
+<h2 id="aggregate-impact-on-the-big-number">Aggregate Impact on the Big Number</h2>
+<h3 id="chinas-total-estimated-contribution">China's Total Estimated Contribution</h3>
+<pre><code>Category              China Est TPS    China Share    Opacity
+──────────────────── ─────────────── ─────────────── ────────
+Digital Wallets        8,878           45%            25/100
+Consumer Cards         7,200           29%            40/100
+Bank Transfers         3,500           23%            55/100
+Equity Markets           602           31%            75/100
+ETD                    ~300            35%            70/100
+Fixed Income           ~0.05           ~5%?           20/100
+E-Commerce             2,000           55%            30/100
+Gaming                  950            50%+           35/100
+ATM Withdrawals         380            24%            50/100
+CEX Crypto              200            6%             10/100
+e-CNY                    55            N/A            45/100
+──────────────────── ─────────────── ─────────────── ────────
+TOTAL (gross)        ~24,065          ~33% of gross   --
+
+Note: Most of China's e-commerce, gaming, and a large portion of
+wallet transactions overlap with card/bank transfer rails. De-duplicated
+China contribution is estimated at ~18,000-22,000 TPS.
+</code></pre>
+<h3 id="the-uncertainty-band">The Uncertainty Band</h3>
+<pre><code>                    Low Estimate    Central    High Estimate
+                    ────────────    ───────    ─────────────
+China gross TPS:    19,000          24,065     30,000
+China de-dup TPS:   14,000          20,000     26,000
+Share of Big Number: 19%            27%        35%
+
+Swing: ±6,000 TPS = ±8% of the Big Number (~73,750)
+</code></pre>
+<p><strong>China is the single largest source of uncertainty in the entire Universe
+of Finance.</strong> The ±6,000 TPS uncertainty band from China alone is larger than
+the entire Digital Assets sector (~3,625 TPS).</p>
+<hr/>
+<h2 id="opacity-heatmap">Opacity Heatmap</h2>
+<pre><code>Category                 Opacity Score
+                         0    20    40    60    80    100
+                         |     |     |     |     |     |
+CEX Crypto           10  ##
+Fixed Income         20  ####
+Digital Wallets      25  #####
+E-Commerce           30  ######
+Gaming               35  #######
+Consumer Cards       40  ########
+Digital Yuan (e-CNY) 45  #########
+ATM Withdrawals      50  ##########
+Bank Transfers       55  ###########
+ETD (Commodities)    70  ##############
+Equity Markets       75  ###############
+                         |     |     |     |     |     |
+                         0    20    40    60    80    100
+                              OPAQUE ◄────────► TRANSPARENT
+</code></pre>
+<hr/>
+<h2 id="why-china-is-so-opaque">Why China Is So Opaque</h2>
+<h3 id="structural-factors">Structural Factors</h3>
+<ol>
+<li>
+<p><strong>State-owned infrastructure</strong>: PBOC, CNAPS, and major banks are state entities.
+   They publish what they choose, when they choose.</p>
+</li>
+<li>
+<p><strong>Corporate confidentiality</strong>: Ant Group (Alipay) and Tencent (WeChat Pay) are
+   publicly traded but do not disclose platform-level transaction counts. Ant
+   Group's IPO prospectus (2020) was the last time detailed Alipay metrics were
+   disclosed — and that IPO was pulled.</p>
+</li>
+<li>
+<p><strong>Language barrier</strong>: PBOC publishes detailed quarterly Payment System Reports
+   in Chinese. The English versions are summaries that omit granular breakdowns.</p>
+</li>
+<li>
+<p><strong>Aggregation obscures detail</strong>: PBOC reports "non-cash payment transactions"
+   as a single number (~580B+ annually). The split between cards, mobile, bank
+   transfers, and commercial paper requires deep-diving Chinese-language
+   statistical annexes.</p>
+</li>
+<li>
+<p><strong>Regulatory environment</strong>: Data publication is a government prerogative. After
+   the tech crackdown (2020-2022), platforms became more guarded about publishing
+   operational metrics.</p>
+</li>
+</ol>
+<h3 id="what-would-fix-it">What Would Fix It</h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Feasibility</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PBOC English Payment System Reports with full breakdowns</td>
+<td>Medium</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Ant Group / Tencent quarterly transaction count disclosure</td>
+<td>Low</td>
+<td>Very High</td>
+</tr>
+<tr>
+<td>UnionPay annual report with transaction count by type</td>
+<td>Medium</td>
+<td>High</td>
+</tr>
+<tr>
+<td>BIS expanding CPMI statistics for China</td>
+<td>Medium</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Academic researchers publishing analysis of Chinese-language PBOC data</td>
+<td>High</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="recommendations-for-the-big-number">Recommendations for the Big Number</h2>
+<ol>
+<li>
+<p><strong>Maintain the ±20B transaction uncertainty flag</strong> on China digital wallet
+   volume (already noted in OVERLAP_MATRIX.md).</p>
+</li>
+<li>
+<p><strong>Prioritize Chinese-language PBOC data extraction</strong>: The full Payment System
+   Reports contain the breakdowns we need. A Chinese-reading researcher could
+   significantly reduce uncertainty.</p>
+</li>
+<li>
+<p><strong>Cross-validate UnionPay via Nilson</strong>: The Nilson Report independently tracks
+   UnionPay. Continue using Nilson as the primary source for card counts.</p>
+</li>
+<li>
+<p><strong>Model e-CNY as substitutive, not additive</strong>: Until evidence shows otherwise,
+   assume e-CNY replaces existing mobile payment transactions rather than creating
+   new ones.</p>
+</li>
+<li>
+<p><strong>Acknowledge the floor</strong>: Even with maximum uncertainty, China's contribution
+   to the Big Number is somewhere between 14,000 and 26,000 TPS (de-duplicated).
+   The midpoint (~20,000) is roughly the size of the entire Digital Wallets
+   category globally.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.pbc.gov.cn/en/3688241/3688663/3688681/5638391/2026010416002691916/2026010416000672818.pdf">PBOC Payment System Report Q2 2025</a></li>
+<li><a href="https://www.pbc.gov.cn/en/3688247/3688978/3709143/2025080817520765198/2025040114593718714.pdf">PBOC Payment System Report 2024</a></li>
+<li><a href="https://www.statista.com/statistics/244538/number-of-mobile-payment-transactions-in-china/">Statista — China mobile payment transactions 2024</a></li>
+<li><a href="https://electroiq.com/stats/alipay-statistics/">Electroiq — Alipay Statistics</a></li>
+<li><a href="https://www.businessofapps.com/data/wechat-statistics/">BusinessOfApps — WeChat Statistics 2026</a></li>
+<li><a href="https://coinlaw.io/unionpay-statistics/">CoinLaw — UnionPay Statistics</a></li>
+<li><a href="https://www.ceicdata.com/en/china/shanghai-stock-exchange-turnover-volume">CEIC — Shanghai Stock Exchange Turnover Volume</a></li>
+<li><a href="https://www.globaltimes.cn/page/202410/1320822.shtml">Global Times — China A-share record trading volume</a></li>
+<li><a href="https://www.fia.org/marketvoice/articles/china-further-expands-international-access-its-commodity-markets">FIA — China commodity futures market access</a></li>
+<li><a href="https://www.nafmii.org.cn/englishnew/news/">NAFMII — Reform and Development of China's Bond Market</a></li>
+<li><a href="https://www.atlanticcouncil.org/cbdctracker/">Atlantic Council — CBDC Tracker</a></li>
+<li><a href="https://english.news.cn/20251229/ea9329f8a07e4c91acf2579f6523c5fb/c.html">Xinhua — China to enhance digital yuan management</a></li>
+<li><a href="https://www.scmp.com/tech/tech-trends/article/3337112/chinas-video-game-sales-reach-record-2025-amid-overseas-expansion-ai-investment">SCMP — China video game sales record</a></li>
+<li><a href="https://www.mordorintelligence.com/industry-reports/china-ecommerce-market">Mordor Intelligence — China E-commerce Market</a></li>
+<li><a href="https://www.statista.com/statistics/456767/china-interbank-market-pledged-repo-trading-volume/">Statista — China interbank pledged repo trading volume</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/deep-dives/china/REPORT.md">analysis/deep-dives/china/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

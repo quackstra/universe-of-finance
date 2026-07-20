@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L1 & L2 Blockchain — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Public blockchains processed an estimated 25-30 billion on-chain transactions in 2024, driven overwhelmingly by Solana's">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Blockchain L1 L2</div>
+  <div class="report-head"><span class="kind">Report</span><h1>L1 & L2 Blockchain</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">415</div></div><div class="chip"><div class="k">Confidence</div><div class="v green">76</div></div><div class="chip"><div class="k">Opacity</div><div class="v green">8</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#17/28</div></div></div>
+  <div class="chart-box"><h3>Digital Assets — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart5"></canvas></div></div><script>new Chart(document.getElementById("chart5"),{"type": "bar", "data": {"labels": ["CEX (Crypto)", "Stablecoins", "L1/L2 Blockchain"], "datasets": [{"data": [3210, 520, 415], "backgroundColor": ["#334155", "#334155", "#3b82f6"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#chain-by-chain-analysis">Chain-by-Chain Analysis</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections">Projections</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Public blockchains processed an estimated <strong>25-30 billion on-chain transactions</strong> in 2024, driven overwhelmingly by Solana's high-throughput architecture (~50-70M transactions/day) and the Ethereum L2 ecosystem (~14M+ transactions/day). This translates to roughly <strong>800-950 average TPS</strong> across all major chains combined. The headline number is deceptive, however: the majority of Solana transactions are lightweight operations (vote transactions, MEV bot activity), and high-value settlement remains concentrated on Ethereum and Bitcoin. On-chain transaction counts are growing exponentially as L2 rollups and high-throughput L1s reduce per-transaction costs toward zero.</p>
+<h2 id="scope">Scope</h2>
+<p>This analysis covers <strong>on-chain transactions</strong> settled on public, permissionless blockchains. Included: Bitcoin, Ethereum L1, Solana, BNB Chain, and major Ethereum L2 rollups (Base, Arbitrum, Optimism, zkSync, Starknet). Excluded: private/consortium blockchains, CEX internal transactions, sidechain bridges (counted at destination).</p>
+<p><strong>Double-counting note:</strong> <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> transactions (see <a href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi capsule</a>) and stablecoin transfers (see <a href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">Stablecoins capsule</a>) are <strong>subsets</strong> of L1/L2 transactions. A Uniswap swap on Ethereum L1 counts as one Ethereum transaction AND one DeFi transaction. Do not sum these capsules.</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume-by-chain-2024">Transaction Volume by Chain (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Chain</th>
+<th>Avg Daily Txns</th>
+<th>Est. Annual Txns</th>
+<th>Avg TPS</th>
+<th>Peak TPS (observed)</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solana</td>
+<td>~50M (avg), 138M (peak Dec)</td>
+<td>~18B+</td>
+<td>~580-1,600</td>
+<td>4,000+</td>
+<td><a href="https://cryptoslate.com/70m-daily-transactions-143b-volume-how-solana-won-defis-throughput-race/">CryptoSlate</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Base (L2)</td>
+<td>~8.8M (peak)</td>
+<td>~2B+</td>
+<td>~50-100</td>
+<td>~200+</td>
+<td><a href="https://cryptorank.io/news/feed/4c92e-base-l2-transaction-momentum-2024">CryptoRank</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>BNB Chain</td>
+<td>~3-4M</td>
+<td>~1.2B</td>
+<td>~35-46</td>
+<td>~300</td>
+<td>BitInfoCharts</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Arbitrum (L2)</td>
+<td>~2-3M</td>
+<td>~900M</td>
+<td>~23-35</td>
+<td>~100</td>
+<td>L2Beat</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Ethereum L1</td>
+<td>~1.16M</td>
+<td>~425M</td>
+<td>~13.5</td>
+<td>~22.8</td>
+<td><a href="https://etherscan.io/chart/tx">Etherscan</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Bitcoin</td>
+<td>~500K</td>
+<td>~183M</td>
+<td>~5.8</td>
+<td>~10.7</td>
+<td><a href="https://www.blockchain.com/charts/n-transactions">Blockchain.com</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Optimism (L2)</td>
+<td>~1-2M</td>
+<td>~500M</td>
+<td>~12-23</td>
+<td>~50</td>
+<td>L2Beat</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Other L2s</td>
+<td>~2-3M</td>
+<td>~800M</td>
+<td>~23-35</td>
+<td>varies</td>
+<td>L2Beat</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>Total (est.)</strong></td>
+<td><strong>~70-90M</strong></td>
+<td><strong>~25-30B</strong></td>
+<td><strong>~800-1,000</strong></td>
+<td>—</td>
+<td>Aggregated</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aggregate-metrics">Aggregate Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Est. combined avg TPS (all chains)</td>
+<td>~800-1,000</td>
+<td>Derived from daily totals</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Est. combined peak TPS</td>
+<td>~5,000+</td>
+<td>Solana peak + L2 peaks concurrent</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Est. annual transactions (2024)</td>
+<td>~25-30B</td>
+<td>Aggregated from chain data</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Bitcoin annual value transferred</td>
+<td>~$3.5T</td>
+<td>Blockchain.com</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Ethereum L1 annual value transferred</td>
+<td>~$2.5T</td>
+<td>Etherscan</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Solana annual value transferred</td>
+<td>~$400B+</td>
+<td>Messari</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="chain-by-chain-analysis">Chain-by-Chain Analysis</h2>
+<h3 id="bitcoin">Bitcoin</h3>
+<ul>
+<li><strong>Role:</strong> Settlement layer, store of value transfers</li>
+<li><strong>Daily txns:</strong> ~400K-800K (averaging ~500K in late 2024)</li>
+<li><strong>Theoretical max:</strong> ~7 TPS (block size limit)</li>
+<li><strong>Actual avg TPS:</strong> ~5.8</li>
+<li><strong>Notable 2024:</strong> Ordinals/BRC-20 activity spiked transaction counts earlier in the year, then faded. Bitcoin reached 1 billion total historical transactions in 2024 (<a href="https://www.nasdaq.com/articles/bitcoin-network-tops-1-billion-in-total-transactions-processed">Nasdaq</a>).</li>
+</ul>
+<h3 id="ethereum-l1">Ethereum L1</h3>
+<ul>
+<li><strong>Role:</strong> Smart contract platform, DeFi hub, L2 settlement</li>
+<li><strong>Daily txns:</strong> ~1.03-1.2M (average: 1,164,911)</li>
+<li><strong>Theoretical max:</strong> ~15-30 TPS</li>
+<li><strong>Actual avg TPS:</strong> ~13.5</li>
+<li><strong>Notable 2024:</strong> Transaction count has been stable/declining on L1 as activity migrates to L2s. All-time high daily txns was 1.96M (Jan 2024). L1 is increasingly a settlement/data availability layer rather than an execution layer.</li>
+</ul>
+<h3 id="solana">Solana</h3>
+<ul>
+<li><strong>Role:</strong> High-throughput L1, DeFi, memecoin trading, NFTs</li>
+<li><strong>Daily txns:</strong> ~50-70M average, peak 138M (Dec 2024)</li>
+<li><strong>Theoretical max:</strong> ~65,000 TPS</li>
+<li><strong>Actual avg TPS:</strong> ~580-1,600</li>
+<li><strong>Notable 2024:</strong> Breakout year. Memecoin frenzy (pump.fun) and DeFi activity pushed Solana to the highest transaction count of any blockchain by a massive margin. Caveat: Solana counts vote transactions and failed transactions, which inflate the headline number. Excluding votes, "real" transactions are ~30-40% of total.</li>
+</ul>
+<h3 id="ethereum-l2-ecosystem">Ethereum L2 Ecosystem</h3>
+<ul>
+<li><strong>Combined daily txns:</strong> ~14.3M+ (Base 8.8M + Arbitrum ~2.8M + Optimism ~1.5M + others)</li>
+<li><strong>Key trend:</strong> Base emerged as the L2 transaction leader in late 2024, driven by Coinbase integration, <a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI agents</a> (Virtuals Protocol), and low fees</li>
+<li><strong>L2 TVL:</strong> &gt;$58B locked across all L2s (<a href="https://l2beat.com/scaling/tvs">L2Beat</a>)</li>
+<li><strong>Notable:</strong> Ethereum L2s processed a record 12.4M transactions in a single day in mid-2024 (<a href="https://cointelegraph.com/news/ethereum-l2-ecosystem-processes-a-record-12-4-m-transactions-in-a-day">Cointelegraph</a>)</li>
+</ul>
+<h3 id="radix">Radix</h3>
+<ul>
+<li><strong>Role:</strong> DeFi-focused L1 with asset-oriented programming model</li>
+<li><strong>Theoretical max:</strong> 500,000+ TPS (Hyperscale test, Jan 2026 — 590 nodes, commodity hardware)</li>
+<li><strong>Actual daily txns:</strong> Low (early-stage network, pre-mass-adoption)</li>
+<li><strong>Notable:</strong> Radix's Cerberus consensus achieved &gt;1M TPS in peer-reviewed testing. The Hyperscale public test (Jan 2026) sustained 500K TPS with peaks &gt;700K TPS across 128 shards. Production mainnet activity remains nascent.</li>
+</ul>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="combined-l1l2-estimated-annual-transactions">Combined L1/L2 Estimated Annual Transactions</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Annual Txns</th>
+<th>Key Driver</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~1.5B</td>
+<td>Bitcoin + Ethereum only</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~2B</td>
+<td>DeFi summer on Ethereum</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~4B</td>
+<td>Bull market, NFT boom, BSC growth</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~5B</td>
+<td>L2 rollup launches, Solana growth</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~8B</td>
+<td>L2 adoption accelerates, Solana recovery</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~25-30B</td>
+<td>Solana memecoin frenzy, L2 explosion</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: 2024 represents a ~3x jump driven primarily by Solana's daily transaction count surging from ~20M to 50-138M.</em></p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Growth</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019-2024 (5yr)</td>
+<td>~17-20x</td>
+<td>Massive structural growth from L2s and high-throughput L1s</td>
+</tr>
+<tr>
+<td>2023-2024 (1yr)</td>
+<td>~3x</td>
+<td>Solana breakout + L2 scaling</td>
+</tr>
+<tr>
+<td>Ethereum L1 (2023-2024)</td>
+<td>+12%</td>
+<td>Modest, as activity shifts to L2s</td>
+</tr>
+<tr>
+<td>Bitcoin (2023-2024)</td>
+<td>~flat</td>
+<td>Ordinals bump faded</td>
+</tr>
+</tbody>
+</table>
+<p>The growth is driven by <strong>supply-side scaling</strong>: as transaction costs drop (L2 fees &lt;$0.01, Solana fees &lt;$0.001), new use cases emerge (memecoin trading, AI agents, micro-payments) that were previously uneconomical.</p>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-scaling-continues">Baseline (Scaling Continues)</h3>
+<p><strong>Assumptions:</strong>
+1. Ethereum L2 ecosystem grows to 50M+ combined daily txns by 2030
+2. Solana stabilises at 50-100M daily txns as memecoin speculation cools
+3. New high-throughput chains (Sui, Aptos, Monad) add meaningful volume
+4. Bitcoin remains stable at ~500K-1M daily txns</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Annual Txns</th>
+<th>Est. Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>~40B</td>
+<td>~1,270</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>~60B</td>
+<td>~1,900</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>~100B</td>
+<td>~3,170</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>~250B</td>
+<td>~7,930</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-blockchain-goes-mainstream">High Growth (Blockchain Goes Mainstream)</h3>
+<p><strong>Assumptions:</strong>
+1. Major apps (social media, gaming, payments) settle on-chain
+2. L2 fees approach zero; transactions become "free" at the user level
+3. AI agents generate billions of autonomous micro-transactions</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Annual Txns</th>
+<th>Est. Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>~60B</td>
+<td>~1,900</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>~150B</td>
+<td>~4,760</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>~500B</td>
+<td>~15,850</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>~2T</td>
+<td>~63,400</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-niche-remains">Conservative (Niche Remains)</h3>
+<p><strong>Assumptions:</strong>
+1. Crypto remains primarily speculative; no mainstream app breakout
+2. Regulatory pressure caps growth in key markets
+3. Transaction counts plateau as speculation fades</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Annual Txns</th>
+<th>Est. Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>~30B</td>
+<td>~950</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>~35B</td>
+<td>~1,110</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>~45B</td>
+<td>~1,430</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>~60B</td>
+<td>~1,900</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>Solana dominates by transaction count.</strong> With 50-138M daily transactions, Solana alone accounts for ~70% of all blockchain transactions — but most are low-value (memecoins, vote transactions, bots).</p>
+</li>
+<li>
+<p><strong>Ethereum's execution is migrating to L2s.</strong> Ethereum L1 daily transactions are flat at ~1.16M, while L2s collectively process 14M+ daily. L1 is becoming a settlement/DA layer.</p>
+</li>
+<li>
+<p><strong>Transaction counts are exponentially correlated with cost.</strong> As fees drop, volume explodes. Solana ($0.00025/tx) and L2s (&lt;$0.01/tx) have orders of magnitude more transactions than Bitcoin ($1-5/tx) and Ethereum L1 ($1-20/tx).</p>
+</li>
+<li>
+<p><strong>Quality varies enormously.</strong> One Bitcoin transaction settling $100K has very different economic significance from one Solana vote transaction. Raw TPS comparisons across chains are misleading without value-weighting.</p>
+</li>
+<li>
+<p><strong>Double-counting is pervasive in crypto.</strong> DeFi transactions, stablecoin transfers, and NFT trades all count as L1/L2 transactions. The 25-30B annual figure includes all of these subcategories.</p>
+</li>
+<li>
+<p><strong>Radix has the architecture but not yet the volume.</strong> With 500K+ TPS demonstrated in testing, Radix has among the highest theoretical throughput of any network, but production adoption is still nascent.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>Solana vote transaction inflation.</strong> Solana counts validator vote transactions (~60% of total) in its headline number. "Real" user transactions are ~30-40% of reported total. We use total-transaction figures for consistency but note this caveat.</li>
+<li><strong>L2 data fragmentation.</strong> L2Beat is the best aggregator, but dozens of smaller L2s/L3s are not tracked. Combined L2 figures are underestimates.</li>
+<li><strong>Historic data is estimated.</strong> Pre-2022 combined L1/L2 figures are rough estimates. Chain-specific data exists but aggregation across all chains is not standardised.</li>
+<li><strong>No standard "transaction" definition.</strong> Bitcoin counts UTXOs, Ethereum counts state transitions, Solana counts instructions. Cross-chain comparisons are inherently approximate.</li>
+<li><strong>Value transferred figures are rough.</strong> On-chain value includes self-transfers, bridge movements, and other non-economic activity.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li>The true number of "economically meaningful" transactions on Solana (vote txns, failed txns, and spam are bundled into headline numbers)</li>
+<li>What fraction of L2 transactions are MEV bots, sequencer overhead, or protocol-internal operations</li>
+<li>Whether L2 batch compression means posted L1 data understates true L2 activity (or overstates it via duplicate state roots)</li>
+<li>Cross-chain bridge transaction attribution — a single user transfer can generate 3-5 transactions across chains</li>
+<li>The economic value per transaction on high-throughput chains (Solana, Base) vs. settlement chains (Bitcoin, Ethereum L1)</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solana vote txns vs. real txns</td>
+<td>Filter using Solana's native vote/non-vote classification; further filter non-vote for failed txns and known bot programs</td>
+<td>Solscan analytics; Dune <code>solana.vote_transactions</code> table; Helius MEV report data. Non-vote txns were ~30-40% of total historically, but hit 148M/day in Jan 2025</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Solana spam/MEV distortion</td>
+<td>Analyse reverted transaction rate (peaked at 75.7% of non-vote txns in Apr 2024) and known MEV bot program IDs</td>
+<td>Sandwiched.me analysed 8.5B trades / $1T DEX volume; Jito MEV data; Helius Solana MEV Report</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Bitcoin inscriptions/Ordinals as % of total</td>
+<td>Count OP_RETURN and Taproot witness transactions; compare fee-adjusted vs. raw tx counts</td>
+<td>69.6M cumulative inscriptions by Sep 2024 (31.9% growth in 9 months); Ordinals activity peaked Q1 2024 then faded</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>L2 sequencer data vs. posted batches</td>
+<td>Compare L2Beat activity data (sequencer-reported) with L1 blob/calldata posts to validate L2 tx counts</td>
+<td>L2Beat tracks both sequencer activity and L1 data posts; EIP-4844 blob data available on Etherscan</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>"Economic transactions" vs. all transactions</td>
+<td>Value-weight transactions: multiply tx count by median transfer value per chain to get "economic TPS"</td>
+<td>Messari/Artemis chain-level value transferred data; Bitcoin ~$7K/tx, Ethereum L1 ~$6K/tx, Solana ~$8/tx</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>L3/appchain undercounting</td>
+<td>Survey emerging L3s (e.g., Degen Chain, Xai) not yet tracked by L2Beat</td>
+<td>L2Beat covers ~30 major L2s but dozens of L3s are untracked; individual L3 explorers exist but no aggregator</td>
+<td>🔴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li>If we exclude Solana vote transactions AND failed transactions AND MEV bot reverts, what is the "genuine user TPS" for Solana? Early estimates suggest it could be 60-80% lower than headline — dropping Solana from ~580-1,600 TPS to ~120-500 TPS and combined blockchain TPS from ~800-1,000 to ~350-550.</li>
+<li>Should we define a "value-weighted TPS" metric? One Bitcoin transaction at $100K has more economic significance than 10,000 Solana memecoin swaps at $5 each. A value-weighted measure would dramatically reorder the chain rankings.</li>
+<li>What is the actual L2 transaction count growth rate net of airdrop farming? Many L2 transactions in 2024 were sybil accounts farming token airdrops (Base, zkSync, Starknet). Post-airdrop activity drops are the key signal.</li>
+<li>How many unique humans (not addresses) transact on-chain daily? Address-based counts overstate by 5-20x due to multi-wallet usage, bot accounts, and sybil activity.</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>SWIFT:</strong> ~50M messages/day (~580 TPS), each representing a high-value interbank transfer. Bitcoin + Ethereum L1 combined (~1.66M txns/day, ~19 TPS) are the crypto equivalents — lower throughput but arguably comparable economic gravity per transaction.</li>
+<li><strong>Visa/Mastercard:</strong> ~1.8B transactions/day (~21,000 TPS). Total blockchain TPS of ~800-1,000 is ~4-5% of card network throughput, but growing exponentially where <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> are flat.</li>
+<li><strong>Solana vs. Visa throughput claim:</strong> Solana's ~580-1,600 TPS headline is often compared to Visa's ~1,700 TPS average. But after filtering votes, failures, and MEV, Solana's "real" TPS may be ~120-500 — below Visa rather than approaching it.</li>
+<li><strong>Ethereum L1 + L2 as a system:</strong> Combined ~15M txns/day (~175 TPS). This is the more meaningful comparison unit for Ethereum's scaling strategy, not L1 alone.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://etherscan.io/chart/tx">Etherscan — Ethereum Daily Transactions Chart</a></li>
+<li><a href="https://www.blockchain.com/charts/n-transactions">Blockchain.com — Bitcoin Confirmed Transactions Per Day</a></li>
+<li><a href="https://bitinfocharts.com/">BitInfoCharts — Bitcoin/Ethereum/Solana Transaction Charts</a></li>
+<li><a href="https://l2beat.com/scaling/activity">L2Beat — Scaling Activity Dashboard</a></li>
+<li><a href="https://cryptoslate.com/70m-daily-transactions-143b-volume-how-solana-won-defis-throughput-race/">CryptoSlate — 70M daily transactions: How Solana won DeFi's throughput race</a></li>
+<li><a href="https://cryptoslate.com/insights/solana-surpasses-rivals-with-record-breaking-66-9-million-daily-transactions/">CryptoSlate — Solana surpasses rivals with record 66.9M daily transactions</a></li>
+<li><a href="https://cryptorank.io/news/feed/4c92e-base-l2-transaction-momentum-2024">CryptoRank — Base keeps up L2 transaction momentum in 2024</a></li>
+<li><a href="https://cointelegraph.com/news/ethereum-l2-ecosystem-processes-a-record-12-4-m-transactions-in-a-day">Cointelegraph — Ethereum L2 ecosystem processes record 12.4M transactions in a day</a></li>
+<li><a href="https://www.nasdaq.com/articles/bitcoin-network-tops-1-billion-in-total-transactions-processed">Nasdaq — Bitcoin Network Tops 1 Billion Total Transactions</a></li>
+<li><a href="https://chainspect.app/dashboard">Chainspect — Fastest Blockchains by TPS (2026)</a></li>
+<li><a href="https://everstake.one/crypto-reports/solana-staking-insights-and-analysis-2024-annual-report">Everstake — Solana Staking Insights &amp; Analysis: 2024 Annual Report</a></li>
+<li><a href="https://radix.wiki/contents/tech/core-concepts/transactions-per-second-tps">Radix Wiki — Transactions Per Second (TPS)</a></li>
+<li><a href="https://www.stakingrewards.com/journal/research/radix-the-dlt-that-conquered-1-4-million-tps-publicly">Staking Rewards — Radix: The DLT that Conquered 1.4M TPS</a></li>
+<li><a href="https://www.statista.com/statistics/730806/daily-number-of-bitcoin-transactions/">Statista — Bitcoin transactions per day 2009-2025</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/workings/solana-filter.html">⚙ solana filter</a><a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/blockchain-l1-l2/REPORT.md">analysis/digital-assets/blockchain-l1-l2/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

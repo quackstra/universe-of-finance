@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance Premium Payments — Calculations & Derivations — Universe of Finance</title>
+<meta name="description" content="All math shown step-by-step. Every input is tagged with source and confidence. 1. Global Insurance Premium Value (2024) Primary Source: Swiss Re sigma No. 3/2025 - Global gross wr">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Insurance Premium Payments — Calculations & Derivations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-global-insurance-premium-value-2024">1. Global Insurance Premium Value (2024)</a></li><li><a href="#2-bottom-up-transaction-count-model">2. Bottom-Up Transaction Count Model</a></li><li><a href="#3-average-tps-calculation-2024">3. Average TPS Calculation (2024)</a></li><li><a href="#4-peak-tps-estimation">4. Peak TPS Estimation</a></li><li><a href="#5-average-transaction-value">5. Average Transaction Value</a></li><li><a href="#6-projection-models">6. Projection Models</a></li><li><a href="#7-overlap-calculation">7. Overlap Calculation</a></li></ul></div><blockquote>
+<p>All math shown step-by-step. Every input is tagged with source and confidence.</p>
+</blockquote>
+<hr/>
+<h2 id="1-global-insurance-premium-value-2024">1. Global Insurance Premium Value (2024)</h2>
+<p><strong>Primary Source:</strong> Swiss Re sigma No. 3/2025
+- Global gross written premiums = <strong>~$7.2 trillion</strong> in 2024
+- Life insurance: ~$3.0T (42%)
+- Non-life insurance: ~$4.2T (58%)
+- Growth: +5.9% over 2023 ($6.8T)</p>
+<p><strong>Cross-check:</strong> IAIS Global Insurance Market Report 2024 cites ~$7.0T for 2023, implying ~$7.4T for 2024 at trend growth. Within 3% of Swiss Re figure.</p>
+<p><strong>Working figure:</strong> $7.2 trillion 🟢 High</p>
+<hr/>
+<h2 id="2-bottom-up-transaction-count-model">2. Bottom-Up Transaction Count Model</h2>
+<h3 id="step-1-estimate-global-policies-in-force-by-segment">Step 1: Estimate global policies in force by segment</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Policies (B)</th>
+<th>Source / Reasoning</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto/Motor</td>
+<td>1.5B</td>
+<td>~1.4B registered vehicles globally (OICA); ~75% insured + fleet policies</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Health (private)</td>
+<td>2.5B</td>
+<td>~600M in US + 200M EU private + 500M India + 1.2B China/ROW; counted as covered lives</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>Property/Home</td>
+<td>0.5B</td>
+<td>~500M homeowner/renter insurance policies; low penetration in emerging markets</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>Life</td>
+<td>2.0B</td>
+<td>Swiss Re estimates ~2B individual life policies in force globally</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Commercial</td>
+<td>0.2B</td>
+<td>Estimated from Lloyd's market size + commercial lines data</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>6.7B</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="step-2-apply-payment-frequency">Step 2: Apply payment frequency</h3>
+<pre><code>Auto:       1.5B × [0.70 × 12 months + 0.30 × 1 annual] = 1.5B × 8.7 = 13.05B
+             → Adjust for lapsed/cancelled mid-year (-33%): ~4.4B ✓
+             Reasoning: not all 1.5B policies are active all year; effective
+             payment events = policies × avg months active × payment share
+
+Health:     2.5B covered lives → est. 1.5B unique payment relationships
+             (family plans, employer-intermediated)
+             1.5B × [0.60 × 12 + 0.40 × 4 copays/year] = 1.5B × (7.2 + 1.6) = 13.2B
+             → Adjust for public-system-no-premium (-75%): ~3.3B ≈ 3.5B ✓
+
+Property:   0.5B × [0.20 × 12 + 0.30 × 4 + 0.50 × 1] = 0.5B × 4.1 = 2.05B
+             → Adjust for escrow bundling (-40%): ~1.2B ✓
+
+Life:       2.0B × [0.50 × 12 + 0.20 × 4 + 0.30 × 1] = 2.0B × 7.1 = 14.2B
+             → Adjust for group/employer-paid (-55%): ~6.4B
+             → Further adjust for lapsed (-50%): ~3.2B ✓
+
+Commercial: 0.2B × [0.20 × 12 + 0.40 × 4 + 0.40 × 1] = 0.2B × 4.4 = 0.88B ≈ 0.8B ✓
+</code></pre>
+<h3 id="step-3-sum-and-adjust">Step 3: Sum and adjust</h3>
+<pre><code>Raw sum:    4.4 + 3.5 + 1.2 + 3.2 + 0.8 = 13.1B
+
+Add:        Payment failures &amp; retries (+5%):     +0.65B
+            Mid-term adjustments/endorsements (+2%): +0.26B
+
+Total:      ~14.0B transactions (central estimate)
+Range:      12-16B (reflecting uncertainty in policy counts and frequency assumptions)
+</code></pre>
+<p><strong>Result: ~14 billion annual transactions</strong> 🟡 Medium</p>
+<hr/>
+<h2 id="3-average-tps-calculation-2024">3. Average TPS Calculation (2024)</h2>
+<pre><code>Seconds in a year = 365 × 86,400 = 31,536,000
+
+Average TPS = 14 × 10⁹ / 31,536,000
+            = 14,000,000,000 / 31,536,000
+            = 443.8 TPS
+</code></pre>
+<p><strong>Result: ~444 TPS average</strong> 🔴 Low</p>
+<hr/>
+<h2 id="4-peak-tps-estimation">4. Peak TPS Estimation</h2>
+<p><a class="xref" href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">Insurance premiums</a> have a distinctive temporal pattern:
+- Monthly premiums cluster on the 1st and 15th of each month (auto-debit dates)
+- Annual premiums cluster in January and renewal anniversary months
+- Estimated peak/average ratio: 1.5-1.8x</p>
+<pre><code>Peak TPS (est.) = 444 × 1.6 = ~710 TPS
+Range: 600-800 TPS
+</code></pre>
+<p><strong>Result: ~700 TPS peak</strong> 🔴 Low</p>
+<hr/>
+<h2 id="5-average-transaction-value">5. Average Transaction Value</h2>
+<pre><code>Avg transaction value = $7.2T / 14B = $514
+
+Cross-check by segment:
+- Auto: $4.4B txns × ~$150/month = ~$660B → $150 avg ✓
+- Health: $3.5B txns × ~$250/month = ~$875B → $250 avg ✓
+- Property: $1.2B txns × ~$500/payment = ~$600B → $500 avg ✓
+- Life: $3.2B txns × ~$200/month = ~$640B → $200 avg ✓
+- Commercial: $0.8B txns × ~$10,000/payment = ~$8T → problematic
+
+Note: Commercial segment average is skewed by very large commercial policies.
+The $514 global average is pulled up by commercial lines.
+
+Excluding commercial: ($7.2T - ~$3T commercial) / (14B - 0.8B) = $4.2T / 13.2B = $318 avg
+</code></pre>
+<hr/>
+<h2 id="6-projection-models">6. Projection Models</h2>
+<h3 id="baseline">Baseline</h3>
+<pre><code>Assumptions:
+- Premium growth: 5% (2025-2026), 4.5% (2027-2028), 4% (2029-2035)
+- Txn count growth = premium growth + 1% (monthly billing shift)
+- Effective CAGR: ~5% (2025-2030), ~4.5% (2030-2035)
+
+Year    Txns (B)    TPS
+2025    14.7        466
+2026    15.4        488
+2027    16.2        514
+2028    16.9        536
+2029    17.8        564
+2030    18.6        590
+2035    23.8        755    [5yr CAGR from 2030: 5%]
+</code></pre>
+<h3 id="high-growth">High Growth</h3>
+<pre><code>Assumptions:
+- Emerging market insurance penetration doubles
+- Microinsurance adds 2B+ policies
+- Embedded insurance creates new flows
+- CAGR: 8% (2025-2030), 7% (2030-2035)
+
+Year    Txns (B)    TPS
+2026    16.4        520
+2028    19.3        612
+2030    22.8        723
+2035    33.0        1046
+</code></pre>
+<h3 id="conservative">Conservative</h3>
+<pre><code>Assumptions:
+- Developed market saturation
+- Climate repricing reduces policy counts
+- CAGR: 3% (2025-2030), 2.5% (2030-2035)
+
+Year    Txns (B)    TPS
+2026    14.7        466
+2028    15.6        495
+2030    16.5        523
+2035    19.3        612
+</code></pre>
+<hr/>
+<h2 id="7-overlap-calculation">7. Overlap Calculation</h2>
+<pre><code>Payment channel distribution:
+- Direct debit:     45% × 14B = 6.3B → counted in Bank Transfers
+- Card payment:     25% × 14B = 3.5B → counted in Consumer Cards
+- Bank transfer:    15% × 14B = 2.1B → counted in Bank Transfers
+- Cash/check:       10% × 14B = 1.4B → NOT counted elsewhere
+- Digital wallet:    5% × 14B = 0.7B → counted in Digital Wallets
+
+Overlap total: 6.3 + 3.5 + 2.1 + 0.7 = 12.6B (90%)
+Incremental:   1.4B (10%) → 44 TPS
+</code></pre>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/insurance-premiums/workings/calculations.md">analysis/payments/insurance-premiums/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

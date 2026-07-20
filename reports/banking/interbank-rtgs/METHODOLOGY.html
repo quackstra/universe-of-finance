@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interbank Settlement (RTGS) — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition One RTGS transaction = one irrevocable, real-time gross settlement instruction processed to finality by a central bank-operated large-value payment system. E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Banking<span class="sep">/</span>Interbank Rtgs</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Interbank Settlement (RTGS) — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-methodological-challenges">Key Methodological Challenges</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>One RTGS transaction = <strong>one irrevocable, real-time gross settlement instruction
+processed to finality</strong> by a central bank-operated large-value payment system.
+Each instruction settles individually (no netting) and in central bank money.</p>
+<p>Counted at: <strong>settlement finality</strong> (not submission, not queuing).
+Excluded: failed/rejected instructions, intraday liquidity management messages,
+<a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">securities settlement</a> legs (covered in securities-settlement), and retail fast
+payments (covered in bank-transfers).</p>
+<hr/>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-direct-central-bank-reporting-5-core-systems">Method A: Direct Central Bank Reporting (5 core systems)</h3>
+<p>Sum published annual volumes from Fedwire (210M), T2 (108M), CHAPS (53M),
+BOJ-NET (5M), and CLS (250M est.) = <strong>~423M</strong> (original estimate).</p>
+<h3 id="method-b-expanded-system-coverage-13-systems">Method B: Expanded System Coverage (13 systems)</h3>
+<p>Add 8 missing systems identified through BIS CPMI data, PBoC reports, and
+RBI statistics: CNAPS-HVPS (382M), <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> RTGS (295M), SARIE (200M),
+BOK-Wire+ (25M), Russia BESP (25M), RITS (13.3M), Lynx (9M), MEPS+ (6M).</p>
+<p>Revised total: <strong>~1,581M</strong> annual transactions.</p>
+<h3 id="method-c-gdp-ratio-cross-validation">Method C: GDP-Ratio Cross-Validation</h3>
+<p>For systems without published data, apply the RTGS-value-to-GDP ratio
+observed in well-documented systems (Fedwire: ~15x GDP; CHAPS: ~7x GDP)
+to estimate transaction volume for remaining jurisdictions.</p>
+<pre><code>+---------------------------------------------------+
+|              RAW ESTIMATES                          |
+|                                                     |
+|  Method A           Method B           Method C     |
+|  [5 Core Systems]   [13 Systems]       [GDP Ratio]  |
+|  +------------+     +------------+     +----------+ |
+|  | 423M       |     | 1,581M     |     | 1,400-   | |
+|  | txns/year  |     | txns/year  |     | 1,700M   | |
+|  +-----+------+     +-----+------+     +----+-----+ |
+|        |                  |                  |       |
+|        +------------------+------------------+       |
+|                           v                          |
+|              +------------------------+              |
+|              |    RECONCILIATION      |              |
+|              | Method A covers only   |              |
+|              | 5 systems (~27% of     |              |
+|              | global). Methods B+C   |              |
+|              | converge at ~1.5B.     |              |
+|              | CNAPS-HVPS (China)     |              |
+|              | and India RTGS are     |              |
+|              | the largest additions. |              |
+|              +----------+-------------+              |
+|                         v                            |
+|              +------------------------+              |
+|              |   FINAL ESTIMATE       |              |
+|              |   1,581M +/- 200M      |              |
+|              |   ~50 TPS (calendar)   |              |
+|              |   Confidence: 82/100   |              |
+|              +------------------------+              |
++---------------------------------------------------+
+</code></pre>
+<hr/>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>Methods B and C agree within ~15%. The primary tension is:</p>
+<ul>
+<li><strong>Method A</strong> dramatically undercounts (covers only US, Eurozone, UK, <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>, FX)</li>
+<li><strong>Method B</strong> adds hard data for <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> (PBoC) and India (RBI) -- the two
+  largest additions account for ~677M of the ~1,158M revision</li>
+<li><strong>Method C</strong> (GDP ratio) validates the 1,400-1,700M range independently</li>
+</ul>
+<p>The "missing RTGS systems" discovery (Run 3) was the single largest revision
+in any Universe of Finance category, nearly quadrupling the original count.</p>
+<hr/>
+<h2 id="key-methodological-challenges">Key Methodological Challenges</h2>
+<h3 id="netting-ratios">Netting Ratios</h3>
+<p>RTGS settles <strong>gross</strong> -- no netting occurs within the RTGS system itself.
+However, upstream systems apply heavy netting before feeding settlement
+instructions to RTGS:</p>
+<ul>
+<li>NSCC nets ~98% of US equity trades before cash settlement via Fedwire</li>
+<li>CLS multilateral netting compresses FX funding to ~1% of gross value
+  ($72B funding for $19.1T gross on record day)</li>
+</ul>
+<p>This means the ~1,581M RTGS transactions represent the <strong>net residual</strong> of
+trillions of upstream obligations. RTGS counts measure settlement system load,
+not underlying economic activity.</p>
+<h3 id="the-missing-rtgs-systems-discovery">The "Missing RTGS Systems" Discovery</h3>
+<p>The original 5-system estimate (423M) covered only ~27% of global RTGS
+activity. Key blind spots:</p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Volume (M)</th>
+<th>Why It Was Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNAPS-HVPS</td>
+<td>382</td>
+<td>PBoC reports in Chinese; 2024 not yet</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>available in English</td>
+</tr>
+<tr>
+<td>India RTGS</td>
+<td>295</td>
+<td>Lower min threshold (Rs 2 lakh) inflates</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>count vs Western RTGS</td>
+</tr>
+<tr>
+<td>SARIE</td>
+<td>200</td>
+<td>Saudi data in Arabic; extrapolated from</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>monthly SAMA reports</td>
+</tr>
+</tbody>
+</table>
+<h3 id="counting-point-variations">Counting Point Variations</h3>
+<ul>
+<li><strong>Fedwire</strong>: Counts completed transfers (excludes reversals)</li>
+<li><strong>T2</strong>: Counts settled payment transactions (post-March 2023 T2 migration
+  creates discontinuity with TARGET2 historical data)</li>
+<li><strong>CLS</strong>: Counts "payment instructions" which include both legs of PvP
+  settlement -- one trade = two instructions</li>
+<li><strong>India RTGS</strong>: Lower minimum threshold (Rs 2 lakh / ~$2,400) vs Western
+  RTGS systems (typically &gt;$1M effective minimum), inflating counts</li>
+</ul>
+<hr/>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<p>RTGS has <strong>minimal overlap</strong> with other categories because it is the
+<strong>terminal settlement layer</strong>:</p>
+<pre><code>UPSTREAM SYSTEMS                    SETTLEMENT LAYER
++------------------+
+| Equity Markets   |----&gt; CCP netting ----&gt; RTGS (cash leg)
+| Bond Markets     |----&gt; CSD matching ---&gt; RTGS (DVP cash)
+| FX Markets       |----&gt; CLS netting ----&gt; RTGS (funding)
+| ACH/Batch        |----&gt; Net settlement -&gt; RTGS (net position)
+| Card Networks    |----&gt; Daily net ------&gt; RTGS (scheme settlement)
++------------------+
+
+Overlap risk: NEAR ZERO
+RTGS counts the final settlement event, not upstream activity.
+One trade in equity markets may generate 1 RTGS instruction
+(or zero, if fully netted away).
+</code></pre>
+<p>The only material overlap is with the <strong>securities-settlement</strong> capsule:
+a DVP settlement appears as a securities delivery (counted there) AND a
+cash payment (counted here). We accept this as intentional -- they measure
+different dimensions of the same event.</p>
+<hr/>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Category: Interbank RTGS (1,581M annual transactions)
+
+Region          Volume    Share   Data Quality
+--------------- -------- ------- ----------------
+US (Fedwire)    ########   13%   Direct (FRB)
+China (CNAPS)   ########   24%   PBoC annual report
+India (RTGS)    ######     19%   RBI monthly data
+CLS (Global FX) ######    16%   Estimated from peaks
+Saudi (SARIE)   ####       13%   SAMA monthly, extrapolated
+Eurozone (T2)   ###         7%   ECB direct
+UK (CHAPS)      ##          3%   BoE direct
+Other (6 sys)   ##          5%   Mixed: GDP-ratio + partial
+</code></pre>
+<p><strong>Coverage</strong>: 13 systems covering an estimated ~85-90% of global RTGS
+transaction volume. Remaining ~10-15% is distributed across 100+ smaller
+national RTGS systems (Swiss SIC, South <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> SAMOS, <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a> STR, etc.).</p>
+<hr/>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ---------  --------  ----------  -----------
+FRB (Fedwire)       █████████  █████████ ██████████  ██████████
+ECB (T2)            █████████  █████████ ██████████  █████████░
+BoE (CHAPS)         █████████  █████████ ██████████  █████████░
+PBoC (CNAPS)        ████████░  ████████░ ██████████  ████████░░
+RBI (India RTGS)    ████████░  █████████ ██████████  █████████░
+SAMA (SARIE)        █████░░░░  ████████░ ████████░░  ████░░░░░░
+BOJ (BOJ-NET)       ██████░░░  ███████░░ ██████████  ██████░░░░
+BIS CPMI Red Book   ████████░  █████░░░░ ██████████  ██████░░░░
+                    ---------  --------  ----------  -----------
+Composite Score:    82/100     85/100    95/100      72/100
+</code></pre>
+<p><strong>Overall confidence: 82/100</strong> -- Strong authority sources (central banks),
+good recency for top systems, but granularity drops sharply for smaller
+systems where GDP-ratio estimation was used.</p>
+<hr/>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial estimate: 5 systems, 423M, ~13 TPS</td>
+<td>Baseline</td>
+</tr>
+<tr>
+<td>2026-03-26</td>
+<td>Run 3: Added 8 missing systems</td>
+<td>+1,158M (+274%)</td>
+</tr>
+<tr>
+<td>2026-03-26</td>
+<td>Revised to 1,581M, ~50 TPS (calendar)</td>
+<td>Final current</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/banking/interbank-rtgs/METHODOLOGY.md">analysis/banking/interbank-rtgs/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

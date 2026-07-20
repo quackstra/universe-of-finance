@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sector: Emerging — Universe of Finance</title>
+<meta name="description" content="How we measure IoT payments, tokenized real-world assets, and AI agent transactions — 3 categories, ~637 TPS. Last Updated: 2026-03-28 (Run 6) 1. Sector Overview The Emerging sect">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Methodology</div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Sector: Emerging</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-sector-overview">1. Sector Overview</a></li><li><a href="#2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</a></li><li><a href="#3-categories-in-this-sector">3. Categories in This Sector</a></li><li><a href="#4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</a></li><li><a href="#5-primary-data-sources">5. Primary Data Sources</a></li><li><a href="#6-sector-triangulation-approach">6. Sector Triangulation Approach</a></li><li><a href="#7-definition-standards">7. Definition Standards</a></li><li><a href="#8-known-gaps-future-work">8. Known Gaps & Future Work</a></li></ul></div><blockquote>
+<p>How we measure <a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">IoT</a> payments, tokenized real-world assets, and <a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI agent transactions</a> — 3 categories, ~637 TPS.
+<strong>Last Updated</strong>: 2026-03-28 (Run 6)</p>
+</blockquote>
+<hr/>
+<h2 id="1-sector-overview">1. Sector Overview</h2>
+<p>The Emerging sector measures <strong>nascent transaction types</strong> that do not fit neatly into traditional categories — machine-to-machine payments (IoT/<a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">M2M</a>), tokenized real-world assets (RWA), and autonomous AI agent transactions. At ~637 TPS, Emerging accounts for <strong>0.9% of global financial TPS</strong>.</p>
+<p>This sector spans the full maturity spectrum: IoT/M2M is already processing ~48.5B annual transactions (mature but poorly measured), RWA tokenization is early-stage with ~75M annual transactions, and AI agent transactions are pre-market at ~21M annual events. The measurement challenge varies accordingly — IoT requires triangulation across fragmented segments, while <a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI agents</a> require projecting from near-zero base.</p>
+<hr/>
+<h2 id="2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</h2>
+<p><strong>IoT payment rail attribution.</strong> The vast majority of IoT/M2M payments (70-80%) ride on existing card, bank, or wallet rails. A connected car paying a toll uses a linked credit card. A smart meter paying a utility bill uses a direct debit. Only 20-30% of IoT payments use genuinely new rails (embedded SIM payments, machine wallets, API micropayments).</p>
+<p><strong>RWA on-chain subset.</strong> Tokenized RWA transactions occur on blockchains and are therefore a subset of L1/L2 on-chain transactions (counted in Digital Assets). They are not additive. The RWA category exists as an analytical view to track this specific use case.</p>
+<p><strong>AI agent immaturity.</strong> At 0.66 TPS, AI agent transactions are barely measurable. The category is included for forward-looking completeness, not current significance. Most "data" is projections, not measurements.</p>
+<p><strong>Definitional novelty.</strong> What counts as an "IoT payment"? Is a smart TV auto-renewing a subscription an IoT payment or a recurring card payment? Is an AI agent calling a paid API an AI transaction or an API call? Boundary definitions are still being established.</p>
+<p><strong>Projection vs. measurement.</strong> For IoT and AI agents, much of the available data is market forecasts (Gartner, IDC, McKinsey) rather than actual measurements. We use forecasts only as cross-references, anchoring on observable data where possible.</p>
+<hr/>
+<h2 id="3-categories-in-this-sector">3. Categories in This Sector</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>Avg TPS</th>
+<th>Annual Volume</th>
+<th>Confidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IoT &amp; Machine-to-Machine Payments</td>
+<td>1,538</td>
+<td>~48.5B</td>
+<td>67 (Medium-High)</td>
+<td>Triangulated across 6 segments</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Tokenised Real-World Assets</td>
+<td>2.4</td>
+<td>~75M</td>
+<td>56 (Medium)</td>
+<td>On-chain (subset of L1/L2)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AI Agent Transactions</td>
+<td>0.66</td>
+<td>~21M</td>
+<td>34 (Low-Medium)</td>
+<td>Pre-market category</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sector total: ~637 TPS</strong> (using ~634 for IoT after rounding, +2.4 RWA, +0.66 AI)</p>
+<hr/>
+<h2 id="4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</h2>
+<h3 id="intra-sector">Intra-Sector</h3>
+<p>No overlap between the three categories. IoT is primarily fiat-rail, RWA is on-chain, and AI agents are a mix.</p>
+<h3 id="cross-sector-overlap">Cross-Sector Overlap</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│  EMERGING SECTOR: ~637 TPS                               │
+│                                                          │
+│  ┌────────────────┐  ┌────────────┐  ┌──────────────┐  │
+│  │  IoT/M2M       │  │    RWA     │  │  AI Agents   │  │
+│  │  ~1,538 TPS    │  │  2.4 TPS   │  │  0.66 TPS    │  │
+│  │                │  │            │  │              │  │
+│  │ 70-80% on     │  │ 100% on    │  │ ~60% on      │  │
+│  │ card/bank     │  │ L1/L2      │  │ L1/L2 (x402) │  │
+│  │ rails         │  │ (subset)   │  │ ~40% via API  │  │
+│  └───────┬────────┘  └─────┬──────┘  └──────┬───────┘  │
+│          │                 │                │           │
+│          ▼                 ▼                ▼           │
+│  ┌────────────────────────────────────────────────┐     │
+│  │ Overlap Resolution:                            │     │
+│  │                                                 │     │
+│  │ IoT → Payments overlap: ~75% (~36.4B)           │     │
+│  │        Incremental: ~25% (~12.1B) = ~384 TPS    │     │
+│  │                                                 │     │
+│  │ RWA → Digital Assets overlap: 100% (on-chain)   │     │
+│  │        Incremental: 0 TPS                       │     │
+│  │                                                 │     │
+│  │ AI → Digital Assets overlap: ~60% (on-chain)    │     │
+│  │       Incremental: ~40% = ~0.26 TPS             │     │
+│  └────────────────────────────────────────────────┘     │
+│                                                          │
+│  Total incremental to Big Number: ~127-190 TPS           │
+│  (IoT non-card portion only; RWA and AI negligible)      │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Decision:</strong> In the payment infrastructure Big Number (~70,200), only the incremental IoT portion (~159 TPS) is added via the economic transaction method. RWA and AI agent transactions are subsets of existing sectors.</p>
+<hr/>
+<h2 id="5-primary-data-sources">5. Primary Data Sources</h2>
+<h3 id="source-confidence-matrix">Source Confidence Matrix</h3>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+NPCI (FASTag/       ███░░░░░░  █████████ █████████░  ██████████
+ NETC toll data)
+E-ZPass/IBTTA       ███░░░░░░  ████████░ █████████░  ████████░░
+(toll data)
+GSMA IoT Reports    ████████░░ ████████░ ████████░░  ████░░░░░░
+RWA.xyz / DeFiLlama ██████░░░░ ██████████ ███████░░░ ████████░░
+(RWA on-chain)
+Block explorers     ██████░░░░ ██████████ █████████░ ██████████
+(AI agent txns)
+Gartner/IDC         ████████░░ ███████░░ ████████░░  ███░░░░░░░
+(IoT projections)
+x402 protocol data  ██░░░░░░░░ ██████████ ██████░░░░ ████████░░
+                    ─────────  ────────  ──────────  ───────────
+</code></pre>
+<p><strong>Tier 1 (Observable data):</strong> Toll collection systems (NPCI FASTag, E-ZPass, European ETC), block explorers (RWA and AI agent on-chain activity)
+<strong>Tier 2 (Industry estimates):</strong> GSMA IoT reports, RWA.xyz dashboards, DeFiLlama
+<strong>Tier 3 (Projections):</strong> Gartner/IDC (IoT market sizing), academic papers, x402 protocol metrics</p>
+<hr/>
+<h2 id="6-sector-triangulation-approach">6. Sector Triangulation Approach</h2>
+<h3 id="iot-triangulation-funnel-dominant-category">IoT Triangulation Funnel (dominant category)</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│              RAW ESTIMATES (IoT/M2M only)                 │
+│                                                          │
+│  Method A              Method B            Method C      │
+│  [Segment Sum]         [Connected Device   [Industry     │
+│  Toll + utility +      Count × Payment     Reports]      │
+│  transit + vending     Frequency]          Gartner, IDC, │
+│  + auto + industrial                       GSMA estimates │
+│  ┌──────────┐         ┌──────────┐        ┌──────────┐  │
+│  │ 48.5B    │         │ 42B      │        │ 55B      │  │
+│  │ annual   │         │ annual   │        │ annual   │  │
+│  └────┬─────┘         └────┬─────┘        └────┬─────┘  │
+│       │                    │                    │        │
+│       └────────────────────┼────────────────────┘        │
+│                            ▼                              │
+│              ┌───────────────────────┐                    │
+│              │    RECONCILIATION     │                    │
+│              │ Method B undercounts  │                    │
+│              │ (not all connected    │                    │
+│              │ devices make payments;│                    │
+│              │ but those that do     │                    │
+│              │ transact frequently). │                    │
+│              │ Method C overcounts   │                    │
+│              │ (includes projected   │                    │
+│              │ rather than actual).  │                    │
+│              │ Segment sum (A) is    │                    │
+│              │ most grounded.        │                    │
+│              └──────────┬────────────┘                    │
+│                         ▼                                 │
+│              ┌───────────────────────┐                    │
+│              │   FINAL ESTIMATE      │                    │
+│              │ ~48.5B annual txns    │                    │
+│              │ ~1,538 TPS            │                    │
+│              │ Range: 1,100-2,000    │                    │
+│              │ Confidence: 67/100    │                    │
+│              └───────────────────────┘                    │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<h3 id="iot-segment-breakdown">IoT Segment Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Annual Txns (B)</th>
+<th>Confidence</th>
+<th>Primary Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Toll collection</td>
+<td>18.5</td>
+<td>Medium-High</td>
+<td>NPCI FASTag, E-ZPass, European ETC</td>
+</tr>
+<tr>
+<td>Utility/smart meter payments</td>
+<td>12.0</td>
+<td>Medium</td>
+<td>Utility company reports</td>
+</tr>
+<tr>
+<td>Transit/ticketing</td>
+<td>8.0</td>
+<td>Medium</td>
+<td>Contactless transit data</td>
+</tr>
+<tr>
+<td>Vending/unattended</td>
+<td>4.5</td>
+<td>Low-Medium</td>
+<td>Cantaloupe, USA Technologies</td>
+</tr>
+<tr>
+<td>Connected vehicle</td>
+<td>3.0</td>
+<td>Low</td>
+<td>Auto manufacturer estimates</td>
+</tr>
+<tr>
+<td>Industrial IoT</td>
+<td>2.5</td>
+<td>Low</td>
+<td>Industry estimates</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="7-definition-standards">7. Definition Standards</h2>
+<p>In the Emerging sector, a <strong>transaction</strong> is defined per category:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Counting Point</th>
+<th>What Is Excluded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IoT/M2M</td>
+<td>Completed payment between/involving a machine/device</td>
+<td>Telemetry data transmissions, device heartbeats, non-payment API calls</td>
+</tr>
+<tr>
+<td>RWA Tokenisation</td>
+<td>Confirmed on-chain transfer/trade of a tokenized real-world asset</td>
+<td>Off-chain custody transfers, price oracle updates, governance votes</td>
+</tr>
+<tr>
+<td>AI Agent Transactions</td>
+<td>Completed payment by an autonomous agent for a service/resource</td>
+<td>API calls without payment, agent-to-agent communication without value transfer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key distinction:</strong> IoT payments that use a linked credit card are counted here as IoT commerce events AND in Payments as card transactions. For the Big Number, only the incremental (non-card-rail) portion is added. RWA and AI agent transactions that occur on-chain are subsets of L1/L2 and are not added.</p>
+<hr/>
+<h2 id="8-known-gaps-future-work">8. Known Gaps &amp; Future Work</h2>
+<ul>
+<li><strong>IoT payment rail granularity.</strong> The 70-80% card/bank overlap is a rough estimate. A per-segment breakdown of payment methods would produce more precise de-duplication. Toll collection is primarily card-funded; utility payments are primarily direct debit; the overlap rates differ.</li>
+<li><strong>RWA platform coverage.</strong> Only public blockchain RWA is tracked. Private tokenization platforms (JPMorgan Onyx, BNY Mellon, HSBC Orion) process tokenized asset transactions on permissioned ledgers that are not publicly visible.</li>
+<li><strong>AI agent trajectory.</strong> At 0.66 TPS, this category is pre-market. The x402 protocol and emerging agent-commerce standards (A2A, MCP) may drive exponential growth. Quarterly monitoring is warranted to catch the inflection point.</li>
+<li><strong>Embedded finance boundary.</strong> The taxonomy includes embedded payments, lending, and insurance under Emerging, but these categories have not yet been separately measured. They overlap heavily with Payments and Insurance sectors. Future runs should assess whether embedded finance warrants its own measurement track.</li>
+<li><strong>Machine wallet adoption.</strong> As IoT devices get their own payment credentials (eSIM wallets, device-bound tokens), the overlap with card rails may decrease. Monitoring the shift from card-funded IoT to native machine payments is methodologically important.</li>
+</ul>
+<hr/>
+<p><em>Emerging is the most forward-looking sector. IoT is already significant (~1,538 TPS before de-dup), while RWA and AI agents are at the base of their adoption S-curves. The methodology must balance current measurement rigor with readiness for rapid growth.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/methodology/SECTOR_EMERGING.md">analysis/methodology/SECTOR_EMERGING.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Transfers — Universe of Finance</title>
+<meta name="description" content="Category: Payments > Bank Transfers Priority: #2 Data Year: 2024 Last Updated: 2026-03-26 Executive Summary Global bank transfers processed an estimated 484 billion transactions in">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Bank Transfers</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Bank Transfers</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">15,338</div></div><div class="chip"><div class="k">Confidence</div><div class="v green">78</div></div><div class="chip"><div class="k">Opacity</div><div class="v amber">54</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#3/28</div></div></div>
+  <div class="chart-box"><h3>Payments — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart14"></canvas></div></div><script>new Chart(document.getElementById("chart14"),{"type": "bar", "data": {"labels": ["Consumer Cards", "Digital Wallets", "Bank Transfers", "Bill Payments", "E-Commerce", "ATM Withdrawals", "Payroll", "BNPL", "Insurance Premiums", "P2P Transfers", "Remittances"], "datasets": [{"data": [24501, 19660, 15338, 3076, 1823, 1557, 1014, 634, 444, 270, 57], "backgroundColor": ["#334155", "#334155", "#3b82f6", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#1-current-tps-2024">1. Current TPS (2024)</a></li><li><a href="#2-annual-volume-2024">2. Annual Volume (2024)</a></li><li><a href="#3-annual-value-2024">3. Annual Value (2024)</a></li><li><a href="#4-historic-timeseries-2015-2024">4. Historic Timeseries (2015-2024)</a></li><li><a href="#5-subcategory-breakdown">5. Subcategory Breakdown</a></li><li><a href="#6-growth-rates">6. Growth Rates</a></li><li><a href="#7-baseline-projection-2026-2035">7. Baseline Projection (2026-2035)</a></li><li><a href="#8-high-growth-projection-2026-2035">8. High-Growth Projection (2026-2035)</a></li><li><a href="#9-conservative-projection-2026-2035">9. Conservative Projection (2026-2035)</a></li><li><a href="#key-insights">Key Insights</a></li><li><a href="#methodology-notes">Methodology Notes</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li></ul></div><p><strong>Category</strong>: Payments &gt; Bank Transfers
+<strong>Priority</strong>: #2
+<strong>Data Year</strong>: 2024
+<strong>Last Updated</strong>: 2026-03-26</p>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Global bank transfers processed an estimated <strong>484 billion transactions</strong> in 2024, averaging <strong>~15,300 TPS</strong> with peaks approaching <strong>~27,500 TPS</strong>. The total value moved exceeded <strong>$2,400 trillion</strong> — dwarfing every other financial instrument class on Earth.</p>
+<p>The defining story of the last decade is the <strong>real-time payments explosion</strong>. <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> alone processed 131 billion transactions in 2024 — more than all US electronic payments combined. <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>'s <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a> hit 63 billion. These two systems, both launched within the last 8 years, now account for <strong>40% of all global bank transfers by volume</strong>.</p>
+<p>Traditional batch ACH and RTGS systems remain critical infrastructure — Fedwire moved $1,133 trillion in 2024, averaging $5.4 million per wire — but the volume growth story belongs entirely to real-time payments, which grew at a <strong>38% five-year CAGR</strong>.</p>
+<hr/>
+<h2 id="1-current-tps-2024">1. Current TPS (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Average TPS</strong></td>
+<td>~15,338</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>Peak TPS (global)</strong></td>
+<td>~25,000-30,000</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>India UPI peak TPS</strong></td>
+<td>~11,250</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>Brazil PIX peak TPS</strong></td>
+<td>~3,500</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>US ACH operational peak</strong></td>
+<td>~3,500</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p>Average TPS is calculated from ~484 billion annual transactions divided by 31.56 million seconds per year. <a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> reflects concurrent peak-day estimates across major time zones.</p>
+<p><strong>Sources</strong>: <a href="https://www.aciworldwide.com/real-time-payments-report">ACI Worldwide</a>, <a href="https://www.nacha.org/content/ach-network-volume-and-value-statistics">Nacha</a>, <a href="https://www.npci.org.in/product/upi/product-statistics">NPCI</a></p>
+<hr/>
+<h2 id="2-annual-volume-2024">2. Annual Volume (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Volume (B txns)</th>
+<th>Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real-time payments</td>
+<td>378</td>
+<td>78.1%</td>
+</tr>
+<tr>
+<td>Batch/ACH transfers</td>
+<td>106</td>
+<td>21.9%</td>
+</tr>
+<tr>
+<td>RTGS/Wire transfers</td>
+<td>0.4</td>
+<td>0.08%</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>~484</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Real-time payments dominate volume. The global RTP figure is extrapolated from <a href="https://investor.aciworldwide.com/news-releases/news-release-details/global-real-time-payments-growth-sustainable-new-use-cases-push">ACI Worldwide's 2023 benchmark</a> of 266.2 billion transactions at 42.2% YoY growth.</p>
+<p><strong>Key systems by volume (2024)</strong>:
+- 🇮🇳 <strong>India UPI</strong>: <a href="https://www.npci.org.in/product/upi/product-statistics">131.1B transactions</a> — 27% of global total
+- 🇧🇷 <strong>Brazil PIX</strong>: <a href="https://www.bcb.gov.br/en">~63B transactions</a> — 13% of global total
+- 🇺🇸 <strong>US ACH (Nacha)</strong>: <a href="https://www.nacha.org/news/nacha-releases-top-50-financial-institution-ach-originators-and-receivers-2024-total-ach">33.6B transactions</a> — 7% of global total
+- 🇪🇺 <strong>SEPA Credit Transfers</strong>: <a href="https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2024h2~5ada0087d2.en.html">~32B transactions</a></p>
+<hr/>
+<h2 id="3-annual-value-2024">3. Annual Value (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Value (USD T)</th>
+<th>Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTGS/Wire transfers</td>
+<td>~1,860</td>
+<td>75.3%</td>
+</tr>
+<tr>
+<td>Batch/ACH transfers</td>
+<td>~505</td>
+<td>20.4%</td>
+</tr>
+<tr>
+<td>Real-time payments</td>
+<td>~106</td>
+<td>4.3%</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>~$2,471T</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The value picture is the inverse of volume: <strong>RTGS systems dominate value</strong> despite processing &lt;0.1% of transactions. <a href="https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html">Fedwire alone moved $1,133 trillion</a> in 2024 at an average of $5.4 million per transfer.</p>
+<p><strong>Key systems by value (2024)</strong>:
+- 🇺🇸 <strong>Fedwire</strong>: <a href="https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html">$1,133T</a> — daily avg $4.52T
+- 🇪🇺 <strong>TARGET2/T2</strong>: <a href="https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html">~$600T</a> — record 108M transactions
+- 🇪🇺 <strong>SEPA Credit Transfers</strong>: <a href="https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2024h2~5ada0087d2.en.html">~$238T</a> (EUR 220T)
+- 🇺🇸 <strong>US ACH</strong>: <a href="https://www.nacha.org/content/ach-network-volume-and-value-statistics">$86.2T</a>
+- 🇨🇳 <strong>CIPS</strong>: <a href="https://www.cips.com.cn/en/about_us/about_cips/introduction/index.html">$24.5T</a> — 42.6% value growth YoY</p>
+<hr/>
+<h2 id="4-historic-timeseries-2015-2024">4. Historic Timeseries (2015-2024)</h2>
+<h3 id="us-ach-network-nacha">US ACH Network (Nacha)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (B)</th>
+<th>Value ($T)</th>
+<th>Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2016</td>
+<td>25.6</td>
+<td>43.7</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>23.0</td>
+<td>51.2</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>24.7</td>
+<td>~55.8</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>26.8</td>
+<td>61.9</td>
+<td>8.5%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>29.1</td>
+<td>72.6</td>
+<td>8.6%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>30.0</td>
+<td>76.7</td>
+<td>3.1%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>31.5</td>
+<td>80.1</td>
+<td>5.0%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>33.6</td>
+<td>86.2</td>
+<td>6.7%</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.nacha.org/content/ach-network-volume-and-value-statistics">Nacha</a></p>
+<h3 id="india-upi-the-exponential-curve">India UPI — The Exponential Curve</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (B)</th>
+<th>Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017</td>
+<td>0.018</td>
+<td>Launch</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>0.915</td>
+<td>4,983%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>5.35</td>
+<td>485%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>12.52</td>
+<td>134%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>22.33</td>
+<td>78%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>45.96</td>
+<td>106%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>83.71</td>
+<td>82%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>131.13</td>
+<td>57%</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.grabon.in/indulge/tech/upi-statistics/">NPCI/GrabOn</a></p>
+<p>UPI's trajectory is possibly the most dramatic growth curve in the history of financial infrastructure. From 18 million transactions in its launch year to <strong>131 billion</strong> in 2024 — a 7,285x increase in 7 years. The <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569">IMF now recognizes UPI as the world's largest real-time payment system</a>, accounting for <strong>49% of all global real-time transactions</strong>.</p>
+<h3 id="global-real-time-payments">Global Real-Time Payments</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (B)</th>
+<th>Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~75</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~105</td>
+<td>~40%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~145</td>
+<td>~38%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~188</td>
+<td>~30%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>266.2</td>
+<td>42.2%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~378</td>
+<td>~42%</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.aciworldwide.com/real-time-payments-report">ACI Worldwide</a></p>
+<hr/>
+<h2 id="5-subcategory-breakdown">5. Subcategory Breakdown</h2>
+<h3 id="by-transfer-type">By Transfer Type</h3>
+<p><strong>Real-Time Payments (78% of volume)</strong>
+The fastest-growing segment. India's UPI and Brazil's PIX are the twin engines, but real-time payments are now live in <a href="https://www.aciworldwide.com/real-time-payments-report">80+ countries</a>:</p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>2024 Volume (B)</th>
+<th>2024 Value</th>
+<th>Launch Year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UPI</td>
+<td>India</td>
+<td>131.1</td>
+<td>~$2.5T</td>
+<td>2016</td>
+</tr>
+<tr>
+<td>PIX</td>
+<td>Brazil</td>
+<td>~63.0</td>
+<td>~$3.8T</td>
+<td>2020</td>
+</tr>
+<tr>
+<td>Faster Payments</td>
+<td>UK</td>
+<td>5.1</td>
+<td>£4.2T</td>
+<td>2008</td>
+</tr>
+<tr>
+<td>SEPA Instant</td>
+<td>EU</td>
+<td>~5.0</td>
+<td>—</td>
+<td>2017</td>
+</tr>
+<tr>
+<td>FedNow</td>
+<td>US</td>
+<td>0.0015</td>
+<td>$38.2B</td>
+<td>2023</td>
+</tr>
+<tr>
+<td>PromptPay</td>
+<td>Thailand</td>
+<td>~18 (est.)</td>
+<td>—</td>
+<td>2017</td>
+</tr>
+<tr>
+<td>IBPS/NetsIPT</td>
+<td>Various</td>
+<td>~156</td>
+<td>—</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Batch/ACH (22% of volume)</strong>
+Mature, steady-growth systems handling recurring payments (<a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a>, bills, B2B):
+- US ACH: <a href="https://www.nacha.org/content/ach-network-volume-and-value-statistics">33.6B transactions, $86.2T</a> — Same Day ACH reached <a href="https://www.nacha.org/news/same-day-ach-passes-major-milestone-2024-ach-network-shows-higher-growth">1.2B transactions</a> (45.3% growth)
+- SEPA Credit Transfers: <a href="https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2024h2~5ada0087d2.en.html">~32B transactions, ~EUR 220T</a></p>
+<p><strong>RTGS/Wire (0.08% of volume, 75% of value)</strong>
+The backbone of large-value settlement:
+- <a href="https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html">Fedwire</a>: 210M transactions, $1,133T
+- <a href="https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html">TARGET2/T2</a>: 108M transactions (record high)
+- <a href="https://www.bankofengland.co.uk/report/2025/rtgs-and-chaps-annual-report-2024-25">CHAPS</a>: 52.7M transactions</p>
+<h3 id="by-region-real-time-payments-2023">By Region (Real-Time Payments, 2023)</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Volume (B)</th>
+<th>Share</th>
+<th>Key Systems</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asia-Pacific</td>
+<td>185.8</td>
+<td>70%</td>
+<td>UPI, PromptPay, IBPS</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>~40</td>
+<td>15%</td>
+<td>PIX</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>~12</td>
+<td>5%</td>
+<td>Faster Payments, SEPA Instant</td>
+</tr>
+<tr>
+<td>Africa</td>
+<td>~8</td>
+<td>3%</td>
+<td>Nigeria NIP (7.9B)</td>
+</tr>
+<tr>
+<td>North America</td>
+<td>~3</td>
+<td>1%</td>
+<td>RTP, FedNow</td>
+</tr>
+<tr>
+<td>Rest of World</td>
+<td>~17</td>
+<td>6%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://investor.aciworldwide.com/news-releases/news-release-details/global-real-time-payments-growth-sustainable-new-use-cases-push">ACI Worldwide 2024 Report</a></p>
+<h3 id="per-capita-real-time-payments-leaders-2024">Per-Capita Real-Time Payments Leaders (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>System</th>
+<th>Txns/Person/Year</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thailand</td>
+<td>PromptPay</td>
+<td>~337</td>
+<td>Highest per-capita RTP usage globally</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>PIX</td>
+<td>~307</td>
+<td>From zero to 307/person in 4 years</td>
+</tr>
+<tr>
+<td>India</td>
+<td>UPI</td>
+<td>~123</td>
+<td>1.6x the UK rate despite lower GDP/capita</td>
+</tr>
+<tr>
+<td>UK</td>
+<td>Faster Payments</td>
+<td>~76</td>
+<td>Mature system (launched 2008)</td>
+</tr>
+<tr>
+<td>Australia</td>
+<td>NPP</td>
+<td>~62</td>
+<td>Growing 23% YoY</td>
+</tr>
+<tr>
+<td>Nigeria</td>
+<td>NIP</td>
+<td>~51</td>
+<td>Africa's real-time champion</td>
+</tr>
+<tr>
+<td>US</td>
+<td>FedNow</td>
+<td>~0.005</td>
+<td>Effectively zero; 330M people, 1.5M txns</td>
+</tr>
+</tbody>
+</table>
+<p>Thailand leads on per-capita real-time usage, reflecting both deep PromptPay merchant adoption and high smartphone penetration. The US per-capita figure is striking — 67,000x lower than Thailand. See <a href="/universe-of-finance/reports/payments/bank-transfers/workings/regional-breakdown.html">regional breakdown workings</a> for full system-by-system decomposition.</p>
+<hr/>
+<h2 id="6-growth-rates">6. Growth Rates</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>5-Year CAGR</th>
+<th>Period</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>India UPI</td>
+<td><strong>89.4%</strong></td>
+<td>2019-2024</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Global RTP</td>
+<td><strong>38.2%</strong></td>
+<td>2019-2024</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Brazil PIX</td>
+<td><strong>N/A</strong></td>
+<td>(launched 2020)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>US ACH</td>
+<td><strong>6.35%</strong></td>
+<td>2019-2024</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Fedwire</td>
+<td><strong>4.06%</strong></td>
+<td>2019-2024</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td><strong>Composite global</strong></td>
+<td><strong>22.6%</strong></td>
+<td>2019-2024</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p>The composite 22.6% CAGR is almost entirely driven by real-time payments. Traditional ACH and RTGS grow at a sedate 4-6%.</p>
+<hr/>
+<h2 id="7-baseline-projection-2026-2035">7. Baseline Projection (2026-2035)</h2>
+<p>Assumes real-time payments continue at <a href="https://www.aciworldwide.com/real-time-payments-report">ACI's forecast 16.7% CAGR</a> through 2028, then decelerate gradually. Batch ACH at 5% CAGR, RTGS at 3%.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Total (B txns)</th>
+<th>Average TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>484</td>
+<td>15,338</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>632</td>
+<td>20,030</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>830</td>
+<td>26,309</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>1,026</td>
+<td>32,502</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>1,318</td>
+<td>41,758</td>
+</tr>
+</tbody>
+</table>
+<p>By 2030, global bank transfers cross the <strong>1 trillion transactions/year</strong> threshold — effectively 1,000 bank transfers for every person on Earth annually.</p>
+<hr/>
+<h2 id="8-high-growth-projection-2026-2035">8. High-Growth Projection (2026-2035)</h2>
+<p>Assumes UPI expands internationally (UAE, Singapore, Europe linkages already underway), <a href="https://investor.aciworldwide.com/news-releases/news-release-details/global-real-time-payments-growth-sustainable-new-use-cases-push">EU Instant Payments Regulation</a> mandates SEPA Instant adoption, FedNow reaches critical mass, and <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>/SE Asia launch new RTP systems. Real-time payments at 25% CAGR through 2030.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Total (B txns)</th>
+<th>Average TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>484</td>
+<td>15,338</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>712</td>
+<td>22,566</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>1,062</td>
+<td>33,664</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>1,602</td>
+<td>50,762</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>3,125</td>
+<td>99,020</td>
+</tr>
+</tbody>
+</table>
+<p>In this scenario, global bank transfers approach <strong>~100,000 TPS</strong> average by 2035 — a 6.5x increase from today.</p>
+<hr/>
+<h2 id="9-conservative-projection-2026-2035">9. Conservative Projection (2026-2035)</h2>
+<p>Assumes regulatory friction, privacy backlash, interoperability failures, and incumbent resistance slow adoption. Real-time payments at 10% CAGR.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Total (B txns)</th>
+<th>Average TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>484</td>
+<td>15,338</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>570</td>
+<td>18,064</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>673</td>
+<td>21,325</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>796</td>
+<td>25,229</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>1,225</td>
+<td>38,818</td>
+</tr>
+</tbody>
+</table>
+<p>Even in the conservative case, bank transfers still exceed 1 trillion/year by 2035.</p>
+<hr/>
+<h2 id="key-insights">Key Insights</h2>
+<ol>
+<li>
+<p><strong>Real-time payments have eaten the world.</strong> In just 8 years, systems like UPI and PIX have gone from zero to dominating global transaction volume. Real-time now accounts for 78% of all bank transfers by volume.</p>
+</li>
+<li>
+<p><strong>The value inversion.</strong> RTGS processes 0.08% of transactions but 75% of the value. The average Fedwire transfer ($5.4M) is ~180,000x the average UPI payment (~$30). These are fundamentally different use cases served by the same "bank transfer" umbrella.</p>
+</li>
+<li>
+<p><strong>India is the center of gravity.</strong> UPI alone is 27% of global bank transfer volume. India processes more real-time payments than the rest of the world combined. The IMF recognizes UPI as <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569">49% of all global real-time transactions</a>.</p>
+</li>
+<li>
+<p><strong>The US is surprisingly behind.</strong> FedNow processed just 1.5 million transactions in all of 2024 — about 0.00031% of what India's UPI handles. Even Same Day ACH at <a href="https://www.nacha.org/news/same-day-ach-passes-major-milestone-2024-ach-network-shows-higher-growth">1.2 billion transactions</a> is modest compared to India and Brazil.</p>
+</li>
+<li>
+<p><strong>SWIFT is the messaging layer, not the rail.</strong> SWIFT's <a href="https://www.swift.com/about-us/discover-swift/fin-traffic-figures">53.3 million messages/day</a> coordinate cross-border payments but don't settle them. The actual settlement runs over Fedwire, TARGET2, or correspondent bank networks.</p>
+</li>
+<li>
+<p><strong>The trillion-transaction threshold approaches.</strong> Under all three projections, global bank transfers exceed 1 trillion transactions/year between 2030-2035.</p>
+</li>
+<li>
+<p><strong>Nigeria is Africa's real-time payments powerhouse.</strong> NIBSS processed 11.2B NIP transactions in 2024 (+15.5% YoY), more than the UK, EU SEPA Instant, and US real-time systems combined. Driven by mobile money operators (OPay, PalmPay, Moniepoint).</p>
+</li>
+<li>
+<p><strong>SEPA Instant is the fastest-accelerating developed-market RTP system.</strong> Daily volumes grew 72% in 2024, driven by EU Instant Payments Regulation mandating adoption. This is the most significant regulatory catalyst for real-time payments in the developed world.</p>
+</li>
+<li>
+<p><strong>The "unattributed" 60B gap needs closing.</strong> Of 378B global RTP transactions, ~60B (16%) cannot be attributed to specific named systems. These likely include Indonesia, Philippines, Malaysia, Vietnam, Mexico, and <a class="xref" href="/universe-of-finance/reports/deep-dives/middle-east/REPORT.html">Middle East</a> systems. See <a href="/universe-of-finance/reports/payments/bank-transfers/workings/regional-breakdown.html">regional breakdown</a> for analysis.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="methodology-notes">Methodology Notes</h2>
+<ul>
+<li>Global totals are constructed bottom-up from major system statistics, with "Rest of World" estimated from ACI Worldwide's global benchmarks minus known systems.</li>
+<li>All values converted to USD at 2024 average exchange rates.</li>
+<li>SWIFT volumes excluded from totals to prevent double-counting (SWIFT is messaging, not settlement).</li>
+<li>See <code>workings/calculations.md</code> for full derivations and <code>workings/assumptions.md</code> for all assumptions.</li>
+<li>Confidence levels: 🟢 Direct from operator reports | 🟡 Derived from multiple sources | 🔴 Estimated</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>Global ACH volume outside the US and EU.</strong> Nacha (US: 33.6B) and EPC (EU: 32B) are well-documented, but national ACH systems in <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>, South Korea, Australia, and dozens of other countries do not publish comparable data.</li>
+<li><strong>The exact boundary between "real-time payment" and "fast ACH."</strong> Same Day ACH in the US (1.2B txns) settles within hours, not seconds — is it "real-time"? ACI counts it separately; some analysts don't.</li>
+<li><strong>RTGS transaction counts for non-Western systems.</strong> Fedwire (210M), TARGET2 (108M), and CHAPS (52.7M) are public. BOJ-NET (Japan), CNAPS (<a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>), and RBI-RTGS (India) transaction counts are harder to source.</li>
+<li><strong>What fraction of real-time payments are "push notification" micro-transfers vs. genuine commercial payments.</strong> India's UPI includes ₹1 test transactions and promotional payments that inflate counts.</li>
+<li><strong>The "Rest of World" bucket.</strong> ACI reports 266.2B global RTP transactions in 2023. Subtracting known systems (India 131B, Brazil 63B, Thailand 18B, UK 5.1B, EU 5B, Nigeria 7.9B = ~230B) leaves ~36B unattributed.</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global ACH total</td>
+<td>Sum known systems (US 33.6B, EU 32B, UK 7.5B) + estimate others from BIS CPMI Red Book statistics (covers ~25 countries)</td>
+<td>BIS CPMI data; national central bank annual reports</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>RTP "Rest of World"</td>
+<td>Use ACI's regional breakdowns (Asia-Pacific 185.8B, LatAm ~40B, Europe ~12B, Africa ~8B, NA ~3B) and subtract known systems per region</td>
+<td>ACI Prime Time Report 2024; individual system disclosures</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>UPI commercial vs. micro-payment split</td>
+<td>NPCI publishes P2M vs. P2P breakdowns. In Dec 2024, P2M was ~59% of UPI volume. Apply this ratio to annual figures.</td>
+<td>NPCI monthly data: P2M ~59%, P2P ~41% (Dec 2024)</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>RTGS non-Western volumes</td>
+<td>China's CNAPS: PBOC reports "large-value payment system" processed ~RMB 5,300T in 2024; divide by avg transfer size for count estimate</td>
+<td>PBOC Payment System Report Q4 2024</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Fedwire peak throughput</td>
+<td>Fed publishes daily averages ($4.52T/day). Peak day data occasionally disclosed in FRBNY reports. Compare with BOE's CHAPS peak day disclosures.</td>
+<td>Federal Reserve annual report; BOE CHAPS annual report 2024</td>
+<td>🟡</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li><strong>UPI double-counting:</strong> UPI's 172B transactions are counted in both Bank Transfers and <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a>. The overlap analysis (see <code>../OVERLAP_ANALYSIS.md</code>) recommends primary classification here, with wallets subtracting UPI. Is this the right call?</li>
+<li>If PIX continues at 52% YoY growth, it will process ~100B transactions by end of 2025. At what point does Brazil overtake India's UPI calendar-year count? (Answer: likely never at current rates, since UPI is also growing at 46%.)</li>
+<li>FedNow processed just 1.5M transactions in 2024. If it follows PIX's trajectory (0 to 65B in 4 years), it would process 50B+ by 2028. But the US has different adoption dynamics — what is a realistic FedNow trajectory?</li>
+<li>Same Day ACH grew 45.3% in 2024 to 1.2B transactions. Is this cannibalizing FedNow's potential user base, or are they serving different use cases?</li>
+<li>SWIFT processed ~53.3M messages/day (~19.5B/year) but is a messaging layer, not a settlement rail. Should SWIFT message volume be tracked as a separate metric for cross-border payment activity?</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>PIX vs. UPI adoption curves:</strong> PIX launched in Nov 2020 and hit ~65B transactions by 2024 (4 years). UPI launched in Aug 2016 and hit 172B by 2024 (8 years), but UPI only crossed 65B in late 2022 — meaning PIX reached that milestone 2 years faster. Brazil's adoption was faster despite a smaller population (215M vs. 1.4B).</li>
+<li><strong>UK Faster Payments as mature benchmark:</strong> Launched in 2008, FPS processes ~5.1B transactions in 2024 for 67M people (~76 txns/person/year). If India (1.4B people) reaches the same per-capita rate, UPI would process ~106B/year — already exceeded. India is now at ~123 UPI txns per person per year, 1.6x the UK rate.</li>
+<li><strong>Fedwire vs. TARGET2:</strong> Fedwire ($1,133T in 210M txns) vs. TARGET2 (~$600T in 108M txns). US average wire is $5.4M; EU average is $5.6M — remarkably similar, suggesting RTGS is a standardized wholesale settlement mechanism regardless of jurisdiction.</li>
+<li><strong>ACH value as GDP proxy:</strong> US ACH value ($86.2T) is ~3.2x US GDP ($27T). EU SEPA CT value (~$238T) is ~13x EU GDP ($18.5T). The disparity suggests European bank transfers handle a wider range of payments (including many that would be card transactions in the US).</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/bank-transfers/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/payments/bank-transfers/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/payments/bank-transfers/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/payments/bank-transfers/workings/regional-breakdown.html">⚙ regional breakdown</a><a href="/universe-of-finance/reports/payments/bank-transfers/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/bank-transfers/REPORT.md">analysis/payments/bank-transfers/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remittances — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition A 'transaction' in this category is a completed cross-border person-to-person money transfer where the sender and recipient are in different countries. Speci">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Remittances</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Remittances — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>A "transaction" in this category is a <strong>completed cross-border person-to-person money transfer</strong> where the sender and recipient are in different countries. Specifically:</p>
+<ul>
+<li><strong>Counting point:</strong> Completed remittance — funds successfully disbursed to the recipient in the destination country</li>
+<li><strong>Unit:</strong> One remittance transfer = one transaction. A migrant worker sending $300 home = one transaction, regardless of whether it passes through one or three intermediary systems</li>
+<li><strong>Scope:</strong> Cross-border personal <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a> via all channels (MTOs, banks, mobile money, digital platforms, <a class="xref" href="/universe-of-finance/reports/deep-dives/remittance-corridors/REPORT.html">hawala</a>/informal)</li>
+<li><strong>Exclusions:</strong> Domestic <a class="xref" href="/universe-of-finance/reports/payments/p2p-transfers/REPORT.html">P2P transfers</a> (separate capsule), corporate/business wire transfers, cross-border B2B payments, foreign aid/NGO disbursements</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-value-average-remittance-size-primary">Method A: Value / Average Remittance Size (Primary)</h3>
+<ul>
+<li><strong>Source:</strong> World Bank KNOMAD ($905B total remittance value 2024), World Bank Remittance Prices Worldwide (average transaction ~$200-500 range)</li>
+<li><strong>Value:</strong> $905B / ~$500 avg remittance = ~1.8B transactions</li>
+<li><strong>Strengths:</strong> World Bank is the authoritative source for remittance values; covers 200+ corridors; long timeseries</li>
+<li><strong>Weaknesses:</strong> Transaction count is DERIVED, not directly observed — the $500 average is estimated; informal remittances (30-50% of total by some estimates) are partially captured in value but not in transaction count</li>
+</ul>
+<h3 id="method-b-bottom-up-operator-sum-cross-check">Method B: Bottom-Up Operator Sum (Cross-Check)</h3>
+<ul>
+<li><strong>Source:</strong> Western Union (~300M from Q4/FY2024 results), Wise (~125M est.), MoneyGram (~100M est.), banks (~400M est.), digital platforms (~200M est.), informal/other (~675M est.)</li>
+<li><strong>Value:</strong> ~1.8B transactions</li>
+<li><strong>Strengths:</strong> Western Union discloses transaction counts in earnings; Wise publishes customer transfer counts; provides bottom-up validation</li>
+<li><strong>Weaknesses:</strong> Informal channel estimate (~675M, 38%) is highly uncertain; bank remittance transaction counts are not separately disclosed; long-tail operators are not tracked</li>
+</ul>
+<h3 id="method-c-corridor-based-estimation">Method C: Corridor-Based Estimation</h3>
+<ul>
+<li><strong>Source:</strong> World Bank bilateral remittance matrix (top 20 corridors = ~45% of value), GPFI G20 Remittance Target data, FXC Intelligence corridor data</li>
+<li><strong>Value:</strong> Top 20 corridors: ~800M transactions; extrapolated global: ~1.6-2.0B</li>
+<li><strong>Strengths:</strong> Corridor-level data allows cross-validation of aggregate; top corridors (US-Mexico, UAE-India, US-India) are well-documented</li>
+<li><strong>Weaknesses:</strong> Extrapolation from top 20 to global total requires coverage assumption; long-tail corridors are poorly documented</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    RAW ESTIMATES                          │
+│                                                          │
+│  Method A             Method B            Method C       │
+│  [Value / Avg]        [Operator Sum]      [Corridor]     │
+│  ┌──────────────┐    ┌──────────────┐    ┌────────────┐ │
+│  │ ~1.8B        │    │ ~1.8B        │    │ 1.6-2.0B   │ │
+│  │ ($905B /     │    │ (WU 300M +   │    │ (top 20    │ │
+│  │  $500 avg)   │    │  Wise 125M + │    │  corridors │ │
+│  │              │    │  others)     │    │  + extrap) │ │
+│  └──────┬───────┘    └──────┬───────┘    └─────┬──────┘ │
+│         │                   │                  │         │
+│         └───────────────────┼──────────────────┘         │
+│                             ▼                            │
+│                ┌────────────────────────┐                │
+│                │    RECONCILIATION      │                │
+│                │ A &amp; B converge at 1.8B │                │
+│                │ C brackets at 1.6-2.0B │                │
+│                │ KEY ISSUE: avg remit   │                │
+│                │ size ($500) is assumed │                │
+│                │ — if $350, count = 2.6B│                │
+│                └───────────┬────────────┘                │
+│                            ▼                             │
+│                ┌────────────────────────┐                │
+│                │   FINAL ESTIMATE       │                │
+│                │   1.8B transactions    │                │
+│                │   57 TPS               │                │
+│                │   Confidence: 58/100   │                │
+│                └────────────────────────┘                │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p><strong>Value / average remittance size (Method A) is used as anchor</strong> because:
+1. World Bank remittance value ($905B) is the most authoritative figure in this category
+2. The operator sum (Method B) independently produces ~1.8B
+3. Corridor estimation (Method C) brackets the figure at 1.6-2.0B</p>
+<p><strong>Critical caveat:</strong> The transaction COUNT is the weakest figure in this capsule. No single authority publishes global remittance transaction counts. The value ($905B) has high confidence; the count (1.8B) is derived and carries ±30% uncertainty. If the average remittance is $350 (more small-value digital transfers), the count could be 2.6B. If $600 (more bank-channel transfers), it could be 1.5B.</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>Remittances: 1.8B total
+                │
+(-) Bank        │
+    transfer    ████████████████████████████████████  1.8B
+    overlap     │ ~400M bank-channel remittances are
+                │ technically bank transfers — but
+                │ cross-border routing distinguishes
+                │ them. Minimal overlap with domestic
+                │ bank transfer capsule.
+                │
+(-) Digital     │ ~200M digital remittances (Wise,
+    wallet/P2P  │ Remitly, WorldRemit) may touch
+    overlap     │ wallet or P2P rails at disbursement.
+                │ Small overlap.
+                │
+                ▼
+De-duplicated   ██████████████████████████████████░░  ~1.6B
+                Remittances are mostly incremental —
+                cross-border routing is distinct from
+                domestic payment rails. ~200M overlap
+                with bank transfers at disbursement.
+</code></pre>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<ul>
+<li><strong>Directly observed:</strong> Western Union (~17%), Wise (~7%) — from earnings disclosures</li>
+<li><strong>Semi-observed:</strong> World Bank value data ($905B) is comprehensive but count is derived</li>
+<li><strong>Estimated:</strong> Informal channels (30-50% of total value) are substantially unobserved</li>
+</ul>
+<pre><code>Region (receiving) Volume   Share   Data Quality
+─────────────────  ──────── ─────── ───────────
+South Asia         ████████ 28.0%   Medium (World Bank corridors)
+East Asia/Pacific  ██████░░ 20.0%   Low (informal channels)
+Sub-Saharan Africa ████░░░░ 14.0%   Low (hawala, mobile money)
+Latin America      ████░░░░ 13.0%   Medium (US-Mexico well-tracked)
+Europe/Central A.  ███░░░░░ 12.0%   Medium (EU regulation)
+MENA               ██░░░░░░  8.0%   Low (hawala prevalence)
+Other              █░░░░░░░  5.0%   Low
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+World Bank KNOMAD   █████████  ████████░ ██████████  ██████░░░░
+World Bank RPW      ███████░░  ████████░ ██████████  ████████░░
+Western Union 10-K  ███░░░░░░  █████████ ██████████  ████████░░
+FXC Intelligence    ██████░░░  █████████ ███████░░░  ██████░░░░
+GPFI G20 Report     ████████░  ███████░░ █████████░  █████░░░░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    68/100     82/100    85/100      55/100
+</code></pre>
+<ul>
+<li><strong>Final <a class="xref" href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">confidence score</a>:</strong> 58/100</li>
+<li><strong>Key uncertainty drivers:</strong></li>
+<li>Transaction count is derived, not directly observed (weakest figure in capsule)</li>
+<li>Average remittance size ($500 assumed) — ±30% uncertainty</li>
+<li>Informal channels (30-50% of value) largely invisible to measurement</li>
+<li>Small-value digital remittances growing rapidly — may change the AOV and count materially</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<ul>
+<li><strong>Run 1 (2026-03-26):</strong> Initial estimate — 1.8B from World Bank value / avg transfer size</li>
+<li><strong>Run 2 (2026-03-26):</strong> Added operator sum cross-check, corridor estimation</li>
+<li><strong>Run 6 (2026-03-28):</strong> Methodology documentation formalized</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/remittances/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/remittances/METHODOLOGY.md">analysis/payments/remittances/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

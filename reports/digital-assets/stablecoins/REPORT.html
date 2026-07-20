@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stablecoins — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Stablecoins settled $27.6 trillion in on-chain transfer volume in 2024, surpassing the combined transaction volume of Vi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Stablecoins</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Stablecoins</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">520</div></div><div class="chip"><div class="k">Confidence</div><div class="v green">75</div></div><div class="chip"><div class="k">Opacity</div><div class="v green">14</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#15/28</div></div></div>
+  <div class="chart-box"><h3>Digital Assets — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart7"></canvas></div></div><script>new Chart(document.getElementById("chart7"),{"type": "bar", "data": {"labels": ["CEX (Crypto)", "Stablecoins", "L1/L2 Blockchain"], "datasets": [{"data": [3210, 520, 415], "backgroundColor": ["#334155", "#3b82f6", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections">Projections</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Stablecoins settled <strong>$27.6 trillion</strong> in on-chain transfer volume in 2024, surpassing the combined transaction volume of Visa and Mastercard by 7.68% (<a href="https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/">CryptoSlate</a>). With an estimated <strong>~45 million daily transactions</strong> across all chains, stablecoins operate at roughly <strong>~520 TPS</strong>. USDC overtook USDT in transfer volume (70% share) despite USDT dominating by market cap and active addresses. Solana became the leading chain for stablecoin activity, overtaking Tron and Ethereum. Stablecoins are emerging as the crypto sector's most compelling use case for real-world payments and cross-border settlement.</p>
+<h2 id="scope">Scope</h2>
+<p>This analysis covers <strong>fiat-pegged stablecoins</strong> transacted on public blockchains. Included: USDT (Tether), USDC (Circle), DAI/USDS (MakerDAO/Sky), FDUSD, PYUSD, TUSD, and other USD-pegged tokens. Transfers, mint/burn events, and smart contract interactions (DEX swaps involving stablecoins, lending deposits) are counted. Excluded: algorithmic stablecoins (most collapsed), non-USD stablecoins (EUROC, etc. — negligible volume), CEX internal stablecoin transfers.</p>
+<p><strong>Double-counting warning:</strong> Stablecoin transfers are a <strong>subset</strong> of L1/L2 blockchain transactions. A USDT transfer on Ethereum counts in both this capsule AND the <a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/REPORT.html">L1/L2 capsule</a>. Many stablecoin transactions also overlap with <a href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> (e.g., stablecoins swapped on DEXs, deposited in lending protocols). Do not sum across capsules.</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transfer-volume">Transfer Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual transfer volume (2024)</td>
+<td>$27.6T</td>
+<td><a href="https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/">CryptoSlate</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Adjusted annual volume (Visa method)</td>
+<td>~$5.7T</td>
+<td><a href="https://visaonchainanalytics.com/transactions">Visa Onchain Analytics</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Est. daily transactions</td>
+<td>~45M</td>
+<td><a href="https://worldmetrics.org/stablecoin-statistics/">World Metrics / Artemis</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Est. average TPS</td>
+<td>~520</td>
+<td>Derived: 45M / 86,400</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>USDT daily active addresses</td>
+<td>~1.5M</td>
+<td><a href="https://app.artemisanalytics.com/stablecoins">Artemis</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Total stablecoin market cap (Dec 2024)</td>
+<td>~$205B</td>
+<td>CoinGecko</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Avg transfer value (unadjusted)</td>
+<td>~$1,680</td>
+<td>$27.6T / (45M x 365)</td>
+<td>🔴 Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="volume-raw-vs-adjusted">Volume: Raw vs Adjusted</h3>
+<p>The $27.6T headline figure includes all on-chain movements: bot activity, arbitrage, smart contract routing, institutional treasury management, and duplicate counting across bridges. Visa's Onchain Analytics Dashboard strips out:
+- High-frequency trading activity
+- Institutional treasury movements
+- Smart contract-to-contract transfers
+- Bridge relay transactions</p>
+<p>After adjustment, Visa estimated <strong>~$2.5T in payment-like activity</strong> over 12 months to May 2024. Extrapolating to full year 2024 suggests <strong>~$5.7T in adjusted payment volume</strong> — still enormous, but ~80% lower than the raw figure.</p>
+<h3 id="stablecoin-market-share">Stablecoin Market Share</h3>
+<table>
+<thead>
+<tr>
+<th>Stablecoin</th>
+<th>Market Cap (Dec 2024)</th>
+<th>Transfer Volume Share</th>
+<th>Active Address Share</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USDT (Tether)</td>
+<td>~$140B</td>
+<td>~25%</td>
+<td>~67%</td>
+<td><a href="https://www.trmlabs.com/reports-and-whitepapers/2025-crypto-adoption-and-stablecoin-usage-report">TRM Labs</a></td>
+</tr>
+<tr>
+<td>USDC (Circle)</td>
+<td>~$45B</td>
+<td>~70%</td>
+<td>~27%</td>
+<td>TRM Labs</td>
+</tr>
+<tr>
+<td>DAI/USDS</td>
+<td>~$5B</td>
+<td>~3%</td>
+<td>~3%</td>
+<td>Estimated</td>
+</tr>
+<tr>
+<td>Others (FDUSD, PYUSD, TUSD)</td>
+<td>~$15B</td>
+<td>~2%</td>
+<td>~3%</td>
+<td>Estimated</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight:</strong> USDC dominates by transfer volume (70%) but USDT dominates by market cap ($140B) and active addresses (67%). This suggests USDC is used for larger, institutional/commercial transfers while USDT is used for more frequent, smaller transfers — particularly in emerging markets.</p>
+<h3 id="chain-distribution-2024">Chain Distribution (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Chain</th>
+<th>Role</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solana</td>
+<td>#1 by activity (Jan 2024+)</td>
+<td>Overtook Tron and Ethereum for stablecoin transfers</td>
+</tr>
+<tr>
+<td>Tron</td>
+<td>Major USDT chain</td>
+<td>Dominates emerging market P2P transfers; low fees</td>
+</tr>
+<tr>
+<td>Ethereum L1</td>
+<td>High-value settlement</td>
+<td>Large transfers; institutional usage</td>
+</tr>
+<tr>
+<td>Arbitrum/Base</td>
+<td>Growing L2 usage</td>
+<td>Low fees attracting DeFi stablecoin activity</td>
+</tr>
+<tr>
+<td>BNB Chain</td>
+<td>Moderate activity</td>
+<td>BSC-native stablecoin usage</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="stablecoin-transfer-volume-2019-2024">Stablecoin Transfer Volume (2019-2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Transfer Volume</th>
+<th>Market Cap (Dec)</th>
+<th>Key Event</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~$0.2T</td>
+<td>~$5B</td>
+<td>USDT dominance, early Ethereum</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~$1T</td>
+<td>~$25B</td>
+<td>DeFi summer drives stablecoin demand</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~$5T</td>
+<td>~$140B</td>
+<td>USDC growth, multi-chain expansion</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~$7T</td>
+<td>~$135B</td>
+<td>Bear market flight to stability; UST collapse</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~$12T</td>
+<td>~$130B</td>
+<td>USDT on Tron grows; USDC recovers</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>$27.6T</td>
+<td>~$205B</td>
+<td>Record year; USDC overtakes USDT in volume</td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<p><em>Sources: CryptoSlate, TRM Labs, Bloomberg, Artemis.</em></p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Growth</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023-2024</td>
+<td>+130%</td>
+<td>Bull market + real-world payment adoption</td>
+</tr>
+<tr>
+<td>2020-2024 (4yr)</td>
+<td>~28x</td>
+<td>From $1T to $27.6T</td>
+</tr>
+<tr>
+<td>Market cap 2020-2024</td>
+<td>~8x</td>
+<td>From $25B to $205B</td>
+</tr>
+</tbody>
+</table>
+<p>Stablecoin transfer volume is growing faster than market cap, indicating increasing <strong>velocity</strong> — each stablecoin dollar is being transferred more frequently. This suggests genuine usage growth, not just supply inflation.</p>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-payment-use-case-matures">Baseline (Payment Use Case Matures)</h3>
+<p><strong>Assumptions:</strong>
+1. Stablecoins become a standard cross-border payment rail (competing with SWIFT/wires)
+2. Regulatory frameworks (US stablecoin bill, MiCA) provide clarity, enabling institutional adoption
+3. Market cap grows to $500B by 2030; velocity continues increasing
+4. Major payment companies (Stripe, PayPal) integrate stablecoins at scale</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Transfer Volume</th>
+<th>Market Cap (est.)</th>
+<th>Daily Txns (est.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>$50T</td>
+<td>$350B</td>
+<td>~80M</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>$60T</td>
+<td>$400B</td>
+<td>~100M</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>$100T</td>
+<td>$500B</td>
+<td>~150M</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>$200T</td>
+<td>$1T</td>
+<td>~300M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-stablecoins-replace-cash">High Growth (Stablecoins Replace Cash)</h3>
+<p><strong>Assumptions:</strong>
+1. Stablecoins become dominant payment method in emerging markets
+2. Tokenised deposits and CBDC interoperability expand the market
+3. <a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI agents</a> use stablecoins for autonomous micro-payments
+4. Market cap exceeds $2T</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Transfer Volume</th>
+<th>Market Cap (est.)</th>
+<th>Daily Txns (est.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>$80T</td>
+<td>$500B</td>
+<td>~120M</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>$150T</td>
+<td>$800B</td>
+<td>~200M</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>$300T</td>
+<td>$1.5T</td>
+<td>~400M</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>$1,000T</td>
+<td>$3T</td>
+<td>~1B</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-regulatory-headwinds">Conservative (Regulatory Headwinds)</h3>
+<p><strong>Assumptions:</strong>
+1. US regulation restricts non-bank stablecoin issuance
+2. CBDCs capture the regulated payment use case
+3. Crypto bear market reduces DeFi-driven stablecoin usage
+4. Growth decelerates to 15-20% CAGR</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Transfer Volume</th>
+<th>Market Cap (est.)</th>
+<th>Daily Txns (est.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>$35T</td>
+<td>$250B</td>
+<td>~55M</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>$30T</td>
+<td>$220B</td>
+<td>~50M</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>$45T</td>
+<td>$300B</td>
+<td>~70M</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>$70T</td>
+<td>$500B</td>
+<td>~100M</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>Stablecoins settled $27.6T in 2024 — more than Visa and Mastercard combined.</strong> This is the headline statistic, but it must be heavily caveated: the raw figure includes bot activity, bridge routing, and institutional treasury management. Visa's adjusted figure is ~$5.7T, still substantial.</p>
+</li>
+<li>
+<p><strong>USDC dominates volume; USDT dominates usage.</strong> USDC handles 70% of transfer volume (large, institutional transfers) while USDT has 67% of active addresses (retail, emerging market, P2P). This bifurcation reflects USDC's institutional/compliance positioning vs USDT's grassroots adoption.</p>
+</li>
+<li>
+<p><strong>Stablecoins are the "killer app" of crypto for real-world utility.</strong> Cross-border payments, <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a>, dollarisation in emerging markets, and treasury management are genuine non-speculative use cases growing rapidly.</p>
+</li>
+<li>
+<p><strong>Velocity is increasing faster than supply.</strong> The 130% volume growth in 2024 outpaced the ~58% market cap growth, meaning each stablecoin dollar is being used more frequently — a strong signal of organic adoption.</p>
+</li>
+<li>
+<p><strong>All stablecoin transactions are a subset of L1/L2 transactions.</strong> A USDT transfer on Tron counts as both a stablecoin transfer and a Tron blockchain transaction. Many stablecoin transactions also overlap with <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> activity.</p>
+</li>
+<li>
+<p><strong>Solana is the new stablecoin activity leader</strong> by transaction count, overtaking Tron and Ethereum in early 2024. This reflects lower fees and the memecoin/DeFi activity driving stablecoin demand on Solana.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>Raw vs adjusted volume.</strong> The $27.6T figure is raw on-chain volume. Visa's adjusted $5.7T is more representative of economic activity, but the adjustment methodology is opaque. The "true" payment volume is likely somewhere between $5.7T and $27.6T.</li>
+<li><strong>Transaction count is estimated.</strong> Unlike transfer volume (well-tracked), the number of daily stablecoin transactions is reported inconsistently. Our ~45M/day figure is an estimate from Artemis/World Metrics.</li>
+<li><strong>Market cap is reliable.</strong> Total stablecoin supply is on-chain and verifiable. USDT on Tron, USDC on Ethereum — these are auditable smart contract balances.</li>
+<li><strong>Chain attribution.</strong> Stablecoins exist on multiple chains (USDT on Ethereum, Tron, Solana, etc.). Attributing activity to chains requires chain-specific analytics.</li>
+<li><strong>Historic volume before 2022 is rough.</strong> Cross-chain stablecoin tracking was less mature; earlier figures are estimates.</li>
+<li><strong>USDT transparency concerns.</strong> Tether's reserves and reporting have been questioned, though this affects market cap confidence more than transfer volume data.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li>The exact breakdown of the $27.6T raw → $5.7T Visa-adjusted gap (which categories account for the ~$22T difference)</li>
+<li>What fraction of stablecoin volume is CEX-internal movements that happen to touch on-chain (deposit/withdrawal cycles)</li>
+<li>How much stablecoin volume is bridge relay transactions (same dollar moving across chains counted multiple times)</li>
+<li>The true "payment" volume — stablecoins used for goods/services, remittances, and salary payments vs. speculative/DeFi flows</li>
+<li>Whether USDT's dominance in emerging markets reflects genuine dollarisation demand or exchange-mediated speculation</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decomposing the $27.6T → $5.7T gap</td>
+<td>Apply Visa's published filters sequentially: (1) single-directional filter, (2) address activity filter (&gt;1,000 txns or &gt;$10M/30 days removed) to reconstruct the adjustment</td>
+<td>Visa Onchain Analytics methodology published; Allium Labs partnership provides the raw data; adjusted volume by category: CEX 41%, DEX, lending, etc.</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Bridge transfer volume</td>
+<td>Count cross-chain bridge transactions (Wormhole, Stargate, Across, LayerZero) involving stablecoins — each bridge transfer generates 2+ on-chain transactions</td>
+<td>DeFiLlama bridge volume tracker; Wormhole/LayerZero explorer data; estimated $50-100B/month in bridge volume</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Bot activity quantification</td>
+<td>Filter addresses with &gt;1,000 txns/month (Visa's threshold) and measure their share of total stablecoin volume</td>
+<td>Visa methodology already does this; result is ~80% of raw volume is filtered — but the 1,000-txn threshold may be too aggressive (catching active human traders) or too lenient (missing sophisticated bots)</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>CEX internal movement flows</td>
+<td>Track stablecoin deposits to and withdrawals from known exchange addresses — these are real on-chain txns but not "payment" activity</td>
+<td>Glassnode/CryptoQuant exchange flow data; Chainalysis exchange entity labels; estimated 30-40% of on-chain stablecoin volume is exchange-related</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Stablecoin velocity vs. M2 money velocity</td>
+<td>Calculate stablecoin velocity (annual transfer volume / market cap) and compare to M2 velocity (~1.12 in 2024)</td>
+<td>Raw velocity: $27.6T / $205B = ~135x. Adjusted: $5.7T / $205B = ~28x. M2 velocity: ~1.12. Even adjusted, stablecoin velocity is 25x higher than M2</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Organic payment volume isolation</td>
+<td>Cross-reference stablecoin transfers with known merchant/payment processor addresses (Stripe, PayPal, BitPay)</td>
+<td>Limited but growing — Stripe announced USDC support in 2024; PayPal PYUSD data available; Artemis tracks payment-category volume</td>
+<td>🔴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li>The $27.6T raw / $5.7T adjusted / unknown "true payment" volume represents a 5x uncertainty range. Can we build a layer model? E.g.: Raw ($27.6T) → minus bridges ($3T?) → minus bot/HFT ($10T?) → minus CEX flows ($7T?) → minus DeFi internal ($2T?) → payment-like ($5.6T) — validating Visa's figure from the bottom up.</li>
+<li>Stablecoin velocity of ~135x (raw) or ~28x (adjusted) vs. M2 velocity of ~1.12 is a 25-120x gap. What explains this? Hypotheses: (a) stablecoins are transactional money while M2 includes savings, (b) bot/DeFi activity inflates velocity, (c) stablecoins are structurally faster to move. A defensible velocity comparison would be a landmark finding.</li>
+<li>USDC's 70% volume share vs. 22% market cap share means USDC velocity is ~4x higher than USDT's. Is this institutional/commercial usage (large, infrequent transfers) or programmatic DeFi routing? The answer determines whether USDC or USDT better represents "real" stablecoin adoption.</li>
+<li>If stablecoin daily transactions (~45M) are a subset of total blockchain transactions (~70-90M/day), stablecoins represent ~50-65% of all on-chain activity by count. Is this accurate, or does it reflect measurement methodology differences?</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>Visa network:</strong> ~$14.8T annual payment volume, ~640M transactions/day, ~7,400 TPS. Stablecoin adjusted volume ($5.7T) is ~39% of Visa. Stablecoin daily txns (~45M) are ~7% of Visa's — meaning stablecoins handle larger average transfers ($347 adjusted vs. $63 for Visa).</li>
+<li><strong>SWIFT:</strong> ~$150T annual value, ~50M messages/day. Stablecoin raw volume ($27.6T) is ~18% of SWIFT. Adjusted ($5.7T) is ~4%. Stablecoins are closer to SWIFT in transfer size profile than to <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a>.</li>
+<li><strong>Global remittances:</strong> ~$860B/year (World Bank, 2024). If even 5% of stablecoin adjusted volume is remittances, that's ~$285B — a third of the global remittance market, consistent with Chainalysis and BVNK estimates of growing stablecoin <a class="xref" href="/universe-of-finance/reports/deep-dives/remittance-corridors/REPORT.html">remittance corridors</a> (Turkey, Nigeria, Philippines).</li>
+<li><strong>M2 money supply comparison:</strong> US M2 ~$21T with velocity ~1.12 = ~$23.5T annual throughput. Stablecoin market cap $205B with adjusted velocity ~28x = ~$5.7T throughput. Per dollar of base, stablecoins circulate 25x faster than US dollars — they behave like transactional money, not store-of-value money.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/">CryptoSlate — Stablecoins surpass Visa and Mastercard with $27.6T transfer volume in 2024</a></li>
+<li><a href="https://www.bloomberg.com/news/articles/2026-01-08/stablecoin-transactions-rose-to-record-33-trillion-led-by-usdc">Bloomberg — Stablecoin Transactions Rose to Record $33T (incl. early 2025)</a></li>
+<li><a href="https://www.trmlabs.com/reports-and-whitepapers/2025-crypto-adoption-and-stablecoin-usage-report">TRM Labs — 2025 Crypto Adoption and Stablecoin Usage Report</a></li>
+<li><a href="https://visaonchainanalytics.com/transactions">Visa Onchain Analytics Dashboard — Transactions</a></li>
+<li><a href="https://corporate.visa.com/en/sites/visa-perspectives/trends-insights/making-sense-of-stablecoins.html">Visa — Making Sense of Stablecoins</a></li>
+<li><a href="https://app.artemisanalytics.com/stablecoins">Artemis Terminal — Stablecoins Dashboard</a></li>
+<li><a href="https://reports.artemisanalytics.com/stablecoins/artemis-stablecoin-payments-from-the-ground-up-2025.pdf">Artemis — Stablecoin Payments from the Ground Up 2025</a></li>
+<li><a href="https://www.mckinsey.com/industries/financial-services/our-insights/the-stable-door-opens-how-tokenized-cash-enables-next-gen-payments">McKinsey — Stablecoins: Payments infrastructure for modern finance</a></li>
+<li><a href="https://blog.cex.io/ecosystem/stablecoin-landscape-34864">CEX.IO Blog — Stablecoin Landscape: What 2024 Reveals</a></li>
+<li><a href="https://worldmetrics.org/stablecoin-statistics/">World Metrics — Stablecoin Statistics 2026</a></li>
+<li><a href="https://www.imfconnect.org/content/dam/imf/News%20and%20Generic%20Content/GMM/Special%20Features/Crypto%20Assets%20Monitor.pdf">IMF — Crypto-Assets Monitor</a></li>
+<li><a href="https://bvnk.com/report/decade-of-digital-dollars">BVNK &amp; Cebr — The Decade of Digital Dollars 2024</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/stablecoins/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/digital-assets/stablecoins/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/digital-assets/stablecoins/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/digital-assets/stablecoins/workings/source_notes.html">⚙ source notes</a><a href="/universe-of-finance/reports/digital-assets/stablecoins/workings/volume-decomposition.html">⚙ volume decomposition</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/stablecoins/REPORT.md">analysis/digital-assets/stablecoins/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

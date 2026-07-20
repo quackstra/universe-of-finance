@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India Deep Dive — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Last Updated: 2026-03-28 Executive Summary India is the single most important country in the Universe of Finance by transaction count. Wit">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Deep Dives<span class="sep">/</span>India</div>
+  <div class="report-head"><span class="kind">Report</span><h1>India Deep Dive</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS contribution</div><div class="v blue">12,850</div></div><div class="chip"><div class="k">Share of global</div><div class="v green">17.4%</div></div><div class="chip"><div class="k">Confidence</div><div class="v green">72</div></div></div>
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#indias-share-across-categories">India's Share Across Categories</a></li><li><a href="#india-vs-world-comparison-table">India vs World — Comparison Table</a></li><li><a href="#category-by-category-analysis">Category-by-Category Analysis</a></li><li><a href="#the-india-effect-a-structural-transformation">The India Effect — A Structural Transformation</a></li><li><a href="#digital-infrastructure-stack">Digital Infrastructure Stack</a></li><li><a href="#risks-and-vulnerabilities">Risks and Vulnerabilities</a></li><li><a href="#key-takeaways">Key Takeaways</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+<strong>Last Updated</strong>: 2026-03-28</p>
+</blockquote>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>India is the single most important country in the Universe of Finance by transaction
+count. With an estimated <strong>~12,850 de-duplicated TPS</strong> across all categories, India
+contributes roughly <strong>17.4% of the global ~73,750 TPS</strong> — a staggering figure for an
+economy that represents only ~3.5% of global GDP.</p>
+<p>India's dominance spans three categories simultaneously:</p>
+<ol>
+<li>
+<p><strong>Real-time payments</strong>: UPI processed <strong>172 billion transactions</strong> in CY2024
+   (228.3B in CY2025) — more than all US electronic payments combined. It is the
+   world's largest real-time payment system, accounting for <strong>49% of all global
+   real-time transactions</strong> (<a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569">IMF</a>).</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">Exchange-traded derivatives</a></strong>: NSE India is the world's largest derivatives
+   exchange by contract volume. India accounts for <strong>~62% of global ETD volume</strong>,
+   driven by the explosion in equity index options.</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">Equity markets</a></strong>: NSE is #3 globally by trade count at <strong>18 billion equity
+   trades</strong> in 2024 (+74.3% YoY), representing <strong>29.3% of global equity trades</strong>
+   on just 4% of global market cap.</p>
+</li>
+</ol>
+<p>No other country dominates three top-10 categories simultaneously.</p>
+<hr/>
+<h2 id="indias-share-across-categories">India's Share Across Categories</h2>
+<pre><code>Category               India TPS   Global TPS   India Share
+================================================================
+ETD (Derivatives)       5,890        9,505         62.0%  ||||||||||||||||||||||||||||||||
+Bank Transfers          5,630       15,338         36.7%  ||||||||||||||||||
+Equity Markets          1,024        3,500         29.3%  ||||||||||||||
+Gov't Payments            276        1,002         27.5%  |||||||||||||
+Digital Wallets*        5,454       19,660         27.7%  |||||||||||||
+ATM Withdrawals           190        1,557         12.2%  ||||||
+Commodities                32          330          9.7%  ||||
+Gaming (MTX)               25          389          6.4%  |||
+Bill Payments              95        3,012          3.2%  |
+Consumer Cards            197       24,501          0.8%
+Interbank RTGS              9           50         19.0%  |||||||||
+CEX (Crypto)                8        3,210          0.2%
+================================================================
+* Digital Wallets figure is gross (UPI); de-duplicated into Bank Transfers
+</code></pre>
+<hr/>
+<h2 id="india-vs-world-comparison-table">India vs World — Comparison Table</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>India</th>
+<th>World</th>
+<th>India's Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De-duplicated TPS</td>
+<td>~12,850</td>
+<td>~73,750</td>
+<td><strong>17.4%</strong></td>
+</tr>
+<tr>
+<td>Real-time payment txns (2024)</td>
+<td>172B (UPI)</td>
+<td>378B</td>
+<td><strong>45.5%</strong></td>
+</tr>
+<tr>
+<td>ETD contracts traded (2024)</td>
+<td>~127.5B</td>
+<td>205.3B</td>
+<td><strong>62.1%</strong></td>
+</tr>
+<tr>
+<td>Equity trades (2024)</td>
+<td>~18B</td>
+<td>~61.5B</td>
+<td><strong>29.3%</strong></td>
+</tr>
+<tr>
+<td>Government payment txns</td>
+<td>~8.7B</td>
+<td>~32B</td>
+<td><strong>27.2%</strong></td>
+</tr>
+<tr>
+<td>Card transactions (2024)</td>
+<td>~6.2B</td>
+<td>~773B</td>
+<td><strong>0.8%</strong></td>
+</tr>
+<tr>
+<td>Demat/brokerage accounts</td>
+<td>500M+</td>
+<td>~800M (est.)</td>
+<td><strong>~63%</strong></td>
+</tr>
+<tr>
+<td>Real-time payments per capita</td>
+<td>123/year</td>
+<td>48/year (avg)</td>
+<td><strong>2.6x global avg</strong></td>
+</tr>
+<tr>
+<td>GDP</td>
+<td>$3.9T</td>
+<td>$110T</td>
+<td><strong>3.5%</strong></td>
+</tr>
+<tr>
+<td>Population</td>
+<td>1.44B</td>
+<td>8.1B</td>
+<td><strong>17.8%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>India generates <strong>5x its GDP-weight</strong> in global financial TPS. The transaction-to-GDP
+ratio is the highest of any major economy.</p>
+<hr/>
+<h2 id="category-by-category-analysis">Category-by-Category Analysis</h2>
+<h3 id="1-upi-the-worlds-largest-payment-system">1. UPI — The World's Largest Payment System</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CY2024 volume</td>
+<td>172.0 billion txns</td>
+<td><a href="https://www.npci.org.in/product/upi/product-statistics">NPCI</a></td>
+</tr>
+<tr>
+<td>CY2025 volume</td>
+<td>228.3 billion txns</td>
+<td><a href="https://www.npci.org.in/product/upi/product-statistics">NPCI</a></td>
+</tr>
+<tr>
+<td>CY2024 value</td>
+<td>~Rs 247 lakh crore (~$2.9T)</td>
+<td><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569">PIB</a></td>
+</tr>
+<tr>
+<td>Monthly peak (Jan 2026)</td>
+<td>21.7 billion txns</td>
+<td><a href="https://www.npci.org.in/product/upi/product-statistics">NPCI</a></td>
+</tr>
+<tr>
+<td>YoY growth (CY2024)</td>
+<td>+57% by volume</td>
+<td>NPCI</td>
+</tr>
+<tr>
+<td>Average transaction</td>
+<td>~$17 (Rs 1,435)</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Global RTP share</td>
+<td><strong>49%</strong> of all real-time payments</td>
+<td><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569">IMF</a></td>
+</tr>
+<tr>
+<td>Per-capita UPI txns</td>
+<td>~123/year</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>5-year CAGR (2019-2024)</td>
+<td><strong>89.4%</strong></td>
+<td>NPCI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The growth curve is extraordinary.</strong> UPI went from 18 million transactions in its
+2016 launch year to 172 billion in CY2024 — a <strong>7,285x increase in 7 years</strong>.
+By CY2025, it crossed 228 billion. At current trajectories, UPI will process
+<strong>300+ billion transactions in CY2026</strong>, likely overtaking <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s entire mobile
+payment ecosystem by volume.</p>
+<p><strong>Market structure</strong>: PhonePe (48.4%) and Google Pay (36.9%) together handle 85.3% of
+UPI volume. Paytm, CRED, and bank apps split the remainder.</p>
+<p><strong>De-duplication note</strong>: UPI is architecturally a bank transfer rail (account-to-account
+via NPCI switch). It appears in both <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a> and <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a> categories.
+For de-duplication, it is classified under Bank Transfers, and subtracted from Digital
+Wallets.</p>
+<h4 id="other-npci-payment-systems">Other NPCI Payment Systems</h4>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>CY2024 Volume</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NEFT</td>
+<td>9.27B txns</td>
+<td>Tripled from 2.6B (2019); batch transfers</td>
+</tr>
+<tr>
+<td>IMPS</td>
+<td>~4.9B txns</td>
+<td>Real-time interbank; declining as UPI absorbs use cases</td>
+</tr>
+<tr>
+<td>NACH</td>
+<td>~6.5B txns (est.)</td>
+<td>Automated clearing (recurring mandates, ECS replacement)</td>
+</tr>
+<tr>
+<td>AEPS</td>
+<td>~1.0B txns (est.)</td>
+<td>Aadhaar-enabled; rural financial inclusion</td>
+</tr>
+<tr>
+<td>BBPS</td>
+<td>Growing rapidly</td>
+<td>Centralized bill payment; onboarding new billers</td>
+</tr>
+<tr>
+<td>FASTag</td>
+<td>~4.5B txns (est.)</td>
+<td>Electronic toll collection</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Combined NPCI ecosystem</strong>: ~200B+ transactions in CY2024 across all platforms.
+NPCI processed nearly <strong>230 billion transactions</strong> across all platforms in FY2024-25.</p>
+<hr/>
+<h3 id="2-exchange-traded-derivatives-the-india-effect">2. Exchange-Traded Derivatives — The India Effect</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NSE contracts (CY2023)</td>
+<td>84.8 billion</td>
+<td><a href="https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023">FIA</a></td>
+</tr>
+<tr>
+<td>NSE contracts (CY2024 est.)</td>
+<td>~130B+</td>
+<td>FIA / NSE data</td>
+</tr>
+<tr>
+<td>BSE contracts (FY2024-25)</td>
+<td>~20B+</td>
+<td>BSE / <a href="https://www.religareonline.com/blog/nse-equity-derivatives-vs-bse-equity-derivatives/">Religare</a></td>
+</tr>
+<tr>
+<td>MCX ADT (FY2024-25)</td>
+<td>Rs 2.19 lakh crore (+101% YoY)</td>
+<td><a href="https://www.mcxindia.com">MCX</a></td>
+</tr>
+<tr>
+<td>India share of global ETD</td>
+<td><strong>~62%</strong></td>
+<td>FIA</td>
+</tr>
+<tr>
+<td>NSE global rank</td>
+<td><strong>#1</strong> by contract volume</td>
+<td>FIA</td>
+</tr>
+<tr>
+<td>MCX global rank</td>
+<td><strong>#3</strong> in commodity options</td>
+<td>FIA</td>
+</tr>
+<tr>
+<td>Options share of India ETD</td>
+<td><strong>~90%+</strong></td>
+<td>FIA</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The "India Effect" explained</strong>: Between 2019 and 2024, global ETD volume grew from
+34.5B to 205.3B contracts — a 6x increase. Nearly <strong>all</strong> of this growth came from
+India. Futures volume globally remained flat at ~28-29B contracts. The entire increase
+was in options, driven by Indian equity index options on NSE.</p>
+<p><strong>What caused it</strong>:
+1. Weekly expiry contracts (multiplied trading opportunities)
+2. Mobile trading apps (Zerodha, Groww, Angel One) bringing millions of retail traders
+3. Small lot sizes ($500-1,500 per contract) making options accessible
+4. Zero/low brokerage models reducing friction
+5. 500M+ demat accounts creating a massive retail base</p>
+<p><strong>SEBI regulatory risk</strong>: India's concentration creates fragility. A single SEBI
+decision (lot-size increases, weekly expiry restrictions) could move the global ETD
+number by 20-30% overnight. SEBI has already begun tightening: lot-size increases
+and margin requirements were introduced in late 2024.</p>
+<p><strong>The TPS implication</strong>: India alone adds <strong>~5,890 TPS</strong> to the ETD category.
+Without India, global ETD would be ~3,600 TPS — comparable to 2019 levels.
+India took ETD from <strong>~800 TPS (2015) to ~9,500 TPS (2024)</strong>.</p>
+<hr/>
+<h3 id="3-equity-markets-29-of-global-trades-on-4-of-market-cap">3. Equity Markets — 29% of Global Trades on 4% of Market Cap</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NSE equity trades (2024)</td>
+<td>~18.0 billion</td>
+<td><a href="https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024">WFE</a></td>
+</tr>
+<tr>
+<td>NSE global rank by trade count</td>
+<td><strong>#3</strong></td>
+<td>WFE</td>
+</tr>
+<tr>
+<td>YoY trade growth (2024)</td>
+<td><strong>+74.3%</strong></td>
+<td>WFE</td>
+</tr>
+<tr>
+<td>NSE market cap</td>
+<td>$5.13 trillion</td>
+<td>NSE</td>
+</tr>
+<tr>
+<td>Demat accounts</td>
+<td>500M+ (CDSL + NSDL)</td>
+<td>CDSL/NSDL</td>
+</tr>
+<tr>
+<td>Demat account growth</td>
+<td>~15M/month</td>
+<td>CDSL/NSDL</td>
+</tr>
+<tr>
+<td>India share of global equity trades</td>
+<td><strong>29.3%</strong></td>
+<td>WFE</td>
+</tr>
+<tr>
+<td>India share of global equity market cap</td>
+<td><strong>~4%</strong></td>
+<td>WFE</td>
+</tr>
+</tbody>
+</table>
+<p>The ratio of trade share to market cap share is <strong>7.3x</strong> — India trades far more
+frequently per dollar of market cap than any other major market. This reflects:</p>
+<ul>
+<li>Massive retail participation (500M+ demat accounts vs. China's ~200M brokerage accounts)</li>
+<li>Mobile-first trading (Zerodha has 16M+ users)</li>
+<li>Small average trade sizes (~$300-500 vs. US ~$1,730)</li>
+<li>High day-trading activity among retail participants</li>
+</ul>
+<p><strong>BSE context</strong>: BSE (Asia's oldest exchange, est. 1875) adds further volume,
+particularly in the derivatives segment where BSE has been growing rapidly. Combined
+NSE + BSE, India likely accounts for <strong>~30%+ of global equity trade count</strong>.</p>
+<hr/>
+<h3 id="4-government-payments-the-jam-trinity">4. Government Payments — The JAM Trinity</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DBT transactions (FY2023-24)</td>
+<td>7.4 billion</td>
+<td><a href="https://dbtbharat.gov.in/">DBT Bharat</a></td>
+</tr>
+<tr>
+<td>DBT schemes</td>
+<td>320+ (up from 28 in 2013-14)</td>
+<td><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192">PIB</a></td>
+</tr>
+<tr>
+<td>DBT beneficiaries</td>
+<td>176 crore (1.76B)</td>
+<td>PIB</td>
+</tr>
+<tr>
+<td>DBT cumulative savings</td>
+<td>Rs 3.48 lakh crore</td>
+<td>PIB</td>
+</tr>
+<tr>
+<td>DBT funds transferred (FY2023-24)</td>
+<td>Rs 6.91 lakh crore</td>
+<td>PIB</td>
+</tr>
+<tr>
+<td>GST active taxpayers</td>
+<td>15.3 million</td>
+<td><a href="https://www.pib.gov.in/PressNoteDetails.aspx?id=154789">PIB</a></td>
+</tr>
+<tr>
+<td>GST cumulative returns filed</td>
+<td>164.4 crore (1.64B)</td>
+<td>GSTN</td>
+</tr>
+<tr>
+<td>GST collection (FY2024-25)</td>
+<td>Rs 22.08 lakh crore (record)</td>
+<td>GSTN</td>
+</tr>
+<tr>
+<td>GST annual filings</td>
+<td>~362 million (15.1M taxpayers x ~24 returns)</td>
+<td>GSTN</td>
+</tr>
+<tr>
+<td>India share of global govt payments</td>
+<td><strong>27.2%</strong></td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The JAM Trinity</strong> (Jan Dhan + Aadhaar + Mobile) is the world's most advanced
+government payment digitization infrastructure:</p>
+<ul>
+<li><strong>530M Jan Dhan bank accounts</strong> — financial inclusion at scale</li>
+<li><strong>1.4B Aadhaar biometric IDs</strong> — universal identity</li>
+<li><strong>UPI</strong> — instant payment rail connecting identity to bank accounts</li>
+</ul>
+<p>This infrastructure enables direct-to-beneficiary transfers that bypass
+intermediaries, reducing corruption and leakage. DBT has saved Rs 3.48 lakh crore
+(~$40B) through elimination of ghost beneficiaries and duplicate payments.</p>
+<p><strong>GST digitization</strong>: India's Goods and Services Tax (launched July 2017) is one of
+the world's most digitized consumption tax systems. 15.3M active taxpayers file
+~24 returns per year through the GST portal, with compliance consistently above 95%.
+The GSTN processes Rs 22+ lakh crore in annual collections.</p>
+<hr/>
+<h3 id="5-consumer-cards-surprisingly-small">5. Consumer Cards — Surprisingly Small</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Credit card txns (CY2024)</td>
+<td>4.47 billion</td>
+<td><a href="https://www.rbi.org.in/Scripts/ATMView.aspx">RBI</a></td>
+</tr>
+<tr>
+<td>Debit card txns (CY2024)</td>
+<td>1.74 billion (declining)</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>Total card txns</td>
+<td>~6.21 billion</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>Credit card 5yr CAGR</td>
+<td>16.5% (volume)</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>Debit card trend</td>
+<td>-19% CAGR (2019-2024)</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>RuPay cards issued</td>
+<td>700M+</td>
+<td><a href="https://coinlaw.io/rupay-statistics/">CoinLaw</a></td>
+</tr>
+<tr>
+<td>RuPay credit card market share</td>
+<td>18%</td>
+<td>RuPay / NPCI</td>
+</tr>
+<tr>
+<td>India share of global card txns</td>
+<td><strong>0.8%</strong></td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p>India's card market is paradoxically tiny relative to its payment volume. At ~6.2B
+card transactions, India accounts for less than 1% of the global 773B card
+transactions. The reason: <strong>UPI has leapfrogged cards entirely</strong>.</p>
+<p>Where developed countries went cash -&gt; cards -&gt; <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">mobile wallets</a>, India went
+cash -&gt; UPI directly, skipping the card era for most of the population. Debit card
+transactions are declining at 19% annually as consumers shift to UPI. <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Credit cards</a>
+are growing (16.5% CAGR) but from a small base.</p>
+<p><strong>RuPay's role</strong>: India's domestic card network (RuPay) has issued 700M+ cards,
+primarily <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">debit cards</a> under the Jan Dhan financial inclusion programme. RuPay now
+processes more credit card transactions by volume than Visa or Mastercard in India,
+largely through UPI-linked credit card payments.</p>
+<hr/>
+<h3 id="6-atm-withdrawals-the-cash-paradox">6. ATM Withdrawals — The Cash Paradox</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual withdrawals (2024)</td>
+<td>~6.0 billion</td>
+<td><a href="https://www.rbi.org.in/Scripts/ATMView.aspx">RBI</a></td>
+</tr>
+<tr>
+<td>ATMs in India</td>
+<td>~215,000</td>
+<td>RBI / ATMIA</td>
+</tr>
+<tr>
+<td>Average withdrawal</td>
+<td>~$40 (Rs 3,300)</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>YoY change (count)</td>
+<td>-5%</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>YoY change (value)</td>
+<td>+5.5%</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>India share of global ATM txns</td>
+<td><strong>12.2%</strong></td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p>Despite UPI processing 172B transactions, India still has ~6B <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a> per year.
+Cash remains sticky for rural transactions, daily-wage workers, and small vendors who
+haven't adopted UPI. Notably, while the number of withdrawals is declining, the value
+per withdrawal is growing — people make fewer but larger cash withdrawals.</p>
+<p>India's ATM withdrawals are zero-overlap with electronic payments: these are
+cash-out events where the subsequent spending is untraceable.</p>
+<hr/>
+<h3 id="7-digital-assets-regulatory-headwinds">7. Digital Assets — Regulatory Headwinds</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Crypto exchange market size</td>
+<td>$1.61B (2024)</td>
+<td><a href="https://www.imarcgroup.com/india-cryptocurrency-exchange-market">IMARC</a></td>
+</tr>
+<tr>
+<td>Top exchanges</td>
+<td>Bitbns (79%), WazirX (11%), CoinDCX (7%)</td>
+<td>CoinGecko</td>
+</tr>
+<tr>
+<td>Combined user base</td>
+<td>~30M+</td>
+<td>Exchange reports</td>
+</tr>
+<tr>
+<td>Tax regime</td>
+<td>30% capital gains + 1% TDS</td>
+<td>India Finance Act 2022</td>
+</tr>
+<tr>
+<td>India share of global CEX</td>
+<td><strong>~0.2%</strong></td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p>India's crypto market has been severely suppressed by the punitive tax regime
+introduced in 2022 (30% flat tax on gains with no loss offset, plus 1% TDS on every
+transfer). This caused trading volumes to collapse by ~90% from 2021 peaks. The
+WazirX hack ($235M stolen, July 2024) further damaged confidence.</p>
+<p>Despite this, India has ~30M+ registered crypto users and the market is projected
+to grow to $15.7B by 2033 (IMARC). If the tax regime were rationalized, India could
+become a significant crypto market given its young, tech-savvy population and mobile
+payment adoption.</p>
+<hr/>
+<h3 id="8-gaming-mobile-first-market">8. Gaming — Mobile-First Market</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mobile gaming market</td>
+<td>$3.02B (2024)</td>
+<td><a href="https://www.imarcgroup.com/india-mobile-gaming-market">IMARC</a></td>
+</tr>
+<tr>
+<td>Game downloads (FY2024-25)</td>
+<td>8.45 billion</td>
+<td>Sensor Tower</td>
+</tr>
+<tr>
+<td>Paying gamers</td>
+<td>148 million</td>
+<td>Industry reports</td>
+</tr>
+<tr>
+<td>IAP revenue</td>
+<td>~$400M</td>
+<td>Sensor Tower</td>
+</tr>
+<tr>
+<td>ARPPU</td>
+<td>$25-30 (up from $2-5)</td>
+<td>Industry reports</td>
+</tr>
+<tr>
+<td>In-game purchase share</td>
+<td>63.5% of gaming revenue</td>
+<td>IMARC</td>
+</tr>
+</tbody>
+</table>
+<p>India is the world's largest mobile game market by downloads (8.45B in FY2024-25).
+However, monetization lags developed markets — IAP revenue of ~$400M is modest
+compared to China ($30B+) or the US ($15B+). The gap is closing: ARPPU has risen
+sharply from $2-5 to $25-30, and in-app purchases are set to overtake ad revenue
+by FY2030.</p>
+<hr/>
+<h3 id="9-commodities-mcx-dominance">9. Commodities — MCX Dominance</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCX market share (India)</td>
+<td>97.84%</td>
+<td>MCX</td>
+</tr>
+<tr>
+<td>MCX ADT (FY2024-25)</td>
+<td>Rs 2.19 lakh crore (+101% YoY)</td>
+<td><a href="https://www.mcxindia.com">MCX</a></td>
+</tr>
+<tr>
+<td>MCX global rank</td>
+<td>#3 in commodity options</td>
+<td>FIA</td>
+</tr>
+<tr>
+<td>Key products</td>
+<td>Gold, silver, crude oil, natural gas, base metals</td>
+<td>MCX</td>
+</tr>
+<tr>
+<td>Single-day record</td>
+<td>Rs 23.13 lakh crore (Nov 2025)</td>
+<td>MCX</td>
+</tr>
+</tbody>
+</table>
+<p>MCX is a near-monopoly in Indian commodity derivatives (97.84% market share).
+It trades bullion, energy, base metals, and recently launched India's first
+electricity futures (July 2025). MCX's 101% YoY ADT growth reflects both
+increased participation and the addition of new products.</p>
+<hr/>
+<h3 id="10-banking-infrastructure-rtgs-and-ccil">10. Banking Infrastructure — RTGS and CCIL</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RTGS transactions (CY2024)</td>
+<td>295.3 million</td>
+<td><a href="https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/PSR270120251BEE95CF47F2426B9740075D405FA070.PDF">RBI</a></td>
+</tr>
+<tr>
+<td>RTGS value (CY2024)</td>
+<td>Rs 1,938 lakh crore</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>RTGS minimum</td>
+<td>Rs 2 lakh ($2,400)</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>CCIL forex clearing (Dec 2024)</td>
+<td>Rs 99.2 lakh crore (record)</td>
+<td><a href="https://www.ccilindia.com/">CCIL</a></td>
+</tr>
+<tr>
+<td>NEFT transactions (CY2024)</td>
+<td>9.27 billion</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>NEFT value (CY2024)</td>
+<td>Rs 432.8 lakh crore</td>
+<td>RBI</td>
+</tr>
+</tbody>
+</table>
+<p>India's RTGS system handles high-value interbank settlement (minimum Rs 2 lakh per
+transaction). CCIL clears government securities, <a class="xref" href="/universe-of-finance/reports/traditional-finance/forex/REPORT.html">forex</a>, and money market instruments.
+NEFT (batch transfers, now 24x7) has tripled in volume since 2019, processing
+9.27 billion transactions in CY2024.</p>
+<hr/>
+<h2 id="the-india-effect-a-structural-transformation">The India Effect — A Structural Transformation</h2>
+<h3 id="how-india-reshaped-global-transaction-volumes">How India Reshaped Global Transaction Volumes</h3>
+<p>India's impact on the Universe of Finance is not incremental — it is structural.
+Three phenomena, all occurring simultaneously, have fundamentally altered global
+transaction counts:</p>
+<p><strong>1. The UPI Revolution (2016-present)</strong></p>
+<p>UPI is the most dramatic growth curve in the history of financial infrastructure:</p>
+<pre><code>Year    UPI Txns (B)    Global RTP Share
+2017         0.018            0.02%
+2018         0.915            0.9%
+2019         5.35             6.3%
+2020        12.52            10.6%
+2021        22.33            13.4%
+2022        45.96            19.6%
+2023        83.71            31.4%
+2024       131.13            34.7%
+2025       228.30            ~42%
+</code></pre>
+<p>UPI went from irrelevant to processing more transactions than Visa globally
+in under 8 years. Key enablers: free merchant acceptance, zero MDR policy,
+Aadhaar identity layer, and 600M+ smartphone users.</p>
+<p><strong>2. The Derivatives Explosion (2019-present)</strong></p>
+<p>India took global ETD from ~25B contracts (flat for a decade) to ~205B in
+five years. This was entirely driven by equity index options on NSE:</p>
+<pre><code>Year    India ETD (B)    Global ETD (B)    India Share
+2015        ~3                24.8             12%
+2019        ~8                34.5             23%
+2022       ~50                83.9             60%
+2023       ~90               137.3             66%
+2024      ~130               205.3             63%
+</code></pre>
+<p>India transformed ETD from a ~800 TPS category to a ~9,500 TPS category.</p>
+<p><strong>3. The Retail Equity Boom (2020-present)</strong></p>
+<p>India's demat account count exploded from ~40M (2019) to 500M+ (2025),
+creating the world's largest retail investor base. This drove equity trade
+counts up 74% in a single year (2024), making NSE the #3 exchange globally.</p>
+<h3 id="the-transaction-to-gdp-anomaly">The Transaction-to-GDP Anomaly</h3>
+<p>India generates <strong>5x its GDP-weight</strong> in financial transaction volume:</p>
+<pre><code>Country         GDP Share    TPS Share    Ratio
+India             3.5%        17.4%       5.0x
+China            17.5%        ~20%        1.1x
+United States    25.5%        ~25%        1.0x
+Europe (EU)      16.5%        ~18%        1.1x
+</code></pre>
+<p>This anomaly is driven by:</p>
+<ol>
+<li><strong>Micropayments</strong>: India's average UPI transaction is $17 (vs. US card avg $67).
+   The same economic activity generates more transactions at lower average value.</li>
+<li><strong>Zero-cost infrastructure</strong>: UPI has zero merchant fees, encouraging adoption
+   for even Rs 10 ($0.12) transactions.</li>
+<li><strong>Derivatives accessibility</strong>: NSE options at $500-1,500 per contract vs.
+   CME at $100,000-200,000 — same market in different granularity.</li>
+<li><strong>Population + smartphones</strong>: 1.44B people x 600M+ smartphones = massive base.</li>
+</ol>
+<hr/>
+<h2 id="digital-infrastructure-stack">Digital Infrastructure Stack</h2>
+<p>India's transaction volume is built on a unique public digital infrastructure
+stack that no other country has replicated at scale:</p>
+<pre><code>Layer 4: Applications
+  PhonePe | Google Pay | Paytm | Zerodha | Groww | Angel One | CRED
+
+Layer 3: Payment Rails
+  UPI | IMPS | NEFT | RTGS | NACH | BBPS | FASTag | AEPS
+
+Layer 2: Identity + Accounts
+  Aadhaar (1.4B IDs) | Jan Dhan (530M accounts) | Demat (500M accounts)
+
+Layer 1: NPCI Switch + RBI Infrastructure
+  National Payments Corporation of India | Reserve Bank of India
+  Clearing Corporation of India (CCIL) | NSE | BSE | MCX
+</code></pre>
+<p>The <strong>India Stack</strong> (Aadhaar + UPI + eKYC + DigiLocker) is a government-built
+public good that private applications build on top of. This is structurally
+different from the US model (private rails like Visa/Mastercard) or China's
+model (private platforms like Alipay/WeChat Pay that became quasi-public).</p>
+<hr/>
+<h2 id="risks-and-vulnerabilities">Risks and Vulnerabilities</h2>
+<h3 id="1-concentration-risk">1. Concentration Risk</h3>
+<p>A single SEBI decision on derivatives lot sizes could move the global ETD number
+by 20-30% overnight. India's regulatory decisions now have global-scale impact.</p>
+<h3 id="2-upi-sustainability">2. UPI Sustainability</h3>
+<p>UPI operates on a zero-MDR model for most transactions. NPCI is profitable
+(Rs 1,134 crore surplus in FY24), but the long-term sustainability of free
+merchant payments at 230B+ transactions/year is an open question.</p>
+<h3 id="3-quality-vs-quantity">3. Quality vs. Quantity</h3>
+<p>Many Indian transactions are low-value (UPI avg $17, options contracts $500-1,500).
+A $17 UPI tea payment and a $5.4M Fedwire transfer both count as "one transaction"
+in TPS terms. India's TPS share overstates its economic significance relative
+to GDP share.</p>
+<h3 id="4-crypto-suppression">4. Crypto Suppression</h3>
+<p>India's 30% crypto tax has effectively killed domestic crypto trading. If this
+were rationalized, India could add significant CEX volume given its demographics.</p>
+<h3 id="5-cash-persistence">5. Cash Persistence</h3>
+<p>Despite UPI dominance, India still has ~6B ATM withdrawals/year. Cash-to-digital
+conversion is incomplete, particularly in rural areas and the informal economy.</p>
+<hr/>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>
+<p><strong>India is 17.4% of global financial TPS on 3.5% of global GDP</strong> — a 5x
+   overweight driven by micropayments, free infrastructure, and retail
+   participation.</p>
+</li>
+<li>
+<p><strong>UPI is the world's largest payment system by transaction count</strong>, processing
+   more transactions than Visa, Mastercard, or China's mobile payment systems.
+   It grew 7,285x in 7 years.</p>
+</li>
+<li>
+<p><strong>India single-handedly transformed ETD from ~800 to ~9,500 TPS</strong> through the
+   retail options explosion on NSE. Remove India and ETD reverts to 2015 levels.</p>
+</li>
+<li>
+<p><strong>The JAM Trinity (Jan Dhan + Aadhaar + Mobile) is the most successful
+   financial inclusion programme in history</strong>, enabling 7.4B+ annual DBT
+   transactions reaching 1.76B beneficiaries.</p>
+</li>
+<li>
+<p><strong>India skipped the card era</strong>. At 0.8% of global card transactions, India
+   went directly from cash to UPI, creating a fundamentally different payment
+   landscape than any developed economy.</p>
+</li>
+<li>
+<p><strong>Three categories would look dramatically different without India</strong>:
+   Bank Transfers (36.7% India share), ETD (62.1%), and Equity Markets (29.3%).
+   India's removal would reduce the global Big Number by ~12,850 TPS (17.4%).</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.npci.org.in/product/upi/product-statistics">NPCI UPI Product Statistics</a></li>
+<li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2200569">PIB — UPI as World's Largest Real-Time Payment System (IMF)</a></li>
+<li><a href="https://www.grabon.in/indulge/tech/upi-statistics/">GrabOn — UPI Statistics 2016-2025</a></li>
+<li><a href="https://www.demandsage.com/upi-statistics/">DemandSage — UPI Market Share &amp; Growth 2026</a></li>
+<li><a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA — 2024 Annual ETD Volume Review</a></li>
+<li><a href="https://www.fia.org/marketvoice/articles/explainer-meteoric-rise-indias-equity-derivatives-volume">FIA — Meteoric Rise of India's Equity Derivatives</a></li>
+<li><a href="https://www.fia.org/marketvoice/articles/premium-turnover-indian-options-hits-150-billion">FIA — Premium Turnover in Indian Options Hits $150B</a></li>
+<li><a href="https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024">WFE FY 2024 Market Highlights</a></li>
+<li><a href="https://rbidocs.rbi.org.in/rdocs/Publications/PDFs/PSR270120251BEE95CF47F2426B9740075D405FA070.PDF">RBI Payment System Report H2 2024</a></li>
+<li><a href="https://www.business-standard.com/industry/news/digital-payments-make-up-99-7-of-transaction-volume-in-2024-rbi-report-125102301064_1.html">Business Standard — Digital payments 99.7% of volume in 2024</a></li>
+<li><a href="https://dbtbharat.gov.in/">DBT Bharat Portal</a></li>
+<li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192">PIB — India's DBT Boosting Welfare Efficiency</a></li>
+<li><a href="https://www.pib.gov.in/PressNoteDetails.aspx?id=154789">PIB — GST @ 8 Years Report</a></li>
+<li><a href="https://cleartax.in/s/gst-collection">ClearTax — GST Collection Monthly Trends 2025</a></li>
+<li><a href="https://www.oecd.org/en/publications/2025/12/revenue-statistics-2025_07ca0a8e.html">OECD Revenue Statistics 2025</a></li>
+<li><a href="https://www.rbi.org.in/Scripts/ATMView.aspx">RBI — Bankwise ATM/POS/Card Statistics</a></li>
+<li><a href="https://coinlaw.io/rupay-statistics/">CoinLaw — RuPay Statistics 2026</a></li>
+<li><a href="https://techcrunch.com/2025/01/09/india-rupay-upi-payment-push-is-cutting-out-visa-and-mastercard/">TechCrunch — India's Digital Payments Strategy Cutting Out Visa and Mastercard</a></li>
+<li><a href="https://www.mcxindia.com">MCX India</a></li>
+<li><a href="https://www.ccilindia.com/">CCIL — The Clearing Corporation of India</a></li>
+<li><a href="https://www.nseindia.com/">NSE India</a></li>
+<li><a href="https://www.imarcgroup.com/india-cryptocurrency-exchange-market">IMARC — India Cryptocurrency Exchange Market</a></li>
+<li><a href="https://www.imarcgroup.com/india-mobile-gaming-market">IMARC — India Mobile Gaming Market</a></li>
+<li><a href="https://sensortower.com/blog/india-mobile-game-insights-2025">Sensor Tower — India Mobile Game Insights 2025</a></li>
+<li><a href="https://www.coingecko.com/research/publications/india-crypto-exchanges">CoinGecko — Top India Crypto Exchanges</a></li>
+<li><a href="https://factly.in/upi-leads-volumes-rtgs-leads-values-as-digital-payments-mature/">Factly — UPI Leads Volumes, RTGS Leads Values</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/deep-dives/india/REPORT.md">analysis/deep-dives/india/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

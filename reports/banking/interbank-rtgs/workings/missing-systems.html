@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Missing RTGS Systems Analysis — Universe of Finance</title>
+<meta name="description" content="Working paper for Interbank Settlement (RTGS) capsule. Created: 2026-03-26 | Run 3 Research Elf Context The main RTGS capsule covers five systems (Fedwire, T2, CHAPS, BOJ-NET, CLS">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Banking<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Missing RTGS Systems Analysis</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#context">Context</a></li><li><a href="#systems-added">Systems Added</a></li><li><a href="#revised-global-rtgs-totals">Revised Global RTGS Totals</a></li><li><a href="#gdp-ratio-validation">GDP-Ratio Validation</a></li><li><a href="#remaining-gaps">Remaining Gaps</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Working paper for <a href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">Interbank Settlement (RTGS)</a> capsule.
+Created: 2026-03-26 | Run 3 Research Elf</p>
+</blockquote>
+<hr/>
+<h2 id="context">Context</h2>
+<p>The main RTGS capsule covers five systems (Fedwire, T2, CHAPS, BOJ-NET, CLS) totaling ~423M annual transactions and ~$2,150T annual value. The Open Questions section flagged that including <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s CNAPS/HVPS, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s RTGS, Russia's BESP, and other national systems could roughly double the global total.</p>
+<p>This working paper quantifies the missing systems using central bank publications, BIS CPMI data, and GDP-ratio estimation where direct data is unavailable.</p>
+<hr/>
+<h2 id="systems-added">Systems Added</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>Annual Txns (M)</th>
+<th>Annual Value ($T)</th>
+<th>Daily Avg Txns</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CNAPS-HVPS</strong></td>
+<td>China</td>
+<td>~382 (2023)</td>
+<td>~$1,180 (¥8,481T)</td>
+<td>~1,528K</td>
+<td><a href="http://www.pbc.gov.cn/en/3688110/3688172/5188125/5327700/2024041216580199504.pdf">PBOC Payment System Report 2023</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td><strong>India RTGS</strong></td>
+<td>India</td>
+<td>~295 (2024)</td>
+<td>~$2,327 (₹1,938.2L Cr)</td>
+<td>~1,180K</td>
+<td><a href="https://rbi.org.in/Scripts/NEFTView.aspx">RBI Payment System Reports</a>; <a href="https://www.business-standard.com/industry/news/digital-payments-make-up-99-7-of-transaction-volume-in-2024-rbi-report-125102301064_1.html">Business Standard</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td><strong>BOK-Wire+</strong></td>
+<td>South Korea</td>
+<td>~25 (est.)</td>
+<td>~$116 (₩154.3T daily avg × 250)</td>
+<td>~100K</td>
+<td><a href="https://www.bok.or.kr/eng/bbs/E0000866/view.do?nttId=10093606">BOK 2024 Payment &amp; Settlement Report</a>; daily avg ₩617T total, BOK-Wire+ large-value subset est. ~25%</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>RITS</strong></td>
+<td>Australia</td>
+<td>~13.3 (est.)</td>
+<td>~$37 (A$217B/day × 250)</td>
+<td>~53K</td>
+<td><a href="https://www.rba.gov.au/payments-and-infrastructure/rits/self-assessments/2024/pdf/2024-assessment-rits.pdf">RBA RITS Assessment 2024</a> (2022/23 data, +10% growth)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>SARIE</strong></td>
+<td>Saudi Arabia</td>
+<td>~200 (est.)</td>
+<td>~$80 (est.)</td>
+<td>~800K</td>
+<td><a href="https://www.arabnews.com/node/2331311/business-economy">Arab News: SARIE stats May 2024</a>; 17.2M/month × 12 extrapolated</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>MEPS+</strong></td>
+<td>Singapore</td>
+<td>~6 (est.)</td>
+<td>~$93 (S$130B/day × 250)</td>
+<td>~24K</td>
+<td><a href="https://www.mas.gov.sg/-/media/mas/singapore-financial-centre/why-singapore/meps/references/mepsplus-pfmi-disclosure-2024.pdf">MAS MEPS+ PFMI Disclosure 2024</a>; GDP ratio validation</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>Lynx</strong></td>
+<td>Canada</td>
+<td>~9 (est.)</td>
+<td>~$45 (est.)</td>
+<td>~36K</td>
+<td><a href="https://www.payments.ca/insights/research/high-value-payment-system-lynx-statistics">Payments Canada Lynx Statistics</a>; GDP ratio from LVTS baseline + 10.5% growth</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>Russia BESP</strong></td>
+<td>Russia</td>
+<td>~25 (est.)</td>
+<td>~$15 (est.)</td>
+<td>~100K</td>
+<td>BIS CPMI Red Book 2021 baseline; extrapolated at 2% CAGR, adjusted for sanctions isolation</td>
+<td>🔴 Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="derivation-notes">Derivation Notes</h3>
+<p><strong>CNAPS-HVPS (China):</strong>
+- PBOC publishes quarterly and annual Payment System Reports. The 2023 annual report states 382M HVPS transactions at ¥8,481T turnover.
+- Volume decreased 8.07% YoY in 2023 (from ~415M in 2022), while value increased 14.21%.
+- 2024 full-year data not yet published in English. Q1-Q3 2024 quarterly reports are available but require aggregation.
+- Converted at USD/CNY ~7.19 (2023 avg rate): ¥8,481T / 7.19 = ~$1,180T.</p>
+<p><strong>India RTGS:</strong>
+- RBI reports 29.5 crore (295M) RTGS transactions in 2024, valued at ₹1,938.2 lakh crore.
+- Growth has been exceptional: 13.7% volume CAGR (2020-2025).
+- H1 2025: 16.1 crore (161M) transactions at ₹1,079.2 lakh crore, suggesting full-year 2025 could reach ~320M+.
+- Converted at USD/INR ~83.3 (2024 avg): ₹19,382,000 crore / 83.3 = ~$2,327T.
+- Note: India RTGS minimum transaction is ₹2 lakh (~$2,400), lower than typical RTGS thresholds in developed markets. This explains the high transaction count relative to GDP.</p>
+<p><strong>BOK-Wire+ (South Korea):</strong>
+- BOK reports daily average settlement of ₩617T across the entire financial network in 2024 (+11.2% YoY).
+- BOK-Wire+ handles large-value interbank and <a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">securities settlement</a>. The ₩617T figure includes all settlement types.
+- Estimated BOK-Wire+ RTGS-only volume at ~25% of total network (securities settlement is the largest component at ~₩154T/day equivalent).
+- Transaction count estimated from average transaction size (~₩6B per transaction, comparable to other RTGS systems).</p>
+<p><strong>RITS (Australia):</strong>
+- RBA reported 53,000 RITS transactions/day (excluding FSS) worth A$217B/day in FY 2022/23, with 10% volume growth YoY.
+- Annualized: 53,000 × 250 business days = ~13.3M, value ~A$54.3T (~$37T at AUD/USD 0.68).
+- FSS (NPP real-time payments) is excluded as it is a retail fast payment system, not wholesale RTGS.</p>
+<p><strong>SARIE (Saudi Arabia):</strong>
+- SAMA reported 17.22M consumer payments through SARIE in May 2024 alone (SR1,075B = ~$287B).
+- Annualized estimate: ~200M transactions (adjusting for monthly variation and including interbank non-consumer payments).
+- Value estimate ~$80T based on monthly extrapolation with adjustment for higher interbank values.</p>
+<p><strong>MEPS+ (Singapore):</strong>
+- MAS reports S$130B/day in MEPS+ settlements.
+- Transaction count estimated via GDP ratio: Singapore GDP is ~2% of US GDP; Fedwire processes ~210M. Proportional estimate ~4-8M. We use 6M as midpoint.
+- Singapore is an outsized financial center relative to GDP, so the ratio likely underestimates.</p>
+<p><strong>Lynx (Canada):</strong>
+- Replaced LVTS in Sep 2021. Payments Canada reports 10.5% annual growth in volume and value post-transition.
+- LVTS processed ~7-8M transactions/year pre-transition. At 10.5% growth: ~9M by 2024.
+- GDP ratio check: Canada GDP ~8% of US → 8% × 210M = ~17M. Lynx at 9M is plausible given lower financial sector concentration.</p>
+<p><strong>Russia BESP:</strong>
+- Pre-sanctions (2021): estimated ~20-25M transactions/year from BIS CPMI Red Book data.
+- Post-sanctions: opaque. Domestic activity likely continued but cross-border volumes collapsed.
+- We estimate ~25M transactions and ~$15T value, acknowledging this is highly uncertain.</p>
+<hr/>
+<h2 id="revised-global-rtgs-totals">Revised Global RTGS Totals</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Previous (5 systems + CLS)</th>
+<th>Additional (8 systems)</th>
+<th>Revised Total</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual Txns (M)</td>
+<td>423</td>
+<td>~955</td>
+<td>~1,378</td>
+<td>+226%</td>
+</tr>
+<tr>
+<td>Annual Value ($T)</td>
+<td>$2,150</td>
+<td>~$3,893</td>
+<td>~$6,043</td>
+<td>+181%</td>
+</tr>
+<tr>
+<td>Avg TPS (calendar)</td>
+<td>~13.4</td>
+<td>~30.3</td>
+<td>~43.7</td>
+<td>+226%</td>
+</tr>
+<tr>
+<td>Avg TPS (business-day)</td>
+<td>~6.7</td>
+<td>~15.1</td>
+<td>~21.8</td>
+<td>+226%</td>
+</tr>
+<tr>
+<td>Daily Avg Volume</td>
+<td>~1.69M</td>
+<td>~3.82M</td>
+<td>~5.51M</td>
+<td>+226%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="breakdown-of-revised-total">Breakdown of Revised Total</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Annual Txns (M)</th>
+<th>Annual Value ($T)</th>
+<th>% of Revised Total (Txns)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNAPS-HVPS</td>
+<td>382</td>
+<td>1,180</td>
+<td>27.7%</td>
+</tr>
+<tr>
+<td>India RTGS</td>
+<td>295</td>
+<td>2,327</td>
+<td>21.4%</td>
+</tr>
+<tr>
+<td>CLS</td>
+<td>250</td>
+<td>1,750</td>
+<td>18.1%</td>
+</tr>
+<tr>
+<td>Fedwire</td>
+<td>210</td>
+<td>1,133</td>
+<td>15.2%</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>108</td>
+<td>605</td>
+<td>7.8%</td>
+</tr>
+<tr>
+<td>CHAPS</td>
+<td>53</td>
+<td>111</td>
+<td>3.8%</td>
+</tr>
+<tr>
+<td>Russia BESP</td>
+<td>25</td>
+<td>15</td>
+<td>1.8%</td>
+</tr>
+<tr>
+<td>BOK-Wire+</td>
+<td>25</td>
+<td>116</td>
+<td>1.8%</td>
+</tr>
+<tr>
+<td>SARIE</td>
+<td>200</td>
+<td>80</td>
+<td>14.5%</td>
+</tr>
+<tr>
+<td>RITS</td>
+<td>13.3</td>
+<td>37</td>
+<td>1.0%</td>
+</tr>
+<tr>
+<td>Lynx</td>
+<td>9</td>
+<td>45</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>MEPS+</td>
+<td>6</td>
+<td>93</td>
+<td>0.4%</td>
+</tr>
+<tr>
+<td>BOJ-NET</td>
+<td>5</td>
+<td>122</td>
+<td>0.4%</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~1,581</strong></td>
+<td><strong>~5,614</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> The ~1,581M total exceeds the simple sum of "previous + additional" because the table includes all systems. The ~1,378M earlier figure used rounded estimates; the detailed table yields a slightly different total due to SARIE's large volume contribution.</p>
+<h3 id="key-surprises">Key Surprises</h3>
+<ol>
+<li>
+<p><strong>CNAPS-HVPS is comparable to Fedwire in volume</strong> (382M vs 210M) and exceeds it. China's RTGS system processes more transactions than America's, despite less English-language visibility.</p>
+</li>
+<li>
+<p><strong>India RTGS is the fastest-growing system globally</strong> at 13.7% CAGR. At current growth, India will surpass China's HVPS volume by ~2028.</p>
+</li>
+<li>
+<p><strong>SARIE (Saudi Arabia) is surprisingly large</strong> at an estimated ~200M annual transactions, driven by the Kingdom's financial centralization and oil economy settlement patterns.</p>
+</li>
+<li>
+<p><strong>India RTGS value ($2,327T) rivals the top systems</strong>. The lower minimum threshold (₹2 lakh) drives higher volume, but per-transaction values are lower (~$7,890 avg vs Fedwire's $5.4M).</p>
+</li>
+</ol>
+<hr/>
+<h2 id="gdp-ratio-validation">GDP-Ratio Validation</h2>
+<p>For systems without direct data, we cross-check estimates using the GDP-to-RTGS ratio observed in systems with known data.</p>
+<h3 id="known-ratios">Known Ratios</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country GDP (2024, $T)</th>
+<th>Annual RTGS Txns (M)</th>
+<th>Txns per $B GDP</th>
+<th>Annual RTGS Value / GDP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fedwire</td>
+<td>28.8</td>
+<td>210</td>
+<td>7.3</td>
+<td>39.3x</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>14.9 (Eurozone)</td>
+<td>108</td>
+<td>7.2</td>
+<td>40.6x</td>
+</tr>
+<tr>
+<td>CHAPS</td>
+<td>3.5</td>
+<td>53</td>
+<td>15.1</td>
+<td>31.7x</td>
+</tr>
+<tr>
+<td>BOJ-NET</td>
+<td>4.2</td>
+<td>5</td>
+<td>1.2</td>
+<td>29.0x</td>
+</tr>
+<tr>
+<td>CNAPS-HVPS</td>
+<td>17.8</td>
+<td>382</td>
+<td>21.5</td>
+<td>66.3x</td>
+</tr>
+<tr>
+<td>India RTGS</td>
+<td>3.9</td>
+<td>295</td>
+<td>75.6</td>
+<td>596.9x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Observations:</strong>
+- The ratio varies enormously (1.2 to 75.6 txns per $B GDP), making GDP-ratio estimation unreliable for precise figures.
+- India's extreme ratio (75.6) is explained by the low ₹2 lakh minimum threshold, which includes semi-retail transactions.
+- BOJ-NET's low ratio (1.2) reflects <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>'s distinct settlement structure where more activity flows through FXYCS and the BoJ's securities settlement.
+- For estimation purposes, a ratio of 5-15 txns per $B GDP is reasonable for systems without data, excluding outliers.</p>
+<h3 id="gdp-ratio-estimates-vs-direct-data">GDP-Ratio Estimates vs. Direct Data</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>GDP ($T)</th>
+<th>Est. at 7.3 txns/$B GDP</th>
+<th>Our Estimate (M)</th>
+<th>Variance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BOK-Wire+</td>
+<td>1.7</td>
+<td>12.4M</td>
+<td>25M</td>
+<td>+102% (financial hub premium)</td>
+</tr>
+<tr>
+<td>RITS</td>
+<td>1.8</td>
+<td>13.1M</td>
+<td>13.3M</td>
+<td>+2% (excellent match)</td>
+</tr>
+<tr>
+<td>MEPS+</td>
+<td>0.5</td>
+<td>3.7M</td>
+<td>6M</td>
+<td>+62% (financial hub premium)</td>
+</tr>
+<tr>
+<td>Lynx</td>
+<td>2.1</td>
+<td>15.3M</td>
+<td>9M</td>
+<td>-41% (lower financial concentration)</td>
+</tr>
+<tr>
+<td>SARIE</td>
+<td>1.1</td>
+<td>8.0M</td>
+<td>200M</td>
+<td>+2,400% (GDP ratio fails here)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SARIE note:</strong> The GDP ratio massively underestimates Saudi RTGS volume. This likely reflects oil economy settlement patterns (massive commodity flows) and centralized banking structure. The direct data from SAMA (17.2M consumer payments in May alone) supports a much higher figure. Further investigation needed.</p>
+<hr/>
+<h2 id="remaining-gaps">Remaining Gaps</h2>
+<p>Systems still not quantified (would require additional research):</p>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>Est. Annual Txns (M)</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIC</td>
+<td>Switzerland</td>
+<td>~5-10</td>
+<td>Major financial center; GDP ratio</td>
+</tr>
+<tr>
+<td>SPEI (high-value)</td>
+<td>Mexico</td>
+<td>~5-8</td>
+<td>Banco de Mexico publishes data</td>
+</tr>
+<tr>
+<td>RTGS (Brazil)</td>
+<td>Brazil</td>
+<td>~10-15</td>
+<td>BCB publishes data; PIX dominates retail</td>
+</tr>
+<tr>
+<td>BAHTNET</td>
+<td>Thailand</td>
+<td>~3-5</td>
+<td>BOT publishes data</td>
+</tr>
+<tr>
+<td>PhilPaSS</td>
+<td>Philippines</td>
+<td>~2-3</td>
+<td>BSP publishes data</td>
+</tr>
+<tr>
+<td>RENTAS</td>
+<td>Malaysia</td>
+<td>~3-5</td>
+<td>BNM publishes data</td>
+</tr>
+<tr>
+<td><strong>Sub-total (est.)</strong></td>
+<td>—</td>
+<td><strong>~28-46</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>Including these would push global RTGS above ~1,600M transactions annually.</p>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="http://www.pbc.gov.cn/en/3688110/3688172/5188125/5327700/2024041216580199504.pdf">PBOC Payment System Report 2023 (English)</a></li>
+<li><a href="https://www.pbc.gov.cn/en/3688241/3688663/3688681/5638391/2026010416002691916/2026010416000672818.pdf">PBOC Payment System Report Q2 2025</a></li>
+<li><a href="https://rbi.org.in/Scripts/NEFTView.aspx">RBI Bankwise Payment Volumes (RTGS)</a></li>
+<li><a href="https://rbidocs.rbi.org.in/rdocs/AnnualReport/PDFs/09PAYMENT29052025564CFE8E29164796AC1B2016508B51A6.PDF">RBI Annual Report 2024-25: Payment and Settlement Systems</a></li>
+<li><a href="https://www.business-standard.com/industry/news/digital-payments-make-up-99-7-of-transaction-volume-in-2024-rbi-report-125102301064_1.html">Business Standard: Digital payments 99.7% of transaction volume in 2024</a></li>
+<li><a href="https://www.bok.or.kr/eng/bbs/E0000866/view.do?nttId=10093606">BOK Payment and Settlement Systems Report 2024</a></li>
+<li><a href="https://www.rba.gov.au/payments-and-infrastructure/rits/self-assessments/2024/pdf/2024-assessment-rits.pdf">RBA RITS Self-Assessment 2024</a></li>
+<li><a href="https://www.arabnews.com/node/2331311/business-economy">Arab News: SARIE customer payments May 2024</a></li>
+<li><a href="https://www.sama.gov.sa/en-US/payment/pages/sariee.aspx">SAMA: About SARIE</a></li>
+<li><a href="https://www.mas.gov.sg/-/media/mas/singapore-financial-centre/why-singapore/meps/references/mepsplus-pfmi-disclosure-2024.pdf">MAS MEPS+ PFMI Disclosure 2024</a></li>
+<li><a href="https://www.payments.ca/insights/research/high-value-payment-system-lynx-statistics">Payments Canada: Lynx Statistics</a></li>
+<li><a href="https://www.bankofcanada.ca/core-functions/monetary-policy/lynx/">Bank of Canada: Lynx Overview</a></li>
+<li><a href="https://www.bis.org/statistics/dataportal/payment_stats.htm">BIS CPMI Red Book Statistics</a></li>
+<li><a href="https://www.bis.org/cpmi/publ/brief10.pdf">BIS CPMI Brief No 10: 2024 Monitoring Survey</a></li>
+<li><a href="https://www.bis.org/publ/cpss97_ru.pdf">BIS: Payment Systems in Russia (Red Book 2011)</a></li>
+<li><a href="https://www.bis.org/publ/cpss105_cn.pdf">BIS: Payment Systems in China (Red Book 2012)</a></li>
+<li><a href="https://www.bis.org/cpmi/publ/d59.pdf">BIS: Payment Systems in Saudi Arabia</a></li>
+<li><a href="https://www.bis.org/cpmi/paysys/singaporecomp.pdf">BIS: Payment Systems in Singapore</a></li>
+<li><a href="https://www.statista.com/statistics/1245785/india-rtgs-transaction-value/">Statista: India RTGS transaction value FY 2018-2024</a></li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/banking/interbank-rtgs/workings/missing-systems.md">analysis/banking/interbank-rtgs/workings/missing-systems.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

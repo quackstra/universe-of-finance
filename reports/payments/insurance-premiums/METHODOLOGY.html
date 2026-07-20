@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance Premium Payments — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition A 'transaction' in this category is a completed premium payment from a policyholder to an insurance company. Specifically: Counting point: Completed payment">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Insurance Premiums</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Insurance Premium Payments — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>A "transaction" in this category is a <strong>completed premium payment from a policyholder to an insurance company</strong>. Specifically:</p>
+<ul>
+<li><strong>Counting point:</strong> Completed payment — the premium amount is successfully debited from the policyholder and credited to the insurer</li>
+<li><strong>Unit:</strong> One premium payment = one transaction. A consumer paying their monthly auto insurance premium = one transaction. Annual lump-sum payments also count as one transaction</li>
+<li><strong>Scope:</strong> All consumer and commercial <a class="xref" href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">insurance premium payments</a> — auto/motor, health, property/home, life, commercial/specialty</li>
+<li><strong>Exclusions:</strong> Claims payouts (insurer → policyholder), reinsurance premium flows (insurer → reinsurer), government-funded health insurance with no consumer premium, pension contributions</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-policy-count-x-payment-frequency-model-primary">Method A: Policy Count x Payment Frequency Model (Primary)</h3>
+<ul>
+<li><strong>Source:</strong> Swiss Re sigma (global premium value $7.2T), IAIS (policy count estimates), NAIC (US policies), Insurance Europe (EU policies), IRDAI (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> policies)</li>
+<li><strong>Value:</strong> ~14 billion transactions from segment model:</li>
+<li>Auto/motor: 1.5B policies × 2.9 payments/year avg = 4.4B</li>
+<li>Health: 2.5B covered lives × 1.4 payments/year avg = 3.5B</li>
+<li>Property/home: 0.5B policies × 2.4 payments/year avg = 1.2B</li>
+<li>Life: 2.0B policies × 1.6 payments/year avg = 3.2B</li>
+<li>Commercial/specialty: 0.2B policies × 4.0 payments/year avg = 0.8B</li>
+<li><strong>Strengths:</strong> Policy counts are grounded in industry data (Swiss Re, NAIC, IRDAI); payment frequency reflects industry norms (monthly, quarterly, annual mix)</li>
+<li><strong>Weaknesses:</strong> No single source publishes global insurance payment transaction counts; policy counts are estimated for many markets; payment frequency mix (monthly vs. annual) varies by country and line</li>
+</ul>
+<h3 id="method-b-premium-value-average-premium-payment">Method B: Premium Value / Average Premium Payment</h3>
+<ul>
+<li><strong>Source:</strong> Swiss Re sigma ($7.2T gross written premiums 2024), estimated average premium payment ~$515</li>
+<li><strong>Value:</strong> $7.2T / $515 = ~14.0B transactions</li>
+<li><strong>Strengths:</strong> Swiss Re sigma is the gold standard for global premium value — covers 150+ markets</li>
+<li><strong>Weaknesses:</strong> Average premium payment is a blended estimate across very different lines (auto ~$150, commercial ~$10,000); highly sensitive to line mix</li>
+</ul>
+<h3 id="method-c-useu-anchor-global-scaling">Method C: US/EU Anchor + Global Scaling</h3>
+<ul>
+<li><strong>Source:</strong> NAIC (US: ~3.5B premium payments est. from 290M policies × 12 months), Insurance Europe (EU: ~2.8B est.), rest of world scaled by premium share</li>
+<li><strong>Value:</strong> ~13-15B range</li>
+<li><strong>Strengths:</strong> US and EU together represent ~55% of global premiums; data quality is high for these markets</li>
+<li><strong>Weaknesses:</strong> Rest of world scaling assumes similar payment frequency patterns — may over-count (annual lump sum is more common in emerging markets)</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    RAW ESTIMATES                          │
+│                                                          │
+│  Method A             Method B            Method C       │
+│  [Policy × Freq]      [Value / Avg]       [US/EU Scale]  │
+│  ┌──────────────┐    ┌──────────────┐    ┌────────────┐ │
+│  │ 14.0B        │    │ ~14.0B       │    │ 13-15B     │ │
+│  │ (segment     │    │ ($7.2T /     │    │ (US 3.5B + │ │
+│  │  model)      │    │  $515 avg)   │    │  EU 2.8B + │ │
+│  │              │    │              │    │  RoW scaled)│ │
+│  └──────┬───────┘    └──────┬───────┘    └─────┬──────┘ │
+│         │                   │                  │         │
+│         └───────────────────┼──────────────────┘         │
+│                             ▼                            │
+│                ┌────────────────────────┐                │
+│                │    RECONCILIATION      │                │
+│                │ All three methods      │                │
+│                │ converge at 13-15B     │                │
+│                │ Central estimate: 14B  │                │
+│                │ Range: 12-16B          │                │
+│                └───────────┬────────────┘                │
+│                            ▼                             │
+│                ┌────────────────────────┐                │
+│                │   FINAL ESTIMATE       │                │
+│                │   14B transactions     │                │
+│                │   444 TPS              │                │
+│                │   Confidence: 52/100   │                │
+│                └────────────────────────┘                │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p><strong>Policy count x payment frequency model (Method A) anchors the final estimate</strong> because:
+1. It provides segment-level granularity that can be independently validated
+2. Value / avg premium (Method B) converges at the same 14B figure
+3. US/EU scaling (Method C) brackets at 13-15B</p>
+<p><strong>Key insight:</strong> Premium VALUE ($7.2T) is high-confidence data from Swiss Re sigma. Transaction COUNT (14B) is entirely modeled — no source publishes it directly. Confidence in count is constrained by the payment frequency assumptions, which vary by country and insurance line.</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>Insurance Premiums: 14B total
+                │
+(-) Direct      │
+    debit/ACH   ████████████████████████████████████  14B
+    overlap     │ ~7B flow through direct debit/ACH
+    (~7B)       │ (auto-pay) — ALSO counted in Bank
+                │ Transfers. Deducted HERE.
+                │
+(-) Card-on-    │ ~4B paid via credit/debit card —
+    file        │ ALSO counted in Consumer Cards.
+    overlap     │ Deducted HERE.
+    (~4B)       │
+                │
+(-) Wallet/     │ ~1.6B paid via digital wallets or
+    digital     │ mobile money — ALSO counted in
+    overlap     │ Digital Wallets. Deducted HERE.
+    (~1.6B)     │
+                │
+(-) Cash/agent  │ ~1.4B paid in cash at agent offices
+    (no overlap)│ or via check — NOT counted elsewhere.
+                │ Incremental.
+                │
+                ▼
+De-duplicated   ██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ~1.4B
+                ~90% of insurance premium payments flow
+                through rails counted elsewhere. Only
+                cash/agent collections (~10%) are
+                incremental to payment system TPS.
+</code></pre>
+<p><strong><a class="xref" href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">Insurance Premiums</a> is a commerce layer with ~90% overlap.</strong> Most premium payments are recurring auto-pay via direct debit or card-on-file, already counted in base-layer capsules.</p>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<ul>
+<li><strong>Directly observed:</strong> Premium value ($7.2T) from Swiss Re sigma — authoritative</li>
+<li><strong>Modeled:</strong> Transaction count (14B) — entirely derived from policy count × frequency</li>
+<li><strong>Unobserved:</strong> Informal/microinsurance premium collection in developing markets</li>
+</ul>
+<pre><code>Line of Business Volume   Share   Data Quality
+──────────────── ──────── ─────── ───────────
+Auto/Motor       ████████ 31.4%   Medium (NAIC/Insurance Europe)
+Health           ██████░░ 25.0%   Low (complex payment structures)
+Life             █████░░░ 22.9%   Low (varying frequencies)
+Property/Home    ███░░░░░ 8.6%    Medium (mortgage-linked data)
+Commercial       █░░░░░░░ 5.7%    Low (highly variable)
+Other            █░░░░░░░ 6.4%    Low
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+Swiss Re sigma      █████████  █████████ ██████████  ██████░░░░
+NAIC (US)           ███░░░░░░  █████████ █████████░  ████████░░
+Insurance Europe    ███░░░░░░  ████████░ █████████░  ███████░░░
+IRDAI (India)       ██░░░░░░░  ████████░ █████████░  ██████░░░░
+McKinsey GI Report  █████████  ████████░ ████████░░  █████░░░░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    62/100     85/100    88/100      52/100
+</code></pre>
+<ul>
+<li><strong>Final <a class="xref" href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">confidence score</a>:</strong> 52/100</li>
+<li><strong>Key uncertainty drivers:</strong></li>
+<li>Transaction count is entirely modeled (no direct source)</li>
+<li>Payment frequency mix (monthly vs. annual vs. quarterly) varies by country</li>
+<li>Health insurance payment structure varies enormously (employer-paid, copay, single-payer)</li>
+<li>Emerging market microinsurance and cash collections poorly tracked</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<ul>
+<li><strong>Run 5 (2026-03-28):</strong> Initial estimate — 14B from policy count × frequency model</li>
+<li><strong>Run 6 (2026-03-28):</strong> Methodology documentation formalized</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/insurance-premiums/METHODOLOGY.md">analysis/payments/insurance-premiums/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

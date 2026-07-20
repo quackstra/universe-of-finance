@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buy Now Pay Later (BNPL) — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition A 'transaction' in this category requires a dual definition because BNPL creates a multiplier effect on the payment system: Purchase-level counting: - Counti">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Bnpl</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Buy Now Pay Later (BNPL) — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#the-installment-multiplier">The Installment Multiplier</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>A "transaction" in this category requires a <strong>dual definition</strong> because <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a> creates a multiplier effect on the payment system:</p>
+<p><strong>Purchase-level counting:</strong>
+- <strong>Counting point:</strong> Completed BNPL checkout — the consumer completes a purchase using a BNPL option
+- <strong>Unit:</strong> One BNPL checkout = one transaction. A consumer buying a $200 jacket via Klarna Pay-in-4 = one purchase transaction
+- <strong>Value:</strong> ~5.5 billion purchases in 2024</p>
+<p><strong>Installment-level counting:</strong>
+- <strong>Counting point:</strong> Each scheduled installment payment that hits the underlying payment rail
+- <strong>Unit:</strong> One installment debit from consumer = one transaction. The $200 jacket paid in 4 installments = 4 installment transactions
+- <strong>Value:</strong> ~20 billion installment events in 2024 (5.5B × 3.6 avg installments)</p>
+<p><strong>Primary metric:</strong> Purchase-level (5.5B) for sizing the BNPL market. Installment-level (20B) for understanding payment system load.</p>
+<ul>
+<li><strong>Exclusions:</strong> Traditional credit card installment plans (offered by card issuers post-purchase), layaway/layby programs, POS financing by retailers</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-bottom-up-provider-aggregation-primary">Method A: Bottom-Up Provider Aggregation (Primary)</h3>
+<ul>
+<li><strong>Source:</strong> Klarna H1 2024 (0.9B), Afterpay/Block 10-K (0.4B), Affirm 10-K (0.2B), PayPal Pay Later 10-K (0.8B), Zip (0.08B), <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> BNPL estimated (2.0B), others (~1.1B)</li>
+<li><strong>Value:</strong> ~5.5 billion purchases</li>
+<li><strong>Strengths:</strong> Top 5 Western providers have SEC-filed or investor-disclosed data; covers ~62% of non-China market directly</li>
+<li><strong>Weaknesses:</strong> China BNPL (Huabei, Baitiao — 2.0B, 36% of total) is poorly documented; "others" (~1.1B, 20%) is residual estimation</li>
+</ul>
+<h3 id="method-b-gmv-average-order-value">Method B: GMV / Average Order Value</h3>
+<ul>
+<li><strong>Source:</strong> Aggregated BNPL GMV ~$450B from provider filings + market estimates, average order $82</li>
+<li><strong>Value:</strong> $450B / $82 = ~5.5B purchases</li>
+<li><strong>Strengths:</strong> GMV is well-sourced from filings; provides independent count validation</li>
+<li><strong>Weaknesses:</strong> AOV varies widely (Affirm $140, Afterpay $63, Klarna $111); blended average is approximate</li>
+</ul>
+<h3 id="method-c-worldpay-gpr-juniper-research-market-sizing">Method C: Worldpay GPR / Juniper Research Market Sizing</h3>
+<ul>
+<li><strong>Source:</strong> Worldpay Global Payments Report (BNPL = ~5% of <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a> value = ~$315B), Juniper Research BNPL forecasts</li>
+<li><strong>Value:</strong> Worldpay: $315B / ~$80 AOV = ~3.9B (lower, covers only e-commerce BNPL). Juniper: ~5-6B total including in-store</li>
+<li><strong>Strengths:</strong> Independent market sizing from recognized analysts</li>
+<li><strong>Weaknesses:</strong> Worldpay covers only e-commerce BNPL; Juniper methodology is opaque; both produce ranges rather than precise figures</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    RAW ESTIMATES                          │
+│                                                          │
+│  Method A             Method B            Method C       │
+│  [Provider Sum]       [GMV / AOV]         [Market Size]  │
+│  ┌──────────────┐    ┌──────────────┐    ┌────────────┐ │
+│  │ 5.5B         │    │ 5.5B         │    │ 3.9-6B     │ │
+│  │ (Klarna +    │    │ ($450B /     │    │ (Worldpay  │ │
+│  │  Afterpay +  │    │  $82 AOV)    │    │  e-com +   │ │
+│  │  China +     │    │              │    │  Juniper)  │ │
+│  │  others)     │    │              │    │            │ │
+│  └──────┬───────┘    └──────┬───────┘    └─────┬──────┘ │
+│         │                   │                  │         │
+│         └───────────────────┼──────────────────┘         │
+│                             ▼                            │
+│                ┌────────────────────────┐                │
+│                │    RECONCILIATION      │                │
+│                │ A &amp; B converge at 5.5B │                │
+│                │ C brackets at 3.9-6B   │                │
+│                │ Installment multiplier │                │
+│                │ 3.6x → 20B events     │                │
+│                └───────────┬────────────┘                │
+│                            ▼                             │
+│                ┌────────────────────────┐                │
+│                │   FINAL ESTIMATE       │                │
+│                │   5.5B purchases       │                │
+│                │   20B installments     │                │
+│                │   175 / 634 TPS        │                │
+│                │   Confidence: 58/100   │                │
+│                └────────────────────────┘                │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="the-installment-multiplier">The Installment Multiplier</h2>
+<p>BNPL is unique in this taxonomy because it <strong>creates net new payment transactions</strong> on underlying rails:</p>
+<pre><code>Standard card purchase:     1 checkout → 1 card transaction
+BNPL Pay-in-4 purchase:    1 checkout → 4 card/bank transactions
+BNPL Pay-in-3 purchase:    1 checkout → 3 card/bank transactions
+BNPL long-term (8 months): 1 checkout → 8 card/bank transactions
+BNPL pay-after-delivery:   1 checkout → 1 card/bank transaction
+
+Weighted average multiplier:
+  60% Pay-in-4 (4.0x) + 15% Pay-in-3 (3.0x) +
+  15% long-term (8.0x) + 10% pay-after (1.0x) = 3.6x
+
+5.5B purchases × 3.6 = 20B installment payment events
+Net incremental vs. single payment: 20B - 5.5B = 14.5B new events
+</code></pre>
+<p>Each installment hits the underlying payment rail (card debit or bank transfer) as a separate transaction. BNPL therefore generates <strong>~14.5B net incremental transactions</strong> on card and bank rails that would not exist without the BNPL layer.</p>
+<h2 id="reconciliation">Reconciliation</h2>
+<p><strong>Bottom-up provider aggregation (Method A) anchors the purchase count</strong> because:
+1. Top 5 Western providers (Klarna, Afterpay, Affirm, PayPal, Zip) are from SEC/investor filings
+2. GMV / AOV cross-check (Method B) converges at the same 5.5B
+3. The installment multiplier (3.6x) is a model assumption based on product mix, not directly observed</p>
+<p><strong>Key weakness:</strong> China BNPL (2.0B purchases, 36% of total) is estimated from industry reports — Ant Group's Huabei and JD's Baitiao do not publish transaction counts publicly.</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>BNPL: 5.5B purchases / 20B installments
+                │
+                │  BNPL is a CREDIT LAYER, not a payment rail.
+                │  100% of BNPL installments settle on other rails:
+                │
+(-) Card rail   ████████████████████████████████████  20B installments
+    settlement  │ ~60% of installments settle via card
+    (~12B)      │ debit — counted in Consumer Cards
+                │
+(-) Bank        │ ~35% settle via direct debit/ACH —
+    transfer    │ counted in Bank Transfers
+    (~7B)       │
+                │
+(-) Wallet/     │ ~5% settle via digital wallet —
+    other       │ counted in Digital Wallets
+    (~1B)       │
+                │
+                ▼
+De-duplicated   ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  0B incremental
+                BNPL has 100% overlap at the
+                installment level — every installment
+                flows through a rail counted elsewhere.
+
+                BUT: BNPL creates 14.5B NET NEW
+                transactions that would not exist
+                without the BNPL multiplier effect.
+                These are INCREMENTAL LOAD on
+                underlying rails (~460 TPS).
+</code></pre>
+<p><strong>BNPL has 100% rail overlap but creates net incremental transactions.</strong> This is a unique property — BNPL does not add its own payment infrastructure but amplifies the transaction load on existing card and bank rails by 2.6x per purchase (3.6 installments minus the 1 payment that would have occurred anyway).</p>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<ul>
+<li><strong>Directly observed:</strong> Klarna (16%), Afterpay (7%), Affirm (4%), PayPal (15%), Zip (1%) — total ~43% from filings</li>
+<li><strong>Semi-observed:</strong> China BNPL (~36%) from industry estimates</li>
+<li><strong>Estimated:</strong> "Others" (~20%) — regional providers, white-label BNPL, bank-offered BNPL</li>
+</ul>
+<pre><code>Provider        Volume    Share   Data Quality
+─────────────── ──────── ─────── ───────────
+China (Huabei+) ████████ 36.4%   Low (no public disclosure)
+PayPal Pay Later ███░░░░░ 14.5%   High (10-K)
+Klarna          ███░░░░░ 16.4%   High (investor report)
+Afterpay/Block  ██░░░░░░  7.3%   High (10-K)
+Affirm          █░░░░░░░  3.6%   High (10-K)
+Others          ████░░░░ 21.8%   Low (residual)
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+Klarna investor     ███░░░░░░  █████████ █████████░  █████████░
+Block 10-K          ██░░░░░░░  █████████ ██████████  ████████░░
+Affirm 10-K         █░░░░░░░░  █████████ ██████████  █████████░
+PayPal 10-K         ██░░░░░░░  █████████ ██████████  ███████░░░
+Worldpay GPR        █████████  █████████ ████████░░  █████░░░░░
+CFPB Report         ███░░░░░░  █████████ █████████░  ██████░░░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    55/100     90/100    85/100      65/100
+</code></pre>
+<ul>
+<li><strong>Final <a class="xref" href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">confidence score</a>:</strong> 58/100</li>
+<li><strong>Key uncertainty drivers:</strong></li>
+<li>China BNPL (36% of total) is poorly documented</li>
+<li>Installment multiplier (3.6x) is a model assumption, not observed</li>
+<li>Boundary between "BNPL" and traditional card installment plans is blurring</li>
+<li>Fast-growing category — 2024 estimates may be stale by publication</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<ul>
+<li><strong>Run 5 (2026-03-28):</strong> Initial estimate — 5.5B purchases / 20B installments from provider aggregation</li>
+<li><strong>Run 6 (2026-03-28):</strong> Methodology documentation formalized with installment multiplier analysis</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/bnpl/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/bnpl/METHODOLOGY.md">analysis/payments/bnpl/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

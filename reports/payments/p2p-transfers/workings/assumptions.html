@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peer-to-Peer Transfers — Assumptions — Universe of Finance</title>
+<meta name="description" content="Key Assumptions 1. Category Boundary — P2P vs. Digital Wallets UPI (India) is classified under Digital Wallets even though much of its volume is P2P, because UPI is a platform-leve">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Peer-to-Peer Transfers — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<h2 id="key-assumptions">Key Assumptions</h2>
+<h3 id="1-category-boundary-p2p-vs-digital-wallets">1. Category Boundary — P2P vs. Digital Wallets</h3>
+<ul>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>) is classified under <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a> even though much of its volume is P2P, because UPI is a platform-level payment rail, not a dedicated P2P app</li>
+<li>WeChat Pay / Alipay P2P similarly classified under Digital Wallets</li>
+<li>This means this category is <strong>heavily US-weighted</strong> (~90% of volume)</li>
+<li>If UPI P2P were included, this category would be 10-20x larger</li>
+</ul>
+<h3 id="2-venmo-transaction-count">2. Venmo Transaction Count</h3>
+<ul>
+<li>PayPal does not separately disclose Venmo transaction counts</li>
+<li>Estimated using: TPV ($280B) / assumed average transaction size ($120)</li>
+<li>The $120 average is derived from industry reports and the fact that Venmo skews younger with smaller transactions than Zelle ($289 avg)</li>
+<li>Uncertainty: +/- 30%</li>
+</ul>
+<h3 id="3-cash-app-scope">3. Cash App Scope</h3>
+<ul>
+<li>Block reports "Cash App inflows" ($283B) which includes:</li>
+<li><a class="xref" href="/universe-of-finance/reports/payments/p2p-transfers/REPORT.html">P2P transfers</a> (~60%)</li>
+<li>Direct deposits (~25%)</li>
+<li>Bitcoin purchases (~10%)</li>
+<li>Cash App Pay merchant transactions (~5%)</li>
+<li>Pure P2P estimated at ~$170B</li>
+<li>Transaction count estimate uses the full inflow figure divided by estimated avg size</li>
+</ul>
+<h3 id="4-non-us-p2p">4. Non-US P2P</h3>
+<ul>
+<li>European P2P data from Bizum (Spain, ~150M users, ~$30B annual) and Swish (Sweden, ~8M users, ~$15B annual) are the most transparent</li>
+<li>Other European P2P (TWINT Switzerland, Paylib France, etc.) estimated at ~$40B combined</li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>'s <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a> has massive P2P volume (~$1.5T in 2024) but is classified under <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a> in this taxonomy because PIX is a central bank payment rail</li>
+<li>If PIX P2P were included here, non-US would dominate this category</li>
+</ul>
+<h3 id="5-average-transaction-sizes">5. Average Transaction Sizes</h3>
+<ul>
+<li>Zelle: $289 (derived from official data: $1.04T / 3.6B txns)</li>
+<li>Venmo: ~$120 (industry estimate — social/small payments skew)</li>
+<li>Cash App: ~$115-190 (range depending on P2P-only vs. all inflows)</li>
+<li>These are increasing over time as P2P expands into rent, utilities, small business</li>
+</ul>
+<h3 id="6-value-jump-2023-2024">6. Value Jump 2023-2024</h3>
+<ul>
+<li>The aggregate value jumps from $1.45T to $2.8T, which looks discontinuous</li>
+<li>This is partly because the 2024 figure includes Cash App total inflows ($283B) while earlier years used more conservative P2P-only estimates</li>
+<li>Also driven by Zelle's $234B YoY jump ($806B → $1,040B)</li>
+</ul>
+<h3 id="7-projection-assumptions">7. Projection Assumptions</h3>
+<ul>
+<li><strong>Baseline</strong>: US market growth decelerates to single digits by 2030; non-US P2P grows at 15-20%</li>
+<li><strong>High Growth</strong>: P2P replaces checks and small wire transfers; becomes primary method for freelancer payments</li>
+<li><strong>Conservative</strong>: Regulatory headwinds (CFPB scrutiny of fraud on Zelle), market saturation</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/p2p-transfers/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/p2p-transfers/workings/assumptions.md">analysis/payments/p2p-transfers/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exchange-Traded Derivatives — Source Notes — Universe of Finance</title>
+<meta name="description" content="Extended notes on each data source used in this analysis. Primary Sources 1. FIA (Futures Industry Association) URL: https://www.fia.org/etd-volume-reports Type: Industry body / d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Exchange-Traded Derivatives — Source Notes</h1></div>
+  
+  
+  <article class="article">
+<blockquote>
+<p>Extended notes on each data source used in this analysis.</p>
+</blockquote>
+<h2 id="primary-sources">Primary Sources</h2>
+<h3 id="1-fia-futures-industry-association">1. FIA (Futures Industry Association)</h3>
+<ul>
+<li><strong>URL</strong>: https://www.fia.org/etd-volume-reports</li>
+<li><strong>Type</strong>: Industry body / data aggregator</li>
+<li><strong>Coverage</strong>: 85 exchanges operated by 54 companies in 33 countries</li>
+<li><strong>Frequency</strong>: Monthly reports, annual survey</li>
+<li><strong>Key report</strong>: <a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">2024 Annual ETD Volume Review</a></li>
+<li><strong>Metric</strong>: Contracts traded (not notional value)</li>
+<li><strong>Reliability</strong>: 🟢 High — gold standard for ETD volume data</li>
+<li><strong>Notes</strong>:</li>
+<li>FIA changed methodology over the years; pre-2018 data may use slightly different exchange coverage</li>
+<li>ETD Tracker provides interactive monthly data but requires login for full detail</li>
+<li>Annual volume survey is the most comprehensive single publication</li>
+<li>2024 total: <strong>205.34 billion contracts</strong> (up 51% from 2023)</li>
+<li>FIA's coverage is broader than WFE, explaining the ~25B gap between the two</li>
+</ul>
+<h3 id="2-wfe-world-federation-of-exchanges">2. WFE (World Federation of Exchanges)</h3>
+<ul>
+<li><strong>URL</strong>: https://www.world-exchanges.org/our-work/statistics</li>
+<li><strong>Type</strong>: Exchange industry association</li>
+<li><strong>Coverage</strong>: WFE member exchanges only (~250 market infrastructure providers)</li>
+<li><strong>Frequency</strong>: Semi-annual market highlights, annual derivatives analysis</li>
+<li><strong>Key report</strong>: <a href="https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024">FY 2024 Market Highlights</a></li>
+<li><strong>Metric</strong>: Contracts traded, with asset class and regional breakdowns</li>
+<li><strong>Reliability</strong>: 🟢 High — but narrower universe than FIA</li>
+<li><strong>Notes</strong>:</li>
+<li>2024 total: <strong>180.22 billion contracts</strong> (options 153.30B, futures 26.92B)</li>
+<li>38.8% increase vs 2023</li>
+<li>Excellent for asset class composition and regional share data</li>
+<li>Charts 12-20 in FY 2024 report provide rich time-series breakdowns</li>
+<li>Limitations: Does not cover all exchanges (e.g., some smaller APAC, LatAm exchanges missing)</li>
+</ul>
+<h3 id="3-bis-bank-for-international-settlements">3. BIS (Bank for International Settlements)</h3>
+<ul>
+<li><strong>URL</strong>: https://www.bis.org/statistics/extderiv.htm</li>
+<li><strong>Type</strong>: Central bank of central banks / statistical authority</li>
+<li><strong>Coverage</strong>: Exchange-traded IR and FX derivatives on 50+ exchanges</li>
+<li><strong>Frequency</strong>: Quarterly</li>
+<li><strong>Key data</strong>: <a href="https://data.bis.org/topics/XTD_DER">Exchange-traded derivatives statistics overview</a></li>
+<li><strong>Metric</strong>: Notional turnover (USD) and open interest (notional)</li>
+<li><strong>Reliability</strong>: 🟢 High for IR + FX; does not cover equity/commodity ETD</li>
+<li><strong>Notes</strong>:</li>
+<li>Q3 2024: Average daily notional turnover of <strong>$12.83 trillion/day</strong></li>
+<li>IR dominates: $12.65T/day (98.6%), FX: $0.185T/day (1.4%)</li>
+<li>BIS converts contract counts to notional amounts — adds unique value</li>
+<li>Does NOT publish equity or commodity ETD notional data</li>
+<li>OTC stats published separately (not directly comparable)</li>
+</ul>
+<h3 id="4-cme-group">4. CME Group</h3>
+<ul>
+<li><strong>URL</strong>: https://www.cmegroup.com/investor-relations/volume-reports.html</li>
+<li><strong>Type</strong>: Largest US derivatives exchange</li>
+<li><strong>Key report</strong>: <a href="https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html">Record Annual ADV of 26.5M Contracts in 2024</a></li>
+<li><strong>Reliability</strong>: 🟢 High — SEC/CFTC-regulated disclosure</li>
+<li><strong>Notes</strong>:</li>
+<li>2024 ADV: 26.5 million contracts, up 9% YoY</li>
+<li>2025 ADV: 28.1 million contracts, up 6% YoY</li>
+<li>Interest Rate ADV: 13.7M contracts (record)</li>
+<li>Equity Index ADV: 6.8M contracts</li>
+<li>International ADV: 7.8M contracts (record, up 14%)</li>
+<li>Useful for US-centric deep dive and interest rate derivatives specifically</li>
+<li>CME accounts for 48.5-53.2% of global interest rate derivatives volume</li>
+</ul>
+<h3 id="5-national-stock-exchange-of-india-nse">5. National Stock Exchange of India (NSE)</h3>
+<ul>
+<li><strong>URL</strong>: https://www.nseindia.com/all-reports-derivatives</li>
+<li><strong>Type</strong>: World's largest derivatives exchange by contract volume</li>
+<li><strong>Reliability</strong>: 🟢 High — SEBI-regulated</li>
+<li><strong>Notes</strong>:</li>
+<li>2023: ~84.8 billion contracts (FIA ranking)</li>
+<li>2024: Estimated 140-160 billion contracts (extrapolated from APAC share)</li>
+<li>Turnover: Rs 40,000+ trillion in FY2024-25</li>
+<li>Dominates global stock index options: 97.7% traded on NSE (WFE)</li>
+<li>Also 94.5% of global currency options market</li>
+<li>SEBI regulatory changes in late 2024 (increased lot sizes, restricted weekly expiries) expected to moderate growth</li>
+</ul>
+<h2 id="secondary-sources">Secondary Sources</h2>
+<h3 id="6-eurex-deutsche-borse">6. Eurex (Deutsche Borse)</h3>
+<ul>
+<li><strong>URL</strong>: https://www.eurex.com/ex-en/data/statistics</li>
+<li><strong>Key data</strong>: <a href="https://www.deutsche-boerse.com/dbg-en/media/news-stories/press-releases/Full-year-and-December-2024-figures-at-Eurex-4250262">Full year 2024 figures</a></li>
+<li><strong>2024 volume</strong>: 2,080.5 million contracts (up 9% YoY)</li>
+<li><strong>Notes</strong>: Interest rate derivatives +26%, equity derivatives +16%</li>
+</ul>
+<h3 id="7-b3-brazil">7. B3 (Brazil)</h3>
+<ul>
+<li><strong>2023 volume</strong>: 8.3 billion contracts (ranked #2 globally)</li>
+<li><strong>Notes</strong>: Strong in interest rate, FX, and equity derivatives</li>
+<li><strong>Open interest</strong>: 203.6M contracts at end-2023 (up 61.5%)</li>
+</ul>
+<h3 id="8-crypto-derivatives-sources">8. Crypto Derivatives Sources</h3>
+<ul>
+<li><strong>Source</strong>: <a href="https://coinlaw.io/cryptocurrency-derivatives-market-statistics/">coinlaw.io statistics</a></li>
+<li><strong>Notes</strong>:</li>
+<li>Total crypto trading volume: $3.12T, derivatives = 74.2% share</li>
+<li>CME Bitcoin/Ethereum futures: institutional-grade, regulated ETD</li>
+<li>Deribit: 85% of crypto options volume (not exchange-traded in traditional sense)</li>
+<li>Crypto futures grew 26% YoY in 2024</li>
+<li>Most crypto "derivatives" are on unregulated venues — only CME counts as traditional ETD</li>
+</ul>
+<h3 id="9-fia-historical-annual-surveys">9. FIA Historical Annual Surveys</h3>
+<ul>
+<li>2015: <a href="https://www.fia.org/fia/articles/2015-fia-annual-futures-and-options-volume-survey-asia-takes-lead">Asia Takes the Lead</a> — 24.78B</li>
+<li>2016: <a href="https://www.fia.org/marketvoice/articles/2016-annual-volume-survey">Annual Volume Survey</a> — 25.22B</li>
+<li>2017: <a href="https://www.fia.org/fia/articles/total-2017-volume-252-billion-contracts-down-01-2016">Total 2017 Volume</a> — 25.20B</li>
+<li>2018: <a href="https://www.fia.org/fia/articles/fia-releases-annual-trading-statistics-showing-record-etd-volume-2018">Record ETD Volume</a> — 30.28B</li>
+<li>2019: <a href="https://www.fia.org/fia/articles/record-year-derivatives">Record Year</a> — 34.47B</li>
+<li>2020: <a href="https://www.fia.org/fia/articles/global-futures-and-options-trading-reaches-record-level-2020">Record Level</a> — 46.77B</li>
+<li>2021: <a href="https://www.fia.org/fia/articles/global-futures-and-options-trading-hits-another-record-2021">Another Record</a> — 62.58B</li>
+<li>2022: <a href="https://www.statista.com/statistics/377025/global-futures-and-options-volume/">Statista</a> — 83.85B (derived from futures 29.32B + options 54.53B)</li>
+<li>2023: <a href="https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023">137 Billion Contracts</a> — 137.31B</li>
+<li>2024: <a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">Annual Review</a> — 205.34B</li>
+</ul>
+<h2 id="source-discrepancy-notes">Source Discrepancy Notes</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>FIA</th>
+<th>WFE</th>
+<th>Delta</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024 total volume</td>
+<td>205.34B</td>
+<td>180.22B</td>
+<td>25.12B</td>
+<td>FIA covers 85 exchanges vs WFE member-only universe</td>
+</tr>
+<tr>
+<td>Options 2024</td>
+<td>177.12B</td>
+<td>153.30B</td>
+<td>23.82B</td>
+<td>Same coverage gap</td>
+</tr>
+<tr>
+<td>Futures 2024</td>
+<td>28.22B</td>
+<td>26.92B</td>
+<td>1.30B</td>
+<td>Smaller gap — futures traded on fewer, larger exchanges</td>
+</tr>
+<tr>
+<td>YoY growth 2024</td>
+<td>+51%</td>
+<td>+38.8%</td>
+<td>—</td>
+<td>Different baselines (FIA 2023 = 136B, WFE 2023 = 129.8B)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Resolution</strong>: FIA used as primary source for total volume (broader coverage). WFE used for asset class composition and regional breakdowns (richer analytical detail).</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/etd/workings/source_notes.md">analysis/traditional-finance/etd/workings/source_notes.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

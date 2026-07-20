@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bill Payments — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Recurring bill payments — utilities, telecoms, digital subscriptions, and rent — represent one of the highest-volume pay">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Bill Payments</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Bill Payments</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">3,076</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">60</div></div><div class="chip"><div class="k">Opacity</div><div class="v red">64</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#7/28</div></div></div>
+  <div class="chart-box"><h3>Payments — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart15"></canvas></div></div><script>new Chart(document.getElementById("chart15"),{"type": "bar", "data": {"labels": ["Consumer Cards", "Digital Wallets", "Bank Transfers", "Bill Payments", "E-Commerce", "ATM Withdrawals", "Payroll", "BNPL", "Insurance Premiums", "P2P Transfers", "Remittances"], "datasets": [{"data": [24501, 19660, 15338, 3076, 1823, 1557, 1014, 634, 444, 270, 57], "backgroundColor": ["#334155", "#334155", "#334155", "#3b82f6", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections">Projections</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#depth-research-update-run-10-2026-03-29">Depth Research Update (Run 10, 2026-03-29)</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Recurring bill payments — utilities, telecoms, digital subscriptions, and rent — represent one of the highest-volume payment categories globally. We estimate <strong>~80-110 billion bill payment transactions annually</strong> in 2024, equivalent to <strong>~2,536-3,488 TPS</strong>. The central estimate is <strong>~95 billion transactions at ~3,012 TPS</strong>. This makes bill payments one of the largest transaction generators in the payments universe, driven by the sheer number of recurring relationships (every household has 5-15 monthly bills).</p>
+<p>Bill payments are <strong>overwhelmingly overlay transactions</strong> — ~90-95% flow through direct debit, card-on-file, or bank transfer rails already counted in other capsules. The category is notable for its extreme regularity (predictable monthly spikes on the 1st/15th) and low average transaction value (~$50-80 per payment).</p>
+<p><a class="xref" href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">Insurance premiums</a> are <strong>excluded</strong> from this capsule to avoid double-counting with the Insurance Premiums capsule.</p>
+<h2 id="scope">Scope</h2>
+<p>This analysis covers recurring consumer bill payments to service providers. Included: utilities (electricity, gas, water, waste), telecommunications (mobile, broadband, cable/satellite TV), digital subscriptions (streaming, SaaS, gaming), and rent payments. Excluded: insurance premiums (separate capsule), loan repayments (separate category), government taxes/fees, and one-time service payments. Each billing event where money moves from consumer to service provider = one transaction.</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume">Transaction Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS</td>
+<td>~3,012</td>
+<td>Derived from ~95B annual (<a href="/universe-of-finance/reports/payments/bill-payments/workings/calculations.html">calculations</a>)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~5,000-7,000</td>
+<td>Month-start direct debit processing peaks at 1.7-2.3x average</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Daily volume</td>
+<td>~260 million</td>
+<td>Derived from annual total</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual transactions (2024)</td>
+<td>~95 billion</td>
+<td>Bottom-up model by segment (<a href="/universe-of-finance/reports/payments/bill-payments/workings/calculations.html">calculations</a>)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual value (2024)</td>
+<td>~$5.5-6.5 trillion</td>
+<td>Derived from segment volumes × avg amounts</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Avg transaction value</td>
+<td>~$63</td>
+<td>$6T / 95B txns</td>
+<td>🔴 Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="segment-breakdown">Segment Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Global Accounts/Subs</th>
+<th>Payment Freq</th>
+<th>Annual Txns (B)</th>
+<th>Avg Payment ($)</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Utilities — Electricity</strong></td>
+<td>~2.0B accounts</td>
+<td>Monthly</td>
+<td>~22B</td>
+<td>~$70</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>Utilities — Gas</strong></td>
+<td>~0.8B accounts</td>
+<td>Monthly (seasonal)</td>
+<td>~7B</td>
+<td>~$60</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>Utilities — Water</strong></td>
+<td>~1.2B accounts</td>
+<td>Monthly/Quarterly</td>
+<td>~10B</td>
+<td>~$35</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>Utilities — Waste/Other</strong></td>
+<td>~0.5B accounts</td>
+<td>Monthly/Quarterly</td>
+<td>~4B</td>
+<td>~$25</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>Telecoms — Mobile</strong></td>
+<td>~5.5B subscriptions</td>
+<td>Monthly</td>
+<td>~18B</td>
+<td>~$30</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>Telecoms — Broadband</strong></td>
+<td>~1.5B subscriptions</td>
+<td>Monthly</td>
+<td>~12B</td>
+<td>~$45</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>Telecoms — Cable/Satellite TV</strong></td>
+<td>~0.8B subscriptions</td>
+<td>Monthly</td>
+<td>~5B</td>
+<td>~$55</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>Digital Subscriptions</strong></td>
+<td>~2.0B active subs</td>
+<td>Monthly</td>
+<td>~10B</td>
+<td>~$12</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>Rent Payments</strong></td>
+<td>~0.6B renter households</td>
+<td>Monthly</td>
+<td>~7B</td>
+<td>~$800</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>~95B</strong></td>
+<td><strong>~$63 avg</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="segment-deep-dives">Segment Deep-Dives</h3>
+<h4 id="utilities-electricity-gas-water-waste-43b-transactions">Utilities (Electricity, Gas, Water, Waste) — ~43B transactions</h4>
+<p>Global electricity accounts: ~2 billion (IEA estimates 8 billion people with electricity access, ~3.5-4 people per household, plus commercial accounts). Monthly billing is standard in developed markets; prepaid meters are common in Sub-Saharan <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> and parts of Asia. Gas serves fewer households (~800M) due to regional availability. Water billing is highly fragmented — some markets bill monthly, others quarterly, some annually.</p>
+<p><strong>Key data points:</strong>
+- UK: BACS processes ~4.5B direct debits annually, ~40% of which are utility-related (~1.8B)
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>: BBPS (Bharat Bill Payment System) processed 1.3B transactions in FY2024, growing 55% YoY
+- US: ~150M utility accounts generating ~1.8B annual payments (NACHA biller data)
+- EU: SEPA Direct Debit processed ~24B transactions in 2024, ~30% utility-related (~7.2B)</p>
+<h4 id="telecoms-mobile-broadband-cable-35b-transactions">Telecoms (Mobile, Broadband, Cable) — ~35B transactions</h4>
+<p>Mobile subscriptions reached 5.5 billion globally (GSMA, excluding <a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">IoT</a>). Not all generate monthly bill payments — prepaid plans (~55% of global mobile connections) involve top-up transactions rather than recurring bills. Of the ~2.5B postpaid connections, virtually all generate monthly payments. Prepaid top-ups (~3B active) generate irregular but frequent transactions (est. 3-4 top-ups per month in developing markets).</p>
+<p><strong>Key data points:</strong>
+- GSMA: 5.5B mobile connections (excl. IoT), ~45% postpaid (~2.5B monthly bills)
+- Broadband: ITU estimates 1.5B fixed broadband subscriptions globally
+- For prepaid, we count monthly top-up events (~3B connections × 3 top-ups/month = ~9B, included in the mobile figure)</p>
+<h4 id="digital-subscriptions-10b-transactions">Digital Subscriptions — ~10B transactions</h4>
+<p>Digital subscriptions have exploded: Netflix (260M), Spotify (236M paid), Amazon Prime (200M+), Disney+ (150M), YouTube Premium (100M+), plus hundreds of smaller services. The average consumer in developed markets holds 3-5 digital subscriptions. Many of these are billed monthly via card-on-file.</p>
+<p><strong>Key data points:</strong>
+- Netflix: 260M subscribers × 12 months = 3.1B annual billing events
+- Spotify: 236M paid × 12 = 2.8B
+- Top 10 streaming services alone: ~1B subscribers × 12 = ~12B, but overlap (same household) reduces unique payments to ~5-6B
+- SaaS consumer subscriptions (iCloud, Google One, Microsoft 365): est. ~2B additional
+- Gaming subscriptions (Xbox Game Pass, PS Plus): est. ~200M × 12 = ~2.4B</p>
+<h4 id="rent-payments-7b-transactions">Rent Payments — ~7B transactions</h4>
+<p>An estimated 600 million renter households globally generate monthly rent payments. In developed markets, rent is increasingly paid digitally (bank transfer, dedicated platforms like Zelle, direct debit). In emerging markets, cash rent payment is still dominant. Digital rent payment platforms (Zillow, RentCafe, Bilt) are growing rapidly in the US.</p>
+<p><strong>Key data points:</strong>
+- US: ~44M renter households, ~530M annual rent payments
+- EU: ~70M renter households (Eurostat), ~840M annual payments
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>: ~200M urban renter households (est.), ~2.4B annual payments
+- Global estimate highly uncertain due to informal rental markets</p>
+<h3 id="payment-channel-breakdown">Payment Channel Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Share by Count</th>
+<th>Share by Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct debit / auto-pay</td>
+<td>~40%</td>
+<td>~45%</td>
+<td>Dominant in Europe (SEPA DD), UK (BACS), growing in US</td>
+</tr>
+<tr>
+<td>Card-on-file (recurring)</td>
+<td>~25%</td>
+<td>~20%</td>
+<td>Common for digital subscriptions, US utilities</td>
+</tr>
+<tr>
+<td>Bank transfer / manual</td>
+<td>~15%</td>
+<td>~20%</td>
+<td>One-off monthly payments; common in Asia</td>
+</tr>
+<tr>
+<td>Mobile money / wallet</td>
+<td>~10%</td>
+<td>~5%</td>
+<td>Africa (M-Pesa), India (UPI), China (Alipay/WeChat)</td>
+</tr>
+<tr>
+<td>Cash / in-person</td>
+<td>~8%</td>
+<td>~8%</td>
+<td>Declining; still significant in LatAm, Africa, S. Asia</td>
+</tr>
+<tr>
+<td>Check</td>
+<td>~2%</td>
+<td>~2%</td>
+<td>US rent payments; rapidly declining</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regional-breakdown-2024">Regional Breakdown (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Est. Txns (B)</th>
+<th>Share</th>
+<th>Key Systems</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asia-Pacific</td>
+<td>~35B</td>
+<td>~37%</td>
+<td>BBPS (India), Alipay/WeChat (China), BPAY (Australia)</td>
+<td>Largest by volume due to population; mix of digital and cash</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>~25B</td>
+<td>~26%</td>
+<td>SEPA Direct Debit, BACS (UK), Prelevement (France)</td>
+<td>Highest direct debit penetration</td>
+</tr>
+<tr>
+<td>North America</td>
+<td>~18B</td>
+<td>~19%</td>
+<td>ACH (NACHA), card-on-file, Zelle</td>
+<td>High digital subscription density</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>~8B</td>
+<td>~8%</td>
+<td>Boleto (Brazil), SPEI (Mexico)</td>
+<td>Cash bill payment still common</td>
+</tr>
+<tr>
+<td>Middle East &amp; Africa</td>
+<td>~5B</td>
+<td>~5%</td>
+<td>M-Pesa, JazzCash, bKash</td>
+<td>Mobile money transforming bill payment</td>
+</tr>
+<tr>
+<td>Rest of World</td>
+<td>~4B</td>
+<td>~4%</td>
+<td>Various</td>
+<td>Estimated</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="global-bill-payments-2015-2024">Global Bill Payments (2015-2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (B)</th>
+<th>YoY Growth</th>
+<th>Est. TPS</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td>~60</td>
+<td>—</td>
+<td>~1,902</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>~64</td>
+<td>+6.7%</td>
+<td>~2,029</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>~68</td>
+<td>+6.3%</td>
+<td>~2,156</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>~72</td>
+<td>+5.9%</td>
+<td>~2,283</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>~76</td>
+<td>+5.6%</td>
+<td>~2,410</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~78</td>
+<td>+2.6%</td>
+<td>~2,473</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~82</td>
+<td>+5.1%</td>
+<td>~2,600</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~86</td>
+<td>+4.9%</td>
+<td>~2,727</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~90</td>
+<td>+4.7%</td>
+<td>~2,853</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~95</td>
+<td>+5.6%</td>
+<td>~3,012</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><em>Sources: NACHA ACH biller volumes, BACS annual statistics, ECB SEPA DD volumes, India BBPS reports, GSMA mobile money data. Global total is a bottom-up model.</em></p>
+<p><strong>Key observations:</strong>
+- Bill payment transactions have grown ~5.2% CAGR over the decade, driven by two forces: population/urbanization growth (+2%) and digital subscription proliferation (+3%)
+- COVID-19 had a muted impact (only +2.6% in 2020 vs. ~5-6% trend) — bills are non-discretionary, but some telco prepaid top-ups declined as economic activity slowed
+- The fastest-growing segment is digital subscriptions (20%+ growth), which added ~5B annual transactions between 2019 and 2024
+- Direct debit adoption continues to displace manual payments, reducing friction but not changing transaction counts
+- India's BBPS is a standout: growing 55% YoY, it is digitizing billions of previously cash-based bill payments</p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>CAGR</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015-2024 (9yr)</td>
+<td>~5.2%</td>
+<td>Steady growth; digital subs and emerging market digitization</td>
+</tr>
+<tr>
+<td>2019-2024 (5yr)</td>
+<td>~4.6%</td>
+<td>Slight COVID drag in 2020, offset by subscription boom</td>
+</tr>
+<tr>
+<td>2022-2024 (2yr)</td>
+<td>~5.1%</td>
+<td>Acceleration from BBPS growth and streaming expansion</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-steady-growth">Baseline (Steady Growth)</h3>
+<p><strong>Assumptions:</strong>
+1. Utility account growth of 2% annually (population + urbanization)
+2. Digital subscriptions grow 10% annually, slowing to 5% by 2030
+3. Rent digitization increases from ~40% to ~60% by 2035
+4. BBPS and similar bill payment platforms continue rapid adoption in emerging markets
+5. Overall bill payment transaction growth of 4-5% annually</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Txns (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>3,329</td>
+<td>105</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>3,647</td>
+<td>115</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>3,996</td>
+<td>126</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>5,095</td>
+<td>161</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-subscription-economy-emerging-market-digitization">High Growth (Subscription Economy + Emerging Market Digitization)</h3>
+<p><strong>Assumptions:</strong>
+1. "Everything-as-a-subscription" trend adds 3-5 new recurring charges per household by 2035
+2. India (BBPS), Africa (mobile money), LatAm digitize 80%+ of bill payments
+3. Embedded finance creates new recurring micro-payments (pay-per-use utilities, IoT device subscriptions)
+4. EV charging subscriptions add a new utility category</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Txns (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>3,583</td>
+<td>113</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>4,265</td>
+<td>134</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>5,095</td>
+<td>161</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>7,930</td>
+<td>250</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-consolidation">Conservative (Consolidation)</h3>
+<p><strong>Assumptions:</strong>
+1. Subscription fatigue leads to bundling (fewer individual subscription transactions)
+2. Utility billing consolidation (multi-utility billing reduces transaction count)
+3. Growth slows to 2-3% annually as developed markets saturate</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Txns (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>3,171</td>
+<td>100</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>3,329</td>
+<td>105</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>3,488</td>
+<td>110</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>3,964</td>
+<td>125</td>
+</tr>
+</tbody>
+</table>
+<p><em>Full projection calculations: <a href="/universe-of-finance/reports/payments/bill-payments/workings/calculations.html">workings/calculations.md</a></em></p>
+<p><strong>2035 Range:</strong> Bill payments are projected to reach <strong>125-250 billion transactions annually</strong> by 2035, with TPS ranging from <strong>~3,964 (conservative) to ~7,930 (high growth)</strong>.</p>
+<hr/>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<h3 id="double-counting-risk-very-high">Double-Counting Risk: VERY HIGH</h3>
+<p>Bill payments are almost entirely processed through existing payment rails:</p>
+<table>
+<thead>
+<tr>
+<th>Underlying Rail</th>
+<th>% of Bill Txns</th>
+<th>Already Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct debit (SEPA DD, BACS, ACH)</td>
+<td>~40%</td>
+<td>Bank Transfers capsule</td>
+</tr>
+<tr>
+<td>Card-on-file (recurring charges)</td>
+<td>~25%</td>
+<td>Consumer Cards capsule</td>
+</tr>
+<tr>
+<td>Bank transfer (manual)</td>
+<td>~15%</td>
+<td>Bank Transfers capsule</td>
+</tr>
+<tr>
+<td>Mobile money / digital wallet</td>
+<td>~10%</td>
+<td>Digital Wallets / Mobile Money capsule</td>
+</tr>
+<tr>
+<td>Cash / check / in-person</td>
+<td>~10%</td>
+<td>Not counted elsewhere</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Overlap estimate:</strong> ~90% of bill payment transactions are already counted in the <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Cards</a>, <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a>, or <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a> capsules. Only cash/check bill payments (~10%) represent truly incremental infrastructure load.</p>
+<h3 id="incremental-tps-contribution">Incremental TPS Contribution</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Total Txns (B)</th>
+<th>Overlap %</th>
+<th>Incremental Txns (B)</th>
+<th>Incremental TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current (2024)</td>
+<td>95</td>
+<td>90%</td>
+<td>9.5</td>
+<td>~301</td>
+</tr>
+<tr>
+<td>Baseline (2030)</td>
+<td>126</td>
+<td>88%</td>
+<td>15.1</td>
+<td>~479</td>
+</tr>
+<tr>
+<td>High (2035)</td>
+<td>250</td>
+<td>85%</td>
+<td>37.5</td>
+<td>~1,189</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: The overlap percentage is expected to decrease over time as emerging market cash bill payments are digitized (but they shift to bank transfer/mobile money rails, which are counted in those capsules). The declining overlap% reflects the growing "last mile" cash payments in newly banked populations.</em></p>
+<p><strong>For TPS aggregation:</strong> Bill payments should be treated as a <strong>use case overlay</strong> on existing infrastructure. The ~95B annual transactions describe economic purpose, but ~90% of the infrastructure load is captured in underlying rail capsules.</p>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>Bill payments are the second-largest recurring payment category after cards.</strong> At ~95B transactions and ~3,012 TPS, bill payments generate more transactions than insurance premiums, <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a>, and most other payment categories combined (excluding cards and bank transfers).</p>
+</li>
+<li>
+<p><strong>Mobile telecoms is the single largest bill payment segment.</strong> With 5.5B mobile connections generating 18B+ annual payment events (postpaid bills + prepaid top-ups), telecoms alone accounts for ~19% of all bill payments.</p>
+</li>
+<li>
+<p><strong>Digital subscriptions are the fastest-growing segment.</strong> Growing at 20%+ annually, digital subscriptions added ~5B transactions between 2019 and 2024. The "subscription economy" is creating new recurring payment relationships at unprecedented scale.</p>
+</li>
+<li>
+<p><strong>India's BBPS is a global model for bill payment digitization.</strong> The Bharat Bill Payment System processed 1.3B transactions in FY2024 (+55% YoY), creating a centralized, interoperable platform for all bill payments. This model is being studied by regulators in Africa and Southeast Asia.</p>
+</li>
+<li>
+<p><strong>~90% of bill payments are already counted in other capsules.</strong> Like insurance premiums, bill payments are a use case, not a payment rail. The incremental infrastructure contribution is limited to cash/check payments (~10%).</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> concentration is extreme.</strong> Bill payments cluster around the 1st and 15th of each month (direct debit processing dates). UK BACS processes ~100M direct debits on the first business day of each month, creating a peak/average ratio of ~2x for the bill payment category.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>No single global source for bill payment transaction counts.</strong> The estimate is built bottom-up from segment data (utility accounts, telecom subscriptions, etc.) and national payment system statistics.</li>
+<li><strong>Prepaid telecom top-ups are a gray area.</strong> Are they "bill payments" or "retail purchases"? We include them because they serve the same economic function (paying for telecom service).</li>
+<li><strong>Rent payment digitization is poorly measured.</strong> Cash and informal rent payments are invisible to payment systems. The 600M renter household figure and 40% digitization rate are rough estimates.</li>
+<li><strong>Utility account counts are approximate.</strong> The IEA tracks electricity access at the country level, but conversion to "billing accounts" requires assumptions about household size and commercial/industrial accounts.</li>
+<li><strong>Regional data quality varies dramatically.</strong> UK BACS and EU SEPA provide excellent direct debit data. India BBPS is well-tracked. China, Africa, and Latin America have significant gaps.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>Exact global utility account count.</strong> IEA tracks access, not accounts.</li>
+<li><strong>Cash bill payment volumes in emerging markets.</strong> By definition, these bypass digital payment systems.</li>
+<li><strong>Digital subscription overlap.</strong> How many "subscriptions" are paid by the same card-on-file transaction (family plans, bundled billing)?</li>
+<li><strong>Informal rent payment volumes.</strong> Cash rent in developing markets is untracked.</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global utility accounts</td>
+<td>Sum IEA electricity access (8B people) / household size (~3.5) = ~2.3B households; add commercial accounts (~10%)</td>
+<td>IEA World Energy Outlook; World Bank data</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Bill payment digitization rate</td>
+<td>Use UK (95% digital), US (~80%), India (~30%), Africa (~15%) as benchmarks; weight by population</td>
+<td>BACS annual report; NACHA; BBPS; M-Pesa data</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Digital subscription total</td>
+<td>Aggregate top-50 subscription services by published subscriber count; add estimated long-tail (1.5x multiplier)</td>
+<td>Netflix, Spotify, Disney+, etc. public subscriber data</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Rent payment volume</td>
+<td>US Census (44M renters) + Eurostat + national stats for top-20 countries; global renter share (~35% of households) × global households (~2B)</td>
+<td>Census.gov; Eurostat housing statistics</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>SEPA DD bill share</td>
+<td>ECB publishes total SEPA DD volume (24B); bill payments estimated at 30-35% based on UK BACS composition data</td>
+<td>ECB payment statistics; BACS annual report</td>
+<td>🟡</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="depth-research-update-run-10-2026-03-29">Depth Research Update (Run 10, 2026-03-29)</h2>
+<blockquote>
+<p>Full workings: <a href="/universe-of-finance/reports/workings/confidence-uplift-run10.html">../../workings/confidence-uplift-run10.md</a></p>
+</blockquote>
+<h3 id="key-revisions">Key Revisions</h3>
+<ol>
+<li>
+<p><strong>GSMA Mobile Economy 2026: 5.8B unique mobile subscribers</strong> (8.8B connections). Postpaid share ~45% = ~2.6B postpaid subscribers generating monthly bills (31.2B annual). Slightly higher than previous 5.5B connection estimate.</p>
+</li>
+<li>
+<p><strong>GSMA mobile money: $99B in bill payments via mobile money in 2025.</strong> First bill-payment-specific value figure from GSMA. At $15-25 average mobile money bill payment in emerging markets, this implies 4-6.6B mobile money bill payment transactions — a new independent anchor for emerging market bill payment digitization.</p>
+</li>
+<li>
+<p><strong>Digital subscription segment significantly underestimated.</strong> Enumerating top 9 streaming services alone yields ~962M billing accounts x 12 = ~11.5B annual billing events. Adding gaming subscriptions (Xbox Game Pass ~40M, PS Plus ~50M), cloud storage (iCloud ~100M, Google One ~100M), and SaaS (~285M) brings total to ~15B annual digital subscription billing events — up from previous 10B estimate. Adjusted for 20% annual billing: ~15B.</p>
+</li>
+<li>
+<p><strong>Updated streaming subscriber counts (Q1-Q2 2025):</strong> Netflix 301.6M, Spotify 276M, Amazon Prime 200M+, Disney+ 125M, YouTube Premium 100M+, HBO Max ~100M, Paramount+ 72M, Apple TV+ ~40M, Peacock ~36M.</p>
+</li>
+<li>
+<p><strong>India BBPS at 3B annualized (Q1 FY26: 750M transactions).</strong> Up from 1.3B in FY2024. 73% CAGR confirmed. Single-day record: 10.8M transactions (June 30, 2025).</p>
+</li>
+<li>
+<p><strong>Revised total from 97B to 102B annual transactions</strong> (+5.2%). Digital subscriptions +5B, telecoms +2B, other segments unchanged.</p>
+</li>
+<li>
+<p><strong>Confidence revised from 60 to 66</strong> (+6 points), driven by streaming subscriber enumeration, GSMA $99B mobile money bill payment anchor, and India BBPS growth confirmation.</p>
+</li>
+</ol>
+<h3 id="revised-segment-summary">Revised Segment Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Previous Txns (B)</th>
+<th>Revised Txns (B)</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Utilities (elec/gas/water/waste)</td>
+<td>43</td>
+<td>43</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Telecoms (mobile/broadband/TV)</td>
+<td>35</td>
+<td>37</td>
+<td>+2B (GSMA 5.8B subs)</td>
+</tr>
+<tr>
+<td>Digital Subscriptions</td>
+<td>10</td>
+<td>15</td>
+<td>+5B (streaming enumeration)</td>
+</tr>
+<tr>
+<td>Rent</td>
+<td>7</td>
+<td>7</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>95-97</strong></td>
+<td><strong>102</strong></td>
+<td><strong>+5-7B</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="revised-current-metrics">Revised Current Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Previous</th>
+<th>Revised</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual transactions</td>
+<td>97B</td>
+<td><strong>102B</strong></td>
+</tr>
+<tr>
+<td>Average TPS</td>
+<td>3,076</td>
+<td><strong>3,232</strong></td>
+</tr>
+<tr>
+<td>Digital subscription txns</td>
+<td>10B</td>
+<td><strong>15B</strong></td>
+</tr>
+<tr>
+<td>India BBPS annual</td>
+<td>1.3B (FY2024)</td>
+<td><strong>3B (FY2026 annualized)</strong></td>
+</tr>
+<tr>
+<td>Mobile money bill payments</td>
+<td>unknown</td>
+<td><strong>$99B / 4-6.6B txns</strong></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.nacha.org/content/ach-network-volume-and-value-statistics">NACHA — ACH Network Volume and Value Statistics 2024</a></li>
+<li><a href="https://www.bacs.co.uk/">BACS Payment Schemes — Annual Report 2024 (UK Direct Debit)</a></li>
+<li><a href="https://www.ecb.europa.eu/stats/payment_statistics/large_value_and_retail/html/index.en.html">European Central Bank — Payment Statistics (SEPA Direct Debit volumes)</a></li>
+<li><a href="https://www.npci.org.in/what-we-do/bharat-billpay/product-statistics">NPCI — Bharat Bill Payment System (BBPS) Statistics FY2024</a></li>
+<li><a href="https://www.gsma.com/r/somic/">GSMA — The State of Mobile Internet Connectivity Report 2024</a></li>
+<li><a href="https://www.itu.int/en/ITU-D/Statistics/Pages/facts/default.aspx">ITU — Facts and Figures: Focus on Connectivity 2024</a></li>
+<li><a href="https://www.iea.org/reports/world-energy-outlook-2024">IEA — World Energy Outlook 2024 (electricity access data)</a></li>
+<li><a href="https://ir.netflix.net/ir/doc/quarterly-earnings">Netflix — Q4 2024 Earnings (260M global subscribers)</a></li>
+<li><a href="https://investors.spotify.com/financials/quarterly-results">Spotify — Q4 2024 Earnings (236M premium subscribers)</a></li>
+<li><a href="https://www.statista.com/topics/1464/e-commerce/">Statista — Number of Digital Subscription Services Worldwide 2024</a></li>
+<li><a href="https://www.census.gov/housing/hvs/index.html">US Census Bureau — Quarterly Residential Vacancies and Homeownership Q4 2024</a></li>
+<li><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Housing_statistics">Eurostat — Housing Statistics 2024</a></li>
+<li><a href="https://www.aciworldwide.com/insights/expert-view">ACI Worldwide — Bill Payment Trends and Benchmarks 2024</a></li>
+<li><a href="https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-economy/">GSMA — The Mobile Economy 2026</a></li>
+<li><a href="https://www.gsma.com/mobile-money-metrics/">GSMA — State of the Industry Report on Mobile Money 2026</a></li>
+<li><a href="https://sensortower.com/blog/state-of-mobile-2026">Sensor Tower — State of Mobile 2026</a></li>
+<li><a href="https://www.demandsage.com/netflix-subscribers/">DemandSage — Netflix Subscribers 2026</a></li>
+<li><a href="https://sqmagazine.co.uk/digital-platform-subscription-statistics/">SQ Magazine — Digital Platform Subscription Statistics 2026</a></li>
+<li><a href="https://evoca.tv/streaming-service-market-share/">Evoca — Streaming Service Market Share 2026</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/bill-payments/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/payments/bill-payments/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/payments/bill-payments/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/payments/bill-payments/workings/confidence-uplift-run7.html">⚙ confidence uplift run7</a><a href="/universe-of-finance/reports/payments/bill-payments/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/bill-payments/REPORT.md">analysis/payments/bill-payments/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forex — TPS Calculations — Universe of Finance</title>
+<meta name="description" content="Daily Turnover (Value) BIS Triennial Survey data: - April 2022: $7.5T/day (net-net basis) - April 2025: $9.6T/day (net-net basis) Interpolated 2024 estimate: $7.5T + (2/3) x ($9.6T">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Forex — TPS Calculations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#daily-turnover-value">Daily Turnover (Value)</a></li><li><a href="#estimating-transaction-count">Estimating Transaction Count</a></li><li><a href="#tps-calculation">TPS Calculation</a></li><li><a href="#peak-tps-estimate">Peak TPS Estimate</a></li><li><a href="#annual-volume">Annual Volume</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li></ul></div><h2 id="daily-turnover-value">Daily Turnover (Value)</h2>
+<p>BIS Triennial Survey data:
+- April 2022: $7.5T/day (net-net basis)
+- April 2025: $9.6T/day (net-net basis)</p>
+<p>Interpolated 2024 estimate: $7.5T + (2/3) x ($9.6T - $7.5T) = <strong>~$8.9T/day</strong>
+Conservative interpolation used: <strong>~$8.5T/day</strong> (growth may not be linear; 2024 was before 2025 survey spike)</p>
+<h2 id="estimating-transaction-count">Estimating Transaction Count</h2>
+<h3 id="approach-1-cls-settlement-data">Approach 1: CLS Settlement Data</h3>
+<p>CLS Group settles ~500,000 FX trades per day with ~$7T daily settlement value (2024 ADV).</p>
+<p>CLS coverage:
+- By VALUE: CLS settles ~55-60% of global FX by value
+- By COUNT: CLS covers primarily large institutional/interbank trades. Retail and smaller trades are not settled through CLS.
+- Estimated CLS coverage by count: ~15-20%</p>
+<p>If CLS = 500K trades/day at 17.5% market coverage:
+<strong>Total daily trades = 500,000 / 0.175 = ~2.86 million</strong></p>
+<h3 id="approach-2-average-ticket-size">Approach 2: Average Ticket Size</h3>
+<p>FX market segments:
+- Interbank/dealer (45% of value): Average ticket ~$10-20M → ~215K-430K trades/day (from ~$4.3T value)
+- Institutional (buy-side, 35% of value): Average ticket ~$2-5M → ~680K-1.7M trades/day (from ~$3.4T value)
+- Retail (3-5% of value): Average ticket ~$10K-50K → ~6.5M-32.5M trades/day (from ~$325B value)</p>
+<p>Retail FX is problematic: individual retail "trades" on platforms like IG, Plus500, etc. may number in the tens of millions per day, but many are CFDs rather than actual FX spot trades, and most are internally netted by brokers.</p>
+<p>Excluding retail CFDs, estimated range: <strong>~2-4 million trades/day</strong></p>
+<h3 id="central-estimate">Central Estimate</h3>
+<p>Convergence of both approaches: <strong>~3 million trades/day</strong></p>
+<h2 id="tps-calculation">TPS Calculation</h2>
+<p>FX market operates ~23.5 hours/day (Sunday 5 PM ET to Friday 5 PM ET, with a ~30 min gap).
+Effective trading hours with meaningful volume: ~20 hours/day</p>
+<p>Conservative (24h): 3,000,000 / 86,400 = <strong>34.7 TPS</strong>
+Effective hours (20h): 3,000,000 / 72,000 = <strong>41.7 TPS</strong>
+Rounded central estimate: <strong>~35 TPS</strong></p>
+<h2 id="peak-tps-estimate">Peak TPS Estimate</h2>
+<p>Peak activity is typically during the London/New York overlap (1-4 PM GMT).
+Peak concentration factor: ~4x average (based on hourly volume distributions from CLS data).
+<a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> estimate: 35 x 4 = <strong>~140 TPS</strong></p>
+<h2 id="annual-volume">Annual Volume</h2>
+<p>Annual trading days: ~252
+Annual trade count: 3,000,000 x 252 = <strong>~756 million trades</strong>
+Rounded: <strong>~750 million trades/year</strong></p>
+<p>Annual value: $8.5T x 252 = <strong>~$2,142 trillion</strong></p>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<ul>
+<li>Daily turnover (value): 🟢 High — BIS triennial survey is authoritative</li>
+<li>Transaction count: 🔴 Low — No official source reports global FX trade counts</li>
+<li>TPS: 🔴 Low — Derived from estimated counts</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/forex/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/forex/workings/calculations.md">analysis/traditional-finance/forex/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

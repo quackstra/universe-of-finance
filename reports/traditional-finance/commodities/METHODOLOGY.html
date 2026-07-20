@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commodities — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition What counts: One commodity futures, options, or physical trade executed on an exchange or bilateral OTC market Counting point: Trade execution (exchange matc">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Commodities</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Commodities — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-adjustments">Key Adjustments</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li><strong>What counts</strong>: One commodity futures, options, or physical trade executed on an exchange or bilateral OTC market</li>
+<li><strong>Counting point</strong>: Trade execution (exchange match or OTC confirmation)</li>
+<li><strong>Why this point</strong>: Consistent with the ETD methodology for exchange-traded products; OTC physical trades are counted at confirmation</li>
+<li><strong>Key ambiguities</strong>:</li>
+<li><strong>Physical vs. financial</strong>: A "trade" can be a physical commodity delivery contract (actual barrels of oil) or a financially-settled futures contract (paper barrels). Both count, but the financial-to-physical ratio is 30-40x for crude oil</li>
+<li><strong>Exchange-traded commodity derivatives are a subset of ETD</strong>: The 6.5B commodity contracts are included in the 205.34B ETD total. This category isolates the commodity subset</li>
+<li><strong>Carbon/environmental</strong>: Carbon credits (EU ETS, voluntary markets) are counted as <a class="xref" href="/universe-of-finance/reports/traditional-finance/commodities/REPORT.html">commodities</a> per FIA/WFE classification</li>
+<li><strong>Power/electricity</strong>: Intraday power market trades (EPEX Spot) are commodity trades but have very different characteristics from oil/metals</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-fiawfe-subcategory-extraction">Method A: FIA/WFE Subcategory Extraction</h3>
+<ul>
+<li><strong>Source</strong>: FIA reports commodity ETD as ~3% of 205.34B total ETD volume</li>
+<li><strong>Value</strong>: ~6.15B contracts</li>
+<li><strong>Strengths</strong>: Consistent with the ETD methodology; uses the same authoritative source</li>
+<li><strong>Weaknesses</strong>: The 3% share is derived from WFE asset-class breakdown; FIA does not publish a clean standalone commodity total</li>
+</ul>
+<h3 id="method-b-exchange-level-aggregation">Method B: Exchange-Level Aggregation</h3>
+<ul>
+<li><strong>Source</strong>: ICE (1.2B commodity), CME commodity segments (~3.5B est.), LME (179M), Shanghai (1.0B est.), Dalian (800M est.), Zhengzhou (500M est.), others (500M est.)</li>
+<li><strong>Value</strong>: ~7.7B (before overlap adjustment)</li>
+<li><strong>Strengths</strong>: Uses direct exchange-reported data for major commodity venues</li>
+<li><strong>Weaknesses</strong>: CME does not break out commodity-only volumes cleanly (energy, metals, agriculture are mixed with other products); Chinese exchange data quality varies</li>
+</ul>
+<h3 id="method-c-esma-carbon-market-cross-check">Method C: ESMA Carbon Market Cross-Check</h3>
+<ul>
+<li><strong>Source</strong>: ESMA EU Carbon Markets Report 2024 — 4.7M on-venue EUA transactions</li>
+<li><strong>Value</strong>: Validates the environmental/carbon subset (ICE: 20.4M environmental contracts)</li>
+<li><strong>Strengths</strong>: Regulatory data from ESMA with high authority</li>
+<li><strong>Weaknesses</strong>: Covers EU ETS only; does not include voluntary carbon markets or non-EU schemes</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────┐
+│                 RAW ESTIMATES                         │
+│                                                       │
+│  FIA 3% Share     Exchange Sum      ESMA Carbon       │
+│  [top-down]       [bottom-up]       [subset check]    │
+│  ┌──────────┐     ┌──────────┐     ┌──────────┐      │
+│  │ ~6.15B   │     │ ~7.7B    │     │ 4.7M EUA │      │
+│  └────┬─────┘     └────┬─────┘     └────┬─────┘      │
+│       │                │                │             │
+│       └────────────────┼────────────────┘             │
+│                        ▼                              │
+│              ┌──────────────────┐                     │
+│              │  RECONCILIATION  │                     │
+│              │  Exchange sum    │                     │
+│              │  overcounts by   │                     │
+│              │  ~1.2B due to    │                     │
+│              │  CME mixed-asset │                     │
+│              │  reporting       │                     │
+│              └────────┬─────────┘                     │
+│                       ▼                               │
+│              ┌──────────────────┐                     │
+│              │ FINAL ESTIMATE   │                     │
+│              │ ~6.5B contracts  │                     │
+│              │ ~330 avg TPS     │                     │
+│              │ Confidence: 74   │                     │
+│              └──────────────────┘                     │
+└─────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>The top-down (6.15B) and bottom-up (7.7B) approaches bracket the estimate. The gap is explained by CME's mixed-asset reporting (some financial products classified under "commodities" umbrella) and potential double-counting between ICE and CME for certain products. We settle on 6.5B as the midpoint, consistent with the FIA ~3% share plus a small uplift for non-WFE-member exchanges.</p>
+<h2 id="key-adjustments">Key Adjustments</h2>
+<h3 id="sub-sector-decomposition">Sub-Sector Decomposition</h3>
+<pre><code>Commodity ETD: 6.5B contracts (2024)
+═══════════════════════════════════════════════════
+
+Energy (oil, gas, power)   ████████████████       2.5B  (38%)
+  ICE oil: 655M record
+  CME/NYMEX energy
+  Shanghai energy futures
+
+Agriculture                ████████████           2.0B  (31%)
+  CME/CBOT grains, livestock
+  Dalian: soy, corn, palm
+  Zhengzhou: wheat, cotton
+
+Metals (precious + base)   ████████               1.2B  (18%)
+  LME: 179M lots (+18%)
+  CME/COMEX: gold, silver
+  Shanghai metals
+
+Environmental (carbon)     ██                     0.3B  (5%)
+  ICE: 20.4M env contracts
+  EEX carbon markets
+  Voluntary carbon (small)
+
+Other / mixed              ███                    0.5B  (8%)
+  MCX India, TOCOM
+  Regional exchanges
+</code></pre>
+<h3 id="physical-otc-commodity-estimation">Physical OTC Commodity Estimation</h3>
+<p>Physical commodity trades (actual delivery) are a separate, opaque market. We estimate ~50M physical trades/year based on major commodity trading house revenues (Vitol $505B, Trafigura $244B, Glencore $218B) divided by estimated margin per trade. This adds &lt;1% to the exchange-traded count and is flagged as low-confidence.</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>Commodity Overlap with ETD Category
+═══════════════════════════════════════════════════
+
+ETD total contracts        ██████████████████████  205.34B
+  │
+  ├── Equity (index+stock) █████████████████████   ~174B  (85%)
+  ├── Interest rate        ██                      ~10B   (5%)
+  ├── ETF                  ██                      ~8B    (4%)
+  ├── Currency             █                       ~6B    (3%)
+  └── COMMODITY            ███                     ~6.5B  (3%)  ◄── THIS CATEGORY
+                                                                     (full subset of ETD)
+</code></pre>
+<ul>
+<li><strong>Full subset of ETD</strong>: All 6.5B commodity contracts are included in the 205.34B ETD total. When aggregating across TradFi categories, commodity ETD must NOT be added to ETD — it is already included</li>
+<li><strong>Physical OTC commodity trades (~50M)</strong>: NOT included in ETD; these are unique to this category</li>
+<li><strong>Carbon/environmental</strong>: Included here but also overlaps conceptually with government/regulatory categories (EU ETS is a regulatory market)</li>
+</ul>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Sub-sector      Coverage  Source              Notes
+─────────────── ──────── ─────────────────── ──────────────────
+Energy (exch.)  ████████ ICE, CME/NYMEX      Record ICE data
+Metals (exch.)  ████████ LME, CME/COMEX      LME annual volumes
+Agriculture     ███████░ CME/CBOT, Dalian    Chinese data varies
+Carbon/environ. ███████░ ESMA, ICE           EU ETS well-covered
+Physical OTC    ██░░░░░░ Estimated only       Bilateral, unreported
+Chinese exch.   ████░░░░ FIA estimates        Day-trading inflation?
+─────────────── ──────── ─────────────────── ──────────────────
+Overall coverage: ~75% directly observed (exchange-traded)
+                  ~5% estimated (physical OTC)
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+FIA/WFE data        ██████░░░  ████████  ██████████  ██████░░░░
+ICE annual report   ████░░░░░  █████████ █████████░  ██████████
+CME volumes         ████░░░░░  █████████ █████████░  ████████░░
+LME annual data     ███░░░░░░  █████████ █████████░  ████████░░
+ESMA carbon report  ███░░░░░░  ████████░ ██████████  ████████░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    68/100     88/100    92/100      78/100
+</code></pre>
+<ul>
+<li><strong>Score</strong>: 74/100</li>
+<li><strong>Key drivers of uncertainty</strong>:</li>
+<li>Global commodity ETD total requires aggregating FIA subcategory data — no clean standalone figure exists</li>
+<li>CME does not publish commodity-only volumes separately from financial products</li>
+<li>Chinese commodity exchange data quality is uncertain (high turnover ratios suggest speculative round-tripping)</li>
+<li>Physical OTC commodity trades are completely opaque</li>
+<li>Notional value per commodity contract varies enormously ($70K for crude vs. $80 for carbon)</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial report</td>
+<td>Run 2: Commodities category created</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Methodology doc created</td>
+<td>Run 6: Formal methodology documentation</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/commodities/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/commodities/METHODOLOGY.md">analysis/traditional-finance/commodities/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

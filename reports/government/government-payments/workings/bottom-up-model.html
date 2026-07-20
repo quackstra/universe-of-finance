@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Government Payments — Bottom-Up Model — Universe of Finance</title>
+<meta name="description" content="Built by Research Elf (Run 3) to validate the ~25B annual / ~793 TPS estimate from the original capsule, which carried a :red_circle: Low confidence rating. US Model The US is the">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Government<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Government Payments — Bottom-Up Model</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#us-model">US Model</a></li><li><a href="#india-model">India Model</a></li><li><a href="#eu-model">EU Model</a></li><li><a href="#global-extrapolation">Global Extrapolation</a></li><li><a href="#revised-estimate">Revised Estimate</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Built by Research Elf (Run 3) to validate the ~25B annual / ~793 TPS estimate
+from the original capsule, which carried a :red_circle: Low confidence rating.</p>
+</blockquote>
+<hr/>
+<h2 id="us-model">US Model</h2>
+<p>The US is the single best-documented <a class="xref" href="/universe-of-finance/reports/government/government-payments/REPORT.html">government payments</a> ecosystem. We build
+from agency-level data where possible.</p>
+<h3 id="tax-payments-citizen-government">Tax Payments (Citizen → Government)</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Type</th>
+<th>Annual Count</th>
+<th>Calculation</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Individual income tax returns</td>
+<td>161M</td>
+<td>IRS Filing Season Statistics FY2024</td>
+<td><a href="https://www.irs.gov/newsroom/filing-season-statistics-by-year">IRS</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Corporate income tax returns</td>
+<td>~7M</td>
+<td>IRS Data Book 2024 — ~6.8M business returns</td>
+<td><a href="https://www.irs.gov/pub/irs-pdf/p55b.pdf">IRS Data Book</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Quarterly estimated tax payments</td>
+<td>~50M</td>
+<td>~12.5M filers × 4 quarters (IRS est.)</td>
+<td>IRS Statistics of Income</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Payroll tax remittances (employer)</td>
+<td>~72M</td>
+<td>~6M employers × 12 monthly deposits</td>
+<td>BLS QCEW / IRS</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td><strong>Tax subtotal</strong></td>
+<td><strong>~290M</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="benefits-disbursements-government-citizen">Benefits Disbursements (Government → Citizen)</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Type</th>
+<th>Annual Count</th>
+<th>Calculation</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Social Security (OASDI)</td>
+<td>~852M</td>
+<td>71M beneficiaries × 12 monthly payments</td>
+<td><a href="https://www.ssa.gov/news/en/press/releases/2025-10-24.html">SSA</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>SSI (Supplemental Security)</td>
+<td>~90M</td>
+<td>7.5M recipients × 12 months</td>
+<td><a href="https://www.ssa.gov/oact/cola/SSI.html">SSA</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Medicare FFS claims payments</td>
+<td>~1.0B</td>
+<td>CMS processes &gt;1B FFS claims/year</td>
+<td><a href="https://www.cms.gov/files/document/cms-financial-report-fiscal-year-2024.pdf">CMS FY2024 Financial Report</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Medicaid claims payments</td>
+<td>~750M</td>
+<td>~90M enrollees, avg ~8 claims/yr</td>
+<td>CMS / KFF Medicaid enrollment data</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>SNAP (food benefits)</td>
+<td>~504M</td>
+<td>42M recipients × 12 months</td>
+<td><a href="https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap">USDA FNS</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Federal payroll</td>
+<td>~112M</td>
+<td>(2.3M civilian + ~1.3M military + ~0.6M USPS) × 26 pay periods</td>
+<td><a href="https://www.opm.gov/policy-data-oversight/data-analysis-documentation/federal-employment-reports/">OPM</a>; <a href="https://www.pewresearch.org/short-reads/2025/01/07/what-the-data-says-about-federal-workers/">Pew</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Unemployment insurance</td>
+<td>~108M</td>
+<td>~4.5M avg weekly claimants × ~24 weeks avg duration = ~18M claim-spells; paid weekly ≈ ~108M weekly payments (states manage, federal funds)</td>
+<td>DOL ETA weekly claims data</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>VA benefits (compensation + pension)</td>
+<td>~72M</td>
+<td>~6M recipients × 12 months</td>
+<td>VA Annual Benefits Report</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Other federal benefits (WIC, housing, TANF, etc.)</td>
+<td>~150M</td>
+<td>~12.5M households × 12 months aggregate</td>
+<td>Various federal programme data</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td><strong>Benefits subtotal</strong></td>
+<td><strong>~3.64B</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="state-local-government-payments">State &amp; Local Government Payments</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Type</th>
+<th>Annual Count</th>
+<th>Calculation</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>State income tax returns</td>
+<td>~130M</td>
+<td>~43 states with income tax, ~130M returns (overlap with federal filers)</td>
+<td>Federation of Tax Administrators</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>State sales tax remittances</td>
+<td>~180M</td>
+<td>~15M retail/service businesses × 12 monthly filings (45 states + DC)</td>
+<td>State revenue departments</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Property tax payments</td>
+<td>~150M</td>
+<td>~100M taxable parcels, many billed semi-annually or quarterly</td>
+<td>Census of Governments</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>State/local payroll</td>
+<td>~520M</td>
+<td>~20M state+local govt employees × 26 pay periods</td>
+<td><a href="https://fred.stlouisfed.org/series/CES9091000001">BLS CES</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>State/local benefit payments (pensions, etc.)</td>
+<td>~180M</td>
+<td>~15M state/local pension recipients × 12 months</td>
+<td>Census of Governments / NASRA</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td><strong>State/local subtotal</strong></td>
+<td><strong>~1.16B</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="us-total">US Total</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Annual Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tax payments</td>
+<td>~290M</td>
+</tr>
+<tr>
+<td>Federal benefits disbursements</td>
+<td>~3.64B</td>
+</tr>
+<tr>
+<td>State &amp; local payments</td>
+<td>~1.16B</td>
+</tr>
+<tr>
+<td><strong>US Total</strong></td>
+<td><strong>~5.09B</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-check</strong>: The US Treasury reports disbursing &gt;1.2 billion federal payments per year
+(<a href="https://fiscaldata.treasury.gov/datasets/monthly-treasury-disbursements/">Treasury Fiscal Data</a>).
+Our federal subtotal of ~3.93B includes Medicare/Medicaid claims (paid by contractors, not
+Treasury directly) and SNAP (paid by states via federal funding). Removing those (~2.25B),
+the Treasury-disbursed subset is ~1.68B — broadly consistent with the &gt;1.2B figure given
+Treasury doesn't count all agency-disbursed payments.</p>
+<hr/>
+<h2 id="india-model">India Model</h2>
+<p><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> is the world's most advanced government-payment digitalisation story thanks
+to the JAM trinity (Jan Dhan + Aadhaar + Mobile).</p>
+<h3 id="direct-benefit-transfer-dbt-the-dominant-channel">Direct Benefit Transfer (DBT) — The Dominant Channel</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Type</th>
+<th>Annual Count</th>
+<th>Calculation</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DBT total transactions</td>
+<td>~7.4B (FY2023-24)</td>
+<td>Official DBT Mission dashboard; &gt;9M/day in FY2021-22, continuing to scale</td>
+<td><a href="https://dbtbharat.gov.in/">DBT Bharat</a>; <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192">PIB</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>— of which PM-KISAN</td>
+<td>~300M</td>
+<td>~10Cr (100M) beneficiaries × 3 installments/year</td>
+<td><a href="https://pmkisan.gov.in/">PM-KISAN</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>— of which MGNREGA wages</td>
+<td>~500M est.</td>
+<td>~5Cr (50M) active workers, ~10 payments/year avg</td>
+<td><a href="https://nreganarep.nic.in/">NREGA MIS</a></td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>— of which pensions (state + central)</td>
+<td>~600M est.</td>
+<td>~5Cr pensioners × 12 months</td>
+<td>Various state pension portals</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>— of which scholarships/other</td>
+<td>~6.0B est.</td>
+<td>1,206+ schemes; remainder of 7.4B total</td>
+<td>DBT Bharat</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tax-payments-citizen-government_1">Tax Payments (Citizen → Government)</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Type</th>
+<th>Annual Count</th>
+<th>Calculation</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Income tax returns (ITR)</td>
+<td>~73M</td>
+<td>7.28Cr returns filed by 31 July 2024 (AY 2024-25)</td>
+<td><a href="https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=155163">CBDT / PIB</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Advance / self-assessment tax payments</td>
+<td>~50M est.</td>
+<td>~12.5M taxpayers × 4 quarterly installments</td>
+<td>CBDT</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>GST returns (GSTR-1 + GSTR-3B)</td>
+<td>~350M</td>
+<td>1.53Cr (15.3M) active taxpayers × ~24 returns/year (monthly filers); quarterly filers reduce this; blended ~23 returns/taxpayer</td>
+<td><a href="https://gstcouncil.gov.in/gst-system-statistics">GST Council</a></td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>TDS/TCS remittances</td>
+<td>~120M est.</td>
+<td>~10M deductors × 12 monthly deposits</td>
+<td>CBDT</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Customs duties</td>
+<td>~30M est.</td>
+<td>~2.5M import/export transactions/month</td>
+<td>CBIC / ICEGATE data</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td><strong>Tax subtotal</strong></td>
+<td><strong>~623M</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="government-payroll">Government Payroll</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Type</th>
+<th>Annual Count</th>
+<th>Calculation</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Central govt payroll</td>
+<td>~42M</td>
+<td>3.5M employees × 12 monthly pay</td>
+<td><a href="https://prsindia.org/policy/vital-stats/overview-central-government-employees">PRS India</a></td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>State govt payroll</td>
+<td>~108M est.</td>
+<td>~9M state employees × 12 months (combined civilian + police + teachers)</td>
+<td>State budget documents; CMIE</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Defence payroll</td>
+<td>~17M</td>
+<td>1.4M armed forces × 12 months</td>
+<td>MOD Annual Report</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td><strong>Payroll subtotal</strong></td>
+<td><strong>~167M</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="india-total">India Total</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Annual Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DBT benefit transactions</td>
+<td>~7.4B</td>
+</tr>
+<tr>
+<td>Tax payments</td>
+<td>~623M</td>
+</tr>
+<tr>
+<td>Government payroll</td>
+<td>~167M</td>
+</tr>
+<tr>
+<td><strong>India Total</strong></td>
+<td><strong>~8.19B</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: India's DBT figure (7.4B) is remarkably high because it encompasses 1,206+
+schemes across central and state governments, including micro-payments. A single beneficiary
+may receive 5-15 distinct DBT transactions per year across different schemes. This is
+a digitalisation multiplier effect — the same welfare outcome that in other countries
+would be 2-3 payments is fragmented across many scheme-specific transfers.</p>
+<hr/>
+<h2 id="eu-model">EU Model</h2>
+<p>The EU comprises 27 member states with diverse payment systems but common
+reporting via Eurostat. Data is patchier at the aggregate level.</p>
+<h3 id="tax-payments">Tax Payments</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Type</th>
+<th>Annual Count</th>
+<th>Calculation</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VAT returns</td>
+<td>~400M</td>
+<td>~33.5M enterprises in EU; ~25M VAT-registered (est. 75%); avg ~16 filings/yr (monthly for larger, quarterly for smaller)</td>
+<td><a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251209-2">Eurostat</a>; EC ViDA assessment</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Personal income tax</td>
+<td>~250M</td>
+<td>~200M+ tax-filing adults across 27 states; not all file (PAYE auto-assessed in many); ~250M discrete tax interactions</td>
+<td>Eurostat; national revenue agencies</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Corporate income tax</td>
+<td>~40M</td>
+<td>~25M companies × ~1.5 filings/yr avg (annual + advances)</td>
+<td>Eurostat SBS</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Social security contributions (employer + employee)</td>
+<td>~2.4B</td>
+<td>~160M employed persons; employer remits monthly for each = ~1.9B; plus ~40M self-employed × 12 = ~480M</td>
+<td><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Employment_-_annual_statistics">Eurostat employment data</a></td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Customs duties</td>
+<td>~60M est.</td>
+<td>EU is single customs territory; ~60M customs declarations/yr</td>
+<td>EU Customs statistics</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td><strong>Tax subtotal</strong></td>
+<td><strong>~3.15B</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="benefits-disbursements">Benefits Disbursements</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Type</th>
+<th>Annual Count</th>
+<th>Calculation</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pension payments (old-age + survivors + disability)</td>
+<td>~1.44B</td>
+<td>EU population ~450M; 27.2% are pension beneficiaries = ~122M recipients; × 12 monthly payments</td>
+<td><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Social_protection_statistics_-_pension_expenditure_and_pension_beneficiaries">Eurostat pension statistics</a></td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Unemployment benefits</td>
+<td>~180M est.</td>
+<td>~15M unemployed at any time × 12 months (avg ~6 months duration = ~7.5M avg recipients × 12 × 2 cohorts/yr)</td>
+<td>Eurostat LFS</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Child / family benefits</td>
+<td>~360M est.</td>
+<td>~60M families receiving benefits × ~6 payments/year avg</td>
+<td>Eurostat ESSPROS</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Housing benefits</td>
+<td>~120M est.</td>
+<td>~10M recipients × 12 months</td>
+<td>Eurostat ESSPROS</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Other social benefits</td>
+<td>~200M est.</td>
+<td>Sickness, disability allowances, social assistance</td>
+<td>Eurostat ESSPROS</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td><strong>Benefits subtotal</strong></td>
+<td><strong>~2.30B</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="government-payroll_1">Government Payroll</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Type</th>
+<th>Annual Count</th>
+<th>Calculation</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Public sector payroll</td>
+<td>~390M est.</td>
+<td>EU total employment ~200M; ~16% public sector = ~32M; × 12 monthly pay (most EU countries pay monthly, not biweekly)</td>
+<td><a href="https://ec.europa.eu/eurostat/cache/digpub/european_economy/bloc-4d.html">Eurostat</a>; OECD GOV</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td><strong>Payroll subtotal</strong></td>
+<td><strong>~390M</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="eu-total">EU Total</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Annual Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tax payments (incl. social contributions)</td>
+<td>~3.15B</td>
+</tr>
+<tr>
+<td>Benefits disbursements</td>
+<td>~2.30B</td>
+</tr>
+<tr>
+<td>Government payroll</td>
+<td>~390M</td>
+</tr>
+<tr>
+<td><strong>EU Total</strong></td>
+<td><strong>~5.84B</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: Social security contributions are the largest single line item because
+EU member states collect them per-employee per-month, creating massive transaction
+volume. The EU's ViDA (VAT in the Digital Age) initiative, once fully implemented,
+could multiply VAT-related transactions by 5-10x through per-invoice e-reporting.</p>
+<hr/>
+<h2 id="global-extrapolation">Global Extrapolation</h2>
+<h3 id="gdp-ratio-scaling">GDP-Ratio Scaling</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>GDP (2024 est.)</th>
+<th>Govt Spend % GDP</th>
+<th>Bottom-Up Txns (B)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US</td>
+<td>$28.8T</td>
+<td>~36%</td>
+<td>5.09</td>
+<td>Model above</td>
+</tr>
+<tr>
+<td>India</td>
+<td>$3.9T</td>
+<td>~28%</td>
+<td>8.19</td>
+<td>Model above</td>
+</tr>
+<tr>
+<td>EU</td>
+<td>$18.0T</td>
+<td>~48%</td>
+<td>5.84</td>
+<td>Model above</td>
+</tr>
+<tr>
+<td><strong>Subtotal</strong></td>
+<td><strong>$50.7T</strong> (~46% of world)</td>
+<td>—</td>
+<td><strong>19.1B</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>Rest of World</td>
+<td>$59.3T (~54% of world)</td>
+<td>~30% avg</td>
+<td>?</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="extrapolation-methodology">Extrapolation Methodology</h3>
+<p><strong>Approach</strong>: We cannot simply GDP-ratio the rest of world because:
+1. <strong>India distorts the scaling</strong> — India's transaction count is disproportionately high
+   relative to GDP because of the JAM-enabled DBT multiplier (1,206+ schemes creating
+   7.4B micro-transactions). Most developing countries do not have this infrastructure.
+2. <strong>Government-spend-to-GDP varies enormously</strong> — Scandinavia ~50%, Sub-Saharan <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> ~15%.
+3. <strong>Formalisation rate matters</strong> — In countries with 30-60% informal economies, formal
+   government payment transactions are a fraction of what GDP would suggest.</p>
+<p><strong>Adjusted approach</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Countries</th>
+<th>GDP</th>
+<th>Est. Govt Txns (B)</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tier 1: Modeled</td>
+<td>US + India + EU</td>
+<td>$50.7T</td>
+<td>19.1</td>
+<td>Bottom-up</td>
+</tr>
+<tr>
+<td>Tier 2: Advanced (JP, KR, AU, CA, UK, CH, etc.)</td>
+<td>~$15T</td>
+<td>~3.5</td>
+<td>US-ratio: $15T × (5.09B / $28.8T) × 1.3 adj for higher welfare</td>
+<td></td>
+</tr>
+<tr>
+<td>Tier 3: China</td>
+<td>~$18T</td>
+<td>~5.0</td>
+<td>India-like DBT ambitions + much larger formal economy; ~60% of India's per-GDP rate</td>
+<td></td>
+</tr>
+<tr>
+<td>Tier 4: Mid-income (Brazil, Mexico, Turkey, Indonesia, etc.)</td>
+<td>~$12T</td>
+<td>~2.5</td>
+<td>50% of US per-GDP rate (less formalised, fewer programmes)</td>
+<td></td>
+</tr>
+<tr>
+<td>Tier 5: Low-income / informal</td>
+<td>~$14T</td>
+<td>~1.5</td>
+<td>20% of US per-GDP rate (high informality)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Global Total</strong></td>
+<td></td>
+<td><strong>~$110T</strong></td>
+<td><strong>~31.6B</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sensitivity-analysis">Sensitivity Analysis</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>India DBT Adj.</th>
+<th>China Est.</th>
+<th>RoW Factor</th>
+<th>Global Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conservative</td>
+<td>As-is</td>
+<td>3.5B</td>
+<td>Low formalisation</td>
+<td>~27B</td>
+</tr>
+<tr>
+<td>Base case</td>
+<td>As-is</td>
+<td>5.0B</td>
+<td>Mid formalisation</td>
+<td>~31.6B</td>
+</tr>
+<tr>
+<td>Aggressive</td>
+<td>DBT grows to 10B by FY2025</td>
+<td>7.0B</td>
+<td>High digitalisation</td>
+<td>~38B</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="revised-estimate">Revised Estimate</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Original Estimate</th>
+<th>Bottom-Up Estimate</th>
+<th>Change</th>
+<th>New Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual transactions</td>
+<td>~25B</td>
+<td>~28-32B (base: ~31.6B)</td>
+<td>+26%</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Average TPS</td>
+<td>~793</td>
+<td>~890-1,010 (base: ~1,002)</td>
+<td>+26%</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~5,000-10,000</td>
+<td>~5,000-10,000 (unchanged)</td>
+<td>—</td>
+<td>:red_circle: Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-findings">Key Findings</h3>
+<ol>
+<li>
+<p><strong>The original 25B estimate was conservative.</strong> The bottom-up model yields ~31.6B,
+   primarily because the original underestimated (a) India's DBT volume, (b) EU social
+   security contribution frequency, and (c) Medicare/Medicaid claims volume in the US.</p>
+</li>
+<li>
+<p><strong>India alone accounts for ~26% of global government payment transactions</strong> despite
+   contributing only ~3.5% of global GDP. This is the JAM trinity effect — radical
+   digitalisation creating high-frequency micro-transactions. India's 7.4B DBT
+   transactions dwarf the US's ~5.1B across all categories combined.</p>
+</li>
+<li>
+<p><strong>Social security contributions are a hidden volume driver</strong> in the EU. Per-employee
+   monthly <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a> across ~160M employed people generate ~2.4B transactions — more
+   than all EU pension disbursements.</p>
+</li>
+<li>
+<p><strong>The model has a structural uncertainty of ~15-20%.</strong> The biggest unknowns are
+   <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> (no bottom-up model, estimated at ~5B) and the social-contribution counting
+   methodology (per-employee vs per-employer). The 28-32B range reflects this.</p>
+</li>
+<li>
+<p><strong>Confidence upgrade justified.</strong> Moving from :red_circle: Low to :yellow_circle: Medium
+   is warranted because three independent country models (US, India, EU) now anchor
+   the estimate, covering ~46% of global GDP and likely ~60%+ of formal government
+   payment transactions.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.irs.gov/newsroom/filing-season-statistics-by-year">IRS — Filing Season Statistics</a></li>
+<li><a href="https://www.irs.gov/pub/irs-pdf/p55b.pdf">IRS — Data Book 2024</a></li>
+<li><a href="https://www.ssa.gov/news/en/press/releases/2025-10-24.html">SSA — 2.8% COLA Announcement (71M beneficiaries)</a></li>
+<li><a href="https://www.ssa.gov/oact/cola/SSI.html">SSA — SSI Federal Payment Amounts</a></li>
+<li><a href="https://www.cms.gov/files/document/cms-financial-report-fiscal-year-2024.pdf">CMS — FY2024 Financial Report (&gt;1B Medicare claims/yr)</a></li>
+<li><a href="https://www.fns.usda.gov/pd/supplemental-nutrition-assistance-program-snap">USDA FNS — SNAP Data Tables (42M recipients)</a></li>
+<li><a href="https://www.pewresearch.org/short-reads/2025/11/14/what-the-data-says-about-food-stamps-in-the-us/">Pew Research — What the Data Says About Food Stamps</a></li>
+<li><a href="https://www.opm.gov/policy-data-oversight/data-analysis-documentation/federal-employment-reports/">OPM — Federal Civilian Employment Reports</a></li>
+<li><a href="https://www.pewresearch.org/short-reads/2025/01/07/what-the-data-says-about-federal-workers/">Pew Research — Federal Workers Data</a></li>
+<li><a href="https://fiscaldata.treasury.gov/datasets/monthly-treasury-disbursements/">US Treasury Fiscal Data — Monthly Disbursements (&gt;1.2B payments/yr)</a></li>
+<li><a href="https://dbtbharat.gov.in/">DBT Bharat — Official Portal</a></li>
+<li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192">PIB — India's DBT: Boosting Welfare Efficiency</a></li>
+<li><a href="https://pmkisan.gov.in/">PM-KISAN — Official Portal</a></li>
+<li><a href="https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=155163">CBDT / PIB — ITR Filing Statistics</a></li>
+<li><a href="https://gstcouncil.gov.in/gst-system-statistics">GST Council — System Statistics (1.53Cr+ active taxpayers)</a></li>
+<li><a href="https://prsindia.org/policy/vital-stats/overview-of-central-government-employees">PRS India — Central Government Employees Overview</a></li>
+<li><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Social_protection_statistics_-_pension_expenditure_and_pension_beneficiaries">Eurostat — Pension Expenditure and Beneficiaries (27.2% of population)</a></li>
+<li><a href="https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251209-2">Eurostat — EU Enterprise Statistics (33.5M enterprises)</a></li>
+<li><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Employment_-_annual_statistics">Eurostat — Employment Annual Statistics (~200M employed)</a></li>
+<li><a href="https://ec.europa.eu/eurostat/cache/digpub/european_economy/bloc-4d.html">Eurostat — Government Employment Share</a></li>
+<li><a href="https://www.oecd.org/en/publications/2025/06/government-at-a-glance-2025_70e14c6c/full-report/employment-in-general-government_dafcfac5.html">OECD — Government at a Glance 2025</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/government/government-payments/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/government/government-payments/workings/bottom-up-model.md">analysis/government/government-payments/workings/bottom-up-model.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

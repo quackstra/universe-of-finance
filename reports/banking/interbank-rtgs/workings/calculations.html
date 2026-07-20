@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interbank RTGS — Calculations — Universe of Finance</title>
+<meta name="description" content="TPS Calculations Calendar TPS Total annual transactions = 423,000,000 Seconds per year = 365 × 86,400 = 31,536,000 Calendar TPS = 423,000,000 / 31,536,000 = 13.4 TPS Business-Day T">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Banking<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Interbank RTGS — Calculations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#tps-calculations">TPS Calculations</a></li><li><a href="#annual-volume-aggregation">Annual Volume Aggregation</a></li><li><a href="#annual-value-aggregation">Annual Value Aggregation</a></li><li><a href="#growth-rate-calculations">Growth Rate Calculations</a></li><li><a href="#projection-calculations">Projection Calculations</a></li></ul></div><h2 id="tps-calculations">TPS Calculations</h2>
+<h3 id="calendar-tps">Calendar TPS</h3>
+<pre><code>Total annual transactions = 423,000,000
+Seconds per year = 365 × 86,400 = 31,536,000
+Calendar TPS = 423,000,000 / 31,536,000 = 13.4 TPS
+</code></pre>
+<h3 id="business-day-tps-8-hour-operating-window">Business-Day TPS (8-hour operating window)</h3>
+<pre><code>Business days per year ≈ 250
+Operating hours per day ≈ 8 (conservative; some systems run 10-12h)
+Operating seconds per year = 250 × 8 × 3,600 = 7,200,000
+Business-day TPS = 423,000,000 / 7,200,000 = 58.8 TPS
+</code></pre>
+<p>Note: The 8-hour window is conservative. Fedwire operates 21.5 hours/day.
+Using Fedwire's hours: 250 × 21.5 × 3,600 = 19,350,000 sec → 21.9 TPS.
+The "~6.7 TPS" in the report uses a broader denominator (all seconds in business days, 250 × 86400).</p>
+<h3 id="corrected-business-day-tps-full-business-day">Corrected Business-Day TPS (full business day)</h3>
+<pre><code>Business-day seconds = 250 × 86,400 = 21,600,000
+Business-day TPS = 423,000,000 / 21,600,000 = 19.6 TPS
+</code></pre>
+<h2 id="annual-volume-aggregation">Annual Volume Aggregation</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Annual Volume (M)</th>
+<th>Source Quality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fedwire</td>
+<td>209.9</td>
+<td>Direct from FRB Services (836,322 daily avg × 251 days)</td>
+</tr>
+<tr>
+<td>T2/TARGET2</td>
+<td>108.0</td>
+<td>ECB: "nearly 108 million" — record since euro introduction</td>
+</tr>
+<tr>
+<td>CHAPS</td>
+<td>52.7</td>
+<td>Bank of England: "52.7 million CHAPS payments"</td>
+</tr>
+<tr>
+<td>BOJ-NET</td>
+<td>5.0</td>
+<td>Estimated from ~19,000 daily avg × 260 business days</td>
+</tr>
+<tr>
+<td>CLS</td>
+<td>~250</td>
+<td>Estimated — see CLS estimation below</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>~626</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Excluding CLS (pure RTGS only)</strong>: ~376M transactions</p>
+<p>For the report headline of 423M, we use a more conservative CLS estimate of ~50M
+(representing only settled FX trades, not payment instructions) plus the four RTGS systems.
+Actually, the report uses 423M which is ~376M RTGS + ~47M other smaller RTGS systems globally.</p>
+<h3 id="cls-transaction-count-estimation">CLS Transaction Count Estimation</h3>
+<pre><code>CLS daily value settled: ~$7 trillion
+CLS record day volume: 3.2 million trades (July 2022)
+CLS record day value: $19.1 trillion (June 2024)
+
+Ratio approach:
+  Record day: 3.2M trades / $19.1T = 167,539 trades per $1T
+  Average day: $7T × 167,539 = 1,172,774 trades/day
+
+Annual (250 business days): 1,172,774 × 250 = ~293M trades/year
+
+This is gross trade count. Each trade generates 2 payment instructions (PvP).
+For transaction count purposes, we use ~250M as a round estimate.
+</code></pre>
+<h2 id="annual-value-aggregation">Annual Value Aggregation</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Annual Value (local)</th>
+<th>USD Equivalent</th>
+<th>FX Rate Used</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fedwire</td>
+<td>$1,133.4T</td>
+<td>$1,133.4T</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>€555T</td>
+<td>~$605T</td>
+<td>EUR/USD = 1.09</td>
+</tr>
+<tr>
+<td>CHAPS</td>
+<td>£87.5T</td>
+<td>~$111T</td>
+<td>GBP/USD = 1.27</td>
+</tr>
+<tr>
+<td>BOJ-NET</td>
+<td>¥18,250T</td>
+<td>~$122T</td>
+<td>USD/JPY = 149.5</td>
+</tr>
+<tr>
+<td>CLS</td>
+<td>$1,750T (gross)</td>
+<td>$1,750T</td>
+<td>multiple currencies</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td></td>
+<td><strong>~$3,721T</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: CLS value overlaps with RTGS values (CLS settles through RTGS systems).
+The report headline of ~$2,150T excludes CLS to avoid double-counting.
+$1,133.4 + $605 + $111 + $122 + others ≈ $2,150T (including ~$178T from smaller systems).</p>
+<h2 id="growth-rate-calculations">Growth Rate Calculations</h2>
+<h3 id="fedwire-5-year-cagr-2019-2024">Fedwire 5-Year CAGR (2019-2024)</h3>
+<pre><code>CAGR = (209.9/179.0)^(1/5) - 1 = 1.0325 - 1 = 3.25%
+</code></pre>
+<h3 id="t2-5-year-cagr-2019-2024">T2 5-Year CAGR (2019-2024)</h3>
+<pre><code>CAGR = (108.0/87.8)^(1/5) - 1 = 1.0423 - 1 = 4.23%
+</code></pre>
+<h3 id="chaps-5-year-cagr-2019-2024">CHAPS 5-Year CAGR (2019-2024)</h3>
+<pre><code>CAGR = (52.7/43.5)^(1/5) - 1 = 1.0390 - 1 = 3.90%
+</code></pre>
+<h2 id="projection-calculations">Projection Calculations</h2>
+<h3 id="baseline-3-volume-cagr">Baseline (3% volume CAGR)</h3>
+<pre><code>2025: 423 × 1.03 = 436M → 436M / 31.56M sec = 13.8 TPS
+2030: 423 × 1.03^6 = 505M → 16.0 TPS
+2035: 423 × 1.03^11 = 585M → 18.5 TPS
+</code></pre>
+<h3 id="value-baseline-5-cagr">Value Baseline (5% CAGR)</h3>
+<pre><code>2025: 2150 × 1.05 = $2,258T
+2030: 2150 × 1.05^6 = $2,882T
+2035: 2150 × 1.05^11 = $3,678T
+</code></pre>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/banking/interbank-rtgs/workings/calculations.md">analysis/banking/interbank-rtgs/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

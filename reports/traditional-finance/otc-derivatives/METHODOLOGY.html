@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTC Derivatives — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition What counts: One bilateral OTC derivative contract execution — the moment two counterparties agree on terms for an interest rate swap, CDS, equity swap, or c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Otc Derivatives</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>OTC Derivatives — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-adjustments">Key Adjustments</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li><strong>What counts</strong>: One bilateral OTC derivative contract execution — the moment two counterparties agree on terms for an interest rate swap, CDS, equity swap, or commodity swap</li>
+<li><strong>Counting point</strong>: Trade execution (confirmation). NOT clearing, NOT novation, NOT compression termination. Each unique economic agreement = 1 trade, regardless of whether it is subsequently cleared by a CCP</li>
+<li><strong>Why this point</strong>: ISDA SwapsInfo reports at the execution level. BIS reports notional outstanding (stock), not trades (flow). Execution is the only consistently available count point</li>
+<li><strong>Key ambiguities</strong>:</li>
+<li><strong>Compression trades</strong>: TriOptima/OSTTRA compression cycles ELIMINATE trades (79% of eligible trades in a single commodity cycle). Compressed trades reduce outstanding but are themselves operational transactions. We count the NET trades remaining after compression, not the compression events</li>
+<li><strong>What lifecycle events count</strong>: New trades count. Amendments, partial terminations, novations, and compressions are lifecycle events that do NOT count as new trades in our methodology. If we counted all lifecycle events, the total would be 2-5x higher</li>
+<li><strong>FX derivatives excluded</strong>: FX forwards, swaps, and options are <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> but are counted in the FX category. Our OTC derivatives figure EXCLUDES FX to avoid double-counting (~5M FX derivative trades/year excluded)</li>
+<li><strong>SEF vs. bilateral</strong>: SEF-traded IRD (77.3% of count in 2025) and bilaterally negotiated trades both count. The venue does not affect whether something is an OTC derivative</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-isda-swapsinfo-ird-cds">Method A: ISDA SwapsInfo (IRD + CDS)</h3>
+<ul>
+<li><strong>Source</strong>: ISDA SwapsInfo full-year 2024 — aggregates DTCC SDR data for US/EU/UK</li>
+<li><strong>Value</strong>: IRD 2.7M + CDS 525K (index 316.8K + single-name 208.2K) = 3.225M trades in US/EU/UK</li>
+<li><strong>Strengths</strong>: Highest-confidence data source for OTC derivative trade counts. Based on mandatory trade reporting to swap data repositories. Quarterly cadence</li>
+<li><strong>Weaknesses</strong>: Covers US/EU/UK only (~85-90% of global IRD/CDS). Does not cover equity or commodity OTC derivatives. Does not cover APAC fully (<a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a> JSCC is separate)</li>
+</ul>
+<h3 id="method-b-global-extrapolation-with-apac-anchors">Method B: Global Extrapolation with APAC Anchors</h3>
+<ul>
+<li><strong>Source</strong>: ISDA US/EU/UK 3.225M + Japan JSCC (~200K) + other APAC (~120K) + EM (~80K) = ~3.7M for IRD+CDS globally. Add equity OTC (1.2M) + commodity OTC (0.4M)</li>
+<li><strong>Value</strong>: ~5.3M trades/year (excl. FX)</li>
+<li><strong>Strengths</strong>: Uses bottom-up segment estimates with identified anchors for each component</li>
+<li><strong>Weaknesses</strong>: Equity OTC (1.2M) and commodity OTC (0.4M) are low-confidence estimates</li>
+</ul>
+<h3 id="method-c-bis-notional-cross-check">Method C: BIS Notional Cross-Check</h3>
+<ul>
+<li><strong>Source</strong>: BIS Dec 2024 — $732T notional outstanding. Average notional per new IRD trade: ~$118M (derived from ISDA volume/count). Implied annual new trade volume: ~$600T new notional / $118M per trade ≈ 5.1M trades</li>
+<li><strong>Value</strong>: ~5.1M (order-of-magnitude cross-check)</li>
+<li><strong>Strengths</strong>: Independent validation using BIS stock data and turnover velocity</li>
+<li><strong>Weaknesses</strong>: Very rough — assumes constant average trade size and uniform turnover velocity</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────┐
+│                 RAW ESTIMATES                         │
+│                                                       │
+│  ISDA SwapsInfo    Global Extrap.   BIS Cross-Check   │
+│  [US/EU/UK only]   [segmented]      [stock-to-flow]   │
+│  ┌──────────┐     ┌──────────┐     ┌──────────┐      │
+│  │ 3.225M   │     │ 5.3M     │     │ ~5.1M    │      │
+│  │ IRD+CDS  │     │ all OTC  │     │ order-of-│      │
+│  │ reported │     │ excl. FX │     │ magnitude│      │
+│  └────┬─────┘     └────┬─────┘     └────┬─────┘      │
+│       │                │                │             │
+│       └────────────────┼────────────────┘             │
+│                        ▼                              │
+│              ┌──────────────────┐                     │
+│              │  RECONCILIATION  │                     │
+│              │  ISDA provides   │                     │
+│              │  high-confidence │                     │
+│              │  IRD+CDS anchor; │                     │
+│              │  equity+commodity│                     │
+│              │  are estimated   │                     │
+│              │  overlays        │                     │
+│              └────────┬─────────┘                     │
+│                       ▼                               │
+│              ┌──────────────────┐                     │
+│              │ FINAL ESTIMATE   │                     │
+│              │ 5.3M trades/yr   │                     │
+│              │ excl. FX deriv.  │                     │
+│              │ ~0.17 TPS        │                     │
+│              │ Confidence: 68   │                     │
+│              └──────────────────┘                     │
+└─────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>ISDA SwapsInfo provides a hard anchor for IRD and CDS in US/EU/UK markets (~3.225M). Adding APAC (JSCC + estimates) gives ~3.7M for IRD+CDS globally. The equity OTC component (1.2M) was revised upward from 0.6M in Run 5 using a structural model decomposing institutional TRS/exotics (250K), institutional CFDs (500K), and structured product hedging (400K). Commodity OTC (0.4M) remains the weakest component. The BIS cross-check at ~5.1M validates the segmented total.</p>
+<h2 id="key-adjustments">Key Adjustments</h2>
+<h3 id="lifecycle-event-filtering">Lifecycle Event Filtering</h3>
+<pre><code>OTC Derivative Lifecycle — What We Count
+═══════════════════════════════════════════════════
+
+New trade execution          ◄── COUNTED (5.3M/year)
+       │
+       ▼
+Trade reporting to SDR       ◄── reporting event, NOT counted
+       │
+       ▼
+Central clearing (CCP)       ◄── novation to CCP, NOT counted
+       │                         (76.9% of IRD cleared)
+       ▼
+Ongoing lifecycle:
+  - Rate resets              ◄── NOT counted
+  - Margin calls             ◄── NOT counted
+  - Partial terminations     ◄── NOT counted
+  - Amendments               ◄── NOT counted
+       │
+       ▼
+Compression (OSTTRA)         ◄── ELIMINATES trades from count
+  79% of eligible trades          but compression events
+  terminated per cycle            themselves NOT counted
+       │
+       ▼
+Maturity / termination       ◄── NOT counted (end of life)
+</code></pre>
+<p>If all lifecycle events were counted, the total would be 10-25M+ events/year for IRD alone. Our methodology counts only new executions.</p>
+<h3 id="equity-otc-structural-model-run-5">Equity OTC Structural Model (Run 5)</h3>
+<p>The equity OTC segment (1.2M) was built bottom-up:</p>
+<pre><code>Equity OTC Derivatives: 1.2M trades/year
+═══════════════════════════════════════════════════
+
+Institutional TRS/exotics    ██████             250K
+  Total return swaps, variance
+  swaps, exotic options
+
+Institutional CFDs           ████████████       500K
+  European market (no US CFDs),
+  prime broker-intermediated
+
+Structured product hedging   ██████████         400K
+  Bank hedging desk activity
+  for retail structured notes
+
+Misc (dividend, correlation) █                  50K
+  Dividend swaps, correlation
+  trades, basket options
+</code></pre>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>OTC Derivatives Overlap Map
+═══════════════════════════════════════════════════
+
+OTC Derivatives (this category)    ██████████████  5.3M/year
+  │                                               (excl. FX)
+  │
+  ├── IRD: NOT in Fixed Income     Clean boundary — IRD are
+  │   (FI = cash bonds + repo)     derivatives, not cash instruments
+  │
+  ├── CDS: NOT in Equity Markets   Clean boundary — CDS are
+  │   or Fixed Income               derivative credit protection
+  │
+  ├── Equity OTC: NOT in Equity    Clean boundary — equity
+  │   Markets (EM = cash equities)  derivatives vs cash equities
+  │
+  └── FX derivatives: EXCLUDED     ████████████████  +5.0M
+      (counted in FX category)     FX forwards, swaps,
+                                   options counted as FX
+
+Grand total if including FX:       ██████████████████  10.3M/year
+Primary figure (excl. FX):         ██████████████      5.3M/year
+</code></pre>
+<ul>
+<li><strong>FX derivatives excluded</strong>: The ~5M FX derivative trades/year are counted in the FX category to avoid double-counting. OTC Derivatives reports 5.3M excluding FX</li>
+<li><strong>Clean boundaries with ETD</strong>: OTC derivatives are bilateral; ETD are exchange-traded. Interest rate futures (ETD) and interest rate swaps (OTC) are different categories despite covering the same risk</li>
+<li><strong>No overlap with <a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">Fixed Income</a></strong>: IRS, CDS, and equity swaps are derivatives. Cash bonds and repo are the fixed income instruments</li>
+</ul>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Segment             Coverage   Source            Notes
+─────────────────── ────────── ──────────────── ──────────────────
+IRD (US/EU/UK)      █████████  ISDA SwapsInfo    2.7M direct count
+CDS (US/EU/UK)      █████████  ISDA SwapsInfo    525K direct count
+IRD (Japan)         ███████░░  JSCC clearing     ~200K estimated
+IRD (other APAC)    ███░░░░░░  Estimated          Limited data
+Equity OTC          ████░░░░░  Structural model   Run 5 revision
+Commodity OTC       ██░░░░░░░  BIS proportional   Very rough
+FX derivatives      ███████░░  Excluded           See FX category
+─────────────────── ────────── ──────────────── ──────────────────
+IRD+CDS coverage: ~90% directly observed (US/EU/UK/Japan)
+Equity+Commodity:  ~15% observed, ~85% estimated
+Overall:           ~65% directly observed
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+ISDA SwapsInfo      ██████░░░  █████████ ██████████  ████████░░
+BIS OTC Statistics  ██████████ ████████░ ██████████  ████░░░░░░
+BIS Triennial       ██████████ ████████░ ██████████  ██████░░░░
+JSCC Data           ██░░░░░░░  ████████░ █████████░  ████████░░
+Equity OTC model    ██░░░░░░░  ████████░ ████░░░░░░  ██████░░░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    62/100     86/100    90/100      66/100
+</code></pre>
+<ul>
+<li><strong>Score</strong>: 68/100</li>
+<li><strong>Key drivers of uncertainty</strong>:</li>
+<li>Equity OTC (1.2M) and commodity OTC (0.4M) are the weakest segments — no public aggregate trade count data exists for these</li>
+<li>Compression effects: if we counted pre-compression gross trades, the total could be 2-5x higher. Our NET count is a choice, not an observation</li>
+<li>APAC coverage is thin outside Japan — <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>, Korea OTC derivative markets lack accessible English-language trade count reporting</li>
+<li>The BIS reports notional outstanding (stock), not trades (flow) — flow is always derived</li>
+<li><strong>High-confidence elements</strong>: ISDA SwapsInfo for IRD and CDS (quarterly, mandatory reporting); BIS notional outstanding ($732T); central clearing rates (76.9% IRD, 67.9% CDS)</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial report</td>
+<td>Run 2: OTC derivatives category created</td>
+</tr>
+<tr>
+<td>2026-03-27</td>
+<td>Count triangulation</td>
+<td>Run 4: Segmented model reduced total from 7.3M to 4.7M</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Equity OTC model</td>
+<td>Run 5: Structural decomposition revised equity from 0.6M to 1.2M; total to 5.3M</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Methodology doc created</td>
+<td>Run 6: Formal methodology documentation</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/otc-derivatives/METHODOLOGY.md">analysis/traditional-finance/otc-derivatives/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

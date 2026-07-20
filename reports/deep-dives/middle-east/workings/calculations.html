@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Middle East Deep Dive — Calculations & Derivations — Universe of Finance</title>
+<meta name="description" content="Run 13 (2026-07-19). Full audit trail for every number in REPORT.md and data.json. Constant used: SECONDS_PER_YEAR = 31,536,000. Saudi Arabia mada card TPS 2024 volume: 8.9B trans">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Deep Dives<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Middle East Deep Dive — Calculations & Derivations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#saudi-arabia">Saudi Arabia</a></li><li><a href="#uae">UAE</a></li><li><a href="#qatar">Qatar</a></li><li><a href="#kuwait">Kuwait</a></li><li><a href="#bahrain">Bahrain</a></li><li><a href="#oman">Oman</a></li><li><a href="#israel">Israel</a></li><li><a href="#levant-jordan-lebanon-iraq">Levant (Jordan, Lebanon, Iraq)</a></li><li><a href="#regional-capital-markets">Regional Capital Markets</a></li><li><a href="#interbank-rtgs">Interbank RTGS</a></li><li><a href="#regional-total">Regional Total</a></li><li><a href="#sovereign-wealth-value-not-count">Sovereign Wealth (value, not count)</a></li></ul></div><blockquote>
+<p>Run 13 (2026-07-19). Full audit trail for every number in REPORT.md and data.json.
+Constant used: SECONDS_PER_YEAR = 31,536,000.</p>
+</blockquote>
+<h2 id="saudi-arabia">Saudi Arabia</h2>
+<h3 id="mada-card-tps">mada card TPS</h3>
+<ul>
+<li>2024 volume: <strong>8.9B transactions</strong> (<a href="https://whitesight.net/how-saudi-arabia-engineered-a-digital-payments-boom/">WhiteSight</a>)</li>
+<li>TPS = 8,900,000,000 / 31,536,000 = <strong>282.2 TPS</strong></li>
+</ul>
+<h3 id="sarie-instant-tps">sarie instant TPS</h3>
+<ul>
+<li>2024 volume: <strong>593M transactions</strong>, 50% CAGR since 2021 launch (<a href="https://clearingpost.com/insights/saudi-arabia-payment-infrastructure-guide-sarie-mada-sadad/">ClearingPost</a>)</li>
+<li>TPS = 593,000,000 / 31,536,000 = <strong>18.8 TPS</strong></li>
+<li>Cross-check: &gt;100M/month by 2025 → 1.2B/yr run-rate → ~38 TPS (2025 trajectory, not 2024 figure)</li>
+</ul>
+<h3 id="sadad-bill-payments-tps">SADAD bill payments TPS</h3>
+<ul>
+<li>2024 volume: ~364M (conservative) to ~500M+ (broad) (<a href="https://paymentbrief.com/articles/saudi-arabia-mada-sarie-payment-stack/">PaymentBrief</a>)</li>
+<li>Using ~500M: TPS = 500,000,000 / 31,536,000 = <strong>15.9 TPS</strong></li>
+</ul>
+<h3 id="blended-non-cash-retail-headline-figure-used">Blended non-cash retail (headline figure used)</h3>
+<ul>
+<li>2024: <strong>12.6B non-cash retail transactions</strong>, 79% of all retail (<a href="https://www.mada.com.sa/en">mada</a>)</li>
+<li>TPS = 12,600,000,000 / 31,536,000 = <strong>399.5 TPS</strong></li>
+<li>This is the headline Saudi figure (includes mada + Visa/MC credit + wallets + instant).
+  The individual rails above are components; we do NOT sum them on top of 12.6B (would
+  double-count).</li>
+</ul>
+<h2 id="uae">UAE</h2>
+<h3 id="card-tps-estimated-from-value">Card TPS (estimated from value)</h3>
+<ul>
+<li>2024 card value: <strong>Dh511.4B</strong> (+13.3% YoY) (<a href="https://www.khaleejtimes.com/business/uae-card-transactions-set-to-surge-to-dh5655-billion">Khaleej Times</a>)</li>
+<li>Dh511.4B ≈ $139.2B (at Dh3.6725/$)</li>
+<li>Assume avg ticket ~$27 (UAE skews high vs global ~$22): $139.2B / $27 ≈ <strong>5.15B txns</strong></li>
+<li>TPS = 5,150,000,000 / 31,536,000 = <strong>163 TPS</strong> → rounded to ~150 TPS (conservative, avg
+  ticket may be higher → fewer txns). Confidence 🟡.</li>
+</ul>
+<h3 id="aani-instant-tps">Aani instant TPS</h3>
+<ul>
+<li>~25,000 <a class="xref" href="/universe-of-finance/reports/payments/p2p-transfers/REPORT.html">P2P transfers</a>/day (<a href="https://www.centralbank.ae/en/news-and-publications/news-and-insights/press-release/aani-delivers-a-transformational-leap-in-the-uae-s-digital-payments-landscape-12-5-million-users-and-instant-transfers-in-3-seconds/">CBUAE</a>)</li>
+<li>25,000/day / 86,400 s = <strong>0.29 TPS</strong>. Nascent but 6x YoY growth.</li>
+</ul>
+<h3 id="outward-remittance-tps">Outward remittance TPS</h3>
+<ul>
+<li>2024 outflow: <strong>AED 183B (~$50B)</strong> (<a href="https://www.khaleejtimes.com/business/remittance-boom-uae-leads-gcc-as-india-hits-record-1294b-in-2024">Khaleej Times</a>)</li>
+<li>Assume avg remittance ~$415 (typical <a class="xref" href="/universe-of-finance/reports/deep-dives/middle-east/REPORT.html">Gulf</a>→South Asia corridor): $50B / $415 ≈ 120M txns</li>
+<li>TPS = 120,000,000 / 31,536,000 = <strong>3.8 TPS</strong></li>
+<li><strong>Note the value density</strong>: 3.8 TPS carrying $50B/yr = ~$415/txn, but the <em>aggregate</em>
+  makes UAE the #2-3 global remittance origin. This is the value-not-count signature.</li>
+</ul>
+<h3 id="uae-total-150-03-38-155-tps">UAE total ≈ 150 + 0.3 + 3.8 ≈ <strong>~155 TPS</strong></h3>
+<h2 id="qatar">Qatar</h2>
+<ul>
+<li>Fawran: 5.5M txns in 14 months (from Mar 2024) → ~4.7M/yr → 0.15 TPS (<a href="https://www.lightspark.com/knowledge/instant-payments-qatar">Lightspark</a>)</li>
+<li>Cards: GDP ~$220B, ~3M pop, affluent. Estimate ~1B card txns/yr → ~32 TPS</li>
+<li><strong>Qatar ≈ ~35 TPS</strong> (🔴, card count estimated)</li>
+</ul>
+<h2 id="kuwait">Kuwait</h2>
+<ul>
+<li>KNET dominant: ~80% of online, ~5M cards, ~80% debit (<a href="https://blog.tap.company/local-payment-methods-middle-east/">Tap</a>)</li>
+<li>Estimate ~1.4B txns/yr (GDP $160B, high card penetration): → ~45 TPS</li>
+<li><strong>Kuwait ≈ ~45 TPS</strong> (🔴, KNET does not publish counts)</li>
+</ul>
+<h2 id="bahrain">Bahrain</h2>
+<ul>
+<li>BenefitPay: <strong>421M txns 2024</strong> (+22%), Fawri+ ~410M (<a href="https://www.fccib.net/news/n/news/benefitpay-transactions-surge-by-22pc-in-2024.html">FCCIB</a>)</li>
+<li>421M / 31,536,000 = <strong>13.4 TPS</strong> from BenefitPay alone</li>
+<li>Plus other card/RTGS ~7 TPS → <strong>Bahrain ≈ ~20 TPS</strong> (🟡)</li>
+<li>Per-capita intensity: 421M / 1.5M pop = 281 instant txns per person/yr — among world's highest</li>
+</ul>
+<h2 id="oman">Oman</h2>
+<ul>
+<li>~5M pop, OmanNet. Estimate ~470M txns/yr → <strong>~15 TPS</strong> (🔴)</li>
+</ul>
+<h2 id="israel">Israel</h2>
+<ul>
+<li>~9.8M pop, developed. High card usage (~3.5B card txns/yr est) + TASE</li>
+<li>Estimate <strong>~100 TPS</strong> (🟡). Often analyzed separately from Gulf.</li>
+</ul>
+<h2 id="levant-jordan-lebanon-iraq">Levant (Jordan, Lebanon, Iraq)</h2>
+<ul>
+<li>Largely cash. Jordan JoMoPay growing; Lebanon dollarized crisis; Iraq Qi Card gov rails</li>
+<li>Combined estimate <strong>~30 TPS</strong> (🔴)</li>
+</ul>
+<h2 id="regional-capital-markets">Regional Capital Markets</h2>
+<ul>
+<li>Tadawul ADV ~$1.5B, ~$3T cap, 239 listings (<a href="https://www.saudiexchange.sa/wps/portal/tadawul/home/">Saudi Exchange</a>)</li>
+<li>Combined regional exchanges (Tadawul/ADX/DFM/QSE/Boursa Kuwait/TASE): est. 500-800k trades/day</li>
+<li>650,000/day / 86,400 = <strong>~7.5 TPS → ~8 TPS</strong> (🟡)</li>
+</ul>
+<h2 id="interbank-rtgs">Interbank RTGS</h2>
+<ul>
+<li>High value, low count. Oil settlement + wholesale. Est. <strong>~3 TPS</strong> but ~6% of global RTGS
+  count share and higher value share (~5x count share).</li>
+</ul>
+<h2 id="regional-total">Regional Total</h2>
+<pre><code>Saudi Arabia           399.5
+UAE                    155.0
+Kuwait                  45.0
+Qatar                   35.0
+Bahrain                 20.0
+Oman                    15.0
+Israel                 100.0
+Levant                  30.0
+Capital markets          8.0
+Interbank RTGS           3.0
+--------------------------------
+GROSS                  810.5
+De-dup (instant/remittance overlaps netted, ~10 TPS): ~800 TPS
+</code></pre>
+<ul>
+<li><strong>~800 TPS / 73,720 global = 1.085% ≈ 1.1%</strong></li>
+<li>Per-capita: 800 / 260M = 3.08 TPS per million people (vs <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> 2.0/million — GCC more
+  digitized per person, but far fewer people)</li>
+</ul>
+<h2 id="sovereign-wealth-value-not-count">Sovereign Wealth (value, not count)</h2>
+<ul>
+<li>ADIA ~$1.1T + PIF ~$925B + KIA ~$800B + QIA ~$530B + Mubadala ~$330B + ADQ ~$250B
+  = <strong>~$3.94T</strong> (call it ~$4-5T with smaller funds) (<a href="https://www.swfinstitute.org/">SWF Institute</a>)</li>
+<li>Transaction count: negligible (perhaps single-digit large transactions per day per fund)</li>
+<li>Illustrative: if the 6 funds collectively execute ~50 large transactions/day →
+  50/86,400 = 0.0006 TPS, moving ~$4-5T in AUM. <strong>Value-per-transaction in the billions.</strong></li>
+<li>Contrast: African mobile money = 43.5B txns/yr moving $832B → ~$19/txn.
+  The two regions differ in value-per-transaction by a factor of <strong>~100 million×</strong>.</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/deep-dives/middle-east/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/deep-dives/middle-east/workings/calculations.md">analysis/deep-dives/middle-east/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equity Markets — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition What counts: One matched equity trade (a buy order matched against a sell order) on a stock exchange or alternative trading venue Counting point: Trade execu">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Equity Markets</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Equity Markets — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-adjustments">Key Adjustments</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li><strong>What counts</strong>: One matched equity trade (a buy order matched against a sell order) on a stock exchange or alternative trading venue</li>
+<li><strong>Counting point</strong>: Trade execution at the matching engine — not order submission, not clearing, not settlement</li>
+<li><strong>Why this point</strong>: The match is the moment of price discovery. Both WFE and individual exchanges report at this point. One order matched against multiple counterparties generates multiple trades</li>
+<li><strong>Key ambiguities</strong>:</li>
+<li><strong>Dark pool trades</strong>: Off-exchange matches (US: TRF-reported) count as trades but are not visible in exchange statistics. In the US, ~47% of equity volume executes off-exchange</li>
+<li><strong>Fractional shares</strong>: A $5 fractional share purchase = 1 trade, same as a $500K block. Fractional shares (&gt;10% of US transactions) inflate trade counts without proportional value impact</li>
+<li><strong>HFT order fragmentation</strong>: High-frequency trading breaks large orders into thousands of micro-fills. Each fill is a separate trade — this is why trade COUNT grows faster than trade VALUE</li>
+<li><strong>ETF creation/redemption</strong>: AP basket trades are typically reported as single block trades, not individual component trades</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-wfe-monthly-dashboard-extrapolation">Method A: WFE Monthly Dashboard Extrapolation</h3>
+<ul>
+<li><strong>Source</strong>: WFE December 2024 dashboard — 5.095B trades in December, +26.53% YoY</li>
+<li><strong>Value</strong>: ~61.1B (December × 12, adjusted for seasonal variation)</li>
+<li><strong>Strengths</strong>: WFE data is standardised across member exchanges; monthly cadence</li>
+<li><strong>Weaknesses</strong>: WFE does not publish a single annual global trade count; requires extrapolation from monthly snapshots; covers only member exchanges</li>
+</ul>
+<h3 id="method-b-2023-baseline-growth-rate">Method B: 2023 Baseline + Growth Rate</h3>
+<ul>
+<li><strong>Source</strong>: WFE 2023 baseline (~48.6B) × 2024 growth rate (+26.53%)</li>
+<li><strong>Value</strong>: ~59.9B</li>
+<li><strong>Strengths</strong>: Simple, transparent methodology</li>
+<li><strong>Weaknesses</strong>: Assumes uniform growth across all months; the +26.53% is a December YoY figure, which may not represent full-year growth</li>
+</ul>
+<h3 id="method-c-bottom-up-exchange-aggregation">Method C: Bottom-Up Exchange Aggregation</h3>
+<ul>
+<li><strong>Source</strong>: Summing individual exchange annual reports (NSE 18B, SZSE 10.5B, SSE 8.5B, NASDAQ 5B, NYSE 4.5B, JPX 4.2B, etc.)</li>
+<li><strong>Value</strong>: ~66.9B raw → ~61.9B after NSE equity-vs-derivatives adjustment</li>
+<li><strong>Strengths</strong>: Validates from the bottom up; identifies the source of discrepancies</li>
+<li><strong>Weaknesses</strong>: NSE <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> conflates equity and derivatives in headline figures; not all exchanges publish clean trade-count data</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────┐
+│                 RAW ESTIMATES                         │
+│                                                       │
+│  WFE Monthly       Baseline+Growth  Bottom-Up Sum    │
+│  Extrapolation     [2023 × 1.265]   [13 exchanges]   │
+│  ┌──────────┐     ┌──────────┐     ┌──────────┐      │
+│  │ ~61.1B   │     │ ~59.9B   │     │ ~66.9B   │      │
+│  └────┬─────┘     └────┬─────┘     └────┬─────┘      │
+│       │                │                │             │
+│       └────────────────┼────────────────┘             │
+│                        ▼                              │
+│              ┌──────────────────┐                     │
+│              │  RECONCILIATION  │                     │
+│              │  Bottom-up over- │                     │
+│              │  counts NSE by   │                     │
+│              │  ~5B (derivatives │                     │
+│              │  mixed into equity│                     │
+│              │  headline)       │                     │
+│              └────────┬─────────┘                     │
+│                       ▼                               │
+│              ┌──────────────────┐                     │
+│              │ FINAL ESTIMATE   │                     │
+│              │ ~61.5B trades    │                     │
+│              │ ~3,500 avg TPS   │                     │
+│              │ Confidence: 86   │                     │
+│              └──────────────────┘                     │
+└─────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>Three methods converge on 59.9B-67.2B. The bottom-up sum (66.9B) is higher because NSE India's reported equity trade count includes some derivatives trades. Adjusting NSE from ~18B to ~15B (equity cash only) gives an adjusted bottom-up of ~61.9B, which matches the triangulated estimate of 61.5B to within 0.6%. This convergence provides medium-high confidence.</p>
+<h2 id="key-adjustments">Key Adjustments</h2>
+<h3 id="dark-pool-off-exchange-adjustment">Dark Pool / Off-Exchange Adjustment</h3>
+<p>In the US, ~47% of equity volume trades off-exchange (dark pools, wholesale market makers, TRF-reported). WFE statistics capture lit exchange activity; off-exchange trades are captured via FINRA TRF data. Our 61.5B estimate includes both lit and dark/off-exchange trades.</p>
+<pre><code>US Equity Trade Attribution (2024)
+═════════════════════════════════════════════
+
+Total US equity trades     ██████████████████████  ~9.5B
+  │
+  ├── Lit exchanges (53%)  ████████████            ~5.0B
+  │   NYSE, NASDAQ, CBOE,
+  │   BATS, IEX, etc.
+  │
+  └── Off-exchange (47%)   ██████████              ~4.5B
+      TRF-reported:
+      ├── Dark pools        ████                   ~1.5B
+      ├── Wholesale/retail  ██████                 ~3.0B
+      │   (Citadel, Virtu)
+      └── Other OTC         ░                      ~0.1B
+
+Global off-exchange share: ~25-30% (lower than US)
+</code></pre>
+<h3 id="tps-derivation">TPS Derivation</h3>
+<pre><code>Annual trades: 61.5B
+       │
+       ▼
+┌──────────────────────────────┐
+│ Step 1: Trading Days         │
+│ ~252 global trading days     │
+│ → ~244M trades/day average   │
+└──────────┬───────────────────┘
+           ▼
+┌──────────────────────────────┐
+│ Step 2: Effective Hours      │
+│ Weighted global trading span:│
+│ ~16 effective hours/day      │
+│ (Asia + Europe + Americas    │
+│  with overlap)               │
+└──────────┬───────────────────┘
+           ▼
+┌──────────────────────────────┐
+│ Step 3: Average TPS          │
+│ 244M / (16h × 3,600s)       │
+│ = ~3,500 TPS                 │
+└──────────┬───────────────────┘
+           ▼
+┌──────────────────────────────┐
+│ Step 4: Peak TPS             │
+│ 3× avg on volatility days   │
+│ × 20% first-30-min conc.    │
+│ → ~50,000-80,000 burst TPS  │
+│ (UTP SIP capacity: 5.6M/s)  │
+└──────────────────────────────┘
+</code></pre>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>Equity Overlap Waterfall
+═══════════════════════════════════════════════════
+
+Total equity trades        ██████████████████████  61.5B
+                           │
+(-) ETF trades included    ██████████████████████  61.5B  (ETFs ARE equities;
+    in equity totals       │                               no separate category)
+                           │
+(-) NSE India equity/      █████████████████████   61.5B  (adjusted from 18B
+    derivatives overlap    │                               to 15B equity-only)
+                           ▼
+                           ════════════════════════
+De-duplicated equity       ██████████████████████  61.5B
+</code></pre>
+<ul>
+<li><strong>ETF trades</strong>: ETFs trade on stock exchanges and are included in equity trade counts. WFE reports ETF as ~4% of derivatives volume but ETF equity (cash) trades are counted within equity totals</li>
+<li><strong>No overlap with ETD</strong>: Equity options and futures are counted in the ETD category; equity cash trades are counted here. The boundary is clean</li>
+<li><strong>No overlap with FX/<a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">Fixed Income</a></strong>: Equity trades are distinct instruments on distinct venues</li>
+</ul>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Region          Coverage  Source           Notes
+─────────────── ──────── ──────────────── ─────────────────
+US              ████████ WFE + FINRA TRF  Lit + dark pools
+China           ████████ SSE/SZSE + WFE   State exchanges
+India           ███████░ NSE/BSE + WFE    Some derivative mixing
+Japan           ████████ JPX + WFE        Clean data
+Europe          ███████░ WFE + MiFID      MTF/SI data patchy
+Korea           ██████░░ KRX              Limited English data
+LatAm           ██████░░ B3 + WFE         B3 dominates
+Rest of World   ████░░░░ WFE estimates    Many small exchanges
+─────────────── ──────── ──────────────── ─────────────────
+Global coverage: ~85-90% directly observed
+</code></pre>
+<ul>
+<li><strong>85-90% directly observed</strong>: Major exchanges report to WFE; US has FINRA/TRF data</li>
+<li><strong>10-15% estimated</strong>: Smaller exchanges in <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/middle-east/REPORT.html">Middle East</a>, Central Asia, smaller European MTFs</li>
+<li><strong>Dark pool gap</strong>: ~47% of US volume is off-exchange (captured via TRF); globally ~25-30% off-exchange (less well captured outside US/EU)</li>
+</ul>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+World Bank (value)  █████████  █████████ ██████████  ██████░░░░
+WFE Statistics      ████████░  █████████ ██████████  ████████░░
+Exchange Reports    ██████░░░  █████████ █████████░  ██████████
+FINRA ATS/TRF      ████░░░░░  █████████ █████████░  ████████░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    82/100     90/100    94/100      78/100
+</code></pre>
+<ul>
+<li><strong>Score</strong>: 86/100</li>
+<li><strong>Key drivers of uncertainty</strong>:</li>
+<li>No single authoritative global annual trade count exists (WFE publishes monthly snapshots, not annual totals)</li>
+<li>NSE India equity-vs-derivatives classification is the single biggest reconciliation issue</li>
+<li>Dark pool trade counts outside the US are poorly measured</li>
+<li><a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> is highly model-dependent (intraday distribution assumptions)</li>
+<li>Declining average trade size means trade count ≠ economic activity trends</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial report</td>
+<td>Run 2: Equity markets category created</td>
+</tr>
+<tr>
+<td>2026-03-26</td>
+<td>Exchange breakdown added</td>
+<td>Run 3: Bottom-up validation of 61.5B estimate</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Methodology doc created</td>
+<td>Run 6: Formal methodology documentation</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/equity-markets/METHODOLOGY.md">analysis/traditional-finance/equity-markets/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

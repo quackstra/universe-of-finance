@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Africa — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Last Updated: 2026-03-29 Executive Summary Africa is the mobile money capital of the world and the most structurally distinct financial ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Deep Dives<span class="sep">/</span>Africa</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Africa</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS contribution</div><div class="v blue">2,870</div></div><div class="chip"><div class="k">Share of global</div><div class="v green">3.9%</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">58</div></div></div>
+  <div class="chart-box"><h3>Regional TPS by category</h3><div class="chart-canvas"><canvas id="chart3"></canvas></div></div><script>new Chart(document.getElementById("chart3"),{"type": "bar", "data": {"labels": ["Digital Wallets", "Bank Transfers", "Consumer Cards", "Bill Payments", "Atm Withdrawals", "Government Payments", "Equity Markets", "Etd", "Interbank Rtgs", "Cex", "Gaming Microtx", "Commodities"], "datasets": [{"data": [1380, 1380, 285, 210, 175, 135, 18, 11, 1, 340, 8, 5], "backgroundColor": ["#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#africas-share-across-categories">Africa's Share Across Categories</a></li><li><a href="#africa-vs-world-comparison-table">Africa vs World — Comparison Table</a></li><li><a href="#category-by-category-analysis">Category-by-Category Analysis</a></li><li><a href="#the-mobile-money-effect-africas-structural-transformation">The Mobile Money Effect — Africa's Structural Transformation</a></li><li><a href="#the-informal-economy-africas-unmeasured-majority">The Informal Economy — Africa's Unmeasured Majority</a></li><li><a href="#africa-vs-other-emerging-markets">Africa vs Other Emerging Markets</a></li><li><a href="#risks-and-vulnerabilities">Risks and Vulnerabilities</a></li><li><a href="#key-takeaways">Key Takeaways</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+<strong>Last Updated</strong>: 2026-03-29</p>
+</blockquote>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Africa is the mobile money capital of the world and the most structurally distinct
+financial ecosystem in the Universe of Finance. With an estimated <strong>~2,870
+de-duplicated TPS</strong> across all categories, Africa contributes roughly <strong>3.9% of the
+global ~73,750 TPS</strong> — modest in absolute terms, but remarkable given that Africa
+represents only ~3.1% of global GDP and has the youngest, fastest-growing population
+on Earth.</p>
+<p>Africa's significance is defined by three forces:</p>
+<ol>
+<li>
+<p><strong>Mobile money</strong>: Africa invented mobile money (M-Pesa, Kenya, 2007) and remains
+   its global epicenter. GSMA reports <strong>$832 billion</strong> in mobile money transactions
+   across Sub-Saharan Africa in 2023, with <strong>1.75 billion registered accounts</strong> and
+   <strong>12 million+ agents</strong> — humans serving as the continent's ATM network. Mobile
+   money works on feature phones, not smartphones — a critical distinction from
+   <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a> elsewhere.</p>
+</li>
+<li>
+<p><strong>Nigeria's fintech explosion</strong>: Africa's largest economy processed <strong>5+ billion
+   NIP (Nigeria Instant Payment)</strong> transactions in 2023. A wave of fintechs —
+   Flutterwave, Paystack, OPay, PalmPay — has built parallel payment infrastructure
+   alongside the banks, serving 200+ million people in a country where 40% of adults
+   were unbanked a decade ago.</p>
+</li>
+<li>
+<p><strong>The informal economy</strong>: 40-60% of GDP across much of Africa operates outside
+   formal financial infrastructure. Cash, barter, and informal credit networks are
+   not captured in any dataset. This makes Africa the largest blind spot in the
+   Universe of Finance — our <a class="xref" href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">confidence score</a> reflects this structural uncertainty.</p>
+</li>
+</ol>
+<p>Africa is the only continent where mobile money agents outnumber ATMs by 50:1,
+where a $0.50 airtime transfer is a routine financial transaction, and where the
+dominant payment rail runs on USSD menus, not apps.</p>
+<hr/>
+<h2 id="africas-share-across-categories">Africa's Share Across Categories</h2>
+<pre><code>Category               Africa TPS  Global TPS   Africa Share
+================================================================
+Bank Transfers          1,380       15,338          9.0%  ||||
+Digital Wallets*        1,380       19,660          7.0%  |||
+Consumer Cards            285       24,501          1.2%  |
+Bill Payments             210        3,012          7.0%  |||
+ATM Withdrawals           175        1,557         11.2%  |||||
+Gov't Payments            135        1,002         13.5%  ||||||
+Equity Markets             18        3,500          0.5%
+ETD (Derivatives)          11        9,505          0.1%
+Interbank RTGS              1           50          2.0%  |
+CEX (Crypto)              340        3,210         10.6%  |||||
+Gaming (MTX)                8          389          2.1%  |
+Commodities                 5          330          1.5%  |
+================================================================
+* Digital Wallets figure is gross (mobile money); de-duplicated into Bank Transfers
+</code></pre>
+<hr/>
+<h2 id="africa-vs-world-comparison-table">Africa vs World — Comparison Table</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Africa</th>
+<th>World</th>
+<th>Africa's Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De-duplicated TPS</td>
+<td>~2,870</td>
+<td>~73,750</td>
+<td><strong>3.9%</strong></td>
+</tr>
+<tr>
+<td>Mobile money accounts (2023)</td>
+<td>1.75B registered</td>
+<td>~1.95B global</td>
+<td><strong>~90%</strong></td>
+</tr>
+<tr>
+<td>Mobile money txn value (2023)</td>
+<td>$832B</td>
+<td>~$1.4T global</td>
+<td><strong>~59%</strong></td>
+</tr>
+<tr>
+<td>Mobile money agents</td>
+<td>12M+</td>
+<td>~14M global</td>
+<td><strong>~86%</strong></td>
+</tr>
+<tr>
+<td>Card transactions (2024)</td>
+<td>~9B</td>
+<td>~773B</td>
+<td><strong>1.2%</strong></td>
+</tr>
+<tr>
+<td>P2P crypto volume (2023)</td>
+<td>Highest adoption rate</td>
+<td>—</td>
+<td><strong>#1 globally</strong></td>
+</tr>
+<tr>
+<td>GDP</td>
+<td>$3.4T</td>
+<td>$110T</td>
+<td><strong>3.1%</strong></td>
+</tr>
+<tr>
+<td>Population</td>
+<td>1.45B</td>
+<td>8.1B</td>
+<td><strong>17.9%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Africa generates <strong>1.3x its GDP-weight</strong> in global financial TPS. The modest
+overweight is entirely driven by mobile money transaction volumes. Formal capital
+markets are underdeveloped relative to population. The real story is what is
+<em>not</em> measured — the informal economy could double Africa's true transaction count.</p>
+<hr/>
+<h2 id="category-by-category-analysis">Category-by-Category Analysis</h2>
+<h3 id="1-mobile-money-africas-defining-financial-innovation">1. Mobile Money — Africa's Defining Financial Innovation</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registered accounts (SSA, 2023)</td>
+<td>1.75 billion</td>
+<td><a href="https://www.gsma.com/mobilemoneymetrics/">GSMA State of the Industry 2024</a></td>
+</tr>
+<tr>
+<td>Active accounts (90-day, SSA)</td>
+<td>~400 million</td>
+<td>GSMA</td>
+</tr>
+<tr>
+<td>Transaction value (SSA, 2023)</td>
+<td>$832 billion</td>
+<td>GSMA</td>
+</tr>
+<tr>
+<td>Transaction volume (SSA, 2023)</td>
+<td>~45 billion</td>
+<td>GSMA / Derived</td>
+</tr>
+<tr>
+<td>Mobile money agents (SSA)</td>
+<td>12 million+</td>
+<td>GSMA</td>
+</tr>
+<tr>
+<td>Agent-to-ATM ratio</td>
+<td>~50:1</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Countries with mobile money</td>
+<td>50+ across Africa</td>
+<td>GSMA</td>
+</tr>
+<tr>
+<td>M-Pesa active users (Kenya)</td>
+<td>35 million+</td>
+<td>Safaricom</td>
+</tr>
+<tr>
+<td>M-Pesa annual value (Kenya)</td>
+<td>$300 billion+</td>
+<td>Safaricom</td>
+</tr>
+<tr>
+<td>Average transaction value</td>
+<td>~$18</td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mobile money is not a digital wallet.</strong> This is the most important conceptual
+distinction for understanding Africa's financial infrastructure. M-Pesa and its
+equivalents run on <strong>USSD menus</strong> (Unstructured Supplementary Service Data) — the
+<code>*xxx#</code> codes that work on any phone, including $15 feature phones with no data
+connection. There is no app. No smartphone required. No internet needed.</p>
+<pre><code>How M-Pesa Works (User Experience)
+================================================================
+1. Dial *334# on any phone (Kenya)
+2. Select "Send Money"
+3. Enter recipient phone number
+4. Enter amount (e.g., KES 500 / ~$3.80)
+5. Enter PIN
+6. Transaction confirmed via SMS
+================================================================
+Total time: ~30 seconds. Works on a Nokia 1100.
+</code></pre>
+<p><strong>The agent network is the infrastructure.</strong> Africa has 12 million+ mobile money
+agents — small shop owners, kiosk operators, and market vendors who convert cash
+to mobile money and vice versa. They are human ATMs. In rural Kenya, the nearest
+bank branch may be 50 km away, but an M-Pesa agent is within 1 km.</p>
+<pre><code>Year    Mobile Money Txn Value (SSA, $B)    Registered Accounts (M)
+====================================================================
+2012           35                              140
+2014           85                              300
+2016          175                              500
+2018          310                              750
+2020          490                            1,000
+2022          700                            1,400
+2023          832                            1,750
+</code></pre>
+<p><strong>Market structure by country (mobile money value, 2023)</strong>:
+- <strong>Kenya</strong>: ~$300B+ (M-Pesa dominance, 35M+ active users)
+- <strong>Ghana</strong>: ~$110B (MTN MoMo, Vodafone Cash, AirtelTigo)
+- <strong>Tanzania</strong>: ~$85B (M-Pesa, Tigo Pesa, Airtel Money)
+- <strong>Uganda</strong>: ~$55B (MTN MoMo, Airtel Money)
+- <strong>Francophone West Africa</strong>: ~$95B (Orange Money, MTN, Wave)
+- <strong>Rest of SSA</strong>: ~$87B+</p>
+<p><strong>De-duplication note</strong>: Mobile money is architecturally a stored-value account
+system, not a bank transfer rail. However, mobile money-to-bank transfers and
+bank-to-mobile money top-ups create overlap. For de-duplication, mobile money is
+classified under <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a> (similar treatment to <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> and <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Pix</a>), as it represents
+account-to-account value transfer regardless of the underlying technology.</p>
+<hr/>
+<h3 id="2-nigeria-africas-payment-powerhouse">2. Nigeria — Africa's Payment Powerhouse</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NIP transactions (2023)</td>
+<td>5+ billion</td>
+<td><a href="https://nibss-plc.com.ng/">NIBSS</a></td>
+</tr>
+<tr>
+<td>NIP transaction value (2023)</td>
+<td>NGN 420+ trillion (~$500B)</td>
+<td>NIBSS</td>
+</tr>
+<tr>
+<td>NIP daily peak</td>
+<td>~20 million transactions</td>
+<td>NIBSS</td>
+</tr>
+<tr>
+<td>Active bank accounts</td>
+<td>150+ million</td>
+<td>CBN</td>
+</tr>
+<tr>
+<td>Fintech users</td>
+<td>100+ million</td>
+<td>Industry estimates</td>
+</tr>
+<tr>
+<td>eNaira (CBDC) wallets</td>
+<td>~13 million (low activity)</td>
+<td>CBN</td>
+</tr>
+<tr>
+<td>Banked adults (2023)</td>
+<td>~64% (up from ~40% in 2014)</td>
+<td>EFInA</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NIP (NIBSS Instant Payment)</strong> is Nigeria's real-time payment system, operated
+by Nigeria Inter-Bank Settlement System (NIBSS). It is Africa's largest instant
+payment platform by volume, processing over 5 billion transactions in 2023.</p>
+<p><strong>The fintech wave</strong>: Nigeria's payment landscape has been transformed by fintechs:
+- <strong>OPay</strong>: Backed by Opera, 35M+ monthly active users, processes ~80% of
+  Nigeria's POS transactions
+- <strong>Paystack</strong>: Acquired by Stripe (2020, $200M), powers online payments
+- <strong>Flutterwave</strong>: $3B+ valuation, cross-border payments across Africa
+- <strong>PalmPay</strong>: Chinese-backed, 30M+ users, targeting the unbanked
+- <strong>Moniepoint</strong>: Business payments, 1M+ merchant terminals</p>
+<p>These fintechs collectively process more retail transactions than traditional banks.</p>
+<p><strong>eNaira — Africa's first CBDC</strong>: Launched October 2021, the eNaira has ~13 million
+wallets but low active usage. Adoption has been tepid — Nigerians prefer the
+existing NIP/fintech ecosystem. The eNaira is a cautionary tale for CBDCs in
+markets with already-functional instant payment systems.</p>
+<hr/>
+<h3 id="3-south-africa-africas-tradfi-hub">3. South Africa — Africa's TradFi Hub</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSE market cap</td>
+<td>~$1.0 trillion</td>
+<td><a href="https://www.jse.co.za/">JSE</a></td>
+</tr>
+<tr>
+<td>JSE daily equity trades</td>
+<td>~350,000</td>
+<td>JSE</td>
+</tr>
+<tr>
+<td>JSE annual equity trades (est.)</td>
+<td>~88 million</td>
+<td>Derived (252 trading days)</td>
+</tr>
+<tr>
+<td>JSE derivatives contracts (annual)</td>
+<td>~120 million</td>
+<td>JSE / FIA</td>
+</tr>
+<tr>
+<td>PayShap transactions (2024)</td>
+<td>Growing (launched 2023)</td>
+<td>SARB</td>
+</tr>
+<tr>
+<td>Card transactions (annual)</td>
+<td>~4.5 billion</td>
+<td>BankservAfrica</td>
+</tr>
+<tr>
+<td>EFT transactions (annual)</td>
+<td>~3.5 billion</td>
+<td>BankservAfrica</td>
+</tr>
+<tr>
+<td>ATM withdrawals (annual)</td>
+<td>~1.5 billion</td>
+<td>BankservAfrica</td>
+</tr>
+<tr>
+<td>Population</td>
+<td>62 million</td>
+<td>Stats SA</td>
+</tr>
+</tbody>
+</table>
+<p><strong>JSE (Johannesburg Stock Exchange)</strong> is Africa's largest and most sophisticated
+exchange. At ~$1 trillion market cap, it dwarfs every other African exchange
+combined. JSE offers equities, bonds, derivatives (equity index futures/options,
+commodity derivatives, currency derivatives), and ETFs.</p>
+<p><strong>PayShap</strong>: South Africa's real-time low-value payment system, launched March 2023.
+Built on ISO 20022 messaging standards, PayShap enables instant interbank transfers
+using proxy identifiers (phone numbers, email). It is the South African equivalent
+of Pix or UPI but is still in early adoption.</p>
+<p><strong>South Africa's card market</strong> is the most developed in Africa — ~4.5 billion annual
+card transactions across Visa, Mastercard, and domestic schemes. Contactless
+adoption is growing rapidly, driven by FNB, Standard Bank, Nedbank, and Absa.</p>
+<p><strong>Dual economy challenge</strong>: South Africa has both sophisticated formal financial
+infrastructure (comparable to developed markets) and a large informal economy.
+The formal/informal split creates measurement challenges — formal transaction data
+is reliable, but ~30% of economic activity occurs outside tracked systems.</p>
+<hr/>
+<h3 id="4-east-africa-the-mobile-money-heartland">4. East Africa — The Mobile Money Heartland</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kenya M-Pesa active users</td>
+<td>35 million+</td>
+<td>Safaricom</td>
+</tr>
+<tr>
+<td>Kenya M-Pesa txn value (2024)</td>
+<td>$300 billion+</td>
+<td>Safaricom</td>
+</tr>
+<tr>
+<td>Tanzania mobile money accounts</td>
+<td>40+ million</td>
+<td>GSMA</td>
+</tr>
+<tr>
+<td>Tanzania mobile money value</td>
+<td>~$85B annually</td>
+<td>GSMA</td>
+</tr>
+<tr>
+<td>Rwanda mobile money penetration</td>
+<td>~80% of adults</td>
+<td>National Bank of Rwanda</td>
+</tr>
+<tr>
+<td>Uganda mobile money accounts</td>
+<td>35+ million</td>
+<td>Bank of Uganda</td>
+</tr>
+<tr>
+<td>EAC total mobile money value</td>
+<td>~$500B+</td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Kenya is where it all started.</strong> M-Pesa launched in March 2007 — nearly a decade
+before UPI (2016) and 13 years before Pix (2020). It proved that mobile phones
+could serve as financial infrastructure in the absence of traditional banking.</p>
+<p>The East African Community (EAC) — Kenya, Tanzania, Uganda, Rwanda, Burundi,
+South Sudan, DRC — is the global epicenter of mobile money. Key characteristics:</p>
+<ul>
+<li><strong>Interoperability progress</strong>: M-Pesa-to-Airtel Money transfers now work in
+  several markets, though cross-border interoperability remains limited</li>
+<li><strong>Merchant payments growing</strong>: Mobile money for retail purchases (pay-bill,
+  till numbers) expanding beyond <a class="xref" href="/universe-of-finance/reports/payments/p2p-transfers/REPORT.html">P2P transfers</a></li>
+<li><strong>Savings and credit</strong>: M-Shwari (Kenya), MoKash (Uganda) layer savings and
+  microloans on top of mobile money rails</li>
+<li><strong>Government integration</strong>: Tax payments, utility bills, and government fees
+  payable via mobile money in Kenya, Tanzania, Rwanda</li>
+</ul>
+<hr/>
+<h3 id="5-consumer-cards-small-but-growing">5. Consumer Cards — Small but Growing</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Africa card transactions (2024 est.)</td>
+<td>~9 billion</td>
+<td>Visa / Mastercard Africa reports</td>
+</tr>
+<tr>
+<td>South Africa share</td>
+<td>~50% (~4.5B)</td>
+<td>BankservAfrica</td>
+</tr>
+<tr>
+<td>Nigeria card transactions</td>
+<td>~2.5 billion</td>
+<td>NIBSS</td>
+</tr>
+<tr>
+<td>Egypt card transactions</td>
+<td>~800 million</td>
+<td>CBE</td>
+</tr>
+<tr>
+<td>Kenya card transactions</td>
+<td>~400 million</td>
+<td>CBK</td>
+</tr>
+<tr>
+<td>Rest of Africa</td>
+<td>~800 million</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Card penetration (SSA avg)</td>
+<td>~5-8% of adults</td>
+<td>World Bank Findex</td>
+</tr>
+</tbody>
+</table>
+<p>Africa's card market is small relative to global volumes — ~9 billion transactions
+represents just 1.2% of the global ~773 billion. Cards are concentrated in South
+Africa (which has a developed-market card ecosystem) and Nigeria (where <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">debit cards</a>
+are common for ATM and POS use).</p>
+<p><strong>Why cards are less relevant in Africa</strong>:
+- Mobile money bypassed cards for most of the population
+- Card acceptance infrastructure (POS terminals) is sparse outside major cities
+- Card fees are high relative to mobile money (which is often free for P2P)
+- Feature phone users (still the majority in many markets) cannot use card-linked apps</p>
+<p><strong>Growth drivers</strong>: Visa and Mastercard are investing heavily in Africa — Visa's
+2024 strategy explicitly targets 15 African markets for card expansion. Virtual
+cards (linked to <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">mobile wallets</a>) and QR-code payments may create a hybrid
+card-mobile money ecosystem.</p>
+<hr/>
+<h3 id="6-capital-markets-early-stage-but-growing">6. Capital Markets — Early Stage but Growing</h3>
+<h4 id="equity-markets"><a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">Equity Markets</a></h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSE market cap</td>
+<td>~$1.0T</td>
+<td>JSE</td>
+</tr>
+<tr>
+<td>NGX (Nigeria) market cap</td>
+<td>~$55B</td>
+<td>NGX</td>
+</tr>
+<tr>
+<td>NSE Kenya market cap</td>
+<td>~$20B</td>
+<td>NSE Kenya</td>
+</tr>
+<tr>
+<td>EGX (Egypt) market cap</td>
+<td>~$45B</td>
+<td>EGX</td>
+</tr>
+<tr>
+<td>BRVM (West Africa) market cap</td>
+<td>~$15B</td>
+<td>BRVM</td>
+</tr>
+<tr>
+<td>Combined African exchange market cap</td>
+<td>~$1.4T</td>
+<td>ASEA</td>
+</tr>
+<tr>
+<td>Africa share of global equity market cap</td>
+<td><strong>~1.3%</strong></td>
+<td>WFE</td>
+</tr>
+<tr>
+<td>Combined annual equity trades (est.)</td>
+<td>~560 million</td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p>Africa's equity markets are dominated by the JSE, which accounts for ~70% of the
+continent's total market capitalization. Outside South Africa, markets are
+characterized by low liquidity, few listed companies, and limited retail
+participation.</p>
+<p><strong>BRVM (Bourse Regionale des Valeurs Mobilieres)</strong> is notable as the world's only
+exchange serving 8 countries — the francophone West African Economic and Monetary
+Union (WAEMU: Benin, Burkina Faso, Cote d'Ivoire, Guinea-Bissau, Mali, Niger,
+Senegal, Togo). Despite its innovative regional model, BRVM has low liquidity
+and a market cap of only ~$15 billion.</p>
+<h4 id="derivatives">Derivatives</h4>
+<p>African derivatives markets are minimal outside South Africa. JSE derivatives
+(~120 million contracts annually) are the only meaningful volume. Nigeria's FMDQ
+handles some <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> (FX forwards), but <a class="xref" href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">exchange-traded derivatives</a> are
+negligible elsewhere on the continent.</p>
+<hr/>
+<h3 id="7-cross-border-payments-papss-and-the-afcfta-vision">7. Cross-Border Payments — PAPSS and the AfCFTA Vision</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intra-African trade (2023)</td>
+<td>~15% of total trade</td>
+<td>AfCFTA Secretariat</td>
+</tr>
+<tr>
+<td>Remittances to SSA (2024)</td>
+<td>~$54 billion</td>
+<td>World Bank</td>
+</tr>
+<tr>
+<td>Average remittance cost to SSA</td>
+<td>7.9% (highest globally)</td>
+<td>World Bank</td>
+</tr>
+<tr>
+<td>PAPSS launch</td>
+<td>January 2022</td>
+<td>Afreximbank</td>
+</tr>
+<tr>
+<td>PAPSS participating central banks</td>
+<td>12+</td>
+<td>PAPSS</td>
+</tr>
+<tr>
+<td>PAPSS transactions processed</td>
+<td>Growing from low base</td>
+<td>PAPSS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>PAPSS (Pan-African Payment and Settlement System)</strong> is potentially the most
+important financial infrastructure development in Africa. Launched in January 2022
+by the African Export-Import Bank (Afreximbank), PAPSS enables instant cross-border
+payments in local currencies — eliminating the need to route through USD/EUR
+correspondent banks.</p>
+<p>Before PAPSS, a payment from Kenya (KES) to Nigeria (NGN) would typically:
+1. Convert KES to USD at a Kenyan bank
+2. Route through a US correspondent bank
+3. Convert USD to NGN at a Nigerian bank
+4. Settle in 3-5 business days, with 5-10% in fees</p>
+<p>PAPSS enables direct KES-to-NGN settlement in seconds, at a fraction of the cost.</p>
+<p><strong>AfCFTA (African Continental Free Trade Area)</strong> — the world's largest free trade
+area by member states (54 countries, 1.4B people) — relies on PAPSS to make
+intra-African trade practical. Currently, only ~15% of African trade is
+intra-continental (vs. ~60% in Europe, ~40% in Asia). The combination of AfCFTA
+tariff reduction and PAPSS payment infrastructure could dramatically increase
+cross-border transaction volumes.</p>
+<p><strong>Remittance corridor fees</strong>: Sub-Saharan Africa has the highest remittance costs
+globally at 7.9% average (World Bank Q1 2024). For context, the global average is
+6.2%, and the SDG target is 3%. High corridor fees drive crypto adoption for
+cross-border transfers (see Section 9).</p>
+<hr/>
+<h3 id="8-government-payments-cash-transfer-programs">8. Government Payments — Cash Transfer Programs</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kenya Inua Jamii beneficiaries</td>
+<td>~1.1 million</td>
+<td>Government of Kenya</td>
+</tr>
+<tr>
+<td>South Africa social grants</td>
+<td>~18 million recipients</td>
+<td>SASSA</td>
+</tr>
+<tr>
+<td>South Africa grant value</td>
+<td>ZAR 250B+ annually (~$14B)</td>
+<td>SASSA</td>
+</tr>
+<tr>
+<td>Nigeria social register</td>
+<td>~25 million households</td>
+<td>NASSCO</td>
+</tr>
+<tr>
+<td>Ethiopia PSNP beneficiaries</td>
+<td>~8 million</td>
+<td>World Bank</td>
+</tr>
+<tr>
+<td>Rwanda VUP beneficiaries</td>
+<td>~250,000 households</td>
+<td>Government of Rwanda</td>
+</tr>
+<tr>
+<td>Combined annual govt payment txns (est.)</td>
+<td>~4.25 billion</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Africa share of global govt payments</td>
+<td><strong>~13.5%</strong></td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p>Africa's government payment landscape is shaped by large-scale social protection
+programs, many supported by World Bank and development partners:</p>
+<ul>
+<li>
+<p><strong>South Africa</strong>: The most developed social grant system in Africa — SASSA
+  (South African Social Security Agency) distributes grants to ~18 million
+  recipients monthly, including old age pensions, child support grants, and
+  disability grants. SASSA payments are increasingly made via bank accounts
+  and SASSA cards, reducing cash distribution.</p>
+</li>
+<li>
+<p><strong>Nigeria</strong>: The National Social Safety Net Program targets 25+ million
+  households, with conditional cash transfers expanding. Distribution via
+  mobile money and agent banking is growing.</p>
+</li>
+<li>
+<p><strong>Ethiopia</strong>: The Productive Safety Net Programme (PSNP) serves ~8 million
+  beneficiaries with cash and food transfers.</p>
+</li>
+<li>
+<p><strong>Kenya</strong>: Inua Jamii (National Safety Net Programme) covers ~1.1 million
+  elderly, disabled, and orphan beneficiaries via M-Pesa disbursement.</p>
+</li>
+</ul>
+<p>Mobile money has transformed government payment delivery across Africa —
+disbursements that previously required physical cash distribution at government
+offices can now be sent directly to mobile money wallets.</p>
+<hr/>
+<h3 id="9-digital-assets-africas-p2p-crypto-hub">9. Digital Assets — Africa's P2P Crypto Hub</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P2P crypto adoption rate</td>
+<td><strong>Highest globally</strong></td>
+<td>Chainalysis 2023 Geography of Crypto</td>
+</tr>
+<tr>
+<td>Nigeria crypto users</td>
+<td>~30 million</td>
+<td>Triple-A / Industry estimates</td>
+</tr>
+<tr>
+<td>South Africa crypto users</td>
+<td>~6 million</td>
+<td>Triple-A</td>
+</tr>
+<tr>
+<td>Kenya crypto users</td>
+<td>~5 million</td>
+<td>Triple-A</td>
+</tr>
+<tr>
+<td>SSA crypto value received (2022-23)</td>
+<td>~$117 billion</td>
+<td>Chainalysis</td>
+</tr>
+<tr>
+<td>P2P share of volume</td>
+<td>~60%+ (vs. ~35% globally)</td>
+<td>Chainalysis</td>
+</tr>
+<tr>
+<td>Top use case</td>
+<td>Remittances / FX hedging</td>
+<td>Chainalysis</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Africa has the highest P2P crypto adoption rate globally</strong> (Chainalysis 2023).
+This is not speculation-driven — it is utility-driven:</p>
+<ol>
+<li>
+<p><strong>Remittance cost arbitrage</strong>: Sending $200 from the US to Nigeria via
+   traditional channels costs $16-30 (8-15%). Via crypto P2P, it costs $2-5.
+   At $54B in annual <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a> to SSA, the savings potential is enormous.</p>
+</li>
+<li>
+<p><strong>Currency devaluation hedge</strong>: The Nigerian naira lost ~70% against the USD
+   between 2022-2024. Nigerians use USDT and USDC as dollar-denominated savings
+   vehicles, accessible via P2P platforms.</p>
+</li>
+<li>
+<p><strong>Cross-border business payments</strong>: African merchants importing goods from
+   <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> use crypto to bypass SWIFT correspondent banking costs and delays.</p>
+</li>
+<li>
+<p><strong>Banking access</strong>: In countries with capital controls (Nigeria, Ethiopia),
+   crypto provides an alternative rails for international value transfer.</p>
+</li>
+</ol>
+<p><strong>Regulatory landscape varies wildly</strong>:
+- <strong>South Africa</strong>: Regulated (FSCA licensing of crypto asset service providers)
+- <strong>Nigeria</strong>: Hostile, then pragmatic (SEC framework emerging after initial bans)
+- <strong>Kenya</strong>: Unregulated but tolerated
+- <strong>Central African Republic</strong>: Briefly adopted Bitcoin as legal tender (2022),
+  then reversed course
+- <strong>Most countries</strong>: No clear framework</p>
+<p><strong>P2P dominance</strong>: Africa's crypto market is structurally different from other
+regions. ~60%+ of volume is P2P (vs. ~35% globally), reflecting limited CEX
+access and a culture of informal person-to-person finance that mirrors the
+mobile money agent model.</p>
+<hr/>
+<h3 id="10-atm-withdrawals-the-cash-mobile-money-bridge">10. ATM Withdrawals — The Cash-Mobile Money Bridge</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Africa ATM withdrawals (2024 est.)</td>
+<td>~5.5 billion</td>
+<td>ATMIA / RBR</td>
+</tr>
+<tr>
+<td>ATMs in Africa</td>
+<td>~230,000</td>
+<td>ATMIA</td>
+</tr>
+<tr>
+<td>South Africa ATMs</td>
+<td>~70,000</td>
+<td>SABRIC</td>
+</tr>
+<tr>
+<td>Nigeria ATMs</td>
+<td>~20,000</td>
+<td>CBN</td>
+</tr>
+<tr>
+<td>ATM-to-population ratio</td>
+<td>1 per 6,300 (vs. 1 per 700 globally)</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Mobile money agents</td>
+<td>12,000,000+</td>
+<td>GSMA</td>
+</tr>
+<tr>
+<td>Agent-to-ATM ratio</td>
+<td><strong>~52:1</strong></td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p>The agent-to-ATM ratio tells the story of Africa's financial infrastructure: there
+are 52 mobile money agents for every ATM. In rural East and West Africa, agents
+have almost entirely replaced ATMs as the cash access point.</p>
+<p><a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a> remain significant in South Africa (~1.5B annually) and Nigeria
+(~1.5B) where formal banking infrastructure exists. Elsewhere, the "cash-out"
+function is served by mobile money agents — a user sends mobile money to an
+agent and receives physical cash, or vice versa for "cash-in."</p>
+<p><strong>This creates a measurement challenge</strong>: Agent cash-in/cash-out transactions are
+counted in mobile money volumes, not ATM volumes. The functional equivalent of
+an ATM withdrawal in rural Kenya is an M-Pesa cash-out at an agent — but it shows
+up in a completely different data category.</p>
+<hr/>
+<h3 id="11-gaming-mobile-first-low-arpu">11. Gaming — Mobile-First, Low ARPU</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Africa gaming revenue (2025 est.)</td>
+<td>~$2.0 billion</td>
+<td>Newzoo / Statista</td>
+</tr>
+<tr>
+<td>Mobile gaming share</td>
+<td>~75%</td>
+<td>Newzoo</td>
+</tr>
+<tr>
+<td>Nigeria gaming market</td>
+<td>~$600 million</td>
+<td>Industry estimates</td>
+</tr>
+<tr>
+<td>South Africa gaming market</td>
+<td>~$550 million</td>
+<td>Industry estimates</td>
+</tr>
+<tr>
+<td>Egypt gaming market</td>
+<td>~$350 million</td>
+<td>Industry estimates</td>
+</tr>
+<tr>
+<td>Kenya gaming market</td>
+<td>~$120 million</td>
+<td>Industry estimates</td>
+</tr>
+<tr>
+<td>IAP transactions (est.)</td>
+<td>~250 million</td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p>Africa's gaming market is mobile-dominated and low-ARPU (average revenue per user).
+Free-to-play mobile games with <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a> are the dominant model. Console
+and PC gaming are niche due to hardware costs and power reliability. Sports betting
+platforms (Betway, SportPesa, Bet9ja) blur the line between gaming and gambling and
+are a significant transaction generator, particularly in Nigeria and Kenya.</p>
+<hr/>
+<h2 id="the-mobile-money-effect-africas-structural-transformation">The Mobile Money Effect — Africa's Structural Transformation</h2>
+<h3 id="how-mobile-money-rewired-african-finance">How Mobile Money Rewired African Finance</h3>
+<p>Mobile money did not replace existing financial infrastructure in Africa — it <em>was</em>
+the first financial infrastructure for hundreds of millions of people. Unlike Pix
+(which replaced cards and cash in <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>) or UPI (which replaced cash in <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>),
+M-Pesa created a financial system where none existed.</p>
+<pre><code>Financial Access in Kenya (% of adults)
+================================================================
+Year    Formal Banking    Mobile Money Only    Excluded
+2006        19%                0%                58%
+2009        23%               28%                33%
+2013        29%               33%                25%
+2016        42%               41%                17%
+2019        44%               43%                11%
+2023        48%               44%                 8%
+================================================================
+Source: FinAccess Surveys / Central Bank of Kenya
+</code></pre>
+<p><strong>Key insight</strong>: Mobile money did not cannibalize banking — it grew <em>alongside</em> it.
+The "Excluded" population dropped from 58% to 8%, and most of that inclusion came
+through mobile money, not banks. Kenya now has 92% financial inclusion — comparable
+to developed economies — achieved primarily through a telecoms company (Safaricom),
+not the banking sector.</p>
+<h3 id="the-agent-banking-model">The Agent Banking Model</h3>
+<p>Africa's agent banking model is unique globally and poorly understood outside the
+continent. The model works as follows:</p>
+<pre><code>Traditional Banking Model (developed world):
+  Customer → Bank Branch → Electronic System → Settlement
+
+Africa's Agent Model:
+  Customer → Mobile Money Agent (corner shop) → Telco Platform → Settlement
+  Customer → Agent Bank (market stall) → Bank Core System → Settlement
+</code></pre>
+<p>Agents are individual entrepreneurs who hold float (cash + mobile money balance)
+and provide cash-in/cash-out services for a small commission. They require:
+- A mobile phone
+- Cash float (~$200-500)
+- A registered mobile money account
+- Basic training (~2 hours)</p>
+<p>This model achieves financial infrastructure coverage at <strong>1/100th the cost</strong> of
+bank branch networks. A bank branch in Kenya costs ~$500K to build and $200K/year
+to operate. An M-Pesa agent costs $0 in infrastructure (they use their own phone
+and shop) and earns revenue from commissions.</p>
+<h3 id="interoperability-the-remaining-challenge">Interoperability — The Remaining Challenge</h3>
+<p>Africa's mobile money ecosystem is fragmented across operators, countries, and
+currencies. Key interoperability gaps:</p>
+<ol>
+<li><strong>Operator-to-operator</strong>: M-Pesa to Airtel Money transfers are now possible in
+   several markets but still carry friction and fees</li>
+<li><strong>Mobile money-to-bank</strong>: Transfers between mobile wallets and bank accounts
+   work but are not seamless in most markets</li>
+<li><strong>Cross-border</strong>: Sending mobile money across borders remains difficult despite
+   PAPSS and bilateral agreements</li>
+<li><strong>Currency</strong>: Africa has 42 currencies — each cross-border transfer involves
+   FX conversion, often at unfavorable rates</li>
+</ol>
+<p>PAPSS (Section 7) addresses cross-border interoperability at the central bank
+level. Domestic interoperability is improving market by market, with regulators
+increasingly mandating open access to mobile money platforms.</p>
+<hr/>
+<h2 id="the-informal-economy-africas-unmeasured-majority">The Informal Economy — Africa's Unmeasured Majority</h2>
+<p>Africa has the largest informal economy relative to GDP of any continent. This is
+the single biggest source of uncertainty in our TPS estimates:</p>
+<pre><code>Informal Economy as % of GDP (selected countries)
+================================================================
+Nigeria                    53%
+Tanzania                   58%
+Kenya                      34%
+Ghana                      42%
+Ethiopia                   38%
+South Africa               28%
+Egypt                      36%
+DRC                        88%
+================================================================
+Source: IMF / World Bank Shadow Economy estimates
+</code></pre>
+<p><strong>What the informal economy means for TPS measurement</strong>:</p>
+<ul>
+<li>A market trader in Lagos who sells goods for cash, mobile money, or informal
+  credit generates transactions that are partially visible (mobile money) and
+  partially invisible (cash, credit)</li>
+<li>Informal savings groups (chamas in Kenya, esusu in Nigeria, stokvels in South
+  Africa) collectively hold billions of dollars but generate no formally tracked
+  transactions</li>
+<li>Cross-border informal trade (estimated at 30-40% of intra-African trade) is
+  entirely unmeasured</li>
+</ul>
+<p><strong>Our estimate adjustment</strong>: We apply a conservative 15-20% uplift to measured
+mobile money volumes to account for mobile money transactions within informal
+economies that are captured in GSMA data but whose economic activity is not
+reflected in GDP. We do <em>not</em> attempt to estimate purely cash-based informal
+transactions, as they are untraceable.</p>
+<hr/>
+<h2 id="africa-vs-other-emerging-markets">Africa vs Other Emerging Markets</h2>
+<pre><code>Metric                    Africa      India       Brazil      China
+====================================================================
+Population                1.45B       1.44B       213M        1.42B
+GDP                       $3.4T       $3.9T       $2.2T       $19.3T
+De-duplicated TPS         ~2,870      ~12,850     ~4,680      ~14,750
+TPS per capita            0.002       0.009       0.022       0.010
+Dominant payment rail     Mobile $    UPI         Pix         Alipay/WePay
+Rail technology           USSD        App/QR      App/QR      App/QR
+Smartphone required       No          Yes         Yes         Yes
+Financial inclusion       ~55%        ~80%        ~96%        ~95%
+Informal economy          40-60%      ~50%        ~40%        ~13%
+Capital markets TPS       ~30         ~6,950      ~600        ~3,500
+====================================================================
+</code></pre>
+<p><strong>Africa's unique position</strong>: Lowest TPS per capita, but the only major economy
+where the dominant payment rail works without a smartphone. Africa is 10-15 years
+behind India and Brazil in formal financial digitization but has built a functional
+alternative infrastructure on feature phones and human agents.</p>
+<hr/>
+<h2 id="risks-and-vulnerabilities">Risks and Vulnerabilities</h2>
+<h3 id="1-fragmentation">1. Fragmentation</h3>
+<p>54 countries, 42 currencies, hundreds of mobile money operators, dozens of
+regulatory frameworks. Africa is not one market — it is 54 markets loosely
+connected. PAPSS and AfCFTA aim to reduce fragmentation, but progress is slow.</p>
+<h3 id="2-telco-concentration">2. Telco Concentration</h3>
+<p>Mobile money markets are often dominated by a single telco (Safaricom in Kenya,
+MTN in Ghana/Uganda). Regulatory pressure for interoperability and competition
+is growing, but telco leverage over financial infrastructure raises systemic risk.</p>
+<h3 id="3-currency-volatility">3. Currency Volatility</h3>
+<p>Nigerian naira, Egyptian pound, and Ghanaian cedi have all experienced severe
+devaluations (50-70%) in recent years. Currency instability drives crypto adoption
+but also makes formal financial data unreliable in USD terms.</p>
+<h3 id="4-infrastructure-gaps">4. Infrastructure Gaps</h3>
+<p>Power reliability, internet connectivity, and physical infrastructure remain
+constraints. Mobile money works on 2G networks, but more advanced fintech services
+(app-based payments, crypto exchanges) require smartphones and data connectivity
+that are still scarce in rural areas.</p>
+<h3 id="5-regulatory-uncertainty">5. Regulatory Uncertainty</h3>
+<p>Several countries have reversed course on fintech regulation (Nigeria's crypto
+ban/unban, CAR's Bitcoin legal tender reversal). Regulatory unpredictability
+deters investment and creates compliance costs for cross-border operators.</p>
+<h3 id="6-data-quality">6. Data Quality</h3>
+<p>Africa has the weakest financial data infrastructure of any continent. Many
+central banks publish limited or delayed statistics. Mobile money data is good
+(GSMA collects systematically), but card, equity, and banking data are patchy.</p>
+<hr/>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>
+<p><strong>Africa is 3.9% of global financial TPS on 3.1% of global GDP</strong> — a modest
+   overweight driven entirely by mobile money volumes. Formal capital markets
+   contribute very little.</p>
+</li>
+<li>
+<p><strong>Africa is the mobile money capital of the world</strong>: ~90% of global registered
+   mobile money accounts, ~59% of global mobile money transaction value, and ~86%
+   of global mobile money agents are in Sub-Saharan Africa.</p>
+</li>
+<li>
+<p><strong>Mobile money is not a digital wallet</strong> — it works on feature phones via USSD
+   menus with no smartphone or internet required. This is a fundamentally different
+   technology from UPI, Pix, Alipay, or Apple Pay.</p>
+</li>
+<li>
+<p><strong>Nigeria's NIP processes 5B+ transactions annually</strong>, making it Africa's largest
+   instant payment system. Nigerian fintechs (OPay, Paystack, Flutterwave) have
+   built parallel infrastructure alongside traditional banks.</p>
+</li>
+<li>
+<p><strong>Africa has the highest P2P crypto adoption globally</strong>, driven by remittance
+   cost arbitrage (7.9% average fees to SSA) and currency devaluation hedging.
+   This is utility, not speculation.</p>
+</li>
+<li>
+<p><strong>PAPSS could be transformative</strong> — enabling instant cross-border payments in
+   local currencies across 54 countries. Combined with AfCFTA, it could materially
+   increase intra-African trade and transaction volumes.</p>
+</li>
+<li>
+<p><strong>The informal economy is the elephant in the room</strong>: 40-60% of GDP in most
+   African countries operates outside formal financial infrastructure. Our
+   confidence score of 58 reflects this structural measurement gap.</p>
+</li>
+<li>
+<p><strong>Africa is the only continent where human agents outnumber ATMs 50:1</strong> — the
+   agent banking model achieves financial infrastructure coverage at 1/100th the
+   cost of traditional bank branches.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.gsma.com/mobilemoneymetrics/">GSMA — State of the Industry Report on Mobile Money 2024</a></li>
+<li><a href="https://www.gsma.com/mobilemoneymetrics/">GSMA — Mobile Money Metrics</a></li>
+<li><a href="https://www.safaricom.co.ke/about/media-centre">Safaricom — M-Pesa Statistics</a></li>
+<li><a href="https://nibss-plc.com.ng/">NIBSS — Nigeria Instant Payment Statistics</a></li>
+<li><a href="https://www.cbn.gov.ng/">CBN — Central Bank of Nigeria</a></li>
+<li><a href="https://www.jse.co.za/">JSE — Johannesburg Stock Exchange</a></li>
+<li><a href="https://www.bankservafrica.com/">BankservAfrica — Payment Statistics</a></li>
+<li><a href="https://www.resbank.co.za/">SARB — South African Reserve Bank</a></li>
+<li><a href="https://www.chainalysis.com/blog/2023-global-crypto-adoption-index/">Chainalysis — Geography of Cryptocurrency Report 2023</a></li>
+<li><a href="https://remittanceprices.worldbank.org/">World Bank — Remittance Prices Worldwide</a></li>
+<li><a href="https://papss.com/">PAPSS — Pan-African Payment and Settlement System</a></li>
+<li><a href="https://au-afcfta.org/">AfCFTA Secretariat</a></li>
+<li><a href="https://www.afreximbank.com/">Afreximbank — PAPSS Launch</a></li>
+<li><a href="https://www.worldbank.org/en/publication/globalfindex">World Bank — Global Findex Database 2021</a></li>
+<li><a href="https://www.centralbank.go.ke/">CBK — Central Bank of Kenya FinAccess Surveys</a></li>
+<li><a href="https://www.imf.org/en/Publications">IMF — Shadow Economy Estimates</a></li>
+<li><a href="https://african-exchanges.org/">ASEA — African Securities Exchanges Association</a></li>
+<li><a href="https://ngxgroup.com/">NGX — Nigerian Exchange Group</a></li>
+<li><a href="https://www.sassa.gov.za/">SASSA — South African Social Security Agency</a></li>
+<li><a href="https://triple-a.io/crypto-ownership/">Triple-A — Crypto Ownership Data</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/deep-dives/africa/REPORT.md">analysis/deep-dives/africa/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

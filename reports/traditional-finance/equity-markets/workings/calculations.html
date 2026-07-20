@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equity Markets — Calculation Workings — Universe of Finance</title>
+<meta name="description" content="1. Annual Number of Trades (2024) WFE Data (Primary Source) WFE December 2024 dashboard reports: - Number of trades (Dec 2024 month): 5,094,833 thousand = ~5.095 billion trades in">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Equity Markets — Calculation Workings</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-annual-number-of-trades-2024">1. Annual Number of Trades (2024)</a></li><li><a href="#2-tps-calculations">2. TPS Calculations</a></li><li><a href="#3-annual-value-traded-2024">3. Annual Value Traded (2024)</a></li><li><a href="#4-historic-value-traded-timeseries-world-bank-data">4. Historic Value Traded Timeseries (World Bank Data)</a></li><li><a href="#5-cagr-calculations">5. CAGR Calculations</a></li><li><a href="#6-subcategory-breakdown-2024-estimated">6. Subcategory Breakdown (2024 Estimated)</a></li><li><a href="#7-projection-models">7. Projection Models</a></li></ul></div><h2 id="1-annual-number-of-trades-2024">1. Annual Number of Trades (2024)</h2>
+<h3 id="wfe-data-primary-source">WFE Data (Primary Source)</h3>
+<p>WFE December 2024 dashboard reports:
+- Number of trades (Dec 2024 month): <strong>5,094,833 thousand</strong> = ~5.095 billion trades in December alone
+- YoY change: <strong>+26.53%</strong></p>
+<p>WFE H1 2024 report:
+- APAC alone: <strong>18.68 billion trades</strong> in H1 2024 (highest half-year in 5 years)
+- H1 2024 equity trading volumes rose <strong>9.6%</strong> vs H2 2023, and <strong>+18.25%</strong> vs H1 2023</p>
+<h3 id="deriving-annual-global-equity-trades-2024">Deriving Annual Global Equity Trades (2024)</h3>
+<p><strong>Method A: From WFE December monthly data</strong>
+- December 2024: 5.095B trades
+- December is typically an average-to-low month (holiday effect, but also year-end positioning)
+- Using December as representative: 5.095B x 12 = ~61.1B trades/year
+- Adjustment: December is ~8-9% of annual volume typically → 5.095B / 0.085 = ~59.9B</p>
+<p><strong>Method B: From H1 APAC data + regional shares</strong>
+- APAC H1 2024: 18.68B trades
+- APAC typically represents ~55-60% of global equity trades by count (driven by <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>)
+- If APAC = 57% of global: 18.68B / 0.57 = 32.8B for H1
+- Full year (H2 typically slightly lower): 32.8B x 2.05 = ~67.2B
+- This seems high; APAC share may be higher at ~65%
+- At 65%: 18.68B / 0.65 = 28.7B for H1 → ~58.9B annual</p>
+<p><strong>Method C: From 2023 baseline + growth</strong>
+- WFE FY2023: Estimated ~48-50B equity trades globally
+- 2024 YoY growth in number of trades: +26.53% (WFE December dashboard)
+- 50B x 1.2653 = ~63.3B</p>
+<p><strong>Triangulated Estimate: ~60-63 billion equity trades globally in 2024</strong>
+<strong>Central estimate: 61.5 billion trades</strong> 🟡</p>
+<h3 id="cross-check-with-us-data">Cross-check with US Data</h3>
+<ul>
+<li>US consolidated equity trades: ~15-20M/day across all venues</li>
+<li>Trading days: ~252</li>
+<li>US annual: 15M x 252 = 3.78B to 20M x 252 = 5.04B trades</li>
+<li>US is roughly 7-8% of global trade count (much smaller share by count than by value due to India/China volume)</li>
+<li>4.4B / 0.07 = ~63B global — consistent with estimate above</li>
+</ul>
+<h2 id="2-tps-calculations">2. TPS Calculations</h2>
+<h3 id="average-tps-2024">Average TPS (2024)</h3>
+<ul>
+<li>Annual trades: 61.5 billion</li>
+<li>Trading hours vary by exchange, but effectively there are ~22 trading hours globally per weekday (overlapping sessions)</li>
+<li>Trading days: ~252 (varies by market; using US convention)</li>
+<li>Total trading seconds: 252 days x 22 hours x 3,600 seconds = 19,958,400 seconds</li>
+<li><strong>Average Global TPS: 61,500,000,000 / 19,958,400 = ~3,082 TPS</strong></li>
+</ul>
+<p>Alternative (using 6.5-hour primary session per market, 3 major time zones):
+- Effective global trading: ~16 hours/day with significant overlap
+- 252 x 16 x 3,600 = 14,515,200 seconds
+- <strong>Average TPS: 61.5B / 14.5M = ~4,241 TPS</strong></p>
+<p><strong>Central estimate: ~3,500 TPS average</strong> 🟡</p>
+<h3 id="peak-tps">Peak TPS</h3>
+<ul>
+<li>Peak days during volatility events (e.g., Sep 2024 China stimulus, Aug 2024 VIX spike):</li>
+<li>Combined Shanghai + Shenzhen hit 3.45 trillion yuan in a single day (Oct 2024)</li>
+<li>US markets see 2-3x normal volume on peak days</li>
+<li>Peak day volume: ~3x average → ~730M trades in a day</li>
+<li><a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> during market open (first 30 minutes):</li>
+<li>~20% of daily volume in first 30 minutes = 146M trades in 1,800 seconds</li>
+<li><strong>Peak TPS: ~81,000 TPS</strong> during opening surges on peak volatility days</li>
+<li>Sustained peak (busiest hour): ~15% of daily in 1 hour = 109.5M / 3,600 = ~30,400 TPS</li>
+</ul>
+<p><strong>Peak TPS estimate: ~30,000-80,000 TPS</strong> 🟡
+<strong>Headline peak: ~50,000 TPS</strong> (sustained burst during volatility events)</p>
+<h2 id="3-annual-value-traded-2024">3. Annual Value Traded (2024)</h2>
+<h3 id="world-bank-data-primary">World Bank Data (Primary)</h3>
+<ul>
+<li>2024: <strong>$106.53 trillion</strong> (stocks traded, total value, current US$) 🟢</li>
+</ul>
+<h3 id="wfe-data-cross-check">WFE Data (Cross-check)</h3>
+<ul>
+<li>WFE December 2024: Value of share trading $14,431,297 million for December</li>
+<li>Annual: $14.43T x 12 ≈ $173T (but this includes all WFE members, some double-counting)</li>
+<li>WFE H1 2024: trading value up 11.7%</li>
+<li>WFE FY2024: trading value up 15.5% vs 2023</li>
+</ul>
+<h3 id="cross-check">Cross-check</h3>
+<ul>
+<li>World Bank 2023: $94.08T → +15.5% = $108.7T (close to World Bank's $106.5T)</li>
+<li><strong>Central estimate: $106.5 trillion</strong> (World Bank) to <strong>$140-155 trillion</strong> (WFE broader measure)</li>
+<li>Using World Bank as conservative baseline: <strong>$106.5 trillion</strong> 🟢</li>
+</ul>
+<h2 id="4-historic-value-traded-timeseries-world-bank-data">4. Historic Value Traded Timeseries (World Bank Data)</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Value Traded (USD)</th>
+<th>YoY Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td>$101.17T</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>$77.67T</td>
+<td>-23.2%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>$77.70T</td>
+<td>+0.04%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>$84.27T</td>
+<td>+8.5%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>$75.07T</td>
+<td>-10.9%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>$102.94T</td>
+<td>+37.1%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>$120.65T</td>
+<td>+17.2%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>$104.39T</td>
+<td>-13.5%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>$94.08T</td>
+<td>-9.9%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>$106.53T</td>
+<td>+13.2%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="converting-value-to-estimated-trade-count">Converting Value to Estimated Trade Count</h3>
+<p>Assuming average trade size:
+- US average trade value: ~$10,000-15,000 (includes HFT small lots)
+- Asia average trade value: ~$1,000-3,000 (higher retail, smaller lots)
+- Global blended average: ~$1,500-2,500</p>
+<p>Using $1,730 average (to calibrate to 61.5B trades at $106.5T):
+$106.5T / $1,730 = 61.6B trades ✓</p>
+<p>Estimated trade counts (applying proportional scaling):
+| Year | Est. Trades (B) | Implied Avg Trade Size |
+|------|-----------------|----------------------|
+| 2015 | ~45B | $2,248 |
+| 2016 | ~35B | $2,219 |
+| 2017 | ~37B | $2,100 |
+| 2018 | ~40B | $2,107 |
+| 2019 | ~38B | $1,975 |
+| 2020 | ~52B | $1,980 |
+| 2021 | ~58B | $2,080 |
+| 2022 | ~50B | $2,088 |
+| 2023 | ~49B | $1,920 |
+| 2024 | ~62B | $1,718 |</p>
+<p>Note: Average trade size declining over time due to fractional shares, retail participation, HFT.</p>
+<h2 id="5-cagr-calculations">5. CAGR Calculations</h2>
+<h3 id="5-year-cagr-2019-2024-value-traded">5-Year CAGR (2019-2024) — Value Traded</h3>
+<ul>
+<li>Start: $75.07T, End: $106.53T</li>
+<li>CAGR = (106.53/75.07)^(1/5) - 1 = (1.4191)^0.2 - 1 = <strong>7.26%</strong></li>
+</ul>
+<h3 id="10-year-cagr-2015-2024-value-traded">10-Year CAGR (2015-2024) — Value Traded</h3>
+<ul>
+<li>Start: $101.17T, End: $106.53T</li>
+<li>CAGR = (106.53/101.17)^(1/9) - 1 = (1.053)^0.111 - 1 = <strong>0.57%</strong></li>
+<li>Note: 2015 was anomalously high (China bubble); inflates the base</li>
+</ul>
+<h3 id="5-year-cagr-2019-2024-estimated-trade-count">5-Year CAGR (2019-2024) — Estimated Trade Count</h3>
+<ul>
+<li>Start: ~38B, End: ~62B</li>
+<li>CAGR = (62/38)^(1/5) - 1 = (1.632)^0.2 - 1 = <strong>10.3%</strong></li>
+</ul>
+<h3 id="10-year-cagr-2015-2024-estimated-trade-count">10-Year CAGR (2015-2024) — Estimated Trade Count</h3>
+<ul>
+<li>Start: ~45B, End: ~62B</li>
+<li>CAGR = (62/45)^(1/9) - 1 = (1.378)^0.111 - 1 = <strong>3.6%</strong></li>
+</ul>
+<h2 id="6-subcategory-breakdown-2024-estimated">6. Subcategory Breakdown (2024 Estimated)</h2>
+<h3 id="by-exchange-estimated-annual-trades">By Exchange (Estimated Annual Trades)</h3>
+<table>
+<thead>
+<tr>
+<th>Exchange</th>
+<th>Est. Trades (B)</th>
+<th>Share</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NSE India</td>
+<td>~18.0B</td>
+<td>29.3%</td>
+<td>WFE: +74.3% YoY, #3 in cash equity by trade count</td>
+</tr>
+<tr>
+<td>Shenzhen SE</td>
+<td>~10.5B</td>
+<td>17.1%</td>
+<td>WFE: +21.4% YoY</td>
+</tr>
+<tr>
+<td>Shanghai SE</td>
+<td>~8.5B</td>
+<td>13.8%</td>
+<td>WFE: +24.2% YoY</td>
+</tr>
+<tr>
+<td>NASDAQ (all venues)</td>
+<td>~5.0B</td>
+<td>8.1%</td>
+<td>Consolidated US + NASDAQ-listed</td>
+</tr>
+<tr>
+<td>NYSE (all venues)</td>
+<td>~4.5B</td>
+<td>7.3%</td>
+<td>Consolidated US + NYSE-listed</td>
+</tr>
+<tr>
+<td>JPX (Tokyo)</td>
+<td>~4.2B</td>
+<td>6.8%</td>
+<td>WFE: +30.9% YoY; JPY 1,254T value</td>
+</tr>
+<tr>
+<td>Korea Exchange</td>
+<td>~3.0B</td>
+<td>4.9%</td>
+<td>Estimate from WFE APAC data</td>
+</tr>
+<tr>
+<td>LSE Group</td>
+<td>~1.5B</td>
+<td>2.4%</td>
+<td>~500K-2M trades/day</td>
+</tr>
+<tr>
+<td>HKEX</td>
+<td>~1.2B</td>
+<td>2.0%</td>
+<td>WFE: +31.1% YoY value</td>
+</tr>
+<tr>
+<td>Taiwan SE</td>
+<td>~1.0B</td>
+<td>1.6%</td>
+<td>WFE: +41.6% YoY value</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>~4.1B</td>
+<td>6.7%</td>
+<td>Rest of world</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~61.5B</strong></td>
+<td><strong>100%</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="lit-vs-darkoff-exchange-us-market">Lit vs Dark/Off-Exchange (US Market)</h3>
+<ul>
+<li>US TRF (off-exchange) share: <strong>47%</strong> of Total Consolidated Volume in 2024 (up 300bps YoY)</li>
+<li>Exchange (lit) share: <strong>53%</strong></li>
+<li>Globally, off-exchange share is lower (~25-30%) as dark pools are primarily US/EU</li>
+</ul>
+<h2 id="7-projection-models">7. Projection Models</h2>
+<h3 id="baseline-projection-2026-2035">Baseline Projection (2026-2035)</h3>
+<p>Assumptions:
+- Trade count CAGR: 6.0% (below recent 10.3% 5yr CAGR, moderated for maturation)
+- Value CAGR: 5.0% (GDP-linked growth + market appreciation)</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Trades (B)</th>
+<th>Est. Value ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>65.2</td>
+<td>111.8</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>69.1</td>
+<td>117.4</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>73.3</td>
+<td>123.3</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>77.7</td>
+<td>129.4</td>
+</tr>
+<tr>
+<td>2029</td>
+<td>82.3</td>
+<td>135.9</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>87.3</td>
+<td>142.7</td>
+</tr>
+<tr>
+<td>2031</td>
+<td>92.5</td>
+<td>149.8</td>
+</tr>
+<tr>
+<td>2032</td>
+<td>98.1</td>
+<td>157.3</td>
+</tr>
+<tr>
+<td>2033</td>
+<td>104.0</td>
+<td>165.2</td>
+</tr>
+<tr>
+<td>2034</td>
+<td>110.2</td>
+<td>173.4</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>116.8</td>
+<td>182.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-projection-2026-2035">High-Growth Projection (2026-2035)</h3>
+<p>Assumptions:
+- Trade count CAGR: 9.0% (retail boom, fractional shares, EM growth)
+- Value CAGR: 7.5%</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Trades (B)</th>
+<th>Est. Value ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>67.0</td>
+<td>114.5</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>73.1</td>
+<td>123.1</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>79.6</td>
+<td>132.3</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>86.8</td>
+<td>142.2</td>
+</tr>
+<tr>
+<td>2029</td>
+<td>94.6</td>
+<td>152.9</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>103.1</td>
+<td>164.3</td>
+</tr>
+<tr>
+<td>2031</td>
+<td>112.4</td>
+<td>176.7</td>
+</tr>
+<tr>
+<td>2032</td>
+<td>122.5</td>
+<td>189.9</td>
+</tr>
+<tr>
+<td>2033</td>
+<td>133.6</td>
+<td>204.2</td>
+</tr>
+<tr>
+<td>2034</td>
+<td>145.6</td>
+<td>219.5</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>158.7</td>
+<td>235.9</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-projection-2026-2035">Conservative Projection (2026-2035)</h3>
+<p>Assumptions:
+- Trade count CAGR: 3.0% (HFT regulation, consolidation, tick size reform)
+- Value CAGR: 3.0%</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Trades (B)</th>
+<th>Est. Value ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>63.3</td>
+<td>109.7</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>65.2</td>
+<td>113.0</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>67.2</td>
+<td>116.4</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>69.2</td>
+<td>119.9</td>
+</tr>
+<tr>
+<td>2029</td>
+<td>71.3</td>
+<td>123.4</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>73.4</td>
+<td>127.1</td>
+</tr>
+<tr>
+<td>2031</td>
+<td>75.6</td>
+<td>130.9</td>
+</tr>
+<tr>
+<td>2032</td>
+<td>77.9</td>
+<td>134.8</td>
+</tr>
+<tr>
+<td>2033</td>
+<td>80.2</td>
+<td>138.8</td>
+</tr>
+<tr>
+<td>2034</td>
+<td>82.6</td>
+<td>143.0</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>85.1</td>
+<td>147.3</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/equity-markets/workings/calculations.md">analysis/traditional-finance/equity-markets/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

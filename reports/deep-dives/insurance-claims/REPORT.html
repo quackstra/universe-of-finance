@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance Claims — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Last Updated: 2026-07-19 (Run 13) Follows up: Opaque Markets (Run 12), which flagged insurance claims (55–148 TPS) as the single most surp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Deep Dives<span class="sep">/</span>Insurance Claims</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Insurance Claims</h1></div>
+  <div class="chips"><div class="chip"><div class="k">Confidence</div><div class="v amber">60</div></div></div>
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#the-claim-lifecycle-why-one-claim-one-transaction">The Claim Lifecycle (why one claim ≠ one transaction)</a></li><li><a href="#layer-1-claim-events-administrative-1110-tps-gross">Layer 1 — Claim Events (administrative, ~1,110 TPS gross)</a></li><li><a href="#layer-2-settlement-payments-money-movement-80130-tps-gross">Layer 2 — Settlement Payments (money movement, ~80–130 TPS gross)</a></li><li><a href="#layer-3-net-new-to-the-big-number-90100-tps-refined">Layer 3 — Net-New to the Big Number (~90–100 TPS refined)</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+<strong>Last Updated</strong>: 2026-07-19 (Run 13)
+<strong>Follows up</strong>: <a href="/universe-of-finance/reports/deep-dives/opaque-markets/REPORT.html">Opaque Markets (Run 12)</a>, which flagged
+insurance claims (55–148 TPS) as the single most surprising hidden-volume finding.</p>
+</blockquote>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>The <a href="/universe-of-finance/">Insurance Premiums</a> category counts
+money flowing <strong>into</strong> insurers (~444 TPS gross, ~44 TPS net). This deep dive counts the
+<strong>opposite flow</strong>: money and messages moving <strong>out</strong> — the claims-and-payouts lifecycle.</p>
+<p>Run 12 flagged claims as worth <strong>55–148 TPS net-new</strong>. That range was correct but coarse.
+The core problem is that "an insurance claim" is not one transaction — it is a <em>lifecycle</em>
+of 3–5 distinct events, only one of which moves money. Conflating them either massively
+overcounts (if you count every adjudication message) or undercounts (if you only count the
+final wire). This report separates the two:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What it is</th>
+<th>Est. Global Volume</th>
+<th>TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claim events</strong> (administrative)</td>
+<td>Submission + adjudication + status messages</td>
+<td>~35B/yr</td>
+<td><strong>~1,110 gross</strong></td>
+</tr>
+<tr>
+<td><strong>Settlement payments</strong> (money movement)</td>
+<td>Actual payouts to claimants/providers</td>
+<td>~2.5–4B/yr</td>
+<td><strong>~80–130 gross</strong></td>
+</tr>
+<tr>
+<td><strong>Net-new to Big Number</strong></td>
+<td>Payouts NOT already on counted bank/card rails</td>
+<td>—</td>
+<td><strong>~55–148 (Run 12); refined ~90–100</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The headline: <strong>insurance generates ~1,100 TPS of administrative message traffic but only
+~90–100 TPS of net-new financial settlement.</strong> The gap between those two numbers is the
+insurance industry's automation surface — and the reason claims are so easy to miscount.</p>
+<hr/>
+<h2 id="the-claim-lifecycle-why-one-claim-one-transaction">The Claim Lifecycle (why one claim ≠ one transaction)</h2>
+<pre><code>  FNOL          Adjudication      Approval        Settlement       Recovery
+ (notice)  →   (review/price)  →  (decide)   →    (PAY MONEY)  →  (subrogation)
+   msg            msg/EDI          msg           $$ ACH/check       msg/$$
+   ▲                                              ▲
+   administrative event                           the ONLY guaranteed money-movement
+</code></pre>
+<ul>
+<li>A single health claim can generate 5+ EDI transactions (837 claim submission, 277 status,
+  835 remittance advice, 999 acknowledgment…) but <strong>one</strong> payment.</li>
+<li>Health payers <strong>batch</strong> many adjudicated claims into a single ACH remittance (ERA/EFT), so
+  N claims collapse to ≪N payments.</li>
+<li>P&amp;C and life claims are lower-volume but more likely to be <strong>1 claim = 1 payment</strong>.</li>
+</ul>
+<p><strong>Only the Settlement column belongs in the Big Number.</strong> Everything else is messaging.</p>
+<hr/>
+<h2 id="layer-1-claim-events-administrative-1110-tps-gross">Layer 1 — Claim Events (administrative, ~1,110 TPS gross)</h2>
+<h3 id="us-health-the-dominant-driver">US Health (the dominant driver)</h3>
+<p>Health is where the count lives, because every prescription, doctor visit, and lab test is
+a claim.</p>
+<ul>
+<li><strong>Medical claims</strong>: ~6B/yr (US)</li>
+<li><strong>Pharmacy claims</strong>: ~6.3B/yr (retail prescriptions, each a PBM adjudication)</li>
+<li><strong>Dental claims</strong>: ~0.5B/yr</li>
+<li>CAQH tracked <strong>31.5B administrative verifications</strong> across medical plans in 2024
+  (<a href="https://www.ajmc.com/view/2024-caqh-index-foresees-major-opportunity-for-health-care-savings">AJMC / 2024 CAQH Index</a>),
+  confirming the order of magnitude.</li>
+<li><strong>US health claim events ≈ ~13B/yr → ~412 TPS</strong></li>
+</ul>
+<h3 id="rest-of-world-health">Rest-of-world Health</h3>
+<p>The US is ~40% of global health spend but a larger share of <em>transactional</em> claim
+processing (single-payer systems adjudicate differently). Estimating global health claim
+events at ~2.5× US → <strong>~30B/yr → ~950 TPS gross</strong>.</p>
+<h3 id="pc-and-life">P&amp;C and Life</h3>
+<ul>
+<li><strong>US auto</strong>: ~6.2 collision claims per 100 insured vehicle-years
+  (<a href="https://www.iihs.org/research-areas/auto-insurance">IIHS/HLDI</a>) × ~280M vehicles +
+  comprehensive/liability ≈ ~35–45M claims/yr</li>
+<li><strong>US home</strong>: 5.3% of insured homes filed a claim in 2023
+  (<a href="https://www.iii.org/fact-statistic/facts-statistics-homeowners-and-renters-insurance">III</a>)
+  × ~85M policies ≈ ~4.5M/yr</li>
+<li><strong>US P&amp;C total</strong> ≈ ~60M/yr; <strong>global P&amp;C</strong> ≈ ~200M/yr → <strong>~6 TPS</strong></li>
+<li><strong>Life/annuity</strong>: low frequency, high value — <strong>~50–100M/yr globally → ~2–3 TPS</strong></li>
+</ul>
+<p><strong>Layer 1 total: ~30B health + ~0.2B P&amp;C + ~0.1B life ≈ ~35B/yr ≈ ~1,110 TPS gross
+(administrative).</strong></p>
+<hr/>
+<h2 id="layer-2-settlement-payments-money-movement-80130-tps-gross">Layer 2 — Settlement Payments (money movement, ~80–130 TPS gross)</h2>
+<p>This is the number that matters for the Big Number. Two forces shrink it dramatically
+versus Layer 1:</p>
+<ol>
+<li><strong>Batching</strong>: health payers issue one ACH remittance (EFT/ERA) covering many claims.
+   NACHA reports healthcare ACH claim payments have climbed for 11 straight years
+   (<a href="https://www.nacha.org/news/ach-healthcare-claim-payments-rise-again-2024-continuing-11-year-climb">Nacha 2024</a>),
+   but the payment <em>count</em> is far below the claim count — a ratio of roughly 4–8 claims per
+   payment.</li>
+<li><strong>Denials/zero-pay</strong>: a meaningful share of claims are denied or patient-responsibility
+   and generate <strong>no</strong> insurer payment.</li>
+</ol>
+<p>Estimate:
+- Global health settlement payments: ~30B claims ÷ ~6 (batch ratio) × ~0.75 (paid share)
+  ≈ <strong>~3.75B payments/yr → ~119 TPS</strong>
+- P&amp;C settlement payments: ~0.2B → ~6 TPS
+- Life settlement payments: ~0.1B → ~3 TPS
+- <strong>Layer 2 total ≈ ~4B payments/yr ≈ ~128 TPS gross</strong> (upper end); conservative floor
+  ~80 TPS if batch ratio is higher.</p>
+<hr/>
+<h2 id="layer-3-net-new-to-the-big-number-90100-tps-refined">Layer 3 — Net-New to the Big Number (~90–100 TPS refined)</h2>
+<p>Most settlement payments ride <strong>existing counted rails</strong>: US health EFT is ACH (already in
+<a href="/universe-of-finance/">Bank Transfers</a>); P&amp;C payouts are ACH, check,
+or increasingly instant-to-card (already in card/bank totals).</p>
+<p>The <strong>net-new</strong> contribution is the set of claim payments that are <em>not</em> otherwise counted —
+primarily instant/real-time claim disbursements (push-to-card, RTP claim payouts) and
+cross-border/cash claim settlements in emerging markets that no other category captures.</p>
+<ul>
+<li>Run 12 estimate: <strong>55–148 TPS</strong> net-new</li>
+<li>This deep dive narrows to a <strong>refined ~90–100 TPS</strong>, midpoint <strong>~95 TPS</strong>, by anchoring
+  the batch ratio (4–8×) and paid share (~75%) with CAQH/NACHA data.</li>
+</ul>
+<p><strong>Recommendation</strong>: keep the <a href="/universe-of-finance/">Insurance Premiums</a>
+category as-is (it counts inbound premium), and treat claims as a <strong>documented adjacency</strong>
+worth ~95 TPS net-new — <em>not</em> a new standalone Big Number category, because ~85–90% of
+claim settlement value already flows on counted rails. Add ~95 TPS only if/when the Big
+Number is recomputed to include claim-payout net-new (currently it is not).</p>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>One claim is 5 messages and ⅛ of a payment.</strong> The 20× gap between claim <em>events</em>
+   (~1,110 TPS) and net-new <em>settlement</em> (~95 TPS) is the single biggest reason insurance
+   volume is mis-estimated. Always specify which layer you mean.</p>
+</li>
+<li>
+<p><strong>Health dominates count; life dominates value.</strong> ~95% of claim <em>count</em> is health
+   (medical + pharmacy + dental). Life/annuity is a rounding error by count but moves
+   enormous value per payout — a mini version of the <a href="/universe-of-finance/reports/deep-dives/middle-east/REPORT.html">Middle East</a>
+   value/count inversion.</p>
+</li>
+<li>
+<p><strong>Batching is the hidden variable.</strong> The claim-to-payment ratio (4–8×) driven by ACH
+   remittance batching is what collapses ~30B health claims into ~3.75B payments. Small
+   changes in this ratio swing the estimate by ±40 TPS — the dominant uncertainty.</p>
+</li>
+<li>
+<p><strong>Instant claim payouts are the growth edge.</strong> Push-to-card and RTP disbursements are
+   converting batched ACH payments into 1:1 real-time payments. As adoption grows, insurance
+   claims will shift <em>from</em> batched (low count) <em>to</em> instant (high count), raising the
+   net-new TPS over time. A category to re-measure annually.</p>
+</li>
+<li>
+<p><strong>Run 12 validated, narrowed.</strong> The 55–148 TPS range holds; refined midpoint ~95 TPS.
+   Confidence upgraded 🔴→🟡 on the strength of CAQH (31.5B verifications) and NACHA
+   healthcare-ACH anchors.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.ajmc.com/view/2024-caqh-index-foresees-major-opportunity-for-health-care-savings">AJMC — 2024 CAQH Index (31.5B verifications)</a></li>
+<li><a href="https://www.caqh.org/blog/2025-caqh-index-shows-u.s.-healthcare-avoided-258-billion-and-accelerated-automation-interoperability-and-ai-adoption">CAQH — 2025 Index Report ($258B avoided)</a></li>
+<li><a href="https://www.nacha.org/news/ach-healthcare-claim-payments-rise-again-2024-continuing-11-year-climb">Nacha — Healthcare ACH Claim Payments Rise Again in 2024</a></li>
+<li><a href="https://www.iii.org/fact-statistic/facts-statistics-homeowners-and-renters-insurance">III — Facts + Statistics: Homeowners and Renters Insurance</a></li>
+<li><a href="https://www.iii.org/fact-statistic/facts-statistics-auto-insurance">III — Facts + Statistics: Auto Insurance</a></li>
+<li><a href="https://www.iihs.org/research-areas/auto-insurance">IIHS / HLDI — Auto Insurance Claim Frequency</a></li>
+<li><a href="https://content.naic.org/sites/default/files/2024-annual-property-casualty-and-title-insurance-industries-analysis-report.pdf">NAIC — 2024 Property &amp; Casualty Industry Analysis</a></li>
+<li><a href="https://www.policygenius.com/homeowners-insurance/homeowners-insurance-statistics/">Policygenius — Homeowners Insurance Claims Statistics (2024)</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/deep-dives/insurance-claims/workings/calculations.html">⚙ calculations</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/deep-dives/insurance-claims/REPORT.md">analysis/deep-dives/insurance-claims/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

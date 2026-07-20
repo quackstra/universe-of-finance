@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeFi (Decentralised Finance) — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition What counts: One on-chain interaction with a decentralised financial protocol — a DEX swap, lending deposit/withdrawal/borrow/repay, LP provision/removal, or">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Defi</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>DeFi (Decentralised Finance) — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-adjustments">Key Adjustments</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li><strong>What counts</strong>: One on-chain interaction with a decentralised financial protocol — a DEX swap, lending deposit/withdrawal/borrow/repay, LP provision/removal, or perpetual futures trade settled on-chain</li>
+<li><strong>Counting point</strong>: Smart contract execution included in a finalized block. Each <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> interaction is an L1 or L2 blockchain transaction</li>
+<li><strong>Why this point</strong>: DeFi transactions are smart contract events — they are on-chain and verifiable. DEX volume aggregators (DeFiLlama) count at the smart contract event level</li>
+<li><strong>Key ambiguities</strong>:</li>
+<li><strong>Multi-hop routing</strong>: A single DEX swap may route through 2-5 liquidity pools (e.g., USDC → WETH → token via 2 Uniswap pools). This is 1 user transaction but generates 2+ swap events. DeFiLlama counts the volume at the final output level (not per-hop)</li>
+<li><strong>MEV bot activity</strong>: Sandwich attacks and arbitrage bots generate real on-chain transactions that inflate DEX volume. On Solana, sandwiched trades and MEV bots may account for 30-60% of DEX transaction COUNT. These are economically real (they extract value) but not "organic user" activity</li>
+<li><strong>Lending lifecycle</strong>: A single lending position generates multiple transactions: deposit, borrow, repay, withdraw, liquidation. Each is a separate DeFi transaction. A user maintaining a position for a year generates ~4-10 transactions per position</li>
+<li><strong>TVL double-counting</strong>: TVL is a stock metric, not a flow metric. Recursive borrowing (deposit ETH → mint stETH → deposit stETH in Aave → borrow USDC → LP in Uniswap) means the same dollar is counted 3-5x in TVL. TVL does NOT inform our transaction count</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-defillama-dex-volume-aggregation">Method A: DeFiLlama DEX Volume Aggregation</h3>
+<ul>
+<li><strong>Source</strong>: DeFiLlama DEX volume rankings — $1.76T spot DEX volume in 2024</li>
+<li><strong>Value</strong>: At estimated average trade size of ~$500-1,500 → ~3.2-9.6M DEX trades/day → plus lending/staking transactions → total DeFi ~5-15M txns/day</li>
+<li><strong>Strengths</strong>: DeFiLlama is the industry standard for DeFi data. Aggregates directly from smart contract events across 200+ protocols and 80+ chains</li>
+<li><strong>Weaknesses</strong>: Reports VOLUME not transaction COUNT. Average trade size varies enormously (Solana memecoin: ~$50; Ethereum whale: ~$50K). No single source publishes global DeFi transaction counts</li>
+</ul>
+<h3 id="method-b-chain-level-defi-transaction-share">Method B: Chain-Level DeFi Transaction Share</h3>
+<ul>
+<li><strong>Source</strong>: DeFi transactions as estimated percentage of total L1/L2 transactions per chain</li>
+<li><strong>Value</strong>: If DeFi = ~40-50% of L1/L2 filtered transactions (~35.9M/day) → ~14-18M DeFi txns/day</li>
+<li><strong>Strengths</strong>: Top-down cross-check using the L1/L2 total as ceiling</li>
+<li><strong>Weaknesses</strong>: The DeFi share percentage is itself estimated. Solana's DeFi share is unclear because of memecoin/pump.fun activity (is this "DeFi" or "speculation"?)</li>
+</ul>
+<h3 id="method-c-protocol-level-aggregation">Method C: Protocol-Level Aggregation</h3>
+<ul>
+<li><strong>Source</strong>: Major protocol daily users × avg transactions per user. Uniswap ~500K daily unique traders, Aave ~50K daily users, Raydium ~200K daily traders, etc.</li>
+<li><strong>Value</strong>: Cross-check for order-of-magnitude. ~1M daily unique DeFi users × ~5-10 transactions per active session → ~5-10M DeFi txns/day</li>
+<li><strong>Strengths</strong>: Grounds the estimate in observable user behavior</li>
+<li><strong>Weaknesses</strong>: "Unique users" = unique addresses (1 human may use 5+ wallets). Sybil farming inflated 2024 user counts on many L2s</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│           DeFi VOLUME vs COUNT ESTIMATION                     │
+│                                                               │
+│  DeFiLlama        Chain Share       Protocol Users            │
+│  [volume-based]   [top-down %]      [bottom-up users]        │
+│  ┌──────────┐    ┌──────────┐     ┌──────────┐              │
+│  │$1.76T spot│    │~40-50% of│     │~1M daily │              │
+│  │ + $2.4T  │    │ 35.9M/day│     │ unique   │              │
+│  │ perps    │    │L1/L2 txns│     │ traders  │              │
+│  │→ 5-15M/d│    │→14-18M/d │     │ × 5-10   │              │
+│  └────┬─────┘    └────┬─────┘     └────┬─────┘              │
+│       │               │                │                     │
+│       └───────────────┼────────────────┘                     │
+│                       ▼                                      │
+│              ┌──────────────────┐                            │
+│              │  CONVERGENCE     │                            │
+│              │  ~10-15M DeFi    │                            │
+│              │  txns/day        │                            │
+│              │  (~120-175 TPS)  │                            │
+│              │  Confidence: Low │                            │
+│              └──────────────────┘                            │
+│                                                               │
+│  Note: No single source publishes a DeFi transaction count.  │
+│  All approaches are estimates with wide uncertainty bands.    │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>Three approaches converge on ~10-15M DeFi transactions/day (~120-175 TPS). This is consistent with DeFi representing ~40-50% of total on-chain activity. The volume-based approach gives the widest range because average trade size assumptions dominate. The chain-share approach provides the tightest bound but depends on an estimated DeFi percentage. The protocol-user approach is the most grounded but may undercount due to long-tail protocols.</p>
+<p>Note: DeFi transaction count is NOT directly published by any source. This is one of the lowest-confidence estimates in the Digital Assets sector.</p>
+<h2 id="key-adjustments">Key Adjustments</h2>
+<h3 id="mevbot-transaction-decomposition">MEV/Bot Transaction Decomposition</h3>
+<pre><code>DeFi Transaction Mix (Estimated)
+═══════════════════════════════════════════════════
+
+Total DeFi transactions/day:    ~12M (central estimate)
+  │
+  ├── Organic user swaps        ████████████       ~5M  (42%)
+  │   Human-initiated DEX trades
+  │
+  ├── Arbitrage bots            █████████          ~3.5M (29%)
+  │   Cross-DEX, cross-chain arbitrage
+  │   (economically real — improve prices)
+  │
+  ├── MEV sandwich attacks      ███                ~1.5M (12%)
+  │   Front-running user trades
+  │   (parasitic but real on-chain activity)
+  │
+  ├── Lending/staking lifecycle ███                ~1.2M (10%)
+  │   Deposits, borrows, repays,
+  │   liquidations, staking/unstaking
+  │
+  └── Other (governance, etc.)  █                  ~0.8M  (7%)
+      Votes, protocol upgrades,
+      NFT-related DeFi
+
+"Genuine human DeFi TPS" ≈ ~5M/day ≈ ~58 TPS
+(vs ~12M total DeFi ≈ ~140 TPS)
+</code></pre>
+<p>The distinction between "organic user" and "bot" activity in DeFi is philosophically fraught. Arbitrage bots improve market efficiency and close price gaps — they perform a genuine economic function. Sandwich bots extract value parasitically but are real transactions. Our primary figure counts ALL DeFi transactions regardless of initiator, consistent with how traditional markets count HFT trades.</p>
+<h3 id="dex-to-cex-ratio-as-structural-metric">DEX-to-CEX Ratio as Structural Metric</h3>
+<p>The DEX-to-CEX spot volume ratio grew from ~3% (2020) to ~10% (2024) to ~20% (Jan 2025). This structural shift is the most important trend in crypto market structure:</p>
+<pre><code>DEX Share of Crypto Spot Trading
+═══════════════════════════════════════
+
+2020  ██                                    ~3%
+2021  ███                                   ~5%
+2022  █████                                 ~7%
+2023  ███████                               ~9%
+2024  ████████████                          ~10%
+2025  ████████████████████                  ~20%  (Jan 2025)
+      ──────────────────────────────────────
+      0%        10%        20%        30%
+
+Drivers: FTX collapse trust shift, L2 fee reduction,
+Solana memecoin boom, improved DEX UX (Jupiter, 1inch)
+</code></pre>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>DeFi Overlap Map — Full Subset of L1/L2
+═══════════════════════════════════════════════════
+
+L1/L2 blockchain txns (filtered)  ██████████████████████  ~35.9M/day
+  │
+  │  CONTAINS:
+  │
+  ├── DeFi transactions (this)    █████████████           ~12M/day (33-50%)
+  │     │
+  │     ├── overlaps Stablecoins  ████████                ~30-40% of DeFi
+  │     │   (USDC/USDT in swaps)                          involves stablecoins
+  │     │
+  │     └── overlaps CEX          ░ (none)                DEX ≠ CEX
+  │
+  ├── Non-DeFi on-chain           █████████               ~24M/day (50-67%)
+  │   (simple transfers, NFTs,
+  │    gaming, governance, spam)
+  │
+  └── Total L1/L2                 ██████████████████████  ~35.9M/day
+
+CRITICAL: DeFi is a FULL SUBSET of L1/L2.
+For Digital Assets sector totals:
+  Sector total = L1/L2 (filtered) + CEX
+  NOT: L1/L2 + DeFi + Stablecoins + CEX (would triple-count)
+</code></pre>
+<ul>
+<li><strong>Full subset of L1/L2</strong>: Every DeFi transaction is an on-chain transaction. DeFi ~= 33-50% of L1/L2 by count</li>
+<li><strong>Partial overlap with <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">Stablecoins</a></strong>: ~30-40% of DeFi transactions involve stablecoins (DEX swaps, lending)</li>
+<li><strong>Zero overlap with CEX</strong>: DEX and CEX are mutually exclusive venues. A trade on Uniswap and a trade on Binance are never the same transaction</li>
+</ul>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Protocol Type      Coverage  Source              Notes
+─────────────────  ──────── ─────────────────── ──────────────────
+DEX spot (major)   █████████ DeFiLlama           Uniswap, Raydium, etc.
+DEX perps          ████████░ DeFiLlama perps     Hyperliquid, dYdX, Jupiter
+Lending/borrowing  ████████░ DeFiLlama lending   Aave, Compound, MakerDAO
+Liquid staking     ████████░ DeFiLlama staking   Lido, Rocket Pool
+DEX aggregators    ███████░░ Various              Jupiter, 1inch, Paraswap
+Long-tail DeFi     ████░░░░░ Partially tracked    Hundreds of small protocols
+─────────────────  ──────── ─────────────────── ──────────────────
+By volume: ~90% covered (top 20 protocols dominate)
+By count: ~75% covered (long tail of micro-protocols)
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+DeFiLlama (volume)  █████████  █████████ █████████░  ████████░░
+CoinGecko DEX       ████████░  █████████ ████████░░  ██████░░░░
+Protocol dashboards ██████░░░  █████████ ████████░░  ████████░░
+Dune Analytics      ██████░░░  █████████ ██████░░░░  ██████████
+MEV trackers        ████░░░░░  ████████░ ██████░░░░  ████████░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    72/100     90/100    78/100      76/100
+</code></pre>
+<ul>
+<li><strong>Score</strong>: 62/100</li>
+<li><strong>Key drivers of uncertainty</strong>:</li>
+<li>No source publishes DeFi transaction COUNTS — everything is derived from volume or estimated from chain data</li>
+<li>MEV/bot share of DeFi transactions (30-60% by count?) is the single biggest unknown for "genuine user" TPS</li>
+<li>Solana memecoin activity (pump.fun) may or may not be "DeFi" — definitional boundary is unclear</li>
+<li>Sybil/airdrop farming inflated 2024 DeFi metrics (zkSync, Starknet saw 40-60% activity drops post-airdrop)</li>
+<li>TVL (the most common DeFi metric) tells us nothing about transaction frequency — $140B TVL with 12M txns/day could also be $50B TVL with 12M txns/day</li>
+<li>Perp DEX volume ($2.4T) is notional — leverage inflation distorts the economic significance</li>
+<li><strong>High-confidence elements</strong>: DEX spot volume ($1.76T, on-chain verifiable); TVL ($140B, on-chain); DEX-to-CEX ratio (~10%); protocol market share</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial report</td>
+<td>Run 2: DeFi category created</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Methodology doc created</td>
+<td>Run 6: Formal methodology documentation with MEV decomposition</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/defi/METHODOLOGY.md">analysis/digital-assets/defi/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

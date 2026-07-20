@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interbank Settlement (RTGS) — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Category: Banking > Interbank Settlement (RTGS) Data Year: 2024 Last Updated: 2026-03-26 Executive Summary Global Real-Time Gross Settleme">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Banking<span class="sep">/</span>Interbank Rtgs</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Interbank Settlement (RTGS)</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">50</div></div><div class="chip"><div class="k">Confidence</div><div class="v green">82</div></div><div class="chip"><div class="k">Opacity</div><div class="v green">40</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#23/28</div></div></div>
+  <div class="chart-box"><h3>Banking — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart1"></canvas></div></div><script>new Chart(document.getElementById("chart1"),{"type": "bar", "data": {"labels": ["Interbank RTGS", "Securities Settlement"], "datasets": [{"data": [50.1, 44], "backgroundColor": ["#3b82f6", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections-through-2035">Projections (through 2035)</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<p><strong>Category</strong>: Banking &gt; Interbank Settlement (RTGS)
+<strong>Data Year</strong>: 2024
+<strong>Last Updated</strong>: 2026-03-26</p>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Global Real-Time Gross Settlement (RTGS) systems processed an estimated <strong>423 million transactions</strong> in 2024, averaging <strong>~13.4 TPS</strong> (calendar) or <strong>~6.7 TPS</strong> (business-day adjusted). These are high-value, low-count systems: Fedwire alone moves <strong>~$4.5 trillion per day</strong> but only ~836,000 transactions. The total annual value across the five major RTGS systems and CLS exceeded <strong>$2,100 trillion</strong> — making this the single highest-value transaction category in global finance.</p>
+<p>The paradox of RTGS is that it underpins the entire financial system while processing fewer transactions per second than a single mid-size <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a> website. Each transaction represents an average of <strong>$5–6 million</strong> (Fedwire) to <strong>tens of millions</strong> (TARGET2/T2). Growth in transaction counts is modest (2–4% CAGR) because these systems are designed for final settlement of wholesale obligations, not retail throughput.</p>
+<hr/>
+<h2 id="scope">Scope</h2>
+<p><strong>Included:</strong>
+- Fedwire Funds Service (US)
+- TARGET2/T2 (Eurozone, migrated to T2 consolidated platform March 2023)
+- CHAPS (UK)
+- BOJ-NET Funds Transfer System (<a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>)
+- CLS (global FX settlement via payment-versus-payment)</p>
+<p><strong>Excluded:</strong>
+- Retail fast payment systems (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a>, FedNow, TIPS) — covered under <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a>
+- <a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">Securities settlement</a> legs (Fedwire Securities, TARGET2-Securities) — covered under Securities Settlement
+- SWIFT messaging (messaging layer, not settlement)
+- Correspondent banking flows (use RTGS as final leg but are counted at the RTGS level)</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume">Transaction Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS (calendar)</td>
+<td>~13.4</td>
+<td>Calculated: 423M / 31.56M sec</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Average TPS (business-day)</td>
+<td>~6.7</td>
+<td>Calculated: 423M / (250 × 8h × 3600)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~30–40</td>
+<td>Peak-day concurrent across time zones</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Daily volume (avg)</td>
+<td>~1.69M</td>
+<td>Sum of system averages</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual volume (2024)</td>
+<td>~423M transactions</td>
+<td>Aggregated from system reports</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual value (2024)</td>
+<td>~$2,150 trillion</td>
+<td>Aggregated, EUR/GBP/JPY converted at avg 2024 rates</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on TPS calculation</strong>: RTGS systems operate only on business days (~250/year) and typically within defined operating windows (6–18 hours). The "calendar TPS" of 13.4 understates burst activity; business-day TPS during operating hours is more meaningful but still modest at ~6.7 TPS because these are wholesale systems.</p>
+<h3 id="system-by-system-breakdown">System-by-System Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>Annual Volume (M)</th>
+<th>Annual Value</th>
+<th>Avg Daily Volume</th>
+<th>Avg Txn Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fedwire Funds</strong></td>
+<td>US</td>
+<td>~210</td>
+<td>~$1,133T</td>
+<td>~836,000</td>
+<td>~$5.4M</td>
+<td><a href="https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html">FRB Services</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td><strong>T2 (ex-TARGET2)</strong></td>
+<td>Eurozone</td>
+<td>~108</td>
+<td>~€555T (~$605T)</td>
+<td>~424,000</td>
+<td>~€5.6M</td>
+<td><a href="https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html">ECB T2 Facts</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td><strong>CHAPS</strong></td>
+<td>UK</td>
+<td>~53</td>
+<td>~£87.5T (~$111T)</td>
+<td>~208,000</td>
+<td>~£1.7M</td>
+<td><a href="https://www.bankofengland.co.uk/payment-and-settlement/payment-and-settlement-statistics">Bank of England</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td><strong>BOJ-NET</strong></td>
+<td>Japan</td>
+<td>~5</td>
+<td>~¥18,250T (~$122T)</td>
+<td>~19,000</td>
+<td>~¥3.8B</td>
+<td><a href="https://www.boj.or.jp/en/statistics/set/kess/index.htm">BOJ Statistics</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>CLS</strong></td>
+<td>Global (FX)</td>
+<td>~250 (est.)</td>
+<td>~$1,750T (est.)</td>
+<td>~1,000,000</td>
+<td>~$7M</td>
+<td><a href="https://www.cls-group.com/about/annual-report-2024/annual-report-2024/">CLS Group</a></td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>CLS note</strong>: CLS settles FX obligations via payment-versus-payment. Average daily value is ~$7 trillion across 18 currencies. The record single-day settlement was $19.1 trillion (20 June 2024). Transaction count is estimated from the record day of 3.2 million trades (July 2022) and average daily value ratios. CLS's multilateral netting reduces actual funding to ~1% of gross value ($72B for the $19.1T record day).</p>
+<p><strong>BOJ-NET note</strong>: Specific 2024 transaction counts are derived from BOJ's published Payment and Settlement Statistics. The ~19,000 daily average and ~¥73 trillion daily value are from the most recently available data; 2024 figures may be marginally higher.</p>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="fedwire-funds-service-volume-millions-of-transfers">Fedwire Funds Service Volume (millions of transfers)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (M)</th>
+<th>Value ($T)</th>
+<th>Avg Txn ($M)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>179.0</td>
+<td>840.0</td>
+<td>4.7</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>184.0</td>
+<td>893.0</td>
+<td>4.9</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>204.5</td>
+<td>1,036.0</td>
+<td>5.1</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>196.1</td>
+<td>1,011.0</td>
+<td>5.2</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>193.3</td>
+<td>1,078.0</td>
+<td>5.6</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>209.9</td>
+<td>1,133.4</td>
+<td>5.4</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html">FRB Services Annual Statistics</a></p>
+<h3 id="t2target2-volume-millions-of-transactions">T2/TARGET2 Volume (millions of transactions)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (M)</th>
+<th>Daily Avg Value (€T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>87.8</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>89.5</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>92.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>95.3</td>
+<td>2.1</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>104.4</td>
+<td>2.2</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>108.0</td>
+<td>2.2</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.ecb.europa.eu/press/targetservar/html/ecb.targetservar2024.en.html">ECB TARGET Annual Reports</a></p>
+<p>Note: TARGET2 migrated to the T2 consolidated platform on 20 March 2023. 2024 is the first full calendar year on the new system. The ~108M figure was described by the ECB as the highest level since the introduction of the euro.</p>
+<h3 id="chaps-volume-millions-of-transactions">CHAPS Volume (millions of transactions)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (M)</th>
+<th>Value (£T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>43.5</td>
+<td>76.0</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>41.0</td>
+<td>78.5</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>46.0</td>
+<td>82.0</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>50.5</td>
+<td>83.0</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>51.8</td>
+<td>85.0</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>52.7</td>
+<td>87.5</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.bankofengland.co.uk/report/2025/rtgs-and-chaps-annual-report-2024-25">Bank of England RTGS/CHAPS Annual Report 2024/25</a>, <a href="https://www.wearepay.uk/wp-content/uploads/2025/03/Annual-Statistics-2024-v1.2.pdf">Pay.UK Annual Statistics</a></p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>5-Year CAGR (Volume)</th>
+<th>5-Year CAGR (Value)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fedwire</td>
+<td>3.2%</td>
+<td>6.2%</td>
+<td>Value growth outpaces volume — larger average transfers</td>
+</tr>
+<tr>
+<td>T2/TARGET2</td>
+<td>4.2%</td>
+<td>5.3%</td>
+<td>2024 was record year; T2 migration may have boosted counts</td>
+</tr>
+<tr>
+<td>CHAPS</td>
+<td>3.9%</td>
+<td>2.9%</td>
+<td>Steady growth, record peak day in April 2024 (344,099 txns)</td>
+</tr>
+<tr>
+<td>BOJ-NET</td>
+<td>~1.5%</td>
+<td>~2.0%</td>
+<td>Japan's low-growth macro environment limits expansion</td>
+</tr>
+<tr>
+<td>CLS</td>
+<td>~3.0%</td>
+<td>~5.0%</td>
+<td>FX volumes growing with global trade; T+1 shift boosted activity</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Composite RTGS 5-year volume CAGR</strong>: ~3.5%</p>
+<p>The key insight is that RTGS transaction <strong>counts</strong> grow slowly (2–4%) but transaction <strong>values</strong> grow faster (3–6%) as the financial system's notional obligations expand. These systems are capacity-constrained by design — they process exactly what they need to and no more.</p>
+<hr/>
+<h2 id="projections-through-2035">Projections (through 2035)</h2>
+<h3 id="baseline-scenario-3-volume-cagr-5-value-cagr">Baseline Scenario (3% volume CAGR, 5% value CAGR)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Volume (M)</th>
+<th>Avg TPS (calendar)</th>
+<th>Annual Value ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>436</td>
+<td>13.8</td>
+<td>2,258</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>449</td>
+<td>14.2</td>
+<td>2,370</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>476</td>
+<td>15.1</td>
+<td>2,614</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>505</td>
+<td>16.0</td>
+<td>2,882</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>585</td>
+<td>18.5</td>
+<td>3,678</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-scenario-5-volume-cagr">High-Growth Scenario (5% volume CAGR)</h3>
+<p>Driven by: digital currency settlement integration, 24/7 RTGS operations (BOE planning), CLS expansion into new currencies.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Volume (M)</th>
+<th>Avg TPS (calendar)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2030</td>
+<td>540</td>
+<td>17.1</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>689</td>
+<td>21.8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-scenario-2-volume-cagr">Conservative Scenario (2% volume CAGR)</h3>
+<p>Driven by: netting efficiency gains reducing gross settlement needs, shift to instant payment rails for smaller wholesale transactions.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Volume (M)</th>
+<th>Avg TPS (calendar)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2030</td>
+<td>467</td>
+<td>14.8</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>515</td>
+<td>16.3</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>Highest-value, lowest-TPS category in finance</strong>: ~$2,150 trillion annual value from just ~13 TPS calendar average. Each RTGS transaction carries more economic weight than any other instrument class.</p>
+</li>
+<li>
+<p><strong>CLS is the hidden giant</strong>: FX settlement via CLS adds ~$1,750 trillion in annual settled value (estimated) through its payment-versus-payment mechanism. Its multilateral netting compresses funding needs to ~1% of gross value.</p>
+</li>
+<li>
+<p><strong>CHAPS set an all-time record on 2 April 2024</strong>: 344,099 payments in a single day, driven by the first business day after a double Easter bank holiday. This illustrates how RTGS peak loads are calendar-event driven, not market-event driven.</p>
+</li>
+<li>
+<p><strong>T2 migration creates a discontinuity</strong>: The March 2023 migration from TARGET2 to T2 means pre-2023 and post-2023 data are not perfectly comparable. The 2024 record of ~108M transactions may partly reflect the broader service scope of the T2 platform.</p>
+</li>
+<li>
+<p><strong>24/7 RTGS is coming</strong>: The Bank of England has signaled plans for extended RTGS operating hours. If adopted globally, this could increase transaction counts (by spreading settlement across more hours) without increasing <a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">peak TPS</a>.</p>
+</li>
+<li>
+<p><strong>Double-counting boundary</strong>: RTGS settles the net positions from other systems (e.g., CCP margins, ACH net settlement, securities DVP legs). The ~423M transaction count is the final settlement layer — it does NOT double-count upstream activity.</p>
+</li>
+</ol>
+<h3 id="missing-rtgs-systems-expanded-coverage">Missing RTGS Systems — Expanded Coverage</h3>
+<p>A supplementary analysis (<a href="/universe-of-finance/reports/banking/interbank-rtgs/workings/missing-systems.html">missing-systems.md</a>) quantifies eight additional national RTGS systems not covered in the main analysis above. The most significant additions are:</p>
+<ul>
+<li><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> CNAPS-HVPS</strong>: 382M transactions/year (2023), ¥8,481T (~$1,180T) — comparable to Fedwire in volume and the largest single addition.</li>
+<li><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> RTGS</strong>: 295M transactions/year (2024), ₹1,938.2 lakh crore (~$2,327T) — the fastest-growing major RTGS system globally at 13.7% volume CAGR.</li>
+<li><strong>Saudi Arabia SARIE</strong>: estimated ~200M transactions/year — surprisingly large, driven by oil economy settlement patterns.</li>
+<li><strong>Others</strong>: BOK-Wire+ (South Korea), RITS (Australia), MEPS+ (Singapore), Lynx (Canada), Russia BESP.</li>
+</ul>
+<p>Including these systems revises the estimated global RTGS total from <strong>~423M to ~1,400-1,600M annual transactions</strong> and from <strong>~$2,150T to ~$5,600T+ annual value</strong>. The calendar-averaged TPS rises from ~13.4 to ~44-50. See the working paper for full system-by-system data, GDP-ratio validation, and confidence ratings.</p>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>Fedwire, T2, CHAPS</strong>: High confidence — central banks publish detailed monthly/annual statistics</li>
+<li><strong>BOJ-NET</strong>: Medium confidence — data is published but English-language access is limited; some figures derived from older reports</li>
+<li><strong>CLS</strong>: Medium confidence — CLS publishes value data readily but transaction counts are less frequently reported; estimated from peak-day records and daily value averages</li>
+<li><strong>Currency conversion</strong>: EUR/GBP/JPY values converted to USD at approximate 2024 average exchange rates (EUR/USD ~1.09, GBP/USD ~1.27, JPY/USD ~0.0067)</li>
+<li><strong>Overlap with Bank Transfers capsule</strong>: The bank-transfers capsule includes an RTGS sub-category with Fedwire and T2 counts. This capsule goes deeper but the top-line numbers should be consistent. The bank-transfers capsule's 0.4B RTGS figure includes additional smaller national RTGS systems not covered here.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>China's CNAPS/HVPS</strong>: The PBoC's High-Value Payment System processed ~382 million RTGS transactions in 2023 (~¥8,481 trillion). This is comparable to Fedwire in volume but is excluded from our 423M aggregate because English-language reporting is inconsistent and 2024 data is not yet available. Including CNAPS would likely push global RTGS to ~800M+ transactions.</li>
+<li><strong>India's RTGS</strong>: RBI reports RTGS volume CAGR of 13.7% (2020-2025) with RTGS accounting for 69% of payment value but only 0.1% of volume. Absolute transaction counts are available in RBI annual reports but not included here.</li>
+<li><strong>Russia's BESP</strong>: Effectively opaque since 2022 sanctions; pre-sanctions volume was ~20-30M transactions/year.</li>
+<li><strong>24/7 RTGS impact</strong>: Bank of England has consulted on extended operating hours. No quantitative estimate exists for how much transaction volume would increase if RTGS operated 24/7 vs current ~10-18hr windows.</li>
+<li><strong>Intraday liquidity recycling</strong>: How many potential RTGS transactions are avoided through intraday netting and liquidity management is unknown but significant.</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>China CNAPS volume</td>
+<td>GDP ratio: China GDP is ~65% of US GDP; if RTGS scales with GDP, expect ~135-170M transactions</td>
+<td>2023 CNAPS data (382M) suggests CNAPS actually exceeds Fedwire proportionally</td>
+<td>:green_circle:</td>
+</tr>
+<tr>
+<td>India RTGS volume</td>
+<td>RBI publishes detailed payment system data; RTGS CAGR 13.7% from known 2020 baseline</td>
+<td>RBI Annual Report, Payment &amp; Settlement Systems in India</td>
+<td>:green_circle:</td>
+</tr>
+<tr>
+<td>Russia BESP volume</td>
+<td>Pre-2022 BIS CPMI data available; extrapolate at 2% CAGR from last known figure</td>
+<td>BIS Red Book 2021 contains Russian data</td>
+<td>:yellow_circle:</td>
+</tr>
+<tr>
+<td>24/7 RTGS transaction uplift</td>
+<td>BOE consultation responses; analogise from Faster Payments adoption curve when FPS went 24/7</td>
+<td>BOE 2024/25 RTGS Annual Report discusses extended hours</td>
+<td>:yellow_circle:</td>
+</tr>
+<tr>
+<td>Missing smaller RTGS systems (Swiss SIC, Canadian LVTS, Australian RITS)</td>
+<td>BIS CPMI database covers 25+ RTGS systems; aggregate from Red Book statistical annex</td>
+<td>BIS CPMI payment statistics portal</td>
+<td>:green_circle:</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li>If CNAPS, India RTGS, and other missing systems were included, does global RTGS volume reach ~1 billion transactions? This would roughly double our current 423M estimate and change the TPS calculation to ~32.</li>
+<li>How does the T2 platform migration (March 2023) affect comparability of pre/post-2023 data? Is the 2024 "record" partly an artefact of broader service scope?</li>
+<li>What is the netting ratio between gross interbank obligations and actual RTGS settlement? If netting is becoming more efficient (e.g., CLS netting ratio improving), RTGS counts may grow slower than underlying economic activity.</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>GDP-to-RTGS ratio</strong>: For systems with published data, the ratio of annual RTGS value to GDP ranges from ~7x (CHAPS/UK GDP) to ~15x (Fedwire/US GDP). Applying these ratios to countries with missing data can produce rough volume estimates.</li>
+<li><strong>BIS CPMI Red Book</strong>: The most comprehensive cross-country payment system dataset. Updated annually with ~2-year lag. The 2023 edition covers 2022 data for 25+ jurisdictions.</li>
+<li><strong>SWIFT gpi data</strong>: While SWIFT is messaging (not settlement), SWIFT's published message volumes (~50M/day) provide a ceiling on cross-border RTGS settlement counts since most cross-border payments settle through RTGS.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html">Fedwire Funds Service Annual Statistics</a></li>
+<li><a href="https://www.federalreserve.gov/paymentsystems/fedfunds_ann.htm">Federal Reserve Fedwire Annual Data</a></li>
+<li><a href="https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html">ECB T2 Facts and Figures</a></li>
+<li><a href="https://www.ecb.europa.eu/press/targetservar/html/ecb.targetservar2024.en.html">ECB TARGET Services Annual Report 2024</a></li>
+<li><a href="https://www.bankofengland.co.uk/report/2025/rtgs-and-chaps-annual-report-2024-25">Bank of England RTGS/CHAPS Annual Report 2024/25</a></li>
+<li><a href="https://www.wearepay.uk/wp-content/uploads/2025/03/Annual-Statistics-2024-v1.2.pdf">Pay.UK Annual Summary of Payment Statistics 2024</a></li>
+<li><a href="https://www.boj.or.jp/en/statistics/set/kess/index.htm">BOJ Payment and Settlement Statistics</a></li>
+<li><a href="https://www.cls-group.com/about/annual-report-2024/annual-report-2024/">CLS Group Annual Report 2024</a></li>
+<li><a href="https://www.financemagnates.com/institutional-forex/cls-group-settles-record-191-trillion-in-fx-payment-instructions-in-a-day/">CLS Group Record Settlement</a></li>
+<li><a href="https://www.bis.org/statistics/dataportal/payment_stats.htm">BIS CPMI Payment Statistics</a></li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/banking/interbank-rtgs/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/banking/interbank-rtgs/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/banking/interbank-rtgs/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/banking/interbank-rtgs/workings/missing-systems.html">⚙ missing systems</a><a href="/universe-of-finance/reports/banking/interbank-rtgs/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/banking/interbank-rtgs/REPORT.md">analysis/banking/interbank-rtgs/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

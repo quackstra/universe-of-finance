@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commodities — Universe of Finance</title>
+<meta name="description" content="Category: Traditional Finance | Priority: #6 Last Updated: 2026-03-26 Transaction Definition: One commodity futures, options, or physical trade executed on an exchange or OTC Exec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Commodities</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Commodities</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">330</div></div><div class="chip"><div class="k">Confidence</div><div class="v green">74</div></div><div class="chip"><div class="k">Opacity</div><div class="v amber">48</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#18/28</div></div></div>
+  <div class="chart-box"><h3>Traditional Finance — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart24"></canvas></div></div><script>new Chart(document.getElementById("chart24"),{"type": "bar", "data": {"labels": ["ETD (Derivatives)", "Equity Markets", "Commodities", "Forex", "Fixed Income", "OTC Derivatives"], "datasets": [{"data": [9505, 3500, 330, 127, 10.5, 0.17], "backgroundColor": ["#334155", "#334155", "#3b82f6", "#334155", "#334155", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#1-current-tps-2024">1. Current TPS (2024)</a></li><li><a href="#2-annual-volume-2024">2. Annual Volume (2024)</a></li><li><a href="#3-historic-trend">3. Historic Trend</a></li><li><a href="#4-growth-rate-analysis">4. Growth Rate Analysis</a></li><li><a href="#5-projections">5. Projections</a></li><li><a href="#6-key-findings">6. Key Findings</a></li><li><a href="#7-data-quality-limitations">7. Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#8-sources">8. Sources</a></li></ul></div><blockquote>
+<p><strong>Category</strong>: Traditional Finance | <strong>Priority</strong>: #6
+<strong>Last Updated</strong>: 2026-03-26
+<strong>Transaction Definition</strong>: One commodity futures, options, or physical trade executed on an exchange or OTC</p>
+</blockquote>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Global exchange-traded commodity derivatives reached an estimated <strong>~6.5 billion contracts</strong> in 2024, representing approximately 3% of total ETD volume (205 billion contracts). While modest relative to the equity options juggernaut, commodity markets hit multiple records in 2024: <strong>ICE traded a record 1.2 billion commodity contracts</strong>, <strong>CME commodity sectors reached record ADV</strong>, and the <strong>LME saw 179 million lots</strong> (+18% YoY).</p>
+<p>This translates to approximately <strong>~330 average TPS</strong> across global commodity exchanges. Including physical commodity trading and OTC commodity derivatives (which are lower-frequency but high-value), the total rises modestly.</p>
+<p>The commodity story in 2024 was one of records: record oil contract volumes on ICE (655 million), record environmental market trading (20.4 million contracts), and record agricultural volatility driven by climate events. Energy remains the dominant sub-sector by value, while agricultural contracts lead by count on many exchanges.</p>
+<hr/>
+<h2 id="1-current-tps-2024">1. Current TPS (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS (exchange-traded)</td>
+<td><strong>~330</strong></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td><strong>~1,650</strong></td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Annual contracts (exchange-traded, est.)</td>
+<td>~6.5B</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual contracts (physical OTC, est.)</td>
+<td>~50M</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Daily contract volume (est.)</td>
+<td>~25.8M</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methodology</strong>: Commodity ETD volume estimated at ~3% of global 205B ETD total (from FIA/WFE subcategory breakdown) = ~6.15B. Adding commodity-specific exchange data (ICE 1.2B commodity, CME commodity segments, LME 179M, etc.) and adjusting for overlap yields ~6.5B. TPS = 6.5B / (252 trading days x 21.6h effective x 3600s) = ~330.</p>
+<p><strong>Sources</strong>: <a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA 2024 Annual Review</a>, <a href="https://ir.theice.com/press/news-details/2025/ICE-Announces-That-a-Record-2-Billion-Contracts-Traded-in-2024/default.aspx">ICE Record 2B Contracts</a>, <a href="https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html">CME Record ADV</a></p>
+<hr/>
+<h2 id="2-annual-volume-2024">2. Annual Volume (2024)</h2>
+<h3 id="21-exchange-traded-commodity-derivatives">2.1 Exchange-Traded Commodity Derivatives</h3>
+<table>
+<thead>
+<tr>
+<th>Exchange/Source</th>
+<th>Commodity Volume (2024)</th>
+<th>Notes</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICE</td>
+<td>1.2B contracts (record)</td>
+<td>Oil: 655M, Environmental: 20.4M</td>
+<td><a href="https://ir.theice.com/press/news-details/2025/ICE-Announces-That-a-Record-2-Billion-Contracts-Traded-in-2024/default.aspx">ICE</a></td>
+</tr>
+<tr>
+<td>CME Group (commodity segments)</td>
+<td>~3.5B contracts (est.)</td>
+<td>Energy, metals, agriculture — all record</td>
+<td><a href="https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html">CME</a></td>
+</tr>
+<tr>
+<td>LME</td>
+<td>179M lots</td>
+<td>+18.4% YoY, ADV 702K lots</td>
+<td><a href="https://www.lme.com/en/market-data/reports-and-data/volumes/annual-volumes">LME</a></td>
+</tr>
+<tr>
+<td>Shanghai Futures Exchange</td>
+<td>~1.0B (est.)</td>
+<td>Major metals + energy</td>
+<td>FIA data</td>
+</tr>
+<tr>
+<td>Dalian Commodity Exchange</td>
+<td>~800M (est.)</td>
+<td>Agriculture + petrochemicals</td>
+<td>FIA data</td>
+</tr>
+<tr>
+<td>Zhengzhou Commodity Exchange</td>
+<td>~500M (est.)</td>
+<td>Agriculture</td>
+<td>FIA data</td>
+</tr>
+<tr>
+<td>Other exchanges</td>
+<td>~500M (est.)</td>
+<td>MCX India, TOCOM, etc.</td>
+<td>FIA data</td>
+</tr>
+<tr>
+<td><strong>Total (est.)</strong></td>
+<td><strong>~6.5B contracts</strong></td>
+<td>—</td>
+<td>Composite</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on overlap with ETD category</strong>: Commodity futures and options are a SUBSET of <a class="xref" href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">exchange-traded derivatives</a>. The ETD category reports 205B total contracts. Per taxonomy, we break out commodities separately here but flag the overlap.</p>
+<h3 id="22-sub-sector-breakdown">2.2 Sub-Sector Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Sub-Sector</th>
+<th>Est. Volume (2024)</th>
+<th>Share</th>
+<th>Key Exchanges</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Energy (oil, gas, power)</td>
+<td>~2.5B</td>
+<td>38%</td>
+<td>ICE, CME/NYMEX, Shanghai</td>
+</tr>
+<tr>
+<td>Agriculture</td>
+<td>~2.0B</td>
+<td>31%</td>
+<td>CME/CBOT, Dalian, Zhengzhou</td>
+</tr>
+<tr>
+<td>Metals (precious + base)</td>
+<td>~1.2B</td>
+<td>18%</td>
+<td>LME, CME/COMEX, Shanghai</td>
+</tr>
+<tr>
+<td>Environmental (carbon, weather)</td>
+<td>~0.3B</td>
+<td>5%</td>
+<td>ICE, EEX</td>
+</tr>
+<tr>
+<td>Other/mixed</td>
+<td>~0.5B</td>
+<td>8%</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-key-exchange-details">2.3 Key Exchange Details</h3>
+<p><strong>ICE Energy</strong>:
+- Record 655M oil futures &amp; options (Brent: 346M record, Gasoil: 92.8M record)
+- Brent crude is the benchmark for 75% of internationally traded crude oil
+- Environmental markets: record 20.4M contracts (~$1T+ notional for 4th consecutive year)</p>
+<p><strong>CME Group Commodities</strong>:
+- Total ADV: 26.5M contracts across all asset classes (record)
+- Agriculture ADV: record (up 13% YoY)
+- Metals ADV: record (up 23% YoY)
+- Energy grew 31% in international markets</p>
+<p><strong>LME</strong>:
+- 179M lots in 2024 (ADV: 702,639 lots)
+- Up 18.4% YoY from 593,537 ADV in 2023
+- Key metals: aluminium, copper, zinc, nickel, tin, lead</p>
+<h3 id="24-carbonenvironmental-markets">2.4 Carbon/Environmental Markets</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICE environmental contracts (2024)</td>
+<td>20.4M contracts (record)</td>
+<td><a href="https://ir.theice.com/press/news-details/2025/ICE-Announces-Record-Environmental-Market-Trading-in-2024/default.aspx">ICE</a></td>
+</tr>
+<tr>
+<td>EU ETS trading volume</td>
+<td>13.7B tCO2 across 4.7M transactions</td>
+<td><a href="https://www.esma.europa.eu/sites/default/files/2024-10/ESMA50-43599798-10379_Carbon_markets_report_2024.pdf">ESMA</a></td>
+</tr>
+<tr>
+<td>EU ETS trading value</td>
+<td>~EUR 781B</td>
+<td>ESMA</td>
+</tr>
+<tr>
+<td>EUA on-venue transactions</td>
+<td>4.2M transactions</td>
+<td>ESMA</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="3-historic-trend">3. Historic Trend</h2>
+<h3 id="global-commodity-etd-estimated">Global Commodity ETD (Estimated)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Volume (B)</th>
+<th>YoY Change</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>4.8</td>
+<td>—</td>
+<td>Pre-pandemic baseline</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>5.5</td>
+<td>+15%</td>
+<td>COVID volatility spike</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>5.8</td>
+<td>+5%</td>
+<td>Supply chain disruptions</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>6.0</td>
+<td>+3%</td>
+<td>Ukraine war, energy crisis</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>6.2</td>
+<td>+3%</td>
+<td>FIA: commodity ETD ~3% share of 137B</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>6.5</td>
+<td>+5%</td>
+<td>Record across ICE, CME, LME</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: Exact global commodity ETD totals require aggregating FIA subcategory data. The 3% share from WFE/FIA is applied to annual totals, cross-checked with exchange-level data.</p>
+<h3 id="lme-annual-volume-lots">LME Annual Volume (Lots)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Total Lots (M)</th>
+<th>ADV (lots)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2020</td>
+<td>144</td>
+<td>569K</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>151</td>
+<td>598K</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>145</td>
+<td>575K</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>150</td>
+<td>594K</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>179</td>
+<td>703K</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="4-growth-rate-analysis">4. Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Period</th>
+<th>CAGR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commodity ETD (global est.)</td>
+<td>2019-2024</td>
+<td>~6.2%</td>
+</tr>
+<tr>
+<td>ICE commodity contracts</td>
+<td>2023-2024</td>
+<td>~15% (est.)</td>
+</tr>
+<tr>
+<td>LME volume</td>
+<td>2020-2024</td>
+<td>5.6%</td>
+</tr>
+<tr>
+<td>CME metals ADV</td>
+<td>2023-2024</td>
+<td>23%</td>
+</tr>
+<tr>
+<td>CME agriculture ADV</td>
+<td>2023-2024</td>
+<td>13%</td>
+</tr>
+<tr>
+<td>Carbon (ICE environmental)</td>
+<td>2023-2024</td>
+<td>~40%</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="5-projections">5. Projections</h2>
+<h3 id="51-baseline-cagr-6">5.1 Baseline (CAGR 6%)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Volume (B)</th>
+<th>Est. TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>6.5</td>
+<td>330</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>9.2</td>
+<td>470</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>12.3</td>
+<td>630</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-high-growth-cagr-10">5.2 High Growth (CAGR 10%)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Volume (B)</th>
+<th>Est. TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>6.5</td>
+<td>330</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>11.5</td>
+<td>590</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>18.5</td>
+<td>945</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-conservative-cagr-3">5.3 Conservative (CAGR 3%)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Volume (B)</th>
+<th>Est. TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>6.5</td>
+<td>330</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>7.8</td>
+<td>400</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>9.0</td>
+<td>460</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scenario rationale</strong>:
+- <strong>Baseline</strong>: Commodity markets continue steady growth, driven by energy transition (carbon trading), metals demand (EV/battery), and climate-driven agricultural volatility.
+- <strong>High Growth</strong>: Carbon markets explode as global ETS schemes expand (<a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> ETS matures, Article 6 markets). Retail commodity trading grows. Metals super-cycle from electrification.
+- <strong>Conservative</strong>: Commodity price stabilization reduces hedging demand. Regulatory restrictions on speculation. Chinese exchanges face tighter controls.</p>
+<hr/>
+<h2 id="6-key-findings">6. Key Findings</h2>
+<ol>
+<li>
+<p><strong>Commodity ETD is ~3% of global ETD by contract count</strong> but disproportionately important by economic impact and value. Energy and agricultural commodity prices directly affect real economies.</p>
+</li>
+<li>
+<p><strong>ICE traded a record 1.2 billion commodity contracts in 2024</strong>, including record oil (655M contracts), Brent (346M), and environmental markets (20.4M).</p>
+</li>
+<li>
+<p><strong>Carbon/environmental markets are the fastest-growing commodity segment</strong> at ~40% YoY growth, with EU ETS seeing 4.7 million transactions worth EUR 781B in 2024.</p>
+</li>
+<li>
+<p><strong>The LME had its best year since 2020</strong>, with 179M lots traded (+18.4% YoY), driven by copper and aluminium demand tied to energy transition.</p>
+</li>
+<li>
+<p><strong>Physical commodity trading (OTC)</strong> is relatively small by transaction count (estimated ~50M trades/year) but significant by value. Major commodity trading houses (Vitol, Trafigura, Glencore) execute thousands of physical trades daily.</p>
+</li>
+<li>
+<p><strong>Double-counting note</strong>: Commodity futures and options are a subset of the ETD category (which reports 205B total contracts). Per taxonomy, we report commodities separately but flag the overlap clearly.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="7-data-quality-limitations">7. Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>Exchange-level data is reliable</strong> for CME, ICE, and LME individually (🟢 High confidence)</li>
+<li><strong>Global aggregate is estimated</strong>: FIA reports commodity as ~3% of total ETD but exact global figure requires aggregating dozens of exchanges (🟡 Medium confidence)</li>
+<li><strong>Physical OTC commodity trades</strong> are not centrally reported. Estimates are rough (🔴 Low confidence)</li>
+<li><strong>Chinese commodity exchanges</strong>: Data quality varies; some volume may be inflated by day-trading activity</li>
+<li><strong>Notional value</strong>: Not well-reported for commodity ETD. Individual contract values vary enormously (crude oil ~$70K/contract vs. carbon ~$80/contract)</li>
+<li><strong>Overlap with ETD category</strong>: All commodity futures/options are included in the ETD total of 205B. This report isolates the commodity subset.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>Physical vs. financial commodity trading ratio</strong>: The ratio of physical commodity trades (actual delivery) to financial commodity derivatives (paper barrels, financial settlement) is not centrally tracked. Estimates range from 1:10 to 1:50 depending on the commodity.</li>
+<li><strong>OTC physical commodity trade count</strong>: Major commodity trading houses (Vitol, Trafigura, Glencore, Cargill) execute thousands of physical trades daily, but these are bilateral and unreported.</li>
+<li><strong>Energy trading frequency from renewables intermittency</strong>: The shift from baseload to intermittent renewable generation is creating a need for vastly more intraday and real-time power trades, but the increment in transaction count is not well-quantified.</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Physical-to-financial ratio</td>
+<td>Compare ICE Brent open interest × contract size to global physical crude production</td>
+<td>ICE Brent OI (~2.5M contracts × 1,000 bbl) vs. global production (~100M bbl/day)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Energy trading from renewables</td>
+<td>Model from grid balancing data: intermittent generation → more intraday trades</td>
+<td>European power exchange (EPEX Spot) intraday volume data; EIA wholesale electricity data</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>OTC physical commodity count</td>
+<td>Use major trading house revenue / estimated margin per trade as proxy</td>
+<td>Vitol ($505B revenue, 2024), Trafigura ($244B), Glencore ($218B); ~0.5-2% margin per trade</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Carbon market transaction count</td>
+<td>ESMA EU ETS report: 4.7M transactions in 2024; scale for global ETS schemes</td>
+<td><a href="https://www.esma.europa.eu/sites/default/files/2024-10/ESMA50-43599798-10379_Carbon_markets_report_2024.pdf">ESMA Carbon Markets 2024</a>; ICE environmental: 20.4M contracts</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Chinese commodity exchange accuracy</td>
+<td>Cross-check Dalian/Zhengzhou volumes against physical commodity production</td>
+<td>China commodity import/export data from customs; SHFE warehouse receipts</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li>How much is energy trading growing specifically due to renewable intermittency? McKinsey estimates commodity trading revenues grew to $104B in 2024, but the transaction count impact of the energy transition is poorly modeled.</li>
+<li>Are Chinese commodity exchange volumes inflated by day-trading? (High turnover ratios relative to open interest suggest significant speculative round-tripping.)</li>
+<li>As carbon/environmental markets expand globally (China ETS maturing, Article 6 markets launching), how many additional transactions per year does this add? EU ETS alone saw 4.7M transactions in 2024.</li>
+<li>Will the electrification super-cycle (EVs, batteries, grid storage) create a sustained metals trading boom, or is current growth cyclical?</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>Physical crude oil</strong>: ~100M barrels/day global production; ICE + CME trade ~3-4 billion barrels/day equivalent in paper — a 30-40× financial-to-physical ratio</li>
+<li><strong>European power trading</strong>: EPEX Spot intraday volumes have been growing 20-30% annually as renewable penetration increases grid balancing needs (<a href="https://www.ectp.com/2024/02/the-balancing-act-trading-renewables-in-europe-and-beyond/">Engelhart</a>)</li>
+<li><strong>Global energy trading market</strong>: Valued at ~$3.1T in 2024 across all segments (<a href="https://www.probitymarketinsights.com/reports/energy-trading-market">Probity Market Insights</a>)</li>
+<li><strong>LME vs. physical metals</strong>: LME traded 179M lots in 2024; global copper production ~22M tonnes/year — LME turnover represents ~80× physical production in tonnage terms</li>
+</ul>
+<hr/>
+<h2 id="8-sources">8. Sources</h2>
+<ol>
+<li><a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA — 2024 Annual ETD Volume Review</a></li>
+<li><a href="https://ir.theice.com/press/news-details/2025/ICE-Announces-That-a-Record-2-Billion-Contracts-Traded-in-2024/default.aspx">ICE — Record 2 Billion Contracts in 2024</a></li>
+<li><a href="https://ir.theice.com/press/news-details/2025/ICE-Announces-Record-Environmental-Market-Trading-in-2024/default.aspx">ICE — Record Environmental Market Trading in 2024</a></li>
+<li><a href="https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html">CME Group — Record Annual ADV of 26.5M Contracts in 2024</a></li>
+<li><a href="https://www.cmegroup.com/media-room/press-releases/2025/1/13/cme_group_internationalaveragedailyvolumereachesrecord78millionc.html">CME Group — International ADV Record 7.8M Contracts</a></li>
+<li><a href="https://www.lme.com/en/market-data/reports-and-data/volumes/annual-volumes">LME — Annual Volumes</a></li>
+<li><a href="https://www.esma.europa.eu/sites/default/files/2024-10/ESMA50-43599798-10379_Carbon_markets_report_2024.pdf">ESMA — EU Carbon Markets 2024 Report</a></li>
+<li><a href="https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024">WFE — FY 2024 Market Highlights</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/commodities/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/traditional-finance/commodities/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/traditional-finance/commodities/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/traditional-finance/commodities/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/commodities/REPORT.md">analysis/traditional-finance/commodities/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

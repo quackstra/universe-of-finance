@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payroll Payments — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition A 'transaction' in this category is a completed wage/salary payment from an employer to an employee. Specifically: Counting point: Completed payment — the wa">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Payroll</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Payroll Payments — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>A "transaction" in this category is a <strong>completed wage/salary payment from an employer to an employee</strong>. Specifically:</p>
+<ul>
+<li><strong>Counting point:</strong> Completed payment — the wage amount is successfully credited to the employee's bank account or disbursed as cash/check</li>
+<li><strong>Unit:</strong> One <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a> credit = one transaction. An employer paying 500 employees = 500 transactions. Each pay period generates one transaction per employee</li>
+<li><strong>Scope:</strong> Formal-sector wage and salary payments globally — all pay frequencies (weekly, biweekly, semi-monthly, monthly)</li>
+<li><strong>Exclusions:</strong> Contractor/freelancer payments (1099-type), informal sector cash wages where no payment system is involved, pension/social security disbursements, employer tax <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a>, benefits-in-kind</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-employment-x-pay-frequency-model-primary">Method A: Employment x Pay Frequency Model (Primary)</h3>
+<ul>
+<li><strong>Source:</strong> ILO World Employment and Social Outlook (3.5B employed globally), BLS (US pay frequency survey), Eurostat, regional labor statistics, ADP/CloudPay global payroll surveys</li>
+<li><strong>Value:</strong> ~41.2 billion transactions from regional model:</li>
+<li>North America: 165M employed × 24 pay periods/yr (biweekly) = 4.0B</li>
+<li>EU/UK: 200M employed × 12.5 pay periods/yr (monthly, some fortnightly) = 2.5B</li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>: 770M employed × 12 pay periods/yr (monthly) × 65% formal = 6.0B</li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>: 530M employed × 12 pay periods/yr × 30% formal + daily wage adj = 3.8B</li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>/Korea/Aus: 110M employed × 12-24 pay periods/yr = 2.0B</li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>: 100M employed × 12 pay periods/yr × 70% formal = 0.8B</li>
+<li>Rest of world: ~22B (scaled by ILO employment × regional formal share × frequency)</li>
+<li><strong>Strengths:</strong> ILO employment data is comprehensive; pay frequency norms are well-documented for major markets</li>
+<li><strong>Weaknesses:</strong> No source publishes global payroll transaction counts; formal sector share in developing markets is estimated; pay frequency varies within countries</li>
+</ul>
+<h3 id="method-b-achbacs-payroll-share-extrapolation">Method B: ACH/BACS Payroll Share Extrapolation</h3>
+<ul>
+<li><strong>Source:</strong> Nacha (US ACH: 33.6B total, ~30% payroll-related = ~10B), BACS (UK: 7.5B total, ~35% payroll = ~2.6B), SEPA (EU: 51B, ~20% payroll = ~10.2B)</li>
+<li><strong>Value:</strong> Developed markets: ~23B payroll via electronic systems → Global extrapolation: ~38-44B</li>
+<li><strong>Strengths:</strong> Payment system data is high quality; payroll share of ACH/DD is estimable from published breakdowns</li>
+<li><strong>Weaknesses:</strong> "Payroll share" of ACH is estimated, not directly tagged; global extrapolation from 3 markets is crude; developing markets use cash payroll extensively</li>
+</ul>
+<h3 id="method-c-global-wage-bill-average-wage-payment">Method C: Global Wage Bill / Average Wage Payment</h3>
+<ul>
+<li><strong>Source:</strong> ILO Global Wage Report (~$32T total global wage bill 2024), estimated average wage payment ~$780</li>
+<li><strong>Value:</strong> $32T / $780 = ~41B transactions</li>
+<li><strong>Strengths:</strong> ILO wage data is authoritative; provides independent validation</li>
+<li><strong>Weaknesses:</strong> Average wage payment is blended across vastly different economies (US ~$2,500/biweekly, India ~$200/monthly, informal ~$50/daily); highly sensitive to mix</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    RAW ESTIMATES                          │
+│                                                          │
+│  Method A             Method B            Method C       │
+│  [Employ × Freq]      [ACH Payroll]       [Wage/$Avg]    │
+│  ┌──────────────┐    ┌──────────────┐    ┌────────────┐ │
+│  │ 41.2B        │    │ 38-44B       │    │ ~41B       │ │
+│  │ (ILO employ  │    │ (Nacha+BACS+ │    │ ($32T /    │ │
+│  │  × pay freq  │    │  SEPA share  │    │  $780 avg) │ │
+│  │  × formal %) │    │  extrapolated│    │            │ │
+│  └──────┬───────┘    └──────┬───────┘    └─────┬──────┘ │
+│         │                   │                  │         │
+│         └───────────────────┼──────────────────┘         │
+│                             ▼                            │
+│                ┌────────────────────────┐                │
+│                │    RECONCILIATION      │                │
+│                │ All three methods      │                │
+│                │ cluster around 38-44B  │                │
+│                │ Central estimate: 41.2B│                │
+│                │ Range: 35-48B          │                │
+│                └───────────┬────────────┘                │
+│                            ▼                             │
+│                ┌────────────────────────┐                │
+│                │   FINAL ESTIMATE       │                │
+│                │   41.2B transactions   │                │
+│                │   1,305 TPS            │                │
+│                │   Confidence: 35/100   │                │
+│                └────────────────────────┘                │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p><strong>Employment x pay frequency model (Method A) anchors the final estimate</strong> because:
+1. ILO employment data (3.5B) is the most comprehensive global labor dataset
+2. Pay frequency norms are well-documented for major economies (US biweekly, EU/Asia monthly)
+3. ACH extrapolation (Method B) brackets the estimate at 38-44B
+4. Wage bill derivation (Method C) converges at ~41B</p>
+<p><strong>Key caveat:</strong> This is the lowest-confidence estimate in the payments sector (35/100). No single source counts payroll transactions. The entire estimate is modeled. The range (35-48B) reflects uncertainty in formal sector share, pay frequency, and developing market coverage.</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>Payroll: 41.2B total
+                │
+                │  Payroll is a SUBSET of bank transfers.
+                │  ~90% of formal payroll settles via
+                │  ACH/BACS/SEPA batch transfers:
+                │
+(-) Bank        ████████████████████████████████████  41.2B
+    transfer    │ ~37B payroll credits flow through
+    overlap     │ ACH/BACS/SEPA/domestic batch systems
+    (~37B)      │ — ALREADY counted in Bank Transfers.
+                │ Deducted HERE.
+                │
+(-) Cash wages  │ ~4.2B payroll disbursements in cash
+    (no overlap)│ (developing markets, informal sector,
+                │ daily wage laborers) — NOT counted
+                │ in any other electronic payment capsule.
+                │ Incremental.
+                │
+                ▼
+De-duplicated   ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  ~4.2B
+                Payroll is ~90% a subset of bank
+                transfers. Only cash wages (~10%)
+                are incremental to electronic
+                payment system TPS.
+</code></pre>
+<p><strong>Payroll is a subset category</strong> — not a separate payment rail. It identifies the PURPOSE of <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>. Approximately 37B of the 41.2B payroll transactions are already counted in the 484B bank transfer total. Only ~4.2B cash wage payments are incremental.</p>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<ul>
+<li><strong>Directly observed:</strong> None — no source directly publishes global payroll transaction counts</li>
+<li><strong>Modeled:</strong> 100% of estimate is derived from employment × frequency × formality assumptions</li>
+<li><strong>Anchor points:</strong> US pay frequency from BLS, EU employment from Eurostat, China/India from national statistics</li>
+</ul>
+<pre><code>Region          Volume    Share   Data Quality
+─────────────── ──────── ─────── ───────────
+China           ████████ 14.6%   Low (formal share estimated)
+Rest of Asia    ██████░░ 19.4%   Low (informal sector large)
+North America   ████░░░░  9.7%   Medium (BLS data)
+India           ████░░░░  9.2%   Low (informal sector ~70%)
+Europe/UK       ████░░░░  8.5%   Medium (Eurostat)
+Rest of World   ██████████38.6%  Low (scaled estimates)
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+ILO Employment      █████████  ████████░ ██████████  ██████░░░░
+BLS (US payroll)    ███░░░░░░  █████████ ██████████  █████████░
+Eurostat (EU)       ███░░░░░░  █████████ ██████████  ████████░░
+ADP Payroll Survey  ████░░░░░  █████████ ███████░░░  ██████░░░░
+Nacha ACH           ███░░░░░░  █████████ ██████████  █████░░░░░
+ILO Wage Report     █████████  ████████░ ██████████  █████░░░░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    55/100     85/100    85/100      48/100
+</code></pre>
+<ul>
+<li><strong>Final <a class="xref" href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">confidence score</a>:</strong> 35/100</li>
+<li><strong>Key uncertainty drivers:</strong></li>
+<li>No direct source for global payroll transaction counts (100% modeled)</li>
+<li>Formal sector share varies 30-95% by country — small changes create large swings</li>
+<li>ILO estimates 2B+ informal workers whose cash wages are invisible</li>
+<li>Pay frequency assumptions (weekly vs. monthly) vary within countries</li>
+<li>Lowest-confidence category in the payments sector</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<ul>
+<li><strong>Run 5 (2026-03-28):</strong> Initial estimate — 41.2B from employment × frequency model</li>
+<li><strong>Run 6 (2026-03-28):</strong> Methodology documentation formalized</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/payroll/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/payroll/METHODOLOGY.md">analysis/payments/payroll/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

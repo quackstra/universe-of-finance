@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interbank RTGS — Source Notes — Universe of Finance</title>
+<meta name="description" content="Primary Sources Fedwire Funds Service URL: https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html Publisher: Federal Reserve Bank Servi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Banking<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Interbank RTGS — Source Notes</h1></div>
+  
+  
+  <article class="article">
+<h2 id="primary-sources">Primary Sources</h2>
+<h3 id="fedwire-funds-service">Fedwire Funds Service</h3>
+<ul>
+<li><strong>URL</strong>: https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html</li>
+<li><strong>Publisher</strong>: Federal Reserve Bank Services</li>
+<li><strong>Data quality</strong>: Excellent. Monthly, quarterly, and annual statistics published with transaction counts and values. Updated regularly.</li>
+<li><strong>Key 2024 data</strong>: Daily avg 836,322 transactions, daily avg value ~$4.51T, avg transfer value ~$5.4M</li>
+<li><strong>Historical data</strong>: Available back to 1987</li>
+<li><strong>Confidence</strong>: 🟢 High</li>
+</ul>
+<h3 id="ecb-t2-ex-target2">ECB T2 (ex-TARGET2)</h3>
+<ul>
+<li><strong>URL</strong>: https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html</li>
+<li><strong>Publisher</strong>: European Central Bank</li>
+<li><strong>Data quality</strong>: Excellent. Annual reports and fact sheets published. The TARGET Services Annual Report 2024 was published July 2025.</li>
+<li><strong>Key 2024 data</strong>: ~108M transactions (record high), daily avg ~400,000 transactions, daily avg value ~€2.2T</li>
+<li><strong>Note</strong>: T2 replaced TARGET2 in March 2023. Some discontinuity in time series.</li>
+<li><strong>Confidence</strong>: 🟢 High</li>
+</ul>
+<h3 id="chaps-bank-of-england">CHAPS / Bank of England</h3>
+<ul>
+<li><strong>URL</strong>: https://www.bankofengland.co.uk/payment-and-settlement/payment-and-settlement-statistics</li>
+<li><strong>Publisher</strong>: Bank of England / Pay.UK</li>
+<li><strong>Data quality</strong>: Excellent. Annual report with detailed breakdowns by payment type, value bands, and peak days.</li>
+<li><strong>Key 2024 data</strong>: 52.7M payments, £87.5T total value, daily avg ~208,000 payments, avg payment value £1.7M</li>
+<li><strong>Peak day</strong>: 2 April 2024 — 344,099 payments (all-time record)</li>
+<li><strong>Confidence</strong>: 🟢 High</li>
+</ul>
+<h3 id="boj-net">BOJ-NET</h3>
+<ul>
+<li><strong>URL</strong>: https://www.boj.or.jp/en/statistics/set/kess/index.htm</li>
+<li><strong>Publisher</strong>: Bank of <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a></li>
+<li><strong>Data quality</strong>: Good, but English-language access is limited. Monthly PDFs published.</li>
+<li><strong>Key data</strong>: Daily avg ~19,000 payments, daily avg value ~¥73T (from most recent available report)</li>
+<li><strong>Limitation</strong>: Could not confirm exact 2024 annual total from English sources</li>
+<li><strong>Confidence</strong>: 🟡 Medium</li>
+</ul>
+<h3 id="cls-group">CLS Group</h3>
+<ul>
+<li><strong>URL</strong>: https://www.cls-group.com/about/annual-report-2024/annual-report-2024/</li>
+<li><strong>Publisher</strong>: CLS Group Holdings AG</li>
+<li><strong>Data quality</strong>: Good for value data, limited for transaction counts.</li>
+<li><strong>Key 2024 data</strong>: Daily avg settled value &gt;$7T, record $19.1T (20 June 2024), record funding efficiency $72B for $19.1T day</li>
+<li><strong>Transaction count</strong>: Not regularly published. Record day 3.2M trades (July 2022). Annual count estimated.</li>
+<li><strong>Confidence</strong>: 🟡 Medium (value data high; transaction count low)</li>
+</ul>
+<h2 id="secondary-sources">Secondary Sources</h2>
+<h3 id="bis-cpmi-statistics">BIS CPMI Statistics</h3>
+<ul>
+<li><strong>URL</strong>: https://www.bis.org/statistics/dataportal/payment_stats.htm</li>
+<li><strong>Publisher</strong>: Bank for International Settlements</li>
+<li><strong>Data quality</strong>: Comprehensive cross-country data but typically 1-2 years behind</li>
+<li><strong>Use</strong>: Cross-validation of national statistics, historical trends</li>
+<li><strong>Confidence</strong>: 🟢 High (for years covered)</li>
+</ul>
+<h3 id="federal-reserve-annual-report">Federal Reserve Annual Report</h3>
+<ul>
+<li><strong>URL</strong>: https://www.federalreserve.gov/paymentsystems/fedfunds_ann.htm</li>
+<li><strong>Data quality</strong>: Confirms FRB Services figures; useful for YoY comparison narratives</li>
+<li><strong>Key 2023 note</strong>: "number of Fedwire funds transfers originated by depository institutions decreased 1.4 percent, to approximately 193 million"</li>
+</ul>
+<h3 id="payuk-annual-statistics-2024">Pay.UK Annual Statistics 2024</h3>
+<ul>
+<li><strong>URL</strong>: https://www.wearepay.uk/wp-content/uploads/2025/03/Annual-Statistics-2024-v1.2.pdf</li>
+<li><strong>Publisher</strong>: Pay.UK (UK payments infrastructure operator)</li>
+<li><strong>Use</strong>: Complements Bank of England data with broader UK payment system context</li>
+</ul>
+<h2 id="data-gaps">Data Gaps</h2>
+<ol>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> HVPS/CIPS</strong>: China's high-value payment system processes significant volumes but detailed English-language statistics are limited. CIPS (cross-border) reported 8.2M transactions in 2024, but domestic HVPS data is harder to access.</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> RTGS</strong>: RBI publishes RTGS statistics but they were not included in this capsule's scope. India's RTGS processes ~1M transactions/day (~$500B daily value).</p>
+</li>
+<li>
+<p><strong>Switzerland SIC</strong>: Swiss Interbank Clearing system is significant for its size relative to GDP but small in absolute transaction terms.</p>
+</li>
+<li>
+<p><strong>CLS transaction counts</strong>: The biggest data gap. CLS publishes comprehensive value statistics but transaction count data requires estimation.</p>
+</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/banking/interbank-rtgs/workings/source_notes.md">analysis/banking/interbank-rtgs/workings/source_notes.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

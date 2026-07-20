@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeFi (Decentralised Finance) — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Decentralised finance protocols processed approximately $4.16 trillion in trading volume across DEX spot ($1.76T) and DE">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Defi</div>
+  <div class="report-head"><span class="kind">Report</span><h1>DeFi (Decentralised Finance)</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections">Projections</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Decentralised finance protocols processed approximately <strong>$4.16 trillion</strong> in trading volume across DEX spot ($1.76T) and DEX perpetuals ($2.4T) in 2024, with total value locked (TVL) reaching <strong>$140 billion</strong> by year-end (<a href="https://defillama.com/">DeFiLlama</a>, <a href="https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf">CoinGecko</a>). DeFi had ~21.7 million unique users at peak in September 2024, a 300% year-over-year increase. Uniswap remains the dominant DEX, but Solana-based DEXs (Raydium, Jupiter) surged dramatically. Critically, <strong>all DeFi transactions are a subset of L1/L2 on-chain transactions</strong> — they should not be added to the blockchain capsule totals.</p>
+<h2 id="scope">Scope</h2>
+<p>This analysis covers <strong>decentralised, non-custodial financial protocols</strong> operating on public blockchains. Included: DEX spot swaps (Uniswap, Raydium, PancakeSwap, etc.), DEX perpetual futures (Hyperliquid, dYdX, Jupiter), lending/borrowing (Aave, Compound, MakerDAO), and liquid staking (Lido, Rocket Pool). Excluded: centralised exchange trading (see <a href="/universe-of-finance/reports/digital-assets/cex/REPORT.html">CEX capsule</a>), centralised lending (BlockFi, Celsius — defunct), wrapped/bridged token issuance mechanics.</p>
+<p><strong>Double-counting warning:</strong> Every DeFi transaction is also an L1 or L2 blockchain transaction. A Uniswap swap on Arbitrum counts in both this capsule AND the <a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/REPORT.html">L1/L2 capsule</a>. Do not sum across capsules.</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="trading-volume">Trading Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEX spot volume (2024)</td>
+<td>$1.76T</td>
+<td><a href="https://defillama.com/dexs">DeFiLlama</a> / <a href="https://www.coingecko.com/research/publications/2024-annual-crypto-report">CoinGecko</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>DEX perp volume (2024)</td>
+<td>~$2.4T</td>
+<td><a href="https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf">CoinGecko Perps Report</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Combined DEX volume (2024)</td>
+<td>~$4.16T</td>
+<td>Derived (spot + perps)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>DEX-to-CEX spot ratio</td>
+<td>~9.3%</td>
+<td>$1.76T / $18.83T</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Peak daily DEX spot volume</td>
+<td>$9.2B</td>
+<td>Aug 4, 2024 (<a href="https://coinlaw.io/decentralized-finance-market-statistics/">CoinLaw</a>)</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>TVL (Dec 2024)</td>
+<td>~$140B</td>
+<td><a href="https://defillama.com/">DeFiLlama</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Open borrows (Q4 2024)</td>
+<td>$19.1B</td>
+<td><a href="https://coinlaw.io/crypto-lending-and-borrowing-statistics/">CoinLaw</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Unique DeFi users (peak)</td>
+<td>21.7M</td>
+<td>Sep 2024 (<a href="https://coinlaw.io/decentralized-finance-market-statistics/">CoinLaw</a>)</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dex-spot-volume-by-chain-2024">DEX Spot Volume by Chain (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Chain</th>
+<th>Est. Annual DEX Volume</th>
+<th>Share</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solana</td>
+<td>~$969B</td>
+<td>~55%</td>
+<td><a href="https://solanafloor.com/news/solana-s-dex-volume-hits-trillion-dollar-mark-2025-in-numbers">Solana Floor</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Ethereum L1</td>
+<td>~$350B</td>
+<td>~20%</td>
+<td>DeFiLlama</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Arbitrum</td>
+<td>~$100B</td>
+<td>~6%</td>
+<td>DeFiLlama</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>~$80B</td>
+<td>~5%</td>
+<td>DeFiLlama</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>BNB Chain</td>
+<td>~$70B</td>
+<td>~4%</td>
+<td>DeFiLlama</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Other chains</td>
+<td>~$190B</td>
+<td>~11%</td>
+<td>DeFiLlama</td>
+<td>🔴 Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="top-dex-protocols-spot-2024">Top DEX Protocols (Spot, 2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Chains</th>
+<th>Est. Annual Volume</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uniswap (v2/v3/v4)</td>
+<td>Ethereum, Arbitrum, Polygon, Base, etc.</td>
+<td>~$700B+</td>
+<td>Largest DEX by cumulative volume</td>
+</tr>
+<tr>
+<td>Raydium</td>
+<td>Solana</td>
+<td>~$300B+</td>
+<td>Memecoin trading hub</td>
+</tr>
+<tr>
+<td>Jupiter</td>
+<td>Solana</td>
+<td>~$200B+</td>
+<td>Solana DEX aggregator</td>
+</tr>
+<tr>
+<td>PancakeSwap</td>
+<td>BNB Chain, Ethereum</td>
+<td>~$80B+</td>
+<td>BSC leader</td>
+</tr>
+<tr>
+<td>Orca</td>
+<td>Solana</td>
+<td>~$60B+</td>
+<td>Concentrated liquidity on Solana</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dex-perpetuals-2024">DEX Perpetuals (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Est. Annual Volume</th>
+<th>Share</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hyperliquid</td>
+<td>~$1.2T+</td>
+<td>~50%</td>
+<td>Dominant perp DEX by Q4 2024</td>
+</tr>
+<tr>
+<td>dYdX</td>
+<td>~$400B</td>
+<td>~17%</td>
+<td>Fell to 3rd place</td>
+</tr>
+<tr>
+<td>Jupiter Perps</td>
+<td>~$200B</td>
+<td>~8%</td>
+<td>Solana-native</td>
+</tr>
+<tr>
+<td>GMX</td>
+<td>~$100B</td>
+<td>~4%</td>
+<td>Arbitrum-based</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>~$500B</td>
+<td>~21%</td>
+<td>Various chains</td>
+</tr>
+</tbody>
+</table>
+<h3 id="defi-lendingborrowing">DeFi Lending/Borrowing</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lending TVL</td>
+<td>&gt;$60B</td>
+<td><a href="https://www.ainvest.com/news/defi-lending-protocols-surpass-60-billion-total-locked-2507/">AInvest</a></td>
+</tr>
+<tr>
+<td>Aave market share</td>
+<td>~50-62%</td>
+<td>CoinLaw</td>
+</tr>
+<tr>
+<td>Open borrows (Q4)</td>
+<td>$19.1B</td>
+<td>CoinLaw</td>
+</tr>
+<tr>
+<td>Liquidations (2024)</td>
+<td>Significant during Aug crash</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="defi-tvl-and-dex-volume-2019-2024">DeFi TVL and DEX Volume (2019-2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>TVL (Dec)</th>
+<th>DEX Spot Volume</th>
+<th>Key Event</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~$0.7B</td>
+<td>~$2B</td>
+<td>Pre-DeFi summer</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~$15B</td>
+<td>~$25B</td>
+<td>DeFi summer, Uniswap v2 launch</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~$100B</td>
+<td>~$600B+</td>
+<td>DeFi mania, Uniswap v3, multi-chain</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~$40B</td>
+<td>~$500B</td>
+<td>Bear market, Terra/Luna collapse, FTX</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~$54B</td>
+<td>~$648B</td>
+<td>Recovery begins, Solana DeFi grows</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~$140B</td>
+<td>~$1.76T</td>
+<td>Solana memecoin frenzy, perp DEX explosion</td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<p><em>Sources: DeFiLlama for TVL; CoinGecko for DEX volume.</em></p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Metric</th>
+<th>Growth</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023-2024</td>
+<td>DEX spot volume</td>
+<td>+172%</td>
+<td>Solana DEX explosion</td>
+</tr>
+<tr>
+<td>2023-2024</td>
+<td>TVL</td>
+<td>+159%</td>
+<td>Bull market recovery</td>
+</tr>
+<tr>
+<td>2020-2024 (4yr)</td>
+<td>DEX spot volume</td>
+<td>~70x</td>
+<td>From $25B to $1.76T</td>
+</tr>
+<tr>
+<td>2023-2024</td>
+<td>DEX perp volume</td>
+<td>+132%</td>
+<td>Hyperliquid emergence</td>
+</tr>
+<tr>
+<td>2023-2024</td>
+<td>Unique users</td>
+<td>+300%</td>
+<td>Memecoin retail influx</td>
+</tr>
+</tbody>
+</table>
+<p>DEX spot volume share vs CEX grew from ~7-10% at start of 2024 to over 20% by January 2025, indicating a structural shift toward non-custodial trading.</p>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-dex-share-grows-steadily">Baseline (DEX Share Grows Steadily)</h3>
+<p><strong>Assumptions:</strong>
+1. DEX-to-CEX ratio grows from ~10% to ~25% by 2030 (spot)
+2. Perp DEX volume grows at 50% CAGR then decelerates
+3. DeFi TVL follows crypto market cycles but ratchets higher each cycle
+4. Institutional DeFi adoption begins (regulated pools, <a class="xref" href="/universe-of-finance/reports/emerging/rwa-tokenisation/REPORT.html">RWA tokenisation</a>)</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>DEX Spot Volume</th>
+<th>DEX Perp Volume</th>
+<th>TVL (est.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>$3T</td>
+<td>$6T</td>
+<td>$200B</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>$3.5T</td>
+<td>$8T</td>
+<td>$150B</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>$7T</td>
+<td>$15T</td>
+<td>$400B</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>$15T</td>
+<td>$30T</td>
+<td>$1T</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-defi-eats-finance">High Growth (DeFi Eats Finance)</h3>
+<p><strong>Assumptions:</strong>
+1. DEX captures 50%+ of crypto trading by 2035
+2. Real-world assets (bonds, equities) tokenised and traded on DEXs
+3. DeFi lending rivals small banks in assets
+4. <a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI agents</a> trade autonomously on-chain</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>DEX Spot Volume</th>
+<th>DEX Perp Volume</th>
+<th>TVL (est.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>$5T</td>
+<td>$10T</td>
+<td>$300B</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>$8T</td>
+<td>$20T</td>
+<td>$500B</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>$20T</td>
+<td>$50T</td>
+<td>$1T</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>$100T</td>
+<td>$200T</td>
+<td>$5T</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-speculation-fades">Conservative (Speculation Fades)</h3>
+<p><strong>Assumptions:</strong>
+1. Memecoin activity collapses, taking Solana DEX volume with it
+2. Regulatory action restricts DeFi access in major markets
+3. Institutional adoption stalls</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>DEX Spot Volume</th>
+<th>DEX Perp Volume</th>
+<th>TVL (est.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>$1.5T</td>
+<td>$3T</td>
+<td>$100B</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>$1T</td>
+<td>$2T</td>
+<td>$80B</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>$2T</td>
+<td>$4T</td>
+<td>$120B</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>$3T</td>
+<td>$6T</td>
+<td>$200B</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>DEXs processed $1.76T in spot volume and $2.4T in perp volume in 2024</strong> — combined $4.16T, a ~170% increase from 2023. DEX trading is approaching a meaningful share of CEX activity.</p>
+</li>
+<li>
+<p><strong>Solana captured ~55% of DEX spot volume</strong> in 2024, overtaking Ethereum for the first time. This was driven by the memecoin trading boom on platforms like Raydium and Jupiter.</p>
+</li>
+<li>
+<p><strong>Hyperliquid dominated perp DEXs</strong> with ~50% market share by Q4, displacing dYdX. The perp DEX market is growing faster than spot DEXs.</p>
+</li>
+<li>
+<p><strong>DeFi TVL nearly tripled</strong> from $54B to $140B in 2024. Aave controls ~50-62% of lending TVL. Open borrows reached $19.1B, nearly double centralised lending volume.</p>
+</li>
+<li>
+<p><strong>All DeFi transactions are a subset of L1/L2 transactions.</strong> A Uniswap swap on Ethereum counts as both a DeFi transaction and an Ethereum L1 transaction. This is the most important double-counting flag in the Digital Assets sector.</p>
+</li>
+<li>
+<p><strong>DEX-to-CEX ratio is structurally increasing.</strong> From ~3% in 2020 to ~10% in 2024 to ~20% by Jan 2025. The trend toward non-custodial trading is accelerating, driven by improved UX, lower fees on L2s, and post-FTX trust concerns.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>DEX volume is high-confidence.</strong> Unlike CEX data, DEX trades are on-chain and verifiable. DeFiLlama aggregates directly from smart contract events. However, MEV sandwich attacks and arbitrage bots inflate volume.</li>
+<li><strong>TVL is a flawed metric.</strong> TVL counts the same dollar multiple times (deposit ETH → mint stETH → deposit stETH in Aave → borrow USDC → provide liquidity). Actual unique capital is much lower.</li>
+<li><strong>Perp DEX volume includes leverage.</strong> Like CEX derivatives, notional volume overstates economic activity.</li>
+<li><strong>User count methodology varies.</strong> "21.7M unique users" likely counts unique addresses, not unique humans (one person may use multiple wallets).</li>
+<li><strong>DeFi lending data is for open positions, not flow.</strong> $19.1B in borrows is a stock metric, not annual flow.</li>
+<li><strong>Historic DEX volume before 2022 is less reliable.</strong> DeFiLlama's coverage improved over time; earlier data may undercount smaller DEXs.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li>The percentage of DEX volume generated by MEV bots (sandwich attacks + arbitrage) vs. organic human traders</li>
+<li>True unique user count (addresses != humans; sybil farming inflates DeFi user metrics)</li>
+<li>How much DEX volume is incentivised by liquidity mining rewards and would disappear without subsidies</li>
+<li>The real capital efficiency of DeFi (TVL is multi-counted via recursive lending/staking)</li>
+<li>Whether Hyperliquid's dominance in perp DEXs reflects genuine demand or concentrated market-making</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MEV/bot volume as % of DEX trades</td>
+<td>Analyse sandwich attack and arbitrage bot volume from MEV trackers; compare bot-attributed volume to total DEX volume</td>
+<td>Sandwiched.me: $561.9M MEV volume in 16-month period on Solana alone; reverted txns peaked at 75.7% in Apr 2024; Flashbots data for Ethereum MEV</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Unique users vs. transaction count ratio</td>
+<td>Compare unique active addresses to transaction counts — a ratio below 1:10 suggests heavy bot/power-user concentration</td>
+<td>DeFiLlama: 21.7M peak users vs. billions of annual transactions; Dune dashboards track unique traders per DEX</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>TVL-to-volume ratio as capital efficiency measure</td>
+<td>Divide annual DEX volume by average TVL — higher ratios indicate more efficient capital use (or more speculative churn)</td>
+<td>DeFi TVL ~$140B avg; DEX spot volume $1.76T → ~12.6x annual turnover. Compare to TradFi: NYSE market cap ~$28T, volume ~$50T → ~1.8x</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Organic vs. incentivised volume</td>
+<td>Track DEX volume changes when liquidity mining programs end — volume drops reveal the subsidy-dependent fraction</td>
+<td>Historical data from Uniswap (post-UNI farming), SushiSwap rewards changes; Base/Optimism grant program timelines</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Sybil/airdrop farming distortion</td>
+<td>Compare pre-airdrop vs. post-airdrop activity on L2 DEXs (zkSync, Starknet, Arbitrum) to estimate farming-inflated volume</td>
+<td>zkSync airdrop (Jun 2024) caused ~40-60% activity drop; Starknet similar pattern; Dune sybil detection dashboards</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Perp DEX genuine demand</td>
+<td>Analyse Hyperliquid's open interest relative to volume — a very high volume-to-OI ratio suggests wash trading or excessive churn</td>
+<td>Hyperliquid dashboard shows OI vs. volume; compare to CEX perp exchanges for calibration</td>
+<td>🔴</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li>If MEV bots account for 30-60% of DEX transaction count (not volume), what is the "organic human TPS" for DeFi? This would significantly reduce the activity attributed to genuine DeFi usage.</li>
+<li>The DEX-to-CEX ratio grew from ~3% to ~20% in 4 years. Is this structural (post-FTX trust shift) or cyclical (memecoin speculation on Solana)? If Solana memecoin activity normalises, does the ratio revert to ~10%?</li>
+<li>TVL's 12.6x annual turnover ratio is 7x higher than NYSE's. Does this indicate superior capital efficiency or speculative churn? Breaking down by protocol type (lending vs. DEX LP vs. liquid staking) would reveal the answer.</li>
+<li>How much of the $2.4T perp DEX volume is delta-neutral market making (economically hollow) vs. directional trading (economically meaningful)?</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>DEX vs. CEX spot volume:</strong> DEXs did $1.76T vs. CEX $18.83T — a 9.3% ratio. If CEX volume is adjusted for wash trading (20-30% reduction), the ratio rises to ~12-13%, suggesting DEXs are more significant than headline numbers imply.</li>
+<li><strong>DeFi TVL vs. traditional bank deposits:</strong> $140B TVL is equivalent to a mid-size US regional bank. The top 4 US banks hold ~$7T in deposits — DeFi is ~2% of that. But DeFi's growth rate (~159% YoY) far exceeds banking deposit growth (~5% YoY).</li>
+<li><strong>DEX capital efficiency:</strong> Uniswap v3 concentrated liquidity achieves capital efficiency comparable to centralised order books on major pairs. Uniswap's TVL-to-volume ratio is ~50x annually vs. ~12.6x for DeFi overall — concentrated liquidity is transformative.</li>
+<li><strong>MEV as a tax on DeFi users:</strong> If sandwich attacks extracted $370-500M from Solana users alone over 16 months, the annualised MEV tax is ~$280-375M — roughly 0.02% of DEX volume but significant for individual affected trades (5-10% slippage on sandwiched trades).</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://defillama.com/dexs">DeFiLlama — DEX Volume Rankings</a></li>
+<li><a href="https://defillama.com/dexs/chains">DeFiLlama — DEX Volume by Chain</a></li>
+<li><a href="https://defillama.com/perps">DeFiLlama — Perp DEX Volume Rankings</a></li>
+<li><a href="https://defillama.com/">DeFiLlama — Total Value Locked Dashboard</a></li>
+<li><a href="https://www.coingecko.com/research/publications/2024-annual-crypto-report">CoinGecko — 2024 Annual Crypto Industry Report</a></li>
+<li><a href="https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf">CoinGecko — State of Crypto Perpetuals Market (2024)</a></li>
+<li><a href="https://coinlaw.io/decentralized-finance-market-statistics/">CoinLaw — Decentralized Finance Market Statistics 2025</a></li>
+<li><a href="https://coinlaw.io/crypto-lending-and-borrowing-statistics/">CoinLaw — Crypto Lending and Borrowing Statistics 2026</a></li>
+<li><a href="https://solanafloor.com/news/solana-s-dex-volume-hits-trillion-dollar-mark-2025-in-numbers">Solana Floor — Solana's DEX Volume Hits Trillion Dollar Mark</a></li>
+<li><a href="https://www.ainvest.com/news/defi-lending-protocols-surpass-60-billion-total-locked-2507/">AInvest — DeFi Lending Protocols Surpass $60B TVL</a></li>
+<li><a href="https://www.theblock.co/data/decentralized-finance/dex-non-custodial/dex-volume-monthly">The Block — DEX Volume Monthly</a></li>
+<li><a href="https://www.theblock.co/amp/post/333054/hyperliquid-leads-the-pack-as-dex-futures-hit-285-billion-in-2024">The Block — Hyperliquid leads perp DEX futures at $285B</a></li>
+<li><a href="https://focusonbusiness.eu/en/news/total-value-locked-in-defi-soars-137-yoy-to-a-staggering-129-billion/6554">Focus on Business — TVL in DeFi soars 137% YoY to $129B</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/defi/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/digital-assets/defi/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/digital-assets/defi/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/digital-assets/defi/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/defi/REPORT.md">analysis/digital-assets/defi/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

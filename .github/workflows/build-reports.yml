@@ -1,0 +1,46 @@
+name: Build report HTML
+
+# Regenerates the stylized, cross-linked /reports/ pages whenever the underlying
+# markdown, data, or the generator itself changes. Keeps the HTML in sync with the .md
+# source without relying on anyone remembering to run the generator.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "analysis/**/*.md"
+      - "analysis/**/data.json"
+      - "data/opacity.json"
+      - "tools/build_reports.py"
+      - "assets/report.css"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-reports
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install markdown beautifulsoup4
+      - name: Generate report pages
+        run: python3 tools/build_reports.py
+      - name: Commit regenerated reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reports/
+          if git diff --cached --quiet; then
+            echo "No report changes"
+          else
+            git commit -m "[Chore] Regenerate report HTML $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi

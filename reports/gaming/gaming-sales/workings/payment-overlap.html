@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Game Sales & Subscriptions — Payment Overlap Analysis — Universe of Finance</title>
+<meta name="description" content="Quantifies how digital game purchases and subscription payments overlap with other payment categories in the Universe of Finance taxonomy. 1. The Core Question When a consumer buy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Gaming<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Digital Game Sales & Subscriptions — Payment Overlap Analysis</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-the-core-question">1. The Core Question</a></li><li><a href="#2-payment-channel-decomposition">2. Payment Channel Decomposition</a></li><li><a href="#3-aggregate-overlap-summary">3. Aggregate Overlap Summary</a></li><li><a href="#4-overlap-with-consumer-cards">4. Overlap with Consumer Cards</a></li><li><a href="#5-overlap-with-digital-wallets">5. Overlap with Digital Wallets</a></li><li><a href="#6-incremental-truly-unique-transactions">6. Incremental (Truly Unique) Transactions</a></li><li><a href="#7-combined-gaming-overlap-microtransactions-sales">7. Combined Gaming Overlap (Microtransactions + Sales)</a></li><li><a href="#8-update-to-datajson-overlap-fields">8. Update to data.json Overlap Fields</a></li><li><a href="#9-implications-for-de-duplication">9. Implications for De-Duplication</a></li></ul></div><blockquote>
+<p>Quantifies how digital game purchases and subscription payments overlap with other
+payment categories in the Universe of Finance taxonomy.</p>
+</blockquote>
+<h2 id="1-the-core-question">1. The Core Question</h2>
+<p>When a consumer buys a $60 game on Steam or renews their $15/month Game Pass subscription,
+that payment uses an existing payment rail (card, wallet, bank transfer). Is this transaction
+already counted in another capsule?</p>
+<p><strong>Yes — almost entirely.</strong> Game sales and subscription payments are commerce transactions
+that flow through existing payment infrastructure.</p>
+<h2 id="2-payment-channel-decomposition">2. Payment Channel Decomposition</h2>
+<h3 id="full-game-purchases-213b-transactions-52b-revenue">Full Game Purchases (~2.13B transactions, $52B revenue)</h3>
+<h4 id="pc-digital-games-840m-transactions-21b">PC Digital Games (~840M transactions, $21B)</h4>
+<table>
+<thead>
+<tr>
+<th>Payment Method</th>
+<th>Share</th>
+<th>Est. Txns (M)</th>
+<th>Also Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Card-on-file (Steam, Epic, GOG)</td>
+<td>~55%</td>
+<td>~462</td>
+<td>Consumer Cards</td>
+</tr>
+<tr>
+<td>PayPal</td>
+<td>~18%</td>
+<td>~151</td>
+<td>Digital Wallets</td>
+</tr>
+<tr>
+<td>Platform wallet (Steam Wallet)</td>
+<td>~10%</td>
+<td>~84</td>
+<td>Counted at wallet top-up</td>
+</tr>
+<tr>
+<td>Bank transfer / iDEAL / Sofort</td>
+<td>~8%</td>
+<td>~67</td>
+<td>Bank Transfers</td>
+</tr>
+<tr>
+<td>Gift cards</td>
+<td>~5%</td>
+<td>~42</td>
+<td>Counted at original purchase</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>~4%</td>
+<td>~34</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<h4 id="console-digital-games-633m-transactions-285b">Console Digital Games (~633M transactions, $28.5B)</h4>
+<table>
+<thead>
+<tr>
+<th>Payment Method</th>
+<th>Share</th>
+<th>Est. Txns (M)</th>
+<th>Also Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Card-on-file</td>
+<td>~72%</td>
+<td>~456</td>
+<td>Consumer Cards</td>
+</tr>
+<tr>
+<td>PayPal</td>
+<td>~10%</td>
+<td>~63</td>
+<td>Digital Wallets</td>
+</tr>
+<tr>
+<td>Platform wallet / store credit</td>
+<td>~8%</td>
+<td>~51</td>
+<td>Counted at wallet top-up</td>
+</tr>
+<tr>
+<td>Gift cards (PSN/Xbox/Nintendo)</td>
+<td>~8%</td>
+<td>~51</td>
+<td>Counted at original purchase</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>~2%</td>
+<td>~13</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<h4 id="mobile-premium-games-500m-transactions-25b">Mobile Premium Games (~500M transactions, $2.5B)</h4>
+<table>
+<thead>
+<tr>
+<th>Payment Method</th>
+<th>Share</th>
+<th>Est. Txns (M)</th>
+<th>Also Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Card-on-file</td>
+<td>~55%</td>
+<td>~275</td>
+<td>Consumer Cards</td>
+</tr>
+<tr>
+<td>Apple Pay / Google Pay</td>
+<td>~15%</td>
+<td>~75</td>
+<td>Digital Wallets + Cards</td>
+</tr>
+<tr>
+<td>Carrier billing</td>
+<td>~12%</td>
+<td>~60</td>
+<td>None — telecom rails</td>
+</tr>
+<tr>
+<td>PayPal / wallet</td>
+<td>~8%</td>
+<td>~40</td>
+<td>Digital Wallets</td>
+</tr>
+<tr>
+<td>Gift cards</td>
+<td>~5%</td>
+<td>~25</td>
+<td>Counted at original purchase</td>
+</tr>
+<tr>
+<td>Bank transfer</td>
+<td>~3%</td>
+<td>~15</td>
+<td>Bank Transfers</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>~2%</td>
+<td>~10</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<h3 id="subscription-renewals-076b-transactions-82b">Subscription Renewals (~0.76B transactions, $8.2B)</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Method</th>
+<th>Share</th>
+<th>Est. Txns (M)</th>
+<th>Also Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Card-on-file (recurring charge)</td>
+<td>~75%</td>
+<td>~570</td>
+<td>Consumer Cards</td>
+</tr>
+<tr>
+<td>PayPal (recurring)</td>
+<td>~12%</td>
+<td>~91</td>
+<td>Digital Wallets</td>
+</tr>
+<tr>
+<td>Platform wallet / balance</td>
+<td>~5%</td>
+<td>~38</td>
+<td>Counted at wallet top-up</td>
+</tr>
+<tr>
+<td>Gift cards / prepaid codes</td>
+<td>~5%</td>
+<td>~38</td>
+<td>Counted at original purchase</td>
+</tr>
+<tr>
+<td>Bank transfer / direct debit</td>
+<td>~3%</td>
+<td>~23</td>
+<td>Bank Transfers</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-aggregate-overlap-summary">3. Aggregate Overlap Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Payment Rail</th>
+<th>Game Purchases (M)</th>
+<th>Subscriptions (M)</th>
+<th>Total (M)</th>
+<th>% of 2.89B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Card rails (direct)</strong></td>
+<td>1,193</td>
+<td>570</td>
+<td><strong>1,763</strong></td>
+<td><strong>61.0%</strong></td>
+</tr>
+<tr>
+<td><strong>Card rails (via wallet)</strong></td>
+<td>75</td>
+<td>0</td>
+<td><strong>75</strong></td>
+<td><strong>2.6%</strong></td>
+</tr>
+<tr>
+<td><strong>Digital wallets (non-card)</strong></td>
+<td>254</td>
+<td>91</td>
+<td><strong>345</strong></td>
+<td><strong>11.9%</strong></td>
+</tr>
+<tr>
+<td><strong>Carrier billing</strong></td>
+<td>60</td>
+<td>0</td>
+<td><strong>60</strong></td>
+<td><strong>2.1%</strong></td>
+</tr>
+<tr>
+<td><strong>Gift cards / store credit</strong></td>
+<td>118</td>
+<td>38</td>
+<td><strong>156</strong></td>
+<td><strong>5.4%</strong></td>
+</tr>
+<tr>
+<td><strong>Bank transfer</strong></td>
+<td>82</td>
+<td>23</td>
+<td><strong>105</strong></td>
+<td><strong>3.6%</strong></td>
+</tr>
+<tr>
+<td><strong>Platform wallet (pre-funded)</strong></td>
+<td>135</td>
+<td>38</td>
+<td><strong>173</strong></td>
+<td><strong>6.0%</strong></td>
+</tr>
+<tr>
+<td><strong>Other</strong></td>
+<td>57</td>
+<td>0</td>
+<td><strong>57</strong></td>
+<td><strong>2.0%</strong></td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>2,130</strong></td>
+<td><strong>760</strong></td>
+<td><strong>2,890</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-overlap-with-consumer-cards">4. Overlap with Consumer Cards</h2>
+<p><strong>Total game sales/subs on card rails: 1,763M (direct) + 75M (via wallet) = 1,838M</strong></p>
+<p>This represents <strong>63.6%</strong> of all digital game sales and subscription transactions.</p>
+<p>These ~1.84B transactions are already included in the 772.7B consumer card total.
+Game sales represent <strong>0.24%</strong> of all card transactions — negligible at the card network level.</p>
+<h2 id="5-overlap-with-digital-wallets">5. Overlap with Digital Wallets</h2>
+<p><strong>Total via wallets: 75M (card-funded) + 345M (non-card) = 420M</strong></p>
+<p>Of these:
+- 75M are Apple Pay/Google Pay on card rails (triple-counted: game sales + wallets + cards)
+- 345M are PayPal/non-card wallets (double-counted: game sales + wallets)</p>
+<h2 id="6-incremental-truly-unique-transactions">6. Incremental (Truly Unique) Transactions</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Txns (M)</th>
+<th>Why Incremental</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carrier billing</td>
+<td>60</td>
+<td>Telecom rails</td>
+</tr>
+<tr>
+<td>Gift card redemptions</td>
+<td>156</td>
+<td>Original purchase counted, redemption is new</td>
+</tr>
+<tr>
+<td>Platform wallet spend</td>
+<td>173</td>
+<td>Top-up counted, in-store spend is internal</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>57</td>
+<td>Regional/crypto methods</td>
+</tr>
+<tr>
+<td><strong>TOTAL INCREMENTAL</strong></td>
+<td><strong>~446M</strong></td>
+<td><strong>15.4% of game sales transactions</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key finding: ~84.6% of digital game sale and subscription transactions (2.44B) are already counted in <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Cards</a>, <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a>, or <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a>.</strong> Only ~446M (~15%) are truly incremental.</p>
+<h2 id="7-combined-gaming-overlap-microtransactions-sales">7. Combined Gaming Overlap (Microtransactions + Sales)</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Annual Txns (B)</th>
+<th>On Card Rails</th>
+<th>On Wallet Rails</th>
+<th>On Bank Rails</th>
+<th>Incremental</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microtransactions</td>
+<td>12.28</td>
+<td>8.45 (68.8%)</td>
+<td>2.55 (20.8%)</td>
+<td>0.41 (3.3%)</td>
+<td>2.32 (18.9%)</td>
+</tr>
+<tr>
+<td>Game Sales + Subs</td>
+<td>2.89</td>
+<td>1.84 (63.6%)</td>
+<td>0.42 (14.5%)</td>
+<td>0.11 (3.6%)</td>
+<td>0.45 (15.4%)</td>
+</tr>
+<tr>
+<td><strong>COMBINED</strong></td>
+<td><strong>15.17</strong></td>
+<td><strong>10.29 (67.8%)</strong></td>
+<td><strong>2.97 (19.6%)</strong></td>
+<td><strong>0.52 (3.4%)</strong></td>
+<td><strong>2.77 (18.3%)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Of the combined 15.2B annual gaming transactions, approximately 10.3B (68%) flow through card rails and are already counted in Consumer Cards.</strong> Only 2.8B (~18%) are truly incremental to the global payment transaction total.</p>
+<h2 id="8-update-to-datajson-overlap-fields">8. Update to data.json Overlap Fields</h2>
+<p>The existing <code>data.json</code> overlap section should be updated from:</p>
+<pre><code class="language-json">"overlap_note": "70-80% of digital game sales settle on card rails"
+</code></pre>
+<p>to:</p>
+<pre><code class="language-json">"overlap_note": "63.6% of digital game sales settle on card rails (1.84B of 2.89B). An additional 11.9% flow through non-card digital wallets, 3.6% through bank transfers. Only ~15% (446M) are truly incremental — primarily gift card redemptions, carrier billing, and platform wallet spend."
+</code></pre>
+<h2 id="9-implications-for-de-duplication">9. Implications for De-Duplication</h2>
+<p>When aggregating the Universe of Finance TPS total:
+- <strong>Gaming <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a></strong> contribute ~2.32B incremental transactions (~74 TPS)
+- <strong>Gaming sales/subs</strong> contribute ~446M incremental transactions (~14 TPS)
+- <strong>Combined gaming increment</strong>: ~2.77B transactions (~88 TPS)
+- <strong>Total gaming raw</strong>: 15.17B transactions (~481 TPS)
+- <strong>Double-counted</strong>: ~12.4B transactions (~393 TPS) already in cards/wallets/bank transfers</p>
+<p>This is consistent with the broader pattern: <strong>gaming is a commerce layer, not a payment layer</strong>. Like <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a>, the vast majority of gaming transactions flow through existing payment infrastructure.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/gaming/gaming-sales/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/gaming/gaming-sales/workings/payment-overlap.md">analysis/gaming/gaming-sales/workings/payment-overlap.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

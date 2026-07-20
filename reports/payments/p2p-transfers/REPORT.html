@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peer-to-Peer Transfers — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary The global P2P transfers market processed an estimated 8.5 billion transactions in 2024, yielding an average throughput">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>P2P Transfers</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Peer-to-Peer Transfers</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">270</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">69</div></div><div class="chip"><div class="k">Opacity</div><div class="v red">64</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#19/28</div></div></div>
+  <div class="chart-box"><h3>Payments — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart21"></canvas></div></div><script>new Chart(document.getElementById("chart21"),{"type": "bar", "data": {"labels": ["Consumer Cards", "Digital Wallets", "Bank Transfers", "Bill Payments", "E-Commerce", "ATM Withdrawals", "Payroll", "BNPL", "Insurance Premiums", "P2P Transfers", "Remittances"], "datasets": [{"data": [24501, 19660, 15338, 3076, 1823, 1557, 1014, 634, 444, 270, 57], "backgroundColor": ["#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#3b82f6", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections">Projections</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>The global P2P transfers market processed an estimated <strong>8.5 billion transactions in 2024</strong>, yielding an average throughput of approximately <strong>270 TPS</strong>. This category is dominated by the US market, where Zelle ($1.04 trillion), Venmo (~$280 billion), and Cash App (~$280 billion) collectively processed the majority of volume. The US P2P market alone reached an estimated <strong>$1.8-2.0 trillion</strong> in total payment volume in 2024. Globally, including European, Asian (non-UPI), and other domestic P2P platforms, total value likely reached <strong>$2.5-3.0 trillion</strong>.</p>
+<p>Note: <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> P2P transactions (which are massive) are counted under <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a>, and <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s WeChat/Alipay P2P is similarly classified there. This category focuses on dedicated P2P apps and non-wallet domestic transfer platforms.</p>
+<h2 id="scope">Scope</h2>
+<p><strong>Included:</strong>
+- Zelle (US — bank-to-bank P2P)
+- Venmo (US — PayPal-owned P2P/social payments)
+- Cash App (US — Block/Square P2P)
+- PayPal P2P (non-Venmo domestic transfers)
+- European P2P: Bizum (Spain), Swish (Sweden), iDEAL P2P (Netherlands), Lydia (France)
+- Other domestic P2P: <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Pix</a> P2P (<a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>, where classifiable), KakaoPay (South Korea)</p>
+<p><strong>Excluded:</strong>
+- UPI (India) — counted in Digital Wallets
+- WeChat Pay / Alipay P2P — counted in Digital Wallets
+- Cross-border P2P — counted in <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">Remittances</a>
+- Crypto P2P transfers
+- Bank wire transfers between individuals (counted in <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a>)</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume">Transaction Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS</td>
+<td>~270</td>
+<td>Derived from annual volume</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~600</td>
+<td>US holiday weekend peaks</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Daily volume</td>
+<td>~23 million</td>
+<td>Derived from annual</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual volume (2024)</td>
+<td>~8.5 billion txns</td>
+<td>Aggregated from platform data</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual value (2024)</td>
+<td>~$2.8 trillion</td>
+<td>Aggregated estimates</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="us-platform-breakdown-2024">US Platform Breakdown (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Annual Transactions</th>
+<th>Annual Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Zelle</td>
+<td>3.6 billion</td>
+<td>$1.04 trillion</td>
+<td><a href="https://www.cnbc.com/2025/02/12/zelle-payments-top-1-trillion-in-2024.html">CNBC</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Venmo</td>
+<td>~2.3 billion (est.)</td>
+<td>~$280 billion</td>
+<td><a href="https://www.businessofapps.com/data/venmo-statistics/">BusinessOfApps</a> / <a href="https://www.sec.gov/Archives/edgar/data/1633917/000163391725000019/pypl-20241231.htm">PayPal 10-K</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Cash App</td>
+<td>~1.5 billion (est.)</td>
+<td>~$283 billion (inflows)</td>
+<td><a href="https://www.businessofapps.com/data/cash-app-statistics/">BusinessOfApps</a> / <a href="https://www.sec.gov/Archives/edgar/data/1512673/000162828025007376/sq-20241231.htm">Block 10-K</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>PayPal P2P (non-Venmo)</td>
+<td>~0.3 billion (est.)</td>
+<td>~$150 billion (est.)</td>
+<td>Estimated from PayPal TPV</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>US Total</strong></td>
+<td><strong>~7.7 billion</strong></td>
+<td><strong>~$1.75 trillion</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="non-us-estimates-2024">Non-US Estimates (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Platform/Region</th>
+<th>Annual Transactions (est.)</th>
+<th>Annual Value (est.)</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bizum (Spain)</td>
+<td>~0.3 billion</td>
+<td>~$30 billion</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Swish (Sweden)</td>
+<td>~0.15 billion</td>
+<td>~$15 billion</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Other European P2P</td>
+<td>~0.2 billion</td>
+<td>~$40 billion</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Rest of World (excl. UPI, China)</td>
+<td>~0.15 billion</td>
+<td>~$20 billion</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>Non-US Total</strong></td>
+<td><strong>~0.8 billion</strong></td>
+<td><strong>~$105 billion</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="zelle">Zelle</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Transactions (billions)</th>
+<th>Value ($billions)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>0.74</td>
+<td>$187</td>
+<td>Early Warning Services</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>1.2</td>
+<td>$307</td>
+<td>Early Warning Services</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>1.8</td>
+<td>$490</td>
+<td>Early Warning Services</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>2.3</td>
+<td>$629</td>
+<td>Early Warning Services</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>2.9</td>
+<td>$806</td>
+<td><a href="https://www.zelle.com/press-releases/zelle-soars-806-billion-transaction-volume-28-prior-year">Zelle</a></td>
+</tr>
+<tr>
+<td>2024</td>
+<td>3.6</td>
+<td>$1,040</td>
+<td><a href="https://www.cnbc.com/2025/02/12/zelle-payments-top-1-trillion-in-2024.html">CNBC</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="venmo-total-payment-volume">Venmo (Total Payment Volume)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Value ($billions)</th>
+<th>Est. Transactions (billions)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>$102</td>
+<td>~0.9</td>
+<td>PayPal 10-K</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>$159</td>
+<td>~1.3</td>
+<td>PayPal 10-K</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>$230</td>
+<td>~1.7</td>
+<td>PayPal 10-K</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>$244</td>
+<td>~1.8</td>
+<td>PayPal 10-K</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>$270</td>
+<td>~2.1</td>
+<td>PayPal 10-K</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~$280 (est.)</td>
+<td>~2.3 (est.)</td>
+<td>Q1 data × 4 extrapolation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cash-app">Cash App</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Value ($billions)</th>
+<th>Est. Transactions (billions)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~$40</td>
+<td>~0.4</td>
+<td>Block filings</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~$75</td>
+<td>~0.7</td>
+<td>Block filings</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~$100</td>
+<td>~0.9</td>
+<td>Block filings</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~$128</td>
+<td>~1.0</td>
+<td>Block filings</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~$210</td>
+<td>~1.3</td>
+<td>Block filings / estimates</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~$283</td>
+<td>~1.5</td>
+<td><a href="https://www.sec.gov/Archives/edgar/data/1512673/000162828025007376/sq-20241231.htm">Block 10-K</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="aggregate-us-p2p-market">Aggregate US P2P Market</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Total Value ($billions)</th>
+<th>Est. Transactions (billions)</th>
+<th>Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>$450</td>
+<td>2.7</td>
+<td>86</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>$680</td>
+<td>3.9</td>
+<td>124</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>$920</td>
+<td>5.1</td>
+<td>162</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>$1,150</td>
+<td>5.8</td>
+<td>184</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>$1,450</td>
+<td>7.0</td>
+<td>222</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>$1,750</td>
+<td>7.7</td>
+<td>244</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>CAGR (Transactions)</th>
+<th>CAGR (Value)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019-2024 US (5yr)</td>
+<td>~23.3%</td>
+<td>~31.2%</td>
+<td>Rising avg. txn size + adoption</td>
+</tr>
+<tr>
+<td>2022-2024 US (2yr)</td>
+<td>~15.2%</td>
+<td>~23.3%</td>
+<td>Growth normalizing</td>
+</tr>
+<tr>
+<td>Zelle 2019-2024</td>
+<td>~37.2%</td>
+<td>~40.9%</td>
+<td>Bank integration driving adoption</td>
+</tr>
+<tr>
+<td>Venmo 2019-2024</td>
+<td>~20.6%</td>
+<td>~22.4%</td>
+<td>Mature but steady</td>
+</tr>
+<tr>
+<td>Cash App 2019-2024</td>
+<td>~30.3%</td>
+<td>~48.0%</td>
+<td>Rapid growth from lower base</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-12-cagr-declining-to-6-by-2035">Baseline (12% CAGR declining to 6% by 2035)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (billions)</th>
+<th>Avg TPS</th>
+<th>Annual Value ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>9.5</td>
+<td>301</td>
+<td>3.1</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>11.8</td>
+<td>374</td>
+<td>3.9</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>15.5</td>
+<td>491</td>
+<td>5.1</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>20.7</td>
+<td>656</td>
+<td>6.8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-16-cagr-declining-to-10">High Growth (16% CAGR declining to 10%)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (billions)</th>
+<th>Avg TPS</th>
+<th>Annual Value ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>9.9</td>
+<td>314</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>13.0</td>
+<td>412</td>
+<td>4.3</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>19.0</td>
+<td>602</td>
+<td>6.3</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>30.6</td>
+<td>970</td>
+<td>10.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-8-cagr-declining-to-4">Conservative (8% CAGR declining to 4%)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (billions)</th>
+<th>Avg TPS</th>
+<th>Annual Value ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>9.2</td>
+<td>292</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>10.7</td>
+<td>339</td>
+<td>3.5</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>13.0</td>
+<td>412</td>
+<td>4.3</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>15.8</td>
+<td>501</td>
+<td>5.2</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>Zelle is the undisputed US P2P leader by value</strong>, surpassing $1 trillion in 2024 — the first P2P platform to reach this milestone. Its bank-integrated model gives it a structural advantage: money moves instantly between bank accounts with no app required.</p>
+</li>
+<li>
+<p><strong>The US dominates global dedicated P2P</strong>, accounting for ~90% of the category's transaction volume. This reflects the fact that in other major markets (India, China), P2P is embedded in multipurpose wallets (UPI apps, WeChat).</p>
+</li>
+<li>
+<p><strong>Average transaction sizes are rising</strong>, not falling. Zelle's average transaction grew from ~$253 (2019) to ~$289 (2024), suggesting P2P is moving beyond splitting dinner tabs into rent, utilities, and small business payments.</p>
+</li>
+<li>
+<p><strong>Cash App's growth trajectory is the steepest</strong> among US platforms, with inflows growing from ~$40B to ~$283B in five years (48% CAGR by value). Its expansion into banking, investing, and business payments is driving this.</p>
+</li>
+<li>
+<p><strong>P2P is a gateway to broader fintech.</strong> All three major US platforms now offer <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">debit cards</a>, direct deposit, investing, and buy-now-pay-later. P2P volumes increasingly include commercial transactions.</p>
+</li>
+<li>
+<p><strong>Market maturation is visible.</strong> Venmo's growth has slowed to ~5% annually by value, while Zelle still grows at 27% thanks to ongoing bank rollouts. The US P2P market is unlikely to sustain &gt;15% growth beyond 2027.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>Zelle data is the most reliable</strong> — Early Warning Services publishes annual and quarterly figures, and Zelle is not publicly traded (owned by a bank consortium), reducing incentive to distort.</li>
+<li><strong>Venmo transaction count is estimated</strong> — PayPal reports TPV but not transaction counts for Venmo separately. Transaction count derived from average transaction size assumptions (~$120).</li>
+<li><strong>Cash App "inflows" vs. P2P</strong> — Block reports "Cash App inflows" which include direct deposits, Bitcoin purchases, and Cash App Pay merchant transactions, not purely P2P. Pure P2P is likely ~60% of the $283B.</li>
+<li><strong>Non-US data is sparse</strong> — Bizum and Swish publish some data; most other regional P2P platforms do not.</li>
+<li><strong>Boundary with digital wallets is fuzzy</strong> — Cash App, Venmo, and PayPal are wallet-like platforms. The classification here focuses on their P2P transfer functionality.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>Venmo's exact transaction count.</strong> PayPal reports Venmo TPV (~$280B) but not transaction count. The ~2.3B estimate assumes a ~$120 average transaction, which is uncertain.</li>
+<li><strong>Cash App's pure P2P vs. total inflows.</strong> Block reports "Cash App inflows" ($283B) which includes direct deposits, Bitcoin purchases, and Cash App Pay merchant transactions. Pure P2P is estimated at ~60% ($170B) but not disclosed.</li>
+<li><strong>Non-US P2P volume.</strong> European P2P platforms (Bizum, Swish, Lydia) publish some data, but most Asian and Latin American P2P activity is embedded in multipurpose wallets (and thus counted in Digital Wallets).</li>
+<li><strong>The boundary between P2P and "commercial."</strong> Zelle's $1.04T includes small business payments (27% of volume per American Banker). Venmo and Cash App similarly serve gig workers, landlords, and small merchants. How much of "P2P" is actually P2B?</li>
+<li><strong>International P2P vs. domestic P2P.</strong> PayPal, Wise, and Cash App all enable cross-border personal transfers. These overlap with Remittances.</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Venmo transaction count</td>
+<td>Derive from PayPal's disclosed "payment transactions" (6.6B in Q4 2024 annualized = ~26B) minus eBay, merchant, and Braintree transactions. Venmo is ~25-30% of PayPal consumer transactions.</td>
+<td>PayPal 10-K: 26B total payment transactions; Venmo ~30% of PayPal consumer P2P by value</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Cash App pure P2P</td>
+<td>Block discloses "Cash App monetization rate" (1.35%) which applies to non-P2P revenue. Subtract Cash App Card spend ($10B+), Bitcoin ($14B), and direct deposits to isolate P2P.</td>
+<td>Block 10-K: Cash App inflows $283B; Cash App Card GMV growing; Bitcoin revenue disclosed</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Non-US P2P volume</td>
+<td>Bizum (Spain): 0.3B txns from press releases. Swish (Sweden): 0.15B from Riksbank data. Scale to EU population using adoption rates.</td>
+<td>Bizum: 90M users in Spain; Swish: 8.3M users; Riksbank payment statistics</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>P2B share of "P2P"</td>
+<td>Zelle: 27% is small business (American Banker). Apply similar ratio to Venmo (which has business profiles) and Cash App (which has Cash App for Business).</td>
+<td>American Banker Zelle analysis; Venmo Business profile count (~90M total users, ~10% business est.)</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>Total addressable market</td>
+<td>US adult population (260M) x estimated 30 P2P transactions/year = 7.8B — consistent with our 7.7B US total</td>
+<td>Census Bureau; Federal Reserve Diary of Consumer Payment Choice</td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li>As Zelle, Venmo, and Cash App all expand into bill pay, merchant payments, and banking services, will the "P2P" category become meaningless as a standalone classification? By 2030, these may be general-purpose wallets.</li>
+<li>Zelle's bank-integrated model means transactions are invisible to non-bank data aggregators. Does this make Zelle the most accurately measured P2P platform (bank-reported) or the most under-counted (many banks don't report Zelle-specific breakdowns)?</li>
+<li>The US dominates this category at ~90% of volume. Is this a genuine structural difference (US lacks a universal A2A system like UPI), or is it a classification artifact (P2P in other markets is counted in Digital Wallets)?</li>
+<li>If India's UPI P2P transfers (~41% of 172B = ~70B) were reclassified into this category, it would be 10x the size of the entire US P2P market. Should UPI P2P be broken out?</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>US P2P per capita:</strong> 7.7B transactions / 260M adults = ~30 P2P transactions per US adult per year, at ~$225 average. This is roughly 1 P2P transfer every 12 days.</li>
+<li><strong>Sweden's Swish as saturation benchmark:</strong> 8.3M users in a 10.4M population (80% penetration), processing ~0.15B transactions = ~18 per user per year. US Zelle: 120M users processing 3.6B = ~30 per user per year. Zelle users transact at 1.7x the rate of Swish users.</li>
+<li><strong>India UPI P2P comparison:</strong> UPI P2P (~70B transactions, ~350M users) = ~200 P2P transactions per user per year — nearly 7x the US Zelle rate. This reflects UPI's role as a cash replacement for everyday person-to-person payments.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.cnbc.com/2025/02/12/zelle-payments-top-1-trillion-in-2024.html">CNBC — Zelle payments top $1 trillion in 2024</a></li>
+<li><a href="https://www.zelle.com/press-releases/zelle-soars-806-billion-transaction-volume-28-prior-year">Zelle — $806 Billion Transaction Volume press release (2023)</a></li>
+<li><a href="https://www.americanbanker.com/payments/news/zelle-passes-1t-in-2024-with-a-boost-from-small-businesses">American Banker — Zelle passes $1T in 2024</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1633917/000163391725000019/pypl-20241231.htm">PayPal 10-K FY2024</a></li>
+<li><a href="https://www.sec.gov/Archives/edgar/data/1512673/000162828025007376/sq-20241231.htm">Block 10-K FY2024</a></li>
+<li><a href="https://www.businessofapps.com/data/venmo-statistics/">BusinessOfApps — Venmo Statistics 2026</a></li>
+<li><a href="https://www.businessofapps.com/data/cash-app-statistics/">BusinessOfApps — Cash App Statistics 2026</a></li>
+<li><a href="https://coinlaw.io/zelle-vs-venmo-statistics/">CoinLaw — Zelle vs Venmo Statistics 2026</a></li>
+<li><a href="https://www.emarketer.com/content/us-mobile-p2p-payments-forecast-2024">eMarketer — US Mobile P2P Payments Forecast 2024</a></li>
+<li><a href="https://tearsheet.co/data-snacks/venmo-and-cash-app-competitor-zelle-is-closing-in-on-its-1-trillion-payments-volume-target/">Tearsheet — Zelle closing in on $1T</a></li>
+<li><a href="https://www.precedenceresearch.com/p2p-payment-market">Precedence Research — P2P Payment Market Size to Hit $16.21T by 2034</a></li>
+<li><a href="https://electroiq.com/stats/venmo-statistics/">Electroiq — Venmo Statistics 2025</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/p2p-transfers/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/payments/p2p-transfers/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/payments/p2p-transfers/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/payments/p2p-transfers/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/p2p-transfers/REPORT.md">analysis/payments/p2p-transfers/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

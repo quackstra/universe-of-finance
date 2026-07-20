@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixed Income — Key Assumptions — Universe of Finance</title>
+<meta name="description" content="Transaction Definition One bond trade = one execution between two counterparties (buy/sell) Includes: government bonds, corporate bonds, municipal bonds, agency/MBS, securitized pr">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Fixed Income — Key Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#scope">Scope</a></li><li><a href="#value-data">Value Data</a></li><li><a href="#trade-count-estimation">Trade Count Estimation</a></li><li><a href="#market-hours">Market Hours</a></li><li><a href="#repo-treatment">Repo Treatment</a></li><li><a href="#double-counting-notes">Double-Counting Notes</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li>One bond trade = one execution between two counterparties (buy/sell)</li>
+<li>Includes: government bonds, corporate bonds, municipal bonds, agency/MBS, securitized products</li>
+<li>Repo: one repo transaction = one agreement (not split into opening + closing legs)</li>
+<li>Excludes: primary market issuance (new bond sales), bond ETF trades (covered in equity/ETF category)</li>
+<li>Excludes: interest rate swaps (covered in <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> category)</li>
+</ul>
+<h2 id="scope">Scope</h2>
+<ul>
+<li><strong>In scope</strong>: Secondary market cash bond trading + repo</li>
+<li><strong>Out of scope</strong>: Bond futures (ETD category), interest rate swaps (OTC derivatives), bond ETFs (<a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">equity markets</a>)</li>
+</ul>
+<h2 id="value-data">Value Data</h2>
+<ul>
+<li>SIFMA ADV data is well-reported for US market</li>
+<li>Tradeweb provides electronic platform ADV</li>
+<li>Global outstanding from SIX Group / SIFMA: $145T (2024)</li>
+</ul>
+<h2 id="trade-count-estimation">Trade Count Estimation</h2>
+<ul>
+<li>TRACE is the only reliable source of bond trade counts (US corporate/agency only)</li>
+<li>US Treasuries trade count estimated from ADV / average ticket size</li>
+<li>Global extrapolation assumes US = 45% of global bond trading activity</li>
+<li>Repo trade counts are poorly reported; estimated from value / average ticket size</li>
+</ul>
+<h2 id="market-hours">Market Hours</h2>
+<ul>
+<li>Cash bonds: primarily domestic market hours (~8-10h/day)</li>
+<li>Repo: largely overnight and domestic hours</li>
+<li>252 trading days/year</li>
+</ul>
+<h2 id="repo-treatment">Repo Treatment</h2>
+<ul>
+<li>Repo is included in this category per taxonomy</li>
+<li>Repo inflates both value turnover and transaction counts significantly</li>
+<li>Automated overnight repo (auto-roll) generates high transaction counts but is economically a single rolling position</li>
+<li>We present both "cash bonds only" and "including repo" TPS figures</li>
+</ul>
+<h2 id="double-counting-notes">Double-Counting Notes</h2>
+<ul>
+<li>Bond futures are in ETD category</li>
+<li>Interest rate swaps are in OTC derivatives</li>
+<li>Bond ETF trades are in equity markets</li>
+<li>A bond trade generates one clearing instruction and one settlement — counted once per taxonomy rules</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/fixed-income/workings/assumptions.md">analysis/traditional-finance/fixed-income/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

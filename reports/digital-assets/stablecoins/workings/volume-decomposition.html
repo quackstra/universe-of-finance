@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stablecoin Volume Decomposition — Universe of Finance</title>
+<meta name="description" content="Working paper for Stablecoins REPORT.md — Universe of Finance, Run 3 Created: 2026-03-26 The Gap Metric Value Source Raw on-chain volume (2024) $27.6T CryptoSlate Visa-adjusted vo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Stablecoin Volume Decomposition</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#the-gap">The Gap</a></li><li><a href="#visas-adjustment-methodology">Visa's Adjustment Methodology</a></li><li><a href="#decomposition-of-the-276t">Decomposition of the $27.6T</a></li><li><a href="#component-deep-dives">Component Deep-Dives</a></li><li><a href="#organic-payment-volume-the-real-number">Organic Payment Volume: The Real Number</a></li><li><a href="#velocity-analysis">Velocity Analysis</a></li><li><a href="#implications-for-tps-estimates">Implications for TPS Estimates</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#key-takeaways">Key Takeaways</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Working paper for <a href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">Stablecoins REPORT.md</a> — Universe of Finance, Run 3
+Created: 2026-03-26</p>
+</blockquote>
+<h2 id="the-gap">The Gap</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raw on-chain volume (2024)</td>
+<td>$27.6T</td>
+<td><a href="https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/">CryptoSlate</a></td>
+</tr>
+<tr>
+<td>Visa-adjusted volume (2024)</td>
+<td>~$5.5–5.7T</td>
+<td><a href="https://visaonchainanalytics.com/transactions">Visa Onchain Analytics</a></td>
+</tr>
+<tr>
+<td>Unexplained gap</td>
+<td>~$21.9T (79%)</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Real-world payment volume (2025 run-rate)</td>
+<td>~$390B (~1% of raw)</td>
+<td><a href="https://www.mckinsey.com/industries/financial-services/our-insights/stablecoins-in-payments-what-the-raw-transaction-numbers-miss">McKinsey/Artemis</a></td>
+</tr>
+</tbody>
+</table>
+<p>The gap is not a single phenomenon. It is a layered stack of non-payment activity, each with different economic meaning. This document attempts a bottom-up reconstruction.</p>
+<hr/>
+<h2 id="visas-adjustment-methodology">Visa's Adjustment Methodology</h2>
+<p>Visa (partnered with Allium Labs) applies two sequential filters to raw on-chain data:</p>
+<ol>
+<li>
+<p><strong>Directional Volume Filter</strong>: Only the largest stablecoin amount in a single transaction is counted. This strips out redundant internal legs of complex smart contract interactions (e.g., a DEX swap that moves USDC through three pools counts only the largest single leg).</p>
+</li>
+<li>
+<p><strong>Address Activity Filter</strong>: Addresses that have sent &gt;1,000 transactions OR &gt;$10M in transfer volume in any 30-day period are excluded. This removes:
+   - High-frequency trading wallets
+   - Bot addresses (MEV, arbitrage, sandwich)
+   - High-throughput smart contracts
+   - Automated protocol addresses</p>
+</li>
+</ol>
+<p><strong>Result</strong>: 77% of 2024's total stablecoin transaction volume falls into the "unadjusted" (filtered-out) category. The remaining 23% (~$5.5–5.7T) is classified as "adjusted" organic-like activity.</p>
+<p><strong>Adjusted volume breakdown by category</strong> (Visa dashboard, 2024):
+- CEX-related transfers: <strong>41%</strong> (~$2.3T)
+- DEX activity: estimated ~20–25%
+- Lending/<a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a>: estimated ~15–20%
+- Other (P2P, payments, unknown): ~15–20%</p>
+<p>Source: <a href="https://visaonchainanalytics.com/transactions">Visa Onchain Analytics</a>, <a href="https://www.allium.so/post/visa-x-allium-making-sense-of-stablecoins">Allium</a></p>
+<hr/>
+<h2 id="decomposition-of-the-276t">Decomposition of the $27.6T</h2>
+<h3 id="component-breakdown">Component Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Est. Volume ($T)</th>
+<th>% of Raw</th>
+<th>Methodology</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bot/MEV/HFT activity</strong></td>
+<td><strong>$11–13T</strong></td>
+<td><strong>40–47%</strong></td>
+<td>Visa filter: 70% of volume is bot-related (CEX.IO/Visa); 77% falls into unadjusted category. Bot share dominant on Solana (98%), Base (98%), Ethereum (~60%). Fourfold increase from 2023.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>CEX deposit/withdrawal cycles</strong></td>
+<td><strong>$4–5T</strong></td>
+<td><strong>14–18%</strong></td>
+<td>CEX is 41% of Visa-adjusted volume (~$2.3T) plus substantial CEX flows in the filtered-out portion. Glassnode/CryptoQuant exchange flow data suggests 30–40% of all on-chain stablecoin volume touches exchange addresses.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>DeFi internal flows</strong></td>
+<td><strong>$3–4T</strong></td>
+<td><strong>11–14%</strong></td>
+<td>Yield farming rotations, liquidity provision/withdrawal, collateral movements, vault rebalancing. DeFi TVL in stablecoins was ~$50–60B with high turnover. Protocol-to-protocol transfers (e.g., Aave -&gt; Curve -&gt; Convex) generate multiple on-chain transactions for the same economic intent.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Bridge/cross-chain transfers</strong></td>
+<td><strong>$0.5–1T</strong></td>
+<td><strong>2–4%</strong></td>
+<td>DeFi Llama bridge data: monthly volumes $1.5–3.2B for most of 2024, surging to $50B in Nov. Annual total ~$150–250B across all bridges. Each bridge transfer generates 2+ on-chain transactions (burn on source, mint on destination). Stablecoins are ~60–70% of bridge volume.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Wash trading / volume inflation</strong></td>
+<td><strong>$1–2T</strong></td>
+<td><strong>4–7%</strong></td>
+<td>Chainalysis 2025 market manipulation report documents ongoing wash trading. Stablecoin pairs (USDT/USDC) are common wash instruments. Concentrated on smaller CEXs and certain DEX pairs. Hard to separate cleanly from bot activity.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Institutional treasury management</strong></td>
+<td><strong>$1–2T</strong></td>
+<td><strong>4–7%</strong></td>
+<td>Large stablecoin issuers (Circle, Tether) and institutional holders routinely move billions between chains, wallets, and custodians. Mint/burn events alone totaled hundreds of billions.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Organic economic activity</strong></td>
+<td><strong>$5–6T</strong></td>
+<td><strong>18–22%</strong></td>
+<td>Visa-adjusted volume minus pure-CEX trading flows. Includes P2P transfers, merchant payments, remittances, payroll, cross-border settlement, and genuine DeFi usage.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>- <em>of which: real-world payments</em></td>
+<td><em>$0.39T</em></td>
+<td><em>1.4%</em></td>
+<td>McKinsey/Artemis: B2B ($226B), payroll/remittances ($90B), capital markets ($8B), other ($66B).</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>~$27.6T</strong></td>
+<td><strong>100%</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="visual-waterfall">Visual Waterfall</h3>
+<pre><code>Raw on-chain volume                               $27.6T  (100%)
+  minus Bot/MEV/HFT                              -$12.0T  (-43%)
+  minus CEX deposit/withdrawal cycles             -$4.5T   (-16%)
+  minus DeFi internal flows                       -$3.5T   (-13%)
+  minus Bridge double-counting                    -$0.7T   (-3%)
+  minus Wash trading                              -$1.5T   (-5%)
+  minus Institutional treasury mgmt               -$1.5T   (-5%)
+                                                  --------
+= Organic economic activity                        ~$3.9T  (14%)
+  of which: Visa-adjusted "payment-like"           $5.5T*  (20%)
+  of which: real-world payments (McKinsey)         $0.39T  (1.4%)
+</code></pre>
+<p><em>Note: The Visa-adjusted figure ($5.5T) is higher than our "organic economic activity" estimate because Visa's methodology retains some CEX and DeFi activity that passes below the 1,000-txn/30-day threshold. Both are valid lenses — Visa measures "not obviously automated," while our decomposition attempts "genuine economic intent."</em></p>
+<hr/>
+<h2 id="component-deep-dives">Component Deep-Dives</h2>
+<h3 id="1-botmevhft-activity-1113t-43">1. Bot/MEV/HFT Activity ($11–13T, ~43%)</h3>
+<p>This is the single largest component and the primary reason raw volume is misleading.</p>
+<p><strong>What it includes:</strong>
+- <strong>Arbitrage bots</strong>: Exploit price differences between DEXs, between CEXs and DEXs, and across chains. On Ethereum alone, EigenPhi data shows $20B+ monthly in bot-driven volume.
+- <strong>Sandwich attacks</strong>: Front-run and back-run user transactions on DEXs. Still dominant on Solana despite mitigation on Ethereum (via MEV-Boost/Flashbots).
+- <strong>Liquidation bots</strong>: Monitor lending protocols (Aave, Compound) and execute liquidations when collateral ratios drop. Each liquidation moves <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">stablecoins</a>.
+- <strong>Market-making bots</strong>: Automated market makers on CEXs and DEXs continuously move stablecoins.</p>
+<p><strong>Evidence:</strong>
+- CEX.IO analysis: 70% of 2024 stablecoin transaction volume was bot-related
+- Visa unadjusted category captured 77% of volume, up from ~60% in 2023
+- On Solana and Base, bot transactions were 98% of volume
+- Bot activity experienced a fourfold increase in 2024 vs 2023</p>
+<p><strong>Why it grew so fast in 2024:</strong>
+- Memecoin mania on Solana created massive arbitrage opportunities
+- L2 proliferation (Base, Blast, etc.) created cross-chain arb opportunities
+- Lower gas costs on L2s made smaller arbitrage trades profitable</p>
+<h3 id="2-cex-depositwithdrawal-cycles-45t-16">2. CEX Deposit/Withdrawal Cycles ($4–5T, ~16%)</h3>
+<p><strong>What it includes:</strong>
+- Moving stablecoins from self-custody to exchange hot wallets (deposit)
+- Moving stablecoins from exchange hot wallets back to self-custody (withdrawal)
+- Exchange-to-exchange transfers (e.g., moving USDT from Binance to Bybit)
+- OTC desk settlement flows</p>
+<p><strong>Evidence:</strong>
+- Visa adjusted volume: CEX category is 41% of adjusted (~$2.3T)
+- CryptoQuant: USDT exchange reserves surged 165% in 2024
+- Estimated 30–40% of all on-chain stablecoin volume touches exchange addresses
+- CEX internal transfers (order book trades) are NOT on-chain and NOT counted</p>
+<p><strong>Key insight:</strong> A single trade on a CEX can generate 2–4 on-chain stablecoin transactions: (1) deposit USDT to exchange, (2) trade (off-chain), (3) withdraw USDC from exchange, (4) bridge USDC to another chain. The economic intent is one trade, but the on-chain footprint is 3 stablecoin transfers.</p>
+<h3 id="3-defi-internal-flows-34t-13">3. DeFi Internal Flows ($3–4T, ~13%)</h3>
+<p><strong>What it includes:</strong>
+- <strong>Yield farming rotations</strong>: Moving stablecoins between protocols chasing APY (e.g., Aave -&gt; Curve -&gt; Convex -&gt; back to Aave)
+- <strong>Liquidity provision/withdrawal</strong>: Adding/removing stablecoins from AMM pools
+- <strong>Collateral movements</strong>: Depositing/withdrawing stablecoins as collateral in lending protocols
+- <strong>Vault rebalancing</strong>: Automated vault strategies (Yearn, Beefy) rebalancing positions
+- <strong>Protocol-to-protocol transfers</strong>: Aggregators routing through multiple protocols</p>
+<p><strong>Evidence:</strong>
+- DeFi TVL in stablecoins ~$50–60B with high turnover ratios
+- A single yield farming strategy can generate 5–10 on-chain stablecoin transfers per cycle
+- Automated vaults execute rebalancing multiple times per day</p>
+<h3 id="4-bridgecross-chain-transfers-051t-3">4. Bridge/Cross-Chain Transfers ($0.5–1T, ~3%)</h3>
+<p><strong>What it includes:</strong>
+- Lock-and-mint bridge transfers (e.g., Wormhole, Stargate)
+- Burn-and-mint transfers (e.g., Circle CCTP for native USDC)
+- Bridge aggregator routing (may traverse multiple intermediate chains)</p>
+<p><strong>Evidence:</strong>
+- DeFi Llama: Monthly bridge volume $1.5–3.2B for most of 2024, surging to $50B in Nov
+- Annual total across all bridges: ~$150–250B
+- Stablecoins are ~60–70% of bridge volume -&gt; ~$90–175B in stablecoin bridge volume
+- Each bridge transfer creates 2+ on-chain transactions, so the on-chain footprint is 2–3x the economic value
+- On-chain footprint: $200B–500B+ including relay and routing transactions
+- Across protocol alone: $11.6B in stablecoin bridging in 2024</p>
+<p><strong>Why this is smaller than expected:</strong> Bridge volume, while growing fast, is still measured in hundreds of billions, not trillions. The double-counting effect (2–3x) inflates it, but it remains a relatively small contributor to the $27.6T total.</p>
+<h3 id="5-wash-trading-12t-5">5. Wash Trading ($1–2T, ~5%)</h3>
+<p><strong>What it includes:</strong>
+- Deliberate volume inflation on DEXs and CEXs
+- Stablecoin-pair trading (USDT/USDC) used for wash volume
+- Incentive farming (trading volume to earn token rewards)</p>
+<p><strong>Evidence:</strong>
+- Chainalysis 2025 market manipulation report documents ongoing wash trading
+- Concentrated on smaller CEXs and certain DEX pairs
+- Difficult to separate cleanly from legitimate bot market-making</p>
+<h3 id="6-institutional-treasury-management-12t-5">6. Institutional Treasury Management ($1–2T, ~5%)</h3>
+<p><strong>What it includes:</strong>
+- Tether/Circle moving stablecoins between chains for liquidity management
+- Institutional custodians rebalancing holdings
+- Mint/burn events (new USDT/USDC issuance or redemption)
+- Corporate treasury movements between wallets</p>
+<hr/>
+<h2 id="organic-payment-volume-the-real-number">Organic Payment Volume: The Real Number</h2>
+<p>After stripping all non-payment activity, McKinsey/Artemis estimated <strong>$390 billion</strong> in real-world stablecoin payments for 2025 (run-rate based on December 2025 data):</p>
+<table>
+<thead>
+<tr>
+<th>Payment Category</th>
+<th>Annual Volume</th>
+<th>% of Payments</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B2B cross-border payments</td>
+<td>$226B</td>
+<td>58%</td>
+<td>McKinsey/Artemis</td>
+</tr>
+<tr>
+<td>Payroll &amp; remittances</td>
+<td>$90B</td>
+<td>23%</td>
+<td>McKinsey/Artemis</td>
+</tr>
+<tr>
+<td>Capital markets settlement</td>
+<td>$8B</td>
+<td>2%</td>
+<td>McKinsey/Artemis</td>
+</tr>
+<tr>
+<td>Other (P2P, merchant, cards)</td>
+<td>$66B</td>
+<td>17%</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td><strong>Total real-world payments</strong></td>
+<td><strong>$390B</strong></td>
+<td><strong>100%</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="geographic-distribution-of-payments">Geographic Distribution of Payments</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Payment Volume</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asia-Pacific (Singapore, HK, Japan)</td>
+<td>$245B</td>
+<td>B2B trade settlement dominant</td>
+</tr>
+<tr>
+<td>North America</td>
+<td>$95B</td>
+<td>Growing institutional adoption</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>$50B</td>
+<td>MiCA-regulated corridor growth</td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparison-to-traditional-payment-networks">Comparison to Traditional Payment Networks</h3>
+<table>
+<thead>
+<tr>
+<th>Network</th>
+<th>Annual Volume</th>
+<th>Daily Txns</th>
+<th>Avg Transfer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visa</td>
+<td>$14.8T</td>
+<td>~640M</td>
+<td>~$63</td>
+</tr>
+<tr>
+<td>Mastercard</td>
+<td>$9.0T</td>
+<td>~390M</td>
+<td>~$63</td>
+</tr>
+<tr>
+<td>SWIFT</td>
+<td>~$150T</td>
+<td>~50M msg/day</td>
+<td>~$8,200</td>
+</tr>
+<tr>
+<td>PayPal</td>
+<td>~$1.5T</td>
+<td>~60M</td>
+<td>~$69</td>
+</tr>
+<tr>
+<td><strong>Stablecoins (Visa-adjusted)</strong></td>
+<td><strong>$5.5T</strong></td>
+<td><strong>~10M</strong></td>
+<td><strong>~$1,500</strong></td>
+</tr>
+<tr>
+<td><strong>Stablecoins (real payments)</strong></td>
+<td><strong>$0.39T</strong></td>
+<td><strong>~2–5M</strong></td>
+<td><strong>~$200–500</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight:</strong> Stablecoin real-world payment volume ($390B) is roughly:
+- 2.6% of Visa's volume
+- 0.26% of SWIFT's volume
+- 45% of global <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a> ($860B)
+- Still tiny in absolute terms, but growing at 500%+ annually</p>
+<hr/>
+<h2 id="velocity-analysis">Velocity Analysis</h2>
+<h3 id="raw-velocity-by-stablecoin">Raw Velocity by Stablecoin</h3>
+<p>Velocity = Annual Transfer Volume / Average Market Cap</p>
+<table>
+<thead>
+<tr>
+<th>Stablecoin</th>
+<th>Market Cap (avg 2024)</th>
+<th>Transfer Volume Share</th>
+<th>Est. Volume</th>
+<th>Velocity</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USDT</td>
+<td>~$120B</td>
+<td>25% ($6.9T)</td>
+<td>$6.9T</td>
+<td>~58x</td>
+<td>Retail/P2P dominant, moderate velocity</td>
+</tr>
+<tr>
+<td>USDC</td>
+<td>~$35B</td>
+<td>70% ($19.3T)</td>
+<td>$19.3T</td>
+<td>~551x</td>
+<td>Institutional/programmatic, extreme velocity</td>
+</tr>
+<tr>
+<td>DAI/USDS</td>
+<td>~$5B</td>
+<td>3% ($0.8T)</td>
+<td>$0.8T</td>
+<td>~166x</td>
+<td>DeFi-native, high protocol cycling</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>~$15B</td>
+<td>2% ($0.6T)</td>
+<td>$0.6T</td>
+<td>~37x</td>
+<td>Mixed</td>
+</tr>
+<tr>
+<td><strong>All</strong></td>
+<td><strong>~$175B avg</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>$27.6T</strong></td>
+<td><strong>~158x</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em>Note: Average market cap used (not year-end $205B) for more accurate velocity.</em></p>
+<h3 id="usdcs-extreme-velocity-explained">USDC's Extreme Velocity Explained</h3>
+<p>USDC's velocity (~551x) is 9.5x higher than USDT's (~58x). This does NOT mean USDC is "used more" in a retail sense. It means:</p>
+<ol>
+<li><strong>Institutional/programmatic routing</strong>: USDC is the preferred stablecoin for DeFi protocol routing, DEX aggregators, and institutional settlement</li>
+<li><strong>Circle CCTP</strong>: Native cross-chain transfers create high-velocity circulation</li>
+<li><strong>Compliance positioning</strong>: Regulated entities (Coinbase, Stripe) route through USDC</li>
+<li><strong>Smaller market cap denominator</strong>: $35B vs $120B amplifies the velocity ratio</li>
+</ol>
+<h3 id="adjusted-velocity-comparison">Adjusted Velocity Comparison</h3>
+<table>
+<thead>
+<tr>
+<th>Monetary Instrument</th>
+<th>Annual Throughput</th>
+<th>Base</th>
+<th>Velocity</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>US M1</strong></td>
+<td>~$18T GDP</td>
+<td>~$18T</td>
+<td>~1.0x</td>
+<td>Broad money (incl. savings)</td>
+</tr>
+<tr>
+<td><strong>US M2</strong></td>
+<td>~$23.5T</td>
+<td>~$21T</td>
+<td>~1.12x</td>
+<td>Includes time deposits</td>
+</tr>
+<tr>
+<td><strong>PayPal balances</strong></td>
+<td>~$1.5T</td>
+<td>~$40B</td>
+<td>~38x</td>
+<td>Digital transactional money</td>
+</tr>
+<tr>
+<td><strong>Visa network</strong></td>
+<td>~$14.8T</td>
+<td>~$20B float</td>
+<td>~740x</td>
+<td>Pure payment rail</td>
+</tr>
+<tr>
+<td><strong>Stablecoins (raw)</strong></td>
+<td>$27.6T</td>
+<td>$175B avg</td>
+<td>~158x</td>
+<td>Includes all on-chain activity</td>
+</tr>
+<tr>
+<td><strong>Stablecoins (Visa-adj)</strong></td>
+<td>$5.5T</td>
+<td>$175B avg</td>
+<td>~31x</td>
+<td>Filtered for organic-like</td>
+</tr>
+<tr>
+<td><strong>Stablecoins (payments)</strong></td>
+<td>$0.39T</td>
+<td>$175B avg</td>
+<td>~2.2x</td>
+<td>Real-world payments only</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-velocity-tells-us">What Velocity Tells Us</h3>
+<ol>
+<li>
+<p><strong>Raw velocity (158x) is meaningless</strong> for economic comparison. It reflects the fact that stablecoins are programmable money on always-on rails — bots can move the same dollar thousands of times per day.</p>
+</li>
+<li>
+<p><strong>Visa-adjusted velocity (~31x)</strong> is comparable to PayPal balance velocity (~38x). This makes intuitive sense: both represent digital transactional money used primarily within a financial ecosystem (DeFi for stablecoins, <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">ecommerce</a> for PayPal).</p>
+</li>
+<li>
+<p><strong>Payment velocity (~2.2x)</strong> is close to M1/M2 velocity (~1.0–1.12x), suggesting that stablecoins used for real-world payments circulate at roughly the same rate as traditional dollars. This is the most meaningful comparison.</p>
+</li>
+<li>
+<p><strong>The 25x gap between Visa-adjusted velocity (31x) and M2 velocity (1.12x)</strong> is explained by the fact that M2 includes savings/store-of-value money that rarely moves, while the Visa-adjusted stablecoin figure still includes substantial trading and DeFi activity that is not "payment" activity per se.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="implications-for-tps-estimates">Implications for TPS Estimates</h2>
+<p>The stablecoins capsule estimates ~520 TPS based on ~45M daily transactions. How should the volume decomposition affect this?</p>
+<table>
+<thead>
+<tr>
+<th>Activity Type</th>
+<th>% of Volume</th>
+<th>% of Transactions (est.)</th>
+<th>Est. Daily Txns</th>
+<th>Est. TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bot/MEV/HFT</td>
+<td>43%</td>
+<td>60–70%</td>
+<td>27–31.5M</td>
+<td>312–365</td>
+</tr>
+<tr>
+<td>CEX flows</td>
+<td>16%</td>
+<td>10–15%</td>
+<td>4.5–6.75M</td>
+<td>52–78</td>
+</tr>
+<tr>
+<td>DeFi internal</td>
+<td>13%</td>
+<td>10–15%</td>
+<td>4.5–6.75M</td>
+<td>52–78</td>
+</tr>
+<tr>
+<td>Bridge transfers</td>
+<td>3%</td>
+<td>2–3%</td>
+<td>0.9–1.35M</td>
+<td>10–16</td>
+</tr>
+<tr>
+<td>Wash trading</td>
+<td>5%</td>
+<td>3–5%</td>
+<td>1.35–2.25M</td>
+<td>16–26</td>
+</tr>
+<tr>
+<td>Treasury mgmt</td>
+<td>5%</td>
+<td>1–2%</td>
+<td>0.45–0.9M</td>
+<td>5–10</td>
+</tr>
+<tr>
+<td>Organic economic</td>
+<td>15%</td>
+<td>5–10%</td>
+<td>2.25–4.5M</td>
+<td>26–52</td>
+</tr>
+<tr>
+<td>- Real payments</td>
+<td>1.4%</td>
+<td>2–5%</td>
+<td>0.9–2.25M</td>
+<td>10–26</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key finding:</strong> Organic economic stablecoin TPS is likely <strong>26–52 TPS</strong>, not 520 TPS. Real-world payment TPS is likely <strong>10–26 TPS</strong>. The headline 520 TPS figure is dominated by automated/bot activity.</p>
+<p>However, this does not diminish stablecoins' importance. Even 26–52 TPS of genuine economic activity is:
+- Growing at 100%+ annually
+- Operating 24/7/365 (unlike traditional payment rails)
+- Serving use cases (cross-border B2B, emerging market remittances) that traditional systems serve poorly</p>
+<hr/>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<table>
+<thead>
+<tr>
+<th>Estimate</th>
+<th>Confidence</th>
+<th>Key Uncertainty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total raw volume ($27.6T)</td>
+<td>High</td>
+<td>Well-sourced from on-chain data</td>
+</tr>
+<tr>
+<td>Visa-adjusted volume ($5.5T)</td>
+<td>Medium</td>
+<td>Methodology is transparent but threshold choices (1,000 txns) are debatable</td>
+</tr>
+<tr>
+<td>Bot/MEV share (40–47%)</td>
+<td>Medium</td>
+<td>Consistent across CEX.IO, Visa, and Allium analyses</td>
+</tr>
+<tr>
+<td>CEX flow share (14–18%)</td>
+<td>Medium</td>
+<td>CryptoQuant/Glassnode exchange labeling is mature</td>
+</tr>
+<tr>
+<td>Real-world payments ($390B)</td>
+<td>High</td>
+<td>McKinsey/Artemis bottom-up from merchant and payment processor data</td>
+</tr>
+<tr>
+<td>Bridge volume ($0.5–1T)</td>
+<td>Medium</td>
+<td>DeFi Llama data is comprehensive but 2024 surges add uncertainty</td>
+</tr>
+<tr>
+<td>DeFi internal ($3–4T)</td>
+<td>Low</td>
+<td>Hardest to isolate; blurs with bot activity and CEX flows</td>
+</tr>
+<tr>
+<td>Wash trading ($1–2T)</td>
+<td>Low</td>
+<td>Inherently difficult to measure; overlaps with bot category</td>
+</tr>
+<tr>
+<td>Velocity comparisons</td>
+<td>High</td>
+<td>Straightforward arithmetic on well-sourced inputs</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>
+<p><strong>The $27.6T headline is ~70x the actual payment volume.</strong> Only $390B (1.4%) represents real-world payments for goods, services, <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a>, and remittances. The rest is financial plumbing.</p>
+</li>
+<li>
+<p><strong>Visa's $5.5T adjusted figure is the best available "organic activity" proxy</strong>, but it still includes substantial CEX trading flows (41% of adjusted = ~$2.3T) and DeFi activity. It is "not automated" rather than "is a payment."</p>
+</li>
+<li>
+<p><strong>There are really three numbers to care about:</strong>
+   - $27.6T = total on-chain footprint (useful for blockchain capacity planning)
+   - $5.5T = organic-like economic activity (useful for comparing to traditional finance)
+   - $390B = real-world payments (useful for understanding stablecoin adoption as a payment method)</p>
+</li>
+<li>
+<p><strong>Stablecoin payment velocity (~2.2x) is comparable to M2 velocity (~1.12x)</strong>, which makes intuitive sense — real payments circulate at real-economy speeds regardless of the underlying technology.</p>
+</li>
+<li>
+<p><strong>The 2024 bot explosion (4x vs 2023) inflated raw volume disproportionately.</strong> If bot growth normalises, future raw-to-adjusted ratios may improve, making headline figures less misleading.</p>
+</li>
+<li>
+<p><strong>B2B cross-border payments ($226B) are the largest real-world use case</strong>, not P2P remittances. This is significant — it suggests stablecoins are first disrupting correspondent banking, not retail payments.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://cryptoslate.com/stablecoins-surpass-visa-and-mastercard-with-27-6-trillion-transfer-volume-in-2024/">CryptoSlate — Stablecoins surpass Visa and Mastercard with $27.6T</a></li>
+<li><a href="https://visaonchainanalytics.com/transactions">Visa Onchain Analytics Dashboard</a></li>
+<li><a href="https://corporate.visa.com/en/sites/visa-perspectives/trends-insights/making-sense-of-stablecoins.html">Visa — Making Sense of Stablecoins</a></li>
+<li><a href="https://www.allium.so/post/visa-x-allium-making-sense-of-stablecoins">Allium — Visa x Allium: Making Sense of Stablecoins</a></li>
+<li><a href="https://www.mckinsey.com/industries/financial-services/our-insights/stablecoins-in-payments-what-the-raw-transaction-numbers-miss">McKinsey — Stablecoins in payments: What the raw transaction numbers miss</a></li>
+<li><a href="https://www.coindesk.com/business/2026/01/23/stablecoins-moved-usd35-trillion-last-year-but-only-1-of-it-was-for-real-world-payments">CoinDesk — Stablecoins moved $35T but only 1% was real-world payments</a></li>
+<li><a href="https://blog.cex.io/ecosystem/stablecoin-landscape-34864">CEX.IO — Stablecoin Landscape: What 2024 Reveals</a></li>
+<li><a href="https://castleisland.vc/wp-content/uploads/2024/09/stablecoins_the_emerging_market_story_091224.pdf">Castle Island / Brevan Howard — Stablecoins: The Emerging Market Story</a></li>
+<li><a href="https://reports.artemisanalytics.com/stablecoins/artemis-stablecoin-payments-from-the-ground-up-2025.pdf">Artemis — Stablecoin Payments from the Ground Up 2025</a></li>
+<li><a href="https://www.citigroup.com/rcs/citigpa/storage/public/GPS_Report_Stablecoins_2030.pdf">Citi GPS — Stablecoins 2030</a></li>
+<li><a href="https://www.imf.org/-/media/files/publications/wp/2025/english/wpiea2025141-source-pdf.pdf">IMF — How to Estimate International Stablecoin Flows (WP/2025/141)</a></li>
+<li><a href="https://www.imf.org/-/media/files/publications/dp/2025/english/usea.pdf">IMF — Understanding Stablecoins (2025)</a></li>
+<li><a href="https://www.chainalysis.com/blog/crypto-market-manipulation-wash-trading-pump-and-dump-2025/">Chainalysis — Crypto Market Manipulation 2025</a></li>
+<li><a href="https://defillama.com/bridges">DeFi Llama — Bridge Volume Rankings</a></li>
+<li><a href="https://cryptoquant.com/asset/stablecoin/chart/exchange-flows">CryptoQuant — Stablecoin Exchange Flows</a></li>
+<li><a href="https://eigenphi.io/">EigenPhi — MEV Data</a></li>
+<li><a href="https://reap.global/newsroom/b2b-stablecoin-payments-surge-30x-to-3-billion-monthly-volume-in-2025">Reap Global — B2B Stablecoin Payments Surge</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/stablecoins/workings/volume-decomposition.md">analysis/digital-assets/stablecoins/workings/volume-decomposition.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

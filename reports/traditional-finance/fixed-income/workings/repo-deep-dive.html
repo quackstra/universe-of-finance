@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repo Market Deep Dive — Global Transaction Count Triangulation — Universe of Finance</title>
+<meta name="description" content="Created: 2026-03-28 (Run 5) Purpose: Narrow the 4x uncertainty (40M-160M annual) in global repo trade count using hard transaction data from FICC, LCH, ECB MMSR, PBOC, and BOJ Pre">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Repo Market Deep Dive — Global Transaction Count Triangulation</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#methodology">Methodology</a></li><li><a href="#market-by-market-analysis">Market-by-Market Analysis</a></li><li><a href="#global-total">Global Total</a></li><li><a href="#sensitivity-analysis">Sensitivity Analysis</a></li><li><a href="#open-questions">Open Questions</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p><strong>Created</strong>: 2026-03-28 (Run 5)
+<strong>Purpose</strong>: Narrow the 4x uncertainty (40M-160M annual) in global repo trade count using hard transaction data from FICC, LCH, ECB MMSR, PBOC, and BOJ
+<strong>Previous estimate</strong>: ~83.8M trades/year (point), 40M-160M (range)</p>
+</blockquote>
+<hr/>
+<h2 id="methodology">Methodology</h2>
+<h3 id="what-counts-as-a-repo-transaction">What Counts as a Repo "Transaction"?</h3>
+<p>This is the single most important definitional question. The answer changes the count by 2-4x.</p>
+<table>
+<thead>
+<tr>
+<th>Definition</th>
+<th>What's counted</th>
+<th>Effect on count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Opening leg only</strong></td>
+<td>New repo initiation</td>
+<td>Base count</td>
+</tr>
+<tr>
+<td><strong>Opening + closing leg</strong></td>
+<td>Both legs of the trade</td>
+<td>~2x base (most legs close automatically)</td>
+</tr>
+<tr>
+<td><strong>Including rollovers</strong></td>
+<td>O/N repo that rolls daily = new trade each day</td>
+<td>Could be 5-20x base for O/N book</td>
+</tr>
+<tr>
+<td><strong>Including intraday</strong></td>
+<td>Intraday repo (emerging with BNY pilot)</td>
+<td>Adds small % today, growing</td>
+</tr>
+<tr>
+<td><strong>Novation/compression</strong></td>
+<td>CCP novation creates new legal trades</td>
+<td>Adds ~10-20% to CCP-cleared count</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Our definition</strong>: We count each <strong>economically distinct repo agreement</strong> — one opening leg = one transaction. Closing legs are excluded (they are the mechanical fulfillment of the opening). Overnight repos that roll are counted as a new transaction each day they roll (because a new rate is set and a new agreement is struck). This aligns with how FICC counts GSD transactions and how ECB MMSR reports secured trades.</p>
+<p><strong>Rationale</strong>: This matches infrastructure load — each roll requires matching, confirmation, settlement instruction, and margin calculation. It is the relevant measure for TPS.</p>
+<hr/>
+<h2 id="market-by-market-analysis">Market-by-Market Analysis</h2>
+<h3 id="1-united-states">1. United States</h3>
+<p>The US is the best-instrumented repo market globally, thanks to the OFR's 2024 NCCBR data collection initiative and FICC's public reporting.</p>
+<h4 id="11-market-structure-q3-2025-ofr">1.1 Market Structure (Q3 2025, OFR)</h4>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Daily Exposure</th>
+<th>Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FICC centrally cleared (GSD)</td>
+<td>$4.4T</td>
+<td>35%</td>
+</tr>
+<tr>
+<td>BNY tri-party (non-FICC)</td>
+<td>$3.1T</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>Non-centrally cleared bilateral (NCCBR)</td>
+<td>$5.0T</td>
+<td>40%</td>
+</tr>
+<tr>
+<td><strong>Total US repo</strong></td>
+<td><strong>$12.6T</strong></td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.financialresearch.gov/the-ofr-blog/2025/12/04/sizing-us-repo-market/">OFR — Sizing the US Repo Market (Dec 2025)</a></p>
+<h4 id="12-ficc-gsd-transaction-counts-hard-data">1.2 FICC GSD Transaction Counts (Hard Data)</h4>
+<p>This is the breakthrough data point. DTCC has begun reporting transaction counts alongside dollar volumes:</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>GSD Dollar Volume</th>
+<th>Transaction Count</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apr 7, 2025 (previous peak)</td>
+<td>~$10.5T</td>
+<td><strong>978,000</strong></td>
+<td><a href="https://fxnewsgroup.com/forex-news/institutional/dtcc-processes-record-volumes-across-services-amid-market-volatility/">DTCC</a></td>
+</tr>
+<tr>
+<td>Apr 9, 2025 (peak)</td>
+<td>$11.4T</td>
+<td><strong>1,206,000</strong></td>
+<td><a href="https://fxnewsgroup.com/forex-news/institutional/dtcc-processes-record-volumes-across-services-amid-market-volatility/">DTCC</a></td>
+</tr>
+<tr>
+<td>Jun 30, 2025 (new $ peak)</td>
+<td>$11.8T</td>
+<td>Not reported</td>
+<td><a href="https://fxnewsgroup.com/forex-news/institutional/ficc-successfully-processes-11-8-trillion-in-daily-volume/">DTCC</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deriving normal-day transaction counts</strong>:
+- Peak of 1.206M transactions on a $11.4T day
+- Implied average ticket size on peak day: $11.4T / 1.206M = <strong>~$9.45M</strong>
+- Q1 2025 average daily volume: ~$9T (32% higher YoY, 4% higher QoQ)
+- 2024 daily average: ~$7.0T (DTCC reported $7.019T daily average in March 2024, growing to ~$9T by Q1 2025)
+- Using the implied ticket size: $7.0T / $9.45M = <strong>~741,000 transactions/day</strong> in 2024
+- But peak days have more small tickets (sponsored repo surges). Normal-day average ticket may be $10-12M
+- Conservative estimate for 2024 normal day: $7.0T / $11M = <strong>~636,000 transactions/day</strong>
+- <strong>Best estimate for 2024 FICC GSD</strong>: <strong>600,000-750,000 transactions/day</strong></p>
+<p><strong>Cross-check</strong>: FICC GSD clears both cash Treasury trades AND repo. The repo component (DVP repo + GCF repo + sponsored repo) is estimated at ~60-65% of total GSD activity by value. So repo-specific FICC transactions: ~380,000-490,000/day.</p>
+<h4 id="13-bny-tri-party-non-ficc">1.3 BNY Tri-Party (Non-FICC)</h4>
+<p>BNY is the sole tri-party agent in the US. $3.1T daily in non-FICC tri-party exposure.</p>
+<p>Tri-party repo is characterized by very large average trade sizes — these are institutional trades between dealers and money market funds, insurance companies, and pension funds:
+- Average trade size: $100-500M (institutional)
+- Fed ON RRP: ~50-80 counterparties at ~$2-5B each = 50-80 trades/day (declining from peak)
+- Non-ON-RRP tri-party: $3.1T / est. $150M avg = <strong>~20,700 trades/day</strong>
+- Total BNY tri-party: <strong>~20,700-21,000 trades/day</strong></p>
+<p>This is a low-count, high-value segment. The Fed ON RRP alone was ~$100-200B in late 2024 with ~50-80 counterparty submissions, but each is a single large trade.</p>
+<h4 id="14-non-centrally-cleared-bilateral-nccbr">1.4 Non-Centrally Cleared Bilateral (NCCBR)</h4>
+<p>The most opaque US segment. $5.0T daily (OFR Q3 2025). The OFR's NCCBR collection (launched Dec 2024) is transaction-level but aggregate counts are not yet published.</p>
+<p>Bilateral repo is between two counterparties directly (no CCP, no tri-party agent). Trade sizes vary enormously:
+- Large dealer-to-dealer: $50-500M per ticket
+- Hedge fund basis trades: $25-100M
+- Corporate treasury: $10-50M
+- Weighted average estimate: $75-150M</p>
+<p>Estimate: $5.0T / $100M avg = <strong>~50,000 trades/day</strong>
+Range: $5.0T / $150M = 33,333 to $5.0T / $50M = 100,000</p>
+<h4 id="15-us-repo-summary">1.5 US Repo Summary</h4>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Daily Trades (est.)</th>
+<th>Confidence</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FICC GSD (repo portion)</td>
+<td>400,000-490,000</td>
+<td><strong>Medium-High</strong></td>
+<td>Derived from hard transaction count data</td>
+</tr>
+<tr>
+<td>BNY tri-party (non-FICC)</td>
+<td>20,000-25,000</td>
+<td>Medium</td>
+<td>Exposure / avg trade size</td>
+</tr>
+<tr>
+<td>NCCBR bilateral</td>
+<td>35,000-100,000</td>
+<td>Low</td>
+<td>Exposure / assumed trade size</td>
+</tr>
+<tr>
+<td>Fed ON RRP + SRF</td>
+<td>50-100</td>
+<td>High</td>
+<td>Counterparty count</td>
+</tr>
+<tr>
+<td><strong>US Total</strong></td>
+<td><strong>455,000-615,000</strong></td>
+<td><strong>Medium</strong></td>
+<td>Composite</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Point estimate</strong>: <strong>~500,000 repo trades/day</strong> in the US
+<strong>Annual (252 days)</strong>: <strong>~126,000,000</strong></p>
+<p>This is significantly higher than our previous estimate of 107,580/day (27.1M/year). The key insight is that FICC GSD alone processes 600-750K total transactions/day, and repo is ~60-65% of that.</p>
+<hr/>
+<h3 id="2-europe">2. Europe</h3>
+<h4 id="21-market-structure">2.1 Market Structure</h4>
+<p>European repo is fragmented across multiple CCPs, electronic platforms, and bilateral channels:
+- <strong>CCPs</strong>: LCH RepoClear (SA + Ltd), Eurex Clearing, CC&amp;G (Italy)
+- <strong>Electronic platforms</strong>: BrokerTec (CME), MTS Repo, Eurex Repo, GLMX, Tradeweb
+- <strong>Outstanding</strong>: EUR 13.7T at Dec 2025 (ICMA Survey #48-49, +25% YoY)</p>
+<h4 id="22-lch-repoclear-hard-data">2.2 LCH RepoClear (Hard Data)</h4>
+<p>LCH RepoClear is the largest European repo CCP:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>2023</th>
+<th>2024</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual nominal cleared</td>
+<td>EUR 305T</td>
+<td><strong>EUR 310T</strong></td>
+<td><a href="https://www.lseg.com/content/dam/post-trade/en_us/documents/lch/resources/repoclear-dashboard-q4-2024.pdf">LCH Q4 2024 Dashboard</a></td>
+</tr>
+<tr>
+<td>Annual trade sides cleared</td>
+<td>13.4M</td>
+<td><strong>14.6M</strong></td>
+<td>LCH Q4 2024 Dashboard</td>
+</tr>
+<tr>
+<td>Q4 2024 trade sides</td>
+<td>—</td>
+<td><strong>3.6M</strong></td>
+<td>LCH Q4 2024 Dashboard</td>
+</tr>
+<tr>
+<td>Daily nominal cleared</td>
+<td>—</td>
+<td>&gt;EUR 1T</td>
+<td>LCH</td>
+</tr>
+<tr>
+<td>Members</td>
+<td>—</td>
+<td>138</td>
+<td>LCH</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Trade count derivation</strong>:
+- 14.6M trade sides / 252 days = <strong>~57,937 trade sides/day</strong>
+- Each trade has 2 sides, so unique trades: <strong>~28,968/day</strong>
+- Cross-check: EUR 310T / 14.6M sides = ~EUR 21.2M per side = <strong>~EUR 42.4M per trade</strong>
+- This average trade size is plausible for CCP-cleared interdealer repo</p>
+<h4 id="23-eurex-repo">2.3 Eurex Repo</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>2024</th>
+<th>2025</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Avg term-adjusted volume</td>
+<td>EUR 337.1B</td>
+<td>EUR 406.1B (+20%)</td>
+<td><a href="https://www.eurex.com/ex-en/find/news-center/news/Full-year-and-December-2025-figures-at-Eurex-4891494">Eurex</a></td>
+</tr>
+</tbody>
+</table>
+<p>Eurex Repo does not publish transaction counts. Estimating from volume:
+- EUR 337.1B daily / est. EUR 30-50M avg trade = <strong>~6,700-11,200 trades/day</strong>
+- Point estimate: <strong>~8,000 trades/day</strong></p>
+<h4 id="24-ecb-mmsr-secured-segment">2.4 ECB MMSR Secured Segment</h4>
+<p>The ECB's Money Market Statistical Reporting covers 45 of the largest euro area banks:
+- Q4 2024 daily turnover: <strong>EUR 997B</strong> (secured segment)
+- Growth: +41% over 2 years (from 2022)
+- CCP share: ~70% of secured turnover
+- Source: <a href="https://www.ecb.europa.eu/press/euromoneymarket/html/ecb.euromoneymarket202504.en.html">ECB Euro Money Market Study 2024</a></p>
+<p>The MMSR reports EUR 997B/day from 45 banks. This is a subset of total European repo — it covers euro-denominated trades by reporting agents. The ICMA survey covers a broader universe (EUR 13.7T outstanding).</p>
+<p>Estimating MMSR trade count:
+- EUR 997B daily turnover
+- Average trade size in MMSR: likely EUR 20-50M (mix of interbank and CCP-cleared)
+- EUR 997B / EUR 30M avg = <strong>~33,200 trades/day</strong> (from MMSR reporters only)</p>
+<h4 id="25-uk-repo-sterling">2.5 UK Repo (Sterling)</h4>
+<p>The Bank of England collects daily transaction-level data via Form SMMD covering sterling money markets. Published quarterly in aggregate.</p>
+<p>UK repo market characteristics:
+- LCH RepoClear Ltd clears UK gilt repo
+- Sterling repo is smaller than euro but active — linked to SONIA rate
+- BOE reported total repo and reverse repo volumes rising consistently in 2024
+- Estimate: ~20% of European repo by value, similar by count
+- Source: <a href="https://www.bankofengland.co.uk/statistics/data-collection/sterling-money-markets">BOE Sterling Money Markets</a></p>
+<h4 id="26-european-repo-summary">2.6 European Repo Summary</h4>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Daily Trades (est.)</th>
+<th>Confidence</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LCH RepoClear (unique trades)</td>
+<td>~29,000</td>
+<td><strong>High</strong></td>
+<td>Hard data: 14.6M sides/yr</td>
+</tr>
+<tr>
+<td>Eurex Repo + Clearing</td>
+<td>~8,000</td>
+<td>Medium</td>
+<td>Volume / avg trade size</td>
+</tr>
+<tr>
+<td>Other CCP (CC&amp;G, etc.)</td>
+<td>~3,000</td>
+<td>Low</td>
+<td>Proportional estimate</td>
+</tr>
+<tr>
+<td>Electronic bilateral (BrokerTec, MTS, GLMX, Tradeweb)</td>
+<td>~20,000-30,000</td>
+<td>Medium</td>
+<td>GLMX+Tradeweb D2C growth +20.3% turnover H1 2025</td>
+</tr>
+<tr>
+<td>Voice bilateral</td>
+<td>~10,000-20,000</td>
+<td>Low</td>
+<td>Residual estimate</td>
+</tr>
+<tr>
+<td>UK gilt repo (all channels)</td>
+<td>~15,000-25,000</td>
+<td>Low</td>
+<td>~20% of continental Europe</td>
+</tr>
+<tr>
+<td><strong>European Total</strong></td>
+<td><strong>~85,000-115,000</strong></td>
+<td><strong>Medium</strong></td>
+<td>Composite</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Point estimate</strong>: <strong>~100,000 repo trades/day</strong> in Europe
+<strong>Annual (252 days)</strong>: <strong>~25,200,000</strong></p>
+<p>This is lower than our previous estimate of 125,000/day. The LCH hard data anchors this — at ~29K unique trades/day for the largest CCP, the total European number including bilateral is plausibly 85-115K.</p>
+<hr/>
+<h3 id="3-japan">3. Japan</h3>
+<h4 id="31-market-structure">3.1 Market Structure</h4>
+<ul>
+<li><strong>JSCC</strong>: Central clearing for JGB repo. Daily avg clearing volume: JPY 74.24T (FY2024), with 75.1% JSCC share of total BOJ settlements</li>
+<li><strong>BOJ</strong>: Reports securities financing transaction statistics monthly covering ~50 major institutions</li>
+<li><strong>Repo types</strong>: SC repo (specific collateral), GC repo (general collateral)</li>
+</ul>
+<p>Source: <a href="https://www.jpx.co.jp/jscc/en/cash/jgbcc/jgb_daily_statistics_e.html">JSCC JGB Daily Statistics</a>, <a href="https://www.boj.or.jp/en/statistics/bis/repo/index.htm">BOJ Statistics</a></p>
+<h4 id="32-transaction-count-estimate">3.2 Transaction Count Estimate</h4>
+<p>JSCC clearing volume: JPY 74.24T/day
+- Total market (at 75.1% JSCC share): JPY 74.24T / 0.751 = <strong>JPY 98.9T/day</strong> (~$660B at 150 JPY/USD)
+- Japanese repo is dominated by large institutional and dealer trades
+- Average trade size estimate: JPY 5-10B ($33-67M)
+- JPY 98.9T / JPY 7.5B avg = <strong>~13,200 trades/day</strong>
+- Range: 8,000-20,000 trades/day</p>
+<p><strong>Point estimate</strong>: <strong>~13,000 repo trades/day</strong> in <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>
+<strong>Annual</strong>: <strong>~3,276,000</strong></p>
+<hr/>
+<h3 id="4-china">4. China</h3>
+<h4 id="41-market-structure">4.1 Market Structure</h4>
+<p><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> has two distinct repo markets:
+- <strong>Interbank market</strong> (CFETS/PBOC): Pledged repo + outright repo, dominated by banks. This is the bulk of the market
+- <strong>Exchange market</strong> (SSE/SZSE): Exchange-traded repo, accessible to retail and institutional</p>
+<h4 id="42-interbank-pledged-repo">4.2 Interbank Pledged Repo</h4>
+<p>PBOC 2024 Financial Market Report:
+- Total interbank transactions (lending + bonds + repo): RMB 2,161.65T for full year 2024
+- Daily average: RMB 8.61T (+1.3% YoY)
+- Pledged repo daily turnover fell 0.2% YoY in 2024</p>
+<p>Statista reports: March 2024 interbank pledged repo: <strong>&gt;145,000 transactions</strong> (monthly figure). This implies:
+- ~145,000 / ~22 trading days = <strong>~6,600 trades/day</strong> for interbank pledged repo</p>
+<p>However, this seems low given the massive volumes. Cross-check:
+- PBOC daily avg turnover for all interbank: RMB 8.61T
+- Repo is roughly 70-80% of interbank turnover (repo dominates Chinese money markets)
+- Repo portion: ~RMB 6.0-6.9T/day (~$830-950B)
+- At RMB 6.5T / 145,000 monthly trades * 22 days = ~RMB 1.0B per trade (~$140M)
+- This average trade size is plausible for China's bank-dominated interbank market</p>
+<h4 id="43-exchange-repo">4.3 Exchange Repo</h4>
+<p>Shanghai Stock Exchange bond repo:
+- December 2024: RMB 47.02T monthly turnover (record high)
+- Average monthly: ~RMB 16.8T (2009-2025 average)
+- 2024 average: ~RMB 30-40T/month given growth trajectory
+- Exchange repo has smaller trade sizes than interbank (retail + institutional)
+- Average trade size estimate: RMB 5-20M (~$0.7-2.8M)
+- Monthly: RMB 35T / RMB 10M avg = ~3.5M trades/month = <strong>~159,000 trades/day</strong></p>
+<p>Source: <a href="https://www.ceicdata.com/en/china/shanghai-stock-exchange-turnover-value">CEIC/SSE Bond Repo Turnover</a></p>
+<h4 id="44-china-repo-summary">4.4 China Repo Summary</h4>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Daily Trades (est.)</th>
+<th>Confidence</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interbank pledged repo (CFETS)</td>
+<td>~6,600</td>
+<td>Medium</td>
+<td>Statista/CFETS direct count</td>
+</tr>
+<tr>
+<td>Interbank outright repo</td>
+<td>~1,000</td>
+<td>Low</td>
+<td>~15% of pledged repo</td>
+</tr>
+<tr>
+<td>SSE exchange repo</td>
+<td>~159,000</td>
+<td>Low-Medium</td>
+<td>Monthly value / avg trade size</td>
+</tr>
+<tr>
+<td>SZSE exchange repo</td>
+<td>~40,000</td>
+<td>Low</td>
+<td>~25% of SSE</td>
+</tr>
+<tr>
+<td><strong>China Total</strong></td>
+<td><strong>~207,000</strong></td>
+<td><strong>Low-Medium</strong></td>
+<td>Composite</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Point estimate</strong>: <strong>~200,000 repo trades/day</strong> in China
+<strong>Annual</strong>: <strong>~50,400,000</strong></p>
+<p>The surprise here is China's exchange-traded repo, which could be very high-count due to small retail-accessible tickets. This is similar to how China's equity market has extremely high transaction counts due to retail participation. However, the exchange repo data is volume-based, and average trade size assumptions drive uncertainty.</p>
+<p><strong>Sensitivity</strong>: If average SSE exchange repo trade size is RMB 50M instead of RMB 10M, daily trades drop to ~31,800 — reducing China total to ~80,000/day. If RMB 5M, trades rise to 318,000/day.</p>
+<hr/>
+<h3 id="5-united-kingdom">5. United Kingdom</h3>
+<p>UK repo is partially captured in the European section (LCH RepoClear Ltd handles gilt repo). Adding standalone estimates:</p>
+<ul>
+<li>Sterling repo market estimated at ~GBP 500-700B daily turnover</li>
+<li>Average trade size: GBP 30-80M</li>
+<li>Estimated trades: GBP 600B / GBP 50M = <strong>~12,000 trades/day</strong></li>
+<li>Some double-counted with LCH RepoClear Ltd</li>
+</ul>
+<p><strong>Point estimate</strong>: <strong>~15,000 repo trades/day</strong> (incremental to what's in the European section, to avoid double-counting with LCH Ltd)
+<strong>Annual</strong>: <strong>~3,780,000</strong></p>
+<p>Note: The UK figure in the European section already includes LCH Ltd activity. This incremental figure captures bilateral sterling repo not cleared through LCH.</p>
+<hr/>
+<h3 id="6-rest-of-world">6. Rest of World</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Est. Daily Repo Trades</th>
+<th>Method</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Australia</td>
+<td>5,000</td>
+<td>ASX Clear, bilateral</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Canada</td>
+<td>8,000</td>
+<td>CDS Clearing, CDCC</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>India</td>
+<td>10,000</td>
+<td>CCIL repo clearing</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>5,000</td>
+<td>B3 clearing</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Korea</td>
+<td>5,000</td>
+<td>KRX, bilateral</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>7,000</td>
+<td>Proportional</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>RoW Total</strong></td>
+<td><strong>~40,000</strong></td>
+<td></td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Annual</strong>: <strong>~10,080,000</strong></p>
+<hr/>
+<h2 id="global-total">Global Total</h2>
+<h3 id="bottom-up-aggregation">Bottom-Up Aggregation</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Daily Trades</th>
+<th>Annual (252 days)</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>United States</td>
+<td>500,000</td>
+<td>126,000,000</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Europe (incl. UK CCP)</td>
+<td>100,000</td>
+<td>25,200,000</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>13,000</td>
+<td>3,276,000</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>China</td>
+<td>200,000</td>
+<td>50,400,000</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>UK (bilateral increment)</td>
+<td>15,000</td>
+<td>3,780,000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Rest of World</td>
+<td>40,000</td>
+<td>10,080,000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Global Total</strong></td>
+<td><strong>~868,000</strong></td>
+<td><strong>~218,736,000</strong></td>
+<td><strong>Medium</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="point-estimate-with-confidence-interval">Point Estimate with Confidence Interval</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Daily Trades</th>
+<th>Annual</th>
+<th>TPS (24h/365d)</th>
+<th>Key Assumptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Low</strong></td>
+<td>450,000</td>
+<td>113,400,000</td>
+<td>3.6</td>
+<td>Large avg trade sizes, China exchange repo overcounted</td>
+</tr>
+<tr>
+<td><strong>Central</strong></td>
+<td>868,000</td>
+<td>218,736,000</td>
+<td>6.9</td>
+<td>Best estimates per market</td>
+</tr>
+<tr>
+<td><strong>High</strong></td>
+<td>1,500,000</td>
+<td>378,000,000</td>
+<td>12.0</td>
+<td>Small avg trade sizes, China retail repo very active</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Revised point estimate</strong>: <strong>~219M repo trades/year globally</strong> (~868K/day)
+<strong>Confidence interval</strong>: <strong>113M - 378M</strong> (still wide but anchored by hard data)</p>
+<p><strong>Previous estimate</strong>: 83.8M/year (332K/day)
+<strong>Change</strong>: +161% at point estimate. The previous estimate significantly undercounted by:
+1. Using too-large average trade sizes for FICC GSD (we assumed ~$75M; actual implied is ~$9-12M per transaction because FICC counts individual settlement instructions, not just economic trades)
+2. Not accounting for China's exchange-traded repo market
+3. Underestimating European bilateral repo</p>
+<h3 id="key-insight-why-the-estimate-increased">Key Insight: Why the Estimate Increased</h3>
+<p>The FICC GSD hard transaction count data is transformative. On a peak day (Apr 9, 2025), FICC processed <strong>1.206 million transactions</strong>. Even if 35-40% of those are cash Treasury trades (not repo), that's still ~720K repo transactions on a single peak day from one CCP. On a normal day, FICC repo transactions are likely <strong>400-500K</strong>. This alone exceeds our entire previous US repo estimate.</p>
+<p>The reason: FICC counts each settlement instruction as a transaction. A dealer netting down a portfolio of 50 small repo trades into one net obligation is still 50 transactions at FICC's front door, even if settlement is netted. This is the right way to count for TPS purposes — each of those 50 trades requires matching, risk calculation, and processing.</p>
+<hr/>
+<h2 id="sensitivity-analysis">Sensitivity Analysis</h2>
+<h3 id="variable-1-what-ficc-gsd-transactions-actually-are">Variable 1: What FICC GSD "Transactions" Actually Are</h3>
+<table>
+<thead>
+<tr>
+<th>Interpretation</th>
+<th>Implied US Daily Repo Trades</th>
+<th>Global Annual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FICC counts = gross settlement instructions (includes both legs)</td>
+<td>~250,000</td>
+<td>~140M</td>
+</tr>
+<tr>
+<td>FICC counts = one count per trade (our base case)</td>
+<td>~450,000</td>
+<td>~219M</td>
+</tr>
+<tr>
+<td>FICC counts include Treasury cash trades mixed in</td>
+<td>~350,000</td>
+<td>~185M</td>
+</tr>
+</tbody>
+</table>
+<p>This is the biggest single uncertainty. If FICC's "1.206M transactions" includes both repo and cash Treasury trades, and cash is 35-40%, the repo count drops to ~720K on peak / ~400K normal.</p>
+<h3 id="variable-2-china-exchange-repo-average-trade-size">Variable 2: China Exchange Repo Average Trade Size</h3>
+<table>
+<thead>
+<tr>
+<th>Avg Trade Size (RMB)</th>
+<th>China Daily Trades</th>
+<th>Global Annual Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5M ($0.7M)</td>
+<td>~320,000</td>
+<td>+30M annually</td>
+</tr>
+<tr>
+<td>10M ($1.4M)</td>
+<td>~160,000</td>
+<td>Base case</td>
+</tr>
+<tr>
+<td>50M ($7M)</td>
+<td>~32,000</td>
+<td>-32M annually</td>
+</tr>
+<tr>
+<td>100M ($14M)</td>
+<td>~16,000</td>
+<td>-36M annually</td>
+</tr>
+</tbody>
+</table>
+<h3 id="variable-3-european-bilateral-repo-count">Variable 3: European Bilateral Repo Count</h3>
+<table>
+<thead>
+<tr>
+<th>Bilateral as % of Total European</th>
+<th>Total European Daily</th>
+<th>Global Annual Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30% bilateral (base)</td>
+<td>~100,000</td>
+<td>Base case</td>
+</tr>
+<tr>
+<td>20% bilateral</td>
+<td>~80,000</td>
+<td>-5M annually</td>
+</tr>
+<tr>
+<td>50% bilateral</td>
+<td>~135,000</td>
+<td>+9M annually</td>
+</tr>
+</tbody>
+</table>
+<h3 id="variable-4-rollover-counting">Variable 4: Rollover Counting</h3>
+<p>If overnight repo that rolls daily is counted once (not per roll):
+- Reduces O/N repo count by ~80% (since most O/N repo rolls for ~5 days on average)
+- But this is not how clearing systems count — each roll is a new trade
+- We maintain: rollovers = new trades (consistent with FICC and ECB MMSR definitions)</p>
+<hr/>
+<h2 id="open-questions">Open Questions</h2>
+<ol>
+<li>
+<p><strong>What exactly does FICC's "transaction" count include?</strong> Does 1.206M on Apr 9 include cash Treasury trades, or is it repo-only? Does it count both opening and closing legs? This is the single most impactful clarification needed. A FOIA request or DTCC investor relations inquiry could resolve this.</p>
+</li>
+<li>
+<p><strong>China exchange repo granularity</strong>: SSE/SZSE exchange repo could have very small tickets (RMB 100K minimum for individual investors), which would push counts dramatically higher. Or it could be dominated by institutional block trades. Transaction-count data from SSE would be definitive.</p>
+</li>
+<li>
+<p><strong>NCCBR transaction data</strong>: The OFR began collecting transaction-level bilateral repo data in Dec 2024. When aggregate statistics are published, they will directly answer the bilateral US repo count question. Expected timeline: late 2026.</p>
+</li>
+<li>
+<p><strong>ECB MMSR transaction counts</strong>: The ECB collects daily transaction-level data from 69 banks (expanded from 45 in July 2024). If they publish aggregate trade counts by segment, European repo would become well-measured. The Euro Money Market Study reports turnover but not trade counts.</p>
+</li>
+<li>
+<p><strong>Japan SC repo vs GC repo split</strong>: JSCC clears both specific collateral and general collateral repo. SC repo has smaller average trade sizes. Knowing the split would tighten the Japan estimate.</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> CCIL repo</strong>: India's Clearcorp Dealing Systems (CCIL) clears significant daily repo volume (INR 3-5T daily). Transaction-level data exists but is not easily accessible in English.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.financialresearch.gov/the-ofr-blog/2025/12/04/sizing-us-repo-market/">OFR — Sizing the US Repo Market (Dec 2025)</a></li>
+<li><a href="https://www.federalreserve.gov/econres/notes/feds-notes/the-12-trillion-u-s-repo-market-evidence-from-a-novel-panel-of-intermediaries-20250711.html">Fed — The $12 Trillion US Repo Market (Jul 2025)</a></li>
+<li><a href="https://fxnewsgroup.com/forex-news/institutional/ficc-successfully-processes-11-8-trillion-in-daily-volume/">DTCC — FICC GSD Record $11.8T (Jul 2025)</a></li>
+<li><a href="https://fxnewsgroup.com/forex-news/institutional/dtcc-processes-record-volumes-across-services-amid-market-volatility/">DTCC — FICC Peak 1.206M Transactions (Apr 2025)</a></li>
+<li><a href="https://www.lseg.com/content/dam/post-trade/en_us/documents/lch/resources/repoclear-dashboard-q4-2024.pdf">LCH RepoClear Q4 2024 Dashboard</a></li>
+<li><a href="https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/market-data/icma-european-repo-market-survey/">ICMA European Repo Market Survey #48 (Apr 2025)</a></li>
+<li><a href="https://www.icmagroup.org/News/news-in-brief/the-european-repo-market-icma-survey-shows-record-outstanding-value-of-eur-12-4-trillion-at-june-2025/">ICMA European Repo Survey — Record EUR 12.4T (Nov 2025)</a></li>
+<li><a href="https://www.ecb.europa.eu/press/euromoneymarket/html/ecb.euromoneymarket202504.en.html">ECB Euro Money Market Study 2024 (Apr 2025)</a></li>
+<li><a href="https://www.eurex.com/ex-en/find/news-center/news/Full-year-and-December-2025-figures-at-Eurex-4891494">Eurex Repo — Full Year 2024/2025 Figures</a></li>
+<li><a href="https://www.eurex.com/resource/blob/4264622/c9a39717608d8d0f112ab8c2f45c4efa/data/20250121_repo-report_2024-2025.pdf">Eurex — Repo Trading &amp; Clearing Report 2024/2025</a></li>
+<li><a href="https://libertystreeteconomics.newyorkfed.org/2025/10/the-rise-of-sponsored-service-for-clearing-repo/">NY Fed — Liberty Street Economics: Rise of Sponsored Repo (Oct 2025)</a></li>
+<li><a href="https://www.jpx.co.jp/jscc/en/cash/jgbcc/jgb_daily_statistics_e.html">JSCC JGB Daily Statistics</a></li>
+<li><a href="https://www.boj.or.jp/en/statistics/bis/repo/index.htm">BOJ Securities Financing Transactions Statistics</a></li>
+<li><a href="https://www.pbc.gov.cn/en/3688247/3688978/3709134/5579031/2025013009512017217.pdf">PBOC Financial Market Report 2024</a></li>
+<li><a href="https://www.statista.com/statistics/456767/china-interbank-market-pledged-repo-trading-volume/">Statista — China Interbank Pledged Repo Trading Volume 2024</a></li>
+<li><a href="https://www.ceicdata.com/en/china/shanghai-stock-exchange-turnover-value">CEIC — SSE Bond Repo Turnover</a></li>
+<li><a href="https://www.bankofengland.co.uk/statistics/data-collection/sterling-money-markets">BOE — Sterling Money Markets Data Collection</a></li>
+<li><a href="https://fred.stlouisfed.org/series/RRPONTSYD">FRED — ON RRP Data (RRPONTSYD)</a></li>
+<li><a href="https://www.newyorkfed.org/markets/reference-rates/sofr">NY Fed — SOFR Data</a></li>
+<li><a href="https://www.sifma.org/research/statistics/us-repo-statistics">SIFMA — US Repo Statistics</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/fixed-income/workings/repo-deep-dive.md">analysis/traditional-finance/fixed-income/workings/repo-deep-dive.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commodities — TPS Calculations — Universe of Finance</title>
+<meta name="description" content="Total Exchange-Traded Commodity Volume (2024) Bottom-Up from Exchange Data Exchange Commodity Contracts (est.) Notes ICE 1.2B Official: record 1.2B commodity contracts CME (energy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Commodities — TPS Calculations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#total-exchange-traded-commodity-volume-2024">Total Exchange-Traded Commodity Volume (2024)</a></li><li><a href="#tps-calculation">TPS Calculation</a></li><li><a href="#peak-tps-estimate">Peak TPS Estimate</a></li><li><a href="#physical-otc-commodity-trades">Physical OTC Commodity Trades</a></li><li><a href="#annual-value">Annual Value</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li></ul></div><h2 id="total-exchange-traded-commodity-volume-2024">Total Exchange-Traded Commodity Volume (2024)</h2>
+<h3 id="bottom-up-from-exchange-data">Bottom-Up from Exchange Data</h3>
+<table>
+<thead>
+<tr>
+<th>Exchange</th>
+<th>Commodity Contracts (est.)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICE</td>
+<td>1.2B</td>
+<td>Official: record 1.2B commodity contracts</td>
+</tr>
+<tr>
+<td>CME (energy + metals + agriculture)</td>
+<td>~3.5B</td>
+<td>Est. from 26.5M total ADV x 252 days = 6.7B total CME; commodity ~52% of CME volume</td>
+</tr>
+<tr>
+<td>LME</td>
+<td>179M</td>
+<td>Official: 179M lots</td>
+</tr>
+<tr>
+<td>Shanghai Futures Exchange</td>
+<td>~1.0B</td>
+<td>FIA estimate</td>
+</tr>
+<tr>
+<td>Dalian Commodity Exchange</td>
+<td>~800M</td>
+<td>FIA estimate</td>
+</tr>
+<tr>
+<td>Zhengzhou Commodity Exchange</td>
+<td>~500M</td>
+<td>FIA estimate</td>
+</tr>
+<tr>
+<td>MCX (India)</td>
+<td>~200M</td>
+<td>FIA estimate</td>
+</tr>
+<tr>
+<td>Other exchanges</td>
+<td>~300M</td>
+<td>TOCOM, Bursa Malaysia, etc.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bottom-up total: ~7.7B</strong></p>
+<p>BUT: there is significant overlap in reporting:
+- CME and ICE report total exchange volume including cross-listed products
+- Some Chinese exchange volume is day-trading (open + close same day counted twice)</p>
+<h3 id="top-down-from-fia">Top-Down from FIA</h3>
+<p>FIA 2024 total ETD: 205.34B contracts
+WFE commodity share: ~3% (from subcategory breakdown)
+3% x 205.34B = <strong>~6.16B contracts</strong></p>
+<p>FIA commodity subcategory (from WFE data):
+- Commodity ETD: ~3% share, growth -4.1% YoY (WFE figures)
+- But this seems too low vs. exchange-level data showing growth</p>
+<h3 id="reconciliation">Reconciliation</h3>
+<p>The discrepancy is because:
+1. WFE figures use a narrower member universe than FIA
+2. Chinese exchanges may report differently
+3. "Commodity" classification varies (some energy derivatives classified elsewhere)</p>
+<p><strong>Central estimate: ~6.5B contracts</strong> (between top-down 6.2B and bottom-up 7.7B after deducting overlaps)</p>
+<h2 id="tps-calculation">TPS Calculation</h2>
+<p>Commodity markets trade in regional time zones:
+- US (CME/NYMEX/COMEX): ~23h electronic + pit
+- Europe (ICE/LME): ~15h
+- Asia (Shanghai/Dalian/Zhengzhou): ~8h
+- Weighted effective hours: ~21.6h (same methodology as ETD category)</p>
+<p>TPS = 6,500,000,000 / (252 x 21.6 x 3600) = 6,500,000,000 / 19,595,520 = <strong>~332 per second</strong></p>
+<p>Wait — recalculating:
+- 6.5B annual / 252 days = 25.8M contracts/day
+- 25.8M / (21.6 x 3600) = 25,800,000 / 77,760 = <strong>~332 TPS</strong></p>
+<p>Hmm, but the ETD category reports ~9,500 TPS for 205B contracts. Let me cross-check:
+- 205B / (252 x 21.6h x 3600) = 205,000,000,000 / 19,595,520 = ~10,462 TPS</p>
+<p>So commodity at 3% share: 10,462 x 0.03 = ~314 TPS. But earlier we reported ~1,200 in the report.</p>
+<p><strong>Correction</strong>: I was using an inconsistent methodology. Let me align with the ETD capsule approach.</p>
+<p>If using calendar time (365 days x 24h) like some categories:
+- 6.5B / (365 x 86,400) = 6,500,000,000 / 31,536,000 = <strong>~206 TPS</strong></p>
+<p>If using trading days and effective hours (aligned with ETD capsule):
+- 6.5B / (252 x 21.6h x 3600) = <strong>~332 TPS</strong></p>
+<p><strong>Using the ETD capsule methodology (252 trading days, 21.6h effective): ~332 TPS</strong></p>
+<p>I need to revise the report figure from ~1,200 to ~330. The error was in the initial estimate.</p>
+<p>CORRECTION APPLIED: Average TPS = <strong>~330</strong> (not ~1,200 as initially estimated)</p>
+<h2 id="peak-tps-estimate">Peak TPS Estimate</h2>
+<p>Peak concentration: ~5x average (commodity markets spike during OPEC announcements, USDA reports, LME warehouse data releases)
+<a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a>: 330 x 5 = <strong>~1,650 TPS</strong></p>
+<h2 id="physical-otc-commodity-trades">Physical OTC Commodity Trades</h2>
+<p>Physical commodity trading (actual delivery contracts):
+- Major trading houses (Vitol, Trafigura, Glencore, etc.): ~5,000-10,000 trades/day each
+- Hundreds of smaller traders: ~50,000 trades/day
+- Total physical OTC: ~200,000 trades/day = ~50M/year
+- TPS contribution: ~2-3 TPS (negligible)</p>
+<h2 id="annual-value">Annual Value</h2>
+<p>Commodity ETD notional is hard to estimate (contracts vary enormously):
+- Crude oil futures (WTI): ~$70K/contract → 655M contracts x $70K = ~$46T
+- Gold futures: ~$200K/contract
+- Carbon futures: ~$80/contract
+- Total commodity ETD notional: estimated <strong>$150-200T/year</strong> (rough)</p>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<ul>
+<li>Exchange-level data (ICE, CME, LME): 🟢 High</li>
+<li>Global aggregate: 🟡 Medium — requires combining multiple exchanges</li>
+<li>Physical OTC: 🔴 Low — no centralized reporting</li>
+<li>TPS: 🟡 Medium — derived from reasonable exchange data</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/commodities/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/commodities/workings/calculations.md">analysis/traditional-finance/commodities/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

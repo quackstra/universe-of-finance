@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance Premium Payments — Assumptions — Universe of Finance</title>
+<meta name="description" content="Every assumption documented with reasoning. Referenced from calculations and projections. Data Collection Assumptions A1. Swiss Re sigma as Primary Premium Source Assumption: Swis">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Insurance Premium Payments — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#data-collection-assumptions">Data Collection Assumptions</a></li><li><a href="#payment-frequency-assumptions">Payment Frequency Assumptions</a></li><li><a href="#tps-calculation-assumptions">TPS Calculation Assumptions</a></li><li><a href="#overlap-assumptions">Overlap Assumptions</a></li></ul></div><blockquote>
+<p>Every assumption documented with reasoning. Referenced from calculations and projections.</p>
+</blockquote>
+<hr/>
+<h2 id="data-collection-assumptions">Data Collection Assumptions</h2>
+<h3 id="a1-swiss-re-sigma-as-primary-premium-source">A1. Swiss Re sigma as Primary Premium Source</h3>
+<p><strong>Assumption:</strong> Swiss Re's sigma research series is the most authoritative source for global insurance premium volumes.
+<strong>Reasoning:</strong> Swiss Re sigma has been the industry standard for global insurance market sizing for decades. Their methodology is consistent, well-documented, and widely cited by regulators (IAIS, NAIC) and industry bodies.
+<strong>Risk:</strong> Swiss Re figures are gross written premiums (GWP), which can include some double-counting for reinsurance. However, GWP is the right measure for premium payment analysis since it reflects actual premium flows from policyholders.</p>
+<h3 id="a2-no-authoritative-transaction-count-source">A2. No Authoritative Transaction Count Source</h3>
+<p><strong>Assumption:</strong> No single source publishes global insurance premium transaction counts. All transaction estimates are modeled bottom-up.
+<strong>Reasoning:</strong> Unlike card payments (Nilson) or real-time payments (ACI), <a class="xref" href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">insurance premium payments</a> are processed across fragmented rails (direct debit, cards, ACH, cash) and no industry body aggregates the total.
+<strong>Risk:</strong> The bottom-up model relies on policy count estimates and payment frequency assumptions, both of which are uncertain. The 12-16B range reflects this uncertainty.</p>
+<h3 id="a3-policy-count-estimates">A3. Policy Count Estimates</h3>
+<p><strong>Assumption:</strong> Global policies in force total approximately 6.7 billion across all segments.
+<strong>Reasoning:</strong> Built from vehicle registrations (OICA), health coverage (WHO/national data), property insurance penetration, and life insurance in-force data (Swiss Re).
+<strong>Risk:</strong> Double-counting is possible (a person with auto + home + life = 3 policies). This is intentional — each policy generates its own payment stream.</p>
+<hr/>
+<h2 id="payment-frequency-assumptions">Payment Frequency Assumptions</h2>
+<h3 id="a4-auto-insurance-payment-frequency">A4. Auto Insurance Payment Frequency</h3>
+<p><strong>Assumption:</strong> 70% of auto policies are paid monthly; 30% are paid annually.
+<strong>Reasoning:</strong> US data shows ~65-70% monthly billing (Progressive, GEICO quarterly/monthly plans dominate). Europe varies — UK is predominantly annual, continental Europe is more varied.
+<strong>Risk:</strong> The global average could be lower (more annual billing in Europe/Asia) or higher (more monthly in US/LatAm). Range: 60-80% monthly.</p>
+<h3 id="a5-health-insurance-payment-frequency">A5. Health Insurance Payment Frequency</h3>
+<p><strong>Assumption:</strong> 60% monthly premiums, 40% per-claim copay events. Only private/supplemental health insurance counted (public single-payer excluded).
+<strong>Reasoning:</strong> In markets with private health insurance (US, Germany, Switzerland, parts of Asia), monthly premium billing is standard. Copay events are less regular.
+<strong>Risk:</strong> The 2.5B "covered lives" figure is generous — many are covered by employer-paid or government-paid schemes with no consumer-facing premium payment. The 75% adjustment for public systems may be too low or too high.</p>
+<h3 id="a6-life-insurance-payment-frequency">A6. Life Insurance Payment Frequency</h3>
+<p><strong>Assumption:</strong> 50% monthly, 20% quarterly, 30% annual. With 55% adjustment for group/employer-paid and 50% for lapsed policies.
+<strong>Reasoning:</strong> Individual life policies typically have monthly premium billing in the US and quarterly/annual in other markets. Group life is employer-paid (no consumer transaction).
+<strong>Risk:</strong> The lapse rate is the biggest uncertainty. Swiss Re estimates that 25-50% of life policies lapse within 10 years, but the "in force" figure should already exclude lapsed policies. The 50% lapse adjustment may be too aggressive.</p>
+<h3 id="a7-payment-failure-and-retry-rate">A7. Payment Failure and Retry Rate</h3>
+<p><strong>Assumption:</strong> 5% of premium payment attempts fail and are retried, generating additional transactions.
+<strong>Reasoning:</strong> Industry data from NACHA shows 2-3% ACH return rates for insurance debits. Card payment failure rates are similar. Adding retries brings total to ~5%.
+<strong>Risk:</strong> This could be higher in emerging markets (insufficient funds more common) or lower in markets with robust auto-debit systems.</p>
+<hr/>
+<h2 id="tps-calculation-assumptions">TPS Calculation Assumptions</h2>
+<h3 id="a8-even-distribution-over-year">A8. Even Distribution Over Year</h3>
+<p><strong>Assumption:</strong> Transactions are distributed roughly evenly across the year for average TPS calculation, with peak adjustment for month-start clustering.
+<strong>Reasoning:</strong> Insurance premium due dates are spread across the year (not all policies renew in January). However, monthly premiums cluster on the 1st and 15th.
+<strong>Risk:</strong> The 1.6x peak multiplier may underestimate actual peak — on a single processing day (e.g., first business day of the month), the ratio could be 5-10x the daily average.</p>
+<hr/>
+<h2 id="overlap-assumptions">Overlap Assumptions</h2>
+<h3 id="a9-payment-channel-distribution">A9. Payment Channel Distribution</h3>
+<p><strong>Assumption:</strong> 45% direct debit, 25% card, 15% bank transfer, 10% cash/check, 5% digital wallet.
+<strong>Reasoning:</strong> Based on US and European payment mix for <a class="xref" href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">insurance premiums</a>. US skews more card-heavy; Europe skews more direct debit-heavy; emerging markets skew more cash-heavy.
+<strong>Risk:</strong> The global average is uncertain. In <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>, a significant share is still cash-collected by agents. In <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, Alipay/WeChat Pay for insurance premiums is growing rapidly but volume is unclear.</p>
+<h3 id="a10-90-overlap-with-existing-rails">A10. 90% Overlap with Existing Rails</h3>
+<p><strong>Assumption:</strong> 90% of insurance premium transactions are already counted in other payment capsules (cards, <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>, <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a>).
+<strong>Reasoning:</strong> Direct calculation from channel distribution: 45% + 25% + 15% + 5% = 90%.
+<strong>Risk:</strong> If cash collection is higher than estimated (especially in <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>, India, SE Asia), the overlap could be lower (80-85%).</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/insurance-premiums/workings/assumptions.md">analysis/payments/insurance-premiums/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

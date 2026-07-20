@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stablecoins — Key Assumptions — Universe of Finance</title>
+<meta name="description" content="A1. Raw Volume vs Adjusted Volume The $27.6T figure is raw on-chain volume — every stablecoin movement on every chain Visa's adjusted figure ($5.7T) attempts to isolate genuine pay">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Stablecoins — Key Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#a1-raw-volume-vs-adjusted-volume">A1. Raw Volume vs Adjusted Volume</a></li><li><a href="#a2-transaction-count-estimation">A2. Transaction Count Estimation</a></li><li><a href="#a3-double-counting-the-critical-issue">A3. Double-Counting — The Critical Issue</a></li><li><a href="#a4-cex-vs-on-chain">A4. CEX vs On-Chain</a></li><li><a href="#a5-usdt-transparency">A5. USDT Transparency</a></li><li><a href="#a6-chain-attribution">A6. Chain Attribution</a></li><li><a href="#a7-historic-data-quality">A7. Historic Data Quality</a></li><li><a href="#a8-surpassing-visa-context">A8. "Surpassing Visa" Context</a></li></ul></div><h2 id="a1-raw-volume-vs-adjusted-volume">A1. Raw Volume vs Adjusted Volume</h2>
+<ul>
+<li>The $27.6T figure is raw on-chain volume — every stablecoin movement on every chain</li>
+<li>Visa's adjusted figure ($5.7T) attempts to isolate genuine payment activity</li>
+<li>We report both, with the raw figure as the headline (consistent with how the industry reports)</li>
+<li>True economic activity is between the two: likely $5-15T</li>
+</ul>
+<h2 id="a2-transaction-count-estimation">A2. Transaction Count Estimation</h2>
+<ul>
+<li>~45M daily stablecoin transactions is sourced from analytics aggregators</li>
+<li>This includes all types: simple transfers, DEX swaps, lending deposits, bridge movements</li>
+<li>Not all "transactions" are P2P payments — many are <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> interactions</li>
+<li>Confidence: 🟡 Medium</li>
+</ul>
+<h2 id="a3-double-counting-the-critical-issue">A3. Double-Counting — The Critical Issue</h2>
+<ul>
+<li>Stablecoin transfers ARE L1/L2 blockchain transactions</li>
+<li>A USDT transfer on Tron = 1 stablecoin transfer + 1 Tron transaction</li>
+<li>A stablecoin DEX swap = 1 stablecoin transfer + 1 DeFi transaction + 1 L1/L2 transaction</li>
+<li>Do NOT sum <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">stablecoins</a> + L1/L2 + DeFi for a sector total</li>
+</ul>
+<h2 id="a4-cex-vs-on-chain">A4. CEX vs On-Chain</h2>
+<ul>
+<li>CEX internal stablecoin transfers (trading pairs, deposits to other users) are OFF-CHAIN</li>
+<li>Only deposits to and withdrawals from CEXs appear on-chain</li>
+<li>The $27.6T figure is on-chain only; total stablecoin usage including CEX is higher</li>
+</ul>
+<h2 id="a5-usdt-transparency">A5. USDT Transparency</h2>
+<ul>
+<li>Tether has faced scrutiny over reserves and reporting</li>
+<li>Transfer volume data is on-chain and verifiable regardless of reserve backing</li>
+<li>Market cap figures depend on Tether's attestations</li>
+<li>We treat transfer volume as reliable but note the reserve controversy</li>
+</ul>
+<h2 id="a6-chain-attribution">A6. Chain Attribution</h2>
+<ul>
+<li>Same stablecoin (e.g., USDT) exists on multiple chains</li>
+<li>Transfer volume is attributed to the chain where the transfer occurs</li>
+<li>Cross-chain bridge movements count on both source and destination chains</li>
+<li>This creates some double-counting in aggregate volume figures</li>
+</ul>
+<h2 id="a7-historic-data-quality">A7. Historic Data Quality</h2>
+<ul>
+<li>2022-2024: Good data from TRM Labs, Artemis, Visa</li>
+<li>2020-2021: Estimated from available chain-specific data</li>
+<li>2019: Very rough estimate</li>
+<li>Pre-2019: Essentially zero meaningful stablecoin activity</li>
+</ul>
+<h2 id="a8-surpassing-visa-context">A8. "Surpassing Visa" Context</h2>
+<ul>
+<li>The $27.6T vs Visa+Mastercard comparison is technically accurate but misleading</li>
+<li>Visa processes ~773B transactions (count) vs ~45M x 365 = ~16B stablecoin transactions</li>
+<li>Stablecoins "surpass" Visa in VALUE but are ~50x fewer TRANSACTIONS</li>
+<li>Average stablecoin transfer ($1,680) is ~25x the average card transaction ($67)</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/stablecoins/workings/assumptions.md">analysis/digital-assets/stablecoins/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

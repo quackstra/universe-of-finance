@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sector: Traditional Finance — Universe of Finance</title>
+<meta name="description" content="How we measure trading activity across equity, fixed income, derivatives, FX, and commodity markets — 6 categories, ~13,373 TPS. Last Updated: 2026-03-28 (Run 6) 1. Sector Overvie">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Methodology</div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Sector: Traditional Finance</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-sector-overview">1. Sector Overview</a></li><li><a href="#2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</a></li><li><a href="#3-categories-in-this-sector">3. Categories in This Sector</a></li><li><a href="#4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</a></li><li><a href="#5-primary-data-sources">5. Primary Data Sources</a></li><li><a href="#6-sector-triangulation-approach">6. Sector Triangulation Approach</a></li><li><a href="#7-definition-standards">7. Definition Standards</a></li><li><a href="#8-known-gaps-future-work">8. Known Gaps & Future Work</a></li></ul></div><blockquote>
+<p>How we measure trading activity across equity, <a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">fixed income</a>, derivatives, FX, and commodity markets — 6 categories, ~13,373 TPS.
+<strong>Last Updated</strong>: 2026-03-28 (Run 6)</p>
+</blockquote>
+<hr/>
+<h2 id="1-sector-overview">1. Sector Overview</h2>
+<p>Traditional Finance measures <strong>trading activity</strong> — the execution of buy/sell orders for financial instruments on exchanges, OTC markets, and bilateral platforms. At ~13,373 TPS, TradFi accounts for <strong>19% of global financial TPS</strong>, making it the second-largest sector after Payments.</p>
+<p>The sector is dominated by <a class="xref" href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">exchange-traded derivatives</a> (9,505 TPS, 71% of sector), driven by the explosion of options trading in <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> and the structural growth of futures markets globally. <a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">Equity markets</a> contribute 3,500 TPS, with the remaining categories (<a class="xref" href="/universe-of-finance/reports/traditional-finance/commodities/REPORT.html">commodities</a>, FX, fixed income, <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a>) collectively adding ~374 TPS.</p>
+<hr/>
+<h2 id="2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</h2>
+<p><strong>Trade vs. order vs. settlement.</strong> A single equity trade may generate 10-50 order messages (quotes, cancellations, modifications) before execution. We count <strong>executed trades</strong>, not order book activity. Settlement is counted separately in the Banking sector.</p>
+<p><strong>OTC opacity.</strong> OTC derivatives and fixed income are traded bilaterally, with no central order book. Transaction counts are inferred from post-trade reporting (TRACE for US bonds, DTCC for CDS) or from BIS surveys that publish notional values, not transaction counts.</p>
+<p><strong>FX data staleness.</strong> The definitive FX data source (BIS Triennial Survey) publishes every 3 years. Between surveys, we apply growth rates from SWIFT FX messaging data as a proxy, introducing compounding uncertainty.</p>
+<p><strong>Dark pools and internalization.</strong> An estimated 15-20% of US equity volume trades off-exchange (dark pools, ATS, systematic internalizers). These are harder to aggregate than lit exchange data.</p>
+<p><strong>Exchange-traded derivatives growth.</strong> ETD volume has been growing ~15%+ annually, driven largely by India's NSE (which now processes more options contracts than any other exchange). Historical growth rates may not persist, but they complicate year-over-year comparisons.</p>
+<hr/>
+<h2 id="3-categories-in-this-sector">3. Categories in This Sector</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>Avg TPS</th>
+<th>Annual Volume</th>
+<th>Confidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Exchange-Traded Derivatives</td>
+<td>9,505</td>
+<td>205.3B contracts</td>
+<td>88 (High)</td>
+<td>FIA data; includes NSE options explosion</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Equity Markets</td>
+<td>3,500</td>
+<td>61.5B trades</td>
+<td>86 (High)</td>
+<td>WFE + dark pool estimates</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Commodities</td>
+<td>330</td>
+<td>6.5B contracts</td>
+<td>74 (Medium-High)</td>
+<td>FIA/CME/ICE data</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Foreign Exchange</td>
+<td>40</td>
+<td>882M trades</td>
+<td>58 (Medium)</td>
+<td>BIS Triennial + growth projection</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fixed Income / Bond Markets</td>
+<td>3.6</td>
+<td>112.9M trades</td>
+<td>60 (Medium-High)</td>
+<td>TRACE + estimated global</td>
+</tr>
+<tr>
+<td>6</td>
+<td>OTC Derivatives</td>
+<td>0.17</td>
+<td>5.3M contracts</td>
+<td>68 (Medium-High)</td>
+<td>BIS notional → count conversion</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sector total: ~13,373 TPS</strong> — no significant intra-sector overlaps.</p>
+<hr/>
+<h2 id="4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</h2>
+<h3 id="overlap-analysis">Overlap Analysis</h3>
+<p>TradFi has <strong>no significant intra-sector overlaps.</strong> Each category represents a distinct asset class traded on distinct infrastructure:</p>
+<ul>
+<li>ETD and OTC derivatives are mutually exclusive (exchange-traded vs. bilateral)</li>
+<li>Equity, fixed income, and commodities are distinct asset classes</li>
+<li>FX is independent of all other categories</li>
+</ul>
+<p>The only potential overlap is commodity ETDs counted in both "Commodities" and "ETD". Our rule: commodity futures/options counted in Commodities only; ETD counts exclude commodity contracts. This avoids double-counting.</p>
+<h3 id="cross-sector-overlap">Cross-Sector Overlap</h3>
+<p>TradFi trades generate downstream <strong>settlement events</strong> in the Banking sector (<a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">Securities Settlement</a>, <a class="xref" href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">Interbank RTGS</a>). Per UoF taxonomy rules, the trade and the settlement are separate transactions on different infrastructure:</p>
+<pre><code>┌──────────────────────────┐     ┌──────────────────────────┐
+│    TRADFI SECTOR          │     │    BANKING SECTOR         │
+│                           │     │                           │
+│  Equity Trade: 1 trade   │────&gt;│  CSD Settlement: 1 entry │
+│  Bond Trade:   1 trade   │────&gt;│  CSD Settlement: 1 entry │
+│  ETD Contract: 1 trade   │────&gt;│  CCP Clearing:  margined │
+│  FX Trade:     1 trade   │────&gt;│  CLS/RTGS: 1 settlement  │
+│                           │     │                           │
+│  Counted HERE             │     │  Counted HERE             │
+│  (execution layer)        │     │  (settlement layer)       │
+└──────────────────────────┘     └──────────────────────────┘
+
+Both are real transactions. NOT deduplicated.
+</code></pre>
+<hr/>
+<h2 id="5-primary-data-sources">5. Primary Data Sources</h2>
+<h3 id="source-confidence-matrix">Source Confidence Matrix</h3>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+FIA Annual Survey   █████████░ █████████ █████████░  ████████░░
+WFE Statistics      █████████░ █████████ █████████░  ███████░░░
+BIS Triennial       ████████░░ ████░░░░░ ██████████  ██████░░░░
+TRACE (US bonds)    ████░░░░░  █████████ █████████░  ██████████
+CME/ICE Filings     ████░░░░░  █████████ █████████░  ██████████
+ISDA Research       ██████░░░  ███████░░ ████████░░  ████░░░░░░
+FINRA ATS Data      ███░░░░░░  █████████ █████████░  ████████░░
+BIS OTC Stats       ██████░░░  ███████░░ ██████████  ███░░░░░░░
+                    ─────────  ────────  ──────────  ───────────
+</code></pre>
+<p><strong>Tier 1 (Primary anchors):</strong> FIA (ETD), WFE (equities), BIS (FX, OTC derivatives)
+<strong>Tier 2 (Cross-validation):</strong> CME/ICE filings, TRACE, FINRA ATS data
+<strong>Tier 3 (Gap-filling):</strong> ISDA research, academic studies, broker surveys</p>
+<hr/>
+<h2 id="6-sector-triangulation-approach">6. Sector Triangulation Approach</h2>
+<h3 id="traditional-finance-triangulation-funnel">Traditional Finance Triangulation Funnel</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│              RAW ESTIMATES                                │
+│                                                          │
+│  Method A              Method B            Method C      │
+│  [Authority Data]      [Operator Sum]      [Value/Size]  │
+│  FIA + WFE + BIS       Sum of exchange     Total value ÷ │
+│  published stats       annual reports      avg trade size │
+│  ┌──────────┐         ┌──────────┐        ┌──────────┐  │
+│  │ 274.7B   │         │ 261B     │        │ 290B     │  │
+│  │ annual   │         │ annual   │        │ annual   │  │
+│  └────┬─────┘         └────┬─────┘        └────┬─────┘  │
+│       │                    │                    │        │
+│       └────────────────────┼────────────────────┘        │
+│                            ▼                              │
+│              ┌───────────────────────┐                    │
+│              │    RECONCILIATION     │                    │
+│              │ Method B undercounts  │                    │
+│              │ by ~5% (misses small  │                    │
+│              │ exchanges, dark       │                    │
+│              │ pools). Method C      │                    │
+│              │ overcounts by ~6%     │                    │
+│              │ (avg trade size       │                    │
+│              │ assumption too low).  │                    │
+│              └──────────┬────────────┘                    │
+│                         ▼                                 │
+│              ┌───────────────────────┐                    │
+│              │   FINAL ESTIMATE      │                    │
+│              │ ~274B annual trades   │                    │
+│              │ ~13,373 TPS           │                    │
+│              │ Range: 12,000-15,000  │                    │
+│              │ Confidence: 79/100    │                    │
+│              └───────────────────────┘                    │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<hr/>
+<h2 id="7-definition-standards">7. Definition Standards</h2>
+<p>In Traditional Finance, a <strong>transaction</strong> is an <strong>executed trade</strong> — the point at which a buy order and sell order are matched and a binding agreement is formed.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Counting Point</th>
+<th>What Is Excluded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exchange-Traded Derivatives</td>
+<td>Executed contract (matched on exchange)</td>
+<td>Cancelled orders, quote updates, margin calls</td>
+</tr>
+<tr>
+<td>Equity Markets</td>
+<td>Executed trade (matched order)</td>
+<td>Order submissions, cancellations, amendments</td>
+</tr>
+<tr>
+<td>Commodities</td>
+<td>Executed futures/options contract</td>
+<td>Physical delivery events, warehouse receipts</td>
+</tr>
+<tr>
+<td>Foreign Exchange</td>
+<td>Completed FX deal (spot, forward, swap, option)</td>
+<td>RFQ messages, price quotes</td>
+</tr>
+<tr>
+<td>Fixed Income</td>
+<td>Executed bond trade (primary or secondary)</td>
+<td>Coupon payments, maturity events</td>
+</tr>
+<tr>
+<td>OTC Derivatives</td>
+<td>Confirmed bilateral contract</td>
+<td>Novations, amendments, lifecycle events</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key distinction from Payments:</strong> TradFi counts the <strong>agreement to exchange</strong>, not the movement of money. The money movement (settlement) is counted separately in the Banking sector.</p>
+<hr/>
+<h2 id="8-known-gaps-future-work">8. Known Gaps &amp; Future Work</h2>
+<ul>
+<li><strong>FX transaction count.</strong> The BIS Triennial Survey publishes daily turnover VALUE ($7.5T/day) but not transaction COUNT. Our 882M annual figure derives from value / average trade size, making it sensitive to the size assumption. Direct transaction count data from CLS or EBS would improve confidence.</li>
+<li><strong>OTC derivatives frequency.</strong> At 0.17 TPS, this is the lowest-frequency category. The number is derived from BIS notional outstanding / average contract size / average tenor. Direct trade reporting repositories (DTCC, REGIS-TR) could provide better counts.</li>
+<li><strong>Dark pool coverage.</strong> We estimate 15-20% of equity volume is off-exchange, but aggregating ATS/dark pool data globally is difficult. FINRA covers US; European SI data is fragmented.</li>
+<li><strong>India ETD explosion.</strong> NSE options volume has grown 50%+ annually. Current data may understate 2025-2026 reality. Real-time FIA updates would help.</li>
+<li><strong>Bond market fragmentation.</strong> TRACE covers US corporate bonds well, but government bond and non-US bond trading counts are poorly documented. The 112.9M annual figure has the widest uncertainty band in the sector.</li>
+</ul>
+<hr/>
+<p><em>TradFi is the cleanest sector for methodology — distinct asset classes, well-established exchanges, and strong regulatory reporting. The main challenge is the opaque corners: OTC, dark pools, and FX.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/methodology/SECTOR_TRADITIONAL_FINANCE.md">analysis/methodology/SECTOR_TRADITIONAL_FINANCE.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

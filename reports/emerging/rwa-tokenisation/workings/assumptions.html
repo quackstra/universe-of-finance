@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tokenised Real-World Assets — Assumptions — Universe of Finance</title>
+<meta name="description" content="Every assumption documented with reasoning. Referenced from calculations and projections. Data Collection Assumptions A1. RWA.xyz as Primary TVL Source Assumption: RWA.xyz's track">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Emerging<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Tokenised Real-World Assets — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#data-collection-assumptions">Data Collection Assumptions</a></li><li><a href="#transaction-count-assumptions">Transaction Count Assumptions</a></li><li><a href="#projection-assumptions">Projection Assumptions</a></li><li><a href="#market-structure-assumptions">Market Structure Assumptions</a></li></ul></div><blockquote>
+<p>Every assumption documented with reasoning. Referenced from calculations and projections.</p>
+</blockquote>
+<hr/>
+<h2 id="data-collection-assumptions">Data Collection Assumptions</h2>
+<h3 id="a1-rwaxyz-as-primary-tvl-source">A1. RWA.xyz as Primary TVL Source</h3>
+<p><strong>Assumption:</strong> RWA.xyz's tracking of on-chain tokenised assets (excluding <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">stablecoins</a>) is the most comprehensive available.
+<strong>Reasoning:</strong> RWA.xyz is the industry-standard tracker for <a class="xref" href="/universe-of-finance/reports/emerging/rwa-tokenisation/REPORT.html">tokenised real-world assets</a>, similar to DeFiLlama for broader <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a>.
+<strong>Risk:</strong> May miss smaller protocols, private chain deployments, or regional platforms. Likely undercounts total TVL by 10-20%.</p>
+<h3 id="a2-stablecoin-exclusion">A2. Stablecoin Exclusion</h3>
+<p><strong>Assumption:</strong> Stablecoins (USDT, USDC, DAI, etc.) are excluded from RWA TVL figures despite technically being tokenised real-world assets (backed by treasuries, deposits).
+<strong>Reasoning:</strong> Stablecoins are covered in a separate Universe of Finance category. Including them would add ~$150B+ and distort the RWA analysis.
+<strong>Risk:</strong> Some overlap exists — e.g., USDC backing includes Treasury bills that overlap with "tokenised treasuries." We accept this as a known limitation.</p>
+<h3 id="a3-mid-2025-data-snapshot">A3. Mid-2025 Data Snapshot</h3>
+<p><strong>Assumption:</strong> TVL and protocol data is based on mid-2025 figures (approximately June-July 2025).
+<strong>Reasoning:</strong> This is the most recent comprehensive data available from RWA trackers and industry reports.
+<strong>Risk:</strong> Market is growing rapidly; figures could be 20-30% higher by end of 2025.</p>
+<hr/>
+<h2 id="transaction-count-assumptions">Transaction Count Assumptions</h2>
+<h3 id="a4-transaction-to-tvl-ratio">A4. Transaction-to-TVL Ratio</h3>
+<p><strong>Assumption:</strong> RWA protocols generate approximately 2,000-4,000 on-chain transactions per $1M of TVL per year.
+<strong>Reasoning:</strong> RWA tokens are primarily buy-and-hold (Treasury tokens, private credit) with limited secondary trading. This is lower than DeFi lending protocols (~5,000-10,000 txns/$1M) but higher than simple token storage. The ratio includes minting, redemption, transfers, DeFi interactions, and governance.
+<strong>Risk:</strong> Could be significantly higher if secondary markets develop, or lower if most holders simply buy and hold. The 2x range (2,000-4,000) reflects this uncertainty.</p>
+<h3 id="a5-transaction-definition">A5. Transaction Definition</h3>
+<p><strong>Assumption:</strong> We count all on-chain transactions interacting with RWA protocol contracts — including mints, redeems, transfers, approvals, yield claims, and DeFi composability actions.
+<strong>Reasoning:</strong> This is consistent with how blockchain explorers count transactions.
+<strong>Risk:</strong> Multi-step transactions (approve + deposit) may inflate counts. Conversely, batched operations (institutional mints) may undercount.</p>
+<hr/>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<h3 id="a6-baseline-tvl-trajectory-500b-by-2030-2t-by-2035">A6. Baseline TVL Trajectory ($500B by 2030, $2T by 2035)</h3>
+<p><strong>Assumption:</strong> TVL follows the lower end of industry projections, reflecting steady institutional adoption without regulatory breakthrough or crisis.
+<strong>Reasoning:</strong> Industry consensus ranges from $3.5T (21.co baseline) to $30T (BCG/Standard Chartered bull case) by 2030. Our baseline of $500B is deliberately conservative — below even the most cautious institutional forecast — because:
+  1. Current TVL is $24B; reaching $500B requires ~85% CAGR for 5 years, which is aggressive but below recent growth rates
+  2. Regulatory uncertainty could slow adoption significantly
+  3. Infrastructure challenges (custody, interoperability, oracles) are non-trivial
+<strong>Risk:</strong> If any major exchange (NYSE, LSE) tokenises settlement, this could be dramatically too low.</p>
+<h3 id="a7-high-growth-tvl-5t-by-2030-16t-by-2035">A7. High Growth TVL ($5T by 2030, $16T by 2035)</h3>
+<p><strong>Assumption:</strong> Major financial infrastructure begins migrating to tokenised rails.
+<strong>Reasoning:</strong> This aligns with BCG's mid-range projection. Requires: US regulatory clarity, institutional custody standards, cross-chain interoperability.
+<strong>Risk:</strong> Regulatory failure or a major hack/exploit of a large RWA protocol could set back adoption by 3-5 years.</p>
+<h3 id="a8-conservative-tvl-100b-by-2030-500b-by-2035">A8. Conservative TVL ($100B by 2030, $500B by 2035)</h3>
+<p><strong>Assumption:</strong> Tokenisation remains niche — primarily Treasury tokens and private credit for crypto-native users.
+<strong>Reasoning:</strong> Traditional finance continues to operate on legacy rails. Regulatory barriers prevent broad institutional adoption. RWA tokens remain a crypto-native DeFi primitive, not a TradFi replacement.
+<strong>Risk:</strong> This may be too pessimistic if BlackRock and other TradFi giants continue aggressively expanding their tokenised offerings.</p>
+<h3 id="a9-transaction-ratio-growth">A9. Transaction Ratio Growth</h3>
+<p><strong>Assumption:</strong> The transaction-to-TVL ratio increases over time (from ~2,000 to ~5,000-10,000 txns/$1M by 2035).
+<strong>Reasoning:</strong> As tokenised assets develop liquid secondary markets and deeper DeFi integration, each dollar of TVL generates more transactions. Early stages are mint-and-hold; mature stages include trading, lending, derivatives.
+<strong>Risk:</strong> If RWA tokens remain primarily institutional buy-and-hold instruments, the ratio may stay flat or decrease.</p>
+<hr/>
+<h2 id="market-structure-assumptions">Market Structure Assumptions</h2>
+<h3 id="a10-private-credit-dominance-is-temporary">A10. Private Credit Dominance Is Temporary</h3>
+<p><strong>Assumption:</strong> Private credit's 61% TVL share will decline as treasuries, real estate, and equities tokenise.
+<strong>Reasoning:</strong> Private credit was the earliest RWA use case because it has no liquid traditional market to compete with — tokenisation genuinely improved access. As treasuries and equities (which DO have liquid markets) tokenise, they will overtake private credit by TVL.
+<strong>Risk:</strong> Private credit may retain dominance if regulatory barriers prevent equity/bond tokenisation.</p>
+<h3 id="a11-multi-chain-future">A11. Multi-Chain Future</h3>
+<p><strong>Assumption:</strong> Tokenised RWAs will be distributed across multiple chains (Ethereum, Solana, Avalanche, Stellar, Base, etc.).
+<strong>Reasoning:</strong> Different protocols and institutions are choosing different chains. No single chain will capture all RWA activity.
+<strong>Risk:</strong> Chain fragmentation could reduce composability and secondary market liquidity, suppressing transaction counts.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/emerging/rwa-tokenisation/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/emerging/rwa-tokenisation/workings/assumptions.md">analysis/emerging/rwa-tokenisation/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

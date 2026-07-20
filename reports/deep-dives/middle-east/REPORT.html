@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Middle East — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Last Updated: 2026-07-19 (Run 13) Executive Summary The Middle East is the structural inverse of Africa. Where Africa is defined by an eno">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Deep Dives<span class="sep">/</span>Middle East</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Middle East</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS contribution</div><div class="v blue">800</div></div><div class="chip"><div class="k">Share of global</div><div class="v green">1.1%</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">56</div></div></div>
+  <div class="chart-box"><h3>Regional TPS by category</h3><div class="chart-canvas"><canvas id="chart4"></canvas></div></div><script>new Chart(document.getElementById("chart4"),{"type": "bar", "data": {"labels": ["Consumer Cards", "Bank Transfers", "Digital Wallets", "Bill Payments", "Remittances", "Equity Markets", "Interbank Rtgs"], "datasets": [{"data": [500, 130, 95, 30, 7.5, 8, 3], "backgroundColor": ["#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6", "#3b82f6"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#the-regions-share-across-categories">The Region's Share Across Categories</a></li><li><a href="#country-breakdown">Country Breakdown</a></li><li><a href="#the-signature-insight-value-without-count">The Signature Insight: Value Without Count</a></li><li><a href="#cross-border-cbdc-project-mbridge">Cross-Border & CBDC: Project mBridge</a></li><li><a href="#islamic-finance-note">Islamic Finance Note</a></li><li><a href="#regional-total-de-duplication">Regional Total & De-Duplication</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+<strong>Last Updated</strong>: 2026-07-19 (Run 13)</p>
+</blockquote>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>The Middle East is the <strong>structural inverse of <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a></strong>. Where Africa is defined by an
+enormous <em>count</em> of tiny mobile-money transactions (43B+ per year, often under $1),
+the Middle East is defined by a modest count of <strong>extraordinarily high-value</strong>
+transactions: oil settlements, sovereign wealth flows, luxury real estate, and the
+world's second- and third-largest remittance outflows.</p>
+<p>We estimate the region (GCC core + Israel + Levant, <strong>excluding</strong> Egypt — covered under
+<a href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> — and Turkey) contributes approximately <strong>~800
+de-duplicated TPS</strong>, roughly <strong>1.1% of the global ~73,720 TPS</strong>. That share understates
+the region's importance: measured by transaction <em>value</em>, the Middle East punches far
+above 1.1%, because its per-transaction ticket size is among the highest on Earth.</p>
+<p>Three forces define the region:</p>
+<ol>
+<li>
+<p><strong>State-engineered digitization</strong>: Saudi Arabia's Vision 2030 turned a cash economy
+   into a digital one in under a decade. Electronic payments hit <strong>79% of retail
+   transactions in 2024</strong>, up from 70% in 2023 — <strong>12.6 billion non-cash retail
+   transactions</strong> (<a href="https://www.mada.com.sa/en">SAMA / Saudi Payments</a>). The UAE
+   launched its instant-payment rail <strong>Aani</strong> in October 2023; it grew <strong>sixfold
+   year-on-year</strong> and now serves 12.5M users
+   (<a href="https://www.centralbank.ae/en/news-and-publications/news-and-insights/press-release/aani-delivers-a-transformational-leap-in-the-uae-s-digital-payments-landscape-12-5-million-users-and-instant-transfers-in-3-seconds/">CBUAE</a>).</p>
+</li>
+<li>
+<p><strong>The remittance super-corridor</strong>: The UAE sent <strong>AED 183 billion (~$50B)</strong> abroad in
+   2024 and Saudi Arabia is the world's #2–#3 remittance source. Together the Gulf is
+   the single largest <em>origin</em> of migrant <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a> on the planet — a value story that
+   dwarfs its transaction count
+   (<a href="https://www.khaleejtimes.com/business/remittance-boom-uae-leads-gcc-as-india-hits-record-1294b-in-2024">Khaleej Times</a>).</p>
+</li>
+<li>
+<p><strong>Sovereign wealth as a transaction class</strong>: GCC sovereign wealth funds (PIF, ADIA,
+   KIA, QIA, Mubadala, ADQ) hold <strong>~$4–5 trillion</strong>. Their transaction <em>count</em> is
+   negligible, but individual tickets run into billions. This is the purest example in
+   the Universe of Finance of <strong>value decoupled from count</strong> — the mirror image of
+   African mobile money.</p>
+</li>
+</ol>
+<p>The Middle East is the only region where a single wire transfer can move more value than
+an entire African country's annual mobile-money volume, and where the dominant "fintech"
+innovation — instant sovereign-backed rails — was <strong>built top-down by central banks</strong>,
+not bottom-up by startups.</p>
+<hr/>
+<h2 id="the-regions-share-across-categories">The Region's Share Across Categories</h2>
+<pre><code>Category                 ME TPS   Global TPS    ME Share
+================================================================
+Consumer Cards            ~500     24,501         2.0%   |
+Bank Transfers            ~130     15,338         0.8%
+Digital Wallets            ~95     19,660         0.5%
+Bill Payments (SADAD+)     ~30      3,012         1.0%   |
+Remittances (outbound)    ~7.5        57*        13.2%   |||||||  &lt;- outsized
+Equity Markets              ~8      3,500         0.2%
+Interbank RTGS              ~3         50         6.0%   ||||
+================================================================
+* Remittances global TPS = 57 (net); ME is the world's largest ORIGIN by value.
+  ME's share of global remittance VALUE is ~25-30%, far above its 13% count share.
+</code></pre>
+<p><strong>Reading this table</strong>: the Middle East's transaction <em>count</em> share is small
+(~1.1% blended), but two rows — <strong>Remittances</strong> and <strong><a class="xref" href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">Interbank RTGS</a></strong> — punch far above
+weight. Both are high-value, low-count rails. This is the fingerprint of the region.</p>
+<hr/>
+<h2 id="country-breakdown">Country Breakdown</h2>
+<h3 id="saudi-arabia-the-digitization-engine-400-tps">Saudi Arabia — The Digitization Engine (~400 TPS)</h3>
+<p>Saudi Arabia is the largest transaction-count contributor in the region, driven by a
+deliberate state program to displace cash.</p>
+<table>
+<thead>
+<tr>
+<th>Rail</th>
+<th>2024 Volume</th>
+<th>TPS</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>mada</strong> (national card scheme)</td>
+<td>8.9B txns</td>
+<td>~282</td>
+<td><a href="https://whitesight.net/how-saudi-arabia-engineered-a-digital-payments-boom/">WhiteSight</a></td>
+</tr>
+<tr>
+<td><strong>sarie</strong> (instant payments)</td>
+<td>593M txns</td>
+<td>~18.8</td>
+<td><a href="https://clearingpost.com/insights/saudi-arabia-payment-infrastructure-guide-sarie-mada-sadad/">ClearingPost</a></td>
+</tr>
+<tr>
+<td><strong>SADAD</strong> (bill payments)</td>
+<td>~500M txns</td>
+<td>~15.9</td>
+<td><a href="https://paymentbrief.com/articles/saudi-arabia-mada-sarie-payment-stack/">PaymentBrief</a></td>
+</tr>
+<tr>
+<td><strong>All non-cash retail (blended)</strong></td>
+<td><strong>12.6B txns</strong></td>
+<td><strong>~399.5</strong></td>
+<td><a href="https://www.mada.com.sa/en">mada</a></td>
+</tr>
+</tbody>
+</table>
+<p>sarie (launched early 2021) grew at a <strong>50% CAGR</strong> to 593M transactions and exceeded
+<strong>100M/month</strong> in 2025 — one of the fastest instant-payment ramps globally. mada
+<a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a> alone reached <strong>SR197.4B ($52.6B)</strong> in 2024, +25.8% YoY. Electronic payments
+now cover <strong>79% of retail</strong>, a figure most G7 economies took decades to reach.
+<strong>Confidence: 🟢 (SAMA/Saudi Payments publish systematically).</strong></p>
+<h3 id="uae-the-value-hub-155-tps">UAE — The Value Hub (~155 TPS)</h3>
+<p>The UAE is the region's financial and remittance capital. Its transaction <em>count</em> is
+smaller than Saudi's, but its <em>value density</em> and cross-border role are higher.</p>
+<table>
+<thead>
+<tr>
+<th>Rail</th>
+<th>2024 Metric</th>
+<th>TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Card payments</strong></td>
+<td>Dh511.4B value (+13.3% YoY)</td>
+<td>~150</td>
+<td>POS = 80.7% of market; 82% contactless</td>
+</tr>
+<tr>
+<td><strong>Aani</strong> (instant, launched Oct 2023)</td>
+<td>~25k P2P/day, 12.5M users</td>
+<td>~0.3</td>
+<td>6× YoY growth; 74 institutions connected</td>
+</tr>
+<tr>
+<td><strong>Outward remittances</strong></td>
+<td>AED 183B (~$50B)</td>
+<td>~3.8</td>
+<td>World's #2–#3 remittance origin</td>
+</tr>
+</tbody>
+</table>
+<p>Card <em>value</em> (Dh511.4B ≈ $139B) is high because average ticket sizes in the UAE are among
+the world's largest. Aani is still nascent by count but growing faster than any rail in
+the region. <strong>Confidence: 🟡 (value data strong; transaction counts estimated from value
+÷ avg ticket).</strong></p>
+<h3 id="qatar-fawrans-fast-start-35-tps">Qatar — Fawran's Fast Start (~35 TPS)</h3>
+<p>Qatar Central Bank launched <strong>Fawran</strong> in March 2024. It processed <strong>QR 10.1B (~$2.8B)</strong>
+and <strong>5.5M transactions</strong> in its first 14 months
+(<a href="https://www.lightspark.com/knowledge/instant-payments-qatar">Lightspark</a>). Card usage
+dominates day-to-day retail in a wealthy, small (~3M) population. <strong>Confidence: 🔴 (card
+counts estimated; Fawran data early).</strong></p>
+<h3 id="kuwait-knet-monopoly-45-tps">Kuwait — KNET Monopoly (~45 TPS)</h3>
+<p><strong>KNET</strong> is the near-universal debit rail: <strong>~80% of online transactions</strong> run on KNET,
+and ~80% of the ~5M issued cards are KNET debit
+(<a href="https://blog.tap.company/local-payment-methods-middle-east/">Tap</a>). Kuwait remains
+comparatively cash-heavy for a high-income state. <strong>Confidence: 🔴 (KNET does not publish
+annual counts; estimated from card base and GDP).</strong></p>
+<h3 id="bahrain-benefitpay-breakout-20-tps">Bahrain — BenefitPay Breakout (~20 TPS)</h3>
+<p>Bahrain's <strong>BenefitPay</strong> app surged <strong>+22%</strong> to <strong>421M transactions</strong> in 2024, with
+Fawri+ instant transfers reaching ~410M
+(<a href="https://www.fccib.net/news/n/news/benefitpay-transactions-surge-by-22pc-in-2024.html">FCCIB</a>).
+For a population of ~1.5M, that is one of the highest per-capita instant-payment
+intensities in the world. <strong>Confidence: 🟡 (Benefit publishes headline figures).</strong></p>
+<h3 id="oman-the-levant-45-tps-combined">Oman &amp; the Levant (~45 TPS combined)</h3>
+<p>Oman (~5M) is digitizing via the mobile payment switch and OmanNet, estimated ~15 TPS.
+Israel (~9.8M, developed economy, high card usage + TASE) contributes an estimated ~100
+TPS but is often analyzed separately from the Gulf. Jordan (JoMoPay), Lebanon (cash/dollar
+crisis economy), and Iraq (largely cash + Qi Card government rails) add an estimated ~30
+TPS combined. <strong>Confidence: 🔴.</strong></p>
+<hr/>
+<h2 id="the-signature-insight-value-without-count">The Signature Insight: Value Without Count</h2>
+<p>The Middle East's defining characteristic is that its <strong>share of global transaction value
+vastly exceeds its share of transaction count.</strong> Three structural reasons:</p>
+<h3 id="1-sovereign-wealth-funds-45t-aum-near-zero-count">1. Sovereign Wealth Funds (~$4–5T AUM, near-zero count)</h3>
+<table>
+<thead>
+<tr>
+<th>Fund</th>
+<th>Country</th>
+<th>AUM (est.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADIA</td>
+<td>UAE (Abu Dhabi)</td>
+<td>~$1.1T</td>
+</tr>
+<tr>
+<td>PIF</td>
+<td>Saudi Arabia</td>
+<td>~$925B</td>
+</tr>
+<tr>
+<td>KIA</td>
+<td>Kuwait</td>
+<td>~$800B</td>
+</tr>
+<tr>
+<td>QIA</td>
+<td>Qatar</td>
+<td>~$530B</td>
+</tr>
+<tr>
+<td>Mubadala</td>
+<td>UAE (Abu Dhabi)</td>
+<td>~$330B</td>
+</tr>
+<tr>
+<td>ADQ</td>
+<td>UAE (Abu Dhabi)</td>
+<td>~$250B</td>
+</tr>
+</tbody>
+</table>
+<p>Combined <strong>~$4–5 trillion</strong>. A single PIF allocation or ADIA rebalancing can move
+billions in one transaction. These flows are almost invisible in TPS terms (perhaps a few
+transactions per day) yet represent value equal to years of an entire region's retail
+payments. <strong>This is the exact inverse of African mobile money</strong> — there, billions of
+transactions each move under a dollar. (<a href="https://www.swfinstitute.org/">SWF Institute</a>)</p>
+<h3 id="2-oil-commodity-settlement">2. Oil &amp; Commodity Settlement</h3>
+<p>Gulf oil exports (~18M barrels/day from GCC) settle in large, infrequent wholesale
+transactions — often via interbank RTGS and correspondent USD rails. High value, low
+count. This is why the region's <strong>Interbank RTGS share (~6%) is 5× its count share.</strong></p>
+<h3 id="3-the-remittance-super-corridor">3. The Remittance Super-Corridor</h3>
+<p>The UAE ($50B) and Saudi Arabia (comparable) form the world's largest remittance <em>origin</em>.
+Migrant workers (~28M in the GCC, roughly half the population) send home to <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>,
+Pakistan, the Philippines, Egypt, and Bangladesh. India alone received <strong>$129.4B</strong> in
+2024, much of it Gulf-sourced. By <em>count</em> these are ~7–8 TPS regionally; by <em>value</em> the
+region originates ~25–30% of the world's formal remittance flow.</p>
+<hr/>
+<h2 id="cross-border-cbdc-project-mbridge">Cross-Border &amp; CBDC: Project mBridge</h2>
+<p>The UAE and Saudi Arabia are both participants in <strong>Project mBridge</strong>, the multi-CBDC
+cross-border settlement platform (with <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, Thailand, and Hong Kong). mBridge moved
+past its minimum-viable-product stage in 2024 and represents the region's bet on
+<strong>bypassing correspondent banking</strong> for high-value cross-border settlement. For the
+Universe of Finance this is a category to watch: it sits at the intersection of the new
+<a href="/universe-of-finance/">CBDC category (7.3)</a> and Interbank RTGS, and its whole design
+premise is <em>high-value, low-count</em> — the regional signature again.
+(<a href="https://www.bis.org/about/bisih/topics/cbdc/mcbdc_bridge.htm">BIS — mBridge</a>)</p>
+<hr/>
+<h2 id="islamic-finance-note">Islamic Finance Note</h2>
+<p>A meaningful share of regional transactions run through <strong>Shariah-compliant</strong>
+instruments — sukuk (Islamic bonds), takaful (Islamic insurance), and murabaha financing.
+These do not create a distinct <em>transaction rail</em> (they settle on the same card, RTGS, and
+securities infrastructure) but they do shape <em>composition</em>: sukuk issuance and secondary
+trading feed the <a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">Fixed Income</a> category, and takaful feeds
+<a href="/universe-of-finance/">Insurance Premiums</a>. No double-count
+adjustment is required — flagged here for completeness.</p>
+<hr/>
+<h2 id="regional-total-de-duplication">Regional Total &amp; De-Duplication</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Gross TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saudi Arabia (blended retail)</td>
+<td>~400</td>
+<td>12.6B non-cash retail</td>
+</tr>
+<tr>
+<td>UAE</td>
+<td>~155</td>
+<td>Cards + Aani + remittance origin</td>
+</tr>
+<tr>
+<td>Kuwait</td>
+<td>~45</td>
+<td>KNET-dominated</td>
+</tr>
+<tr>
+<td>Qatar</td>
+<td>~35</td>
+<td>Cards + Fawran</td>
+</tr>
+<tr>
+<td>Bahrain</td>
+<td>~20</td>
+<td>BenefitPay-led</td>
+</tr>
+<tr>
+<td>Oman</td>
+<td>~15</td>
+<td>OmanNet</td>
+</tr>
+<tr>
+<td>Israel</td>
+<td>~100</td>
+<td>Cards + TASE</td>
+</tr>
+<tr>
+<td>Levant (Jordan/Lebanon/Iraq)</td>
+<td>~30</td>
+<td>Largely cash</td>
+</tr>
+<tr>
+<td>Regional capital markets</td>
+<td>~8</td>
+<td>Tadawul/ADX/DFM/QSE/TASE</td>
+</tr>
+<tr>
+<td>Interbank RTGS</td>
+<td>~3</td>
+<td>High value, low count</td>
+</tr>
+<tr>
+<td><strong>Gross</strong></td>
+<td><strong>~811</strong></td>
+<td>Before overlap netting</td>
+</tr>
+<tr>
+<td><strong>De-duplicated regional total</strong></td>
+<td><strong>~800</strong></td>
+<td>Instant/remittance overlaps netted</td>
+</tr>
+</tbody>
+</table>
+<p><strong>~800 TPS ≈ 1.1% of the global ~73,720 TPS.</strong> Every number here is already <em>inside</em> the
+global category totals (Saudi mada is part of global <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Cards</a>, etc.) — this deep
+dive slices the global figure by geography, it does not add to it.</p>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>The Middle East is Africa inverted.</strong> Africa: many tiny transactions, low value.
+   Middle East: few transactions, extreme value. The two regions bracket the entire
+   count-vs-value spectrum of global finance.</p>
+</li>
+<li>
+<p><strong>Digitization here was engineered top-down.</strong> Unlike Kenya (M-Pesa, bottom-up) or the
+   US (<a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a>, market-driven), Gulf instant-payment rails — sarie, Aani, Fawran,
+   Fawri+ — were built by <strong>central banks</strong> as sovereign infrastructure. This produced
+   the fastest national cash-to-digital transitions ever recorded (Saudi: 70%→79% retail
+   electronic in one year).</p>
+</li>
+<li>
+<p><strong>The Gulf is the world's remittance heart.</strong> UAE + Saudi Arabia originate the largest
+   share of global migrant remittances by value. This is a ~$100B+ annual outflow on a
+   transaction count of only ~7–8 TPS — the highest value-per-transaction of any consumer
+   payment rail in the Universe.</p>
+</li>
+<li>
+<p><strong>Sovereign wealth is a hidden transaction class.</strong> ~$4–5T in GCC SWF AUM transacts in
+   billions-per-ticket, near-zero count. Invisible in TPS, enormous in value — the purest
+   value/count decoupling we have catalogued.</p>
+</li>
+<li>
+<p><strong>mBridge makes the region a CBDC frontier.</strong> UAE and Saudi participation in the
+   multi-CBDC bridge positions the Gulf to pioneer high-value cross-border settlement
+   outside correspondent banking — a natural fit for its low-count, high-value profile.</p>
+</li>
+<li>
+<p><strong>Confidence is bifurcated.</strong> Saudi data is excellent (🟢); UAE value data is strong
+   but counts are estimated (🟡); smaller Gulf states and the Levant are largely
+   estimated (🔴) because their switches (KNET, OmanNet) do not publish annual counts.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://whitesight.net/how-saudi-arabia-engineered-a-digital-payments-boom/">WhiteSight — How Saudi Arabia Engineered a Digital Payments Boom</a></li>
+<li><a href="https://clearingpost.com/insights/saudi-arabia-payment-infrastructure-guide-sarie-mada-sadad/">ClearingPost — Saudi Arabia Payment Infrastructure Guide (SARIE, sarie, mada, SADAD)</a></li>
+<li><a href="https://paymentbrief.com/articles/saudi-arabia-mada-sarie-payment-stack/">PaymentBrief — Saudi Arabia Mada, SARIE &amp; STC Pay</a></li>
+<li><a href="https://www.mada.com.sa/en">mada — National Payment Scheme</a></li>
+<li><a href="https://www.arabnews.com/node/2589350/business-economy">Arab News — Saudi e-commerce Mada card sales hit $53bn in 2024</a></li>
+<li><a href="https://www.centralbank.ae/en/news-and-publications/news-and-insights/press-release/aani-delivers-a-transformational-leap-in-the-uae-s-digital-payments-landscape-12-5-million-users-and-instant-transfers-in-3-seconds/">CBUAE — Aani: 12.5M Users, Instant Transfers in 3 Seconds</a></li>
+<li><a href="https://www.centralbank.ae/en/news-and-publications/news-and-insights/press-release/al-etihad-payments-launches-aani-an-instant-payments-platform-for-digital-transactions-in-the-uae/">CBUAE — Al Etihad Payments launches Aani</a></li>
+<li><a href="https://www.khaleejtimes.com/business/remittance-boom-uae-leads-gcc-as-india-hits-record-1294b-in-2024">Khaleej Times — Remittance boom: UAE leads GCC as India hits record $129.4b in 2024</a></li>
+<li><a href="https://www.khaleejtimes.com/business/uae-card-transactions-set-to-surge-to-dh5655-billion">Khaleej Times — UAE card transactions set to surge to Dh565.5 billion</a></li>
+<li><a href="https://www.lightspark.com/knowledge/instant-payments-qatar">Lightspark — Instant Payments Qatar (Fawran)</a></li>
+<li><a href="https://www.fccib.net/news/n/news/benefitpay-transactions-surge-by-22pc-in-2024.html">FCCIB — BenefitPay transactions surge by 22pc in 2024</a></li>
+<li><a href="https://blog.tap.company/local-payment-methods-middle-east/">Tap — Accepting local payment methods: mada, KNET, Benefit</a></li>
+<li><a href="https://www.qcb.gov.qa/en/News/Pages/19feb24.aspx">Qatar Central Bank — FAWRAN instant payment service</a></li>
+<li><a href="https://www.swfinstitute.org/">SWF Institute — Sovereign Wealth Fund Rankings</a></li>
+<li><a href="https://www.bis.org/about/bisih/topics/cbdc/mcbdc_bridge.htm">BIS — Project mBridge (multi-CBDC bridge)</a></li>
+<li><a href="https://www.saudiexchange.sa/wps/portal/tadawul/home/">Saudi Exchange (Tadawul)</a></li>
+<li><a href="https://paymentscmi.com/insights/united-arab-emirates-remittances-market-data-overview/">PaymentsCMI — UAE Remittances Market Data</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/deep-dives/middle-east/workings/calculations.html">⚙ calculations</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/deep-dives/middle-east/REPORT.md">analysis/deep-dives/middle-east/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

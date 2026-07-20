@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Game Sales & Subscriptions — Assumptions — Universe of Finance</title>
+<meta name="description" content="A1. Scope Definition 'Digital game sales & subscriptions' includes: - Full digital game purchases (PC, console, mobile premium) - DLC and expansion pack purchases (distinct from mi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Gaming<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Digital Game Sales & Subscriptions — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#a1-scope-definition">A1. Scope Definition</a></li><li><a href="#a2-revenue-segmentation">A2. Revenue Segmentation</a></li><li><a href="#a3-transaction-count-methodology">A3. Transaction Count Methodology</a></li><li><a href="#a4-platform-market-shares-game-purchases">A4. Platform Market Shares (Game Purchases)</a></li><li><a href="#a5-double-counting-flag">A5. Double-Counting Flag</a></li><li><a href="#a6-growth-rate-assumptions">A6. Growth Rate Assumptions</a></li></ul></div><h2 id="a1-scope-definition">A1. Scope Definition</h2>
+<p>"<a class="xref" href="/universe-of-finance/reports/gaming/gaming-sales/REPORT.html">Digital game sales &amp; subscriptions</a>" includes:
+- Full digital game purchases (PC, console, mobile premium)
+- DLC and expansion pack purchases (distinct from <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a> — these are one-time content additions)
+- Subscription service payments (Game Pass, PS Plus, EA Play, Nintendo Switch Online, Ubisoft+)
+- Subscription renewals (monthly or annual — each renewal = one transaction)
+- Season passes and premium editions</p>
+<p>Excluded:
+- <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">In-game microtransactions</a> (covered in gaming-microtx)
+- Physical game sales (declining; &lt;5% of market)
+- Gaming hardware purchases
+- In-game advertising revenue
+- Free-to-play game downloads (no transaction)
+- Game streaming services that are bundled (e.g., PS Now folded into PS Plus)</p>
+<h2 id="a2-revenue-segmentation">A2. Revenue Segmentation</h2>
+<h3 id="total-digital-game-sales-revenue-2024">Total Digital Game Sales Revenue (2024)</h3>
+<p>From Newzoo total ($182.7B) minus microtransaction revenue ($114B) minus physical ($8.5B):
+- <strong>Digital game sales + subscriptions + DLC: ~$60.2B</strong></p>
+<p>This breaks down approximately as:
+- PC digital game sales (Steam, Epic, others): ~$21B
+- Console digital game sales: ~$28.5B (console $43.5B × 84% digital - ~$8B console IAP portion)
+- Mobile premium game sales: ~$2.5B
+- Subscription services: ~$8.2B</p>
+<h3 id="subscription-revenue-estimation">Subscription Revenue Estimation</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Subscribers (M)</th>
+<th>Est. Avg Annual Revenue/Sub</th>
+<th>Revenue ($B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PS Plus</td>
+<td>51.2</td>
+<td>$60 (blended tiers)</td>
+<td>3.07</td>
+</tr>
+<tr>
+<td>Xbox Game Pass</td>
+<td>35.0</td>
+<td>$120 (higher tier mix)</td>
+<td>4.20*</td>
+</tr>
+<tr>
+<td>Nintendo Switch Online</td>
+<td>38.0</td>
+<td>$25</td>
+<td>0.95</td>
+</tr>
+<tr>
+<td>EA Play</td>
+<td>13.0</td>
+<td>$35</td>
+<td>0.46</td>
+</tr>
+<tr>
+<td>Ubisoft+</td>
+<td>3.0</td>
+<td>$100</td>
+<td>0.30</td>
+</tr>
+<tr>
+<td>Others (Humble, etc.)</td>
+<td>—</td>
+<td>—</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td>—</td>
+<td>—</td>
+<td><strong>~$8.2B</strong></td>
+</tr>
+</tbody>
+</table>
+<p>*Game Pass figure is gross; includes Ultimate tier which bundles EA Play and cloud gaming.</p>
+<p>Note: PS Plus base tier ($60/yr) is primarily multiplayer access; Extra ($100/yr) and
+Premium ($120/yr) add game library access. Only 30% of PS Plus subs are on Extra/Premium.</p>
+<h2 id="a3-transaction-count-methodology">A3. Transaction Count Methodology</h2>
+<h3 id="full-game-purchases">Full Game Purchases</h3>
+<ul>
+<li>Average selling price (ASP) varies dramatically by platform and sale timing</li>
+<li>PC: ~$25 (heavy discounting on Steam sales; many indie games $5-15)</li>
+<li>Console: ~$45 (higher base prices, fewer deep discounts)</li>
+<li>Mobile premium: ~$5 (most paid mobile games are $0.99-$9.99)</li>
+<li>DLC: ~$15 (wide range from $2.99 map packs to $39.99 expansions)</li>
+<li>Weighted blended ASP across all: <strong>~$28</strong></li>
+</ul>
+<h3 id="subscription-transactions">Subscription Transactions</h3>
+<p>Each subscription payment (monthly/annual renewal) = one transaction.
+- Monthly subscribers: 12 transactions/year per subscriber
+- Annual subscribers: 1 transaction/year per subscriber
+- Estimated monthly/annual split: 40% monthly / 60% annual (industry pattern)
+- Average transactions per subscriber per year: 0.4 × 12 + 0.6 × 1 = <strong>5.4</strong></p>
+<h2 id="a4-platform-market-shares-game-purchases">A4. Platform Market Shares (Game Purchases)</h2>
+<p>Based on Newzoo + SteamSpy + Circana data:
+| Platform | Share of Digital Game Sales |
+|----------|--------------------------|
+| Steam | ~35% of PC (~$7.4B) |
+| PlayStation Store | ~35% of console (~$10B) |
+| Xbox Store | ~25% of console (~$7.1B) |
+| Nintendo eShop | ~15% of console (~$4.3B) |
+| Epic Games Store | ~5% of PC (~$1.1B) |
+| App Store (premium) | ~50% of mobile premium (~$1.3B) |
+| Google Play (premium) | ~50% of mobile premium (~$1.3B) |
+| Others (GOG, Humble, etc.) | ~$1.5B |</p>
+<h2 id="a5-double-counting-flag">A5. Double-Counting Flag</h2>
+<p>Like microtransactions, digital game purchases are paid via card/wallet and overlap with:
+- <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Card Payments</a>
+- <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">E-commerce</a> Payments
+- Digital Wallet volumes</p>
+<p>Flagged but not deduplicated at this category level.</p>
+<h2 id="a6-growth-rate-assumptions">A6. Growth Rate Assumptions</h2>
+<h3 id="historical-revenue-growth">Historical Revenue Growth</h3>
+<ul>
+<li>2019-2020: +25% (COVID + digital shift acceleration)</li>
+<li>2020-2021: -8% (post-COVID normalization; fewer blockbuster releases)</li>
+<li>2021-2022: -5% (continued correction; inflation impact)</li>
+<li>2022-2023: +8% (recovery; strong release slate)</li>
+<li>2023-2024: +6% (steady growth; subscription maturation)</li>
+</ul>
+<h3 id="projection-assumptions">Projection Assumptions</h3>
+<ul>
+<li>Baseline CAGR 2024-2035: 5% (digital shift near-complete; subscription growth moderates)</li>
+<li>High: 8% (cloud gaming expansion; emerging market digital adoption)</li>
+<li>Conservative: 2% (market saturation; subscription fatigue)</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/gaming/gaming-sales/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/gaming/gaming-sales/workings/assumptions.md">analysis/gaming/gaming-sales/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

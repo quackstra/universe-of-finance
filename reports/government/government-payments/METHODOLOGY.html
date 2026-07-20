@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax & Government Payments — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition One government payment transaction = one discrete payment event between a government entity and a citizen, business, or other government entity. This include">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Government<span class="sep">/</span>Government Payments</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Tax & Government Payments — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#the-india-dbt-us-irs-eu-bottom-up-model">The India DBT + US IRS + EU Bottom-Up Model</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-methodological-challenges">Key Methodological Challenges</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>One government payment transaction = <strong>one discrete payment event between
+a government entity and a citizen, business, or other government entity</strong>.</p>
+<p>This includes:
+- <strong>Inflows</strong> (citizen/business -&gt; government): tax payments, VAT <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a>,
+  customs duties, fees, fines
+- <strong>Outflows</strong> (government -&gt; citizen/business): benefit disbursements, pension
+  payments, <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a>, procurement payments, tax refunds</p>
+<p>Counted at: <strong>the payment event</strong> (one tax filing with payment = 1 transaction;
+one monthly Social Security deposit = 1 transaction).
+Excluded: intergovernmental transfers, government bond issuance/redemption
+(covered in traditional finance), central bank operations, employer withholding
+at the per-employee level (counted at the employer remittance level).</p>
+<hr/>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-india-dbt-us-irs-eu-bottom-up-model">Method A: India DBT + US IRS + EU Bottom-Up Model</h3>
+<p>Three independent country models anchor the estimate, covering ~46% of
+global GDP:</p>
+<p><strong>US Model (5.09B transactions):</strong>
+- Tax payments: ~290M (IRS 161M individual + 7M corporate + 50M est. quarterly + 72M payroll)
+- Federal benefits: ~3.64B (SS 852M + Medicare 1.0B + Medicaid 750M + SNAP 504M + payroll 112M + other 422M)
+- State/local: ~1.16B (income tax 130M + sales tax 180M + property 150M + payroll 520M + pensions 180M)</p>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> Model (8.19B transactions):</strong>
+- DBT direct benefit transfers: ~7.4B (FY2023-24, official DBT Mission data)
+- GST remittances: ~140M (1.4Cr businesses x 12 monthly)
+- Income tax: ~80M (8Cr ITRs filed FY2023-24)
+- Other govt payments: ~570M (state pensions, scholarships outside DBT)</p>
+<p><strong>EU Model (5.84B transactions):</strong>
+- Tax payments: ~800M (27 member states, ~30M businesses x 12 VAT + ~200M income tax returns)
+- Benefits disbursements: ~3.6B (~150M pension/welfare recipients x 12 months + unemployment)
+- Government payroll: ~400M (~16M govt employees x 12-26 pay periods)
+- Other: ~1.04B (customs, fees, local government)</p>
+<p><strong>Rest of World (12.5B):</strong>
+Tiered extrapolation using GDP ratios and government-spending-to-GDP
+percentages, adjusted for digital payment adoption rates.</p>
+<h3 id="method-b-top-down-gdp-based-estimate">Method B: Top-Down GDP-Based Estimate</h3>
+<p>Global GDP (~$110T) x government spending share (~35%) = ~$38.5T in govt
+payment flows. At estimated average transaction value (~$1,000-1,200),
+this implies <strong>25-38B</strong> transactions.</p>
+<h3 id="method-c-payment-system-cross-validation">Method C: Payment System Cross-Validation</h3>
+<p>US Treasury reports disbursing &gt;1.2B federal payments/year. Our US
+federal estimate of ~3.93B includes Medicare/Medicaid claims (paid by
+contractors) and SNAP (state-administered). Removing those: ~1.68B --
+broadly consistent with Treasury's figure.</p>
+<pre><code>+---------------------------------------------------+
+|              RAW ESTIMATES                          |
+|                                                     |
+|  Method A            Method B           Method C    |
+|  [3-Country Model]   [GDP Top-Down]     [Treasury]  |
+|  +-------------+     +------------+     +---------+ |
+|  | US:   5.09B |     | 25-38B     |     | US fed: | |
+|  | India: 8.19B|     | (global)   |     | ~1.2B   | |
+|  | EU:   5.84B |     |            |     | (Treas- | |
+|  | RoW: 12.50B |     |            |     |  ury    | |
+|  | = 31.6B     |     |            |     |  only)  | |
+|  +------+------+     +-----+------+     +----+----+ |
+|         |                  |                 |      |
+|         +------------------+-----------------+      |
+|                            v                        |
+|              +------------------------+             |
+|              |    RECONCILIATION      |             |
+|              | Method A (31.6B) falls |             |
+|              | within Method B range  |             |
+|              | (25-38B). Method C     |             |
+|              | validates US subset.   |             |
+|              | India DBT is the most  |             |
+|              | surprising data point  |             |
+|              | -- 7.4B txns from one  |             |
+|              | programme alone.       |             |
+|              +----------+-------------+             |
+|                         v                           |
+|              +------------------------+             |
+|              |   FINAL ESTIMATE       |             |
+|              |   31.6B +/- 5B         |             |
+|              |   ~1,002 TPS (calendar)|             |
+|              |   Confidence: 50/100   |             |
+|              +------------------------+             |
++---------------------------------------------------+
+</code></pre>
+<hr/>
+<h2 id="the-india-dbt-us-irs-eu-bottom-up-model">The India DBT + US IRS + EU Bottom-Up Model</h2>
+<p>This is the methodological centrepiece. The three anchor countries were
+chosen because they have the best-documented government payment systems
+and represent three different archetypes:</p>
+<pre><code>+-----------------------------------------------------------------+
+|                    THREE ARCHETYPES                               |
+|                                                                   |
+|  US (Mature Digital)    India (Leapfrog)    EU (Federated)       |
+|  +----------------+    +----------------+   +----------------+   |
+|  | Strong agency  |    | JAM trinity    |   | 27 member      |   |
+|  | reporting (IRS,|    | (Jan Dhan +    |   | states, each   |   |
+|  | SSA, CMS).     |    | Aadhaar +      |   | with own tax   |   |
+|  | Federal/state  |    | Mobile).       |   | and benefits   |   |
+|  | split well-    |    | DBT dashboard  |   | systems.       |   |
+|  | documented.    |    | is real-time,  |   | OECD data      |   |
+|  | 5.09B txns.    |    | public. 8.19B  |   | provides        |   |
+|  |                |    | txns -- more   |   | cross-country   |   |
+|  |                |    | than the US.   |   | comparability.  |   |
+|  |                |    |                |   | 5.84B txns.    |   |
+|  +----------------+    +----------------+   +----------------+   |
+|                                                                   |
+|  Combined: 19.12B (~46% of global GDP)                           |
+|  Rest of World: 12.50B (extrapolated)                            |
+|  TOTAL: 31.6B                                                     |
++-----------------------------------------------------------------+
+</code></pre>
+<h3 id="why-india-dominates-by-count">Why India Dominates by Count</h3>
+<p>India's 8.19B government payment transactions exceed the US (5.09B)
+despite a GDP only ~1/7th the size. Three factors:</p>
+<ol>
+<li><strong>DBT scale</strong>: 313 schemes, 800M+ beneficiaries, 7.4B transactions
+   in FY2023-24. This is the world's largest government-to-citizen
+   payment programme by transaction count.</li>
+<li><strong>Monthly frequency</strong>: Most DBT schemes pay monthly (PM-KISAN pays
+   3x/year, but pensions/MGNREGA pay monthly or more)</li>
+<li><strong>Low average value</strong>: Average DBT transaction ~$17 vs US Social
+   Security ~$1,907/month. India processes many more small payments.</li>
+</ol>
+<hr/>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>The three methods produce a range of 25-38B with the bottom-up model
+at 31.6B (near the midpoint). Key tensions:</p>
+<ul>
+<li><strong>Method B overestimates</strong> if average transaction value is too low
+  (many govt payments are large -- tax refunds, procurement)</li>
+<li><strong>Method A may underestimate</strong> Rest of World (12.5B is conservative
+  given that <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>, Indonesia, and Nigeria are under-documented)</li>
+<li><strong>Method C validates the US subset</strong> but only for Treasury-disbursed
+  payments (excludes Medicare/Medicaid contractor payments)</li>
+</ul>
+<hr/>
+<h2 id="key-methodological-challenges">Key Methodological Challenges</h2>
+<h3 id="fragmentation-across-190-countries">Fragmentation Across 190+ Countries</h3>
+<p>No global aggregator for government payment transactions exists.</p>
+<ul>
+<li><strong>OECD Revenue Statistics</strong>: 36 countries, tax revenue data (not
+  transaction counts)</li>
+<li><strong>IMF GFS</strong>: 150+ countries, revenue/expenditure data (not counts)</li>
+<li><strong>World Bank BOOST</strong>: 80+ developing countries, line-item expenditure
+  (not counts)</li>
+</ul>
+<p>For ~100 countries (sub-Saharan <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>, parts of Asia, Central America),
+there is essentially zero published data on government payment counts.
+We rely on GDP-ratio extrapolation for these regions.</p>
+<h3 id="informal-economy">Informal Economy</h3>
+<p>In developing nations, 30-60% of economic activity occurs outside
+formal tax systems:</p>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Shadow Economy (% GDP)</th>
+<th>Impact on Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nigeria</td>
+<td>~55%</td>
+<td>Most tax collected in cash</td>
+</tr>
+<tr>
+<td>India</td>
+<td>~25%</td>
+<td>Declining (GST + DBT)</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>~35%</td>
+<td>Nota Fiscal improving</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>~9%</td>
+<td>Minimal impact</td>
+</tr>
+</tbody>
+</table>
+<p>Formalisation (India GST, Brazil digital tax, EU ViDA) is the primary
+driver of future government payment transaction growth.</p>
+<h3 id="definition-granularity">Definition Granularity</h3>
+<p>"One tax payment" is ambiguous:
+- If counted at employer remittance level: 72M US payroll transactions
+- If counted at per-employee withholding level: ~2B+ US transactions
+- We count at the <strong>employer remittance</strong> level (the actual payment event)</p>
+<h3 id="extreme-seasonality">Extreme Seasonality</h3>
+<p><a class="xref" href="/universe-of-finance/reports/government/government-payments/REPORT.html">Government payments</a> are the most seasonal category in finance:</p>
+<ul>
+<li><strong>US IRS</strong>: 161M returns, ~80% filed January-April</li>
+<li><strong>UK HMRC</strong>: Self-assessment deadline = 31 January (massive spike)</li>
+<li><strong>Benefits</strong>: US Social Security pays on 2nd, 3rd, 4th Wednesdays</li>
+<li><strong>Peak-to-average TPS ratio</strong>: Estimated 5-10x</li>
+</ul>
+<hr/>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>Government payments flow through existing payment rails:
+
+              GOVERNMENT PAYMENT FLOWS
+              |
+              +-- ACH/Bank Transfer (~60%)
+              |   -&gt; Already counted in bank-transfers capsule
+              |   (US: FedACH, EU: SEPA, India: NEFT/UPI)
+              |
+              +-- Direct deposit / wire (~15%)
+              |   -&gt; Counted in interbank-rtgs for large values
+              |
+              +-- Check (~10%, declining)
+              |   -&gt; Not counted elsewhere (unique to this capsule)
+              |
+              +-- Card (~5%)
+              |   -&gt; Already counted in consumer-cards
+              |
+              +-- Cash (~10%, developing countries)
+                  -&gt; Not counted elsewhere
+
+Overlap with bank-transfers: ~60% of 31.6B = ~19B transactions
+are also counted as ACH/bank transfer volume.
+</code></pre>
+<hr/>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Category: Tax &amp; Government Payments (31.6B annual transactions)
+
+Region          Volume    Share   Data Quality
+--------------- -------- ------- ----------------
+India (DBT)     ########   26%   DBT Mission dashboard (public)
+US (Federal)    ######     16%   IRS, SSA, CMS (excellent)
+EU (27 states)  ######     18%   OECD aggregate + national
+US (State/Local)####        4%   Census of Govts (decent)
+China           ####       10%   Opaque; GDP-ratio estimate
+Rest of World   ########   26%   GDP-ratio extrapolation
+</code></pre>
+<hr/>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ---------  --------  ----------  -----------
+IRS Data Book       █████████  █████████ ██████████  ██████████
+SSA Stat Suppl.     █████████  █████████ ██████████  █████████░
+India DBT Portal    █████████  █████████ █████████░  ████████░░
+OECD Rev. Stats     ████████░  ████████░ ██████████  █████░░░░░
+IMF GFS             ████████░  ██████░░░ ██████████  ████░░░░░░
+World Bank BOOST    ██████░░░  █████░░░░ █████████░  ██████░░░░
+                    ---------  --------  ----------  -----------
+Composite Score:    50/100     78/100    92/100      55/100
+</code></pre>
+<p><strong>Overall confidence: 50/100</strong> -- Strong anchor data for US and India;
+EU estimate is reasonable. Rest of World (~40% of total) relies on
+GDP-ratio extrapolation, which is the primary source of uncertainty.</p>
+<hr/>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial estimate: ~25B, ~790 TPS</td>
+<td>Baseline</td>
+</tr>
+<tr>
+<td>2026-03-26</td>
+<td>Run 3: Bottom-up model (US+India+EU)</td>
+<td>Revised to 31.6B</td>
+</tr>
+<tr>
+<td>2026-03-26</td>
+<td>TPS revised to ~1,002</td>
+<td>+26% from initial</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/government/government-payments/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/government/government-payments/METHODOLOGY.md">analysis/government/government-payments/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

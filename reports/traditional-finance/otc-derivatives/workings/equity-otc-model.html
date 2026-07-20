@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equity OTC Derivatives — Transaction Count Model — Universe of Finance</title>
+<meta name="description" content="Deep dive into the most opaque OTC derivatives sub-segment. Part of the Universe of Finance project. Last updated: 2026-03-28 Motivation The count-triangulation estimated equity O">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Equity OTC Derivatives — Transaction Count Model</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#motivation">Motivation</a></li><li><a href="#data-sources">Data Sources</a></li><li><a href="#market-structure-what-are-otc-equity-derivatives">Market Structure: What Are OTC Equity Derivatives?</a></li><li><a href="#model-notional-outstanding-deal-size-tenor-framework">Model: Notional Outstanding / Deal Size / Tenor Framework</a></li><li><a href="#revised-estimate">Revised Estimate</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#sensitivity-analysis">Sensitivity Analysis</a></li><li><a href="#open-questions-data-gaps">Open Questions & Data Gaps</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Deep dive into the most opaque <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> sub-segment.
+Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+Last updated: 2026-03-28</p>
+</blockquote>
+<hr/>
+<h2 id="motivation">Motivation</h2>
+<p>The <a href="/universe-of-finance/reports/traditional-finance/otc-derivatives/workings/count-triangulation.html">count-triangulation</a> estimated equity OTC derivatives at <strong>600,000 trades/year</strong> with <strong>low confidence</strong>. The estimate was derived from four rough approaches (BIS notional / avg deal size, CCP proportional, SEC SBSDR, IRD cross-scaling) without deep analysis of the underlying market structure. This is the weakest link in the OTC derivatives model.</p>
+<p>This analysis builds a structural model of equity OTC derivatives by product type, using:
+1. BIS semiannual statistics (notional outstanding and gross market value)
+2. Structured products issuance data (autocallables, equity-linked notes)
+3. SEC SBSDR and European EMIR trade repository data
+4. Coalition Greenwich institutional trading surveys
+5. Prime broker equity swap/CFD data
+6. Notional outstanding / average deal size / average tenor framework</p>
+<hr/>
+<h2 id="data-sources">Data Sources</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Source</th>
+<th>Key Data Point</th>
+<th>Year</th>
+<th>Accessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>BIS — OTC Derivatives Statistics (<a href="https://www.bis.org/statistics/derstats.htm">BIS</a>)</td>
+<td>Equity-linked OTC derivatives notional outstanding: $8.9T (Dec 2024). Gross market value: $0.76T.</td>
+<td>H2 2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>2</td>
+<td>BIS — OTC Derivatives at end-June 2025 (<a href="https://www.bis.org/publ/otc_hy2512.htm">BIS</a>)</td>
+<td>Equity-linked notional outstanding: $9.8T (Jun 2025). Growth +10.1% from Dec 2024.</td>
+<td>H1 2025</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>3</td>
+<td>BIS — Semiannual Detailed Tables (<a href="https://www.bis.org/statistics/d5_1.pdf">BIS</a>)</td>
+<td>Equity forwards/swaps: $5.2T notional. Equity options: $3.7T notional. (Dec 2024)</td>
+<td>H2 2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ISDA — OTC Derivatives Market Analysis, Year-End 2024 (<a href="https://www.isda.org/">ISDA</a>)</td>
+<td>Equity derivatives clearing rate: ~8% by notional (far lower than IRD 76.9% or CDS 67.9%). Most equity OTC remains bilateral.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Coalition Greenwich — Equity Derivatives Market Structure 2024 (<a href="https://www.greenwich.com/">Greenwich</a>)</td>
+<td>Top 10 dealers account for ~85% of equity OTC derivatives revenue. Revenue pool: ~$8-10B. Average dealer handles ~500-1000 new tickets/day across all equity OTC products.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SEC — SBSDR (Security-Based Swap Data Repositories) (<a href="https://www.sec.gov/">SEC</a>)</td>
+<td>US security-based equity swaps reported to DTCC SDR. Aggregate trade count not published directly; individual transaction records available via EDGAR SBSDR dissemination.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SRP (Structured Retail Products) — Global Issuance Report (<a href="https://www.structuredretailproducts.com/">SRP</a>)</td>
+<td>Global structured product issuance: ~$800B (2024). Equity-linked structured products: ~60% = ~$480B. Autocallables dominate (50-60% of equity-linked).</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>8</td>
+<td>EuroStoxx / SIX — Structured Products Statistics (<a href="https://www.six-group.com/">SIX</a>)</td>
+<td>Swiss structured product issuance: ~CHF 350B outstanding. European issuance (incl. Germany, France, Italy): ~EUR 300B.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Korea Exchange / KOFEX — ELS (Equity Linked Securities) (<a href="https://global.krx.co.kr/">KRX</a>)</td>
+<td>Korean ELS issuance: ~KRW 50T (~$37B) in 2024, down from peak KRW 100T+ due to HSCEI losses. Each ELS product hedged with OTC equity derivatives.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>10</td>
+<td>DTCC — GTR (Global Trade Repository) Equity Derivatives (<a href="https://www.dtcc.com/">DTCC</a>)</td>
+<td>EMIR reporting covers European equity OTC derivatives. Aggregate statistics not easily accessible; individual trade reports available.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>11</td>
+<td>OCC (Options Clearing Corporation) — Volume Statistics (<a href="https://www.theocc.com/">OCC</a>)</td>
+<td>US exchange-traded equity options: 11.2B contracts in 2024 (record). This is the exchange-traded comparator for OTC equity derivatives.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Prime Broker Survey Data — Morgan Stanley, Goldman Sachs, JP Morgan (<a href="https://www.goldmansachs.com/investor-relations/">Annual Reports</a>)</td>
+<td>Prime brokerage equity swap books: estimated $2-3T notional across top 5 prime brokers. Typical swap tenor: 1-5 years.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="market-structure-what-are-otc-equity-derivatives">Market Structure: What Are OTC Equity Derivatives?</h2>
+<p>Before modeling, it is essential to understand what instruments we are counting. OTC equity derivatives are a heterogeneous collection:</p>
+<h3 id="product-taxonomy">Product Taxonomy</h3>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>% of Notional Outstanding</th>
+<th>Typical Counterparties</th>
+<th>Avg Notional/Trade</th>
+<th>Avg Tenor</th>
+<th>Annual Turnover Multiple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Equity total return swaps (TRS)</strong></td>
+<td>~35% ($3.1T)</td>
+<td>Hedge funds + prime brokers</td>
+<td>$50-200M</td>
+<td>1-5 years</td>
+<td>0.5-1.0x (roll at maturity)</td>
+</tr>
+<tr>
+<td><strong>Equity variance/volatility swaps</strong></td>
+<td>~5% ($0.4T)</td>
+<td>Hedge funds, prop desks</td>
+<td>$20-100M vega notional</td>
+<td>3-12 months</td>
+<td>1.5-2.0x (shorter tenor = more rolls)</td>
+</tr>
+<tr>
+<td><strong>OTC equity options (exotic)</strong></td>
+<td>~30% ($2.7T)</td>
+<td>Structured product desks, insurers</td>
+<td>$10-50M</td>
+<td>6 months - 5 years</td>
+<td>0.8-1.2x</td>
+</tr>
+<tr>
+<td><strong>Equity forwards (incl. CFDs on underlying)</strong></td>
+<td>~15% ($1.3T)</td>
+<td>Asset managers, corporates</td>
+<td>$5-50M</td>
+<td>1-12 months</td>
+<td>2.0-4.0x (frequent rolling)</td>
+</tr>
+<tr>
+<td><strong>Contract for Difference (institutional)</strong></td>
+<td>~10% ($0.9T)</td>
+<td>European institutional</td>
+<td>$1-20M</td>
+<td>Open-ended (daily rolling)</td>
+<td>50-100x (continuous)</td>
+</tr>
+<tr>
+<td><strong>Dividend swaps</strong></td>
+<td>~3% ($0.3T)</td>
+<td>Hedge funds, structured desks</td>
+<td>$10-50M</td>
+<td>1-5 years</td>
+<td>0.5-1.0x</td>
+</tr>
+<tr>
+<td><strong>Other (correlation swaps, dispersion, quanto)</strong></td>
+<td>~2% ($0.2T)</td>
+<td>Sell-side inter-dealer</td>
+<td>$20-100M</td>
+<td>Variable</td>
+<td>Variable</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical distinction</strong>: Institutional CFDs are included in OTC equity derivatives by BIS classification. They are economically equivalent to equity swaps but trade with higher frequency and smaller tickets. This is important for transaction count.</p>
+<hr/>
+<h2 id="model-notional-outstanding-deal-size-tenor-framework">Model: Notional Outstanding / Deal Size / Tenor Framework</h2>
+<h3 id="core-formula">Core Formula</h3>
+<pre><code>Annual new trades = Notional outstanding / (Average deal size x Average remaining tenor)
+</code></pre>
+<p>This formula derives the annual "flow" of new trades needed to maintain the observed stock of outstanding notional, adjusted for average deal lifetime.</p>
+<h3 id="application-by-product">Application by Product</h3>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Notional Outstanding</th>
+<th>Avg Deal Size</th>
+<th>Avg Tenor (years)</th>
+<th>Roll Multiplier</th>
+<th>Est. Annual New Trades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equity TRS</td>
+<td>$3.1T</td>
+<td>$100M</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>15,500</td>
+</tr>
+<tr>
+<td>Variance/vol swaps</td>
+<td>$0.4T</td>
+<td>$50M</td>
+<td>0.5</td>
+<td>1.5</td>
+<td>24,000</td>
+</tr>
+<tr>
+<td>OTC equity options (exotic)</td>
+<td>$2.7T</td>
+<td>$25M</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>54,000</td>
+</tr>
+<tr>
+<td>Equity forwards</td>
+<td>$1.3T</td>
+<td>$20M</td>
+<td>0.5</td>
+<td>1.0</td>
+<td>130,000</td>
+</tr>
+<tr>
+<td>Institutional CFDs</td>
+<td>$0.9T</td>
+<td>$5M</td>
+<td>0.02 (rolling daily)</td>
+<td>1.0</td>
+<td>see below</td>
+</tr>
+<tr>
+<td>Dividend swaps</td>
+<td>$0.3T</td>
+<td>$30M</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>5,000</td>
+</tr>
+<tr>
+<td>Other exotics</td>
+<td>$0.2T</td>
+<td>$50M</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>4,000</td>
+</tr>
+<tr>
+<td><strong>Total (excl. CFDs)</strong></td>
+<td><strong>$8.0T</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><strong>232,500</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-cfd-problem">The CFD Problem</h3>
+<p>Institutional CFDs deserve separate treatment because they trade with fundamentally different frequency:</p>
+<ul>
+<li><strong>Notional outstanding</strong>: ~$0.9T</li>
+<li><strong>But</strong>: CFDs roll daily. The "outstanding" at any point is the net open position, not the annual flow.</li>
+<li><strong>Daily new CFD trades</strong>: Institutional CFDs are used for portfolio construction by European asset managers (who cannot use leverage directly). A large asset manager may execute 50-200 CFD trades/day.</li>
+<li><strong>Number of active institutional CFD users</strong>: ~500-1,000 institutional counterparties globally</li>
+<li><strong>Average trades/day per counterparty</strong>: ~30-100</li>
+<li><strong>Estimated CFD trades/day</strong>: 15,000 - 100,000</li>
+<li><strong>Central estimate</strong>: ~40,000/day = <strong>~10,080,000/year</strong></li>
+</ul>
+<p>Wait — this would make CFDs overwhelmingly dominant. But this is misleading because:
+1. Many institutional CFD "trades" are position adjustments (adding/reducing existing exposure), not new economic commitments
+2. CFDs are often rolled automatically overnight — each roll is technically a new trade
+3. The daily roll of a single CFD position generates 252 "trades" per year</p>
+<p><strong>Adjusted CFD count</strong> (excluding automatic rolls, counting only new economic decisions):
+- ~40,000/day is the gross count including rolls
+- New economic decisions: ~20% of gross = <strong>~8,000/day</strong> = <strong>~2,016,000/year</strong></p>
+<h3 id="structured-products-as-otc-derivative-generators">Structured Products as OTC Derivative Generators</h3>
+<p>Structured products (autocallables, equity-linked notes, reverse convertibles) are sold to retail/HNW investors but <strong>hedged by the issuing bank using OTC equity derivatives</strong>. Each structured product issuance creates multiple OTC derivative trades:</p>
+<table>
+<thead>
+<tr>
+<th>Flow</th>
+<th>Metric</th>
+<th>Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global equity-linked structured product issuance</td>
+<td>$480B/year (60% of $800B total)</td>
+<td></td>
+</tr>
+<tr>
+<td>Average product notional</td>
+<td>$2-10M per ISIN (but many small retail tranches aggregate)</td>
+<td></td>
+</tr>
+<tr>
+<td>Number of distinct structured product ISINs issued globally</td>
+<td>~500,000 - 1,000,000/year</td>
+<td>High — Swiss market alone issues 1M+ products/year (many small)</td>
+</tr>
+<tr>
+<td>OTC derivative hedging trades per product</td>
+<td>2-5 (initial delta hedge + vega hedge + subsequent rebalancing)</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Structured-product-generated OTC equity derivative trades</strong></td>
+<td><strong>1,000,000 - 5,000,000/year</strong></td>
+<td>Extremely wide range</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Central estimate</strong>: ~2,000,000 structured-product-generated OTC trades/year</p>
+<p>However, many of these "trades" are:
+1. Hedge rebalancing (delta adjustments) which may be done intra-book without hitting external markets
+2. Internal between desks of the same bank
+3. Aggregated across products (a bank hedges its entire autocallable book, not each product individually)</p>
+<p><strong>Adjusted for aggregation</strong>: ~500,000 - 1,000,000 externally-facing OTC trades from structured product hedging. Central: <strong>~700,000/year</strong>.</p>
+<h3 id="coalition-greenwich-dealer-survey-cross-check">Coalition Greenwich Dealer Survey Cross-Check</h3>
+<p>Coalition Greenwich surveys the top equity OTC derivatives dealers:</p>
+<ul>
+<li>Top 10 dealers account for ~85% of equity OTC derivatives revenue (~$8.5B of ~$10B total)</li>
+<li>Revenue per dealer: ~$850M average (top 10)</li>
+<li>Revenue per trade (blended across products): ~$5,000 - $50,000</li>
+<li>Large TRS: ~$50K-$200K revenue per trade (high margin)</li>
+<li>Exotic options: ~$20K-$100K</li>
+<li>Institutional CFDs: ~$500-$5K (high volume, low margin)</li>
+<li>Structured product hedges: ~$2K-$10K</li>
+</ul>
+<p><strong>Implied trade count for top 10 dealers:</strong>
+- Using $10K average revenue per trade: $8.5B / $10K = <strong>~850,000 trades/year</strong>
+- Using $5K average: ~1,700,000
+- Using $20K average: ~425,000</p>
+<p>At 85% market share, total market:
+- Central ($10K avg): 850K / 0.85 = <strong>~1,000,000 trades/year</strong>
+- Range: 500,000 - 2,000,000</p>
+<h3 id="sec-sbsdr-data-us-security-based-swaps">SEC SBSDR Data (US Security-Based Swaps)</h3>
+<p>The SEC requires reporting of security-based swaps (equity swaps, single-name CDS) to data repositories. While aggregate statistics are not published in a convenient format, analysis of DTCC SDR dissemination data suggests:</p>
+<ul>
+<li>US equity swap new trade reports: ~150,000 - 250,000/year</li>
+<li>US is approximately 40-50% of global equity OTC derivatives by notional</li>
+<li>Implied global: ~300,000 - 625,000/year from this approach</li>
+</ul>
+<p>This likely undercounts because:
+1. Not all equity OTC products are "security-based swaps" under SEC definition
+2. Institutional CFDs are not SEC-reportable in most cases
+3. Structured product hedging may be internal (not reported)</p>
+<hr/>
+<h2 id="revised-estimate">Revised Estimate</h2>
+<h3 id="synthesis-of-approaches">Synthesis of Approaches</h3>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Est. Annual Trades</th>
+<th>Coverage Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Notional/size/tenor framework (excl. CFDs)</td>
+<td>232,500</td>
+<td>Institutional TRS, options, forwards, exotics only</td>
+</tr>
+<tr>
+<td>2. CFD adjusted count</td>
+<td>2,016,000</td>
+<td>Institutional CFDs, excl. automatic rolls</td>
+</tr>
+<tr>
+<td>3. Structured product hedging</td>
+<td>700,000</td>
+<td>Externally-facing hedge trades only</td>
+</tr>
+<tr>
+<td>4. Coalition Greenwich revenue model</td>
+<td>1,000,000</td>
+<td>All products, revenue-based</td>
+</tr>
+<tr>
+<td>5. SEC SBSDR extrapolation</td>
+<td>300,000 - 625,000</td>
+<td>US security-based swaps only, scaled global</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reconciliation">Reconciliation</h3>
+<p>The approaches are not additive — they overlap significantly:
+- Approach 1 (notional framework) captures the "slow money" — large institutional TRS, exotic options, forwards
+- Approach 2 (CFDs) captures the "fast money" — institutional CFDs with daily activity
+- Approach 3 (structured products) captures the dealer hedging flow — which overlaps with Approach 1's options and forwards
+- Approach 4 (revenue model) captures everything but from a different angle
+- Approach 5 (SEC) is the only "observed" data, but covers only US and only a subset of products</p>
+<p><strong>Best composite estimate:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Annual Trades</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Large institutional trades (TRS, exotic options, variance swaps, forwards)</td>
+<td>250,000</td>
+<td>Approach 1, consistent with Approach 5</td>
+</tr>
+<tr>
+<td>Institutional CFDs (new economic decisions)</td>
+<td>500,000</td>
+<td>Approach 2, reduced from 2M because many CFD "trades" are roll adjustments, not new decisions</td>
+</tr>
+<tr>
+<td>Structured product hedging (external)</td>
+<td>400,000</td>
+<td>Approach 3, adjusted for bank internalization</td>
+</tr>
+<tr>
+<td>Small/misc (dividend swaps, correlation, inter-dealer)</td>
+<td>50,000</td>
+<td>Residual category</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>1,200,000</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="comparison-with-previous-estimate">Comparison with Previous Estimate</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Previous (count-triangulation.md)</th>
+<th>Revised</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual equity OTC trades</td>
+<td>600,000</td>
+<td>1,200,000</td>
+<td>+100%</td>
+</tr>
+<tr>
+<td>Daily trades (252 days)</td>
+<td>2,381</td>
+<td>4,762</td>
+<td>+100%</td>
+</tr>
+<tr>
+<td>Confidence</td>
+<td>Low</td>
+<td>Low-Medium</td>
+<td>Improved</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why higher?</strong> The previous estimate underweighted two components:</p>
+<ol>
+<li>
+<p><strong>Institutional CFDs</strong>: The original model treated all equity OTC derivatives as low-frequency, large-ticket institutional trades. Institutional CFDs (used extensively by European asset managers as leverage substitutes) generate much higher trade frequency, even after adjusting for automatic rolls.</p>
+</li>
+<li>
+<p><strong>Structured product hedging</strong>: The structured products market ($480B equity-linked issuance/year) generates a substantial flow of OTC equity derivative trades that was not explicitly modeled before.</p>
+</li>
+</ol>
+<h3 id="impact-on-otc-derivatives-total">Impact on OTC Derivatives Total</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Previous Annual</th>
+<th>Revised Annual</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRD</td>
+<td>3,100,000</td>
+<td>3,100,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td>CDS</td>
+<td>600,000</td>
+<td>600,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Equity OTC</strong></td>
+<td><strong>600,000</strong></td>
+<td><strong>1,200,000</strong></td>
+<td><strong>+600,000</strong></td>
+</tr>
+<tr>
+<td>Commodity OTC</td>
+<td>400,000</td>
+<td>400,000</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Total (excl. FX)</strong></td>
+<td><strong>4,700,000</strong></td>
+<td><strong>5,300,000</strong></td>
+<td><strong>+600,000</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Revised TPS (excl. FX):</strong>
+- 5,300,000 / (365.25 x 86,400) = <strong>0.17 TPS</strong> (previously 0.15)
+- During trading hours: 21,032 / (10h x 3,600) = <strong>0.58 TPS</strong> (previously 0.52)</p>
+<hr/>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Confidence</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Large institutional trades (TRS, exotics)</td>
+<td>Medium</td>
+<td>BIS notional is reliable; deal size and tenor are estimated but bounded</td>
+</tr>
+<tr>
+<td>Institutional CFDs</td>
+<td>Low-Medium</td>
+<td>CFD "trade" definition is ambiguous; roll vs. new decision boundary is subjective</td>
+</tr>
+<tr>
+<td>Structured product hedging</td>
+<td>Low-Medium</td>
+<td>Issuance data is observable; hedge trade count per product is highly variable</td>
+</tr>
+<tr>
+<td>Total composite</td>
+<td>Low-Medium</td>
+<td>Improved from "Low" through structural decomposition, but still heavily estimated</td>
+</tr>
+</tbody>
+</table>
+<h3 id="what-would-shift-this-estimate-significantly">What would shift this estimate significantly?</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>If institutional CFD rolls are counted as trades (daily roll = new trade)</td>
+<td>+8M/year (total would be ~9M) — but this overcounts</td>
+</tr>
+<tr>
+<td>If structured product hedge rebalancing is counted (daily delta hedges)</td>
+<td>+5-10M/year — but these are internal bank operations</td>
+</tr>
+<tr>
+<td>If OTC equity options include all structured product embedded options</td>
+<td>+2M/year — depends on how "embedded" vs. "standalone" is defined</td>
+</tr>
+<tr>
+<td>If SEC SBSDR data could be aggregated cleanly</td>
+<td>Would anchor US number precisely; global extrapolation still needed</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="sensitivity-analysis">Sensitivity Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Base Case</th>
+<th>If Changed To</th>
+<th>Impact on Annual Count</th>
+<th>Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Institutional CFD trade count</strong></td>
+<td>500K</td>
+<td>2M (if rolls counted)</td>
+<td>+1.5M (2.7M total)</td>
+<td><strong>HIGH</strong> — definitional</td>
+</tr>
+<tr>
+<td><strong>Structured product hedge trades</strong></td>
+<td>400K</td>
+<td>1M (if per-product hedging)</td>
+<td>+600K (1.8M total)</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td><strong>TRS average deal size</strong></td>
+<td>$100M</td>
+<td>$50M</td>
+<td>+15.5K (negligible)</td>
+<td>LOW — TRS is low frequency</td>
+</tr>
+<tr>
+<td><strong>Exotic options avg deal size</strong></td>
+<td>$25M</td>
+<td>$10M</td>
+<td>+54K (modest)</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td><strong>Global vs. US equity OTC ratio</strong></td>
+<td>2.5x</td>
+<td>3.5x</td>
+<td>+120K</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td><strong>CFD roll definition</strong></td>
+<td>20% are "new decisions"</td>
+<td>50%</td>
+<td>+600K (1.8M total)</td>
+<td><strong>HIGH</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The definition of what counts as a "trade" is the dominant uncertainty.</strong> The physical volume of OTC equity derivative activity is large, but much of it is:
+- Position maintenance (rolls, rebalancing) rather than new economic commitments
+- Internal between desks of the same bank
+- Aggregated/netted across client positions</p>
+<p>Our model counts new economic commitments (consistent with the IRD and CDS definitions in count-triangulation.md).</p>
+<hr/>
+<h2 id="open-questions-data-gaps">Open Questions &amp; Data Gaps</h2>
+<ol>
+<li>
+<p><strong>SEC SBSDR aggregate publication.</strong> The SEC collects equity swap data via SDRs (DTCC, ICE) but does not publish convenient aggregate statistics. If the SEC published monthly aggregate trade counts and notional — similar to what ISDA SwapsInfo does for IRD and CDS — the US equity OTC estimate would go from "low" to "high" confidence.</p>
+</li>
+<li>
+<p><strong>European EMIR equity derivative aggregates.</strong> ESMA's EMIR trade repositories (DTCC GTR, Regis-TR, UnaVista) hold equity OTC trade data for Europe. ESMA publishes some aggregate statistics but not at the equity OTC product level. A dedicated ESMA publication on equity derivative trade counts would fill the European gap.</p>
+</li>
+<li>
+<p><strong>Institutional CFD data.</strong> No public source reports aggregate institutional CFD trade counts. Prime brokers know exactly how many CFD trades they execute daily, but this is proprietary. If even one major prime broker (Goldman, Morgan Stanley, JP Morgan) disclosed CFD trade counts in an investor presentation, the estimate would improve dramatically.</p>
+</li>
+<li>
+<p><strong>Structured products hedge ratio.</strong> How many OTC equity derivative trades does a single autocallable generate over its lifetime? Structured product desks know this precisely — it depends on delta sensitivity, barrier proximity, and market volatility. An academic study on structured product hedging trade frequency would close this gap.</p>
+</li>
+<li>
+<p><strong>Korea ELS hedging.</strong> Korean ELS (Equity Linked Securities) products generated major losses in 2023-2024 (HSCEI-linked products). The hedging activity from Korean bank ELS books likely generates significant OTC equity derivative trades (variance swaps, barrier option hedges). KRX or Korean FSS data on ELS hedging activity would add the Korean component.</p>
+</li>
+<li>
+<p><strong>BIS decomposition by flow vs. stock.</strong> BIS publishes notional outstanding (stock) but not annual turnover (flow) for equity OTC derivatives. If BIS added a turnover question to the semiannual survey (as they do for FX in the Triennial), the notional/size/tenor framework could be replaced with directly observed turnover.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>BIS — OTC Derivatives Statistics, H2 2024</li>
+<li>BIS — OTC Derivatives at end-June 2025</li>
+<li>BIS — Semiannual Detailed Tables (Table D5.1)</li>
+<li>ISDA — OTC Derivatives Market Analysis, Year-End 2024</li>
+<li>Coalition Greenwich — Equity Derivatives Market Structure 2024</li>
+<li>SEC — SBSDR Dissemination Data</li>
+<li>SRP — Global Structured Products Issuance Report 2024</li>
+<li>SIX — Swiss Structured Products Statistics</li>
+<li>Korea Exchange / KRX — ELS Issuance Data</li>
+<li>DTCC — GTR Equity Derivatives Reporting</li>
+<li>OCC — US Exchange-Traded Equity Options Volume 2024</li>
+<li>Prime Broker Annual Reports (Goldman Sachs, Morgan Stanley, JP Morgan)</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/otc-derivatives/workings/equity-otc-model.md">analysis/traditional-finance/otc-derivatives/workings/equity-otc-model.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consumer Cards -- Network Breakdown (2024) — Universe of Finance</title>
+<meta name="description" content="Workings file for the Consumer Card Payments capsule. Last updated: 2026-03-27 Methodology The 772.73B total annual purchase transactions (2024, Nilson Report) is decomposed into">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Consumer Cards -- Network Breakdown (2024)</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#methodology">Methodology</a></li><li><a href="#data-sources">Data Sources</a></li><li><a href="#breakdown-table-global-card-networks-2024">Breakdown Table -- Global Card Networks (2024)</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#debit-vs-credit-split-where-available">Debit vs. Credit Split (Where Available)</a></li><li><a href="#key-trends">Key Trends</a></li><li><a href="#growth-rates-by-network">Growth Rates by Network</a></li><li><a href="#open-questions">Open Questions</a></li></ul></div><blockquote>
+<p>Workings file for the <a href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Card Payments</a> capsule.
+Last updated: 2026-03-27</p>
+</blockquote>
+<hr/>
+<h2 id="methodology">Methodology</h2>
+<p>The 772.73B total annual purchase transactions (2024, Nilson Report) is decomposed into individual <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> using a combination of:</p>
+<ol>
+<li><strong>Direct disclosures</strong> -- Visa 10-K (FY2024, Sep year-end), Mastercard 10-K (FY2024, Dec year-end), American Express annual report</li>
+<li><strong>Derived estimates</strong> -- UnionPay from PBOC consumer payment data + CoinLaw industry estimates; JCB from industry reports; Discover from Nilson/Capital One Shopping</li>
+<li><strong>Domestic-only networks</strong> -- RuPay (NPCI data), Elo (Brazilian card association estimates), Mir (Russian Central Bank / TAdviser)</li>
+</ol>
+<p>"Branded transactions" = all transactions carrying the network's brand, regardless of who processes them. "Switched/processed transactions" = transactions routed through the network's own infrastructure. The Nilson 772.73B figure uses branded transaction counts for the six global networks.</p>
+<hr/>
+<h2 id="data-sources">Data Sources</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Citation</th>
+<th>Accessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nilson Report</td>
+<td>Global Network Card Results Worldwide 2024</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>Visa 10-K FY2024</td>
+<td><a href="https://s1.q4cdn.com/050606653/files/doc_financials/2024/ar/2ddc584c-441d-475b-8a97-630dad75db94.pdf">SEC Filing</a> -- 303B branded, 233.8B processed</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>Visa Q4 FY2024 Operational Data</td>
+<td><a href="https://s1.q4cdn.com/050606653/files/doc_financials/2024/q4/Q4-2024-Earnings-Release_vF.pdf">Earnings Release</a></td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>Mastercard 10-K FY2024</td>
+<td><a href="https://www.sec.gov/Archives/edgar/data/1141391/000114139125000011/ma-20241231.htm">SEC Filing</a> -- 159.4B switched txns (+11% YoY)</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>Mastercard Earnings Review</td>
+<td><a href="https://www.mastercard.com/global/en/news-and-trends/stories/2025/earnings-review-2024-and-the-road-ahead.html">FY2024</a> -- ~185B total branded</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>American Express Annual Report 2024</td>
+<td><a href="https://s26.q4cdn.com/747928648/files/doc_financials/2024/ar/v2/American-Express-2024-Annual-Report.pdf">PDF</a> -- $1,551B billed business, 83.6M cards</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>CoinLaw</td>
+<td><a href="https://coinlaw.io/unionpay-statistics/">UnionPay Statistics 2025</a> -- 228B txns (2023), 8.96B cards</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>PBOC Payment System Report 2024</td>
+<td><a href="https://www.pbc.gov.cn/en/3688247/3688978/3709143/5649949/2025040114593718714.pdf">Q4 2024</a> -- 357.2B consumer payment txns</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>CoinLaw</td>
+<td><a href="https://coinlaw.io/jcb-card-statistics/">JCB Card Statistics 2025</a> -- $410B+ volume (2025), 160M cardholders</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>Capital One Shopping</td>
+<td><a href="https://capitaloneshopping.com/research/credit-card-market-share-statistics/">Credit Card Market Share 2025</a></td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>Nilson / GlobeNewsWire</td>
+<td><a href="https://www.globenewswire.com/news-release/2025/02/25/3032247/0/en/Amex-Discover-Mastercard-and-Visa-Card-Spending-Exceeded-10-Trillion-in-2024.html">US networks &gt;$10T in 2024</a></td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>NPCI</td>
+<td><a href="https://coinlaw.io/rupay-statistics/">RuPay Statistics</a> -- 18% India credit card market share</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>TAdviser</td>
+<td><a href="https://tadviser.com/index.php/Product:World_(payment_system)">Mir Payment System</a> -- 475M cards, 66.7% domestic share</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>Elo / Rebill</td>
+<td><a href="https://www.rebill.com/en/blog/what-is-elo">Elo Brazil</a> -- 14-20% Brazil market share, 120M+ cards</td>
+<td>2026-03-27</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="breakdown-table-global-card-networks-2024">Breakdown Table -- Global Card Networks (2024)</h2>
+<h3 id="tier-1-the-six-global-networks-nilson-counted">Tier 1: The Six Global Networks (Nilson-counted)</h3>
+<table>
+<thead>
+<tr>
+<th>Network</th>
+<th>Annual Txns (B)</th>
+<th>Market Share</th>
+<th>YoY Growth</th>
+<th>Avg Txn Value</th>
+<th>Confidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visa</strong></td>
+<td>303.0 (branded)</td>
+<td>39.2%</td>
+<td>~10%</td>
+<td>~$58</td>
+<td>High</td>
+<td>233.8B processed by VisaNet; 69.2B processed by third parties on Visa rails</td>
+</tr>
+<tr>
+<td><strong>UnionPay</strong></td>
+<td>~247.0 (est.)</td>
+<td>32.0%</td>
+<td>~8% (est.)</td>
+<td>~$68 (est.)</td>
+<td>Medium</td>
+<td>228B in 2023 (CoinLaw); ~8% growth applied. 95%+ domestic China.</td>
+</tr>
+<tr>
+<td><strong>Mastercard</strong></td>
+<td>~185.0 (branded)</td>
+<td>23.9%</td>
+<td>~11%</td>
+<td>~$62</td>
+<td>High</td>
+<td>159.4B switched (+11% YoY); ~185B total branded (est. from ratio)</td>
+</tr>
+<tr>
+<td><strong>American Express</strong></td>
+<td>~15.0 (est.)</td>
+<td>1.9%</td>
+<td>~8%</td>
+<td>~$103</td>
+<td>Medium</td>
+<td>$1,551B billed / ~$103 avg = ~15B txns. 83.6M cards. Highest avg txn.</td>
+</tr>
+<tr>
+<td><strong>JCB</strong></td>
+<td>~11.0 (est.)</td>
+<td>1.4%</td>
+<td>~10%</td>
+<td>~$37</td>
+<td>Low</td>
+<td>$410B volume (2025) / ~$37 avg. 160M cardholders. Japan-centric.</td>
+</tr>
+<tr>
+<td><strong>Discover/Diners</strong></td>
+<td>~8.6 (est.)</td>
+<td>1.1%</td>
+<td>~-2%</td>
+<td>~$26</td>
+<td>Low</td>
+<td>$225B volume / ~$26 avg. Declining slightly before Capital One merger.</td>
+</tr>
+<tr>
+<td><strong>SUBTOTAL (6 networks)</strong></td>
+<td><strong>~769.6</strong></td>
+<td><strong>99.6%</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tier-2-major-domestic-only-networks-not-in-nilson-7727b-total">Tier 2: Major Domestic-Only Networks (not in Nilson 772.7B total)</h3>
+<table>
+<thead>
+<tr>
+<th>Network</th>
+<th>Country</th>
+<th>Annual Txns (B)</th>
+<th>YoY Growth</th>
+<th>Confidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RuPay</strong></td>
+<td>India</td>
+<td>~12.0 (est.)</td>
+<td>~30%+</td>
+<td>Medium</td>
+<td>18% of India credit card market; ~360M+ debit cards (PMJDY). NPCI data suggests 8.5B (FY2024) growing rapidly. Estimated 12B calendar 2024.</td>
+</tr>
+<tr>
+<td><strong>Mir</strong></td>
+<td>Russia</td>
+<td>~15.0 (est.)</td>
+<td>~15%</td>
+<td>Low</td>
+<td>475M cards issued; 66.7% domestic transaction share. ~50M interbank txns/day. Estimated from daily clearing volume.</td>
+</tr>
+<tr>
+<td><strong>Elo</strong></td>
+<td>Brazil</td>
+<td>~5.0 (est.)</td>
+<td>~8%</td>
+<td>Low</td>
+<td>14-20% of Brazil card market. 120M+ cards. No public transaction count.</td>
+</tr>
+<tr>
+<td><strong>BC Card</strong></td>
+<td>South Korea</td>
+<td>~4.0 (est.)</td>
+<td>~5%</td>
+<td>Low</td>
+<td>Major domestic network; limited English-language data.</td>
+</tr>
+<tr>
+<td><strong>Other domestic</strong></td>
+<td>Various</td>
+<td>~10.0 (est.)</td>
+<td>varies</td>
+<td>Low</td>
+<td>TROY (Turkey), Verve (Nigeria), Bancontact (Belgium), etc.</td>
+</tr>
+<tr>
+<td><strong>SUBTOTAL (domestic)</strong></td>
+<td></td>
+<td><strong>~46.0</strong></td>
+<td></td>
+<td></td>
+<td>Not included in Nilson 772.7B</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="reconciliation">Reconciliation</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Volume (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nilson Report 2024 total (6 global networks)</td>
+<td>772.73</td>
+</tr>
+<tr>
+<td>Our sum of 6 global networks</td>
+<td>769.6</td>
+</tr>
+<tr>
+<td><strong>Gap</strong></td>
+<td><strong>3.13 (~0.4%)</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gap explanation</strong>: The 3.1B gap is well within estimation error for UnionPay and JCB, both of which are derived figures. Nilson may also include a small amount of co-branded or multi-network transactions. The reconciliation is strong -- within 0.4% of the reported total.</p>
+<h3 id="domestic-networks-and-double-counting">Domestic networks and double-counting</h3>
+<p>The domestic-only networks (~46B) are <strong>excluded</strong> from the 772.73B Nilson figure. However, there is potential overlap:
+- <strong>RuPay-Discover alliance</strong>: Some RuPay international transactions may route over Discover's network and be counted in Discover's total
+- <strong>Elo-Discover alliance</strong>: Similarly, Elo has a co-badge arrangement with Discover for international acceptance
+- <strong>UnionPay domestic</strong>: Nearly all of UnionPay's 247B transactions are China-domestic, but they ARE included in the Nilson global count as UnionPay is classified as a global network</p>
+<p><strong>Adjusted global total including domestic networks</strong>: ~772.7B (Nilson) + ~46B (domestic-only) = <strong>~819B total card transactions worldwide</strong> (2024).</p>
+<hr/>
+<h2 id="debit-vs-credit-split-where-available">Debit vs. Credit Split (Where Available)</h2>
+<table>
+<thead>
+<tr>
+<th>Network</th>
+<th>Debit Share (by count)</th>
+<th>Credit Share (by count)</th>
+<th>Prepaid</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visa</td>
+<td>~57%</td>
+<td>~35%</td>
+<td>~8%</td>
+<td>Visa FY2024: debit $6.02T / credit $5.31T (value); count ratio skews further to debit</td>
+</tr>
+<tr>
+<td>Mastercard</td>
+<td>~55%</td>
+<td>~38%</td>
+<td>~7%</td>
+<td>Similar ratio to Visa; MC 10-K disclosures</td>
+</tr>
+<tr>
+<td>UnionPay</td>
+<td>~75% (est.)</td>
+<td>~20% (est.)</td>
+<td>~5%</td>
+<td>China heavily debit-dominated</td>
+</tr>
+<tr>
+<td>American Express</td>
+<td>~0%</td>
+<td>~100%</td>
+<td>~0%</td>
+<td>Amex is credit/charge only</td>
+</tr>
+<tr>
+<td>JCB</td>
+<td>~15% (est.)</td>
+<td>~80% (est.)</td>
+<td>~5%</td>
+<td>Japan market skews credit</td>
+</tr>
+<tr>
+<td>Discover</td>
+<td>~45% (est.)</td>
+<td>~55%</td>
+<td>~0%</td>
+<td>PULSE debit network + Discover credit</td>
+</tr>
+<tr>
+<td><strong>Global weighted</strong></td>
+<td><strong>~55%</strong></td>
+<td><strong>~37%</strong></td>
+<td><strong>~8%</strong></td>
+<td>Consistent with REPORT.md</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-trends">Key Trends</h2>
+<ol>
+<li>
+<p><strong>Visa's branded vs. processed gap is widening.</strong> Of 303B branded transactions, only 233.8B (77%) are processed by VisaNet. The 69.2B processed by third parties represents a growing segment of co-branded and regional processing arrangements.</p>
+</li>
+<li>
+<p><strong>UnionPay is the great unknown.</strong> As the #2 network by count, UnionPay's opacity is a significant data quality issue. The PBOC reports 357.2B consumer payment transactions in 2024, of which UnionPay card transactions are a subset (the remainder being mobile/QR payments via Alipay/WeChat Pay that bypass card rails).</p>
+</li>
+<li>
+<p><strong>Mastercard is closing the gap on Visa in growth rate.</strong> Mastercard's switched transactions grew 11% vs. Visa's 10% in 2024. At these rates, the gap narrows slowly but meaningfully over a decade.</p>
+</li>
+<li>
+<p><strong>American Express has the highest average transaction value</strong> (~$103 vs. ~$58 for Visa), reflecting its premium/corporate positioning. But at only 15B transactions on 83.6M cards, its per-card utilization (~180 txns/card/year) far exceeds other networks.</p>
+</li>
+<li>
+<p><strong>Domestic networks are a hidden 6% of global card transactions.</strong> RuPay (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>), Mir (Russia), and Elo (<a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>) together process ~32B transactions that are invisible in standard global card statistics. RuPay is the fastest-growing, driven by India's push for domestic payment independence.</p>
+</li>
+<li>
+<p><strong>Discover/Diners is the only declining network</strong>, with volume slipping ~2% YoY as the Capital One acquisition creates uncertainty. Post-merger, Discover's network may see renewed investment or gradual absorption.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="growth-rates-by-network">Growth Rates by Network</h2>
+<table>
+<thead>
+<tr>
+<th>Network</th>
+<th>3-Year CAGR (2021-2024)</th>
+<th>5-Year CAGR (2019-2024)</th>
+<th>Trend</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visa</td>
+<td>~12%</td>
+<td>~17%</td>
+<td>Steady; post-COVID normalizing</td>
+</tr>
+<tr>
+<td>UnionPay</td>
+<td>~8% (est.)</td>
+<td>~10% (est.)</td>
+<td>Slowing; China mobile payments competing</td>
+</tr>
+<tr>
+<td>Mastercard</td>
+<td>~13%</td>
+<td>~18%</td>
+<td>Slightly outpacing Visa</td>
+</tr>
+<tr>
+<td>American Express</td>
+<td>~9%</td>
+<td>~11%</td>
+<td>Premium segment resilient</td>
+</tr>
+<tr>
+<td>JCB</td>
+<td>~10% (est.)</td>
+<td>~8% (est.)</td>
+<td>Japan cashless push driving growth</td>
+</tr>
+<tr>
+<td>Discover</td>
+<td>~2%</td>
+<td>~5%</td>
+<td>Stagnating; pre-merger uncertainty</td>
+</tr>
+<tr>
+<td>RuPay</td>
+<td>~35%+</td>
+<td>~40%+</td>
+<td>Hypergrowth; India govt backing</td>
+</tr>
+<tr>
+<td>Mir</td>
+<td>~15%</td>
+<td>N/A (2022 surge)</td>
+<td>Post-sanctions capture of Russian market</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="open-questions">Open Questions</h2>
+<ol>
+<li>
+<p><strong>What is UnionPay's actual 2024 transaction count?</strong> The 247B figure is extrapolated from 2023's 228B at ~8% growth. PBOC's 357.2B consumer payment transactions minus estimated mobile-only payments (~110B) gives ~247B as a cross-check, but this is circular reasoning if UnionPay = PBOC minus mobile.</p>
+</li>
+<li>
+<p><strong>How many RuPay transactions are counted by Discover?</strong> The RuPay-Discover co-badge arrangement means some international RuPay transactions route over Discover rails. Could be 100M-500M transactions -- small but relevant to Discover's total.</p>
+</li>
+<li>
+<p><strong>Will Mir expand beyond Russia?</strong> Currently used in ~12 countries (CIS states, Turkey, Vietnam). If sanctions persist, Mir could become a significant regional network. Current international volume is negligible.</p>
+</li>
+<li>
+<p><strong>JCB transaction count precision</strong>: JCB does not publish transaction counts in English-language reports. The ~11B estimate is derived from $410B volume / ~$37 average transaction, which is a rough proxy. Could be 8B-14B.</p>
+</li>
+<li>
+<p><strong>What happens to domestic networks as <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a> grow?</strong> In <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, Alipay/WeChat Pay bypass UnionPay for many transactions. In India, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> competes with RuPay for debit transactions. The boundary between "card network" and "payment rail" is blurring.</p>
+</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/consumer-cards/workings/network-breakdown.md">analysis/payments/consumer-cards/workings/network-breakdown.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

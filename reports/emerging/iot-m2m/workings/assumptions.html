@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IoT & Machine-to-Machine Payments — Assumptions — Universe of Finance</title>
+<meta name="description" content="Every assumption documented with reasoning. Referenced from calculations and projections. Data Collection Assumptions A1. M2M Payment Definition Assumption: An M2M payment is one">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Emerging<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>IoT & Machine-to-Machine Payments — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#data-collection-assumptions">Data Collection Assumptions</a></li><li><a href="#transaction-count-assumptions">Transaction Count Assumptions</a></li><li><a href="#projection-assumptions">Projection Assumptions</a></li><li><a href="#market-value-assumptions">Market Value Assumptions</a></li></ul></div><blockquote>
+<p>Every assumption documented with reasoning. Referenced from calculations and projections.</p>
+</blockquote>
+<hr/>
+<h2 id="data-collection-assumptions">Data Collection Assumptions</h2>
+<h3 id="a1-m2m-payment-definition">A1. M2M Payment Definition</h3>
+<p><strong>Assumption:</strong> An <a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">M2M</a> payment is one where the device autonomously initiates the payment without direct human action at the point of transaction.
+<strong>Reasoning:</strong> This excludes tap-to-pay at a store (human-initiated via <a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">IoT</a> device) but includes toll transponders (device-triggered as vehicle passes), EV chargers with auto-billing, and smart meter-triggered utility payments.
+<strong>Risk:</strong> The boundary is subjective. A parking meter payment could be human-initiated (tapping a card) or M2M (licence plate recognition + auto-billing). We include both in our estimates because the infrastructure is IoT-based.</p>
+<h3 id="a2-existing-rail-invisibility">A2. Existing Rail Invisibility</h3>
+<p><strong>Assumption:</strong> Most M2M payments today are processed through existing <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> or bank transfer systems and are not separately identifiable in payment statistics.
+<strong>Reasoning:</strong> A toll payment via E-ZPass ultimately settles as a card charge or ACH debit. From the payment network's perspective, it's just another transaction.
+<strong>Risk:</strong> This means our estimates may double-count with other Universe of Finance categories (<a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">consumer cards</a>, <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>). The intent is to measure IoT-initiated transactions regardless of settlement rail.</p>
+<hr/>
+<h2 id="transaction-count-assumptions">Transaction Count Assumptions</h2>
+<h3 id="a3-toll-collection-user-count">A3. Toll Collection User Count</h3>
+<p><strong>Assumption:</strong> 600M+ global ETC users, with <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> accounting for ~300M.
+<strong>Reasoning:</strong> GlobeNewsWire (2024) reports 600M+ ETC users. China's Ministry of Transport reports wide ETC adoption following the 2019 mandate for highway toll collection.
+<strong>Risk:</strong> "User" counts may include inactive registrations. Actual regular users may be 60-70% of registered count.</p>
+<h3 id="a4-ev-charging-transaction-frequency">A4. EV Charging Transaction Frequency</h3>
+<p><strong>Assumption:</strong> ~3M public chargers globally, averaging 2.5 paid sessions per day.
+<strong>Reasoning:</strong> IEA Global EV Outlook provides charger counts. Utilisation varies enormously — high-traffic urban chargers may handle 10+ sessions/day; rural chargers may see 1-2.
+<strong>Risk:</strong> Public charger count is growing 30%+ annually, so any point-in-time figure is quickly outdated. Utilisation rates are poorly reported.</p>
+<h3 id="a5-vending-machine-classification">A5. Vending Machine Classification</h3>
+<p><strong>Assumption:</strong> 3-5B annual vending/unattended retail transactions qualify as M2M.
+<strong>Reasoning:</strong> While vending purchases are human-initiated, the payment processing is automated and IoT-enabled (connected machines, cashless readers). We include cashless vending as M2M because the infrastructure is identical.
+<strong>Risk:</strong> Purists would exclude vending since a human chooses to buy. We include it because the payment infrastructure is IoT-native.</p>
+<h3 id="a6-smart-meter-payment-trigger-rate">A6. Smart Meter Payment Trigger Rate</h3>
+<p><strong>Assumption:</strong> Only ~30% of smart meter readings trigger an autonomous payment transaction.
+<strong>Reasoning:</strong> Most smart meters report data that feeds into a monthly bill, which the customer then pays manually. Only pre-pay meters and some smart billing systems trigger automatic payments.
+<strong>Risk:</strong> As smart meter billing evolves toward pay-as-you-go (especially in developing nations and for EV charging), this percentage will increase.</p>
+<hr/>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<h3 id="a7-iot-device-growth">A7. IoT Device Growth</h3>
+<p><strong>Assumption:</strong> IoT connected devices grow from 21.1B (2025) to ~39B (2030) to ~60B (2035).
+<strong>Reasoning:</strong> IoT Analytics reports 21.1B for 2025. GSMA projects 38.7B by 2030. We extrapolate to ~60B by 2035 assuming continued but decelerating growth.
+<strong>Risk:</strong> Low — device count projections are well-established and come from multiple independent sources (IoT Analytics, Ericsson, GSMA, Transforma Insights).</p>
+<h3 id="a8-payment-enabled-percentage">A8. Payment-Enabled Percentage</h3>
+<p><strong>Assumption:</strong> Currently ~10% of IoT devices are payment-enabled; this grows to 13% (baseline) or 20% (high growth) by 2030.
+<strong>Reasoning:</strong> Most IoT devices are sensors, monitors, and trackers that generate data but not payments. Payment-enabled devices include tolling equipment, EV chargers, connected vehicles, smart meters, and vending machines.
+<strong>Risk:</strong> This is the most uncertain assumption. If new categories emerge (e.g., home appliances auto-ordering supplies, wearables auto-paying), the percentage could be much higher.</p>
+<h3 id="a9-autonomous-vehicle-impact">A9. Autonomous Vehicle Impact</h3>
+<p><strong>Assumption (High Growth):</strong> 10M autonomous vehicles by 2030, 100M by 2035, each generating 500 M2M payments/year.
+<strong>Reasoning:</strong> An AV needs to pay for charging, tolls, parking, insurance (per-mile), data services, maintenance, and mapping updates. 500 transactions/year is conservative if these become streaming micropayments.
+<strong>Risk:</strong> Autonomous vehicle deployment timelines are highly uncertain. Full autonomy (Level 4/5) may be delayed beyond 2030 in most markets.</p>
+<h3 id="a10-micropayment-revolution">A10. Micropayment Revolution</h3>
+<p><strong>Assumption (High Growth):</strong> Streaming payments for utilities, data, and services multiply transaction frequency 5-10x.
+<strong>Reasoning:</strong> Instead of monthly electricity bills, smart meters could trigger payments per kWh. Instead of parking fees, payment could stream per minute. This is technically feasible today but not widely deployed.
+<strong>Risk:</strong> Micropayment protocols face transaction cost barriers on traditional rails. Crypto/blockchain micropayment channels could enable this, but adoption is uncertain.</p>
+<hr/>
+<h2 id="market-value-assumptions">Market Value Assumptions</h2>
+<h3 id="a11-market-size-definition">A11. Market Size Definition</h3>
+<p><strong>Assumption:</strong> The $77B figure (Research Nester) refers to the autonomous IoT payments market value (revenue of the payments infrastructure/services), not the total transaction value flowing through M2M systems.
+<strong>Reasoning:</strong> Total transaction value is much higher (~$300-500B/year) but the market research figure captures the revenue of the ecosystem enabling those payments.
+<strong>Risk:</strong> Different reports use different definitions, making cross-source comparison difficult.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/emerging/iot-m2m/workings/assumptions.md">analysis/emerging/iot-m2m/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

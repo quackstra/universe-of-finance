@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Wallets & Mobile Payments — Calculations — Universe of Finance</title>
+<meta name="description" content="TPS Derivation Annual-to-TPS Formula TPS = annual_transactions / (365 × 86,400) TPS = annual_transactions / 31,536,000 2024 Aggregate Calculation Building the global aggregate (avo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Digital Wallets & Mobile Payments — Calculations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#tps-derivation">TPS Derivation</a></li><li><a href="#platform-specific-calculations">Platform-Specific Calculations</a></li><li><a href="#historic-aggregate-methodology">Historic Aggregate Methodology</a></li><li><a href="#growth-rate-calculations">Growth Rate Calculations</a></li><li><a href="#projection-methodology">Projection Methodology</a></li></ul></div><h2 id="tps-derivation">TPS Derivation</h2>
+<h3 id="annual-to-tps-formula">Annual-to-TPS Formula</h3>
+<pre><code>TPS = annual_transactions / (365 × 86,400)
+TPS = annual_transactions / 31,536,000
+</code></pre>
+<h3 id="2024-aggregate-calculation">2024 Aggregate Calculation</h3>
+<p><strong>Building the global aggregate (avoiding double-counting):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Annual Txns (B)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>China mobile payments (all)</td>
+<td>280</td>
+<td>Includes Alipay + WeChat + others; PBOC aggregate</td>
+</tr>
+<tr>
+<td>UPI (India)</td>
+<td>172</td>
+<td>NPCI official; includes Google Pay India</td>
+</tr>
+<tr>
+<td>M-Pesa</td>
+<td>30</td>
+<td>Safaricom AR 2024</td>
+</tr>
+<tr>
+<td>Apple Pay (non-overlay est.)</td>
+<td>5</td>
+<td>~25% of 20B total are non-card-rail (in-app, web)</td>
+</tr>
+<tr>
+<td>Other wallets (Samsung, regional)</td>
+<td>133</td>
+<td>Residual estimate</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>620</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code>TPS = 620,000,000,000 / 31,536,000 = 19,660 TPS
+</code></pre>
+<h3 id="peak-tps-estimate">Peak TPS Estimate</h3>
+<ul>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> peak month (Dec 2024): 16.73 billion txns / 31 days / 86,400 = ~6,250 TPS</li>
+<li>Alibaba Singles' Day 2024 peak: historically ~500,000 TPS for seconds, sustained ~50,000 TPS for hours</li>
+<li>Combined peak across all platforms: ~45,000 TPS (conservative, not all peak simultaneously)</li>
+</ul>
+<h3 id="daily-volume">Daily Volume</h3>
+<pre><code>620,000,000,000 / 365 = 1,698,630,137 ≈ 1.7 billion daily
+</code></pre>
+<h2 id="platform-specific-calculations">Platform-Specific Calculations</h2>
+<h3 id="upi-tps">UPI TPS</h3>
+<pre><code>172,000,000,000 / 31,536,000 = 5,454 TPS average
+</code></pre>
+<h3 id="china-mobile-tps">China Mobile TPS</h3>
+<pre><code>280,000,000,000 / 31,536,000 = 8,879 TPS average
+</code></pre>
+<h3 id="m-pesa-tps">M-Pesa TPS</h3>
+<pre><code>30,000,000,000 / 31,536,000 = 951 TPS average
+</code></pre>
+<h3 id="alipay-daily-check">Alipay Daily Check</h3>
+<ul>
+<li>Reported: 120 million daily transactions</li>
+<li>Annual: 120,000,000 × 365 = 43,800,000,000 ≈ 44 billion</li>
+<li>TPS: 44,000,000,000 / 31,536,000 = 1,395 TPS</li>
+</ul>
+<h3 id="wechat-pay-estimate">WeChat Pay Estimate</h3>
+<ul>
+<li>Reported: 1 billion daily transactions (industry est.), of which 450M from transit</li>
+<li>Annual: ~365 billion if taken at face value</li>
+<li>However, <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> total is 280B and Alipay is ~44B, leaving ~236B for WeChat + others</li>
+<li>WeChat Pay likely ~130-150B (55% of non-Alipay China mobile), using 130B conservatively</li>
+<li>TPS: 130,000,000,000 / 31,536,000 = 4,122 TPS</li>
+</ul>
+<h2 id="historic-aggregate-methodology">Historic Aggregate Methodology</h2>
+<p>Built bottom-up for each year using:
+1. UPI official NPCI data (high confidence)
+2. China PBOC mobile payment counts (medium confidence)
+3. M-Pesa Safaricom reports (high confidence)
+4. Remainder allocated to Apple Pay, Google Pay (non-India), Samsung Pay, regional wallets</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>UPI</th>
+<th>China</th>
+<th>M-Pesa</th>
+<th>Others (est.)</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>12.5</td>
+<td>101</td>
+<td>12.6</td>
+<td>54</td>
+<td>180</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>22.3</td>
+<td>123</td>
+<td>14.5</td>
+<td>60</td>
+<td>220</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>46.0</td>
+<td>178</td>
+<td>18.3</td>
+<td>68</td>
+<td>310</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>83.8</td>
+<td>235</td>
+<td>22.0</td>
+<td>69</td>
+<td>410</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>117.6</td>
+<td>260</td>
+<td>25.5</td>
+<td>87</td>
+<td>490</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>172.0</td>
+<td>280</td>
+<td>30.0</td>
+<td>138</td>
+<td>620</td>
+</tr>
+</tbody>
+</table>
+<h2 id="growth-rate-calculations">Growth Rate Calculations</h2>
+<h3 id="5-year-cagr-2019-2024">5-Year CAGR (2019-2024)</h3>
+<pre><code>CAGR = (620/180)^(1/5) - 1 = 3.444^0.2 - 1 = 1.281 - 1 = 28.1%
+</code></pre>
+<h3 id="2-year-cagr-2022-2024">2-Year CAGR (2022-2024)</h3>
+<pre><code>CAGR = (620/410)^(1/2) - 1 = 1.512^0.5 - 1 = 1.229 - 1 = 22.9%
+</code></pre>
+<h3 id="upi-5-year-cagr">UPI 5-Year CAGR</h3>
+<pre><code>CAGR = (172/12.5)^(1/5) - 1 = 13.76^0.2 - 1 = 1.692 - 1 = 69.2%
+</code></pre>
+<h3 id="china-5-year-cagr">China 5-Year CAGR</h3>
+<pre><code>CAGR = (280/101)^(1/5) - 1 = 2.772^0.2 - 1 = 1.226 - 1 = 22.6%
+</code></pre>
+<h3 id="m-pesa-5-year-cagr">M-Pesa 5-Year CAGR</h3>
+<pre><code>CAGR = (30/12.6)^(1/5) - 1 = 2.381^0.2 - 1 = 1.192 - 1 = 19.2%
+</code></pre>
+<h2 id="projection-methodology">Projection Methodology</h2>
+<h3 id="baseline-18-cagr-tapering-to-12-by-2035">Baseline: 18% CAGR tapering to 12% by 2035</h3>
+<ul>
+<li>2025-2027: 18% CAGR (continued strong adoption in <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>, SE Asia)</li>
+<li>2028-2030: 15% CAGR (market maturation in China, India nearing saturation)</li>
+<li>2031-2035: 12% CAGR (global saturation, incremental growth from micropayments)</li>
+</ul>
+<h3 id="high-growth-22-tapering-to-15">High Growth: 22% tapering to 15%</h3>
+<ul>
+<li>Assumes UPI-like adoption in SE Asia, Latin America, Africa</li>
+<li>Assumes continued 40%+ UPI growth through 2027</li>
+</ul>
+<h3 id="conservative-14-tapering-to-8">Conservative: 14% tapering to 8%</h3>
+<ul>
+<li>Assumes Chinese market stalls, UPI growth halves</li>
+<li>Assumes regulatory friction (antitrust) limits Western wallet growth</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/digital-wallets/workings/calculations.md">analysis/payments/digital-wallets/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>
