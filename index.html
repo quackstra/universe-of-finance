@@ -334,6 +334,8 @@ tbody td {
   display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
 }
 .lt-items { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lt-row2 { padding-top: 0; border-top: 1px dashed var(--card-border); }
+.lt-row2 .lt-tps { color: var(--accent-amber); }
 .lt-label {
   font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--muted); margin-right: 6px; white-space: nowrap;
@@ -975,8 +977,12 @@ nav .nav-links a:hover { color: var(--text); }
 <!-- ═══════ LIVE TICKER (Live Layer, Tier 1) ═══════ -->
 <div class="live-ticker" id="liveTicker" aria-label="Live ledger-verified transaction throughput">
   <div class="lt-inner">
-    <span class="lt-label">Live&nbsp;·&nbsp;ledger-verified</span>
+    <span class="lt-label" title="Public blockchains report every transaction in seconds.">Live&nbsp;·&nbsp;ledger-verified</span>
     <span id="liveTickerItems" class="lt-items"><span class="muted" style="font-size:0.8rem;">loading feeds…</span></span>
+  </div>
+  <div class="lt-inner lt-row2">
+    <span class="lt-label" title="Named payment systems report exact counts — but monthly or annually, not live.">Published&nbsp;·&nbsp;lagged</span>
+    <span id="pubTickerItems" class="lt-items"><span class="muted" style="font-size:0.8rem;">loading feeds…</span></span>
   </div>
 </div>
 
@@ -1027,12 +1033,22 @@ nav .nav-links a:hover { color: var(--text); }
             <th data-key="txnYear" data-type="string">Txns/yr</th>
             <th data-key="sector" data-type="string">Sector</th>
             <th data-key="confidence" data-type="number">Confidence <span class="sort-arrow"></span></th>
+            <th title="Vintage of the underlying estimate. Every leaderboard figure is a period-2024 annual estimate — compare with the seconds-fresh chain feeds in the ticker.">Data age</th>
             <th data-key="mestMult" data-type="number">MEST Mult <span class="sort-arrow"></span></th>
             <th data-key="mestPerSec" data-type="number">MEST/s <span class="sort-arrow"></span></th>
           </tr>
         </thead>
         <tbody id="leaderboardBody"></tbody>
       </table>
+      <p class="muted" style="font-size:0.82rem;margin-top:14px;line-height:1.5;">
+        <strong>Data age</strong> shows the vintage of each estimate. Every category above is
+        a period-2024 annual estimate — no live feed exists for these systems, which is the
+        whole point. Compare these <span class="age-badge age-stale">as of 2024</span> badges
+        with the <span class="age-badge age-fresh">seconds ago</span> ledger feeds in the top
+        ticker. TradFi reports itself in quarters and estimates; open ledgers report themselves
+        in seconds. See the <a href="analysis/deep-dives/" style="color:var(--accent-blue);">deep dives</a>
+        and <a href="data/SOURCES.md" style="color:var(--accent-blue);">data sources</a>.
+      </p>
     </div>
   </div>
 </section>
@@ -1443,6 +1459,17 @@ let activeFilter = 'All';
 
 function confClass(c) { return c > 70 ? 'conf-high' : c >= 50 ? 'conf-mid' : 'conf-low'; }
 
+// Data-age retrofit: every leaderboard estimate reflects the 2024 annual data corpus
+// (Run 6 baseline). Age is computed live so the contrast with the seconds-fresh chain
+// feeds grows every day the estimate is not refreshed. Staleness is content.
+const DATA_VINTAGE = '2024-12-31';
+function dataAgeBadgeHTML(asOf) {
+  const days = Math.floor((Date.now() - Date.parse(asOf)) / 86400000);
+  const cls = days > 540 ? 'age-stale' : days > 180 ? 'age-lagged' : 'age-fresh';
+  const yr = String(asOf).slice(0, 4);
+  return `<span class="age-badge ${cls}" title="Estimate vintage ${asOf} — no live feed exists for this category">as of ${yr} · ${days}d</span>`;
+}
+
 function renderTable() {
   const filtered = activeFilter === 'All' ? [...DATA] : DATA.filter(d => d.sector === activeFilter);
   filtered.sort((a, b) => {
@@ -1460,6 +1487,7 @@ function renderTable() {
       <td class="td-number muted">${d.txnYear}</td>
       <td><span class="td-sector ${SECTOR_CLASSES[d.sector]}">${SECTOR_LABELS[d.sector] || d.sector}</span></td>
       <td><span class="conf-badge ${confClass(d.confidence)}">${d.confidence}</span></td>
+      <td>${dataAgeBadgeHTML(d.asOf || DATA_VINTAGE)}</td>
       <td class="td-number">${d.mestMult}x</td>
       <td class="td-number">${d.mestPerSec.toLocaleString('en-US')}</td>
     </tr>
@@ -2000,9 +2028,13 @@ HYPOTHESES.forEach(h => {
 window.LiveLayer = (function () {
   const ORDER = ["bitcoin", "ethereum", "solana", "radix", "xrpl"];
   const JSON_URL = "data/live/chains.json";
+  const PUB_ORDER = ["upi", "pix", "faster_payments", "fedwire"];
+  const PUB_URL = "data/published/systems.json";
   // Chain snapshot cron cadence is 15 min → thresholds tuned to that.
   const FRESH_S = 20 * 60, LAGGED_S = 90 * 60;
-  let feeds = {};
+  // Published-stat feeds are lagged by design → day-scale thresholds.
+  const PUB_FRESH_D = 60, PUB_LAGGED_D = 270;
+  let feeds = {}, pubFeeds = {};
 
   const parseTs = (s) => (s ? Date.parse(s) : NaN);
 
@@ -2074,6 +2106,50 @@ window.LiveLayer = (function () {
     }
   }
 
+  function pubAgeClass(days) {
+    if (!isFinite(days)) return "age-none";
+    if (days > PUB_LAGGED_D) return "age-stale";
+    if (days > PUB_FRESH_D) return "age-lagged";
+    return "age-fresh";
+  }
+  function renderPublished() {
+    const el = document.getElementById("pubTickerItems");
+    if (!el) return;
+    const now = Date.now();
+    const html = PUB_ORDER.map((key) => {
+      const f = pubFeeds[key];
+      if (!f) return "";
+      const days = (now - parseTs(f.as_of)) / 86400000;
+      const ac = pubAgeClass(days);
+      const yr = (f.as_of || "").slice(0, 4);
+      const ageTxt = "as of " + (yr || "?") + " · " + Math.round(days) + "d stale";
+      const tip = esc(
+        (f.source_url ? "Source: " + f.source_url + "\n" : "") +
+        (f.period_covered ? "Period: " + f.period_covered + "\n" : "") +
+        (f.annual_txns ? "Txns: " + f.annual_txns + "\n" : "") +
+        (f.note ? "Note: " + f.note : "")
+      );
+      return `<span class="lt-item" title="${tip}">` +
+        `<span class="pulse-dot ${dotClass(ac)}"></span>` +
+        `<span class="lt-name">${esc(f.label || key)}</span>` +
+        `<span class="lt-tps">${fmtTps(f.tps)}</span><span class="lt-unit">tps</span>` +
+        `<span class="age-badge ${ac}">${ageTxt}</span></span>`;
+    }).join("");
+    el.innerHTML = html || `<span class="muted" style="font-size:0.8rem;">no published feeds</span>`;
+  }
+  async function loadPublished() {
+    try {
+      const r = await fetch(PUB_URL, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      pubFeeds = data.feeds || {};
+      renderPublished();
+    } catch (e) {
+      const el = document.getElementById("pubTickerItems");
+      if (el && !Object.keys(pubFeeds).length) el.textContent = "published feeds unavailable";
+    }
+  }
+
   // Optional: client-side live fetch for Bitcoin (mempool.space sends CORS headers)
   // to upgrade the badge to true seconds-fresh liveness.
   async function liveBitcoin() {
@@ -2096,12 +2172,14 @@ window.LiveLayer = (function () {
 
   function start() {
     loadCommitted().then(liveBitcoin);
+    loadPublished();
     setInterval(loadCommitted, 60 * 1000);   // re-read committed JSON each minute
     setInterval(liveBitcoin, 60 * 1000);     // refresh live Bitcoin each minute
+    setInterval(loadPublished, 6 * 60 * 60 * 1000); // published feeds change slowly
     setInterval(render, 1000);               // tick the "N ago" labels every second
   }
 
-  return { start, getFeeds: () => feeds };
+  return { start, getFeeds: () => feeds, getPublished: () => pubFeeds };
 })();
 
 document.addEventListener("DOMContentLoaded", () => window.LiveLayer.start());

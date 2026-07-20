@@ -1,0 +1,56 @@
+{
+  "generated_at": "2026-07-20T00:00:00Z",
+  "tier": 2,
+  "description": "Exact transaction counts from named payment systems, published on a lag (monthly/annual). These are measured, not estimated — but they report themselves in weeks-to-quarters, not seconds. Staleness is the point: compare these amber 'as of 2025' badges to the green 'seconds ago' chain feeds above. TPS is annualized to a calendar-second basis for comparability with the leaderboard.",
+  "update": "manual — curated from cited primary publications; see data/SOURCES.md for per-feed fetch-viability notes",
+  "feeds": {
+    "upi": {
+      "label": "UPI (India)",
+      "tps": 7240,
+      "unit": "tps",
+      "annual_txns": "228.3B (2025)",
+      "method": "published_stat",
+      "source_url": "https://www.npci.org.in/what-we-do/upi/product-statistics",
+      "period_covered": "2025 full year (Dec 2025 alone: 21.63B/mo record)",
+      "as_of": "2025-12-31",
+      "retrieved_at": "2026-07-20T00:00:00Z",
+      "note": "World's largest real-time payment rail by count. Monthly figures published by NPCI with a ~10-day lag."
+    },
+    "pix": {
+      "label": "Pix (Brazil)",
+      "tps": 2530,
+      "unit": "tps",
+      "annual_txns": "79.8B (2025)",
+      "method": "published_stat",
+      "source_url": "https://www.bcb.gov.br/en/financialstability/pixstatistics",
+      "period_covered": "2025 full year (approaching 8B/mo)",
+      "as_of": "2025-12-31",
+      "retrieved_at": "2026-07-20T00:00:00Z",
+      "note": "R$35.36T moved in 2025. BCB publishes an open OData API, but its endpoints returned 400/500 on verification (2026-07) — treated as manual until stable. That instability is itself an opacity signal."
+    },
+    "faster_payments": {
+      "label": "UK Faster Payments",
+      "tps": 164,
+      "unit": "tps",
+      "annual_txns": "~5.2B (2024)",
+      "method": "published_stat",
+      "source_url": "https://www.wearepay.uk/what-we-do/payment-systems/faster-payment-system/",
+      "period_covered": "2024 (Sept 2024: 430M/mo)",
+      "as_of": "2024-12-31",
+      "retrieved_at": "2026-07-20T00:00:00Z",
+      "note": "Pay.UK publishes monthly. One of the earliest instant-payment systems (2008)."
+    },
+    "fedwire": {
+      "label": "Fedwire Funds",
+      "tps": 6.7,
+      "unit": "tps",
+      "annual_txns": "~210.7M (2024)",
+      "method": "published_stat",
+      "source_url": "https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html",
+      "period_covered": "2024 (daily avg 836,322 txns; $4.51T/day)",
+      "as_of": "2024-12-31",
+      "retrieved_at": "2026-07-20T00:00:00Z",
+      "note": "High-value wholesale rail: ~$5.4M average transfer. Low count, extreme value. The Fed publishes annually — a full-year lag is baked in."
+    }
+  }
+}
