@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exchange-Traded Derivatives — Universe of Finance</title>
+<meta name="description" content="Category: Traditional Finance | Priority: #3 Last Updated: 2026-03-26 Transaction Definition: One standardised futures or options contract traded on a regulated exchange Executive">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Etd</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Exchange-Traded Derivatives</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">9,505</div></div><div class="chip"><div class="k">Confidence</div><div class="v green">88</div></div><div class="chip"><div class="k">Opacity</div><div class="v green">27</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#4/28</div></div></div>
+  <div class="chart-box"><h3>Traditional Finance — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart26"></canvas></div></div><script>new Chart(document.getElementById("chart26"),{"type": "bar", "data": {"labels": ["ETD (Derivatives)", "Equity Markets", "Commodities", "Forex", "Fixed Income", "OTC Derivatives"], "datasets": [{"data": [9505, 3500, 330, 127, 10.5, 0.17], "backgroundColor": ["#3b82f6", "#334155", "#334155", "#334155", "#334155", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#1-current-tps-2024">1. Current TPS (2024)</a></li><li><a href="#2-annual-volume-2024">2. Annual Volume (2024)</a></li><li><a href="#3-annual-notional-value">3. Annual Notional Value</a></li><li><a href="#4-historic-timeseries-2015-2024">4. Historic Timeseries (2015-2024)</a></li><li><a href="#5-subcategory-breakdown-2024">5. Subcategory Breakdown (2024)</a></li><li><a href="#6-growth-rates">6. Growth Rates</a></li><li><a href="#7-baseline-projection-2026-2035">7. Baseline Projection (2026-2035)</a></li><li><a href="#8-high-growth-projection">8. High-Growth Projection</a></li><li><a href="#9-conservative-projection">9. Conservative Projection</a></li><li><a href="#key-risks-and-caveats">Key Risks and Caveats</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#data-quality-assessment">Data Quality Assessment</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p><strong>Category</strong>: Traditional Finance | <strong>Priority</strong>: #3
+<strong>Last Updated</strong>: 2026-03-26
+<strong>Transaction Definition</strong>: One standardised futures or options contract traded on a regulated exchange</p>
+</blockquote>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Exchange-traded derivatives reached a staggering <strong>205.34 billion contracts</strong> in 2024, up 51% year-over-year and marking the sixth consecutive annual record (<a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA</a>). This translates to an estimated <strong>~9,500 average TPS</strong> across global exchanges, with peak-day spikes potentially reaching <strong>~57,000 TPS</strong>.</p>
+<p>The story of modern ETD is really the story of <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>. The National Stock Exchange of India alone accounts for the vast majority of global volume through equity index options, having transformed from a minor player to the world's largest derivatives exchange in just five years. Options now represent <strong>86% of all contracts traded</strong>, up from 45% in 2020.</p>
+<p>At approximately <strong>$3,700 trillion in annual notional turnover</strong>, ETD is one of the largest transaction categories in the Universe of Finance by value, though heavily skewed toward interest rate products in notional terms.</p>
+<hr/>
+<h2 id="1-current-tps-2024">1. Current TPS (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS (2024)</td>
+<td><strong>~9,500</strong></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Peak TPS estimate</td>
+<td><strong>~57,000</strong></td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Annual contracts traded</td>
+<td>205.34 billion</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Average daily volume</td>
+<td>~815 million contracts</td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methodology</strong>: 205.34B contracts / (252 trading days x 21.6h weighted effective hours x 3600s) = ~9,505 TPS. Peak estimated at 6x average based on Indian expiry-day concentration patterns. See <a href="/universe-of-finance/reports/traditional-finance/etd/workings/calculations.html">calculations</a>.</p>
+<p><strong>Sources</strong>: <a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA Annual Review 2024</a>, <a href="https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024">WFE FY 2024 Market Highlights</a></p>
+<hr/>
+<h2 id="2-annual-volume-2024">2. Annual Volume (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Total Volume</th>
+<th>Futures</th>
+<th>Options</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FIA</td>
+<td><strong>205.34B</strong></td>
+<td>28.22B</td>
+<td>177.12B</td>
+</tr>
+<tr>
+<td>WFE</td>
+<td><strong>180.22B</strong></td>
+<td>26.92B</td>
+<td>153.30B</td>
+</tr>
+</tbody>
+</table>
+<p>The FIA-WFE gap (~25B contracts) is due to FIA covering 85 exchanges in 33 countries versus WFE's member-only universe. FIA is used as the primary source throughout.</p>
+<p><strong>Key facts</strong>:
+- Options volume grew <strong>63.8%</strong> YoY; futures grew just <strong>1.2%</strong> (<a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA</a>)
+- Open interest at year-end: <strong>1.23 billion contracts</strong> (<a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA</a>)
+- The majority of growth came from equity index options, primarily on India's NSE</p>
+<hr/>
+<h2 id="3-annual-notional-value">3. Annual Notional Value</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Daily Turnover</th>
+<th>Annual (est.)</th>
+<th>Confidence</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interest rate ETD</td>
+<td>$12.65T/day</td>
+<td>~$3,226T</td>
+<td>🟢 High</td>
+<td><a href="https://www.bis.org/statistics/extderiv.htm">BIS</a></td>
+</tr>
+<tr>
+<td>FX ETD</td>
+<td>$0.185T/day</td>
+<td>~$47T</td>
+<td>🟢 High</td>
+<td><a href="https://www.bis.org/statistics/extderiv.htm">BIS</a></td>
+</tr>
+<tr>
+<td>Equity ETD</td>
+<td>—</td>
+<td>~$262T</td>
+<td>🟡 Medium</td>
+<td>Derived estimate</td>
+</tr>
+<tr>
+<td>Commodity ETD</td>
+<td>—</td>
+<td>~$155T</td>
+<td>🟡 Medium</td>
+<td>Derived estimate</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~$14.4T/day</strong></td>
+<td><strong>~$3,689T</strong></td>
+<td>🟡 Medium</td>
+<td>Composite</td>
+</tr>
+</tbody>
+</table>
+<p>Interest rate futures and options dominate in notional terms (87% of total), even though they represent only ~5% of contract volume. This is because individual IR contracts (e.g., CME Treasury futures at $100K-$200K face value) carry far larger notional amounts than Indian equity index options (~$1K-2K notional each).</p>
+<hr/>
+<h2 id="4-historic-timeseries-2015-2024">4. Historic Timeseries (2015-2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Total (B)</th>
+<th>Futures (B)</th>
+<th>Options (B)</th>
+<th>YoY Growth</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td>24.78</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td><a href="https://www.fia.org/fia/articles/2015-fia-annual-futures-and-options-volume-survey-asia-takes-lead">FIA</a></td>
+</tr>
+<tr>
+<td>2016</td>
+<td>25.22</td>
+<td>—</td>
+<td>—</td>
+<td>+1.8%</td>
+<td><a href="https://www.fia.org/marketvoice/articles/2016-annual-volume-survey">FIA</a></td>
+</tr>
+<tr>
+<td>2017</td>
+<td>25.20</td>
+<td>—</td>
+<td>—</td>
+<td>-0.1%</td>
+<td><a href="https://www.fia.org/fia/articles/total-2017-volume-252-billion-contracts-down-01-2016">FIA</a></td>
+</tr>
+<tr>
+<td>2018</td>
+<td>30.28</td>
+<td>—</td>
+<td>—</td>
+<td>+20.2%</td>
+<td><a href="https://www.fia.org/fia/articles/fia-releases-annual-trading-statistics-showing-record-etd-volume-2018">FIA</a></td>
+</tr>
+<tr>
+<td>2019</td>
+<td>34.47</td>
+<td>—</td>
+<td>—</td>
+<td>+13.8%</td>
+<td><a href="https://www.fia.org/fia/articles/record-year-derivatives">FIA</a></td>
+</tr>
+<tr>
+<td>2020</td>
+<td>46.77</td>
+<td>25.55</td>
+<td>21.22</td>
+<td>+35.7%</td>
+<td><a href="https://www.fia.org/fia/articles/global-futures-and-options-trading-reaches-record-level-2020">FIA</a></td>
+</tr>
+<tr>
+<td>2021</td>
+<td>62.58</td>
+<td>29.28</td>
+<td>33.31</td>
+<td>+33.8%</td>
+<td><a href="https://www.fia.org/fia/articles/global-futures-and-options-trading-hits-another-record-2021">FIA</a></td>
+</tr>
+<tr>
+<td>2022</td>
+<td>83.85</td>
+<td>29.32</td>
+<td>54.53</td>
+<td>+34.0%</td>
+<td><a href="https://www.statista.com/statistics/377025/global-futures-and-options-volume/">Statista/FIA</a></td>
+</tr>
+<tr>
+<td>2023</td>
+<td>137.31</td>
+<td>29.10</td>
+<td>108.20</td>
+<td>+63.8%</td>
+<td><a href="https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023">FIA</a></td>
+</tr>
+<tr>
+<td>2024</td>
+<td>205.34</td>
+<td>28.22</td>
+<td>177.12</td>
+<td>+49.5%</td>
+<td><a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key observation</strong>: Futures volume has been essentially flat at ~28-29B contracts since 2021. ALL growth is in options, driven almost entirely by Indian equity index options on NSE.</p>
+<hr/>
+<h2 id="5-subcategory-breakdown-2024">5. Subcategory Breakdown (2024)</h2>
+<h3 id="by-asset-class-wfe-data">By Asset Class (WFE data)</h3>
+<table>
+<thead>
+<tr>
+<th>Asset Class</th>
+<th>Share of Volume</th>
+<th>YoY Change</th>
+<th>Dominant Exchange</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equity (index + single stock)</td>
+<td><strong>~85%</strong></td>
+<td>+50.2%</td>
+<td>NSE India (97.7% of stock index options)</td>
+</tr>
+<tr>
+<td>Interest Rate</td>
+<td>~5%</td>
+<td>+15.4%</td>
+<td>CME Group (49-53% global share)</td>
+</tr>
+<tr>
+<td>ETF</td>
+<td>~4%</td>
+<td>+25.8%</td>
+<td>Nasdaq-US, Cboe, NYSE</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>~3%</td>
+<td>-56.5%</td>
+<td>NSE India, B3, CME</td>
+</tr>
+<tr>
+<td>Commodity</td>
+<td>~3%</td>
+<td>-4.1%</td>
+<td>Dalian, Zhengzhou, MCX India</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024">WFE FY 2024 Market Highlights</a></p>
+<h3 id="by-instrument-type">By Instrument Type</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Volume (B)</th>
+<th>Share</th>
+<th>YoY Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Options</td>
+<td>177.12</td>
+<td>86.3%</td>
+<td>+63.8%</td>
+</tr>
+<tr>
+<td>Futures</td>
+<td>28.22</td>
+<td>13.7%</td>
+<td>+1.2%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="by-region-wfe">By Region (WFE)</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Volume (B)</th>
+<th>Share</th>
+<th>YoY Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APAC</td>
+<td>142.66</td>
+<td>79.2%</td>
+<td>+47.8%</td>
+</tr>
+<tr>
+<td>Americas</td>
+<td>31.60</td>
+<td>17.5%</td>
+<td>+14.2%</td>
+</tr>
+<tr>
+<td>EMEA</td>
+<td>5.95</td>
+<td>3.3%</td>
+<td>+4.8%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="top-exchanges-2023-fia-rankings">Top Exchanges (2023 FIA Rankings)</h3>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Exchange</th>
+<th>Volume (B)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>NSE India</td>
+<td>84.8</td>
+<td>World's largest by contract volume</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B3 (Brazil)</td>
+<td>8.3</td>
+<td>Strong in IR, FX, equity</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CME Group</td>
+<td>6.1</td>
+<td>Dominant in IR and crypto ETD</td>
+</tr>
+<tr>
+<td>4</td>
+<td>BSE India</td>
+<td>5.9</td>
+<td>Growing from low base</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Cboe Global Markets</td>
+<td>3.71</td>
+<td>US equity/ETF options specialist</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023">FIA 2023 Rankings</a></p>
+<p>Additional 2024 data points:
+- <strong>CME Group</strong> 2024 ADV: 26.5 million contracts, up 9% (<a href="https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html">CME</a>)
+- <strong>Eurex</strong> 2024: 2.08 billion contracts, up 9% (<a href="https://www.deutsche-boerse.com/dbg-en/media/news-stories/press-releases/Full-year-and-December-2024-figures-at-Eurex-4250262">Deutsche Borse</a>)
+- <strong>CME Group</strong> 2025 ADV: 28.1 million contracts, up 6% (<a href="https://www.cmegroup.com/media-room/press-releases/2026/1/05/cme_group_reportsrecordannualadvof281millioncontractsin2025up6ye.html">CME</a>)</p>
+<hr/>
+<h2 id="6-growth-rates">6. Growth Rates</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>CAGR</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5-year (2019-2024)</td>
+<td><strong>42.8%</strong></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>9-year (2015-2024)</td>
+<td><strong>26.4%</strong></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Futures only (2020-2024)</td>
+<td><strong>2.5%</strong></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Options only (2020-2024)</td>
+<td><strong>70.0%</strong></td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical context</strong>: The headline CAGR of 42.8% is almost entirely explained by the explosion of Indian equity index options from ~10B contracts in 2019 to ~150B+ in 2024. This is a one-time structural shift driven by:</p>
+<ol>
+<li><strong>Weekly expiry contracts</strong> introduced by NSE (multiplied expiry-day trading opportunities)</li>
+<li><strong>Mobile trading apps</strong> (Zerodha, Groww, Angel One) bringing millions of retail traders to F&amp;O</li>
+<li><strong>Small lot sizes</strong> ($500-1,500 per contract) making options accessible to retail</li>
+<li><strong>Zero/low brokerage models</strong> reducing friction</li>
+</ol>
+<p>Futures growth has been essentially flat at ~2.5% CAGR over the same period, reflecting the mature, institutional nature of futures markets.</p>
+<hr/>
+<h2 id="7-baseline-projection-2026-2035">7. Baseline Projection (2026-2035)</h2>
+<p><strong>Scenario</strong>: Steady growth — options growth moderates as Indian regulations bite, futures stable.
+<strong>CAGR</strong>: 12%</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (B)</th>
+<th>Estimated Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>230</td>
+<td>10,645</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>258</td>
+<td>11,922</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>288</td>
+<td>13,353</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>323</td>
+<td>14,955</td>
+</tr>
+<tr>
+<td>2029</td>
+<td>362</td>
+<td>16,749</td>
+</tr>
+<tr>
+<td>2030</td>
+<td><strong>405</strong></td>
+<td><strong>18,760</strong></td>
+</tr>
+<tr>
+<td>2031</td>
+<td>454</td>
+<td>21,011</td>
+</tr>
+<tr>
+<td>2032</td>
+<td>508</td>
+<td>23,533</td>
+</tr>
+<tr>
+<td>2033</td>
+<td>569</td>
+<td>26,357</td>
+</tr>
+<tr>
+<td>2034</td>
+<td>638</td>
+<td>29,519</td>
+</tr>
+<tr>
+<td>2035</td>
+<td><strong>714</strong></td>
+<td><strong>33,062</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key assumptions</strong>: SEBI lot-size increases and weekly expiry restrictions reduce India options growth from ~60% to ~15%. Futures grow at ~5%. No major new markets open. See <a href="/universe-of-finance/reports/traditional-finance/etd/workings/assumptions.html">assumptions</a>.</p>
+<hr/>
+<h2 id="8-high-growth-projection">8. High-Growth Projection</h2>
+<p><strong>Scenario</strong>: Retail derivatives access expands globally + crypto ETD mainstreaming + ETF options boom continues.
+<strong>CAGR</strong>: 18%</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (B)</th>
+<th>Estimated Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2030</td>
+<td><strong>554</strong></td>
+<td><strong>25,653</strong></td>
+</tr>
+<tr>
+<td>2035</td>
+<td><strong>1,268</strong></td>
+<td><strong>58,686</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Drivers</strong>:
+- Retail derivatives platforms launch in 10+ new markets (Vietnam, Philippines, Kenya, Nigeria, Mexico, Colombia)
+- Bitcoin/Ethereum futures and options become standard products on CME, Cboe, Eurex
+- US ETF options growth sustains 25%+ annual rates
+- AI/algorithmic trading increases turnover velocity
+- No major regulatory clampdown globally</p>
+<hr/>
+<h2 id="9-conservative-projection">9. Conservative Projection</h2>
+<p><strong>Scenario</strong>: Regulatory tightening globally, especially in India.
+<strong>CAGR</strong>: 5%</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (B)</th>
+<th>Estimated Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2030</td>
+<td><strong>275</strong></td>
+<td><strong>12,737</strong></td>
+</tr>
+<tr>
+<td>2035</td>
+<td><strong>351</strong></td>
+<td><strong>16,256</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Drivers</strong>:
+- SEBI intensifies restrictions — India volume drops 30-50% from peak
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> maintains restrictions on retail derivatives access
+- US financial transaction tax proposals gain traction
+- European MiFID III adds position limits and reporting burden
+- Crypto derivatives face regulatory hostility from SEC/CFTC</p>
+<hr/>
+<h2 id="key-risks-and-caveats">Key Risks and Caveats</h2>
+<ol>
+<li>
+<p><strong>India concentration risk</strong>: ~79% of global ETD volume comes from APAC (primarily India). A single regulatory decision by SEBI could move the global number by 20-30% overnight.</p>
+</li>
+<li>
+<p><strong>Contract volume ≠ economic significance</strong>: A $1,000 Nifty option and a $200,000 Treasury future each count as "one contract." By notional value, interest rate derivatives dwarf equity in importance.</p>
+</li>
+<li>
+<p><strong>FIA vs WFE discrepancy</strong>: The two primary sources disagree by ~25B contracts (205B vs 180B). This analysis uses FIA as primary; all figures should be understood with a ±12% measurement uncertainty band.</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> is speculative</strong>: Without microsecond-level exchange data, the 57,000 peak TPS is a modelled estimate, not an observed measurement.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>True economic activity behind India options volume</strong>: NSE India accounts for the vast majority of global ETD volume, but much of this is short-dated, expiry-day speculation. The number of unique economic positions (vs. round-trip day trades) is unknown.</li>
+<li><strong>OTC-to-exchange migration rate</strong>: Some <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> are migrating to exchange-traded equivalents (e.g., OTC IRS to futures), but the exact conversion rate and its contribution to ETD growth is not tracked.</li>
+<li><strong>Retail vs. institutional breakdown by exchange</strong>: Most exchanges do not publish a clean retail/institutional split of derivatives trading volume.</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OTC-to-ETD migration</td>
+<td>Compare BIS OTC IRD turnover growth vs. CME/Eurex IR futures growth</td>
+<td>BIS triennial ($7.9T/day OTC IRD in 2025, +59%); CME IR ADV grew ~15%</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Open interest vs. volume ratio</td>
+<td>Use OI/volume as a measure of "real" position-taking vs. day-trading</td>
+<td>FIA reports year-end OI at 1.23B contracts vs. 205B traded = 0.6% ratio (highly turnover-driven)</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>India options "real" activity</td>
+<td>Compare open interest growth vs. volume growth; if OI lags, most volume is intraday speculation</td>
+<td>NSE publishes daily OI; SEBI monthly data on expiry-day concentration</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Crypto ETD contribution</td>
+<td>Track CME crypto futures/options growth as share of total ETD</td>
+<td>CME publishes crypto ADV separately; crypto ETD growing ~30-40% YoY</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>SEBI regulatory impact</td>
+<td>Model volume reduction from known regulatory changes (lot-size increases, weekly expiry restrictions)</td>
+<td>SEBI circular dates + NSE monthly volume post-implementation</td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li>If SEBI restricts weekly expiries further, could India lose 30-50% of its options volume? This would reduce global ETD by 25-40%.</li>
+<li>What is the "natural ceiling" for ETD volume growth once the India retail options boom plateaus?</li>
+<li>How much of futures' flat growth (~2.5% CAGR) is structural vs. cyclical? Are futures simply mature, or are they losing share to options and OTC?</li>
+<li>Can the US ETF options boom (growing 25%+ annually) become a second major driver after Indian equity options?</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>OI/Volume ratio as health check</strong>: Year-end OI of 1.23B vs. 205B contracts traded means each contract turns over ~167× per year — suggesting extreme short-term trading dominance</li>
+<li><strong>CME 2025 ADV</strong>: 28.1M contracts (+6% YoY) provides a "mature market" baseline growth rate to contrast against India's explosive trajectory</li>
+<li><strong>Eurex 2024</strong>: 2.08B contracts (+9%) — European ETD growth is steady and institutional, contrasting sharply with India's retail-driven explosion</li>
+<li><strong>BIS OTC IRD turnover</strong>: $7.9T/day (+59%) — if even 5% of this migrates to ETD (as futures-style swaps), it would add billions of contracts</li>
+</ul>
+<hr/>
+<h2 id="data-quality-assessment">Data Quality Assessment</h2>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Score</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data quality</td>
+<td>90/100</td>
+<td>FIA and WFE are authoritative; BIS provides notional data</td>
+</tr>
+<tr>
+<td>Completeness</td>
+<td>85/100</td>
+<td>Strong on volume, weaker on equity/commodity notional</td>
+</tr>
+<tr>
+<td>Methodology</td>
+<td>80/100</td>
+<td>TPS derivation requires assumptions; well-documented</td>
+</tr>
+<tr>
+<td>Projections</td>
+<td>75/100</td>
+<td>High uncertainty due to India regulatory trajectory</td>
+</tr>
+<tr>
+<td>Presentation</td>
+<td>85/100</td>
+<td>Comprehensive breakdown by all relevant dimensions</td>
+</tr>
+<tr>
+<td><strong>Weighted Total</strong></td>
+<td><strong>84/100</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><em>Weights: Data 0.30, Completeness 0.25, Methodology 0.20, Projections 0.15, Presentation 0.10</em></p>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.fia.org/etd-volume-reports">FIA ETD Volume Reports</a></li>
+<li><a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA 2024 Annual ETD Volume Review</a></li>
+<li><a href="https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023">FIA 2023 Annual Volume Survey</a></li>
+<li><a href="https://www.world-exchanges.org/our-work/articles/wfe-market-highlights-fy-2024">WFE FY 2024 Market Highlights</a></li>
+<li><a href="https://www.world-exchanges.org/our-work/statistics">WFE Statistics Portal</a></li>
+<li><a href="https://www.bis.org/statistics/extderiv.htm">BIS Exchange-Traded Derivatives Statistics</a></li>
+<li><a href="https://data.bis.org/topics/XTD_DER">BIS Data Portal — XTD</a></li>
+<li><a href="https://www.cmegroup.com/media-room/press-releases/2025/1/03/cme_group_reportsrecordannualadvof265millioncontractsin2024drive.html">CME Group 2024 Annual Volume</a></li>
+<li><a href="https://www.cmegroup.com/media-room/press-releases/2026/1/05/cme_group_reportsrecordannualadvof281millioncontractsin2025up6ye.html">CME Group 2025 Annual Volume</a></li>
+<li><a href="https://www.deutsche-boerse.com/dbg-en/media/news-stories/press-releases/Full-year-and-December-2024-figures-at-Eurex-4250262">Eurex 2024 Figures</a></li>
+<li><a href="https://www.fia.org/marketvoice/articles/explainer-meteoric-rise-indias-equity-derivatives-volume">FIA — India Equity Derivatives Explainer</a></li>
+<li><a href="https://coinlaw.io/cryptocurrency-derivatives-market-statistics/">Crypto Derivatives Statistics</a></li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/etd/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/traditional-finance/etd/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/traditional-finance/etd/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/traditional-finance/etd/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/etd/REPORT.md">analysis/traditional-finance/etd/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

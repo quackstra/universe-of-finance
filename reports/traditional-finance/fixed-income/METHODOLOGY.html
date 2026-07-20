@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixed Income & Bond Markets — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition What counts: One bond trade (purchase or sale) between counterparties, OR one repo transaction (repurchase agreement opening or closing leg) Counting point:">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Fixed Income</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Fixed Income & Bond Markets — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-adjustments">Key Adjustments</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li><strong>What counts</strong>: One bond trade (purchase or sale) between counterparties, OR one repo transaction (repurchase agreement opening or closing leg)</li>
+<li><strong>Counting point</strong>: Trade execution (reported to TRACE/MSRB in US; platform confirmation in Europe). Repo counted at the transaction instruction level (each settlement instruction = 1 transaction, per FICC GSD convention)</li>
+<li><strong>Why this point</strong>: US has mandatory trade reporting (TRACE, MSRB); execution is the only consistently observed event across geographies</li>
+<li><strong>Key ambiguities</strong>:</li>
+<li><strong>Repo inclusion</strong>: The single most consequential definitional decision. Repo adds ~868K trades/day (vs ~448K for cash bonds), nearly tripling the total. We include repo as a segment within <a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">fixed income</a> but report both with-repo and without-repo figures</li>
+<li><strong>Repo counting convention</strong>: FICC GSD counts settlement instructions, not economic trades. A repo with 10 collateral substitutions generates 10+ FICC transactions from one economic agreement. FICC peak of 1.206M transactions likely includes both repo AND cash Treasury clearing</li>
+<li><strong>Overnight vs. term repo</strong>: Overnight repo that rolls daily generates a new transaction each day (same economic position, 252 annual transactions). Similar to FX swap roll inflation</li>
+<li><strong>Triparty repo</strong>: One triparty repo may involve hundreds of underlying securities but is booked as one transaction at the triparty agent level</li>
+<li><strong>TRACE scope</strong>: Covers corporate, agency, and securitized bonds. Does NOT cover Treasuries or munis (separate systems). TRACE captures 99% of US corporate bond trading</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-us-bottom-up-anchored-by-trace-msrb">Method A: US Bottom-Up (Anchored by TRACE + MSRB)</h3>
+<ul>
+<li><strong>Source</strong>: FINRA TRACE 52M/year (corporate/agency/securitized) + MSRB 14.5M/year (municipal) + Treasury estimate 12.6M/year ($1,055B ADV / ~$21M avg trade)</li>
+<li><strong>Value</strong>: 79.1M US cash bond trades/year</li>
+<li><strong>Strengths</strong>: TRACE and MSRB are regulatory mandates with near-complete coverage. MSRB is direct count data. High confidence for US</li>
+<li><strong>Weaknesses</strong>: Treasury trade count is derived (no consolidated tape for Treasury trade counts). TRACE counts both sides of dealer-to-dealer trades</li>
+</ul>
+<h3 id="method-b-global-extrapolation">Method B: Global Extrapolation</h3>
+<ul>
+<li><strong>Source</strong>: US = ~70% of global cash bond trade count (based on electronic trading adoption and market structure analysis). US 79.1M / 0.70 = 113M global</li>
+<li><strong>Value</strong>: ~112.9M (with Europe 13.8M, APAC/EM 20M estimated separately)</li>
+<li><strong>Strengths</strong>: Uses the best-measured market (US) as anchor</li>
+<li><strong>Weaknesses</strong>: The 70% US share assumption is critical. Europe is less electronified (more voice), which means lower trade counts relative to value. APAC is poorly measured</li>
+</ul>
+<h3 id="method-c-repo-from-ficc-gsd-lch-repoclear">Method C: Repo from FICC GSD + LCH RepoClear</h3>
+<ul>
+<li><strong>Source</strong>: FICC GSD peak 1.206M transactions/day (Apr 9, 2025); normal ~600-750K/day, repo portion ~400-500K/day. LCH RepoClear 14.6M trade sides/year (~29K unique trades/day). <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> exchange repo ~160K trades/day</li>
+<li><strong>Value</strong>: ~868K repo trades/day globally (~219M/year)</li>
+<li><strong>Strengths</strong>: FICC peak is a hard data point from DTCC. LCH provides European anchor. China exchange repo adds a previously unknown component</li>
+<li><strong>Weaknesses</strong>: FICC transaction definition is unclear (settlement instructions vs. economic trades). Bilateral repo is unmeasured. Confidence interval remains wide (113M-378M annually)</li>
+</ul>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│                  FIXED INCOME COUNT MODEL                  │
+│                                                            │
+│  US TRACE+MSRB     Global Cash       Repo (FICC/LCH)     │
+│  [regulatory data]  [extrapolated]    [hard + estimated]   │
+│  ┌──────────┐      ┌──────────┐     ┌──────────┐         │
+│  │ 79.1M/yr │      │112.9M/yr │     │ 219M/yr  │         │
+│  │ US cash  │      │ global   │     │ global   │         │
+│  │ bonds    │      │ cash     │     │ repo     │         │
+│  └────┬─────┘      └────┬─────┘     └────┬─────┘         │
+│       │                 │                │                │
+│       └────────┬────────┘                │                │
+│                ▼                         │                │
+│       ┌────────────────┐                │                │
+│       │ CASH BONDS     │                │                │
+│       │ 112.9M/year    │                │                │
+│       │ ~3.6 TPS       │                │                │
+│       └────────┬───────┘                │                │
+│                │                         │                │
+│                └─────────┬───────────────┘                │
+│                          ▼                                │
+│                 ┌──────────────────┐                      │
+│                 │ TOTAL FIXED INC  │                      │
+│                 │ 331.6M/year      │                      │
+│                 │ ~10.5 TPS        │                      │
+│                 │ Range: 201-518M  │                      │
+│                 │ Confidence: 68   │                      │
+│                 └──────────────────┘                      │
+└──────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>Cash bond counts are anchored by TRACE (52M) and MSRB (14.5M) — high-confidence regulatory data. The Treasury component (12.6M) is derived and less certain. Global extrapolation assumes US = 70% of count, which is validated by the US having TRACE (no equivalent globally), the deepest corporate bond market, and the highest electronic trading adoption.</p>
+<p>Repo counts are anchored by FICC GSD peak data and LCH RepoClear annual data. The key insight from the Run 5 deep dive: previous estimates assumed $75-150M average repo trade size, but FICC data implies ~$9-12M per transaction (because FICC counts settlement instructions, not economic trades). This 8-10x increase in implied trade count per dollar is the most material revision in the fixed income methodology.</p>
+<h2 id="key-adjustments">Key Adjustments</h2>
+<h3 id="the-repo-inclusion-decision">The Repo Inclusion Decision</h3>
+<pre><code>Fixed Income: With vs Without Repo
+═════════════════════════════════════════════════════
+
+Cash bonds only:    ████████               112.9M/year  (~3.6 TPS)
+                    │
++ US repo:          ██████████████████     238.9M/year
+  (FICC ~500K/day)  │
++ Europe repo:      ███████████████████    264.1M/year
+  (LCH + Eurex)     │
++ China repo:       ████████████████████   314.5M/year
+  (exchange: 160K/d)│
++ Japan + UK + RoW: █████████████████████  331.6M/year  (~10.5 TPS)
+
+Range (low-high):   ████████░░░░░░░░░░░░░  201-518M/year
+</code></pre>
+<p>We include repo because:
+1. Repo is a fixed income transaction (collateralised by bonds)
+2. Repo daily value ($20T+) dwarfs cash bond trading
+3. FICC GSD provides hard transaction count data
+4. Excluding repo would understate fixed income activity by ~2x</p>
+<h3 id="ficc-transaction-definition-uncertainty">FICC Transaction Definition Uncertainty</h3>
+<p>The FICC GSD peak of 1.206M transactions (Apr 9, 2025) is our strongest anchor but has definitional ambiguity:</p>
+<table>
+<thead>
+<tr>
+<th>Interpretation</th>
+<th>Implied repo trades/day</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Includes cash Treasury + repo; each settlement instruction</td>
+<td>~400-500K repo (our central)</td>
+<td>Central estimate</td>
+</tr>
+<tr>
+<td>Repo only; each economic trade</td>
+<td>~1.0M repo</td>
+<td>Would double our repo count</td>
+</tr>
+<tr>
+<td>All FICC products; heavily inflated by novation/substitution</td>
+<td>~200-300K "real" repo</td>
+<td>Would halve our estimate</td>
+</tr>
+</tbody>
+</table>
+<p>This single definitional question is the largest source of uncertainty in the fixed income methodology. A DTCC investor relations inquiry could resolve it.</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>Fixed Income Overlap Waterfall
+═══════════════════════════════════════════════════
+
+Total FI trades (incl repo)  ██████████████████████  331.6M/year
+                             │
+(-) FX-related repo          ██████████████████████  331.6M/year
+    (collateralised by FX,   │  Counted HERE, not
+    but counted as FI)       │  in FX category
+                             │
+(-) Treasury ETD overlap     ██████████████████████  331.6M/year
+    (futures on bonds)       │  Treasury FUTURES are
+                             │  in ETD category, not
+                             │  here. Cash bonds only.
+                             ▼
+                             ════════════════════════
+De-duplicated FI             ██████████████████████  331.6M/year
+                             (no reduction — boundary
+                              is clean: cash+repo only)
+</code></pre>
+<ul>
+<li><strong>No overlap with ETD</strong>: Bond futures/options are in the ETD category. This category covers cash bonds and repo only</li>
+<li><strong>No overlap with <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC Derivatives</a></strong>: Interest rate swaps are OTC derivatives, not fixed income. This category is cash instruments only</li>
+<li><strong>Marginal overlap with FX</strong>: Some repo may be collateralised by non-domestic bonds involving FX legs, but this is counted as fixed income per convention</li>
+</ul>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Segment             Coverage   Source            Notes
+─────────────────── ────────── ──────────────── ──────────────────
+US corporate (TRACE) █████████ FINRA mandatory   99% US coverage
+US munis (MSRB)      █████████ MSRB mandatory    14.5M direct count
+US Treasury          ██████░░░ Derived from ADV  No trade count tape
+US repo (FICC)       ███████░░ DTCC FICC GSD     Peak data + estimates
+European bonds       ████░░░░░ Tradeweb ADV      No count equivalent
+European repo        ████░░░░░ LCH + ICMA        Outstanding, not count
+China repo           ████░░░░░ PBOC + SSE/SZSE   Limited granularity
+APAC/EM bonds        ██░░░░░░░ Estimated          No TRACE equivalent
+─────────────────── ────────── ──────────────── ──────────────────
+Overall: ~55% directly observed (US dominance)
+         ~45% estimated (non-US markets)
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+FINRA TRACE         ████░░░░░  █████████ ██████████  ██████████
+MSRB (munis)        ███░░░░░░  █████████ ██████████  ██████████
+SIFMA Statistics    ████████░  █████████ █████████░  ██████░░░░
+DTCC FICC GSD       ██░░░░░░░  █████████ █████████░  ████████░░
+LCH RepoClear       ██░░░░░░░  ████████░ █████████░  ██████░░░░
+Tradeweb ADV        ██░░░░░░░  █████████ ████████░░  ██████░░░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    58/100     90/100    92/100      72/100
+</code></pre>
+<ul>
+<li><strong>Score</strong>: 68/100</li>
+<li><strong>Key drivers of uncertainty</strong>:</li>
+<li>FICC GSD transaction definition is the single biggest unknown — does 1.206M include both cash Treasury and repo? Both opening and closing legs?</li>
+<li>Non-US bond trade counts are estimated, not observed. No TRACE equivalent exists outside the US</li>
+<li>Bilateral repo is unmeasured globally</li>
+<li>China exchange repo could have dramatically higher or lower per-trade sizes than assumed</li>
+<li>US Treasury trade count is derived ($1,055B ADV / ~$21M avg trade) — no consolidated trade count tape</li>
+<li><strong>High-confidence elements</strong>: TRACE (52M), MSRB (14.5M), US Treasury ADV ($1,055B), market outstanding ($145T)</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial report</td>
+<td>Run 2: Fixed income category created</td>
+</tr>
+<tr>
+<td>2026-03-27</td>
+<td>Count triangulation</td>
+<td>Run 4: Bottom-up segmented model</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Repo deep dive</td>
+<td>Run 5: FICC GSD + LCH anchors; repo revised from ~84M to ~219M/year</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Methodology doc created</td>
+<td>Run 6: Formal methodology documentation</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/fixed-income/METHODOLOGY.md">analysis/traditional-finance/fixed-income/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

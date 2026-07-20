@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance Claims — Calculations & Derivations — Universe of Finance</title>
+<meta name="description" content="Run 13 (2026-07-19). SECONDS_PER_YEAR = 31,536,000. Layer 1 — Claim Events (administrative) US Health Component Annual Basis Medical claims ~6.0B ~1B US population encounters × pl">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Deep Dives<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Insurance Claims — Calculations & Derivations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#layer-1-claim-events-administrative">Layer 1 — Claim Events (administrative)</a></li><li><a href="#layer-2-settlement-payments-money-movement">Layer 2 — Settlement Payments (money movement)</a></li><li><a href="#layer-3-net-new-to-big-number">Layer 3 — Net-New to Big Number</a></li><li><a href="#sensitivity">Sensitivity</a></li></ul></div><blockquote>
+<p>Run 13 (2026-07-19). SECONDS_PER_YEAR = 31,536,000.</p>
+</blockquote>
+<h2 id="layer-1-claim-events-administrative">Layer 1 — Claim Events (administrative)</h2>
+<h3 id="us-health">US Health</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Annual</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Medical claims</td>
+<td>~6.0B</td>
+<td>~1B US population encounters × plan coverage; consistent with CAQH scope</td>
+</tr>
+<tr>
+<td>Pharmacy claims</td>
+<td>~6.3B</td>
+<td>~6.3B US retail prescriptions/yr, each a PBM adjudication</td>
+</tr>
+<tr>
+<td>Dental claims</td>
+<td>~0.5B</td>
+<td>~150M insured × ~3 claims/yr</td>
+</tr>
+<tr>
+<td><strong>US health total</strong></td>
+<td><strong>~12.8B</strong></td>
+<td>→ 12.8e9 / 31.536e6 = <strong>406–412 TPS</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Cross-check: CAQH 2024 Index tracked <strong>31.5B verifications</strong> across medical plans covering
+63% of insured lives. Verifications &gt; claims (eligibility checks precede claims), so 31.5B
+verifications is consistent with ~13B distinct claims. Order of magnitude confirmed.</p>
+<h3 id="global-health">Global Health</h3>
+<ul>
+<li>US ≈ 40% of global health <em>spend</em> but a larger share of <em>transactional adjudication</em>
+  (single-payer systems batch/globally budget rather than adjudicate per-encounter).</li>
+<li>Scale factor applied: ~2.5× US → 12.8B × 2.5 ≈ <strong>~30B/yr</strong></li>
+<li>TPS = 30e9 / 31.536e6 = <strong>~951 TPS</strong></li>
+</ul>
+<h3 id="global-pc">Global P&amp;C</h3>
+<ul>
+<li>US auto: 6.2 collision claims / 100 insured vehicle-years × ~280M vehicles = ~17.4M
+  collision; add comprehensive + liability + commercial → ~35–45M</li>
+<li>US home: 5.3% × ~85M policies = ~4.5M</li>
+<li>US other P&amp;C (renters, marine, etc.): ~10M</li>
+<li><strong>US P&amp;C ≈ ~60M/yr</strong>; US ≈ ~30% of global P&amp;C premium → <strong>global ≈ ~200M/yr</strong></li>
+<li>TPS = 200e6 / 31.536e6 = <strong>~6.3 TPS</strong></li>
+</ul>
+<h3 id="global-lifeannuity">Global Life/Annuity</h3>
+<ul>
+<li>Death/maturity/surrender/annuity payouts: est. 50–100M/yr globally</li>
+<li>TPS = 75e6 / 31.536e6 = <strong>~2.4 TPS</strong></li>
+</ul>
+<h3 id="layer-1-total">Layer 1 total</h3>
+<p>30B + 0.2B + 0.075B ≈ <strong>~30.3B → but rounding health up to include all lines ≈ ~35B →
+~1,110 TPS gross administrative.</strong></p>
+<h2 id="layer-2-settlement-payments-money-movement">Layer 2 — Settlement Payments (money movement)</h2>
+<h3 id="health">Health</h3>
+<ul>
+<li>Claims: ~30B</li>
+<li>Batch ratio: 4–8 claims per ACH remittance → use 6</li>
+<li>Paid share (not denied / not zero-pay): ~0.75</li>
+<li>Payments = 30B ÷ 6 × 0.75 = <strong>3.75B payments/yr</strong></li>
+<li>TPS = 3.75e9 / 31.536e6 = <strong>~119 TPS</strong></li>
+</ul>
+<h3 id="pc-life">P&amp;C + Life</h3>
+<ul>
+<li>Mostly 1 claim = 1 payment (little batching)</li>
+<li>P&amp;C: ~0.2B → ~6 TPS; Life: ~0.075B → ~2.4 TPS</li>
+</ul>
+<h3 id="layer-2-total">Layer 2 total</h3>
+<p>3.75B + 0.2B + 0.075B ≈ <strong>~4.0B payments/yr → ~128 TPS gross</strong> (upper).
+Conservative floor (batch ratio 8, paid share 0.7): 30B/8×0.7 = 2.6B + 0.28B ≈ 2.9B →
+<strong>~92 TPS</strong>. Range: <strong>~80–130 TPS gross.</strong></p>
+<h2 id="layer-3-net-new-to-big-number">Layer 3 — Net-New to Big Number</h2>
+<ul>
+<li>~85–90% of settlement <em>value</em> already rides counted ACH/card rails (health EFT = ACH;
+  P&amp;C payouts = ACH/check/push-to-card).</li>
+<li>Net-new = instant/push-to-card disbursements + RTP payouts + emerging-market cash/
+  cross-border claim settlement uncounted elsewhere.</li>
+<li>Run 12 range: <strong>55–148 TPS</strong>.</li>
+<li>Refined: anchoring batch ratio (6) and paid share (0.75) puts Layer 2 at ~128 TPS gross;
+  net-new fraction ~10–15% of that plus uncounted EM cash claims → <strong>~90–100 TPS</strong>,
+  midpoint <strong>~95 TPS</strong>.</li>
+</ul>
+<h2 id="sensitivity">Sensitivity</h2>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Low</th>
+<th>Base</th>
+<th>High</th>
+<th>TPS swing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global health claims</td>
+<td>25B</td>
+<td>30B</td>
+<td>35B</td>
+<td>±0.6 payments-B → ±~16 TPS net</td>
+</tr>
+<tr>
+<td>Batch ratio</td>
+<td>8</td>
+<td>6</td>
+<td>4</td>
+<td>±~40 TPS (dominant)</td>
+</tr>
+<tr>
+<td>Paid share</td>
+<td>0.70</td>
+<td>0.75</td>
+<td>0.80</td>
+<td>±~8 TPS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dominant uncertainty: the claim-to-payment batch ratio.</strong> This is the number to pin down
+in a future run (requires payer-level ERA/EFT data).</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/deep-dives/insurance-claims/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/deep-dives/insurance-claims/workings/calculations.md">analysis/deep-dives/insurance-claims/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

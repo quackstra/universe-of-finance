@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L1 & L2 Blockchain — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition What counts: One on-chain transaction settled on a public, permissionless blockchain. The unit varies by architecture: Bitcoin: One UTXO transaction (may con">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Blockchain L1 L2</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>L1 & L2 Blockchain — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-adjustments">Key Adjustments</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li><strong>What counts</strong>: One on-chain transaction settled on a public, permissionless blockchain. The unit varies by architecture:</li>
+<li><strong>Bitcoin</strong>: One UTXO transaction (may contain multiple inputs/outputs)</li>
+<li><strong>Ethereum/EVM</strong>: One state transition triggered by an EOA or contract</li>
+<li><strong>Solana</strong>: One transaction (may contain multiple instructions)</li>
+<li><strong>Counting point</strong>: Inclusion in a finalized block (Bitcoin: 1 confirmation; Ethereum: finalized slot; Solana: confirmed slot)</li>
+<li><strong>Why this point</strong>: On-chain data is immutable and verifiable. Block explorers and indexers provide exact counts. This is the one category where the raw data is mathematically provable</li>
+<li><strong>Key ambiguities</strong>:</li>
+<li><strong>Solana vote transactions</strong>: Solana's consensus mechanism requires validators to submit vote transactions (~60% of total). These are protocol overhead, not user activity. Including votes: ~60M/day; excluding votes: ~24M/day. Our filtered estimate removes votes, failed txns, and MEV spam</li>
+<li><strong>Failed/reverted transactions</strong>: Ethereum and Solana count failed transactions in their totals. On Solana, revert rates peaked at 75.7% of non-vote txns (Apr 2024). Failed transactions consume resources but have no economic effect</li>
+<li><strong>Internal transactions</strong>: Ethereum contract-to-contract calls generate internal transactions NOT counted in the headline tx count (only the initiating EOA transaction counts)</li>
+<li><strong>L2 batch compression</strong>: L2 rollups batch hundreds of transactions into a single L1 data post. We count the L2 transactions (not the L1 batch posts)</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-chain-by-chain-block-explorer-aggregation">Method A: Chain-by-Chain Block Explorer Aggregation</h3>
+<ul>
+<li><strong>Source</strong>: Etherscan (Ethereum), Blockchain.com (Bitcoin), Solscan (Solana), L2Beat (rollups), BitInfoCharts (BNB Chain)</li>
+<li><strong>Value</strong>: ~70-90M/day raw (25-30B/year); ~35.9M/day filtered (13.1B/year)</li>
+<li><strong>Strengths</strong>: On-chain data is verifiable and immutable. Block explorers provide exact daily counts</li>
+<li><strong>Weaknesses</strong>: Each chain counts differently (UTXO vs account model vs instruction model). Aggregation is manual. Smaller chains/L2s may be undercounted</li>
+</ul>
+<h3 id="method-b-solana-filtered-model-run-3">Method B: Solana-Filtered Model (Run 3)</h3>
+<ul>
+<li><strong>Source</strong>: Solana raw ~60M/day → remove votes (~60%) → remove failed (~30% of remaining) → remove MEV bots (~15% of remaining) → ~13-24M "genuine user" txns/day</li>
+<li><strong>Value</strong>: Reduces combined TPS from ~800-1,000 (raw) to ~350-480 (filtered)</li>
+<li><strong>Strengths</strong>: Uses Solana's native vote/non-vote classification + reverted tx rate data + Jito/Helius MEV reports</li>
+<li><strong>Weaknesses</strong>: MEV bot identification is probabilistic (program ID matching). The boundary between "bot" and "user" is fuzzy — arbitrage bots perform a genuine economic function</li>
+</ul>
+<h3 id="method-c-value-weighted-cross-check">Method C: Value-Weighted Cross-Check</h3>
+<ul>
+<li><strong>Source</strong>: Bitcoin ~$3.5T annual value, Ethereum L1 ~$2.5T, Solana ~$400B+</li>
+<li><strong>Value</strong>: Economic significance per transaction varies 1000x+ across chains. Bitcoin: ~$7K/tx; Ethereum L1: ~$6K/tx; Solana: ~$8/tx</li>
+<li><strong>Strengths</strong>: Provides economic grounding — prevents overweighting high-count, low-value chains</li>
+<li><strong>Weaknesses</strong>: Value transferred includes self-transfers, bridge movements, and treasury operations</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│         SOLANA VOTE/SPAM FILTER PIPELINE                      │
+│                                                               │
+│  Solana raw transactions: ~60M/day                            │
+│  ┌──────────────────────────────────────────────────┐        │
+│  │ ████████████████████████████████████████████████  │ 60M    │
+│  └───────────────────────┬──────────────────────────┘        │
+│                          ▼                                    │
+│  ┌──────────────────────────────────────────────────┐        │
+│  │ FILTER 1: Remove Vote Transactions (~60%)         │        │
+│  │ Validator consensus votes = protocol overhead     │        │
+│  │ ████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░  │ →24M   │
+│  └───────────────────────┬──────────────────────────┘        │
+│                          ▼                                    │
+│  ┌──────────────────────────────────────────────────┐        │
+│  │ FILTER 2: Remove Failed/Reverted (~30% of rem.)   │        │
+│  │ Peak: 75.7% revert rate in Apr 2024               │        │
+│  │ Average: ~30% of non-vote fail                    │        │
+│  │ ██████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │ →17M   │
+│  └───────────────────────┬──────────────────────────┘        │
+│                          ▼                                    │
+│  ┌──────────────────────────────────────────────────┐        │
+│  │ FILTER 3: Remove MEV Bots (~15% of remainder)     │        │
+│  │ Sandwich attacks, arb bots (Jito/Helius data)     │        │
+│  │ ████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │ →14M   │
+│  └───────────────────────┬──────────────────────────┘        │
+│                          ▼                                    │
+│  ┌──────────────────────────────────────────────────┐        │
+│  │ FILTERED SOLANA: ~13-24M genuine txns/day         │        │
+│  │ (central estimate: ~14M)                          │        │
+│  │ ████████████                                      │        │
+│  └──────────────────────────────────────────────────┘        │
+│                                                               │
+│  Combined filtered TPS (all chains):                          │
+│  Solana ~162 + Ethereum L1 ~13.5 + L2s ~166 + BTC ~5.8       │
+│  + BNB ~40 + others ~28 = ~415 TPS                           │
+│  Range: 350-480 TPS                                           │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>Raw blockchain data provides exact transaction counts — the question is what to count. The raw aggregate (~800-1,000 TPS) is verifiable but misleading because it includes Solana vote transactions, failed transactions, and MEV bot activity that inflate the number by ~2x. The filtered estimate (~415 TPS, range 350-480) removes these non-economic transactions and is used as the primary figure. The filter methodology is documented in workings/solana-filter.md.</p>
+<h2 id="key-adjustments">Key Adjustments</h2>
+<h3 id="cross-architecture-normalization">Cross-Architecture Normalization</h3>
+<p>Different blockchain architectures count transactions differently:</p>
+<table>
+<thead>
+<tr>
+<th>Chain</th>
+<th>Architecture</th>
+<th>What is "1 transaction"</th>
+<th>Inflation factor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bitcoin</td>
+<td>UTXO</td>
+<td>1 UTXO spend (may consolidate inputs/outputs)</td>
+<td>1x (conservative)</td>
+</tr>
+<tr>
+<td>Ethereum</td>
+<td>Account</td>
+<td>1 state transition from EOA</td>
+<td>1x (standard)</td>
+</tr>
+<tr>
+<td>Solana</td>
+<td>Transaction + Instructions</td>
+<td>1 tx may contain multiple instructions</td>
+<td>1-5x vs ETH equivalent</td>
+</tr>
+<tr>
+<td>L2 Rollups</td>
+<td>Varies</td>
+<td>1 L2 tx = 1 state transition (posted in batches to L1)</td>
+<td>1x per L2 tx</td>
+</tr>
+</tbody>
+</table>
+<p>Solana's instruction model means a single "transaction" can perform 5+ operations that would each be separate transactions on Ethereum. This makes raw cross-chain comparison misleading. We count at the transaction level (not instruction level) for consistency.</p>
+<h3 id="l2-counting-convention">L2 Counting Convention</h3>
+<p>L2 rollups batch transactions for L1 submission. We count:
+- Each individual L2 transaction (at the sequencer level) = 1 transaction
+- NOT the L1 batch post (which is 1 L1 transaction containing 100-1000+ L2 txns)
+- L2 transactions are NOT additive to L1 — they are separate, though the L1 batch post IS counted in the L1 total</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>L1/L2 Blockchain — Superset Relationship
+═══════════════════════════════════════════════════
+
+L1/L2 on-chain transactions   ██████████████████████  13.1B/year
+  │                                                    (filtered)
+  │
+  │  CONTAINS as subsets:
+  │
+  ├── DeFi transactions        ████████████            est. ~40-50%
+  │   (DEX swaps, lending,                             of L1/L2 by count
+  │    LP actions)
+  │
+  ├── Stablecoin transfers     ██████████              est. ~30-40%
+  │   (USDT, USDC on-chain                            of L1/L2 by count
+  │    movements)
+  │
+  └── Native transfers         ████                    est. ~15-25%
+      (ETH/BTC/SOL sends,                             simple value transfer
+       NFT transfers, etc.)
+
+CRITICAL: DeFi + Stablecoins are SUBSETS, not additive.
+A Uniswap USDC→ETH swap counts as:
+  - 1 L1/L2 transaction (here)
+  - 1 DeFi transaction (DeFi capsule)
+  - 1 stablecoin transfer (Stablecoins capsule)
+DO NOT SUM ACROSS CAPSULES.
+</code></pre>
+<ul>
+<li><strong><a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> and <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">Stablecoins</a> are full subsets</strong>: Every DeFi transaction and every stablecoin transfer is an L1 or L2 blockchain transaction. The Digital Assets sector total = L1/L2 + CEX (no double-count because CEX is off-chain)</li>
+<li><strong>CEX is NOT a subset</strong>: CEX trades are off-chain. Zero overlap</li>
+<li><strong>Cross-chain bridge transactions</strong>: A bridge transfer generates transactions on BOTH the source and destination chains. This means one economic transfer = 2+ on-chain transactions. We count each chain's transactions separately (no deduplication)</li>
+</ul>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Chain               Coverage  Source           Notes
+─────────────────── ──────── ──────────────── ──────────────────
+Bitcoin             █████████ Blockchain.com   Exact, immutable
+Ethereum L1         █████████ Etherscan        Exact, immutable
+Solana              ████████░ Solscan/Helius   Vote filtering needed
+Base (L2)           ████████░ L2Beat/Basescan  Sequencer data
+Arbitrum (L2)       ████████░ L2Beat/Arbiscan  Sequencer data
+BNB Chain           ████████░ BscScan          Some spam inflation
+Optimism (L2)       ████████░ L2Beat           Sequencer data
+Other L2s/L3s       ████░░░░░ L2Beat partial   Dozens untracked
+Alt L1s (Sui, etc.) ███░░░░░░ Individual       Fragmented coverage
+─────────────────── ──────── ──────────────── ──────────────────
+By volume: ~90% of transactions on tracked chains
+By chain count: ~60% of chains tracked (long tail untracked)
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+Etherscan/Bitcoin   █████████  █████████ ██████████  ██████████
+L2Beat              ████████░  █████████ █████████░  ████████░░
+Solscan/Helius      ████████░  █████████ ████████░░  ████████░░
+BitInfoCharts       ██████░░░  █████████ ██████░░░░  ██████░░░░
+Chain-specific      ████░░░░░  █████████ ████████░░  ██████░░░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    78/100     92/100    84/100      82/100
+</code></pre>
+<ul>
+<li><strong>Score</strong>: 76/100</li>
+<li><strong>Key drivers of uncertainty</strong>:</li>
+<li>Solana vote/failed/MEV filtering is the single biggest methodological choice — it reduces Solana's contribution by ~75% and combined TPS by ~50%</li>
+<li>"What is a meaningful transaction?" is inherently subjective. Bitcoin's ~500K high-value txns/day and Solana's 60M mixed-quality txns/day are not comparable units</li>
+<li>L2/L3 fragmentation means dozens of small rollups are untracked</li>
+<li>Cross-chain bridge double-counting inflates totals by an unmeasured amount</li>
+<li>Historic data (pre-2022) is rough — no standardized cross-chain aggregator existed</li>
+<li><strong>High-confidence elements</strong>: Bitcoin and Ethereum L1 counts are mathematically exact and publicly verifiable. On-chain data is the most transparent in all of finance</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial report</td>
+<td>Run 2: L1/L2 category created</td>
+</tr>
+<tr>
+<td>2026-03-27</td>
+<td>Solana filter</td>
+<td>Run 3: Vote/failed/MEV filtering; TPS revised from ~800-1000 to ~415</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Methodology doc created</td>
+<td>Run 6: Formal methodology documentation</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/blockchain-l1-l2/METHODOLOGY.md">analysis/digital-assets/blockchain-l1-l2/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

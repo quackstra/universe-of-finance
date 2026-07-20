@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance Premium Payments — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Global insurance premium payments represent a massive but often overlooked payment flow. The global insurance industry c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Insurance Premiums</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Insurance Premium Payments</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">444</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">52</div></div><div class="chip"><div class="k">Opacity</div><div class="v red">76</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#16/28</div></div></div>
+  <div class="chart-box"><h3>Payments — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart20"></canvas></div></div><script>new Chart(document.getElementById("chart20"),{"type": "bar", "data": {"labels": ["Consumer Cards", "Digital Wallets", "Bank Transfers", "Bill Payments", "E-Commerce", "ATM Withdrawals", "Payroll", "BNPL", "Insurance Premiums", "P2P Transfers", "Remittances"], "datasets": [{"data": [24501, 19660, 15338, 3076, 1823, 1557, 1014, 634, 444, 270, 57], "backgroundColor": ["#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#3b82f6", "#334155", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections">Projections</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Global insurance premium payments represent a massive but often overlooked payment flow. The global insurance industry collected <strong>~$7.2 trillion in gross written premiums</strong> in 2024 (Swiss Re sigma), but what matters for TPS analysis is the <strong>transaction count</strong> — how many individual premium payment events occur. We estimate <strong>~12-16 billion insurance premium payment transactions annually</strong>, equivalent to <strong>~380-507 TPS</strong>. This is a low-frequency, high-value payment category compared to <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">consumer cards</a> or <a class="xref" href="/universe-of-finance/reports/payments/bill-payments/REPORT.html">bill payments</a>.</p>
+<p>Critically, <strong>~95%+ of insurance premium payments are overlay transactions</strong> — they flow through existing card rails, direct debit (bank transfer) systems, or ACH/SEPA channels. The incremental transaction count (payments that would not exist without the insurance product) is essentially the full ~12-16B, but the <em>infrastructure load</em> is already captured in card and bank transfer capsules.</p>
+<h2 id="scope">Scope</h2>
+<p>This analysis covers premium payments made by policyholders (personal and commercial) to insurers globally. It includes initial premiums and renewals but excludes claims payments (insurer-to-policyholder), reinsurance flows (insurer-to-insurer), and investment income. The unit of analysis is a single premium payment event — one monthly auto insurance debit = one transaction.</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume">Transaction Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS</td>
+<td>~443</td>
+<td>Derived from ~14B annual (<a href="/universe-of-finance/reports/payments/insurance-premiums/workings/calculations.html">calculations</a>)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~600-800</td>
+<td>Monthly billing cycle peaks on 1st/15th of month</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Daily volume</td>
+<td>~38 million</td>
+<td>Derived from annual total</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Annual transactions (2024)</td>
+<td>~14 billion</td>
+<td>Bottom-up model (<a href="/universe-of-finance/reports/payments/insurance-premiums/workings/calculations.html">calculations</a>)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual premium value (2024)</td>
+<td>~$7.2 trillion</td>
+<td>Swiss Re sigma No. 3/2025</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Avg transaction value</td>
+<td>~$514</td>
+<td>$7.2T / 14B txns</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="segment-breakdown">Segment Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Global Policies (est.)</th>
+<th>Payment Frequency</th>
+<th>Annual Txns (B)</th>
+<th>Avg Premium/Payment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto/Motor</td>
+<td>~1.5B policies</td>
+<td>Monthly (~70%), Annual (~30%)</td>
+<td>~4.4B</td>
+<td>~$150/month or ~$1,200/year</td>
+</tr>
+<tr>
+<td>Health</td>
+<td>~2.5B covered lives</td>
+<td>Monthly (~60%), Per-claim copay (~40%)</td>
+<td>~3.5B</td>
+<td>~$250/month (varies wildly)</td>
+</tr>
+<tr>
+<td>Property/Home</td>
+<td>~500M policies</td>
+<td>Annual (~50%), Quarterly (~30%), Monthly (~20%)</td>
+<td>~1.2B</td>
+<td>~$1,000-$3,000/year</td>
+</tr>
+<tr>
+<td>Life</td>
+<td>~2B policies in force</td>
+<td>Monthly (~50%), Annual (~30%), Quarterly (~20%)</td>
+<td>~3.2B</td>
+<td>~$100-$300/month</td>
+</tr>
+<tr>
+<td>Commercial/Specialty</td>
+<td>~200M policies</td>
+<td>Annual (~40%), Quarterly (~40%), Monthly (~20%)</td>
+<td>~0.8B</td>
+<td>~$5,000-$50,000/year</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>~13.1B</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Note: Adding payment failures, retries, and mid-term adjustments brings the working estimate to <strong>~14B</strong> transactions.</p>
+<h3 id="payment-channel-breakdown">Payment Channel Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Share by Count</th>
+<th>Share by Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Auto-debit / Direct debit</td>
+<td>~45%</td>
+<td>~40%</td>
+<td>Dominant in Europe, growing globally</td>
+</tr>
+<tr>
+<td>Card payment (credit/debit)</td>
+<td>~25%</td>
+<td>~20%</td>
+<td>Common for monthly premiums in US</td>
+</tr>
+<tr>
+<td>Bank transfer / ACH</td>
+<td>~15%</td>
+<td>~25%</td>
+<td>Preferred for large commercial premiums</td>
+</tr>
+<tr>
+<td>Agent collection (cash/check)</td>
+<td>~10%</td>
+<td>~10%</td>
+<td>Declining; still significant in emerging markets</td>
+</tr>
+<tr>
+<td>Digital wallet / app</td>
+<td>~5%</td>
+<td>~5%</td>
+<td>Growing rapidly; insurtechs leading adoption</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regional-breakdown-2024">Regional Breakdown (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Premium Volume ($T)</th>
+<th>Share</th>
+<th>Est. Txns (B)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>North America</td>
+<td>~$2.9T</td>
+<td>~40%</td>
+<td>~5.0B</td>
+<td>Swiss Re sigma, NAIC</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>~$1.7T</td>
+<td>~24%</td>
+<td>~3.5B</td>
+<td>Insurance Europe</td>
+</tr>
+<tr>
+<td>Asia-Pacific</td>
+<td>~$2.0T</td>
+<td>~28%</td>
+<td>~4.0B</td>
+<td>Swiss Re sigma</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>~$0.2T</td>
+<td>~3%</td>
+<td>~0.6B</td>
+<td>Estimated</td>
+</tr>
+<tr>
+<td>Middle East &amp; Africa</td>
+<td>~$0.1T</td>
+<td>~1.5%</td>
+<td>~0.4B</td>
+<td>Estimated</td>
+</tr>
+<tr>
+<td>Rest of World</td>
+<td>~$0.3T</td>
+<td>~3.5%</td>
+<td>~0.5B</td>
+<td>Estimated</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="global-insurance-premiums-2015-2024">Global Insurance Premiums (2015-2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Premium Volume ($T)</th>
+<th>YoY Growth</th>
+<th>Est. Txns (B)</th>
+<th>Est. TPS</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td>$4.6T</td>
+<td>—</td>
+<td>~9.5</td>
+<td>~301</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>$4.7T</td>
+<td>+2.2%</td>
+<td>~9.8</td>
+<td>~311</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>$4.9T</td>
+<td>+4.3%</td>
+<td>~10.2</td>
+<td>~323</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>$5.2T</td>
+<td>+6.1%</td>
+<td>~10.6</td>
+<td>~336</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>$5.4T</td>
+<td>+3.8%</td>
+<td>~11.0</td>
+<td>~349</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>$5.6T</td>
+<td>+3.7%</td>
+<td>~11.3</td>
+<td>~358</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>$6.0T</td>
+<td>+7.1%</td>
+<td>~12.0</td>
+<td>~380</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>$6.3T</td>
+<td>+5.0%</td>
+<td>~12.5</td>
+<td>~396</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>$6.8T</td>
+<td>+7.9%</td>
+<td>~13.3</td>
+<td>~422</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>$7.2T</td>
+<td>+5.9%</td>
+<td>~14.0</td>
+<td>~444</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><em>Sources: Swiss Re sigma annual reports (premium volumes). Transaction counts derived via bottom-up policy model.</em></p>
+<p><strong>Key observations:</strong>
+- Premium volumes have grown ~4.6% CAGR over the decade, driven by rate hardening (price increases) and penetration growth in Asia
+- Transaction COUNT growth outpaces premium VALUE growth because of the secular shift from annual to monthly billing (more transactions per policy)
+- COVID-19 had minimal impact on premium volumes — insurance is contractual and non-discretionary
+- Digital payment adoption accelerated post-COVID, reducing agent/cash collection and increasing card/direct debit share</p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>Premium CAGR</th>
+<th>Transaction Count CAGR</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015-2024 (9yr)</td>
+<td>~5.1%</td>
+<td>~4.4%</td>
+<td>Steady growth; rate hardening in 2022-2024</td>
+</tr>
+<tr>
+<td>2019-2024 (5yr)</td>
+<td>~5.9%</td>
+<td>~4.9%</td>
+<td>Through-cycle; COVID resilient</td>
+</tr>
+<tr>
+<td>2022-2024 (2yr)</td>
+<td>~6.9%</td>
+<td>~5.8%</td>
+<td>Hard market pricing inflating premiums</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-current-trends-continue">Baseline (Current Trends Continue)</h3>
+<p><strong>Assumptions:</strong>
+1. Global premium growth moderates to 4-5% annually as hard market cycle softens
+2. Monthly billing continues to displace annual billing, adding ~1% to transaction count growth above premium growth
+3. No major regulatory disruption to insurance distribution</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Txns (B)</th>
+<th>Premium Volume ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>488</td>
+<td>15.4</td>
+<td>$7.9T</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>537</td>
+<td>16.9</td>
+<td>$8.7T</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>591</td>
+<td>18.6</td>
+<td>$9.5T</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>753</td>
+<td>23.8</td>
+<td>$12.2T</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-emerging-market-penetration">High Growth (Emerging Market Penetration)</h3>
+<p><strong>Assumptions:</strong>
+1. Insurance penetration in <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>, SE Asia, <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> doubles by 2035
+2. Microinsurance and parametric products add 2B+ policies
+3. Embedded insurance (integrated at point of sale) creates new premium flows</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Txns (B)</th>
+<th>Premium Volume ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>520</td>
+<td>16.4</td>
+<td>$8.3T</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>613</td>
+<td>19.3</td>
+<td>$9.8T</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>722</td>
+<td>22.8</td>
+<td>$11.5T</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>1,045</td>
+<td>33.0</td>
+<td>$16.0T</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-market-saturation">Conservative (Market Saturation)</h3>
+<p><strong>Assumptions:</strong>
+1. Premium growth slows to 2-3% as developed market penetration plateaus
+2. Embedded insurance cannibalizes traditional premium flows rather than adding net new
+3. Climate risk repricing reduces policy count in some segments</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Txns (B)</th>
+<th>Premium Volume ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>466</td>
+<td>14.7</td>
+<td>$7.6T</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>494</td>
+<td>15.6</td>
+<td>$8.0T</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>524</td>
+<td>16.5</td>
+<td>$8.5T</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>613</td>
+<td>19.3</td>
+<td>$9.9T</td>
+</tr>
+</tbody>
+</table>
+<p><em>Full projection calculations: <a href="/universe-of-finance/reports/payments/insurance-premiums/workings/calculations.html">workings/calculations.md</a></em></p>
+<p><strong>2035 Range:</strong> Insurance premium payments are projected to reach <strong>19-33 billion transactions annually</strong> by 2035, with TPS ranging from <strong>~613 (conservative) to ~1,045 (high growth)</strong>.</p>
+<hr/>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<h3 id="double-counting-risk-high">Double-Counting Risk: HIGH</h3>
+<p>Insurance premium payments are <strong>almost entirely overlay transactions</strong> on existing payment infrastructure:</p>
+<table>
+<thead>
+<tr>
+<th>Underlying Rail</th>
+<th>% of Premium Txns</th>
+<th>Already Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct debit (bank transfers)</td>
+<td>~45%</td>
+<td>Bank Transfers capsule</td>
+</tr>
+<tr>
+<td>Card payments (credit/debit)</td>
+<td>~25%</td>
+<td>Consumer Cards capsule</td>
+</tr>
+<tr>
+<td>ACH / bank transfer</td>
+<td>~15%</td>
+<td>Bank Transfers capsule</td>
+</tr>
+<tr>
+<td>Cash/check (declining)</td>
+<td>~10%</td>
+<td>Not counted elsewhere</td>
+</tr>
+<tr>
+<td>Digital wallet</td>
+<td>~5%</td>
+<td>Digital Wallets capsule</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Overlap estimate:</strong> ~85-90% of insurance premium transactions are already counted in the Consumer Cards or <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a> capsules. Only cash/check collections (~10%) and some agent-mediated flows represent truly incremental infrastructure load.</p>
+<p><strong>For TPS aggregation purposes:</strong> Insurance premiums should be treated as a <strong>use case overlay</strong>, not an additive transaction category. The ~14B annual transactions describe the economic purpose, but the infrastructure transactions are already captured in underlying rail capsules.</p>
+<h3 id="incremental-tps-contribution">Incremental TPS Contribution</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Total Txns (B)</th>
+<th>Overlap %</th>
+<th>Incremental Txns (B)</th>
+<th>Incremental TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current (2024)</td>
+<td>14.0</td>
+<td>90%</td>
+<td>1.4</td>
+<td>~44</td>
+</tr>
+<tr>
+<td>Baseline (2030)</td>
+<td>18.6</td>
+<td>88%</td>
+<td>2.2</td>
+<td>~70</td>
+</tr>
+<tr>
+<td>High (2035)</td>
+<td>33.0</td>
+<td>85%</td>
+<td>5.0</td>
+<td>~158</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>Insurance is a $7.2T annual payment flow but a low-TPS category.</strong> At ~14B transactions and ~444 TPS, it processes roughly 1/55th the transaction count of consumer cards despite handling ~14% of card-equivalent value. This reflects high average transaction values ($514 vs. $67 for cards).</p>
+</li>
+<li>
+<p><strong>The shift from annual to monthly billing is the key transaction count driver.</strong> As insurers move to monthly billing (especially auto and health), the same premium dollar generates 12x the transactions. This trend adds ~1% per year to transaction count growth above premium growth.</p>
+</li>
+<li>
+<p><strong>~90% of insurance premium payments are already counted in other capsules.</strong> Card payments and direct debits are the primary rails. For deduplication, insurance premiums are a use-case label, not a distinct infrastructure category.</p>
+</li>
+<li>
+<p><strong>Emerging markets are wildly under-penetrated.</strong> Insurance penetration (premiums/GDP) is ~7% in developed markets vs. ~1.5% in emerging markets. If India and Africa reach even 3%, the transaction count could double.</p>
+</li>
+<li>
+<p><strong>Agent collection is the last cash frontier in insurance.</strong> ~10% of premiums are still collected by agents in cash, primarily in India, Southeast Asia, and Africa. Mobile money and <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> are rapidly digitizing this channel.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>No single source publishes global insurance transaction counts.</strong> All transaction estimates are modeled bottom-up from policy counts and payment frequency assumptions. Confidence is 🟡 Medium at best.</li>
+<li><strong>Policy count data is fragmented.</strong> Swiss Re sigma publishes premium volumes reliably but not policy counts. Policy counts are estimated from national regulator data (NAIC, EIOPA, IRDAI) and individual insurer reports.</li>
+<li><strong>Payment frequency assumptions vary by market.</strong> Monthly billing dominates in the US but annual/quarterly billing is more common in Europe and Asia. The global average is uncertain.</li>
+<li><strong>Health insurance is the hardest segment.</strong> In single-payer systems (UK, Canada), there are no consumer premium payments for public health coverage. The 2.5B "covered lives" figure includes both private and public-but-supplemental insurance.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>Exact global policy count by line of business.</strong> No single source aggregates this.</li>
+<li><strong>Payment frequency distribution.</strong> What fraction of auto policies are paid monthly vs. annually by country?</li>
+<li><strong>Agent collection volumes.</strong> Cash premium collection in emerging markets is largely untracked.</li>
+<li><strong>Embedded insurance transaction volumes.</strong> Are these new premium flows or reclassified existing ones?</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global policy count</td>
+<td>Sum top-10 markets from national regulators (US NAIC, EIOPA, IRDAI, CIRC, FSA Japan) — covers ~80% of global premiums</td>
+<td>NAIC: 3.2B policies in force (US); IRDAI: 650M policies (India)</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Payment frequency</td>
+<td>Survey top-20 insurers on billing mix; cross-reference with payment processor data (Stripe Insurance, Adyen)</td>
+<td>US industry: ~70% monthly for auto; Europe: ~50% annual for home</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>Cash/agent collection</td>
+<td>India IRDAI publishes channel-wise premium data; LIC annual report breaks out agent vs. digital</td>
+<td>IRDAI annual report; LIC India 2024 data</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Embedded insurance growth</td>
+<td>Track announcements from Tesla Insurance, Amazon Protect, Apple Care+ as proxy for embedded premium volumes</td>
+<td>Individual company disclosures</td>
+<td>🔴</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.swissre.com/institute/research/sigma-research/sigma-2025-03.html">Swiss Re — sigma No. 3/2025: World Insurance Premium Overview</a></li>
+<li><a href="https://www.iaisweb.org/activities-topics/financial-stability/global-insurance-market-report/">IAIS — Global Insurance Market Report 2024</a></li>
+<li><a href="https://www.insuranceeurope.eu/statistics">Insurance Europe — European Insurance in Figures 2024</a></li>
+<li><a href="https://content.naic.org/cipr-topics/insurance-industry-glance">NAIC — US Insurance Industry at a Glance 2024</a></li>
+<li><a href="https://www.lloyds.com/about-lloyds/investor-relations/financial-performance/annual-reports">Lloyd's of London — Annual Report 2024</a></li>
+<li><a href="https://irdai.gov.in/annual-report">IRDAI — Annual Report 2023-24 (India)</a></li>
+<li><a href="https://www.swissre.com/institute/research/sigma-research.html">Swiss Re — sigma No. 4/2024: World Insurance — Riding Out the Storm</a></li>
+<li><a href="https://www.mckinsey.com/industries/financial-services/our-insights/global-insurance-report">McKinsey — Global Insurance Report 2025</a></li>
+<li><a href="https://www.statista.com/topics/1466/insurance/">Statista — Insurance Premiums Worldwide 2024</a></li>
+<li><a href="https://www.alliedmarketresearch.com/insurance-market">Allied Market Research — Insurance Market Size 2024-2032</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/insurance-premiums/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/payments/insurance-premiums/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/payments/insurance-premiums/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/payments/insurance-premiums/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/insurance-premiums/REPORT.md">analysis/payments/insurance-premiums/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

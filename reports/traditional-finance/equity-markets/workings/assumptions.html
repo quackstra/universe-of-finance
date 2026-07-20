@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equity Markets — Assumptions Register — Universe of Finance</title>
+<meta name="description" content="Core Definitions Assumption Value Rationale Definition of 'transaction' One executed trade (matched buy + sell) Per Universe of Finance methodology Trading days per year 252 US mar">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Equity Markets — Assumptions Register</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#core-definitions">Core Definitions</a></li><li><a href="#data-interpretation-assumptions">Data Interpretation Assumptions</a></li><li><a href="#estimation-assumptions">Estimation Assumptions</a></li><li><a href="#projection-assumptions">Projection Assumptions</a></li><li><a href="#known-data-gaps">Known Data Gaps</a></li></ul></div><h2 id="core-definitions">Core Definitions</h2>
+<table>
+<thead>
+<tr>
+<th>Assumption</th>
+<th>Value</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definition of "transaction"</td>
+<td>One executed trade (matched buy + sell)</td>
+<td>Per Universe of Finance methodology</td>
+</tr>
+<tr>
+<td>Trading days per year</td>
+<td>252</td>
+<td>US market convention; varies by market (245-253)</td>
+</tr>
+<tr>
+<td>Effective global trading hours/day</td>
+<td>16-22 hours</td>
+<td>Overlapping sessions across time zones</td>
+</tr>
+<tr>
+<td>Primary session hours</td>
+<td>6.5 hours (per market)</td>
+<td>Standard for most major exchanges</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-interpretation-assumptions">Data Interpretation Assumptions</h2>
+<h3 id="wfe-number-of-trades-metric">WFE "Number of Trades" Metric</h3>
+<ul>
+<li><strong>Assumption</strong>: WFE "number of trades" counts each executed fill as one trade</li>
+<li><strong>Impact</strong>: If WFE counts order submissions differently, this would change estimates</li>
+<li><strong>Confidence</strong>: 🟢 High — WFE methodology is well-documented</li>
+</ul>
+<h3 id="world-bank-stocks-traded-total-value">World Bank "Stocks Traded, Total Value"</h3>
+<ul>
+<li><strong>Assumption</strong>: World Bank data captures the same scope as WFE electronic order book (EOB)</li>
+<li><strong>Reality</strong>: World Bank data tends to be narrower (excludes some OTC, negotiated trades)</li>
+<li><strong>Impact</strong>: Our value estimates may undercount by 15-30%</li>
+<li><strong>Confidence</strong>: 🟢 High — World Bank sources from WFE/S&amp;P</li>
+</ul>
+<h3 id="off-exchange-dark-pool-inclusion">Off-Exchange / Dark Pool Inclusion</h3>
+<ul>
+<li><strong>Assumption</strong>: WFE data includes TRF-reported trades in the US</li>
+<li><strong>Assumption</strong>: Dark pool volume in Europe (~10-15% of equity volume) is partially captured</li>
+<li><strong>Impact</strong>: If off-exchange is excluded, actual global trades could be 20-30% higher</li>
+<li><strong>Confidence</strong>: 🟡 Medium — Coverage varies by exchange reporting</li>
+</ul>
+<h2 id="estimation-assumptions">Estimation Assumptions</h2>
+<h3 id="average-trade-size">Average Trade Size</h3>
+<ul>
+<li><strong>Assumption</strong>: Global blended average trade size ~$1,730 in 2024</li>
+<li><strong>Derivation</strong>: $106.5T value / 61.5B estimated trades</li>
+<li><strong>US average</strong>: ~$10,000-15,000 (institutional-heavy)</li>
+<li><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>/<a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> average</strong>: ~$1,000-3,000 (retail-heavy, smaller lots)</li>
+<li><strong>Trend</strong>: Declining due to fractional shares, retail participation, HFT fragmentation</li>
+<li><strong>Confidence</strong>: 🟡 Medium</li>
+</ul>
+<h3 id="apac-share-of-global-trade-count">APAC Share of Global Trade Count</h3>
+<ul>
+<li><strong>Assumption</strong>: APAC represents ~65% of global equity trades by count in 2024</li>
+<li><strong>Rationale</strong>: India (#3 globally by trade count, +74% YoY), China (SSE + SZSE), <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>, Korea</li>
+<li><strong>Confidence</strong>: 🟡 Medium — based on WFE regional data + individual exchange reports</li>
+</ul>
+<h3 id="peak-tps-calculation">Peak TPS Calculation</h3>
+<ul>
+<li><strong>Assumption</strong>: Peak day sees ~3x average daily volume</li>
+<li><strong>Assumption</strong>: 20% of peak-day volume concentrates in first 30 minutes of the busiest market</li>
+<li><strong>Confidence</strong>: 🔴 Low — highly dependent on specific event and market</li>
+</ul>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<h3 id="baseline-scenario-60-trade-cagr-50-value-cagr">Baseline Scenario (6.0% trade CAGR, 5.0% value CAGR)</h3>
+<ul>
+<li>Moderate continued growth in emerging market participation</li>
+<li>Fractional shares become standard globally</li>
+<li>No major regulatory disruption to HFT</li>
+<li>GDP growth ~3% globally, equity returns ~5-7% nominal</li>
+<li>Gradual shift from developed to emerging market share</li>
+</ul>
+<h3 id="high-growth-scenario-90-trade-cagr-75-value-cagr">High-Growth Scenario (9.0% trade CAGR, 7.5% value CAGR)</h3>
+<ul>
+<li>India equity market participation explodes (demat accounts growing 30%+ annually)</li>
+<li>Fractional share trading becomes global standard</li>
+<li>Tokenized equities on blockchain reduce friction</li>
+<li>Emerging market exchanges modernize (<a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>, SE Asia)</li>
+<li>Retail participation rises to 40-50% globally (currently 20-35% in developed markets)</li>
+<li>24/7 trading gains traction in major markets</li>
+<li>Goldman Sachs: EM equity market cap share rises from 27% to 35% by 2030</li>
+</ul>
+<h3 id="conservative-scenario-30-trade-cagr-30-value-cagr">Conservative Scenario (3.0% trade CAGR, 3.0% value CAGR)</h3>
+<ul>
+<li>SEC/EU HFT regulation reduces algorithmic trade volume</li>
+<li>Payment for order flow (PFOF) ban in EU reduces retail activity</li>
+<li>Tick size reforms (SEC Rule 612 amendments) reduce order fragmentation</li>
+<li>Market consolidation reduces number of venues</li>
+<li>Compliance costs ($1.5B+/year for HFT firms) drive exits</li>
+<li>Geopolitical fragmentation reduces cross-border trading</li>
+<li>Higher interest rates suppress equity valuations</li>
+</ul>
+<h2 id="known-data-gaps">Known Data Gaps</h2>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No WFE granular annual trade count for 2024</td>
+<td>Must estimate from monthly + growth rates</td>
+<td>Triangulated from 3 methods</td>
+</tr>
+<tr>
+<td>Individual exchange trade counts (not value) scarce</td>
+<td>Exchange breakdown is estimated</td>
+<td>Used WFE growth rates applied to prior-year baselines</td>
+</tr>
+<tr>
+<td>Pre-2019 trade count data unavailable</td>
+<td>Historical timeseries estimated from value data</td>
+<td>Used declining average trade size assumption</td>
+</tr>
+<tr>
+<td>Dark pool trade counts globally</td>
+<td>Off-exchange may be undercounted</td>
+<td>Flagged as potential 20-30% undercount</td>
+</tr>
+<tr>
+<td>Shenzhen/Shanghai individual trade counts</td>
+<td>Not published in English sources</td>
+<td>Estimated from WFE APAC totals and growth rates</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/equity-markets/workings/assumptions.md">analysis/traditional-finance/equity-markets/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

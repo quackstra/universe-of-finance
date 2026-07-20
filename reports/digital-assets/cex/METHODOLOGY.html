@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centralised Crypto Exchanges — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition What counts: One matched trade on a centralised exchange order book — a buy order matched against a sell order for any crypto asset (spot or derivative) Coun">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Cex</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Centralised Crypto Exchanges — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-adjustments">Key Adjustments</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li><strong>What counts</strong>: One matched trade on a centralised exchange order book — a buy order matched against a sell order for any crypto asset (spot or derivative)</li>
+<li><strong>Counting point</strong>: Internal matching engine execution. CEX trades are off-chain — they occur on the exchange's internal database, NOT on any blockchain</li>
+<li><strong>Why this point</strong>: CEX order matching is the crypto equivalent of an exchange trade execution. Unlike on-chain data, CEX trade counts are NOT directly verifiable</li>
+<li><strong>Key ambiguities</strong>:</li>
+<li><strong>No exchange publishes trade counts</strong>: This is the fundamental measurement problem. All CEXs report dollar VOLUME, not trade COUNT. Our entire TPS estimate is derived from volume / assumed average trade size</li>
+<li><strong>Wash trading</strong>: Artificial volume inflates reported numbers. Even after CoinGecko trust-score filtering, an estimated 15-45% of volume on individual exchanges may be wash-traded</li>
+<li><strong>Derivatives notional</strong>: A 100x leveraged perpetual futures trade on $100 collateral registers as $10,000 in volume. Derivatives volume ($58.5T) is notional, not economic</li>
+<li><strong>Zero-fee pair inflation</strong>: Binance's zero-fee BTC pairs generate volume that may be genuine incentivised trading OR wash trading. This ambiguity alone affects ~15% of total spot volume</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-volume-average-trade-size-raw">Method A: Volume / Average Trade Size (Raw)</h3>
+<ul>
+<li><strong>Source</strong>: CoinGecko — $77.3T combined annual volume (spot $18.83T + derivatives $58.5T)</li>
+<li><strong>Value</strong>: $77.3T / 365 days / $605 avg trade size ≈ ~350M trades/day ≈ ~4,050 TPS (unadjusted)</li>
+<li><strong>Strengths</strong>: Uses industry-standard volume data from CoinGecko's top-15 "trusted" exchanges</li>
+<li><strong>Weaknesses</strong>: Average trade size ($605) is assumed from Coinbase trade data extrapolation; actual sizes vary dramatically by exchange and product</li>
+</ul>
+<h3 id="method-b-tiered-wash-trading-model">Method B: Tiered Wash Trading Model</h3>
+<ul>
+<li><strong>Source</strong>: Academic research (NBER/Yale, CEPR), industry reports (Bitwise, Kaiko, Forbes/BTI), regulatory data</li>
+<li><strong>Value</strong>: 25% blended wash trading reduction → ~3,040 TPS (range: 2,685-3,275)</li>
+<li><strong>Methodology</strong>: Exchanges segmented into 3 tiers:</li>
+<li>Tier 1 (Regulated: Coinbase, Kraken, Upbit): 15% of volume, 3.5% wash</li>
+<li>Tier 2 (Semi-regulated: Binance, OKX, Bybit): 55% of volume, 20% wash</li>
+<li>Tier 3 (Lower-tier: HTX, KuCoin, Gate.io): 30% of volume, 45% wash</li>
+<li><strong>Strengths</strong>: Principled per-tier adjustment based on regulatory status. Narrows confidence interval from 1,250-wide to 590-wide</li>
+<li><strong>Weaknesses</strong>: Tier-level percentages are themselves uncertain. Tier 2 (especially Binance at 39% spot share) is the most impactful variable</li>
+</ul>
+<h3 id="method-c-regional-wash-trading-model-primary">Method C: Regional Wash Trading Model (Primary)</h3>
+<ul>
+<li><strong>Source</strong>: Geographic decomposition using Chainalysis Geography Report, regional regulatory data, and per-region wash estimates</li>
+<li><strong>Value</strong>: 20.6% blended wash trading reduction → ~3,210 TPS (range: 2,890-3,450)</li>
+<li><strong>Methodology</strong>: 8 geographic regions with region-specific wash rates based on regulatory environment</li>
+</ul>
+<pre><code>┌───────────────────────────────────────────────────────────┐
+│            CEX WASH TRADING FILTER PIPELINE                 │
+│                                                             │
+│  REPORTED VOLUME                                            │
+│  $77.3T combined ($18.83T spot + $58.5T derivatives)        │
+│  ┌──────────────────────────────────────────────────┐      │
+│  │ Reported ~4,050 TPS (unadjusted)                  │      │
+│  └───────────────────────┬──────────────────────────┘      │
+│                          ▼                                  │
+│  ┌──────────────────────────────────────────────────┐      │
+│  │ STEP 1: CoinGecko Trust Filter (pre-applied)      │      │
+│  │ Removes worst-offender exchanges from top-15 list │      │
+│  │ Estimated effect: already removes ~30-50%          │      │
+│  │ of total global crypto volume                      │      │
+│  └───────────────────────┬──────────────────────────┘      │
+│                          ▼                                  │
+│  ┌──────────────────────────────────────────────────┐      │
+│  │ STEP 2: Regional Wash Model                       │      │
+│  │                                                    │      │
+│  │ US (8%): 2% wash          ████████████████████    │      │
+│  │ Korea (7%): 5% wash       ████████████████████    │      │
+│  │ Japan/SG/HK (6%): 3%     ████████████████████    │      │
+│  │ Europe (10%): 5% wash     ████████████████████    │      │
+│  │ China offshore (25%): 35% █████████████░░░░░░░    │      │
+│  │ ME/Africa (15%): 30%      ██████████████░░░░░░    │      │
+│  │ LatAm (10%): 15% wash    ██████████████████░░    │      │
+│  │ SEA/Oceania (12%): 20%   ████████████████░░░░    │      │
+│  │ Other (7%): 35% wash     █████████████░░░░░░░    │      │
+│  │                                                    │      │
+│  │ Blended: 20.6% reduction                          │      │
+│  └───────────────────────┬──────────────────────────┘      │
+│                          ▼                                  │
+│  ┌──────────────────────────────────────────────────┐      │
+│  │ STEP 3: Cross-Check with Tier Model               │      │
+│  │ Tier model gives 25% blended → 3,040 TPS         │      │
+│  │ Regional model gives 20.6% → 3,210 TPS           │      │
+│  │ Convergence within ~170 TPS (5%)                  │      │
+│  └───────────────────────┬──────────────────────────┘      │
+│                          ▼                                  │
+│  ┌──────────────────────────────────────────────────┐      │
+│  │ FINAL: ~3,210 TPS (regional model primary)        │      │
+│  │ Range: 2,890 - 3,450 TPS                          │      │
+│  │ Confidence: Medium-Low                             │      │
+│  └──────────────────────────────────────────────────┘      │
+└───────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>The regional model (3,210 TPS) and tier model (3,040 TPS) converge within ~5%, providing increased confidence in the ~3,000-3,200 range. The regional model is preferred because it decomposes by geography (where regulatory environment drives wash trading incentives) rather than by exchange tier (which is more subjective). Both models agree that the unadjusted ~4,050 TPS overstates genuine activity by 20-25%.</p>
+<h2 id="key-adjustments">Key Adjustments</h2>
+<h3 id="wash-trading-research-summary">Wash Trading Research Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Study</th>
+<th>Year</th>
+<th>Finding</th>
+<th>Relevance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bitwise SEC Filing</td>
+<td>2019</td>
+<td>95% of unregulated volume is suspect</td>
+<td>Calibrates Tier 3</td>
+</tr>
+<tr>
+<td>NBER/Yale (Cong et al.)</td>
+<td>2022</td>
+<td>70%+ on unregulated exchanges</td>
+<td>Academic benchmark</td>
+</tr>
+<tr>
+<td>CEPR (Kocenda et al.)</td>
+<td>2024</td>
+<td>53.4% on "unregulated Tier 1"</td>
+<td>Calibrates Tier 2</td>
+</tr>
+<tr>
+<td>Forbes/BTI</td>
+<td>2022</td>
+<td>51% of Bitcoin volume fake</td>
+<td>Cross-check</td>
+</tr>
+<tr>
+<td>Kaiko</td>
+<td>2024</td>
+<td>HTX flagged; algorithmic patterns</td>
+<td>Exchange-specific evidence</td>
+</tr>
+<tr>
+<td>Chainalysis</td>
+<td>2025</td>
+<td>$2.57B DEX wash (0.035%)</td>
+<td>DEX comparison</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sensitivity-tier-2-wash-trading-binance-effect">Sensitivity: Tier 2 Wash Trading (Binance Effect)</h3>
+<p>Binance holds 39% of spot market share. Moving Tier 2 wash estimate by 10 percentage points shifts the entire adjusted TPS by ~370:</p>
+<pre><code>Tier 2 wash = 10%  →  adjusted TPS ≈ 3,410
+Tier 2 wash = 20%  →  adjusted TPS ≈ 3,040  (central)
+Tier 2 wash = 30%  →  adjusted TPS ≈ 2,670
+</code></pre>
+<p>This single variable dominates the uncertainty. Post-2023 regulatory pressure (Binance $4.3B DOJ settlement) may have reduced wash trading, but no post-settlement audit data exists.</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>CEX Overlap with Other Digital Assets Categories
+═══════════════════════════════════════════════════
+
+CEX trades                   ██████████████████████  ~3,210 TPS
+  │
+  │  CEX trades are OFF-CHAIN
+  │  (internal order book matching)
+  │
+  │  ZERO overlap with:
+  ├── L1/L2 blockchain txns   (on-chain only)
+  ├── DeFi transactions        (smart contract only)
+  └── Stablecoin transfers     (on-chain only)
+
+Only overlap: deposits/withdrawals
+  CEX deposit = 1 on-chain tx (counted in L1/L2)
+  CEX withdrawal = 1 on-chain tx (counted in L1/L2)
+  But the CEX TRADE itself is off-chain → no double-count
+</code></pre>
+<ul>
+<li><strong>Zero double-counting with L1/L2</strong>: CEX order book matches are settled on internal databases, not blockchains. This is the cleanest boundary in the Digital Assets sector</li>
+<li><strong>Deposits/withdrawals</strong>: User deposits and exchange withdrawals touch the blockchain and appear in L1/L2 counts. But these are custodial transfers, not trades — they are NOT counted as CEX trades</li>
+</ul>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Exchange Tier       Coverage  Source              Notes
+─────────────────── ──────── ─────────────────── ──────────────────
+Tier 1 (regulated)  █████████ 10-K filings        Coinbase audited
+Tier 2 (semi-reg)   ████████░ CoinGecko trust     Post-settlement data
+Tier 3 (lower-tier) ██████░░░ CoinGecko trust     Wash trading uncertain
+Excluded exchanges  ░░░░░░░░░ Not in top-15       Likely &gt;50% fake
+─────────────────── ──────── ─────────────────── ──────────────────
+Volume coverage: ~85-90% of "trusted" global volume
+Trade count: 0% directly observed (no exchange publishes counts)
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+CoinGecko Volume    ████████░  █████████ ████████░░  ████████░░
+Coinbase 10-K       ███░░░░░░  █████████ ██████████  ████████░░
+Wash Trading Lit.   ████████░  ██████░░░ ████████░░  ████░░░░░░
+Kaiko Market Data   ████████░  █████████ ████████░░  ██████████
+Regional Reg Data   ██████░░░  ████████░ ████████░░  ████░░░░░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    68/100     86/100    78/100      72/100
+</code></pre>
+<ul>
+<li><strong>Score</strong>: 56/100</li>
+<li><strong>Key drivers of uncertainty</strong>:</li>
+<li>No exchange publishes trade counts — the entire TPS figure is derived from volume / assumed trade size</li>
+<li>Wash trading estimates span 15-45% per tier/region, creating a wide uncertainty band</li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> offshore segment (25% of volume, 35% wash) is the primary uncertainty driver</li>
+<li>Derivatives volume is notional — leverage inflation means $58.5T derivatives may represent far less economic activity</li>
+<li>Crypto volumes are radically cyclical (7x range in 5 years) — any snapshot is cycle-dependent</li>
+<li><strong>One data point that would transform confidence</strong>: If Coinbase published daily trade counts alongside dollar volume in its 10-K, we could calibrate average trade size for a regulated exchange and reduce the confidence interval by ~50%</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial report</td>
+<td>Run 2: CEX category created</td>
+</tr>
+<tr>
+<td>2026-03-27</td>
+<td>Tiered wash model</td>
+<td>Run 4: Three-tier wash trading filter</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Regional wash model</td>
+<td>Run 5: Geographic decomposition; primary model changed</td>
+</tr>
+<tr>
+<td>2026-03-28</td>
+<td>Methodology doc created</td>
+<td>Run 6: Formal methodology documentation</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/cex/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/cex/METHODOLOGY.md">analysis/digital-assets/cex/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

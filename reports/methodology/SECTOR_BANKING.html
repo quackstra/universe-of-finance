@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sector: Banking — Universe of Finance</title>
+<meta name="description" content="How we measure settlement infrastructure throughput — 2 categories, ~92-98 TPS. Last Updated: 2026-03-28 (Run 6) 1. Sector Overview The Banking sector measures settlement infrastr">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Methodology</div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Sector: Banking</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-sector-overview">1. Sector Overview</a></li><li><a href="#2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</a></li><li><a href="#3-categories-in-this-sector">3. Categories in This Sector</a></li><li><a href="#4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</a></li><li><a href="#5-primary-data-sources">5. Primary Data Sources</a></li><li><a href="#6-sector-triangulation-approach">6. Sector Triangulation Approach</a></li><li><a href="#7-definition-standards">7. Definition Standards</a></li><li><a href="#8-known-gaps-future-work">8. Known Gaps & Future Work</a></li></ul></div><blockquote>
+<p>How we measure settlement infrastructure throughput — 2 categories, ~92-98 TPS.
+<strong>Last Updated</strong>: 2026-03-28 (Run 6)</p>
+</blockquote>
+<hr/>
+<h2 id="1-sector-overview">1. Sector Overview</h2>
+<p>The Banking sector measures <strong>settlement infrastructure</strong> — the systems that discharge financial obligations between institutions. This includes Real-Time Gross Settlement (RTGS) systems that settle high-value interbank payments and Central Securities Depositories (CSDs) / Central Counterparties (CCPs) that settle trades from the Traditional Finance sector.</p>
+<p>At ~92-98 TPS, Banking accounts for just <strong>0.1% of global financial TPS</strong> — but it underpins the entire financial system. Every card payment, stock trade, and bond transaction ultimately settles through one of these systems. The low TPS reflects extreme netting: millions of individual transactions are compressed into thousands of settlement entries.</p>
+<hr/>
+<h2 id="2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</h2>
+<p><strong>Netting compression.</strong> CCP clearing compresses thousands of trades into a small number of settlement obligations. The netting ratio can be 100:1 or higher for liquid markets. We count <strong>settlement instructions</strong> (post-netting), not the underlying trades (which are counted in TradFi).</p>
+<p><strong>RTGS system coverage.</strong> The world has 80+ RTGS systems. Our initial Run 1 covered only 5 (Fedwire, TARGET2, CHAPS, BOJ-NET, CLS). Run 3 expanded to 13 systems, tripling the volume from ~423M to ~1,581M annual transactions. The remaining ~67 systems are estimated but add relatively small volumes.</p>
+<p><strong>Settlement vs. trade boundary.</strong> A stock trade counted in <a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">Equity Markets</a> generates a settlement instruction counted in <a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">Securities Settlement</a>. Per UoF rules, both are real transactions on different infrastructure — but this requires careful documentation to avoid confusion.</p>
+<p><strong>Asia-Pacific CSD data.</strong> US (DTCC) and EU (Euroclear, Clearstream) CSDs publish detailed settlement statistics. Asian CSDs (JASDEC, CCDC, HKMA CMU) have variable disclosure quality.</p>
+<hr/>
+<h2 id="3-categories-in-this-sector">3. Categories in This Sector</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>Avg TPS</th>
+<th>Annual Volume</th>
+<th>Confidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Interbank Settlement (RTGS)</td>
+<td>50.1</td>
+<td>1,581M transactions</td>
+<td>82 (High)</td>
+<td>13 RTGS systems</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Securities Settlement</td>
+<td>41-48</td>
+<td>~1,400M instructions</td>
+<td>74 (Medium-High)</td>
+<td>CSDs + CCPs</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sector total: ~92-98 TPS</strong></p>
+<hr/>
+<h2 id="4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</h2>
+<h3 id="overlap-analysis">Overlap Analysis</h3>
+<p>The two Banking categories operate on <strong>distinct infrastructure</strong> with <strong>no overlap</strong>:</p>
+<ul>
+<li><strong>RTGS</strong> settles cash obligations between banks (Fedwire: bank-to-bank fund transfers)</li>
+<li><strong>Securities Settlement</strong> settles the delivery of securities against payment (DTCC: share delivery + cash payment)</li>
+</ul>
+<p>Some securities settlements trigger RTGS movements (the cash leg of delivery-versus-payment), but these are separate system entries. No de-duplication needed within the sector.</p>
+<h3 id="cross-sector-relationship">Cross-Sector Relationship</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│  UPSTREAM: What generates settlement instructions         │
+│                                                          │
+│  Payments Sector          TradFi Sector                  │
+│  ┌──────────────┐        ┌──────────────┐               │
+│  │ 53,200 TPS   │        │ 13,373 TPS   │               │
+│  │ card, bank,  │        │ equity, bond,│               │
+│  │ wallet txns  │        │ derivative   │               │
+│  └──────┬───────┘        └──────┬───────┘               │
+│         │                       │                        │
+│         │  Batch + Net          │  CCP + CSD             │
+│         │  compression          │  netting               │
+│         ▼                       ▼                        │
+├─────────────────────────────────────────────────────────┤
+│  BANKING SECTOR (settlement layer)                       │
+│                                                          │
+│  ┌──────────────┐        ┌──────────────┐               │
+│  │ RTGS: 50 TPS │        │ Securities   │               │
+│  │ (1,581M/yr)  │        │ Settlement:  │               │
+│  │ High-value   │        │ 41-48 TPS    │               │
+│  │ bank-to-bank │        │ (1,400M/yr)  │               │
+│  └──────────────┘        └──────────────┘               │
+│                                                          │
+│  Compression ratio: ~700:1 (66,573 upstream TPS →        │
+│                             ~95 settlement TPS)          │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Not deduplicated:</strong> Settlement is a real, distinct transaction on dedicated infrastructure. The trade is one event; the settlement is another. Both are counted.</p>
+<hr/>
+<h2 id="5-primary-data-sources">5. Primary Data Sources</h2>
+<h3 id="source-confidence-matrix">Source Confidence Matrix</h3>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+Federal Reserve     ████░░░░░  █████████ ██████████  ██████████
+(Fedwire stats)
+ECB (T2 stats)      ████░░░░░  █████████ ██████████  █████████░
+DTCC Annual Report  ████░░░░░  █████████ █████████░  ████████░░
+Euroclear/          ████░░░░░  █████████ █████████░  ████████░░
+Clearstream
+BIS CPMI Red Book   ████████░░ █████░░░░ ██████████  ██████░░░░
+CLS Group           ███░░░░░░  █████████ █████████░  █████████░
+PBOC (CNAPS data)   ███░░░░░░  ████████░ █████████░  ████░░░░░░
+RBI (India RTGS)    ███░░░░░░  █████████ █████████░  █████████░
+                    ─────────  ────────  ──────────  ───────────
+</code></pre>
+<p><strong>Tier 1 (Primary anchors):</strong> Central bank published statistics (Fedwire, TARGET2/T2, CHAPS, CNAPS-HVPS, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> RTGS, BOJ-NET)
+<strong>Tier 2 (Cross-validation):</strong> DTCC, Euroclear, Clearstream (CSD-level), CLS Group (FX settlement)
+<strong>Tier 3 (Gap-filling):</strong> BIS CPMI Red Book (aggregated cross-country), smaller RTGS system annual reports</p>
+<hr/>
+<h2 id="6-sector-triangulation-approach">6. Sector Triangulation Approach</h2>
+<h3 id="banking-sector-triangulation-funnel">Banking Sector Triangulation Funnel</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│              RAW ESTIMATES                                │
+│                                                          │
+│  Method A              Method B            Method C      │
+│  [Central Bank Data]   [BIS CPMI Agg.]    [Netting      │
+│  Sum of 13 RTGS        BIS Red Book       Ratio Model]  │
+│  system annual         aggregated stats   TradFi trades  │
+│  reports                                  ÷ est. ratio   │
+│  ┌──────────┐         ┌──────────┐       ┌──────────┐   │
+│  │ 1,581M   │         │ ~1,450M  │       │ ~1,600M  │   │
+│  │ (RTGS)   │         │ (BIS     │       │ (implied │   │
+│  │          │         │  subset) │       │  settle) │   │
+│  └────┬─────┘         └────┬─────┘       └────┬─────┘   │
+│       │                    │                   │         │
+│       └────────────────────┼───────────────────┘         │
+│                            ▼                              │
+│              ┌───────────────────────┐                    │
+│              │    RECONCILIATION     │                    │
+│              │ BIS undercounts (only │                    │
+│              │ CPMI members; misses  │                    │
+│              │ ~8 of our 13 systems).│                    │
+│              │ Netting model agrees  │                    │
+│              │ within 5%.            │                    │
+│              └──────────┬────────────┘                    │
+│                         ▼                                 │
+│              ┌───────────────────────┐                    │
+│              │   FINAL ESTIMATE      │                    │
+│              │ RTGS: 1,581M/yr       │                    │
+│              │ Sec. Settle: ~1,400M  │                    │
+│              │ Total: ~92-98 TPS     │                    │
+│              │ Confidence: 78/100    │                    │
+│              └───────────────────────┘                    │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<hr/>
+<h2 id="7-definition-standards">7. Definition Standards</h2>
+<p>In the Banking sector, a <strong>transaction</strong> is a <strong>settlement instruction</strong> — the final, irrevocable movement of funds or securities between institutional accounts.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Counting Point</th>
+<th>What Is Excluded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interbank RTGS</td>
+<td>Individual payment order settled in the RTGS system</td>
+<td>Queued but unsettled orders, liquidity management transfers</td>
+</tr>
+<tr>
+<td>Securities Settlement</td>
+<td>Settlement instruction (delivery-vs-payment or free-of-payment)</td>
+<td>Matching/confirmation messages, fails (unsettled instructions)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key distinction:</strong> Banking counts at the <strong>settlement</strong> lifecycle point — the last step in the transaction chain. This produces the smallest numbers (due to netting) but represents the most definitive completion event.</p>
+<h3 id="the-13-rtgs-systems-covered">The 13 RTGS Systems Covered</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>Annual Volume (M)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fedwire</td>
+<td>US</td>
+<td>210</td>
+</tr>
+<tr>
+<td>CNAPS-HVPS</td>
+<td>China</td>
+<td>382</td>
+</tr>
+<tr>
+<td>India RTGS</td>
+<td>India</td>
+<td>295</td>
+</tr>
+<tr>
+<td>TARGET2/T2</td>
+<td>EU</td>
+<td>108</td>
+</tr>
+<tr>
+<td>BOJ-NET</td>
+<td>Japan</td>
+<td>20</td>
+</tr>
+<tr>
+<td>CHAPS</td>
+<td>UK</td>
+<td>52.7</td>
+</tr>
+<tr>
+<td>CLS</td>
+<td>Multi-currency FX</td>
+<td>300</td>
+</tr>
+<tr>
+<td>SARIE</td>
+<td>Saudi Arabia</td>
+<td>~65</td>
+</tr>
+<tr>
+<td>BOK-Wire+</td>
+<td>South Korea</td>
+<td>~45</td>
+</tr>
+<tr>
+<td>RITS</td>
+<td>Australia</td>
+<td>~40</td>
+</tr>
+<tr>
+<td>Lynx</td>
+<td>Canada</td>
+<td>~35</td>
+</tr>
+<tr>
+<td>MEPS+</td>
+<td>Singapore</td>
+<td>~15</td>
+</tr>
+<tr>
+<td>BESP</td>
+<td>Russia</td>
+<td>~13</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="8-known-gaps-future-work">8. Known Gaps &amp; Future Work</h2>
+<ul>
+<li><strong>Missing RTGS systems.</strong> 67+ RTGS systems not yet individually counted (e.g., SAMOS in South <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>, SPEI in Mexico, RTGS-NG in Nigeria). These likely add 50-100M annual transactions.</li>
+<li><strong>CCP clearing counts.</strong> CCP netting activity (LCH, CME Clearing, JSCC, Eurex Clearing) is partially captured in securities settlement but not fully disaggregated.</li>
+<li><strong>Cross-border settlement.</strong> CLS (300M annual) covers multi-currency FX settlement, but non-CLS cross-border settlement (correspondent banking) is estimated. SWIFT messaging data could provide a better proxy.</li>
+<li><strong>Real-time securities settlement.</strong> As markets move toward T+1 and eventually T+0, the settlement cycle shortens and the settlement-to-trade ratio may change. Current methodology assumes current netting ratios.</li>
+<li><strong>Digital asset settlement.</strong> Blockchain-based settlement (tokenized securities on DLT) is emerging but currently negligible. As RWA tokenization grows, the boundary between Banking and Digital Assets settlement may blur.</li>
+</ul>
+<hr/>
+<p><em>Banking is the foundation layer. Its low TPS belies its systemic importance — every other sector's transactions ultimately flow through settlement infrastructure. The methodology challenge is expanding coverage from 13 RTGS systems toward the full 80+.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/methodology/SECTOR_BANKING.md">analysis/methodology/SECTOR_BANKING.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

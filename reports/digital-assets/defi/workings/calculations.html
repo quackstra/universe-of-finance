@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeFi — Calculations & Methodology — Universe of Finance</title>
+<meta name="description" content="1. DEX Spot Volume Total 2024 Source: DeFiLlama / CoinGecko 2024 Annual Report DEXs collectively processed over $1.76T in spot volume in 2024 Up from $648B in 2023 (+172%) Chain Br">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>DeFi — Calculations & Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-dex-spot-volume">1. DEX Spot Volume</a></li><li><a href="#2-dex-perpetual-futures-volume">2. DEX Perpetual Futures Volume</a></li><li><a href="#3-tvl-trajectory">3. TVL Trajectory</a></li><li><a href="#4-defi-transaction-count-estimation">4. DeFi Transaction Count Estimation</a></li><li><a href="#5-historic-volume-series">5. Historic Volume Series</a></li></ul></div><h2 id="1-dex-spot-volume">1. DEX Spot Volume</h2>
+<h3 id="total-2024">Total 2024</h3>
+<ul>
+<li>Source: DeFiLlama / CoinGecko 2024 Annual Report</li>
+<li>DEXs collectively processed over $1.76T in spot volume in 2024</li>
+<li>Up from $648B in 2023 (+172%)</li>
+</ul>
+<h3 id="chain-breakdown">Chain Breakdown</h3>
+<ul>
+<li>Solana: ~$969B (annual DEX volume from $42.1B in 2023 → $968.9B in 2024; ~23x growth)</li>
+<li>Ethereum L1: ~$350B (estimated from DeFiLlama chain breakdown)</li>
+<li>Arbitrum: ~$100B</li>
+<li>Base: ~$80B</li>
+<li>BNB Chain: ~$70B</li>
+<li>Others: ~$191B (residual to reach $1.76T)</li>
+</ul>
+<h3 id="dex-to-cex-ratio">DEX-to-CEX Ratio</h3>
+<ul>
+<li>Spot: $1.76T / $18.83T = 9.35%</li>
+<li>Including perps: $4.16T / $77.3T = 5.4%</li>
+<li>By Jan 2025, the DEX-to-CEX spot ratio reached ~20%</li>
+</ul>
+<h2 id="2-dex-perpetual-futures-volume">2. DEX Perpetual Futures Volume</h2>
+<h3 id="total-2024_1">Total 2024</h3>
+<ul>
+<li>Source: CoinGecko State of Crypto Perpetuals</li>
+<li>~$2.4T cumulative perpetual trading volume in 2024</li>
+<li>Up 132% from 2023</li>
+</ul>
+<h3 id="protocol-breakdown">Protocol Breakdown</h3>
+<ul>
+<li>Hyperliquid: ~50% of Q4 volume → est. ~$1.2T annual</li>
+<li>dYdX: fell to 3rd, behind Jupiter → est. ~$400B</li>
+<li>Jupiter Perps: Solana-native → est. ~$200B</li>
+<li>GMX: Arbitrum → est. ~$100B</li>
+<li>Others: ~$500B</li>
+</ul>
+<h2 id="3-tvl-trajectory">3. TVL Trajectory</h2>
+<ul>
+<li>Jan 2024: ~$54B</li>
+<li>Q1 2024: $93B</li>
+<li>Mid-Jun 2024: ~$105B</li>
+<li>Summer 2024: Dip</li>
+<li>Dec 2024: $140B</li>
+<li>Growth: +159% YoY</li>
+</ul>
+<h3 id="tvl-double-counting">TVL Double-Counting</h3>
+<p>TVL is notorious for double-counting:
+1. Deposit 1 ETH to Lido → receive 1 stETH (TVL counts 1 ETH)
+2. Deposit stETH to Aave → TVL counts stETH again
+3. Borrow USDC against it → deposit to Uniswap LP
+4. Same dollar is "locked" in 3 protocols simultaneously</p>
+<p>True unique capital in <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> is likely 40-60% of reported TVL.</p>
+<h2 id="4-defi-transaction-count-estimation">4. DeFi Transaction Count Estimation</h2>
+<p>DeFi transactions are harder to count than volume because:
+- A single swap = 1 transaction
+- A complex yield farming strategy = 5-10 transactions (approve, deposit, stake, claim, compound)</p>
+<p>Rough estimate:
+- DEX swaps: If avg swap = $2,000, then $1.76T / $2,000 = ~880M swap transactions in 2024
+- Lending: Borrows, repayments, liquidations → ~50-100M transactions
+- Staking: Stakes, unstakes, claims → ~50M transactions
+- Other DeFi: Bridges, yield, governance → ~100M transactions
+- <strong>Total DeFi-specific transactions: ~1-1.2B in 2024</strong>
+- This is ~4% of all L1/L2 transactions (27B)</p>
+<h2 id="5-historic-volume-series">5. Historic Volume Series</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>DEX Spot Volume</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~$2B</td>
+<td>Pre-AMM era (IDEX, 0x)</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~$25B</td>
+<td>Uniswap v2 launch (May 2020), DeFi summer</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~$600B+</td>
+<td>Multi-chain expansion, Uniswap v3</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~$500B</td>
+<td>Bear market, Terra/Luna collapse</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~$648B</td>
+<td>Recovery, Solana DeFi revival</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~$1.76T</td>
+<td>Solana memecoin frenzy, L2 growth</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/defi/workings/calculations.md">analysis/digital-assets/defi/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

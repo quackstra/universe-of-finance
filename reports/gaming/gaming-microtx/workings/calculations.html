@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In-Game Microtransactions — Calculations — Universe of Finance</title>
+<meta name="description" content="1. Annual Transaction Count (2024) Mobile IAP Transactions Mobile IAP Revenue (2024): $81.0B (Sensor Tower) Average Transaction Value: $8.50 (see assumptions.md#A2) Mobile Transact">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Gaming<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>In-Game Microtransactions — Calculations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-annual-transaction-count-2024">1. Annual Transaction Count (2024)</a></li><li><a href="#2-tps-calculation-2024">2. TPS Calculation (2024)</a></li><li><a href="#3-daily-volume">3. Daily Volume</a></li><li><a href="#4-historical-transaction-estimates-2019-2024">4. Historical Transaction Estimates (2019-2024)</a></li><li><a href="#5-growth-rate-analysis">5. Growth Rate Analysis</a></li><li><a href="#6-projection-models-2026-2035">6. Projection Models (2026-2035)</a></li><li><a href="#7-sensitivity-analysis">7. Sensitivity Analysis</a></li></ul></div><h2 id="1-annual-transaction-count-2024">1. Annual Transaction Count (2024)</h2>
+<h3 id="mobile-iap-transactions">Mobile IAP Transactions</h3>
+<pre><code>Mobile IAP Revenue (2024): $81.0B (Sensor Tower)
+Average Transaction Value:  $8.50 (see assumptions.md#A2)
+Mobile Transactions = $81.0B / $8.50 = 9.53B transactions
+</code></pre>
+<h3 id="pc-iap-transactions">PC IAP Transactions</h3>
+<pre><code>PC IAP Revenue (2024): ~$18.0B (estimated, see assumptions.md#A3)
+Average Transaction Value:  $12.00 (see assumptions.md#A2)
+PC Transactions = $18.0B / $12.00 = 1.50B transactions
+</code></pre>
+<h3 id="console-iap-transactions">Console IAP Transactions</h3>
+<pre><code>Console IAP Revenue (2024): ~$15.0B (estimated, see assumptions.md#A3)
+Average Transaction Value:  $12.00 (see assumptions.md#A2)
+Console Transactions = $15.0B / $12.00 = 1.25B transactions
+</code></pre>
+<h3 id="total">Total</h3>
+<pre><code>Total Annual Transactions (2024) = 9.53B + 1.50B + 1.25B = 12.28B
+Rounded: ~12.3B transactions
+</code></pre>
+<h2 id="2-tps-calculation-2024">2. TPS Calculation (2024)</h2>
+<pre><code>Seconds per year = 365.25 × 86,400 = 31,557,600
+Average TPS = 12,280,000,000 / 31,557,600 = ~389 TPS
+Peak TPS (est.) = 389 × 2.0 = ~778 TPS
+</code></pre>
+<h2 id="3-daily-volume">3. Daily Volume</h2>
+<pre><code>Daily transactions = 12,280,000,000 / 365.25 = ~33.6 million/day
+</code></pre>
+<h2 id="4-historical-transaction-estimates-2019-2024">4. Historical Transaction Estimates (2019-2024)</h2>
+<p>Revenue sources: Newzoo annual reports, Sensor Tower, SuperData (now Nielsen).
+Transaction counts derived using same ATV methodology, adjusted for lower historical ATVs.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Revenue ($B)</th>
+<th>Est. ATV ($)</th>
+<th>Est. Transactions (B)</th>
+<th>Avg TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>72</td>
+<td>7.00</td>
+<td>10.29</td>
+<td>326</td>
+<td>Pre-COVID baseline; lower ATV due to more small mobile txns</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>94</td>
+<td>7.50</td>
+<td>12.53</td>
+<td>397</td>
+<td>COVID boom (+30% revenue); ATV rose as engagement deepened</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>89</td>
+<td>7.75</td>
+<td>11.48</td>
+<td>364</td>
+<td>Post-COVID correction in mobile (-5%)</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>86</td>
+<td>8.00</td>
+<td>10.75</td>
+<td>341</td>
+<td>Continued correction, inflation impact (-3%)</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>92</td>
+<td>8.25</td>
+<td>11.15</td>
+<td>354</td>
+<td>Stabilization (+5% revenue)</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>114</td>
+<td>8.83</td>
+<td>12.28*</td>
+<td>389</td>
+<td>Mobile rebound; uses platform-specific ATVs</td>
+</tr>
+</tbody>
+</table>
+<p>*2024 uses weighted ATV across platforms rather than single ATV.</p>
+<h3 id="revenue-derivation-notes">Revenue Derivation Notes</h3>
+<ul>
+<li>2019: Mobile $68B (Newzoo) × ~75% IAP + PC/console IAP ~$15B</li>
+<li>2020: Mobile $86B (COVID surge) × ~75% IAP + PC/console IAP ~$20B</li>
+<li>2021: Mobile $82B × ~75% IAP + PC/console IAP ~$20B</li>
+<li>2022: Mobile $78B (post-COVID dip) × ~75% IAP + PC/console IAP ~$19B</li>
+<li>2023: Mobile $78.5B × ~75% IAP + PC/console IAP ~$25B (live service growth)</li>
+<li>2024: Mobile $81B (Sensor Tower) + PC $18B + Console $15B = $114B</li>
+</ul>
+<h2 id="5-growth-rate-analysis">5. Growth Rate Analysis</h2>
+<pre><code>CAGR 2019-2024 (5yr, by transactions): (12.28/10.29)^(1/5) - 1 = 3.6%
+CAGR 2019-2024 (5yr, by revenue):      (114/72)^(1/5) - 1   = 9.6%
+
+Note: Revenue CAGR is much higher than transaction CAGR because ATV has been
+rising (players spending more per transaction, not just more transactions).
+</code></pre>
+<h2 id="6-projection-models-2026-2035">6. Projection Models (2026-2035)</h2>
+<h3 id="baseline-6-transaction-cagr">Baseline (6% transaction CAGR)</h3>
+<p>Assumes mobile market matures, emerging market growth offsets developed market plateau.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (B)</th>
+<th>Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>13.80</td>
+<td>437</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>15.51</td>
+<td>491</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>17.43</td>
+<td>552</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>23.32</td>
+<td>739</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-9-transaction-cagr">High Growth (9% transaction CAGR)</h3>
+<p>AI personalization, VR/AR platforms, deeper emerging market penetration.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (B)</th>
+<th>Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>14.59</td>
+<td>462</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>17.34</td>
+<td>550</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>20.62</td>
+<td>653</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>31.72</td>
+<td>1,005</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-3-transaction-cagr">Conservative (3% transaction CAGR)</h3>
+<p>Regulatory crackdowns on loot boxes, player fatigue, economic headwinds.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (B)</th>
+<th>Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>13.03</td>
+<td>413</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>13.83</td>
+<td>438</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>14.67</td>
+<td>465</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>17.01</td>
+<td>539</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-sensitivity-analysis">7. Sensitivity Analysis</h2>
+<p>The largest source of uncertainty is the Average Transaction Value.</p>
+<table>
+<thead>
+<tr>
+<th>ATV Assumption</th>
+<th>Implied 2024 Transactions</th>
+<th>Implied TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$5.00 (low)</td>
+<td>19.5B</td>
+<td>618</td>
+</tr>
+<tr>
+<td>$8.83 (base)</td>
+<td>12.3B</td>
+<td>389</td>
+</tr>
+<tr>
+<td>$12.00 (high)</td>
+<td>9.0B</td>
+<td>285</td>
+</tr>
+<tr>
+<td>$15.00 (very high)</td>
+<td>7.2B</td>
+<td>228</td>
+</tr>
+</tbody>
+</table>
+<p>A ±40% swing in ATV produces a proportional inverse swing in transaction count.
+This is the primary reason for the 🔴 Low confidence rating on transaction counts.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/gaming/gaming-microtx/workings/calculations.md">analysis/gaming/gaming-microtx/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

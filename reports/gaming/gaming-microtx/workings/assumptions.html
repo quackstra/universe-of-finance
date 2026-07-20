@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In-Game Microtransactions — Assumptions — Universe of Finance</title>
+<meta name="description" content="A1. Scope Definition 'In-game microtransactions' includes: - In-app purchases (IAP) in mobile games (skins, gacha, virtual currency, battle passes) - In-game purchases in PC games">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Gaming<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>In-Game Microtransactions — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#a1-scope-definition">A1. Scope Definition</a></li><li><a href="#a2-revenue-to-transaction-conversion">A2. Revenue-to-Transaction Conversion</a></li><li><a href="#a3-platform-revenue-split">A3. Platform Revenue Split</a></li><li><a href="#a4-revenue-vs-gross-bookings">A4. Revenue vs. Gross Bookings</a></li><li><a href="#a5-double-counting-flag">A5. Double-Counting Flag</a></li><li><a href="#a6-growth-rate-assumptions">A6. Growth Rate Assumptions</a></li><li><a href="#a7-seasonal-patterns">A7. Seasonal Patterns</a></li></ul></div><h2 id="a1-scope-definition">A1. Scope Definition</h2>
+<p>"<a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">In-game microtransactions</a>" includes:
+- In-app purchases (IAP) in mobile games (skins, gacha, virtual currency, battle passes)
+- In-game purchases in PC games (cosmetics, DLC <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a>, loot boxes)
+- In-game purchases in console free-to-play and live-service games
+- Virtual currency top-ups (V-Bucks, Genesis Crystals, Robux, etc.)</p>
+<p>Excluded:
+- Full game purchases (covered in gaming-sales)
+- Subscription fees (covered in gaming-sales)
+- In-game advertising revenue (not a user transaction)
+- Physical merchandise</p>
+<h2 id="a2-revenue-to-transaction-conversion">A2. Revenue-to-Transaction Conversion</h2>
+<p>The core challenge: platforms report REVENUE, not TRANSACTION COUNTS.</p>
+<p>We use: <code>Transaction Count = Revenue / Average Transaction Value (ATV)</code></p>
+<h3 id="mobile-iap-atv">Mobile IAP ATV</h3>
+<ul>
+<li>Game Developer (2023 report): average mobile IAP transaction = <strong>$14</strong></li>
+<li>However, 71% of individual transactions are under $10</li>
+<li>Median transaction is closer to <strong>$5-7</strong> based on price point distribution</li>
+<li>We use <strong>$8.50</strong> as a weighted average that accounts for the heavy tail of whale spending
+  but reflects that most individual transactions are small purchases ($0.99-$9.99)</li>
+</ul>
+<h3 id="pcconsole-iap-atv">PC/Console IAP ATV</h3>
+<ul>
+<li>PC/console microtransactions tend to be larger (battle passes $10-15, skin bundles $10-25)</li>
+<li>Average estimated at <strong>$12.00</strong> based on typical Fortnite/Valorant/CoD price points</li>
+<li>V-Bucks/currency packs cluster around $10-20</li>
+</ul>
+<h2 id="a3-platform-revenue-split">A3. Platform Revenue Split</h2>
+<p>Based on Newzoo 2024 and Sensor Tower data:
+- Mobile IAP revenue: <strong>$81B</strong> (Sensor Tower 2024)
+- PC IAP revenue: <strong>~$18B</strong> estimated (PC gaming = $39B total; ~46% from IAP/microtransactions)
+- Console IAP revenue: <strong>~$15B</strong> estimated (Console = $43.5B total; ~35% from IAP/F2P)
+- <strong>Total microtransaction revenue: ~$114B</strong> (2024)</p>
+<p>Note: The $57.9B-$77.8B "online microtransaction market" figures from Precedence Research
+and Research &amp; Markets use narrower definitions (often excluding battle passes, subscription
+micro-content, and some mobile IAP categories). We use the broader Sensor Tower + platform
+data which aligns with Newzoo's overall market sizing.</p>
+<h2 id="a4-revenue-vs-gross-bookings">A4. Revenue vs. Gross Bookings</h2>
+<p>Platform stores take 15-30% commission (Apple/Google 15-30%, Steam 20-30%, console 30%).
+Revenue figures from Sensor Tower and Newzoo represent consumer spending (gross bookings),
+not net developer revenue. This is the correct basis for counting transactions since each
+consumer payment = one transaction regardless of platform cut.</p>
+<h2 id="a5-double-counting-flag">A5. Double-Counting Flag</h2>
+<p>Nearly all microtransactions are paid via credit/debit card, PayPal, or digital wallet
+(which itself charges a card). These transactions are ALSO counted in:
+- <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Card Payments</a> (consumer-cards category)
+- <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">E-commerce</a> Payments (<a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">ecommerce</a> category)
+- Digital Wallet volumes</p>
+<p>This is noted but not adjusted for — each Universe of Finance category measures its own
+domain's transaction volume. The cross-category overlap is documented for the aggregation
+layer.</p>
+<h2 id="a6-growth-rate-assumptions">A6. Growth Rate Assumptions</h2>
+<h3 id="historical">Historical</h3>
+<ul>
+<li>2019-2020: +30% (COVID lockdown gaming boom)</li>
+<li>2020-2021: -5% (post-COVID normalization in mobile)</li>
+<li>2021-2022: -3% (continued mobile correction, inflation impact)</li>
+<li>2022-2023: +5% (stabilization and recovery)</li>
+<li>2023-2024: +7% (mobile rebound per Sensor Tower)</li>
+</ul>
+<h3 id="projections">Projections</h3>
+<ul>
+<li>Baseline CAGR 2024-2035: 6% (maturing mobile, growth in emerging markets)</li>
+<li>High: 9% (AI-driven personalization, new platforms like VR/AR)</li>
+<li>Conservative: 3% (regulation, player fatigue, economic headwinds)</li>
+</ul>
+<h2 id="a7-seasonal-patterns">A7. Seasonal Patterns</h2>
+<p>Gaming microtransactions peak during:
+- Holiday season (Nov-Dec): ~1.5x average
+- Summer (Jun-Aug): ~1.2x average
+- New game/season launches: spike events</p>
+<p><a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> estimated at 2.0x average TPS to account for holiday + event stacking.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/gaming/gaming-microtx/workings/assumptions.md">analysis/gaming/gaming-microtx/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

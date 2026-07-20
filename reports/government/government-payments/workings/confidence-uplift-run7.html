@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax & Government Payments — Confidence Uplift (Run 7, 2026-03-28) — Universe of Finance</title>
+<meta name="description" content="Previous State TPS: 1,015 Annual volume: ~32B transactions Confidence: 60 Key gaps: Country-level transaction counts sparse; India DBT and GSTN needed updating 1. New Data Sources">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Government<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Tax & Government Payments — Confidence Uplift (Run 7, 2026-03-28)</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#previous-state">Previous State</a></li><li><a href="#1-new-data-sources-found">1. New Data Sources Found</a></li><li><a href="#2-updated-triangulation">2. Updated Triangulation</a></li><li><a href="#3-revised-tps-estimate">3. Revised TPS Estimate</a></li><li><a href="#4-revised-confidence-score">4. Revised Confidence Score</a></li><li><a href="#5-whats-still-missing">5. What's Still Missing</a></li><li><a href="#sources">Sources</a></li></ul></div><h2 id="previous-state">Previous State</h2>
+<ul>
+<li><strong>TPS:</strong> 1,015</li>
+<li><strong>Annual volume:</strong> ~32B transactions</li>
+<li><strong>Confidence:</strong> 60</li>
+<li><strong>Key gaps:</strong> Country-level transaction counts sparse; <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> DBT and GSTN needed updating</li>
+</ul>
+<hr/>
+<h2 id="1-new-data-sources-found">1. New Data Sources Found</h2>
+<h3 id="india-dbt-dashboard-fy2025-26-hard-data-new">India DBT Dashboard FY2025-26 (HARD DATA, NEW)</h3>
+<ul>
+<li><strong>URL:</strong> https://dbtbharat.gov.in/</li>
+<li>FY2025-26 (current year): <strong>588 crore = 5.88B transactions</strong> already</li>
+<li>Value: ₹6,44,737 crore transferred</li>
+<li>328 active schemes across 56 ministries</li>
+<li>Cumulative all-time: ₹50.1 lakh crore</li>
+<li>Estimated efficiency savings: ₹4,31,138 crore</li>
+</ul>
+<p><strong>Key finding:</strong> India DBT alone is 5.88B transactions in FY2025-26 (fiscal year runs April-March, so this is 11 months of data through Feb 2026). Full-year FY26 estimate: ~6.4B transactions.</p>
+<p>This is UP from the 7.4B figure previously cited (which was likely FY2024-25 full year). The FY2025-26 data suggests ~6.4B for 11 months, implying a full year of ~7.0B — roughly consistent but slightly lower than previous estimates. The 7.4B figure may have included state-level DBT not in the central dashboard.</p>
+<h3 id="india-gst-portal-statistics-updated">India GST Portal Statistics (UPDATED)</h3>
+<ul>
+<li><strong>URL:</strong> https://gstcouncil.gov.in/gst-system-statistics</li>
+<li><strong>1.51 crore (15.1M) active GST registrations</strong> as of April 2025</li>
+<li>FY2024-25 gross GST collections: ₹22.08 lakh crore (9.4% YoY growth)</li>
+<li>Feb 2026 collection: ₹1,83,609 crore</li>
+<li>April 2025: ₹2.36 lakh crore (all-time record)</li>
+</ul>
+<p><strong>Deriving GST transaction count:</strong>
+- 15.1M active registrations × average 12 GSTR-3B returns/year = <strong>181M GST returns/year</strong>
+- Plus GSTR-1 (monthly sales returns): another ~181M
+- Plus quarterly returns for small taxpayers: ~40M
+- <strong>Total GST filing transactions: ~400M/year</strong> (return filings, not payment transactions)
+- Actual payment transactions: many taxpayers file but pay net zero (input credits). Estimate ~60% result in actual payment → <strong>~240M GST payment transactions</strong></p>
+<h3 id="irs-2025-filing-season-confirmed-updated">IRS 2025 Filing Season (CONFIRMED, UPDATED)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.irs.gov/newsroom/filing-season-statistics-by-year</li>
+<li><strong>165M individual income tax returns</strong> processed in 2025</li>
+<li>~94% filed electronically (155M e-filed)</li>
+<li>66M self-prepared e-filed returns</li>
+<li>As of May 3, 2025: 144.8M received, 96% electronic</li>
+</ul>
+<p>Previous estimate had US at 4.1B total (IRS + SSA + other). This confirms the IRS component.</p>
+<h3 id="uk-hmrc-self-assessment-confirmed-updated">UK HMRC Self Assessment (CONFIRMED, UPDATED)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.gov.uk/government/news/1148-million-beat-the-self-assessment-deadline</li>
+<li><strong>11.48M Self Assessment returns</strong> filed for 2024/25 tax year</li>
+<li>~12M expected total</li>
+<li>339,490 paid via HMRC app (65% increase in app payments)</li>
+<li>18,000 payment plans set up since April 2025</li>
+</ul>
+<h3 id="india-dbt-context-updated">India DBT Context (UPDATED)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192</li>
+<li>DBT covers 320+ central government schemes + ~2,500 state-level schemes</li>
+<li>Annually benefits 1.5B+ non-unique beneficiaries</li>
+<li>16-fold expansion in beneficiary coverage since inception (110M to 1.76B non-unique)</li>
+<li>Cumulative transfers: US $520B since inception</li>
+</ul>
+<h3 id="nacha-ach-government-direct-deposits-hard-data-new">Nacha ACH Government Direct Deposits (HARD DATA, NEW)</h3>
+<ul>
+<li><strong>URL:</strong> https://www.nacha.org/content/ach-network-volume-and-value-statistics</li>
+<li><strong>2025: 1.43B government ACH direct deposits</strong> (part of 8.74B total direct deposits)</li>
+<li>This covers SSA benefits, IRS refunds, VA payments, federal/state <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a> to government employees</li>
+<li>Confirms previous US government disbursement estimate</li>
+</ul>
+<hr/>
+<h2 id="2-updated-triangulation">2. Updated Triangulation</h2>
+<h3 id="method-1-bottom-up-country-model-refined-with-hard-data">Method 1: Bottom-Up Country Model (refined with hard data)</h3>
+<table>
+<thead>
+<tr>
+<th>Country/Region</th>
+<th>Tax Payments (B)</th>
+<th>Benefit Disbursements (B)</th>
+<th>Total Gov Txns (B)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US</td>
+<td>2.0 (IRS 165M + state/local 500M + payroll tax 1.3B)</td>
+<td>2.1 (SSA 1.0B + other 1.1B)</td>
+<td>4.1</td>
+<td>IRS + Nacha 1.43B gov deposits</td>
+</tr>
+<tr>
+<td>India</td>
+<td>0.4 (GST 240M + income tax 100M + other 60M)</td>
+<td>7.0 (DBT ~6.4B central + state est.)</td>
+<td>7.4</td>
+<td>DBT dashboard + GSTN</td>
+</tr>
+<tr>
+<td>EU-27</td>
+<td>2.5 (VAT/income/corporate)</td>
+<td>2.5 (pensions, benefits)</td>
+<td>5.0</td>
+<td>ECB SEPA data + Eurostat</td>
+</tr>
+<tr>
+<td>UK</td>
+<td>0.3 (HMRC 12M SA + PAYE 30M + VAT 5M + other)</td>
+<td>0.2 (DWP UC + state pension)</td>
+<td>0.5</td>
+<td>HMRC + DWP</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>0.3</td>
+<td>0.4 (Bolsa Familia + INSS pensions)</td>
+<td>0.7</td>
+<td>Pix + Caixa</td>
+</tr>
+<tr>
+<td>China</td>
+<td>1.5 (est. from tax base)</td>
+<td>2.3 (pensions + social insurance)</td>
+<td>3.8</td>
+<td>Estimated</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>0.3</td>
+<td>0.4</td>
+<td>0.7</td>
+<td>Estimated</td>
+</tr>
+<tr>
+<td>Rest of World</td>
+<td>3.0</td>
+<td>5.5</td>
+<td>8.5</td>
+<td>Scaled</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10.3</strong></td>
+<td><strong>20.4</strong></td>
+<td><strong>30.7</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="method-2-gdp-based-top-down-unchanged-cross-check">Method 2: GDP-Based Top-Down (unchanged, cross-check)</h3>
+<ul>
+<li>Global GDP: ~$110T</li>
+<li>Government revenue: ~35% = $38.5T</li>
+<li>Average tax payment: ~$3,000 → 12.8B tax payments</li>
+<li>Government expenditure: ~35% = $38.5T</li>
+<li>Average benefit disbursement: ~$1,500 → 25.7B disbursements</li>
+<li>Total: ~38.5B (but significant cash/non-digital discount needed)</li>
+<li>Apply 75% digital: ~29B</li>
+</ul>
+<h3 id="method-3-payment-system-cross-check-refined">Method 3: Payment System Cross-Check (refined)</h3>
+<ul>
+<li>US: Nacha 1.43B government direct deposits + IRS 165M returns + other ≈ 2.5B observable</li>
+<li>India: DBT 6.4B (observable dashboard)</li>
+<li>UK: HMRC + DWP ≈ 0.15B observable</li>
+<li>Observable total: ~9B from just US + India + UK</li>
+<li>These three countries = ~25-30% of global <a class="xref" href="/universe-of-finance/reports/government/government-payments/REPORT.html">government payments</a></li>
+<li>Scale: 9B / 0.275 = <strong>~33B</strong></li>
+</ul>
+<h3 id="method-4-india-dbt-anchor-strongest">Method 4: India DBT Anchor (STRONGEST)</h3>
+<p>India DBT alone = 6.4-7.0B transactions/year for 1.4B people.
+- India DBT per capita: ~4.5-5.0 government benefit transactions/person/year
+- Global population: 8.0B
+- But India has the world's most extensive digital benefit transfer system
+- If global average = 2.0 government payment transactions/person/year (tax + benefits)
+- 8.0B × 2.0 = 16B... but electronic penetration matters
+- Adjust for digital penetration: ~4B people have digital gov interaction → 4B × 5 = 20B
+- Plus tax payments: ~10B
+- <strong>Total: ~30B</strong></p>
+<h3 id="triangulation-summary">Triangulation Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Annual Estimate (B)</th>
+<th>TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bottom-up country</td>
+<td>30.7</td>
+<td>973</td>
+</tr>
+<tr>
+<td>GDP top-down</td>
+<td>29</td>
+<td>919</td>
+</tr>
+<tr>
+<td>Payment system cross-check</td>
+<td>33</td>
+<td>1,046</td>
+</tr>
+<tr>
+<td>India DBT anchor</td>
+<td>30</td>
+<td>951</td>
+</tr>
+<tr>
+<td>Previous estimate</td>
+<td>32</td>
+<td>1,015</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Excellent convergence: 29-33B, central ~31B</strong></p>
+<hr/>
+<h2 id="3-revised-tps-estimate">3. Revised TPS Estimate</h2>
+<p><strong>Minor downward revision: 31B annual → 983 TPS</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Previous</th>
+<th>Revised</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual transactions</td>
+<td>32B</td>
+<td>31B</td>
+</tr>
+<tr>
+<td>Average TPS</td>
+<td>1,015</td>
+<td>983</td>
+</tr>
+<tr>
+<td>Range</td>
+<td>28-38B</td>
+<td>29-33B</td>
+</tr>
+</tbody>
+</table>
+<p>The narrowing of the range is more significant than the TPS change. The previous 28-38B range has been tightened to 29-33B thanks to four converging methods.</p>
+<hr/>
+<h2 id="4-revised-confidence-score">4. Revised Confidence Score</h2>
+<p><strong>Recommended: 65 (+5 from 60)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Previous</th>
+<th>Revised</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source quality</td>
+<td>18</td>
+<td>19</td>
+<td>India DBT real-time dashboard is a gold-standard source</td>
+</tr>
+<tr>
+<td>Data recency</td>
+<td>16</td>
+<td>17</td>
+<td>DBT FY2025-26 live data; IRS 2025 filing season complete</td>
+</tr>
+<tr>
+<td>Triangulation</td>
+<td>14</td>
+<td>16</td>
+<td>Four methods now converge on 29-33B (narrow range)</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>12</td>
+<td>13</td>
+<td>India DBT dashboard + Nacha gov deposits = hard data for 2 largest countries</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>60</strong></td>
+<td><strong>65</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Key improvements:
+- <strong>India DBT live dashboard</strong> provides real-time transaction counts (5.88B YTD FY2025-26)
+- <strong>Nacha government direct deposit split</strong> (1.43B in 2025) isolates US government payments precisely
+- <strong>Range narrowed from 10B spread to 4B spread</strong> (28-38B → 29-33B)
+- <strong>IRS 2025 filing data</strong> confirms US tax filing component</p>
+<hr/>
+<h2 id="5-whats-still-missing">5. What's Still Missing</h2>
+<ol>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> government payment transaction counts</strong> — China has 1.4B people, extensive social insurance, pensions, and digital tax filing, but publishes no consolidated transaction statistics. The 3.8B estimate for China is entirely modeled.</p>
+</li>
+<li>
+<p><strong>EU government payment transaction data</strong> — ECB publishes SEPA volumes but doesn't break out government payments from private payments. Eurostat has revenue data but not transaction counts.</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a> <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Pix</a> government payments</strong> — Brazil's Pix system processed 63.4B total transactions (mentioned in previous research), but the government payment portion is not separately identified.</p>
+</li>
+<li>
+<p><strong>State/local government payment counts (US)</strong> — IRS covers federal, but US has 50 states + thousands of local jurisdictions each collecting property tax, sales tax, utility bills, fees, licenses, etc. The 500M estimate for state/local is a rough guess.</p>
+</li>
+<li>
+<p><strong>India state-level DBT transactions</strong> — The central DBT dashboard shows ~6.4B but India has ~2,500 state-level schemes not in the central dashboard. The true India government payment figure could be 8-10B.</p>
+</li>
+<li>
+<p><strong>Digital tax filing penetration in developing countries</strong> — What fraction of government payments in <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>, Southeast Asia, and Latin America are now digital? This affects the "Rest of World" estimate significantly.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://dbtbharat.gov.in/">India DBT Dashboard</a></li>
+<li><a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2123192">PIB — India's DBT: Boosting Welfare Efficiency</a></li>
+<li><a href="https://gstcouncil.gov.in/gst-system-statistics">GST Council — GST System Statistics</a></li>
+<li><a href="https://www.pib.gov.in/PressNoteDetails.aspx?id=154789">PIB — Record Gross GST Collection in 2024-25</a></li>
+<li><a href="https://www.irs.gov/newsroom/filing-season-statistics-by-year">IRS — Filing Season Statistics by Year</a></li>
+<li><a href="https://www.accountingtoday.com/list/tax-filing-season-statistics-for-2025">Accounting Today — Final Tax Filing Season Statistics 2025</a></li>
+<li><a href="https://www.nacha.org/content/ach-network-volume-and-value-statistics">Nacha — ACH Network Volume and Value Statistics 2025</a></li>
+<li><a href="https://www.gov.uk/government/news/1148-million-beat-the-self-assessment-deadline">HMRC — 11.48 Million Beat the Self Assessment Deadline</a></li>
+<li><a href="https://www.gov.uk/government/news/65-rise-in-self-assessment-payments-via-the-hmrc-app">HMRC — 65% Rise in Self Assessment Payments via App</a></li>
+<li><a href="https://ddnews.gov.in/en/the-digital-transformation-and-efficiency-of-indias-direct-benefit-transfer-model-2/">DD News — Digital Transformation of India's DBT Model</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/government/government-payments/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/government/government-payments/workings/confidence-uplift-run7.md">analysis/government/government-payments/workings/confidence-uplift-run7.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

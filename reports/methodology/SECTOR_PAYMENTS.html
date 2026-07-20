@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sector: Payments — Universe of Finance</title>
+<meta name="description" content="How we measure the world's payment transactions — 11 categories, ~53,200 de-duplicated TPS. Last Updated: 2026-03-28 (Run 6) 1. Sector Overview The Payments sector measures all el">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Methodology</div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Sector: Payments</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-sector-overview">1. Sector Overview</a></li><li><a href="#2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</a></li><li><a href="#3-categories-in-this-sector">3. Categories in This Sector</a></li><li><a href="#4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</a></li><li><a href="#5-primary-data-sources">5. Primary Data Sources</a></li><li><a href="#6-sector-triangulation-approach">6. Sector Triangulation Approach</a></li><li><a href="#7-definition-standards">7. Definition Standards</a></li><li><a href="#8-known-gaps-future-work">8. Known Gaps & Future Work</a></li></ul></div><blockquote>
+<p>How we measure the world's payment transactions — 11 categories, ~53,200 de-duplicated TPS.
+<strong>Last Updated</strong>: 2026-03-28 (Run 6)</p>
+</blockquote>
+<hr/>
+<h2 id="1-sector-overview">1. Sector Overview</h2>
+<p>The Payments sector measures all electronic fund transfers between parties — card swipes, <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>, wallet taps, peer-to-peer sends, <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a>, and the commerce/credit layers that ride on them. At ~53,200 de-duplicated TPS, Payments accounts for <strong>75% of all global financial TPS</strong>. It is both the largest sector and the most overlap-prone, because every commerce event (<a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a>, gaming, government, insurance) ultimately settles through a payment rail.</p>
+<hr/>
+<h2 id="2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</h2>
+<p><strong>Massive overlap between categories.</strong> A consumer buying shoes on Amazon via Apple Pay funded by a Visa card appears in E-Commerce, <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a>, and <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Cards</a> simultaneously. Naive summation overcounts by ~14%.</p>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>'s dual identity.</strong> <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s UPI (172B transactions) is simultaneously a bank transfer system (A2A real-time payments) and a mobile wallet system (accessed via PhonePe, Google Pay, Paytm). It is the single largest overlap in the entire taxonomy.</p>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> opacity.</strong> Alipay and WeChat Pay process an estimated 280B annual transactions, but detailed breakdowns are corporate-confidential. We rely on PBOC aggregate reports and Statista estimates.</p>
+<p><strong>Commerce vs. payment layers.</strong> E-Commerce (57.5B), <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a> (5.5B purchases), Insurance (14B), <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">Payroll</a> (41.2B), and <a class="xref" href="/universe-of-finance/reports/payments/bill-payments/REPORT.html">Bill Payments</a> (95B) are real economic events, but 60-95% of their payment flows are already counted in Cards, Bank Transfers, or Wallets. They are commerce/credit layers, not incremental payment rails.</p>
+<p><strong>Cash blindspot.</strong> An estimated 18-20% of global consumer spending is cash. <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a> (49.1B) are the closest proxy for cash transaction volume, but cash-to-cash transfers are invisible.</p>
+<hr/>
+<h2 id="3-categories-in-this-sector">3. Categories in This Sector</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>Avg TPS</th>
+<th>Annual Volume (B)</th>
+<th>Confidence</th>
+<th>Overlap Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Consumer Card Payments</td>
+<td>24,501</td>
+<td>772.7</td>
+<td>91 (High)</td>
+<td>Base layer</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Digital Wallets &amp; Mobile Payments</td>
+<td>19,660</td>
+<td>620</td>
+<td>67 (Medium-High)</td>
+<td>-172B UPI, -40B card-rail</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bank Transfers (ACH/RTP/Wire)</td>
+<td>15,338</td>
+<td>484</td>
+<td>78 (Medium-High)</td>
+<td>Base layer (includes UPI)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Bill Payments</td>
+<td>3,012</td>
+<td>95</td>
+<td>Medium</td>
+<td>~90% on bank/card rails</td>
+</tr>
+<tr>
+<td>5</td>
+<td>E-Commerce &amp; Merchant Processing</td>
+<td>1,823</td>
+<td>57.5</td>
+<td>67 (Medium-High)</td>
+<td>~95% overlay on rails</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ATM Withdrawals</td>
+<td>1,557</td>
+<td>49.1</td>
+<td>Medium</td>
+<td>Gateway to cash economy</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Payroll Payments</td>
+<td>1,305</td>
+<td>41.2</td>
+<td>Low</td>
+<td>~95% via ACH/bank rails</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Insurance Premium Payments</td>
+<td>444</td>
+<td>14</td>
+<td>Low</td>
+<td>~90% on bank/card rails</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Peer-to-Peer Transfers</td>
+<td>270</td>
+<td>8.5</td>
+<td>69 (Medium-High)</td>
+<td>Minor wallet overlap</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Buy Now Pay Later (BNPL)</td>
+<td>175 (purchase) / 634 (installment)</td>
+<td>5.5 (purchase) / 20 (installment)</td>
+<td>Medium</td>
+<td>Credit layer on rails</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Remittances</td>
+<td>57</td>
+<td>1.8</td>
+<td>58 (Medium)</td>
+<td>Minor bank/P2P overlap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Raw sector sum: ~68,167 TPS</strong> | <strong>De-duplicated: ~53,200 TPS</strong> (22% overcount in raw)</p>
+<hr/>
+<h2 id="4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</h2>
+<h3 id="overlap-waterfall">Overlap Waterfall</h3>
+<pre><code>Gross Payment TPS      ████████████████████████████████  ~68,167
+                       │
+(-) UPI double-count   ████████████████████████████      ~62,714  -5,453
+    (172B in Wallets   │                                 (UPI counted in Bank Transfers;
+    AND Bank Xfers)    │                                  subtract from Wallets)
+                       │
+(-) Card-rail wallets  ███████████████████████████       ~61,446  -1,268
+    (Apple/Google/     │                                 (40B on Visa/MC rails)
+    Samsung Pay)       │
+                       │
+(-) E-Commerce on      ██████████████████████████        ~59,716  -1,730
+    existing rails     │                                 (95% of 57.5B already counted)
+                       │
+(-) Bill payments on   █████████████████████████         ~57,005  -2,711
+    bank/card rails    │                                 (90% of 95B already counted)
+                       │
+(-) Payroll on ACH     ████████████████████████          ~55,765  -1,240
+                       │                                 (95% of 41.2B already counted)
+(-) Insurance on       ███████████████████████           ~55,365  -400
+    bank/card rails    │                                 (90% of 14B already counted)
+(-) BNPL on card/      ██████████████████████            ~55,190  -175
+    bank rails         │                                 (purchases ride on existing rails)
+(-) P2P/Remittance     ██████████████████████            ~55,165  -25
+    minor overlaps     │
+                        ▼
+                       ═══════════════════════════
+De-duplicated          ████████████████████               ~53,200 TPS
+</code></pre>
+<h3 id="base-layer-rule">Base Layer Rule</h3>
+<p><strong>Cards</strong> (772.7B) and <strong>Bank Transfers</strong> (484B) are the two base payment layers. They represent the actual infrastructure that moves money. All other payment categories are measured for overlap against these two layers, plus the incremental portion of Wallets (408B after deducting UPI and card-rail wallets).</p>
+<hr/>
+<h2 id="5-primary-data-sources">5. Primary Data Sources</h2>
+<h3 id="source-confidence-matrix">Source Confidence Matrix</h3>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+Nilson Report       █████████░ █████████ █████████░  ████████░░
+Visa/MC 10-K        ████░░░░░  █████████ █████████░  ██████████
+BIS CPMI Red Book   ██████░░░  █████░░░░ ██████████  ██████░░░░
+NPCI (UPI data)     ████░░░░░  █████████ █████████░  █████████░
+PBOC Reports        ████░░░░░  ████████░ █████████░  ████░░░░░░
+ACI Worldwide       ████████░  ████████░ ███████░░░  ████░░░░░░
+Worldpay GPR        ████████░  █████████ ███████░░░  ██████░░░░
+Nacha (US ACH)      ███░░░░░░  █████████ █████████░  ██████████
+GSMA (Mobile $)     ██████░░░  ████████░ ████████░░  █████░░░░░
+BCB (PIX data)      ███░░░░░░  █████████ █████████░  █████████░
+                    ─────────  ────────  ──────────  ───────────
+</code></pre>
+<p><strong>Tier 1 (Primary anchors):</strong> Nilson Report (cards), BIS CPMI (bank transfers), NPCI (UPI), Visa/Mastercard filings
+<strong>Tier 2 (Cross-validation):</strong> ACI Worldwide (real-time payments), PBOC (China), Worldpay GPR (e-commerce payment mix)
+<strong>Tier 3 (Gap-filling):</strong> GSMA (mobile money), Statista, industry estimates</p>
+<hr/>
+<h2 id="6-sector-triangulation-approach">6. Sector Triangulation Approach</h2>
+<h3 id="payments-sector-triangulation-funnel">Payments Sector Triangulation Funnel</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│              RAW ESTIMATES                                │
+│                                                          │
+│  Method A              Method B            Method C      │
+│  [Top-Down]            [Bottom-Up]         [Rail-Based]  │
+│  GDP × payment         Sum of operator     Card networks │
+│  intensity ratio       disclosures         + RTP systems │
+│  ┌──────────┐         ┌──────────┐        ┌──────────┐  │
+│  │ 1,750B   │         │ 1,620B   │        │ 1,690B   │  │
+│  │ annual   │         │ annual   │        │ annual   │  │
+│  └────┬─────┘         └────┬─────┘        └────┬─────┘  │
+│       │                    │                    │        │
+│       └────────────────────┼────────────────────┘        │
+│                            ▼                              │
+│              ┌───────────────────────┐                    │
+│              │    RECONCILIATION     │                    │
+│              │ Top-down overcounts   │                    │
+│              │ by ~5% (includes      │                    │
+│              │ some cash-funded).    │                    │
+│              │ Bottom-up misses long │                    │
+│              │ tail (~50B in small   │                    │
+│              │ market wallets).      │                    │
+│              │ Rail-based best fit.  │                    │
+│              └──────────┬────────────┘                    │
+│                         ▼                                 │
+│              ┌───────────────────────┐                    │
+│              │   FINAL ESTIMATE      │                    │
+│              │ 1,679B unique txns    │                    │
+│              │ ~53,200 TPS           │                    │
+│              │ Range: 48,000-58,000  │                    │
+│              │ Confidence: 78/100    │                    │
+│              └───────────────────────┘                    │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Method A (Top-Down):</strong> Global consumer spending (~$65T) x electronic payment penetration (~82%) x avg transaction frequency per dollar yields ~1,750B electronic payment events. Overstates because it includes some cash-intermediated flows.</p>
+<p><strong>Method B (Bottom-Up):</strong> Sum of Visa (233B) + Mastercard (166B) + UnionPay (158B) + other cards (216B) + UPI (172B) + China mobile (280B) + mobile money (108B) + ACH/batch (106B) + P2P (8.5B) + other = ~1,620B. Understates because it misses small-market operators.</p>
+<p><strong>Method C (Rail-Based):</strong> <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Card networks</a> (773B) + bank transfers (484B) + incremental wallets (408B) + other = ~1,690B. Our preferred method because it counts at the infrastructure level.</p>
+<hr/>
+<h2 id="7-definition-standards">7. Definition Standards</h2>
+<p>In the Payments sector, a <strong>transaction</strong> is a completed payment instruction — the point at which money is irrevocably committed to move from payer to payee.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Counting Point</th>
+<th>What Is Excluded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>Clearing instruction (post-auth, pre-settle)</td>
+<td>Declined auths, reversals, chargebacks</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>Initiated payment instruction (ACH item, RTP message)</td>
+<td>Rejected items, returned payments</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>Completed wallet transaction</td>
+<td>Failed attempts, cancelled orders</td>
+</tr>
+<tr>
+<td>E-Commerce</td>
+<td>Completed checkout event</td>
+<td>Cart abandonments, cancelled orders</td>
+</tr>
+<tr>
+<td>P2P Transfers</td>
+<td>Completed transfer</td>
+<td>Cancelled sends</td>
+</tr>
+<tr>
+<td>Remittances</td>
+<td>Completed cross-border transfer</td>
+<td>Cancelled/returned remittances</td>
+</tr>
+<tr>
+<td>ATM Withdrawals</td>
+<td>Completed cash dispensing event</td>
+<td>Balance inquiries, declined withdrawals</td>
+</tr>
+<tr>
+<td>Bill Payments</td>
+<td>Completed payment event</td>
+<td>Scheduled but not executed payments</td>
+</tr>
+<tr>
+<td>Payroll</td>
+<td>Individual salary/wage deposit</td>
+<td>Batch file submissions (1 file may contain 10,000 deposits)</td>
+</tr>
+<tr>
+<td>Insurance</td>
+<td>Premium payment event</td>
+<td>Policy quotes, renewal notices</td>
+</tr>
+<tr>
+<td>BNPL</td>
+<td>Purchase-level: 1 checkout = 1 txn; Installment-level: each payment = 1 txn</td>
+<td>Declined applications</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="8-known-gaps-future-work">8. Known Gaps &amp; Future Work</h2>
+<ul>
+<li><strong>China mobile payment detail.</strong> Alipay/WeChat Pay 280B estimate is based on PBOC aggregate data. Direct operator disclosures would improve confidence by 10+ points.</li>
+<li><strong>Cash economy measurement.</strong> ATM withdrawals (49.1B) capture cash entry points but not subsequent cash-to-cash transactions. Diary studies and econometric cash-use models could provide bounds.</li>
+<li><strong>Bill payment de-duplication.</strong> The 95B bill payment figure is new (Run 4) and its overlap with bank transfers needs more granular analysis by payment method.</li>
+<li><strong>Payroll and insurance overlap.</strong> Both are heavily rail-dependent categories added in Run 4. The 95% and 90% overlap estimates are conservative and could be refined with payment method surveys.</li>
+<li><strong>Real-time payment explosion.</strong> RTP volume grew 42% YoY (ACI Worldwide). Current 378B estimate may already be stale. Quarterly updates would improve recency.</li>
+<li><strong>On-us transaction gap.</strong> Payments within a single bank (payer and payee at the same institution) may not appear in interbank statistics. The Fed estimates 10-15% of US non-cash payments are on-us. Global extrapolation is needed.</li>
+</ul>
+<hr/>
+<p><em>Payments sector methodology evolves as new categories are added and overlap analysis is refined. The de-duplication framework is the most critical component — without it, the sector total would overstate by 22%.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/methodology/SECTOR_PAYMENTS.md">analysis/methodology/SECTOR_PAYMENTS.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

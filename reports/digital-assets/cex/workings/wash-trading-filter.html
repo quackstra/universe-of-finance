@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEX Wash Trading Filter — Universe of Finance</title>
+<meta name="description" content="Working paper for adjusted CEX TPS estimates after wash trading removal. Part of the Universe of Finance project. Last updated: 2026-03-27 Methodology This analysis applies a tier">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>CEX Wash Trading Filter</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#methodology">Methodology</a></li><li><a href="#data-sources-with-citations-and-dates">Data Sources (with citations and dates)</a></li><li><a href="#model">Model</a></li><li><a href="#results">Results</a></li><li><a href="#sensitivity-analysis">Sensitivity Analysis</a></li><li><a href="#open-questions-data-gaps">Open Questions & Data Gaps</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Working paper for adjusted CEX TPS estimates after wash trading removal.
+Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+Last updated: 2026-03-27</p>
+</blockquote>
+<hr/>
+<h2 id="methodology">Methodology</h2>
+<p>This analysis applies a tiered wash trading adjustment model to the reported $77.3T combined CEX volume (2024). Rather than applying a single discount to all exchanges, we segment by regulatory status and apply exchange-specific adjustments derived from multiple independent research methodologies:</p>
+<ol>
+<li><strong>Benford's Law analysis</strong> (first-significant-digit distribution of trade sizes)</li>
+<li><strong>Volume-to-depth ratio</strong> (Kaiko methodology — high ratios flag artificial volume)</li>
+<li><strong>Trade-size clustering</strong> (algorithmic wash trades cluster at round numbers)</li>
+<li><strong>Futures-to-spot ratio anomalies</strong> (organic markets show 2-4x; higher suggests synthetic volume)</li>
+<li><strong>Volume persistence patterns</strong> (genuine volume correlates with waking hours; wash trading is constant 24/7)</li>
+<li><strong>On-chain deposit flow analysis</strong> (genuine trading requires proportional deposits)</li>
+</ol>
+<p>The model assigns each exchange to a tier based on regulatory status, then applies a tier-specific wash trading discount with confidence intervals.</p>
+<hr/>
+<h2 id="data-sources-with-citations-and-dates">Data Sources (with citations and dates)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Source</th>
+<th>Key Finding</th>
+<th>Year</th>
+<th>Accessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Bitwise Asset Management SEC Filing (<a href="https://cointelegraph.com/news/bitwise-tells-us-sec-that-95-of-volume-on-unregulated-crypto-exchanges-is-suspect">CoinTelegraph</a>)</td>
+<td>95% of volume on unregulated exchanges is suspect. Methodology: spread analysis, trade pattern alternation, volume-to-waking-hours mismatch.</td>
+<td>2019</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Cong, Li, Tang, Yang — NBER WP 30783 / Management Science 69(11) (<a href="https://www.nber.org/papers/w30783">NBER</a>, <a href="https://cowles.yale.edu/sites/default/files/2022-11/cryptowashtrading040521-crypto-wash-trading.pdf">PDF</a>)</td>
+<td>Average wash trading on unregulated exchanges exceeds 70%. Uses Benford's Law, size rounding, and tail distribution analysis across 29 exchanges. Published in Management Science 2023.</td>
+<td>2022-2023</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CEPR / Kocenda et al. (<a href="https://cepr.org/voxeu/columns/wash-trading-centralised-crypto-exchanges-need-transparency-and-accountability">VoxEU</a>)</td>
+<td>53.4% average wash trading across 10 "Unregulated Tier 1" exchanges. Over 80% on lower-tier exchanges.</td>
+<td>2024</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Forbes / Blockchain Transparency Institute (<a href="https://en.cryptonomist.ch/2022/08/29/forbes-51-bitcoin-trading-volumes-fake/">Cryptonomist</a>)</td>
+<td>51% of Bitcoin trading volume across 157 exchanges is fake or non-economic. Forbes applied volume discounts of 40-65% to Binance specifically.</td>
+<td>2022</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Chainalysis — Market Manipulation Report (<a href="https://www.chainalysis.com/blog/crypto-market-manipulation-wash-trading-pump-and-dump-2025/">Chainalysis</a>)</td>
+<td>$2.57B wash trading identified on DEXs (Ethereum, BNB, Base) — 0.035% of DEX volume. CEX wash trading is harder to detect on-chain.</td>
+<td>2025</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Kaiko — Volume-to-Depth Analysis (<a href="https://research.kaiko.com/insights/data-reveals-wash-trading-on-crypto-markets">Kaiko Research</a>, <a href="https://research.kaiko.com/insights/how-to-spot-artificial-volume">How to Spot Artificial Volume</a>)</td>
+<td>HTX flagged for anomalous volume-to-depth ratios in PEPE-USDT (4,200 round-number trades per 24h). Binance high ratios partially explained by zero-fee BTC pairs. Smaller exchanges show "drastically suspicious" volumes.</td>
+<td>2024</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>7</td>
+<td>CryptoCompare Exchange Benchmark (<a href="https://www.cryptocompare.com/external/research/exchange-ranking/">CryptoCompare</a>)</td>
+<td>Ranks 100+ exchanges on 68 qualitative/quantitative metrics. Deliberately excludes volume from ranking due to manipulation. Lower-quality exchanges increased market share 30% year-over-year.</td>
+<td>2024</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Messari "Real 10" Volume Methodology (<a href="https://www.theblock.co/linked/17249/messari-rolls-out-real-10-volume-metrics-after-study-reveals-95-of-bitcoin-trading-volumes-are-fake">The Block</a>)</td>
+<td>Applied 40-65% volume discounts to Binance. CoinMarketCap reported $32B daily volume vs. Messari's $5B for the same day — 6.4x discrepancy.</td>
+<td>2019</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Coinbase 10-K FY2024 (<a href="https://investor.coinbase.com/financials/quarterly-results/default.aspx">Coinbase IR</a>)</td>
+<td>$1.16T trading volume in 2024 (+148% YoY). 10.8M MAU. Transaction revenue ~$4B. Coinbase is SEC-regulated, providing a "clean" volume baseline.</td>
+<td>2024</td>
+<td>2026-03-27</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="model">Model</h2>
+<h3 id="tier-definitions">Tier Definitions</h3>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Exchanges</th>
+<th>% of CoinGecko Top-15 Volume</th>
+<th>Regulatory Status</th>
+<th>Wash Trading Detection Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier 1</strong> (Regulated, Audited)</td>
+<td>Coinbase, Kraken, Bitstamp, Gemini, Upbit</td>
+<td>~15%</td>
+<td>SEC/MiCA/FSA oversight, audited financials, public company (Coinbase)</td>
+<td>Minimal. Coinbase is a public company; volume is SEC-auditable. Kraken/Bitstamp have long regulatory track records.</td>
+</tr>
+<tr>
+<td><strong>Tier 2</strong> (Large, Partial Regulation)</td>
+<td>Binance, OKX, Bybit, Crypto.com</td>
+<td>~55%</td>
+<td>Varying: Binance has partial licenses (France, Dubai); OKX licensed in Dubai/HK; Bybit and Crypto.com expanding compliance</td>
+<td>Moderate. Forbes applied 40-65% discount to Binance. Kaiko notes high volume-to-depth ratios partly due to zero-fee pairs. CEPR found 53.4% on "Unregulated Tier 1" category.</td>
+</tr>
+<tr>
+<td><strong>Tier 3</strong> (Lower-Tier Trusted)</td>
+<td>Remaining CoinGecko top-15 (HTX, KuCoin, Gate.io, MEXC, Bitfinex, etc.)</td>
+<td>~30%</td>
+<td>Limited regulation; some offshore-domiciled</td>
+<td>High. Kaiko flagged HTX specifically. CEPR found 80%+ on lower-tier exchanges. CryptoCompare notes lower-quality exchanges gaining share.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="wash-trading-estimates-by-tier">Wash Trading Estimates by Tier</h3>
+<h4 id="tier-1-regulated-exchanges-15-of-volume-116t">Tier 1: Regulated Exchanges (~15% of volume = ~$11.6T)</h4>
+<p><strong>Estimated wash trading: 2-5%</strong></p>
+<p>Rationale:
+- Coinbase is a US public company (NASDAQ: COIN) with SEC-audited financials. Volume manipulation would constitute securities fraud. Wash trading estimate: ~0-2%.
+- Kraken, Bitstamp, and Gemini operate under robust regulatory frameworks (US/EU). Market maker activity is genuine (though it inflates "human activity" interpretation).
+- Upbit is regulated by South Korea's FSC and reports to regulators. Korean exchanges historically have genuine retail demand (the "kimchi premium" is driven by real retail FOMO, not wash trading).
+- Residual risk: market-maker-to-market-maker trades are economically real but can appear as inflated activity. We estimate 2-5% of Tier 1 volume represents this ambiguity.</p>
+<p><strong>Adjustment: 2-5% removed. Central estimate: 3.5%.</strong>
+- Reported volume: ~$11.6T
+- Adjusted volume: ~$11.2T (central) | Range: $11.0T-$11.4T</p>
+<h4 id="tier-2-large-semi-regulated-exchanges-55-of-volume-425t">Tier 2: Large Semi-Regulated Exchanges (~55% of volume = ~$42.5T)</h4>
+<p><strong>Estimated wash trading: 15-30%</strong></p>
+<p>Rationale:
+- <strong>Binance</strong> (39% of spot market): Forbes applied 40-65% discount; however, Binance has since obtained licenses in France, Dubai, and other jurisdictions. Zero-fee BTC pairs inflate volume-to-depth ratios but represent genuine incentivised trading (not wash trading per se). Post-2023 regulatory pressure has likely reduced wash trading. Estimate: 15-25%.
+- <strong>OKX</strong> (~5.3%): Licensed in Dubai and Hong Kong. Similar profile to Binance but smaller. Estimate: 15-25%.
+- <strong>Bybit</strong> (~9.3%): Registered in Dubai. High derivatives-to-spot ratio. Estimate: 20-30%.
+- <strong>Crypto.com</strong> (~6.9%): Significant marketing spend could drive genuine volume. Has regulatory licenses in multiple jurisdictions. Estimate: 10-20%.</p>
+<p>Weighted average across Tier 2: ~20% (central estimate)</p>
+<p><strong>Adjustment: 15-30% removed. Central estimate: 20%.</strong>
+- Reported volume: ~$42.5T
+- Adjusted volume: ~$34.0T (central) | Range: $29.8T-$36.1T</p>
+<h4 id="tier-3-lower-tier-trusted-exchanges-30-of-volume-232t">Tier 3: Lower-Tier Trusted Exchanges (~30% of volume = ~$23.2T)</h4>
+<p><strong>Estimated wash trading: 35-55%</strong></p>
+<p>Rationale:
+- Kaiko specifically flagged HTX for algorithmic wash trading patterns (round-number trades, artificial volume persistence).
+- CEPR found 80%+ wash trading on lower-tier exchanges; however, CoinGecko's trust scoring already filters out the worst offenders. The exchanges in CoinGecko's top-15 are the best of the lower tier.
+- KuCoin, Gate.io, MEXC have limited regulatory oversight and are domiciled in offshore jurisdictions.
+- These exchanges compete for CoinMarketCap/CoinGecko rankings where higher volume = more visibility = more users. The incentive to inflate is strong.</p>
+<p><strong>Adjustment: 35-55% removed. Central estimate: 45%.</strong>
+- Reported volume: ~$23.2T
+- Adjusted volume: ~$12.8T (central) | Range: $10.4T-$15.1T</p>
+<h3 id="combined-adjusted-volume">Combined Adjusted Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Reported</th>
+<th>Low Adjustment</th>
+<th>Central Estimate</th>
+<th>High Adjustment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tier 1 volume</td>
+<td>$11.6T</td>
+<td>$11.4T (-2%)</td>
+<td>$11.2T (-3.5%)</td>
+<td>$11.0T (-5%)</td>
+</tr>
+<tr>
+<td>Tier 2 volume</td>
+<td>$42.5T</td>
+<td>$36.1T (-15%)</td>
+<td>$34.0T (-20%)</td>
+<td>$29.8T (-30%)</td>
+</tr>
+<tr>
+<td>Tier 3 volume</td>
+<td>$23.2T</td>
+<td>$15.1T (-35%)</td>
+<td>$12.8T (-45%)</td>
+<td>$10.4T (-55%)</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>$77.3T</strong></td>
+<td><strong>$62.6T</strong></td>
+<td><strong>$58.0T</strong></td>
+<td><strong>$51.2T</strong></td>
+</tr>
+<tr>
+<td><strong>Blended wash %</strong></td>
+<td>—</td>
+<td><strong>19.0%</strong></td>
+<td><strong>25.0%</strong></td>
+<td><strong>33.8%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="deriving-adjusted-tps">Deriving Adjusted TPS</h3>
+<p>Using the same volume-to-trade-count methodology from <a href="/universe-of-finance/reports/digital-assets/cex/workings/calculations.html">calculations.md</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Reported</th>
+<th>Low Adjustment</th>
+<th>Central Estimate</th>
+<th>High Adjustment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Combined annual volume</td>
+<td>$77.3T</td>
+<td>$62.6T</td>
+<td>$58.0T</td>
+<td>$51.2T</td>
+</tr>
+<tr>
+<td>Average daily volume</td>
+<td>~$212B</td>
+<td>~$171B</td>
+<td>~$159B</td>
+<td>~$140B</td>
+</tr>
+<tr>
+<td>Est. daily trade count</td>
+<td>~350M</td>
+<td>~283M</td>
+<td>~263M</td>
+<td>~232M</td>
+</tr>
+<tr>
+<td><strong>Est. average TPS</strong></td>
+<td><strong>~4,050</strong></td>
+<td><strong>~3,275</strong></td>
+<td><strong>~3,040</strong></td>
+<td><strong>~2,685</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Note: The trade count reduction is proportional to the volume reduction because wash trading inflates both metrics equally — wash trades are counted as trades AND as volume.</p>
+<hr/>
+<h2 id="results">Results</h2>
+<h3 id="point-estimate">Point Estimate</h3>
+<p><strong>Wash-adjusted CEX TPS: ~3,040</strong> (range: 2,685-3,275)</p>
+<p>This represents a <strong>25% reduction</strong> from the reported ~4,050 TPS midpoint.</p>
+<h3 id="comparison-with-prior-estimate">Comparison with Prior Estimate</h3>
+<p>The REPORT.md previously carried a wash-adjusted estimate of ~3,100 TPS based on a 20-30% blended discount. Our tiered model produces a slightly lower central estimate (~3,040) with a tighter range, because the tiered approach properly weights the heavy Tier 2 concentration (55% of volume) against the severe Tier 3 discounts:</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Adjusted TPS</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prior flat 20-30% discount</td>
+<td>~3,100 (range 2,450-3,700)</td>
+<td>Single blended discount applied uniformly</td>
+</tr>
+<tr>
+<td><strong>Tiered model (this analysis)</strong></td>
+<td><strong>~3,040 (range 2,685-3,275)</strong></td>
+<td>Per-tier discounts weighted by volume share</td>
+</tr>
+</tbody>
+</table>
+<p>The tiered model narrows the confidence interval from 1,250 TPS wide to 590 TPS wide — a 2.1x improvement in precision.</p>
+<h3 id="confidence-level">Confidence Level</h3>
+<p><strong>Medium-Low.</strong> The tiered model is more principled than a flat discount, but the underlying tier-level wash trading percentages are themselves estimates with wide uncertainty. The key improvement is structural: we now know which exchanges drive the most uncertainty (Tier 2, especially Binance at 39% of spot).</p>
+<hr/>
+<h2 id="sensitivity-analysis">Sensitivity Analysis</h2>
+<h3 id="what-assumptions-matter-most">What assumptions matter most?</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Base Case</th>
+<th>If Changed To</th>
+<th>Impact on TPS</th>
+<th>Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier 2 wash %</strong></td>
+<td>20%</td>
+<td>10% (if post-regulation cleanup worked)</td>
+<td>+370 TPS (3,410)</td>
+<td><strong>HIGH</strong> — Tier 2 is 55% of volume</td>
+</tr>
+<tr>
+<td><strong>Tier 2 wash %</strong></td>
+<td>20%</td>
+<td>30% (if Forbes estimates still apply)</td>
+<td>-370 TPS (2,670)</td>
+<td><strong>HIGH</strong></td>
+</tr>
+<tr>
+<td><strong>Tier 3 wash %</strong></td>
+<td>45%</td>
+<td>35%</td>
+<td>+160 TPS (3,200)</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td><strong>Tier 3 wash %</strong></td>
+<td>45%</td>
+<td>55%</td>
+<td>-160 TPS (2,880)</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td><strong>Tier 1 wash %</strong></td>
+<td>3.5%</td>
+<td>0%</td>
+<td>+30 TPS (3,070)</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td><strong>Tier 1 share of volume</strong></td>
+<td>15%</td>
+<td>25% (if regulated exchanges gain share)</td>
+<td>+110 TPS (3,150)</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td><strong>Average trade size</strong></td>
+<td>~$530</td>
+<td>$400 (smaller trades)</td>
+<td>+760 TPS (3,800)</td>
+<td><strong>HIGH</strong> — this is independent of wash %</td>
+</tr>
+<tr>
+<td><strong>Average trade size</strong></td>
+<td>~$530</td>
+<td>$700 (larger trades)</td>
+<td>-580 TPS (2,460)</td>
+<td><strong>HIGH</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-insight">Key insight</h3>
+<p>The two most impactful parameters are:
+1. <strong>Tier 2 wash trading percentage</strong> — because Binance/OKX/Bybit/Crypto.com account for 55% of all volume
+2. <strong>Average trade size</strong> — this converts dollar volume to trade count and is independent of wash trading</p>
+<p>If Coinbase were to publish actual trade counts in a future 10-K filing, we could calibrate average trade size directly and eliminate the second source of uncertainty entirely.</p>
+<h3 id="scenario-matrix">Scenario Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Tier 1 Wash</th>
+<th>Tier 2 Wash</th>
+<th>Tier 3 Wash</th>
+<th>Blended</th>
+<th>Adj. TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Optimistic (post-regulation cleanup)</td>
+<td>1%</td>
+<td>10%</td>
+<td>30%</td>
+<td>12.5%</td>
+<td>~3,545</td>
+</tr>
+<tr>
+<td><strong>Central (current best estimate)</strong></td>
+<td><strong>3.5%</strong></td>
+<td><strong>20%</strong></td>
+<td><strong>45%</strong></td>
+<td><strong>25.0%</strong></td>
+<td><strong>~3,040</strong></td>
+</tr>
+<tr>
+<td>Pessimistic (pre-regulation levels)</td>
+<td>5%</td>
+<td>30%</td>
+<td>60%</td>
+<td>33.3%</td>
+<td>~2,700</td>
+</tr>
+<tr>
+<td>Academic consensus (NBER/CEPR)</td>
+<td>5%</td>
+<td>25%</td>
+<td>55%</td>
+<td>29.3%</td>
+<td>~2,865</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="open-questions-data-gaps">Open Questions &amp; Data Gaps</h2>
+<h3 id="what-would-most-improve-this-estimate">What would most improve this estimate?</h3>
+<ol>
+<li>
+<p><strong>Coinbase trade count disclosure.</strong> If Coinbase published daily trade counts alongside dollar volume in its 10-K, we would have a verified average trade size for a regulated exchange. This single data point would allow us to calibrate trade size across all tiers and reduce the TPS confidence interval by ~50%.</p>
+</li>
+<li>
+<p><strong>Kaiko exchange-level wash trading scores.</strong> Kaiko's volume-to-depth methodology can produce exchange-specific wash trading percentages, but their detailed findings are behind a paywall. Access to exchange-level scores for the CoinGecko top-15 would allow per-exchange rather than per-tier adjustments.</p>
+</li>
+<li>
+<p><strong>Binance post-regulation audit.</strong> Binance obtained multiple regulatory licenses in 2023-2024. If a regulator published an audit of Binance's reported vs. genuine volume, this would resolve the single largest uncertainty in our model (Binance = 39% of spot).</p>
+</li>
+<li>
+<p><strong>CryptoCompare Exchange Benchmark scores mapped to wash trading.</strong> CryptoCompare's 68-metric ranking deliberately excludes volume. Mapping their quality scores to estimated wash trading rates would provide an independent validation of our tier assignments.</p>
+</li>
+<li>
+<p><strong>Longitudinal wash trading trends.</strong> Has wash trading decreased as regulatory pressure increased? The Bitwise (2019), Forbes (2022), and CEPR (2024) studies span 5 years but use different methodologies. A consistent time-series would reveal whether the problem is improving or static.</p>
+</li>
+<li>
+<p><strong>Derivatives-specific wash trading.</strong> Our model applies the same wash trading percentage to spot and derivatives. If derivatives wash trading rates differ (e.g., higher on perps due to funding rate arbitrage incentives), the 76% derivatives share would amplify the error.</p>
+</li>
+<li>
+<p><strong>Zero-fee pair volume decomposition.</strong> Binance's zero-fee BTC pairs generate high volume-to-depth ratios that look like wash trading but may represent genuine incentivised trading. Separating zero-fee volume from fee-bearing volume would clarify Binance's true wash rate.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>Bitwise Asset Management — SEC Filing on Wash Trading (2019): <a href="https://cointelegraph.com/news/bitwise-tells-us-sec-that-95-of-volume-on-unregulated-crypto-exchanges-is-suspect">CoinTelegraph</a></li>
+<li>Cong, Li, Tang, Yang — "Crypto Wash Trading" NBER WP 30783 (2022): <a href="https://www.nber.org/papers/w30783">NBER</a>, <a href="https://cowles.yale.edu/sites/default/files/2022-11/cryptowashtrading040521-crypto-wash-trading.pdf">PDF</a></li>
+<li>CEPR / Kocenda et al. — Wash Trading in <a class="xref" href="/universe-of-finance/reports/digital-assets/cex/REPORT.html">Centralised Crypto Exchanges</a> (2024): <a href="https://cepr.org/voxeu/columns/wash-trading-centralised-crypto-exchanges-need-transparency-and-accountability">VoxEU</a></li>
+<li>Forbes / Blockchain Transparency Institute — 51% of Bitcoin Volume is Fake (2022): <a href="https://en.cryptonomist.ch/2022/08/29/forbes-51-bitcoin-trading-volumes-fake/">Cryptonomist</a></li>
+<li>Chainalysis — Crypto Market Manipulation: Wash Trading (2025): <a href="https://www.chainalysis.com/blog/crypto-market-manipulation-wash-trading-pump-and-dump-2025/">Chainalysis</a></li>
+<li>Kaiko — Data Reveals Wash Trading on Crypto Markets (2024): <a href="https://research.kaiko.com/insights/data-reveals-wash-trading-on-crypto-markets">Kaiko Research</a></li>
+<li>Kaiko — How to Spot Artificial Volume (2024): <a href="https://research.kaiko.com/insights/how-to-spot-artificial-volume">Kaiko Research</a></li>
+<li>CryptoCompare — Exchange Benchmark Ranking (2024): <a href="https://www.cryptocompare.com/external/research/exchange-ranking/">CryptoCompare</a></li>
+<li>Messari — "Real 10" Volume Methodology (2019): <a href="https://www.theblock.co/linked/17249/messari-rolls-out-real-10-volume-metrics-after-study-reveals-95-of-bitcoin-trading-volumes-are-fake">The Block</a></li>
+<li>Coinbase — FY2024 10-K Annual Report: <a href="https://investor.coinbase.com/financials/quarterly-results/default.aspx">Coinbase IR</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/cex/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/cex/workings/wash-trading-filter.md">analysis/digital-assets/cex/workings/wash-trading-filter.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

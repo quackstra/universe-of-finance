@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RWA Tokenisation — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition One RWA transaction = one on-chain transaction involving a tokenised representation of a real-world asset (minting, transferring, redeeming, or interacting w">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Emerging<span class="sep">/</span>Rwa Tokenisation</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>RWA Tokenisation — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#the-aum-stock-vs-transactions-flow-distinction">The AUM (Stock) vs Transactions (Flow) Distinction</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-methodological-challenges">Key Methodological Challenges</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>One RWA transaction = <strong>one on-chain transaction involving a tokenised
+representation of a real-world asset</strong> (minting, transferring, redeeming,
+or interacting with via <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> protocols).</p>
+<p>Counted at: <strong>on-chain settlement</strong> (the blockchain transaction).
+Included: token mints (primary issuance), token transfers (secondary
+trading), token redemptions (burning), DeFi interactions (collateralisation,
+lending, yield farming with RWA tokens).
+Excluded: off-chain asset purchases that back the tokens, stablecoin
+transactions (separate capsule), native crypto transactions, NFTs without
+real-world asset backing.</p>
+<hr/>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-tvl-to-transaction-ratio">Method A: TVL-to-Transaction Ratio</h3>
+<p>Observed DeFi ratio: ~200-500 on-chain transactions per $1M TVL/year.
+At $24B TVL: $24,000M x 200-500 = 4.8B-12B transactions.</p>
+<p><strong>But this overstates</strong>: DeFi ratios include high-frequency trading and
+yield farming. RWA tokens are predominantly buy-and-hold (Treasury tokens,
+private credit). Applying a 0.01-0.02x adjustment for lower trading
+frequency: <strong>48-240M transactions</strong>.</p>
+<h3 id="method-b-protocol-contract-activity-sampling">Method B: Protocol Contract Activity Sampling</h3>
+<p>Query top 20 RWA protocol contracts on Ethereum/Solana/Polygon:
+- BUIDL: ~5-10K daily transfers
+- OUSG: ~2-5K daily transfers
+- Centrifuge: ~1-3K daily interactions
+- Estimated total across all protocols: ~50-100K daily
+- Annualised: <strong>18-37M</strong></p>
+<h3 id="method-c-institutional-transaction-frequency-model">Method C: Institutional Transaction Frequency Model</h3>
+<p>~500 institutional investors across major RWA protocols.
+Average institutional investor: 2-5 transactions/week (rebalancing,
+minting, redeeming) = 100-260 transactions/year.
+500 x 180 (midpoint) = 90K institutional transactions.
+Add retail (10x institutional by count, 0.1x by value): ~900K.
+Total: ~1M (way too low -- misses DeFi composability and secondary trading).</p>
+<pre><code>+---------------------------------------------------+
+|              RAW ESTIMATES                          |
+|                                                     |
+|  Method A            Method B          Method C     |
+|  [TVL Ratio]         [Contract Query]  [Inst. Freq] |
+|  +-------------+     +-----------+     +---------+  |
+|  | 48-240M     |     | 18-37M    |     | ~1M     |  |
+|  | (DeFi ratio |     | (sampled  |     | (too    |  |
+|  |  adjusted)  |     |  on-chain)|     |  low)   |  |
+|  +------+------+     +-----+-----+     +----+----+  |
+|         |                  |                |        |
+|         +------------------+----------------+        |
+|                            v                         |
+|              +------------------------+              |
+|              |    RECONCILIATION      |              |
+|              | Methods A+B converge   |              |
+|              | at 50-100M. Method C   |              |
+|              | is floor only (misses  |              |
+|              | DeFi composability).   |              |
+|              | Low trading frequency  |              |
+|              | is the key driver of   |              |
+|              | low TPS despite high   |              |
+|              | TVL.                   |              |
+|              +----------+-------------+              |
+|                         v                            |
+|              +------------------------+              |
+|              |   FINAL ESTIMATE       |              |
+|              |   50-100M (75M mid)    |              |
+|              |   ~2.4 TPS (calendar)  |              |
+|              |   Confidence: 56/100   |              |
+|              +------------------------+              |
++---------------------------------------------------+
+</code></pre>
+<hr/>
+<h2 id="the-aum-stock-vs-transactions-flow-distinction">The AUM (Stock) vs Transactions (Flow) Distinction</h2>
+<p>This is the most important methodological concept for RWA measurement.
+Most reporting focuses on <strong>TVL/AUM</strong> (a stock measure), not
+<strong>transactions</strong> (a flow measure).</p>
+<pre><code>+-------------------------------------------------------------------+
+|              STOCK vs FLOW IN RWA                                  |
+|                                                                     |
+|  STOCK (TVL / AUM)                  FLOW (Transactions)            |
+|  +----------------------------+    +---------------------------+   |
+|  | $24B on-chain TVL          |    | ~75M on-chain txns/year   |   |
+|  | $402B off-chain backing    |    | ~2.4 TPS                  |   |
+|  |                            |    |                           |   |
+|  | Growing ~60-100% annually  |    | Growing faster than TVL   |   |
+|  | Well-measured (on-chain)   |    | Poorly measured (no       |   |
+|  |                            |    | aggregator tracks this)   |   |
+|  +----------------------------+    +---------------------------+   |
+|                                                                     |
+|  KEY INSIGHT: High TVL + Low TPS = buy-and-hold market.            |
+|  When secondary markets develop, TPS will decouple from TVL        |
+|  growth and could increase 100x without TVL changing.              |
++-------------------------------------------------------------------+
+</code></pre>
+<h3 id="why-tvl-growth-transaction-growth">Why TVL Growth =/= Transaction Growth</h3>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>TVL</th>
+<th>Transactions</th>
+<th>Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Today (buy-and-hold)</td>
+<td>$24B</td>
+<td>~75M</td>
+<td>3.1 txn/$M TVL</td>
+</tr>
+<tr>
+<td>Near-term (DeFi composability)</td>
+<td>$100B</td>
+<td>~1B</td>
+<td>10 txn/$M TVL</td>
+</tr>
+<tr>
+<td>Mature (liquid secondary)</td>
+<td>$2T</td>
+<td>~50B+</td>
+<td>25+ txn/$M TVL</td>
+</tr>
+</tbody>
+</table>
+<p>The transaction-per-TVL-dollar ratio is the single most important
+variable for converting TVL projections into TPS projections.</p>
+<hr/>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>Methods A and B converge at 50-100M. The wide range within that band
+reflects uncertainty about:</p>
+<ol>
+<li><strong>Secondary market activity</strong>: Is most RWA token activity primary
+   issuance (mint/redeem) or secondary trading? If secondary markets
+   are liquid, Method A's higher estimate applies.</li>
+<li><strong>DeFi composability</strong>: If BUIDL is used as collateral on Aave,
+   each collateralisation event is a new transaction. This multiplier
+   is currently small but could become significant.</li>
+<li><strong>Multi-chain fragmentation</strong>: RWA tokens exist on Ethereum, Solana,
+   Polygon, Stellar, and proprietary chains. No single scanner captures
+   all activity.</li>
+</ol>
+<hr/>
+<h2 id="key-methodological-challenges">Key Methodological Challenges</h2>
+<h3 id="aum-vs-flow-confusion">AUM vs. Flow Confusion</h3>
+<p>Industry reports overwhelmingly cite TVL ($24B) or projected AUM
+($3.5T-$30T by 2030). Transaction counts are rarely discussed because:</p>
+<ol>
+<li>RWA is marketed as an asset class (stock), not a payment rail (flow)</li>
+<li>Current institutional participants care about returns, not throughput</li>
+<li>On-chain transaction counts are technically available but nobody
+   aggregates them across protocols</li>
+</ol>
+<h3 id="projection-variance">Projection Variance</h3>
+<p>The 10x spread in industry TVL forecasts ($3.5T to $30T by 2030) is the
+widest of any category. This variance propagates into TPS projections:</p>
+<table>
+<thead>
+<tr>
+<th>TVL Scenario</th>
+<th>TVL 2030</th>
+<th>Assumed txn/$M</th>
+<th>Annual Txns 2030</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conservative</td>
+<td>$100B</td>
+<td>10</td>
+<td>1.0B (~30 TPS)</td>
+</tr>
+<tr>
+<td>Baseline</td>
+<td>$500B</td>
+<td>6.3</td>
+<td>3.15B (~100 TPS)</td>
+</tr>
+<tr>
+<td>Bull case</td>
+<td>$5T</td>
+<td>5</td>
+<td>25.2B (~800 TPS)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="off-chain-on-chain-duality">Off-Chain / On-Chain Duality</h3>
+<p>Every RWA token has two lives:</p>
+<ol>
+<li><strong>On-chain</strong>: Measurable, transparent, queryable via block explorers</li>
+<li><strong>Off-chain</strong>: The underlying asset (Treasury bond, real estate deed,
+   credit agreement) exists in traditional systems</li>
+</ol>
+<p>The off-chain settlement (buying/selling the backing asset) creates
+traditional finance transactions that are counted in other capsules
+(securities-settlement, etc.). We count only the on-chain leg to avoid
+double-counting.</p>
+<hr/>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>RWA tokenisation is a FULL SUBSET of blockchain L1/L2 transactions:
+
++-------------------------------------------+
+|  Blockchain L1/L2 Transactions            |
+|  (billions per year)                      |
+|                                           |
+|  +-------------------------------------+ |
+|  | DeFi, NFTs, transfers, etc.         | |
+|  |                                     | |
+|  |  +-------------------------------+  | |
+|  |  | RWA Token Transactions        |  | |
+|  |  | ~75M/year (~0.01% of total    |  | |
+|  |  | on-chain activity)            |  | |
+|  |  +-------------------------------+  | |
+|  |                                     | |
+|  +-------------------------------------+ |
+|                                           |
++-------------------------------------------+
+
+Overlap: 100% subset of blockchain-l1-l2 capsule.
+No overlap with traditional finance capsules (we
+count only the on-chain leg, not the off-chain
+backing asset transactions).
+</code></pre>
+<hr/>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Category: Tokenised RWA (~75M annual transactions)
+
+Chain/Protocol    Volume    Share   Data Quality
+----------------- -------- ------- ----------------
+Ethereum          ########   50%   On-chain (Etherscan, Dune)
+Stellar           ####       15%   On-chain (public ledger)
+Polygon           ###        10%   On-chain (PolygonScan)
+Solana            ###        10%   On-chain (Solscan)
+Base              ##          5%   On-chain (BaseScan)
+Other/Private     ##         10%   Opaque (permissioned chains)
+</code></pre>
+<p><strong>Coverage gap</strong>: Permissioned/private blockchain deployments (e.g.,
+Canton Network, JPM Onyx) are not visible in public chain data. These
+could add significant institutional RWA volume that our estimate misses.</p>
+<hr/>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ---------  --------  ----------  -----------
+RWA.xyz             ████████░  █████████ ████████░░  ██████░░░░
+DeFiLlama           ████████░  █████████ ████████░░  █████░░░░░
+On-chain data       ██████████ █████████ ██████████  ██████████
+CoinGecko RWA Rpt   ████████░  █████████ ███████░░░  ████░░░░░░
+Industry projections██████░░░  ████████░ █████░░░░░  ███░░░░░░░
+                    ---------  --------  ----------  -----------
+Composite Score:    56/100     90/100    72/100      52/100
+</code></pre>
+<p><strong>Overall confidence: 56/100</strong> -- TVL data is reliable (on-chain
+verification). Transaction count data is low confidence because no
+aggregator tracks RWA-specific counts. Industry projections carry
+extreme variance. The saving grace is that on-chain data is fully
+auditable -- the gap is aggregation, not observability.</p>
+<hr/>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial estimate: 50-100M txns, ~2.4 TPS</td>
+<td>Baseline</td>
+</tr>
+<tr>
+<td>2026-03-26</td>
+<td>TVL benchmark: $24B (mid-2025)</td>
+<td>Reference point</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/emerging/rwa-tokenisation/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/emerging/rwa-tokenisation/METHODOLOGY.md">analysis/emerging/rwa-tokenisation/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

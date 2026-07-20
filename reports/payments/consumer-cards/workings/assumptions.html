@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consumer Card Payments — Assumptions — Universe of Finance</title>
+<meta name="description" content="Every assumption documented with reasoning. Referenced from calculations and projections. Data Collection Assumptions A1. Nilson Report as Primary Source Assumption: The Nilson Re">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Consumer Card Payments — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#data-collection-assumptions">Data Collection Assumptions</a></li><li><a href="#historic-timeseries-assumptions">Historic Timeseries Assumptions</a></li><li><a href="#tps-calculation-assumptions">TPS Calculation Assumptions</a></li><li><a href="#projection-assumptions">Projection Assumptions</a></li><li><a href="#value-assumptions">Value Assumptions</a></li></ul></div><blockquote>
+<p>Every assumption documented with reasoning. Referenced from calculations and projections.</p>
+</blockquote>
+<hr/>
+<h2 id="data-collection-assumptions">Data Collection Assumptions</h2>
+<h3 id="a1-nilson-report-as-primary-source">A1. Nilson Report as Primary Source</h3>
+<p><strong>Assumption:</strong> The Nilson Report's figure of 772.73 billion global card purchase transactions in 2024 is the most authoritative available.
+<strong>Reasoning:</strong> Nilson Report has been the industry standard for card payment statistics for decades. Their methodology is consistent across years and networks.
+<strong>Risk:</strong> Nilson data is paywalled; figures extracted from secondary reporting. Slight discrepancies possible.</p>
+<h3 id="a2-visa-fiscal-year-alignment">A2. Visa Fiscal Year Alignment</h3>
+<p><strong>Assumption:</strong> Visa's FY2024 (ending Sep 30, 2024) figures are treated as representative of calendar year 2024.
+<strong>Reasoning:</strong> Three-quarter overlap with CY2024. Growth trends are smooth enough that the 3-month offset does not materially distort analysis.
+<strong>Risk:</strong> If Q4 CY2024 (Oct-Dec) had unusual seasonality, FY figures could understate CY totals. Estimated impact: &lt;3%.</p>
+<h3 id="a3-unionpay-2024-estimation">A3. UnionPay 2024 Estimation</h3>
+<p><strong>Assumption:</strong> UnionPay's 2024 transaction volume grew ~8.4% from 2023's 228B to ~247B.
+<strong>Reasoning:</strong> UnionPay's growth rate is modestly below the global 12.4% average due to <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s economic slowdown in 2024 and domestic consumption softness.
+<strong>Risk:</strong> Actual growth could be lower (China deceleration) or higher (government stimulus effect). Range: 235B-260B.</p>
+<h3 id="a4-amex-discover-split">A4. AmEx + Discover Split</h3>
+<p><strong>Assumption:</strong> Of the reported 23.6B combined Amex+Discover transactions, AmEx accounts for ~15B and Discover ~8.6B.
+<strong>Reasoning:</strong> AmEx has roughly 1.7× more cards in force and higher average transaction frequency. Historical ratio of ~60/40 to 65/35.
+<strong>Risk:</strong> Low impact — these are minor players by transaction count.</p>
+<hr/>
+<h2 id="historic-timeseries-assumptions">Historic Timeseries Assumptions</h2>
+<h3 id="a5-interpolation-methodology-2016-2021">A5. Interpolation Methodology (2016-2021)</h3>
+<p><strong>Assumption:</strong> For years where direct Nilson data is unavailable, global totals are estimated by:
+- Using Visa's reported annual transaction volumes as a proxy for growth rates
+- Applying Visa's market share (declining from ~38% in 2015 to ~30% in 2024) as a deflator
+- Cross-checking against known data points (2015: 227B, 2022: 624.86B, 2023: 687B, 2024: 773B)</p>
+<p><strong>Reasoning:</strong> Visa processes the largest share of transactions and publishes the most granular data. Its growth rate, adjusted for share changes, is a reasonable proxy for global growth.
+<strong>Risk:</strong> If non-Visa networks (especially UnionPay) grew at materially different rates, the interpolation could be off. Confidence: 🔴 Low for individual years, 🟡 Medium for the overall trajectory.</p>
+<h3 id="a6-covid-impact-2020">A6. COVID Impact (2020)</h3>
+<p><strong>Assumption:</strong> Global card transactions declined ~4.5% in 2020 vs 2019.
+<strong>Reasoning:</strong> Visa's processed transactions declined modestly in 2020 despite COVID, because card-not-present (<a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a>) partially offset card-present declines. The net impact on cards was less severe than on cash or check-based payments.
+<strong>Risk:</strong> The actual decline could have been 0% (shift from cash to cards offset volume loss) or up to -8% (severe economic contraction). 🔴 Low confidence on precise figure.</p>
+<hr/>
+<h2 id="tps-calculation-assumptions">TPS Calculation Assumptions</h2>
+<h3 id="a7-uniform-distribution-for-average-tps">A7. Uniform Distribution for Average TPS</h3>
+<p><strong>Assumption:</strong> Average TPS is calculated as total annual transactions / seconds per year, assuming uniform distribution.
+<strong>Reasoning:</strong> This is the standard methodology for expressing annual volume as TPS. Actual TPS varies significantly by time of day, day of week, and season.
+<strong>Risk:</strong> Average TPS understates peak and overstates overnight. This is by design — <a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">peak TPS</a> is estimated separately.</p>
+<h3 id="a8-peak-tps-multiplier">A8. Peak TPS Multiplier</h3>
+<p><strong>Assumption:</strong> Peak observed TPS across all networks is approximately 2.5× the average TPS.
+<strong>Reasoning:</strong> Industry studies suggest peak-to-average ratios of 2-3× for payment networks. Singles' Day (China), Black Friday (US), and similar events create spikes.
+<strong>Risk:</strong> Actual peak could be higher (3×+) during concentrated events. VisaNet's 83,000 TPS capacity vs ~7,400 TPS Visa average (11× headroom) suggests the system is designed for extreme spikes.</p>
+<hr/>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<h3 id="baseline-scenario">Baseline Scenario</h3>
+<p><strong>B1.</strong> Growth moderates from current 12.4% to 9% in 2026, declining to 7% by 2030 and holding steady.
+<strong>Reasoning:</strong> As cashless penetration reaches 85%+ in developed markets, growth shifts to emerging markets where adoption curves are steeper but volumes are smaller. Nilson projects 7.3% CAGR from 2022-2027.</p>
+<p><strong>B2.</strong> No fundamental disruption to card network rails.
+<strong>Reasoning:</strong> Despite A2A payment growth (<a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Pix</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>, etc.), <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> continue to serve as backend rails for <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a> (Apple Pay, Google Pay all run on card rails).</p>
+<p><strong>B3.</strong> Global economic growth averages 2.5-3% annually.
+<strong>Reasoning:</strong> IMF baseline projections. Card transaction growth typically runs 2-3× GDP growth due to cash displacement.</p>
+<h3 id="high-growth-scenario">High Growth Scenario</h3>
+<p><strong>H1.</strong> <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> and <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> add 200M+ new card users by 2030.
+<strong>Reasoning:</strong> India's UPI is primarily bank-account-linked, but card adoption is growing rapidly. Africa has the lowest card penetration globally with high smartphone adoption. <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Mobile wallets</a> increasingly link to card rails.</p>
+<p><strong>H2.</strong> <a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">IoT</a>/embedded payments add 50-100B additional card-rail transactions by 2035.
+<strong>Reasoning:</strong> Connected vehicles, smart appliances, and autonomous agents will increasingly transact on card infrastructure.</p>
+<p><strong>H3.</strong> Digital wallet growth continues to compound card-rail transactions.
+<strong>Reasoning:</strong> Apple Pay, Google Pay, Samsung Pay, and regional wallets all primarily operate on Visa/Mastercard rails, amplifying transaction counts.</p>
+<h3 id="conservative-scenario">Conservative Scenario</h3>
+<p><strong>C1.</strong> Account-to-account (A2A) payments capture 10-15% of card transaction share by 2035.
+<strong>Reasoning:</strong> Pix (<a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>), UPI (India), SEPA Instant (Europe), FedNow (US) offer lower-cost alternatives. Regulatory push toward open banking accelerates A2A adoption.</p>
+<p><strong>C2.</strong> China's card transaction growth stagnates at 2-3%.
+<strong>Reasoning:</strong> Alipay and WeChat Pay dominate Chinese payments. UnionPay growth is primarily from card issuance abroad, not domestic volume growth.</p>
+<p><strong>C3.</strong> Interchange fee regulation depresses card acceptance expansion.
+<strong>Reasoning:</strong> EU interchange caps, Australian regulation, and potential US legislation reduce merchant incentive to invest in card terminal expansion.</p>
+<hr/>
+<h2 id="value-assumptions">Value Assumptions</h2>
+<h3 id="v1-total-volume-vs-purchase-volume">V1. Total Volume vs Purchase Volume</h3>
+<p><strong>Assumption:</strong> The $51.92T figure includes both purchase transactions and cash advances/withdrawals. Purchase-only volume is estimated at ~$44.5T.
+<strong>Reasoning:</strong> Nilson explicitly states the total includes "purchase volume and cash volume." Cash transactions typically represent 15-17% of total card volume.
+<strong>Risk:</strong> The exact purchase/cash split is not publicly available; 15% is an industry rule of thumb.</p>
+<h3 id="v2-average-transaction-value">V2. Average Transaction Value</h3>
+<p><strong>Assumption:</strong> Average transaction value of ~$67 (derived from $51.92T / 772.73B).
+<strong>Reasoning:</strong> Mathematical derivation from two primary-source figures.
+<strong>Risk:</strong> This average masks wide variance — debit transactions average ~$40, credit ~$95, prepaid ~$25.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/consumer-cards/workings/assumptions.md">analysis/payments/consumer-cards/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

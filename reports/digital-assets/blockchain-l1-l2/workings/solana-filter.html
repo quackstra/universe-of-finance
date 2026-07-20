@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solana Vote Transaction Filter & L1/L2 TPS Revision — Universe of Finance</title>
+<meta name="description" content="Working paper for L1/L2 Blockchain Transactions capsule. Created: 2026-03-26 | Run 3 Research Elf The Problem Solana's headline transaction count (~50-138M daily, ~18B+ annually i">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Solana Vote Transaction Filter & L1/L2 TPS Revision</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#the-problem">The Problem</a></li><li><a href="#solana-transaction-breakdown">Solana Transaction Breakdown</a></li><li><a href="#adjusted-solana-tps">Adjusted Solana TPS</a></li><li><a href="#other-chain-adjustments">Other Chain Adjustments</a></li><li><a href="#revised-global-l1l2-tps">Revised Global L1/L2 TPS</a></li><li><a href="#methodological-notes">Methodological Notes</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Working paper for <a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/REPORT.html">L1/L2 Blockchain Transactions</a> capsule.
+Created: 2026-03-26 | Run 3 Research Elf</p>
+</blockquote>
+<hr/>
+<h2 id="the-problem">The Problem</h2>
+<p>Solana's headline transaction count (~50-138M daily, ~18B+ annually in 2024) includes three categories of inflated activity that do not represent genuine economic transactions:</p>
+<ol>
+<li><strong>Vote transactions</strong> — validator consensus messages submitted every slot (~400ms). These are protocol overhead, not user activity.</li>
+<li><strong>Failed transactions</strong> — transactions that consume compute but revert. On Solana, failed transactions are still recorded on-chain and counted.</li>
+<li><strong>MEV bot spam</strong> — arbitrage and sandwich bots that submit thousands of transactions per block, most of which fail intentionally as part of their strategy.</li>
+</ol>
+<p>Without filtering these, Solana appears to process ~580-1,600 TPS. After filtering, genuine user TPS drops dramatically. This distortion cascades into global L1/L2 TPS estimates, since Solana accounts for ~70% of all blockchain transactions by count.</p>
+<hr/>
+<h2 id="solana-transaction-breakdown">Solana Transaction Breakdown</h2>
+<h3 id="vote-vs-non-vote-transactions">Vote vs. Non-Vote Transactions</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total daily txns (avg)</td>
+<td>~50-70M</td>
+<td>2024 avg</td>
+<td>Solscan, SolanaCompass</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Total daily txns (peak)</td>
+<td>138M</td>
+<td>Dec 2024</td>
+<td>CryptoSlate</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Non-vote daily txns (avg)</td>
+<td>~30-50M</td>
+<td>2024 avg</td>
+<td>Dune <code>solana.vote_transactions</code></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Non-vote daily txns (peak)</td>
+<td>148M</td>
+<td>30 Jan 2026</td>
+<td>KuCoin/SolanaCompass</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Vote txn share (historic)</td>
+<td>~60-70% of total</td>
+<td>Pre-2025</td>
+<td>Solscan analytics, Dune</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Vote txn share (late 2025+)</td>
+<td>~30-40% of total</td>
+<td>Late 2025-2026</td>
+<td>The Block, Everstake</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Vote txns daily (peak era)</td>
+<td>~300K validator-submitted</td>
+<td>2023 (2,500 validators)</td>
+<td>The Block</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Vote txns daily (current)</td>
+<td>~170K validator-submitted</td>
+<td>Mar 2026 (~800 validators)</td>
+<td>The Block</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key shift:</strong> Vote transaction share has declined from ~60-70% historically to ~30-40% as of late 2025. This is driven by two forces:
+1. <strong>Validator count collapse</strong>: from ~2,500 validators (early 2023) to &lt;800 (Mar 2026), a 65%+ decline. Fewer validators = fewer vote transactions.
+2. <strong>Non-vote transaction surge</strong>: genuine activity (<a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a>, memecoins, <a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI agents</a>) has pushed non-vote txns from ~20M/day to 50-100M/day.</p>
+<h3 id="failed-transaction-rate">Failed Transaction Rate</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Non-vote failure rate (peak)</td>
+<td>75.7%</td>
+<td>Apr 2024</td>
+<td>Cointelegraph, BeInCrypto</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Non-vote failure rate (avg 2024)</td>
+<td>~40-50%</td>
+<td>2024</td>
+<td>Helius MEV Report</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Non-vote failure rate (current)</td>
+<td>~30-40%</td>
+<td>Early 2026</td>
+<td>Estimated from trend</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Failed arb txns as % of all non-vote</td>
+<td>&gt;50%</td>
+<td>2024</td>
+<td>Helius</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mev-bot-activity">MEV Bot Activity</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MEV bot blockspace consumption</td>
+<td>~40%</td>
+<td>2025</td>
+<td>Flashbots / AInvest</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>MEV bot fee contribution</td>
+<td>~7% of total fees</td>
+<td>2025</td>
+<td>Flashbots</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Sandwich bot revenue</td>
+<td>$370-500M</td>
+<td>16 months to Jan 2026</td>
+<td>Helius MEV Report</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Jito validator stake share</td>
+<td>92%</td>
+<td>Early 2025</td>
+<td>Everstake</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Single bot: 11M txns / 30 days</td>
+<td>99.95% failure rate</td>
+<td>Late 2024</td>
+<td>Bitget</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="adjusted-solana-tps">Adjusted Solana TPS</h2>
+<h3 id="filtering-methodology">Filtering Methodology</h3>
+<p>We apply three sequential filters to Solana's headline TPS:</p>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Removal Rate</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Remove vote transactions</strong></td>
+<td>30-40% of total (2026); 60-70% (pre-2025)</td>
+<td>Validator consensus overhead, not user activity</td>
+</tr>
+<tr>
+<td><strong>2. Remove failed non-vote txns</strong></td>
+<td>30-50% of remaining</td>
+<td>Reverted txns consume compute but produce no economic outcome</td>
+</tr>
+<tr>
+<td><strong>3. Remove identified MEV spam</strong></td>
+<td>~20-30% of successful non-vote</td>
+<td>Bot-generated txns with no end-user economic intent</td>
+</tr>
+</tbody>
+</table>
+<h3 id="calculation-2024-average-baseline">Calculation (2024 average baseline)</h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Daily Txns</th>
+<th>TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Headline total</strong></td>
+<td>~60M</td>
+<td>~694</td>
+<td>Reported average</td>
+</tr>
+<tr>
+<td>After vote filter (60% removal)</td>
+<td>~24M</td>
+<td>~278</td>
+<td>Non-vote only</td>
+</tr>
+<tr>
+<td>After failed txn filter (45% failure)</td>
+<td>~13.2M</td>
+<td>~153</td>
+<td>Successful non-vote only</td>
+</tr>
+<tr>
+<td>After MEV spam filter (25% removal)</td>
+<td>~9.9M</td>
+<td>~115</td>
+<td>Genuine user transactions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="calculation-late-2025-early-2026-baseline">Calculation (late 2025 / early 2026 baseline)</h3>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Daily Txns</th>
+<th>TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Headline total</strong></td>
+<td>~100M</td>
+<td>~1,157</td>
+<td>Higher activity, fewer validators</td>
+</tr>
+<tr>
+<td>After vote filter (35% removal)</td>
+<td>~65M</td>
+<td>~752</td>
+<td>Non-vote only</td>
+</tr>
+<tr>
+<td>After failed txn filter (35% failure)</td>
+<td>~42M</td>
+<td>~489</td>
+<td>Successful non-vote only</td>
+</tr>
+<tr>
+<td>After MEV spam filter (25% removal)</td>
+<td>~31.5M</td>
+<td>~365</td>
+<td>Genuine user transactions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="summary-solana-tps-range">Summary: Solana TPS Range</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>2024 Avg</th>
+<th>Late 2025+</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Headline TPS</td>
+<td>~694</td>
+<td>~1,157</td>
+<td>Solscan</td>
+</tr>
+<tr>
+<td>Non-vote TPS</td>
+<td>~278</td>
+<td>~752</td>
+<td>Dune/SolanaCompass</td>
+</tr>
+<tr>
+<td>Successful non-vote TPS</td>
+<td>~153</td>
+<td>~489</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>"Genuine user" TPS (est.)</td>
+<td>~115</td>
+<td>~365</td>
+<td>Derived (speculative)</td>
+</tr>
+<tr>
+<td><strong>Reduction from headline</strong></td>
+<td><strong>~83%</strong></td>
+<td><strong>~68%</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>The "genuine user" TPS is the most speculative figure because defining MEV spam vs. legitimate arbitrage is subjective. The non-vote successful TPS (~153-489) is the most defensible adjusted metric.</p>
+<hr/>
+<h2 id="other-chain-adjustments">Other Chain Adjustments</h2>
+<h3 id="bitcoin-ordinalsinscriptions">Bitcoin: Ordinals/Inscriptions</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inscription share of txns (peak)</td>
+<td>73.2%</td>
+<td>13 Jan 2024</td>
+<td>Glassnode, academic papers</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Cumulative inscriptions</td>
+<td>69.6M</td>
+<td>Sep 2024</td>
+<td>Bitcoin Ordinals Statistics</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Inscription share (2024 avg)</td>
+<td>~15-25%</td>
+<td>2024 full year</td>
+<td>Estimated; peaked Q1, faded H2</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Blockspace utilization pre-inscriptions</td>
+<td>~40%</td>
+<td>Pre-2023</td>
+<td>Glassnode</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Blockspace utilization with inscriptions</td>
+<td>~80%</td>
+<td>2024 peak</td>
+<td>Glassnode</td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Adjustment:</strong> Bitcoin inscriptions are economically meaningful (they pay fees, occupy blockspace) but represent a different transaction class than monetary transfers. For a "monetary transfer TPS" metric, removing inscriptions would reduce Bitcoin's ~5.8 TPS to ~4.3-4.9 TPS (2024 average). However, inscriptions faded significantly in H2 2024, so the adjustment is modest by year-end.</p>
+<h3 id="ethereum-l1-mevbot-activity">Ethereum L1: MEV/Bot Activity</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Flashbots Protect share of txns</td>
+<td>~3%</td>
+<td>2024-2025</td>
+<td>Flashbots</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Estimated MEV bot txns (L1)</td>
+<td>~10-15%</td>
+<td>2024</td>
+<td>Flashbots research</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>MEV bot gas consumption</td>
+<td>Higher than txn share</td>
+<td>Ongoing</td>
+<td>EigenPhi</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Adjustment:</strong> Ethereum L1 MEV activity is less distortionary than Solana because: (a) Ethereum's fee market (EIP-1559) discourages spam; (b) Flashbots MEV-Boost channels most MEV through builder auctions rather than on-chain spam; (c) failed transactions are less common on Ethereum L1. A ~10-15% reduction for MEV bots would take Ethereum L1 from ~13.5 TPS to ~11.5-12.2 TPS.</p>
+<h3 id="ethereum-l2s-botspam-activity">Ethereum L2s: Bot/Spam Activity</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MEV spam on OP-Stack rollups</td>
+<td>&gt;50% of gas</td>
+<td>2024-2025</td>
+<td>Flashbots</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Base: 2 bots account for</td>
+<td>&gt;80% of spam txns</td>
+<td>Nov 2024-Feb 2025</td>
+<td>Flashbots</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Base: 11M gas/s added, consumed by bots</td>
+<td>~100% of added capacity</td>
+<td>Nov 2024-Feb 2025</td>
+<td>Flashbots</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Airdrop farming (sybil) share</td>
+<td>~20-40% (pre-airdrop)</td>
+<td>2024</td>
+<td>Estimated from post-airdrop drops</td>
+<td>🔴 Low</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Adjustment:</strong> L2 spam is a significant but harder-to-quantify problem. The ~14M+ daily L2 transactions likely include 30-50% bot/spam activity. Adjusted L2 daily genuine transactions may be ~7-10M rather than ~14M+.</p>
+<hr/>
+<h2 id="revised-global-l1l2-tps">Revised Global L1/L2 TPS</h2>
+<h3 id="original-estimates-from-reportmd">Original Estimates (from REPORT.md)</h3>
+<table>
+<thead>
+<tr>
+<th>Chain / Group</th>
+<th>Daily Txns</th>
+<th>TPS</th>
+<th>Annual Txns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solana</td>
+<td>~60M</td>
+<td>~694</td>
+<td>~18B+</td>
+</tr>
+<tr>
+<td>Ethereum L2s</td>
+<td>~14M+</td>
+<td>~162</td>
+<td>~4.2B+</td>
+</tr>
+<tr>
+<td>BNB Chain</td>
+<td>~3.5M</td>
+<td>~41</td>
+<td>~1.2B</td>
+</tr>
+<tr>
+<td>Ethereum L1</td>
+<td>~1.16M</td>
+<td>~13.5</td>
+<td>~425M</td>
+</tr>
+<tr>
+<td>Bitcoin</td>
+<td>~500K</td>
+<td>~5.8</td>
+<td>~183M</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>~5M</td>
+<td>~58</td>
+<td>~1.8B+</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~84M</strong></td>
+<td><strong>~974</strong></td>
+<td><strong>~25.8B</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="adjusted-estimates-votespambot-filtered">Adjusted Estimates (vote/spam/bot filtered)</h3>
+<table>
+<thead>
+<tr>
+<th>Chain / Group</th>
+<th>Original TPS</th>
+<th>Adjustment</th>
+<th>Adjusted TPS</th>
+<th>Adjusted Daily Txns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Solana</td>
+<td>~694</td>
+<td>-75% (votes + failures + MEV)</td>
+<td>~153-278</td>
+<td>~13-24M</td>
+</tr>
+<tr>
+<td>Ethereum L2s</td>
+<td>~162</td>
+<td>-35% (MEV bots + sybils)</td>
+<td>~105</td>
+<td>~9.1M</td>
+</tr>
+<tr>
+<td>BNB Chain</td>
+<td>~41</td>
+<td>-15% (bots, conservative)</td>
+<td>~35</td>
+<td>~3.0M</td>
+</tr>
+<tr>
+<td>Ethereum L1</td>
+<td>~13.5</td>
+<td>-12% (MEV bots)</td>
+<td>~12</td>
+<td>~1.0M</td>
+</tr>
+<tr>
+<td>Bitcoin</td>
+<td>~5.8</td>
+<td>-20% (inscriptions, 2024 avg)</td>
+<td>~4.6</td>
+<td>~400K</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>~58</td>
+<td>-20% (est.)</td>
+<td>~46</td>
+<td>~4.0M</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~974</strong></td>
+<td><strong>~63% reduction</strong></td>
+<td><strong>~356-481</strong></td>
+<td><strong>~30.5-41.5M</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-takeaway">Key Takeaway</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Original</th>
+<th>Adjusted</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Combined avg TPS</td>
+<td>~800-1,000</td>
+<td>~350-480</td>
+<td>-52% to -56%</td>
+</tr>
+<tr>
+<td>Solana share of total</td>
+<td>~70%</td>
+<td>~43-58%</td>
+<td>Still dominant but less so</td>
+</tr>
+<tr>
+<td>Annual transactions</td>
+<td>~25-30B</td>
+<td>~11-15B</td>
+<td>Roughly halved</td>
+</tr>
+<tr>
+<td>Solana "Visa comparison"</td>
+<td>~694 TPS vs Visa ~1,700</td>
+<td>~153-278 TPS</td>
+<td>Well below Visa</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The adjusted global blockchain TPS of ~350-480 is roughly 1.7-2.3% of Visa/Mastercard combined throughput (~21,000 TPS), compared to the headline ~4.6% figure. This is a more honest comparison.</strong></p>
+<hr/>
+<h2 id="methodological-notes">Methodological Notes</h2>
+<ol>
+<li>
+<p><strong>Vote transaction filtering</strong> is the most defensible adjustment. Solana's own explorer (Solscan) and analytics tools (SolanaCompass, Dune) separate vote from non-vote transactions natively.</p>
+</li>
+<li>
+<p><strong>Failed transaction filtering</strong> is well-supported. Solana records failed transactions on-chain, unlike most other chains where failed transactions are dropped from the canonical count. The ~40-50% failure rate is documented by multiple sources.</p>
+</li>
+<li>
+<p><strong>MEV/bot filtering</strong> is the most subjective. Some MEV activity (e.g., DEX arbitrage that improves price efficiency) arguably represents genuine economic activity. Our 20-30% estimate for "pure spam" is conservative.</p>
+</li>
+<li>
+<p><strong>Inscriptions on Bitcoin</strong> are debatable. They are paid-for blockspace usage, economically real, but not monetary transfers. We present the adjustment but acknowledge inscriptions have legitimate value.</p>
+</li>
+<li>
+<p><strong>L2 adjustments</strong> are the least confident. Data on L2 bot activity is fragmented and rapidly changing as L2s implement anti-spam measures.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://solanacompass.com/statistics">Solana Compass Statistics</a> — real-time vote/non-vote TPS breakdown</li>
+<li><a href="https://solscan.io/analytics">Solscan Analytics</a> — vote vs non-vote transaction charts</li>
+<li><a href="https://dune.com/queries/1454081">Dune: Solana Daily TPS (Non-Vote)</a></li>
+<li><a href="https://dune.com/queries/400051">Dune: Solana Non-Vote Transactions per day</a></li>
+<li><a href="https://www.theblock.co/post/387108/solana-validator-count-below-800-vote-transactions-drop-40">The Block: Solana validator count falls, vote transactions drop 40%</a></li>
+<li><a href="https://www.kucoin.com/news/articles/solana-daily-non-vote-transactions-hit-148-million-milestones-and-challenges-for-high-performance-blockchains">KuCoin: Solana Daily Non-Vote Transactions Hit 148 Million</a></li>
+<li><a href="https://www.helius.dev/blog/solana-mev-report">Helius: Solana MEV Report</a></li>
+<li><a href="https://beincrypto.com/meme-coin-solana-transaction-failure/">BeInCrypto: Meme Coins Push Solana to Limit — 77% Failed Transactions</a></li>
+<li><a href="https://cointelegraph.com/news/solana-struggling-record-seventy-five-percent-trasnactions-fail-memecoin-mania">Cointelegraph: Solana struggles — 75% of user txns failing</a></li>
+<li><a href="https://www.ainvest.com/news/mev-spam-consumes-40-solana-blockspace-50-ethereum-l2s-2506/">Flashbots / AInvest: MEV Spam Consumes 40% of Solana Blockspace, 50% of Ethereum L2s</a></li>
+<li><a href="https://www.bitget.com/news/detail/12560604951556">Bitget: Solana Faces Scrutiny Over Transaction Metrics Inflated by Bot Activity</a></li>
+<li><a href="https://ambcrypto.com/solana-is-3-3k-tps-strength-masking-sols-weak-protocol-revenue/">AMBCrypto: Solana 3.3K TPS — masking weak protocol revenue?</a></li>
+<li><a href="https://everstake.one/crypto-reports/solana-staking-insights-and-analysis-first-half-of-2025">Everstake: Solana Staking Insights — First Half 2025</a></li>
+<li><a href="https://chainspect.app/chain/solana">Chainspect: Solana TPS</a></li>
+<li><a href="https://insights.glassnode.com/ordinal-theory-and-the-rise-of-inscriptions/">Glassnode: Ordinal Theory and the Rise of Inscriptions</a></li>
+<li><a href="https://socialcapitalmarkets.net/crypto-trading/bitcoin-ordinals-statistics/">Social Capital Markets: Bitcoin Ordinals Statistics 2024</a></li>
+<li><a href="https://www.theblock.co/post/358512/mev-bots-are-clogging-blockchains-faster-than-networks-can-scale-says-flashbots">Flashbots: MEV bots clogging blockchains faster than networks can scale</a></li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/blockchain-l1-l2/workings/solana-filter.md">analysis/digital-assets/blockchain-l1-l2/workings/solana-filter.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

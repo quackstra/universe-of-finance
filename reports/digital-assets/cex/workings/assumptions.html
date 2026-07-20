@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEX — Key Assumptions — Universe of Finance</title>
+<meta name="description" content="A1. Trade Count Estimation Average spot trade size: $500 Average derivatives trade size: $2,000 These are rough midpoints. Retail trades skew $50-200; institutional/bot trades skew">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>CEX — Key Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#a1-trade-count-estimation">A1. Trade Count Estimation</a></li><li><a href="#a2-derivatives-notional-volume">A2. Derivatives = Notional Volume</a></li><li><a href="#a3-wash-trading-caveat">A3. Wash Trading Caveat</a></li><li><a href="#a4-zero-on-chain-overlap">A4. Zero On-Chain Overlap</a></li><li><a href="#a5-projection-cyclicality">A5. Projection Cyclicality</a></li><li><a href="#a6-top-15-coverage">A6. Top-15 Coverage</a></li></ul></div><h2 id="a1-trade-count-estimation">A1. Trade Count Estimation</h2>
+<ul>
+<li>Average spot trade size: $500</li>
+<li>Average derivatives trade size: $2,000</li>
+<li>These are rough midpoints. Retail trades skew $50-200; institutional/bot trades skew $5K-50K.</li>
+<li>Confidence: 🔴 Low</li>
+</ul>
+<h2 id="a2-derivatives-notional-volume">A2. Derivatives = Notional Volume</h2>
+<ul>
+<li>Derivatives volume is reported as notional (face value), not collateral posted</li>
+<li>A trader depositing $1,000 with 50x leverage generates $50,000 in notional volume per trade</li>
+<li>Economic significance is much lower than headline notional figures suggest</li>
+<li>Spot volume is a more honest measure of actual capital changing hands</li>
+</ul>
+<h2 id="a3-wash-trading-caveat">A3. Wash Trading Caveat</h2>
+<ul>
+<li>CoinGecko's top-15 data is already filtered by trust score</li>
+<li>But even "trusted" exchanges may have 10-20% artificial volume from market makers</li>
+<li>Unregulated exchanges (not in top 15) may have 50-70% wash volume</li>
+<li>We do NOT adjust reported figures but flag this limitation</li>
+</ul>
+<h2 id="a4-zero-on-chain-overlap">A4. Zero On-Chain Overlap</h2>
+<ul>
+<li>CEX internal order matching happens on private databases</li>
+<li>On-chain activity (deposits, withdrawals) is a tiny fraction of trade volume</li>
+<li>This means CEX volume has ZERO overlap with the L1/L2 blockchain capsule</li>
+<li>Users depositing to and withdrawing from CEXs do appear on-chain, but the trades themselves do not</li>
+</ul>
+<h2 id="a5-projection-cyclicality">A5. Projection Cyclicality</h2>
+<ul>
+<li>Crypto is NOT a monotonically growing market (unlike card payments or <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>)</li>
+<li>Projections must account for bull/bear cycles</li>
+<li>Baseline uses halving cycle timing: peak years alternate with trough years</li>
+<li>Long-term secular trend is upward due to institutional adoption</li>
+</ul>
+<h2 id="a6-top-15-coverage">A6. Top-15 Coverage</h2>
+<ul>
+<li>CoinGecko top-15 captures ~85-90% of legitimate CEX spot volume</li>
+<li>Hundreds of smaller exchanges exist but many have questionable volume</li>
+<li>We use top-15 as representative of the market</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/cex/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/cex/workings/assumptions.md">analysis/digital-assets/cex/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

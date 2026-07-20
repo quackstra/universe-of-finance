@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centralised Crypto Exchanges — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Centralised cryptocurrency exchanges (CEXs) processed an estimated $77.3 trillion in combined spot and derivatives tradi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Cex</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Centralised Crypto Exchanges</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">3,210</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">56</div></div><div class="chip"><div class="k">Opacity</div><div class="v amber">50</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#6/28</div></div></div>
+  <div class="chart-box"><h3>Digital Assets — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart6"></canvas></div></div><script>new Chart(document.getElementById("chart6"),{"type": "bar", "data": {"labels": ["CEX (Crypto)", "Stablecoins", "L1/L2 Blockchain"], "datasets": [{"data": [3210, 520, 415], "backgroundColor": ["#3b82f6", "#334155", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections">Projections</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Centralised cryptocurrency exchanges (CEXs) processed an estimated <strong>$77.3 trillion</strong> in combined spot and derivatives trading volume in 2024 — spot at $18.83 trillion (<a href="https://www.coingecko.com/research/publications/largest-centralized-crypto-exchanges">CoinGecko</a>) and perpetual futures at $58.5 trillion (<a href="https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf">CoinGecko Perpetuals Report</a>). Translating dollar volume into individual trade transactions is inherently imprecise because exchanges do not publish trade counts, but reasonable estimates place CEX activity at roughly <strong>3,000-5,000 trades per second</strong> (see <a href="/universe-of-finance/reports/digital-assets/cex/workings/calculations.html">calculations</a>). Binance alone commanded 39% of spot volume. The critical caveat: wash trading on unregulated exchanges may inflate reported volumes by 50-70%.</p>
+<h2 id="scope">Scope</h2>
+<p>This analysis covers <strong>centralised (custodial) cryptocurrency exchanges</strong> — platforms where users deposit funds and trade via an order book or matching engine operated by a central entity. Included: spot trading, perpetual futures/swaps, dated futures, options. Excluded: decentralised exchanges (see <a href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi capsule</a>), OTC desks, peer-to-peer platforms, and on-chain transactions.</p>
+<p><strong>Important:</strong> CEX internal trades do NOT appear on-chain. There is <strong>zero double-counting</strong> with the L1/L2 blockchain capsule — CEX order book matches are settled on internal ledgers.</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="trading-volume">Trading Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual spot volume (2024)</td>
+<td>$18.83T</td>
+<td><a href="https://www.coingecko.com/research/publications/2024-annual-crypto-report">CoinGecko 2024 Annual Report</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Annual derivatives volume (2024)</td>
+<td>~$58.5T</td>
+<td><a href="https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf">CoinGecko Perpetuals Report</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Combined annual volume (2024)</td>
+<td>~$77.3T</td>
+<td>Derived (spot + derivatives)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Average daily volume</td>
+<td>~$212B</td>
+<td>Derived ($77.3T / 365)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Est. daily trade count</td>
+<td>~263M (wash-adjusted)</td>
+<td>Estimated (see <a href="/universe-of-finance/reports/digital-assets/cex/workings/calculations.html">calculations</a>, <a href="/universe-of-finance/reports/digital-assets/cex/workings/wash-trading-filter.html">wash filter</a>)</td>
+<td>🟡 Medium-Low</td>
+</tr>
+<tr>
+<td>Est. average TPS (trades)</td>
+<td>~3,040 (wash-adjusted)</td>
+<td>Tiered wash model: 25% blended reduction. Range: 2,685-3,275</td>
+<td>🟡 Medium-Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exchange-market-share-spot-2024">Exchange Market Share (Spot, 2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Exchange</th>
+<th>Annual Spot Volume</th>
+<th>Share</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Binance</td>
+<td>$7.35T</td>
+<td>39.0%</td>
+<td><a href="https://www.coingecko.com/research/publications/largest-centralized-crypto-exchanges">CoinGecko</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Bybit</td>
+<td>$1.75T</td>
+<td>9.3%</td>
+<td>CoinGecko</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Crypto.com</td>
+<td>$1.29T</td>
+<td>6.9%</td>
+<td>CoinGecko</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Upbit</td>
+<td>~$1.1T</td>
+<td>~5.8%</td>
+<td>CoinGecko</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>OKX</td>
+<td>~$1.0T</td>
+<td>~5.3%</td>
+<td>CoinGecko</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Coinbase</td>
+<td>~$0.9T</td>
+<td>~4.8%</td>
+<td>CoinGecko</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Others (9 exchanges)</td>
+<td>~$5.44T</td>
+<td>28.9%</td>
+<td>CoinGecko</td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<h3 id="spot-vs-derivatives-split">Spot vs Derivatives Split</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>2024 Volume</th>
+<th>Share</th>
+<th>YoY Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spot</td>
+<td>$18.83T</td>
+<td>~24%</td>
+<td>+134%</td>
+</tr>
+<tr>
+<td>Derivatives (perps)</td>
+<td>~$58.5T</td>
+<td>~76%</td>
+<td>+132%</td>
+</tr>
+</tbody>
+</table>
+<p>Derivatives dominate by a 3:1 ratio. Perpetual futures (contracts with no expiry) are the primary derivative instrument, dwarfing dated futures and options.</p>
+<h3 id="wash-trading-adjustment-tiered-model">Wash Trading Adjustment (Tiered Model)</h3>
+<p>The headline ~3,500-4,600 TPS estimate is derived from reported volumes that almost certainly include wash trading, even on "trusted" exchanges. We apply a <strong>tiered exchange model</strong> (detailed in <a href="/universe-of-finance/reports/digital-assets/cex/workings/wash-trading-filter.html">workings/wash-trading-filter.md</a>) that assigns per-tier wash trading discounts based on regulatory status and multiple independent detection methodologies.</p>
+<h4 id="research-base">Research Base</h4>
+<table>
+<thead>
+<tr>
+<th>Study</th>
+<th>Year</th>
+<th>Scope</th>
+<th>Wash Trading Estimate</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bitwise SEC Filing</td>
+<td>2019</td>
+<td>Unregulated exchanges</td>
+<td>95% of reported volume</td>
+<td><a href="https://cointelegraph.com/news/bitwise-tells-us-sec-that-95-of-volume-on-unregulated-crypto-exchanges-is-suspect">CoinTelegraph</a></td>
+</tr>
+<tr>
+<td>Cong, Li, Tang, Yang (NBER/Yale)</td>
+<td>2022</td>
+<td>Unregulated exchanges</td>
+<td>70%+ average</td>
+<td><a href="https://www.nber.org/papers/w30783">NBER WP 30783</a></td>
+</tr>
+<tr>
+<td>CEPR (Kocenda et al.)</td>
+<td>2024</td>
+<td>"Unregulated Tier 1" exchanges</td>
+<td>53.4% average (10 exchanges)</td>
+<td><a href="https://cepr.org/voxeu/columns/wash-trading-centralised-crypto-exchanges-need-transparency-and-accountability">CEPR VoxEU</a></td>
+</tr>
+<tr>
+<td>Forbes / Blockchain Transparency Institute</td>
+<td>2022</td>
+<td>Bitcoin trading across all exchanges</td>
+<td>~51% of reported volume</td>
+<td><a href="https://en.cryptonomist.ch/2022/08/29/forbes-51-bitcoin-trading-volumes-fake/">Cryptonomist</a></td>
+</tr>
+<tr>
+<td>Chainalysis</td>
+<td>2025</td>
+<td>DEX on-chain (Ethereum, BNB, Base)</td>
+<td>$2.57B identified (0.035% of DEX volume)</td>
+<td><a href="https://www.chainalysis.com/blog/crypto-market-manipulation-wash-trading-pump-and-dump-2025/">Chainalysis</a></td>
+</tr>
+<tr>
+<td>Kaiko</td>
+<td>2024</td>
+<td>Volume-to-depth ratio analysis</td>
+<td>HTX flagged; algorithmic wash patterns detected</td>
+<td><a href="https://research.kaiko.com/insights/data-reveals-wash-trading-on-crypto-markets">Kaiko Research</a></td>
+</tr>
+<tr>
+<td>CryptoCompare Exchange Benchmark</td>
+<td>2024</td>
+<td>100+ exchanges, 68 metrics</td>
+<td>Excludes volume from rankings due to manipulation</td>
+<td><a href="https://www.cryptocompare.com/external/research/exchange-ranking/">CryptoCompare</a></td>
+</tr>
+<tr>
+<td>Messari "Real 10"</td>
+<td>2019</td>
+<td>Volume comparison</td>
+<td>40-65% discount applied to Binance; 6.4x discrepancy between aggregators</td>
+<td><a href="https://www.theblock.co/linked/17249/messari-rolls-out-real-10-volume-metrics-after-study-reveals-95-of-bitcoin-trading-volumes-are-fake">The Block</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="tiered-exchange-model">Tiered Exchange Model</h4>
+<p>The $77.3T combined volume figure uses CoinGecko's top-15 "trusted" exchanges, which already apply trust scores and exclude the worst offenders. We segment these into three tiers:</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Exchanges</th>
+<th>Volume Share</th>
+<th>Wash Estimate</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier 1</strong> (Regulated)</td>
+<td>Coinbase, Kraken, Bitstamp, Gemini, Upbit</td>
+<td>~15%</td>
+<td><strong>2-5%</strong> (central: 3.5%)</td>
+<td>SEC/MiCA oversight. Coinbase is a public company; volume is SEC-auditable.</td>
+</tr>
+<tr>
+<td><strong>Tier 2</strong> (Semi-regulated)</td>
+<td>Binance, OKX, Bybit, Crypto.com</td>
+<td>~55%</td>
+<td><strong>15-30%</strong> (central: 20%)</td>
+<td>Partial licenses. Forbes applied 40-65% discount to Binance historically; post-2023 regulatory pressure has likely reduced wash trading. Kaiko notes high volume-to-depth ratios partly due to zero-fee pairs.</td>
+</tr>
+<tr>
+<td><strong>Tier 3</strong> (Lower-tier trusted)</td>
+<td>HTX, KuCoin, Gate.io, MEXC, others</td>
+<td>~30%</td>
+<td><strong>35-55%</strong> (central: 45%)</td>
+<td>Limited regulation. Kaiko flagged HTX specifically. CEPR found 80%+ on lower-tier exchanges. Strong ranking-inflation incentive.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Blended wash trading estimate: ~25%</strong> (range: 19-34%)</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Reported</th>
+<th>Low Adj. (19%)</th>
+<th>Central (25%)</th>
+<th>High Adj. (34%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Combined annual volume</td>
+<td>$77.3T</td>
+<td>$62.6T</td>
+<td>$58.0T</td>
+<td>$51.2T</td>
+</tr>
+<tr>
+<td>Average daily volume</td>
+<td>~$212B</td>
+<td>~$171B</td>
+<td>~$159B</td>
+<td>~$140B</td>
+</tr>
+<tr>
+<td>Est. daily trade count</td>
+<td>~350M</td>
+<td>~283M</td>
+<td>~263M</td>
+<td>~232M</td>
+</tr>
+<tr>
+<td><strong>Est. average TPS</strong></td>
+<td><strong>~4,050</strong></td>
+<td><strong>~3,275</strong></td>
+<td><strong>~3,040</strong></td>
+<td><strong>~2,685</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The adjusted central estimate of <strong>~3,040 TPS</strong> is our best estimate of genuine CEX trading activity. The tiered model narrows the confidence interval from the prior 2,450-3,700 range (1,250 wide) to 2,685-3,275 (590 wide) — a <strong>2.1x improvement in precision</strong>.</p>
+<p>The single most impactful variable is Tier 2 wash trading (especially Binance at 39% of spot). A 10-percentage-point shift in Tier 2 wash estimate moves the adjusted TPS by ~370.</p>
+<p><strong>Confidence level:</strong> 🟡 Medium-Low — the tiered model is more principled than a flat discount, but tier-level percentages are themselves uncertain. Full methodology and sensitivity analysis in <a href="/universe-of-finance/reports/digital-assets/cex/workings/wash-trading-filter.html">workings/wash-trading-filter.md</a>.</p>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="cex-spot-trading-volume-2019-2024">CEX Spot Trading Volume (2019-2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Spot Volume</th>
+<th>YoY Growth</th>
+<th>Context</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~$3.5T</td>
+<td>—</td>
+<td>Pre-COVID baseline</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>$3.78T</td>
+<td>+8%</td>
+<td>COVID year, DeFi summer began</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>$25.21T</td>
+<td>+567%</td>
+<td>Bull market peak, retail mania</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~$14.0T</td>
+<td>-44%</td>
+<td>Bear market, FTX collapse</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>$8.05T</td>
+<td>-43%</td>
+<td>Post-FTX hangover, low volatility</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>$18.83T</td>
+<td>+134%</td>
+<td>Bitcoin ETF, Trump election, BTC ATH</td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<p><em>Sources: 2020-2024 from <a href="https://www.coingecko.com/research/publications/largest-centralized-crypto-exchanges">CoinGecko</a>; 2019 estimated from industry reports.</em></p>
+<p><strong>Key observations:</strong>
+- The 2021 bull market saw the highest-ever spot volumes at $25.21T
+- The 2022-2023 decline was driven by the FTX collapse, regulatory crackdowns, and crypto winter
+- 2024 recovery was fuelled by Bitcoin spot ETF approvals (Jan 2024), halving narrative, and post-election rally
+- Derivatives volumes grew in parallel, with perpetuals becoming the dominant product</p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>CAGR (Spot)</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2020-2024 (4yr)</td>
+<td>~49%</td>
+<td>Includes extreme bull/bear cycle</td>
+</tr>
+<tr>
+<td>2021-2024 (3yr)</td>
+<td>-9.3%</td>
+<td>Peak-to-recovery, misleading</td>
+</tr>
+<tr>
+<td>2023-2024 (1yr)</td>
+<td>+134%</td>
+<td>Recovery year</td>
+</tr>
+</tbody>
+</table>
+<p>Crypto exchange volumes are <strong>highly cyclical</strong> and correlated with Bitcoin price cycles (~4-year halving cycles). CAGR is less meaningful here than for traditional finance — the market oscillates between mania and hibernation.</p>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-continued-crypto-maturation">Baseline (Continued Crypto Maturation)</h3>
+<p><strong>Assumptions:</strong>
+1. Bitcoin halving cycle continues; next mania phase ~2025-2026, cooldown ~2027-2028
+2. Institutional adoption (ETFs, custody) adds a persistent volume floor
+3. Derivatives-to-spot ratio stabilises at 3:1
+4. Regulatory clarity (MiCA, US frameworks) reduces wash trading but adds institutional volume</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Spot Volume</th>
+<th>Est. Total Volume</th>
+<th>Est. TPS (trades)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>$22T</td>
+<td>$88T</td>
+<td>~4,500</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>$15T</td>
+<td>$60T</td>
+<td>~3,000</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>$30T</td>
+<td>$120T</td>
+<td>~6,000</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>$50T</td>
+<td>$200T</td>
+<td>~10,000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-mainstream-adoption">High Growth (Mainstream Adoption)</h3>
+<p><strong>Assumptions:</strong>
+1. Crypto becomes a standard asset class alongside equities/FX
+2. CEX volumes approach traditional exchange levels
+3. 24/7 markets attract global retail at scale</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Spot Volume</th>
+<th>Est. Total Volume</th>
+<th>Est. TPS (trades)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>$30T</td>
+<td>$120T</td>
+<td>~6,000</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>$25T</td>
+<td>$100T</td>
+<td>~5,000</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>$50T</td>
+<td>$200T</td>
+<td>~10,000</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>$100T</td>
+<td>$400T</td>
+<td>~20,000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-regulatory-squeeze">Conservative (Regulatory Squeeze)</h3>
+<p><strong>Assumptions:</strong>
+1. Strict global regulation eliminates wash trading, reducing reported volumes 40-50%
+2. DEXs capture increasing share from CEXs
+3. Market stagnation post-2025 cycle</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Spot Volume</th>
+<th>Est. Total Volume</th>
+<th>Est. TPS (trades)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>$15T</td>
+<td>$55T</td>
+<td>~2,800</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>$10T</td>
+<td>$38T</td>
+<td>~1,900</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>$18T</td>
+<td>$65T</td>
+<td>~3,300</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>$25T</td>
+<td>$90T</td>
+<td>~4,500</td>
+</tr>
+</tbody>
+</table>
+<p><em>Full calculation methodology: <a href="/universe-of-finance/reports/digital-assets/cex/workings/calculations.html">workings/calculations.md</a></em></p>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>Derivatives dwarf spot trading 3:1.</strong> Perpetual futures accounted for ~$58.5T vs $18.83T in spot — crypto derivatives volume rivals the notional volume of traditional <a class="xref" href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">exchange-traded derivatives</a>.</p>
+</li>
+<li>
+<p><strong>Binance is the undisputed leader</strong> with 39% spot market share, though its dominance is eroding from 50%+ in early 2024 as Bybit, Crypto.com, and OKX gain ground.</p>
+</li>
+<li>
+<p><strong>Crypto exchange volumes are radically cyclical.</strong> Spot volumes swung from $3.78T (2020) to $25.21T (2021) to $8.05T (2023) to $18.83T (2024) — a 7x range in 5 years. Projections must account for halving cycle dynamics.</p>
+</li>
+<li>
+<p><strong>Wash trading remains a structural concern.</strong> Research estimates 50-70% of volume on unregulated exchanges is fake (<a href="https://cowles.yale.edu/sites/default/files/2022-11/cryptowashtrading040521-crypto-wash-trading.pdf">Yale/NBER</a>). The $18.83T CoinGecko figure covers the top 15 "trusted" exchanges, but even these may have some inflation.</p>
+</li>
+<li>
+<p><strong>No double-counting with on-chain data.</strong> CEX order book matches are settled on internal databases, not blockchains. Deposits and withdrawals appear on-chain, but the vast majority of CEX trading activity is off-chain.</p>
+</li>
+<li>
+<p><strong>TPS estimation is inherently imprecise.</strong> Unlike <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> or blockchains, CEXs don't publish trade counts. Our estimate of ~3,500-4,600 TPS is derived from volume-to-trade-size assumptions and should be treated as order-of-magnitude.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>No public trade count data.</strong> Exchanges report dollar volume, not number of trades. TPS figures are estimated using average trade size assumptions and are 🔴 Low confidence.</li>
+<li><strong>Wash trading distortion.</strong> Even top-15 exchange data may include some artificial volume. CoinGecko applies trust scores but cannot fully eliminate wash trading.</li>
+<li><strong>Derivatives volume is notional.</strong> A 100x leveraged trade on $100 collateral registers as $10,000 in volume — this inflates the economic significance of derivatives figures.</li>
+<li><strong>Spot volume excludes DEXs.</strong> The $18.83T figure is CEX-only. DEX spot volume adds another ~$1.76T (see <a href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi capsule</a>).</li>
+<li><strong>2019 data is estimated.</strong> CoinGecko's top-15 series starts at 2020; 2019 is derived from industry estimates.</li>
+<li><strong>Historic derivatives data is sparse.</strong> Full-year derivatives volume series before 2023 is not consistently reported.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li>Actual trade counts on any CEX (no exchange publishes this; all TPS figures are estimated)</li>
+<li>The true wash trading percentage on "trusted" exchanges post-CoinGecko filtering — the tiered model (<a href="/universe-of-finance/reports/digital-assets/cex/workings/wash-trading-filter.html">wash-trading-filter.md</a>) narrows this but does not eliminate it</li>
+<li>Internal matching engine throughput vs. reported volume (exchanges batch and net orders internally)</li>
+<li>The share of volume driven by market makers vs. organic traders</li>
+<li>How much derivatives volume is delta-neutral hedging vs. directional speculation</li>
+<li>Whether derivatives-specific wash trading rates differ from spot (our model applies the same % to both)</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wash trading on trusted exchanges</td>
+<td><strong>Tiered model applied</strong> — see <a href="/universe-of-finance/reports/digital-assets/cex/workings/wash-trading-filter.html">wash-trading-filter.md</a>. Further refinement via Kaiko volume-to-depth ratios per exchange.</td>
+<td>Kaiko volume-to-depth ratios; HTX flagged in 2024</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Regulated vs. unregulated volume split</td>
+<td>Compare Coinbase/Kraken/Upbit volume patterns to Binance/OKX/Bybit — gap beyond product differences suggests wash trading</td>
+<td>CoinGecko market share data; Coinbase 10-K ($1.16T FY2024 volume)</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Futures-to-spot ratio as manipulation indicator</td>
+<td>Organic markets show 2-4x futures-to-spot; ratios above 6x on specific exchanges suggest synthetic volume</td>
+<td>CoinGecko derivatives data; current global ratio is ~3.1:1 but individual exchanges diverge</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>On-chain deposit/withdrawal flows</td>
+<td>Compare on-chain inflows to exchanges (measurable) with claimed trading volume — genuine volume requires proportional deposits</td>
+<td>Glassnode/CryptoQuant exchange flow data; Chainalysis exchange entity labelling</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>True trade count estimation</td>
+<td>Cross-reference API trade feeds (where available) with reported 24h volume to derive actual trade sizes</td>
+<td>Binance/Coinbase public trade APIs; Kaiko tick-level data</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Bot vs. human trading ratio</td>
+<td>Analyse trade size distribution and timing patterns — bot trades cluster at round numbers and sub-second intervals</td>
+<td>Kaiko tick data; academic studies on HFT in crypto (Makarov &amp; Schoar, 2020)</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>Zero-fee pair volume decomposition</td>
+<td>Separate Binance zero-fee BTC pairs from fee-bearing volume to distinguish incentivised trading from wash trading</td>
+<td>Binance API; Kaiko per-pair volume data</td>
+<td>🟡</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li><strong>Coinbase trade count disclosure</strong> would be the single highest-value data point. If Coinbase published daily trade counts alongside dollar volume in its 10-K, we could calibrate average trade size for a regulated exchange and reduce our TPS confidence interval by ~50%.</li>
+<li>The tiered model's Tier 2 estimate (20% wash, central) is the most impactful variable — a 10pp shift moves adjusted TPS by ~370. Post-2023 regulatory pressure may have reduced wash trading below our estimate, but no audit data exists to confirm.</li>
+<li>How does the derivatives-to-spot ratio vary between regulated and unregulated exchanges? A structurally higher ratio on unregulated exchanges would be strong evidence of synthetic volume.</li>
+<li>What fraction of CEX volume represents market-maker-to-market-maker trades? These are economically real but inflate the "human activity" interpretation of TPS.</li>
+<li>Does Binance's zero-fee BTC pair volume represent genuine incentivised trading or wash trading? The answer materially affects the Tier 2 estimate.</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>Traditional exchanges:</strong> NYSE processes ~6B shares/day (~70K TPS) across ~$200B notional. If crypto CEXs process ~$159B/day (wash-adjusted) at a similar trade-size distribution, we'd expect ~3,000 TPS — closely matching our adjusted estimate.</li>
+<li><strong>Bitwise "real 10" exchanges:</strong> Bitwise's 2019 analysis identified only 10 exchanges with genuine volume. The combined "real" volume was ~5% of total reported — but this was pre-CoinGecko trust scores. Our tiered model suggests CoinGecko's top-15 retains ~75% genuine volume.</li>
+<li><strong>FX market parallel:</strong> Global FX does ~$8.5T/day (2024 interpolated). Crypto CEX does ~$159B/day wash-adjusted (1.9% of FX). Given crypto's 24/7/365 operation and speculative nature, this ratio is plausible.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.coingecko.com/research/publications/largest-centralized-crypto-exchanges">CoinGecko — Largest Centralized Crypto Exchanges, 2020-2024</a></li>
+<li><a href="https://www.coingecko.com/research/publications/2024-annual-crypto-report">CoinGecko — 2024 Annual Crypto Industry Report</a></li>
+<li><a href="https://assets.coingecko.com/reports/2025/CoinGecko-State-of-Crypto-Perpetuals-Market.pdf">CoinGecko — State of Crypto Perpetuals Market (2024)</a></li>
+<li><a href="https://tokeninsight.com/en/research/reports/crypto-exchange-2024-annual-report">TokenInsight — Crypto Exchange 2024 Annual Report</a></li>
+<li><a href="https://coinlaw.io/cryptocurrency-derivatives-market-statistics/">CoinLaw — Cryptocurrency Derivatives Market Statistics 2025</a></li>
+<li><a href="https://coinlaw.io/crypto-exchange-market-share-statistics/">CoinLaw — Crypto Exchange Market Share Statistics 2026</a></li>
+<li><a href="https://cryptoslate.com/crypto-trading-volumes-rebound-in-2024-but-lag-behind-2021s-peak/">CryptoSlate — Crypto trading volumes rebound to $18T in 2024</a></li>
+<li><a href="https://www.financemagnates.com/cryptocurrency/global-spot-crypto-trading-climbs-142-year-over-year-to-21t/">Finance Magnates — Global Spot Crypto Trading Climbs 142% YoY</a></li>
+<li><a href="https://www.chainalysis.com/blog/crypto-market-manipulation-wash-trading-pump-and-dump-2025/">Chainalysis — Crypto Market Manipulation 2025: Wash Trading</a></li>
+<li><a href="https://cowles.yale.edu/sites/default/files/2022-11/cryptowashtrading040521-crypto-wash-trading.pdf">Yale/NBER — Crypto Wash Trading (working paper)</a></li>
+<li><a href="https://www.binance.com/en/square/post/19331575711073">Binance Square — Crypto Trading Hits Record $75.8T in 2024</a></li>
+<li><a href="https://cryptoslate.com/insights/total-crypto-trading-volume-hits-80-trillion-over-last-12-months/">CryptoSlate — Total crypto trading volume hits $80T over last 12 months</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/cex/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/digital-assets/cex/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/digital-assets/cex/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/digital-assets/cex/workings/regional-wash-model.html">⚙ regional wash model</a><a href="/universe-of-finance/reports/digital-assets/cex/workings/source_notes.html">⚙ source notes</a><a href="/universe-of-finance/reports/digital-assets/cex/workings/wash-trading-filter.html">⚙ wash trading filter</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/cex/REPORT.md">analysis/digital-assets/cex/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

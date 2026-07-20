@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consumer Card Payments — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition A 'transaction' in this category is a cleared purchase instruction on one of the six global card networks (Visa, UnionPay, Mastercard, American Express, JCB,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Consumer Cards</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Consumer Card Payments — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>A "transaction" in this category is a <strong>cleared purchase instruction</strong> on one of the six global <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> (Visa, UnionPay, Mastercard, American Express, JCB, Discover/Diners Club). Specifically:</p>
+<ul>
+<li><strong>Counting point:</strong> Clearing/settlement — the Nilson Report counts branded purchase transactions that successfully clear, not raw authorizations (which include declines, ~3-8% higher)</li>
+<li><strong>Unit:</strong> One purchase event at a merchant. A single consumer purchase = one transaction, regardless of how many ISO 8583 messages it generates</li>
+<li><strong>Exclusions:</strong> ATM cash withdrawals (~49B annually, separate capsule), balance inquiries, declined authorizations, reversals/chargebacks, domestic-only/private-label cards (~46B, tracked separately in network-breakdown workings)</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-nilson-report-global-aggregate-primary-anchor">Method A: Nilson Report Global Aggregate (Primary Anchor)</h3>
+<ul>
+<li><strong>Source:</strong> Nilson Report — "Global Network Card Results Worldwide 2024"</li>
+<li><strong>Value:</strong> 772.73 billion purchase transactions</li>
+<li><strong>Strengths:</strong> Gold standard for card industry data; consistent methodology across years and networks; covers all six global networks; audited by industry</li>
+<li><strong>Weaknesses:</strong> Paywalled — figures extracted from secondary reporting; does not include domestic-only networks (RuPay, Mir, Elo); fiscal year misalignment (Visa ends Sep, others Dec)</li>
+</ul>
+<h3 id="method-b-bottom-up-network-sum-cross-check">Method B: Bottom-Up Network Sum (Cross-Check)</h3>
+<ul>
+<li><strong>Source:</strong> Visa 10-K (303B branded), Mastercard 10-K (185B branded est.), UnionPay (247B est. from CoinLaw/PBOC), AmEx (15B derived), JCB (11B est.), Discover (8.6B est.)</li>
+<li><strong>Value:</strong> 769.6 billion (sum of six networks)</li>
+<li><strong>Strengths:</strong> Each major network figure is from audited SEC filings (Visa, Mastercard, AmEx) or central bank data (UnionPay via PBOC)</li>
+<li><strong>Weaknesses:</strong> UnionPay is estimated from 2023 base + growth rate; JCB and Discover are derived from value/AOV ratios; 3.1B gap vs. Nilson (0.4%) unexplained</li>
+</ul>
+<h3 id="method-c-capital-one-shopping-secondary-aggregators">Method C: Capital One Shopping / Secondary Aggregators</h3>
+<ul>
+<li><strong>Source:</strong> Capital One Shopping Research — "Number of Credit Card Transactions per Second &amp; Year"</li>
+<li><strong>Value:</strong> ~791 billion total global credit card transactions</li>
+<li><strong>Strengths:</strong> Independent compilation; includes some private-label cards not in Nilson</li>
+<li><strong>Weaknesses:</strong> Methodology less transparent than Nilson; higher figure likely includes domestic-only cards</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    RAW ESTIMATES                          │
+│                                                          │
+│  Method A             Method B            Method C       │
+│  [Nilson Report]      [Network Sum]       [Cap One]      │
+│  ┌──────────────┐    ┌──────────────┐    ┌────────────┐ │
+│  │ 772.73B      │    │ 769.6B       │    │ 791B       │ │
+│  │ (6 networks) │    │ (6 networks) │    │ (+private) │ │
+│  └──────┬───────┘    └──────┬───────┘    └─────┬──────┘ │
+│         │                   │                  │         │
+│         └───────────────────┼──────────────────┘         │
+│                             ▼                            │
+│                ┌────────────────────────┐                │
+│                │    RECONCILIATION      │                │
+│                │ A vs B: 0.4% gap       │                │
+│                │ (within UnionPay/JCB   │                │
+│                │  estimation error)     │                │
+│                │ C is ~18B higher:      │                │
+│                │ private-label cards    │                │
+│                └───────────┬────────────┘                │
+│                            ▼                             │
+│                ┌────────────────────────┐                │
+│                │   FINAL ESTIMATE       │                │
+│                │   772.73B (Nilson)     │                │
+│                │   +46B domestic-only   │                │
+│                │   = 819B adjusted      │                │
+│                │   Confidence: 91/100   │                │
+│                └────────────────────────┘                │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p><strong>Nilson Report (Method A) anchors the final estimate</strong> because:
+1. It is the recognized industry standard, used by all major card networks in their own reporting
+2. It uses a consistent methodology across years, enabling valid timeseries
+3. The bottom-up network sum (Method B) reconciles to within 0.4% (769.6B vs. 772.73B)</p>
+<p>The Capital One Shopping figure (791B) is ~2.4% higher, explained by inclusion of private-label and domestic-only cards that Nilson excludes from its "global network" count.</p>
+<p><strong>Domestic network adjustment:</strong> Adding RuPay (12B), Mir (15B), Elo (5B), BC Card (4B), and other domestic networks (~10B) brings the adjusted global total to <strong>~819B</strong>. This figure is used for "total cards on Earth" but the primary 772.73B is used for network-level analysis.</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>Consumer Cards: 772.73B total
+                │
+(-) Apple Pay/  │
+    Google Pay/ ████████████████████████████████████  772.73B
+    Samsung Pay │ (~32B ride on card rails)
+    overlap     │ These are ALSO counted in
+                │ Digital Wallets — but they are
+                │ native card txns, so kept here
+                │
+(-) E-commerce  │ ~18.4B card-paid e-commerce orders
+    overlap     │ are ALSO counted in E-Commerce
+                │ capsule — but the card txn is
+                │ the payment event, kept here
+                │
+                ▼
+De-duplicated   ████████████████████████████████████  772.73B
+                Consumer Cards is a BASE LAYER —
+                no deductions needed. Other capsules
+                subtract their card-rail overlap.
+</code></pre>
+<p><strong><a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Cards</a> is treated as a base layer</strong> in the overlap framework. Transactions are counted here first; other categories (<a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a>, <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">E-Commerce</a>, <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a>) subtract their card-rail portion to avoid double-counting.</p>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<ul>
+<li><strong>Directly observed:</strong> ~95% of global card volume is reported by the six global networks through audited filings (Visa, Mastercard) or industry data (Nilson)</li>
+<li><strong>Estimated portion:</strong> UnionPay (~32%) relies on PBOC-derived estimates rather than direct network disclosure; JCB and Discover are derived from value/AOV ratios</li>
+<li><strong>Unobserved:</strong> Domestic-only networks (~46B, ~6% of adjusted total) are estimated from fragmented national data</li>
+</ul>
+<pre><code>Region          Volume    Share   Data Quality
+─────────────── ──────── ─────── ───────────
+Asia-Pacific    ████████ 45.7%   Medium (UnionPay opacity)
+North America   ██████░░ 20.6%   High (Visa/MC 10-K filings)
+Europe          █████░░░ 19.5%   High (ECB + network data)
+Latin America   ██░░░░░░  7.0%   Medium (Elo, Bancard)
+Middle East/Afr █░░░░░░░  4.0%   Low (fragmented markets)
+Other           █░░░░░░░  3.2%   Low (residual estimate)
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+Nilson Report       █████████  █████████ ██████████  ████████░░
+Visa 10-K           █████░░░░  █████████ ██████████  ██████████
+Mastercard 10-K     ████░░░░░  █████████ ██████████  █████████░
+BIS Red Book        ███████░░  ██████░░░ ██████████  ██████░░░░
+Capital One Shop    █████████  █████████ ██████░░░░  █████░░░░░
+Fed Payments Study  ████░░░░░  ██████░░░ ██████████  █████████░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    85/100     90/100    95/100      78/100
+</code></pre>
+<ul>
+<li><strong>Final <a class="xref" href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">confidence score</a>:</strong> 91/100</li>
+<li><strong>Key uncertainty drivers:</strong></li>
+<li>UnionPay transaction count (~32% of total, estimated not disclosed)</li>
+<li>Fiscal year misalignment (Visa Sep FY vs. calendar year)</li>
+<li>Domestic-only network sizing (~6% of adjusted total)</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<ul>
+<li><strong>Run 1 (2026-03-25):</strong> Initial estimate — 772.73B from Nilson, bottom-up cross-check</li>
+<li><strong>Run 2 (2026-03-26):</strong> Added network breakdown, domestic networks (+46B adjusted total), historic timeseries derived from Visa 10-K</li>
+<li><strong>Run 3 (2026-03-27):</strong> Added PBOC data for UnionPay cross-check; upgraded 2016-2020 historic confidence from Low to Medium</li>
+<li><strong>Run 6 (2026-03-28):</strong> Methodology documentation formalized</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/consumer-cards/METHODOLOGY.md">analysis/payments/consumer-cards/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEX — Calculations & Methodology — Universe of Finance</title>
+<meta name="description" content="1. Annual Volume Derivation Spot Volume Source: CoinGecko 2024 Annual Report — top 15 CEXs Total: $18.83 trillion (2024) Derivatives Volume Source: CoinGecko State of Crypto Perpet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>CEX — Calculations & Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-annual-volume-derivation">1. Annual Volume Derivation</a></li><li><a href="#2-tps-estimation-methodology">2. TPS Estimation Methodology</a></li><li><a href="#3-historic-spot-volume-series">3. Historic Spot Volume Series</a></li><li><a href="#4-wash-trading-adjustment">4. Wash Trading Adjustment</a></li><li><a href="#5-projection-methodology">5. Projection Methodology</a></li></ul></div><h2 id="1-annual-volume-derivation">1. Annual Volume Derivation</h2>
+<h3 id="spot-volume">Spot Volume</h3>
+<ul>
+<li>Source: CoinGecko 2024 Annual Report — top 15 CEXs</li>
+<li>Total: $18.83 trillion (2024)</li>
+</ul>
+<h3 id="derivatives-volume">Derivatives Volume</h3>
+<ul>
+<li>Source: CoinGecko State of Crypto Perpetuals — top 10 CEXs</li>
+<li>Perpetuals: $58.5 trillion (2024)</li>
+<li>Note: This is notional volume. A 100x leveraged $100 position = $10,000 notional.</li>
+</ul>
+<h3 id="combined">Combined</h3>
+<ul>
+<li>$18.83T + $58.5T = ~$77.3T</li>
+</ul>
+<h2 id="2-tps-estimation-methodology">2. TPS Estimation Methodology</h2>
+<p>CEXs do not publish trade counts. We estimate as follows:</p>
+<h3 id="average-trade-size-assumptions">Average Trade Size Assumptions</h3>
+<ul>
+<li>Spot average trade: ~$500 (mix of retail $50-200 and institutional $10K+)</li>
+<li>Derivatives average trade: ~$2,000 (higher due to leverage mechanics)</li>
+</ul>
+<h3 id="daily-trade-count-estimate">Daily Trade Count Estimate</h3>
+<ul>
+<li>Spot: $18.83T / 365 / $500 = ~103M trades/day</li>
+<li>Derivatives: $58.5T / 365 / $2,000 = ~80M trades/day</li>
+<li>Combined: ~183M-400M trades/day (wide range due to trade size uncertainty)</li>
+<li>Midpoint: ~300M trades/day</li>
+</ul>
+<h3 id="tps">TPS</h3>
+<ul>
+<li>300M / 86,400 = ~3,472 TPS</li>
+<li>Range: 2,100 - 4,600 TPS</li>
+<li>Reported midpoint: ~4,000 TPS</li>
+</ul>
+<h3 id="peak-tps">Peak TPS</h3>
+<ul>
+<li>During extreme volatility (BTC flash crash, ETF launch day), volume can spike 3-5x</li>
+<li>Estimated peak: ~12,000-20,000 TPS</li>
+<li>Reported: ~15,000 TPS</li>
+</ul>
+<h2 id="3-historic-spot-volume-series">3. Historic Spot Volume Series</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Spot Volume (T)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~$3.5</td>
+<td>Industry estimate (CoinGecko series starts 2020)</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>$3.78</td>
+<td>CoinGecko</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>$25.21</td>
+<td>CoinGecko (all-time high)</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~$14.0</td>
+<td>CoinGecko (estimated, FTX collapse year)</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>$8.05</td>
+<td>CoinGecko</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>$18.83</td>
+<td>CoinGecko</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-wash-trading-adjustment">4. Wash Trading Adjustment</h2>
+<p>Research estimates on unregulated exchanges:
+- 50-70% of reported volume may be wash trading (Yale/NBER study)
+- CoinGecko top-15 applies trust scoring, reducing but not eliminating wash trades
+- Conservative "real" volume estimate: 60-80% of reported = $11.3T-$15.1T spot</p>
+<p>We report CoinGecko figures as-is but flag the wash trading concern prominently.</p>
+<h2 id="5-projection-methodology">5. Projection Methodology</h2>
+<p>Crypto volumes are <strong>cyclical</strong>, driven by ~4-year Bitcoin halving cycles:
+- Halving: Apr 2024 → Bull phase: 2024-2025 → Peak: 2025-2026 → Bear: 2027-2028
+- Next halving: ~Apr 2028 → Next bull: 2028-2029</p>
+<p>Baseline projections follow this cycle pattern with a rising secular trend (institutional adoption, ETFs, regulatory frameworks).</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/cex/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/cex/workings/calculations.md">analysis/digital-assets/cex/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

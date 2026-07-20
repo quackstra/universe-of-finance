@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overlap Matrix — Universe of Finance</title>
+<meta name="description" content="Cross-category overlap analysis for accurate total global financial TPS. Last Updated: 2026-03-28 (Run 6 — full 29-category reconciliation) The Big Number (De-Duplicated) Estimate">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a></div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Overlap Matrix</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#the-big-number-de-duplicated">The Big Number (De-Duplicated)</a></li><li><a href="#sector-by-sector-de-duplication">Sector-by-Sector De-Duplication</a></li><li><a href="#de-duplicated-global-total">De-Duplicated Global Total</a></li><li><a href="#new-category-overlap-details-run-6">New Category Overlap Details (Run 6)</a></li><li><a href="#key-insights">Key Insights</a></li></ul></div><blockquote>
+<p>Cross-category overlap analysis for accurate total global financial TPS.
+<strong>Last Updated</strong>: 2026-03-28 (Run 6 — full 29-category reconciliation)</p>
+</blockquote>
+<h2 id="the-big-number-de-duplicated">The Big Number (De-Duplicated)</h2>
+<p><strong>Estimated Global Financial TPS: ~73,750</strong> (non-overlapping, all 29 categories)</p>
+<p>This is derived by summing de-duplicated TPS across all 7 sectors, accounting for
+overlaps within payments, subsets within digital assets, and the settlement-vs-trading
+boundary in banking.</p>
+<hr/>
+<h2 id="sector-by-sector-de-duplication">Sector-by-Sector De-Duplication</h2>
+<h3 id="1-payments-55690-tps-de-duplicated">1. Payments — ~55,690 TPS (de-duplicated)</h3>
+<p>See <a href="/universe-of-finance/reports/payments/OVERLAP_ANALYSIS.html">payments/OVERLAP_ANALYSIS.md</a> for full methodology.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Raw TPS</th>
+<th>De-Dup TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>24,501</td>
+<td>24,501</td>
+<td>Base layer</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>15,338</td>
+<td>15,338</td>
+<td>Base layer (includes UPI)</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>19,660</td>
+<td>12,938</td>
+<td>Minus UPI (in bank transfers) and card-rail wallets</td>
+</tr>
+<tr>
+<td>ATM Withdrawals</td>
+<td>1,557</td>
+<td>1,557</td>
+<td><strong>Zero overlap</strong> — cash-out, unique event type</td>
+</tr>
+<tr>
+<td>BNPL</td>
+<td>634</td>
+<td>460</td>
+<td>100% infra overlap, but 3.6x multiplier → ~460 TPS incremental</td>
+</tr>
+<tr>
+<td>Bill Payments</td>
+<td>3,012</td>
+<td>301</td>
+<td>~90% via direct debit/card-on-file rails</td>
+</tr>
+<tr>
+<td>E-Commerce</td>
+<td>1,823</td>
+<td>91</td>
+<td>~95% overlay on cards/wallets/bank</td>
+</tr>
+<tr>
+<td>P2P Transfers</td>
+<td>270</td>
+<td>270</td>
+<td>Minor wallet overlap</td>
+</tr>
+<tr>
+<td>Payroll</td>
+<td>1,305</td>
+<td>131</td>
+<td>~90% is ACH/BACS/SEPA batch (in bank transfers)</td>
+</tr>
+<tr>
+<td>Insurance Premiums</td>
+<td>444</td>
+<td>44</td>
+<td>~90% via card/direct debit rails</td>
+</tr>
+<tr>
+<td>Remittances</td>
+<td>57</td>
+<td>57</td>
+<td>Minor bank/P2P overlap</td>
+</tr>
+<tr>
+<td><strong>Payments Total</strong></td>
+<td><strong>68,601</strong></td>
+<td><strong>55,688</strong></td>
+<td><strong>19% overcount in raw sum</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-traditional-finance-13473-tps">2. Traditional Finance — ~13,473 TPS</h3>
+<p>No significant intra-sector overlaps. ETD and <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> are distinct markets
+(exchange-traded vs. bilateral). <a class="xref" href="/universe-of-finance/reports/traditional-finance/forex/REPORT.html">Forex</a> is independent of equity/bond trading.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exchange-Traded Derivatives</td>
+<td>9,505</td>
+<td>Independent — futures/options on exchanges</td>
+</tr>
+<tr>
+<td>Equity Markets</td>
+<td>3,500</td>
+<td>Independent — stock trades</td>
+</tr>
+<tr>
+<td>Commodities</td>
+<td>330</td>
+<td>Independent — commodity futures</td>
+</tr>
+<tr>
+<td>Foreign Exchange</td>
+<td>127</td>
+<td><strong>Revised Run 5</strong>: incl. ~8M retail trades/day (was ~35 institutional-only)</td>
+</tr>
+<tr>
+<td>Fixed Income (incl. repo)</td>
+<td>10.5</td>
+<td><strong>Revised Run 5</strong>: incl. 219M repo transactions (was ~3.6 cash-only)</td>
+</tr>
+<tr>
+<td>OTC Derivatives</td>
+<td>0.2</td>
+<td>Independent — bilateral contracts</td>
+</tr>
+<tr>
+<td><strong>TradFi Total</strong></td>
+<td><strong>~13,473</strong></td>
+<td><strong>No intra-sector overlaps</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-sector overlap with Payments</strong>: Minimal. TradFi transactions settle through
+banking infrastructure (RTGS, CSD) but are counted separately per taxonomy rules.
+The settlement is downstream, not a duplicate of the trade.</p>
+<h3 id="3-digital-assets-3625-tps-de-duplicated">3. Digital Assets — ~3,625 TPS (de-duplicated)</h3>
+<p>Critical overlap: <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> and <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">Stablecoins</a> are <em>subsets</em> of L1/L2 on-chain transactions.
+CEX trades are off-chain (no overlap with L1/L2).</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Raw TPS</th>
+<th>De-Dup TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CEX (wash-adjusted)</td>
+<td>3,210</td>
+<td>3,210</td>
+<td>Off-chain, no L1/L2 overlap. <strong>Run 5</strong>: revised from 3,040</td>
+</tr>
+<tr>
+<td>L1/L2 Blockchain</td>
+<td>415</td>
+<td>415</td>
+<td>On-chain (DeFi + Stablecoins are subsets, not additive)</td>
+</tr>
+<tr>
+<td>DeFi</td>
+<td><em>(subset)</em></td>
+<td><em>(included in L1/L2)</em></td>
+<td>~30-40% of L1/L2 transactions</td>
+</tr>
+<tr>
+<td>Stablecoins</td>
+<td><em>(subset)</em></td>
+<td><em>(included in L1/L2)</em></td>
+<td>~15-25% of L1/L2 transactions</td>
+</tr>
+<tr>
+<td><strong>Digital Assets Total</strong></td>
+<td>—</td>
+<td><strong>~3,625</strong></td>
+<td><strong>CEX + L1/L2 (which contains DeFi + stablecoins)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The correct de-duplication is: CEX (off-chain, 3,210 TPS) + L1/L2 (on-chain, 415 TPS) = <strong>3,625 TPS</strong>.
+DeFi and Stablecoins don't add because they're subsets of L1/L2.</p>
+<p><strong>Run 3 revision</strong>: L1/L2 TPS revised from ~900 to ~415 (range: 350-480) after filtering
+Solana vote transactions (~35% of total), failed transactions (~35% of non-vote), and
+MEV bot spam (~25% of successful non-vote). See <code>digital-assets/blockchain-l1-l2/workings/solana-filter.md</code>.</p>
+<h3 id="4-banking-92-98-tps-de-duplicated">4. Banking — ~92-98 TPS (de-duplicated)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Securities Settlement</td>
+<td>41-48</td>
+<td>Downstream of equity/bond/derivative trades</td>
+</tr>
+<tr>
+<td>Interbank RTGS</td>
+<td>50.1</td>
+<td>Settlement of high-value payments (13 systems)</td>
+</tr>
+<tr>
+<td><strong>Banking Total</strong></td>
+<td><strong>~92-98</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Run 3 revision</strong>: <a class="xref" href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">Interbank RTGS</a> expanded from 5 systems (Fedwire, T2, CHAPS, BOJ-NET, CLS)
+to 13 systems, adding CNAPS-HVPS (<a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>), <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> RTGS, SARIE (Saudi Arabia), BOK-Wire+,
+RITS (Australia), Lynx (Canada), MEPS+ (Singapore), and Russia BESP. Annual volume tripled
+from ~423M to ~1,581M transactions. See <code>banking/interbank-rtgs/workings/missing-systems.md</code>. |</p>
+<p><strong>Cross-sector note</strong>: Banking transactions are the settlement layer for TradFi and
+Payments. Per taxonomy double-counting rules, a stock trade counts as ONE trade
+(in <a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">Equity Markets</a>) and the resulting settlement counts separately (in Securities
+Settlement). Both are real transactions on different infrastructure.</p>
+<h3 id="5-gaming-88-tps-incremental">5. Gaming — ~88 TPS (incremental)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Raw TPS</th>
+<th>De-Dup TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microtransactions</td>
+<td>389</td>
+<td>70</td>
+<td>82% on card/wallet rails → ~18% incremental</td>
+</tr>
+<tr>
+<td>Game Sales</td>
+<td>92</td>
+<td>18</td>
+<td>84% on card/wallet rails → ~16% incremental</td>
+</tr>
+<tr>
+<td><strong>Gaming Total</strong></td>
+<td><strong>~481</strong></td>
+<td><strong>~88</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-sector overlap with Payments</strong>: Gaming purchases (~15.2B/year) are paid
+via cards/wallets/<a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>. These payment transactions are ALREADY counted in
+the Payments sector. Gaming counts the <strong>commerce events</strong>, not the payment flows.</p>
+<p><strong>Run 6 revision</strong>: Instead of fully excluding gaming, we now count the ~18% of
+gaming transactions that use non-card/non-wallet rails (gift cards, platform credit,
+direct carrier billing, crypto). This gives ~88 TPS incremental.</p>
+<h3 id="6-government-1002-tps">6. Government — ~1,002 TPS</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Government Payments</td>
+<td>1,002</td>
+<td>Tax receipts + benefits disbursements (bottom-up model)</td>
+</tr>
+<tr>
+<td><strong>Government Total</strong></td>
+<td><strong>~1,002</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Run 3 revision</strong>: Bottom-up model across US (5.09B txns), India (8.19B), EU (5.84B),
+and tiered RoW extrapolation yields ~31.6B annual transactions (up from ~25B). India's
+JAM-enabled DBT platform alone accounts for 7.4B transactions. Confidence upgraded from
+Low to Medium. See <code>government/government-payments/workings/bottom-up-model.md</code>.</p>
+<p><strong>Cross-sector overlap with Payments</strong>: Benefits disbursements flow through ACH/bank
+transfers; tax payments through cards/bank transfers. Like gaming and <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a>,
+<a class="xref" href="/universe-of-finance/reports/government/government-payments/REPORT.html">government payments</a> are economic events paid via existing payment rails.</p>
+<p><strong>Decision</strong>: Partially overlapping with bank transfers. Estimate ~60% of government
+payment transactions are already counted in bank transfers (ACH disbursements).
+Incremental: ~401 TPS.</p>
+<h3 id="7-emerging-385-tps-incremental">7. Emerging — ~385 TPS (incremental)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Raw TPS</th>
+<th>De-Dup TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IoT/M2M</td>
+<td>1,538</td>
+<td>385</td>
+<td><strong>Run 5</strong>: revised from ~634 to ~1,538; 75% on card/bank rails</td>
+</tr>
+<tr>
+<td>RWA Tokenisation</td>
+<td>2.4</td>
+<td>0</td>
+<td>On-chain (subset of L1/L2)</td>
+</tr>
+<tr>
+<td>AI Agents</td>
+<td>0.66</td>
+<td>0</td>
+<td>Mostly on-chain (x402, subset of L1/L2)</td>
+</tr>
+<tr>
+<td><strong>Emerging Total</strong></td>
+<td><strong>~1,541</strong></td>
+<td><strong>~385</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-sector overlap</strong>: <a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">IoT</a> payments (~75%) ride on existing card/bank rails.
+RWA and <a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI agent transactions</a> are on-chain (subset of L1/L2). Incremental emerging
+TPS: ~385 (IoT non-card portion only).</p>
+<hr/>
+<h2 id="de-duplicated-global-total">De-Duplicated Global Total</h2>
+<h3 id="method-a-payment-infrastructure-tps-what-rails-actually-process">Method A: Payment Infrastructure TPS (what rails actually process)</h3>
+<p>This counts only the throughput on payment/settlement infrastructure, avoiding
+double-counting commerce layers (e-commerce, gaming, government, IoT) that ride
+on those rails.</p>
+<table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>De-Dup TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payments (de-dup)</td>
+<td>55,690</td>
+<td>Cards + Bank Transfers + incremental Wallets + ATM + BNPL incremental + Bill/Payroll/Insurance incrementals</td>
+</tr>
+<tr>
+<td>Traditional Finance</td>
+<td>13,473</td>
+<td>Trading activity on exchanges/OTC (revised forex + fixed income)</td>
+</tr>
+<tr>
+<td>Digital Assets</td>
+<td>3,625</td>
+<td>CEX (off-chain, wash-adjusted) + L1/L2 (on-chain, vote/spam filtered)</td>
+</tr>
+<tr>
+<td>Banking/Settlement</td>
+<td>94</td>
+<td>RTGS (13 systems) + Securities Settlement</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~72,880</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="method-b-economic-transaction-tps-all-unique-economic-events">Method B: Economic Transaction TPS (all unique economic events)</h3>
+<p>This counts every unique economic event once, regardless of payment rail.
+Includes commerce layers but de-duplicates payment overlaps.</p>
+<table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>De-Dup TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payments (de-dup)</td>
+<td>55,690</td>
+<td></td>
+</tr>
+<tr>
+<td>Traditional Finance</td>
+<td>13,473</td>
+<td></td>
+</tr>
+<tr>
+<td>Digital Assets</td>
+<td>3,625</td>
+<td></td>
+</tr>
+<tr>
+<td>Banking/Settlement</td>
+<td>94</td>
+<td></td>
+</tr>
+<tr>
+<td>Gaming (incremental)</td>
+<td>88</td>
+<td>~18% not on card/wallet rails</td>
+</tr>
+<tr>
+<td>Government (incremental)</td>
+<td>401</td>
+<td>~40% not in bank transfers</td>
+</tr>
+<tr>
+<td>IoT/M2M (incremental)</td>
+<td>385</td>
+<td>~25% not on existing rails</td>
+</tr>
+<tr>
+<td>RWA + AI Agents</td>
+<td>3</td>
+<td>On-chain but tiny</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~73,760</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-range">The Range</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Low Estimate</th>
+<th>Central</th>
+<th>High Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payment Infrastructure TPS</td>
+<td>66,000</td>
+<td>72,900</td>
+<td>82,000</td>
+</tr>
+<tr>
+<td>Economic Transaction TPS</td>
+<td>67,000</td>
+<td>73,750</td>
+<td>83,000</td>
+</tr>
+</tbody>
+</table>
+<p>The ~870 TPS gap between Method A and Method B reflects commerce/activity layers
+(gaming, government, IoT) that generate real economic events but whose
+payment flows are already counted in the Payments sector.</p>
+<h3 id="programmatic-validation">Programmatic Validation</h3>
+<p><code>tools/big_number.py</code> computes <strong>~73,753 TPS</strong> de-duplicated across all 29 categories.
+This aligns with Method B (~73,760) because the script now includes all incremental
+contributions: gaming (88), government (401), IoT (385), plus the 5 new payment
+categories with deductions. All three figures are internally consistent.</p>
+<h3 id="run-6-vs-run-3-reconciliation">Run 6 vs Run 3 Reconciliation</h3>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5 new payment categories (ATM, bills, payroll, insurance, BNPL)</td>
+<td>+2,493 TPS (after deductions)</td>
+</tr>
+<tr>
+<td>Gaming: exclude → incremental</td>
+<td>+88 TPS</td>
+</tr>
+<tr>
+<td>Forex: institutional → incl. retail</td>
+<td>+87 TPS</td>
+</tr>
+<tr>
+<td>Fixed income: cash → incl. repo</td>
+<td>+6.9 TPS</td>
+</tr>
+<tr>
+<td>CEX wash adjustment: 3,040 → 3,210</td>
+<td>+110 TPS (already in Run 5)</td>
+</tr>
+<tr>
+<td>IoT: 634 → 1,538 (×0.25)</td>
+<td>+226 TPS (already in Run 5)</td>
+</tr>
+<tr>
+<td><strong>Net change from Run 3 (~70,741)</strong></td>
+<td><strong>+~3,012 TPS → ~73,753</strong></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="new-category-overlap-details-run-6">New Category Overlap Details (Run 6)</h2>
+<h3 id="gaming-overlap">Gaming Overlap</h3>
+<ul>
+<li><strong>Raw TPS</strong>: ~481 (microtx 389 + sales 92)</li>
+<li><strong>Overlap</strong>: 82% of gaming transactions settle on card/wallet rails</li>
+<li><strong>Incremental</strong>: ~88 TPS (gift cards, platform credit, carrier billing, crypto)</li>
+<li><strong>Rationale</strong>: Gaming is a commerce layer like e-commerce. Most purchases use
+  cards (40-50%), <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a> (25-30%), or bank transfers (5-10%). The ~18%
+  incremental comes from platform-specific payment methods not captured elsewhere.</li>
+</ul>
+<h3 id="insurance-premium-overlap">Insurance Premium Overlap</h3>
+<ul>
+<li><strong>Raw TPS</strong>: ~444 (14B annual premium payments)</li>
+<li><strong>Overlap</strong>: 90% flows via card auto-pay or direct debit/ACH</li>
+<li><strong>Incremental</strong>: ~44 TPS (~1.4B transactions via cash/agent collections)</li>
+<li><strong>Rationale</strong>: Most <a class="xref" href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">insurance premiums</a> are recurring payments on existing rails.
+  Cash premium collection (common in India, <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>) is the only incremental portion.</li>
+</ul>
+<h3 id="bnpl-overlap">BNPL Overlap</h3>
+<ul>
+<li><strong>Raw TPS</strong>: ~634 (installment-level, 20B events/year)</li>
+<li><strong>Overlap</strong>: 100% infrastructure overlap — every installment settles via card or bank</li>
+<li><strong>Incremental</strong>: ~460 TPS (~14.5B net new payment events)</li>
+<li><strong>Rationale</strong>: <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a> is unique — it has complete infrastructure overlap but creates
+  genuine new transaction events. A single purchase becomes 3-4 installment payments
+  on the underlying rail. The 5.5B purchases would have been 5.5B card transactions
+  anyway; the ~14.5B additional installment events (20B - 5.5B) are net new TPS on
+  the payment infrastructure.</li>
+</ul>
+<h3 id="bill-payments-overlap">Bill Payments Overlap</h3>
+<ul>
+<li><strong>Raw TPS</strong>: ~3,012 (95B annual <a class="xref" href="/universe-of-finance/reports/payments/bill-payments/REPORT.html">bill payments</a>)</li>
+<li><strong>Overlap</strong>: 90% flows via direct debit, card-on-file, or mobile money</li>
+<li><strong>Incremental</strong>: ~301 TPS (~9.5B cash/check bill payments)</li>
+<li><strong>Rationale</strong>: Utility bills, telecom, and digital subscriptions are overwhelmingly
+  paid via automated channels already counted in bank transfers (direct debit) or
+  <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">consumer cards</a> (card-on-file). Cash bill payments at agent networks (common in
+  emerging markets) are the incremental portion.</li>
+</ul>
+<h3 id="payroll-overlap">Payroll Overlap</h3>
+<ul>
+<li><strong>Raw TPS</strong>: ~1,305 (41.2B annual <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a> disbursements)</li>
+<li><strong>Overlap</strong>: 90% is ACH/BACS/SEPA batch transfers already in bank transfers</li>
+<li><strong>Incremental</strong>: ~131 TPS (~4.2B cash wages and check payroll)</li>
+<li><strong>Rationale</strong>: Formal-sector payroll is essentially a subset of bank transfers.
+  The ~10% incremental represents cash wages (informal sector, emerging markets)
+  and remaining check payroll (declining in developed markets).</li>
+</ul>
+<h3 id="atm-withdrawals-zero-overlap">ATM Withdrawals (Zero Overlap)</h3>
+<ul>
+<li><strong>Raw TPS</strong>: ~1,557 (49.1B annual cash withdrawals)</li>
+<li><strong>Overlap</strong>: 0% — <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a> are cash-out events, not payments</li>
+<li><strong>Incremental</strong>: ~1,557 TPS (full count)</li>
+<li><strong>Rationale</strong>: ATM cash withdrawals create a unique transaction type not captured
+  anywhere else. They use card rails for authentication but the transaction itself is
+  a cash disbursement. When the consumer later spends that cash, the spending is
+  untracked. Card network statistics exclude ATM withdrawals from purchase counts.</li>
+</ul>
+<hr/>
+<h2 id="key-insights">Key Insights</h2>
+<ol>
+<li>
+<p><strong>Payments dominate</strong>: 75% of global financial TPS is payment transactions
+   (cards, bank transfers, wallets, ATM, bills, payroll, BNPL, insurance). Trading, settlement, and everything else is 25%.</p>
+</li>
+<li>
+<p><strong>The overlap problem is material but manageable</strong>: Raw sum across all 29 categories
+   yields ~89,300 TPS. De-duplication reduces this by ~17% to ~73,750.
+   The biggest single overlap is <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> (172B transactions in both wallets and bank transfers).</p>
+</li>
+<li>
+<p><strong>ATM withdrawals are a significant overlooked category</strong>: At ~1,557 TPS with zero
+   overlap, ATM cash-outs are the third-largest payment category by TPS and are
+   entirely incremental to the total.</p>
+</li>
+<li>
+<p><strong>BNPL creates genuine new infrastructure load</strong>: Despite 100% infrastructure overlap,
+   the 3.6x installment multiplier generates ~14.5B net new payment events (~460 TPS).
+   This is a rare case where overlap does not mean deduction.</p>
+</li>
+<li>
+<p><strong>Bill payments are massive but mostly captured</strong>: At ~95B annual transactions (~3,012 TPS),
+   bill payments are a huge category but ~90% flows through direct debit and card-on-file
+   rails already counted elsewhere.</p>
+</li>
+<li>
+<p><strong>Digital assets are smaller than headline numbers suggest</strong>: At ~3,625 TPS
+   (after Solana vote/spam filtering and CEX wash adjustment), crypto is ~5% of global
+   financial TPS.</p>
+</li>
+<li>
+<p><strong>TradFi trading is surprisingly large</strong>: At ~13,473 TPS, trading (especially
+   derivatives at 9,505 TPS) is a bigger transaction generator than most people realise.
+   Forex revised upward to ~127 TPS (from ~35) with retail inclusion; <a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">fixed income</a>
+   revised to ~10.5 TPS (from ~3.6) with repo inclusion.</p>
+</li>
+<li>
+<p><strong>IoT is growing fast</strong>: Revised from ~634 to ~1,538 TPS in Run 5, with toll
+   collection and vending machines as the dominant segments. After 75% rail overlap
+   deduction, contributes ~385 TPS incremental.</p>
+</li>
+</ol>
+<hr/>
+<p><em>This analysis will be refined as individual capsule data improves. Key uncertainties:
+China digital wallet volume (±50B), CEX wash trading adjustment (±30%),
+bill payment cash/digital split (±10%), and IoT payment rail attribution.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/OVERLAP_MATRIX.md">analysis/OVERLAP_MATRIX.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

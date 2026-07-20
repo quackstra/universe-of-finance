@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Commerce & Merchant Processing — Assumptions — Universe of Finance</title>
+<meta name="description" content="Boundary Definition What counts as an 'e-commerce transaction'? We count the commerce event — an online purchase order placed by a consumer or business through an e-commerce platfo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>E-Commerce & Merchant Processing — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<h2 id="boundary-definition">Boundary Definition</h2>
+<h3 id="what-counts-as-an-e-commerce-transaction">What counts as an "e-commerce transaction"?</h3>
+<p>We count the <strong>commerce event</strong> — an online purchase order placed by a consumer or
+business through an <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a> platform or website. This is distinct from the
+<strong>payment rail</strong> used to settle it.</p>
+<ul>
+<li>A consumer buys a jacket on Amazon using Apple Pay (funded by a Visa card).
+  That is <strong>one</strong> e-commerce transaction. The same event also appears in:</li>
+<li><a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital wallets</a> (Apple Pay)</li>
+<li><a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer cards</a> (Visa)</li>
+<li>Merchant processing (acquirer)</li>
+<li>We count it <strong>once</strong> here as one e-commerce order.</li>
+</ul>
+<h3 id="double-counting-boundary-with-other-categories">Double-counting boundary with other categories</h3>
+<table>
+<thead>
+<tr>
+<th>Other UoF Category</th>
+<th>Overlap</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>Cards are the payment rail for ~32% of e-commerce</td>
+<td>We count the order, not the card swipe. Same event, different lens.</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>Wallets fund ~53% of e-commerce</td>
+<td>Same — order counted here, wallet tap counted in digital wallets.</td>
+</tr>
+<tr>
+<td>BNPL</td>
+<td>BNPL funds ~5% of e-commerce</td>
+<td>Same principle.</td>
+</tr>
+<tr>
+<td>Bank Transfers (A2A)</td>
+<td>~7% of e-commerce</td>
+<td>Same principle.</td>
+</tr>
+<tr>
+<td>B2B Payments</td>
+<td>B2B e-commerce exists ($21T+)</td>
+<td><strong>Excluded</strong> — this analysis covers retail/consumer e-commerce only, consistent with standard industry reporting.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-principle">Key principle</h3>
+<p>The Universe of Finance expects cross-category overlap. Each category measures
+transactions from its own vantage point. The total TPS is <strong>not</strong> the sum of all
+categories — a reconciliation layer handles deduplication.</p>
+<h2 id="data-source-assumptions">Data Source Assumptions</h2>
+<h3 id="a1-statistasoax-timeseries-as-primary-source-for-annual-gmv">A1: Statista/SOAX timeseries as primary source for annual GMV</h3>
+<ul>
+<li>The 2014-2024 timeseries from SOAX (sourcing Statista) is used as the primary
+  GMV reference because it provides a consistent methodology across 11 years.</li>
+<li>Figures are <strong>retail e-commerce only</strong> (B2C + C2C marketplace), excluding B2B.</li>
+<li>Confidence: 🟢 High — Statista is the most widely cited source and cross-referenced
+  by eMarketer, Shopify, and UNCTAD.</li>
+</ul>
+<h3 id="a2-transaction-count-derived-from-gmv-aov">A2: Transaction count derived from GMV / AOV</h3>
+<ul>
+<li>No single source publishes a reliable global e-commerce transaction count.</li>
+<li>We derive it: <strong>Transaction Count = GMV / Average Order Value (AOV)</strong>.</li>
+<li>AOV source: ECDB global benchmark of ~$116 (2024), cross-checked with
+  Oberlo ($144.57 for Nov 2024) and regional averages.</li>
+<li>We use <strong>$110</strong> as a blended global AOV for 2024, which is conservative because:</li>
+<li>Asia-Pacific (45%+ of transactions) has lower AOV (~$60-80)</li>
+<li>Emerging markets pull the average down</li>
+<li>The $116-$144 figures are skewed toward Western markets</li>
+<li>Confidence: 🟡 Medium — AOV varies dramatically by region and category.</li>
+</ul>
+<h3 id="a3-tps-derived-from-annual-transaction-count">A3: TPS derived from annual transaction count</h3>
+<ul>
+<li>TPS = Annual Transactions / (365.25 × 86,400)</li>
+<li>This gives <strong>average</strong> TPS. Real traffic is highly seasonal and diurnal.</li>
+<li><a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> is estimated using known peak events (Singles Day, Black Friday)
+  and multiplier analysis.</li>
+</ul>
+<h3 id="a4-peak-tps-multiplier">A4: Peak TPS multiplier</h3>
+<ul>
+<li>Alibaba's 2020 Singles Day peak: 583,000 orders/sec (confirmed)</li>
+<li>Shopify BFCM 2024 peak: $4.6M/min ÷ ~$110 AOV ≈ ~700 orders/sec (Shopify only)</li>
+<li>Peak-to-average ratio for global e-commerce estimated at <strong>50-100x</strong> based on:</li>
+<li>Shopping events concentrate in narrow time windows (midnight launches)</li>
+<li>Only a fraction of global platforms participate in any single peak event</li>
+<li>Alibaba alone hits 583K/sec but represents ~15-20% of global e-commerce</li>
+<li>We estimate global peak at <strong>~1,000,000 orders/sec</strong> during overlapping peak events.</li>
+<li>Confidence: 🔴 Low — no single source measures global peak; this is extrapolated.</li>
+</ul>
+<h3 id="a5-payment-method-shares-from-worldpay-gpr-2025">A5: Payment method shares from Worldpay GPR 2025</h3>
+<ul>
+<li>Worldpay's Global Payments Report is the industry standard for payment method mix.</li>
+<li>2024 e-commerce shares: Digital wallets 53%, <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Credit cards</a> 20%, <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Debit cards</a> 12%,
+  Bank transfer 7%, <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a> 5%, Cash on delivery 2%, Other 1%.</li>
+<li>These are <strong>value-weighted</strong> shares, not transaction-count-weighted. Lower-value
+  methods (COD, BNPL) may have higher transaction shares than value shares.</li>
+<li>Confidence: 🟢 High — Worldpay GPR is primary research across 40+ markets.</li>
+</ul>
+<h3 id="a6-regional-breakdown-from-statistapolaris">A6: Regional breakdown from Statista/Polaris</h3>
+<ul>
+<li>Asia-Pacific: 45.7% of global e-commerce value</li>
+<li>North America: 29.8%</li>
+<li>Europe: 16.9%</li>
+<li>LAMEA: 7.6%</li>
+<li>These are value-weighted. Asia-Pacific likely has a higher transaction-count
+  share due to lower AOV.</li>
+<li>Confidence: 🟢 High — consistent across multiple sources.</li>
+</ul>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<h3 id="a7-baseline-projection-2026-2035">A7: Baseline projection (2026-2035)</h3>
+<ul>
+<li>Uses blended CAGR of <strong>8.5%</strong> for 2026-2030, declining to <strong>6.5%</strong> for 2031-2035.</li>
+<li>Based on: eMarketer baseline of 7.8% CAGR (2025-2027), Shopify forecast,
+  and natural deceleration as market matures.</li>
+<li>Assumes no major disruptions (pandemic, trade wars significantly altering trajectory).</li>
+</ul>
+<h3 id="a8-high-growth-projection">A8: High-growth projection</h3>
+<ul>
+<li>Social commerce grows at 26% CAGR (from current $2T to $8.5T by 2030).</li>
+<li>Embedded payments and livestream shopping accelerate checkout conversion.</li>
+<li>Uses <strong>12% overall CAGR</strong> through 2030, declining to 9% through 2035.</li>
+<li>This scenario assumes social commerce becomes 25%+ of total e-commerce by 2030.</li>
+</ul>
+<h3 id="a9-conservative-projection">A9: Conservative projection</h3>
+<ul>
+<li>Post-COVID normalisation: growth decelerates to <strong>5% CAGR</strong> through 2030.</li>
+<li>Factors: macro headwinds, market saturation in developed markets, regulatory
+  friction (digital services taxes, data privacy compliance costs).</li>
+<li>Declines further to <strong>4% CAGR</strong> for 2031-2035.</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/ecommerce/workings/assumptions.md">analysis/payments/ecommerce/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

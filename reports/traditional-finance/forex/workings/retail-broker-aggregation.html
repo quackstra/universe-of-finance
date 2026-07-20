@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retail Forex Broker Aggregation — Universe of Finance</title>
+<meta name="description" content="Validation and refinement of the ~10M retail trades/day estimate via bottom-up broker data. Part of the Universe of Finance project. Last updated: 2026-03-28 Motivation The count-">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Retail Forex Broker Aggregation</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#motivation">Motivation</a></li><li><a href="#data-sources">Data Sources</a></li><li><a href="#model">Model</a></li><li><a href="#aggregation">Aggregation</a></li><li><a href="#japan-deep-dive-why-35-of-global-retail-fx">Japan Deep Dive: Why 35% of Global Retail FX?</a></li><li><a href="#sensitivity-analysis">Sensitivity Analysis</a></li><li><a href="#open-questions-data-gaps">Open Questions & Data Gaps</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Validation and refinement of the ~10M retail trades/day estimate via bottom-up broker data.
+Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+Last updated: 2026-03-28</p>
+</blockquote>
+<hr/>
+<h2 id="motivation">Motivation</h2>
+<p>The <a href="/universe-of-finance/reports/traditional-finance/forex/workings/count-triangulation.html">count-triangulation</a> analysis estimated ~10M retail FX trades/day as a "conservative" figure, primarily derived top-down: retail = 3-5% of $8.5T daily turnover, divided by ~$20K average ticket. This approach has two weaknesses:</p>
+<ol>
+<li><strong>Leverage distortion</strong>: Retail brokers report leveraged notional. A trader with $1K capital at 100:1 leverage generates $100K "notional" per trade. The BIS retail share of 3-5% is in leveraged notional, not economic value.</li>
+<li><strong>No broker-level calibration</strong>: The 10M figure was not validated against actual broker disclosures.</li>
+</ol>
+<p>This analysis aggregates actual trade count data from public broker filings, estimates broker market share, and extrapolates to the global retail FX total.</p>
+<hr/>
+<h2 id="data-sources">Data Sources</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Source</th>
+<th>Key Data Point</th>
+<th>Year</th>
+<th>Accessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>IG Group plc — Annual Report 2024 (<a href="https://www.iggroup.com/investors">IG IR</a>)</td>
+<td>313,300 active clients (OTC leveraged). Revenue from OTC leveraged: GBP 764.3M. Total OTC leveraged revenue per client: ~GBP 2,440/year.</td>
+<td>FY2024 (Jun)</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IG Group — H1 2025 Results (<a href="https://www.iggroup.com/investors">IG IR</a>)</td>
+<td>First-time traders: 37.6K (H1 FY2025). Revenue per client rising. "Number of OTC leveraged trades" not directly disclosed but derivable from revenue/spread.</td>
+<td>H1 FY2025</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>3</td>
+<td>CMC Markets — Annual Report 2024 (<a href="https://www.cmcmarkets.com/group/investor-relations">CMC IR</a>)</td>
+<td>60,747 active clients (FY2024). Net operating income: GBP 332.5M. Revenue per client: ~GBP 5,474/year. Trades/client not disclosed; inferred from income model.</td>
+<td>FY2024 (Mar)</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Plus500 — Annual Report 2024 (<a href="https://www.plus500.com/investor-relations">Plus500 IR</a>)</td>
+<td>178,900 active customers. Revenue: $725.1M. ARPU: ~$4,053. Number of trades: not disclosed, but "customer transactions" metric exists in investor presentations.</td>
+<td>FY2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Interactive Brokers — Metrics (<a href="https://investors.interactivebrokers.com/ir/main.php">IBKR IR</a>)</td>
+<td>DARTs (Daily Average Revenue Trades): 2.68M (Q4 2024). FX share of DARTs: ~8-12% estimated from product mix. FX DARTs: ~215K-322K/day. Total client accounts: 3.18M.</td>
+<td>Q4 2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>6</td>
+<td>StoneX Group (FXCM/Gain Capital) — Quarterly Metrics (<a href="https://investor.stonex.com/">StoneX IR</a>)</td>
+<td>Retail FX segment ADV: ~$9.4B (Q4 2024). Average ticket est. ~$50-100K (leveraged). Implied trades: ~94K-188K/day.</td>
+<td>Q4 2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Saxo Bank — Annual Report 2024 (<a href="https://www.home.saxo/">Saxo</a>)</td>
+<td>AUM: DKK 620B. Total trades executed (all products): ~55M in 2024. FX share estimated at 40-50% = ~22-28M FX trades/year. Daily: ~87K-111K.</td>
+<td>FY2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Swissquote — Annual Report 2024 (<a href="https://www.swissquote.com/">Swissquote IR</a>)</td>
+<td>600,000+ client accounts. Revenue: CHF 655M. Trading revenue (FX + CFD): ~55% of total = ~CHF 360M.</td>
+<td>FY2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Japan FSA — Retail FX Statistics (<a href="https://www.ffaj.or.jp/en/">FFAJ</a>)</td>
+<td>Japanese retail FX monthly volume: JPY ~500T/month (2024 average). At ~$3.3T/month = ~$158B/day. Average ticket: ~$30K-50K leveraged. Implied trades: ~3.2-5.3M/day. Japan is ~35% of global retail FX.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>10</td>
+<td>GMO Click Securities (<a href="https://www.gmo-click.com/en/">GMO Click</a>)</td>
+<td>#1 retail FX broker by volume globally (by some measures). Monthly FX volume: JPY ~150-200T (~$1-1.3T). Implied daily trades: ~1.0-1.5M/day at ~$40K average ticket.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>11</td>
+<td>DMM.com Securities (<a href="https://fx.dmm.com/">DMM FX</a>)</td>
+<td>#2 Japanese retail FX. Monthly volume: JPY ~80-120T. Implied daily trades: ~500K-900K/day.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>12</td>
+<td>SBI Securities / SBI FX Trade (<a href="https://www.sbisec.co.jp/">SBI</a>)</td>
+<td>Major Japanese online broker with FX offering. Monthly FX volume: JPY ~30-50T. Implied daily trades: ~200-400K/day.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Finance Magnates — Quarterly Industry Report (<a href="https://www.financemagnates.com/">FM</a>)</td>
+<td>Global retail FX volumes and broker rankings. Top 10 brokers by volume account for ~60% of retail FX.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>14</td>
+<td>BIS — Retail FX Trading (Triennial Survey) (<a href="https://www.bis.org/">BIS</a>)</td>
+<td>Retail share of global FX turnover: ~3-5% by notional value. Japanese retail: ~35% of global retail FX.</td>
+<td>2025</td>
+<td>2026-03-28</td>
+</tr>
+<tr>
+<td>15</td>
+<td>FCA — Contracts for Difference and Binary Options (<a href="https://www.fca.org.uk/">FCA</a>)</td>
+<td>UK retail CFD/FX clients: ~775K active accounts across all UK-regulated brokers.</td>
+<td>2024</td>
+<td>2026-03-28</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="model">Model</h2>
+<h3 id="approach-bottom-up-broker-aggregation">Approach: Bottom-Up Broker Aggregation</h3>
+<p>We compile trade count estimates for known brokers, sum them, estimate collective market share, and extrapolate.</p>
+<h3 id="tier-1-japanese-retail-brokers-35-of-global-retail-fx">Tier 1: Japanese Retail Brokers (~35% of Global Retail FX)</h3>
+<p><a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a> is the world's largest retail FX market by a wide margin. The FFAJ (Financial Futures Association of Japan) publishes monthly aggregate volume data.</p>
+<table>
+<thead>
+<tr>
+<th>Broker</th>
+<th>Est. Daily FX Trades</th>
+<th>Method</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GMO Click Securities</td>
+<td>1,000,000 - 1,500,000</td>
+<td>JPY ~170T monthly / ~$40K avg ticket / ~22 trading days</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>DMM.com Securities</td>
+<td>500,000 - 900,000</td>
+<td>JPY ~100T monthly / ~$40K avg ticket / ~22 trading days</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>SBI Securities</td>
+<td>200,000 - 400,000</td>
+<td>JPY ~40T monthly / ~$40K avg ticket / ~22 trading days</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>YJFX (Yahoo Japan)</td>
+<td>150,000 - 300,000</td>
+<td>Smaller but significant</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Gaitame.com</td>
+<td>100,000 - 200,000</td>
+<td>Mid-tier Japanese broker</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Other Japanese retail (20+ brokers)</td>
+<td>500,000 - 1,000,000</td>
+<td>Long tail of smaller brokers</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Japan Total</strong></td>
+<td><strong>2,450,000 - 4,300,000</strong></td>
+<td></td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Japan Central</strong></td>
+<td><strong>~3,200,000</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-check against FFAJ data:</strong>
+- FFAJ reports ~JPY 500T/month aggregate retail FX volume (~$3.3T/month)
+- At ~22 trading days: ~$150B/day in retail FX volume
+- At ~$40K average leveraged ticket: <strong>~3.75M trades/day</strong>
+- This is consistent with our broker-by-broker sum (central: 3.2M)</p>
+<p><strong>Note on leverage</strong>: Japanese retail FX has a regulatory leverage cap of 25:1 (reduced from 50:1 in 2010). Average actual leverage is ~10-15:1. So a "$40K trade" represents ~$2,700-4,000 in actual client capital at risk. These are genuine trades — the trader has real money at risk — but the notional is leverage-inflated.</p>
+<h3 id="tier-2-european-retail-brokers">Tier 2: European Retail Brokers</h3>
+<table>
+<thead>
+<tr>
+<th>Broker</th>
+<th>Est. Daily FX Trades</th>
+<th>Method</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IG Group</td>
+<td>350,000 - 600,000</td>
+<td>313K active clients x 1-2 trades/day (active subset). Revenue model implies ~15-20 trades/client/month.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>CMC Markets</td>
+<td>80,000 - 150,000</td>
+<td>61K active clients. Higher ARPU suggests larger but fewer trades. ~5-10 trades/client/month.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Plus500</td>
+<td>150,000 - 300,000</td>
+<td>179K active customers. Platform design encourages frequent trading. ~10-15 trades/client/month.</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>Saxo Bank</td>
+<td>87,000 - 111,000</td>
+<td>~25M FX trades/year / ~22 days/month x 12 months. Consistent with AUM-driven model.</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Swissquote</td>
+<td>50,000 - 100,000</td>
+<td>600K accounts but lower activity rate. ~8-12 trades/active-client/month.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>eToro</td>
+<td>200,000 - 400,000</td>
+<td>Social/copy trading amplifies base trades. ~3M global users, ~10-15% active in FX.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>XTB</td>
+<td>80,000 - 150,000</td>
+<td>Growing European broker. ~1M accounts, lower activity rate.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Other EU brokers (50+)</td>
+<td>300,000 - 600,000</td>
+<td>Long tail: Pepperstone, IC Markets (EU entity), ThinkMarkets, etc.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Europe Total</strong></td>
+<td><strong>1,297,000 - 2,411,000</strong></td>
+<td></td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td><strong>Europe Central</strong></td>
+<td><strong>~1,700,000</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-check against FCA data:</strong>
+- FCA reports ~775K active retail CFD/FX accounts across UK-regulated brokers.
+- At ~1.5 trades/day for active accounts: ~1.16M trades/day from UK alone.
+- UK is ~40-50% of European retail FX. Total Europe: ~2.3-2.9M.
+- Our bottom-up estimate (1.7M) is conservative, likely because many UK-FCA brokers serve non-UK clients (IG Group is global from London).</p>
+<h3 id="tier-3-us-north-american-retail-brokers">Tier 3: US / North American Retail Brokers</h3>
+<p>US retail FX is constrained by:
+- CFTC regulation limits leverage to 50:1 (majors) / 20:1 (minors)
+- Only a few registered Retail <a class="xref" href="/universe-of-finance/reports/traditional-finance/forex/REPORT.html">Foreign Exchange</a> Dealers (RFEDs)
+- PDT rules discourage small-account active trading</p>
+<table>
+<thead>
+<tr>
+<th>Broker</th>
+<th>Est. Daily FX Trades</th>
+<th>Method</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interactive Brokers (FX)</td>
+<td>215,000 - 322,000</td>
+<td>DARTs 2.68M x 8-12% FX share</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>OANDA (US + global)</td>
+<td>200,000 - 400,000</td>
+<td>Global presence. ~500K+ active accounts. ~10-15 FX trades/active/month.</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>StoneX (FXCM/Gain)</td>
+<td>94,000 - 188,000</td>
+<td>ADV $9.4B / $50-100K avg ticket</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>TD Ameritrade/thinkorswim FX</td>
+<td>50,000 - 100,000</td>
+<td>Small FX share of larger equity platform</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>North America Total</strong></td>
+<td><strong>559,000 - 1,010,000</strong></td>
+<td></td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td><strong>North America Central</strong></td>
+<td><strong>~750,000</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="tier-4-rest-of-world-em-sea-middle-east">Tier 4: Rest of World (EM, SEA, Middle East)</h3>
+<p>This is the least observable segment, but it is growing rapidly.</p>
+<table>
+<thead>
+<tr>
+<th>Region / Broker Cluster</th>
+<th>Est. Daily FX Trades</th>
+<th>Method</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>India (Zerodha, Angel One FX/CFD)</td>
+<td>200,000 - 500,000</td>
+<td>Large retail base but FX is restricted to exchange-traded (NSE/BSE). OTC FX retail is small.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Southeast Asia (IC Markets, Pepperstone AU)</td>
+<td>300,000 - 600,000</td>
+<td>IC Markets is world's #1 by raw volume (controversial). Australian-regulated but SEA/Chinese clients.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Middle East (FXTM, XM, HF Markets)</td>
+<td>200,000 - 400,000</td>
+<td>CySEC-regulated brokers serving ME/Africa clients. High leverage (up to 1000:1 in some jurisdictions).</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Africa (FXTM, HotForex, OctaFX)</td>
+<td>100,000 - 300,000</td>
+<td>Growing fast. Nigeria, South Africa, Kenya. Often through white-label platforms.</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>China (domestic/offshore)</td>
+<td>500,000 - 1,500,000</td>
+<td>Largely unregulated domestic FX platforms. Volume may be substantially inflated.</td>
+<td>Very Low</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>200,000 - 400,000</td>
+<td>Latin America, Eastern Europe, Central Asia</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Rest of World Total</strong></td>
+<td><strong>1,500,000 - 3,700,000</strong></td>
+<td></td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Rest of World Central</strong></td>
+<td><strong>~2,350,000</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="aggregation">Aggregation</h2>
+<h3 id="summary-table">Summary Table</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Central Est. (trades/day)</th>
+<th>Low</th>
+<th>High</th>
+<th>% of Total</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Japan</td>
+<td>3,200,000</td>
+<td>2,450,000</td>
+<td>4,300,000</td>
+<td>40%</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>1,700,000</td>
+<td>1,297,000</td>
+<td>2,411,000</td>
+<td>21%</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>North America</td>
+<td>750,000</td>
+<td>559,000</td>
+<td>1,010,000</td>
+<td>9%</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>Rest of World</td>
+<td>2,350,000</td>
+<td>1,500,000</td>
+<td>3,700,000</td>
+<td>30%</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Global Total</strong></td>
+<td><strong>8,000,000</strong></td>
+<td><strong>5,806,000</strong></td>
+<td><strong>11,421,000</strong></td>
+<td><strong>100%</strong></td>
+<td>Low-Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="market-share-cross-check">Market Share Cross-Check</h3>
+<p>The brokers explicitly modeled above represent the largest players:
+- Japan's top 5 brokers: ~70% of Japanese retail FX
+- IG, CMC, Plus500, Saxo, Swissquote, eToro: ~50-60% of European retail FX
+- IBKR, OANDA, StoneX: ~60-70% of US retail FX
+- Named brokers collectively: ~55-65% of global retail FX</p>
+<p>If named brokers = ~60% of global at ~5.2M trades/day:
+- Global total = 5.2M / 0.60 = <strong>~8.7M trades/day</strong></p>
+<p>This is consistent with our bottom-up aggregation central estimate of <strong>8.0M trades/day</strong>.</p>
+<h3 id="revised-estimate">Revised Estimate</h3>
+<p><strong>The ~10M retail trades/day estimate from the count-triangulation is within range but likely slightly high.</strong></p>
+<p>Our broker-aggregation central estimate is <strong>~8.0M trades/day</strong> with a range of <strong>5.8M - 11.4M</strong>.</p>
+<p>The prior 10M estimate falls within the range but above the central estimate. The difference is:
+- The prior estimate used a top-down approach ($340B retail turnover / $20K avg ticket = 17M, then halved to 10M)
+- The bottom-up approach suggests average retail ticket is somewhat larger than $20K in notional terms (more like $30-40K, driven by Japan's standard lot sizes)
+- Alternatively, the number of active retail traders is somewhat lower than the 10-15M commonly cited</p>
+<h3 id="recommended-update">Recommended Update</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Prior Estimate</th>
+<th>Revised</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Retail FX trades/day</td>
+<td>10,000,000</td>
+<td>8,000,000</td>
+<td>-20%</td>
+</tr>
+<tr>
+<td>Retail FX trades/day range</td>
+<td>8M - 12M</td>
+<td>5.8M - 11.4M</td>
+<td>Wider but lower central</td>
+</tr>
+<tr>
+<td>Total FX trades/day (institutional + retail)</td>
+<td>13,000,000</td>
+<td>11,000,000</td>
+<td>-15%</td>
+</tr>
+<tr>
+<td>Total inclusive TPS (24h)</td>
+<td>150</td>
+<td>127</td>
+<td>-15%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>However</strong>: The primary "institutional only" estimate of ~3.5M trades/day (~40 TPS) used in data.json is unaffected by this revision, as it deliberately excludes retail.</p>
+<p>The retail figure matters if the project later adopts an inclusive counting methodology. The revised inclusive figure would be:
+- Institutional: ~3.0M/day + Retail: ~8.0M/day = <strong>~11.0M/day</strong> (~127 TPS)</p>
+<hr/>
+<h2 id="japan-deep-dive-why-35-of-global-retail-fx">Japan Deep Dive: Why 35% of Global Retail FX?</h2>
+<p>Japan's dominance in retail FX deserves explanation, as it is frequently questioned:</p>
+<ol>
+<li>
+<p><strong>Tax-advantaged structure</strong>: FX trading (gaitame) has favorable tax treatment in Japan — 20.315% flat tax on profits, separate from income tax. This makes FX more attractive than domestic equities for active trading.</p>
+</li>
+<li>
+<p><strong>Low domestic interest rates</strong>: 30+ years of near-zero rates means Japanese savers earn nothing on deposits. Carry trading (borrowing JPY to buy higher-yielding currencies) became a retail strategy during the ZIRP era.</p>
+</li>
+<li>
+<p><strong>Cultural acceptance</strong>: Retail FX trading is mainstream in Japan — advertised on trains, TV, and mobile apps. "FX housewives" (Mrs. Watanabe) is a recognized market force.</p>
+</li>
+<li>
+<p><strong>Platform quality</strong>: Japanese brokers (GMO Click, DMM) offer zero-commission, tight-spread platforms with sophisticated mobile apps. Trading friction is extremely low.</p>
+</li>
+<li>
+<p><strong>Leverage regulation sweet spot</strong>: Japan's 25:1 leverage cap (since 2010) is low enough to prevent catastrophic losses but high enough to be attractive. Compare to EU (30:1 majors / 20:1 minors) or US (50:1 / 20:1).</p>
+</li>
+<li>
+<p><strong>FFAJ transparency</strong>: The FFAJ publishes monthly aggregate data, making Japanese retail FX the best-measured retail FX market globally. Other regions' retail FX volumes may be understated simply because they lack equivalent reporting infrastructure.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sensitivity-analysis">Sensitivity Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Base Case</th>
+<th>If Changed To</th>
+<th>Impact on Global Retail Trades/Day</th>
+<th>Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Japan avg ticket</strong></td>
+<td>$40K</td>
+<td>$25K</td>
+<td>+2.1M (10.1M total)</td>
+<td><strong>HIGH</strong> — Japan is 40%</td>
+</tr>
+<tr>
+<td><strong>Japan avg ticket</strong></td>
+<td>$40K</td>
+<td>$60K</td>
+<td>-1.1M (6.9M total)</td>
+<td><strong>HIGH</strong></td>
+</tr>
+<tr>
+<td><strong>EU/UK active client count</strong></td>
+<td>~1.2M</td>
+<td>~2.0M (if FCA figures extrapolated fully)</td>
+<td>+1.0M (9.0M total)</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td><strong>Rest of World share</strong></td>
+<td>30%</td>
+<td>40% (if EM growth is faster)</td>
+<td>+1.6M (9.6M total)</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td><strong>China retail (domestic platforms)</strong></td>
+<td>500K-1.5M</td>
+<td>2M-5M (if unregulated platforms are larger)</td>
+<td>+1.5M (9.5M total)</td>
+<td>HIGH but low confidence</td>
+</tr>
+<tr>
+<td><strong>IBKR FX share of DARTs</strong></td>
+<td>10%</td>
+<td>15%</td>
+<td>+67K (negligible)</td>
+<td>LOW</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: The Japanese retail FX market is the anchor for the entire global retail estimate. Japan is well-measured (FFAJ data), represents 35-40% of global retail, and the main uncertainty is average ticket size. If FFAJ published trade counts alongside volume data (currently they publish volume only), the global retail estimate would improve dramatically.</p>
+<hr/>
+<h2 id="open-questions-data-gaps">Open Questions &amp; Data Gaps</h2>
+<ol>
+<li>
+<p><strong>FFAJ trade count publication.</strong> FFAJ publishes monthly aggregate FX volume in JPY. If they also published trade counts (which member brokers surely report), we would have a high-confidence anchor for 35-40% of global retail FX.</p>
+</li>
+<li>
+<p><strong>IC Markets true volume.</strong> IC Markets (Australian-regulated, Chinese/SEA clients) reports being the #1 FX broker by raw volume. Their reported volumes are controversial and may include B-book internal matching. If ASIC required trade count disclosure, this would calibrate the SEA segment.</p>
+</li>
+<li>
+<p><strong>IG Group trade count disclosure.</strong> IG discloses active clients and revenue but not trade counts. Given their UK listing and FCA regulation, this data likely exists in regulatory filings but is not in the public annual report. An FOI request to the FCA for aggregate UK broker trade counts could fill this gap.</p>
+</li>
+<li>
+<p><strong>Chinese domestic retail FX.</strong> <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> restricts retail FX to SAFE-authorized bank channels, but an unregulated domestic market exists via MetaTrader platforms and white-label brokers. The size of this market is essentially unknown — estimates range from negligible to several million trades per day.</p>
+</li>
+<li>
+<p><strong>Copy trading multiplier.</strong> eToro and ZuluTrade multiply base trades across followers. A single "signal provider" trade on eToro can generate 100+ follower trades. The multiplier effect on total trade count is significant but unpublished.</p>
+</li>
+<li>
+<p><strong>Prop firm FX volume.</strong> Funded trader programs (FTMO, MyForexFunds, etc.) have exploded in popularity (2022-2024). These traders execute real trades on real platforms but their capital is the prop firm's. They are not counted in traditional "retail" metrics but generate genuine FX trades. FTMO alone reportedly manages 500K+ funded accounts.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li>IG Group plc — Annual Report FY2024</li>
+<li>IG Group — H1 FY2025 Results Presentation</li>
+<li>CMC Markets — Annual Report FY2024</li>
+<li>Plus500 — Annual Report FY2024</li>
+<li>Interactive Brokers — Monthly Metrics Q4 2024</li>
+<li>StoneX Group — Quarterly Metrics Q4 2024</li>
+<li>Saxo Bank — Annual Report 2024</li>
+<li>Swissquote — Annual Report 2024</li>
+<li>FFAJ — Monthly OTC FX Volume Statistics 2024</li>
+<li>GMO Click Securities — Monthly FX Volume Data</li>
+<li>DMM.com Securities — Annual Results</li>
+<li>SBI Securities — Quarterly Results</li>
+<li>Finance Magnates — Quarterly Industry Report Q4 2024</li>
+<li>BIS — Triennial Survey 2025 (Retail FX Section)</li>
+<li>FCA — CFD/Retail FX Client Statistics 2024</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/forex/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/forex/workings/retail-broker-aggregation.md">analysis/traditional-finance/forex/workings/retail-broker-aggregation.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

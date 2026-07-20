@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTC Derivatives Transaction Count Triangulation — Universe of Finance</title>
+<meta name="description" content="Created: 2026-03-27 (Run 4) Purpose: Refine the ~0.6 TPS estimate (~12.3M trades/year incl. FX derivatives, ~7.3M excl.) using DTCC SDR data, ISDA SwapsInfo breakdowns, and regula">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>OTC Derivatives Transaction Count Triangulation</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#methodology">Methodology</a></li><li><a href="#data-sources-with-citations-and-dates">Data Sources (with citations and dates)</a></li><li><a href="#model">Model</a></li><li><a href="#results">Results</a></li><li><a href="#sensitivity-analysis">Sensitivity Analysis</a></li><li><a href="#open-questions-data-gaps">Open Questions & Data Gaps</a></li></ul></div><blockquote>
+<p><strong>Created</strong>: 2026-03-27 (Run 4)
+<strong>Purpose</strong>: Refine the ~0.6 TPS estimate (~12.3M trades/year incl. FX derivatives, ~7.3M excl.) using DTCC SDR data, ISDA SwapsInfo breakdowns, and regulatory reporting</p>
+</blockquote>
+<hr/>
+<h2 id="methodology">Methodology</h2>
+<p>The original estimate relied on ISDA SwapsInfo for IRD and CDS trade counts (US/EU/UK) with rough multipliers for other products and regions. This triangulation:</p>
+<ol>
+<li>Anchors to <strong>ISDA SwapsInfo 2024 full-year data</strong> for IRD and CDS (high-confidence)</li>
+<li>Uses <strong>ISDA 2025 data</strong> as a validation/growth check</li>
+<li>Builds a <strong>segmented model by derivative type</strong> with separate confidence levels</li>
+<li>Addresses the "what is a transaction?" question explicitly</li>
+<li>Accounts for <strong>compression</strong>, <strong>lifecycle events</strong>, and <strong>regional coverage gaps</strong></li>
+</ol>
+<hr/>
+<h2 id="data-sources-with-citations-and-dates">Data Sources (with citations and dates)</h2>
+<h3 id="primary-isda-swapsinfo-useuuk-reported-trades">Primary: ISDA SwapsInfo (US/EU/UK reported trades)</h3>
+<table>
+<thead>
+<tr>
+<th>Data Point</th>
+<th>Value</th>
+<th>Period</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRD total traded notional</td>
+<td>$366.6T</td>
+<td>FY 2024</td>
+<td><a href="https://www.isda.org/2025/02/20/swapsinfo-full-year-2024-and-the-fourth-quarter-of-2024/">ISDA FY 2024</a></td>
+</tr>
+<tr>
+<td>IRD trade count</td>
+<td>2.7M</td>
+<td>FY 2024</td>
+<td>ISDA FY 2024</td>
+</tr>
+<tr>
+<td>IRD trade count growth</td>
+<td>+8.2% YoY</td>
+<td>2023-2024</td>
+<td>ISDA FY 2024</td>
+</tr>
+<tr>
+<td>IRD US Q4 trade count</td>
+<td>696.6K (+14.1% YoY)</td>
+<td>Q4 2024</td>
+<td>ISDA Q4 2024</td>
+</tr>
+<tr>
+<td>IRD US Q2 2025 trade count</td>
+<td>867.7K (+32.3% YoY)</td>
+<td>Q2 2025</td>
+<td><a href="https://www.isda.org/a/XPBgE/Interest-Rate-Derivatives-Trading-Activity-Reported-in-EU-UK-and-US-Markets-First-Half-of-2025-and-the-Second-Quarter-of-2025.pdf">ISDA H1 2025</a></td>
+</tr>
+<tr>
+<td>IRD H1 2025 trade count (US/EU/UK)</td>
+<td>1.7M (+27.5% vs H1 2024)</td>
+<td>H1 2025</td>
+<td>ISDA H1 2025</td>
+</tr>
+<tr>
+<td>Index CDS trade count</td>
+<td>316.8K (-6.9% YoY)</td>
+<td>FY 2024</td>
+<td>ISDA FY 2024</td>
+</tr>
+<tr>
+<td>Index CDS traded notional</td>
+<td>$12.7T (+14.7%)</td>
+<td>FY 2024</td>
+<td>ISDA FY 2024</td>
+</tr>
+<tr>
+<td>Security-based CDS (single-name) trade count</td>
+<td>208.2K (-16.6%)</td>
+<td>FY 2024</td>
+<td>ISDA FY 2024</td>
+</tr>
+<tr>
+<td>Security-based CDS traded notional</td>
+<td>$669.1B (-11.7%)</td>
+<td>FY 2024</td>
+<td>ISDA FY 2024</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2025-full-year-validation-data">2025 Full Year (validation data)</h3>
+<table>
+<thead>
+<tr>
+<th>Data Point</th>
+<th>Value</th>
+<th>Period</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Index CDS trade count</td>
+<td>353.3K (+11.6%)</td>
+<td>FY 2025</td>
+<td><a href="https://www.isda.org/2026/02/17/swapsinfo-full-year-2025-and-the-fourth-quarter-of-2025-review">ISDA FY 2025</a></td>
+</tr>
+<tr>
+<td>Index CDS traded notional</td>
+<td>$19.4T (+52.9%)</td>
+<td>FY 2025</td>
+<td>ISDA FY 2025</td>
+</tr>
+<tr>
+<td>Single-name CDS trade count</td>
+<td>198.6K (-5.8%)</td>
+<td>FY 2025</td>
+<td>ISDA FY 2025</td>
+</tr>
+<tr>
+<td>SEF share of IRD traded notional</td>
+<td>54.1%</td>
+<td>FY 2025</td>
+<td>ISDA FY 2025</td>
+</tr>
+<tr>
+<td>SEF share of IRD trade count</td>
+<td>77.3%</td>
+<td>FY 2025</td>
+<td>ISDA FY 2025</td>
+</tr>
+</tbody>
+</table>
+<h3 id="secondary-bis-regional">Secondary: BIS / Regional</h3>
+<table>
+<thead>
+<tr>
+<th>Data Point</th>
+<th>Value</th>
+<th>Period</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OTC IRD daily turnover</td>
+<td>$7.9T/day (+59% vs 2022)</td>
+<td>Apr 2025</td>
+<td><a href="https://www.bis.org/statistics/rpfx25_ir.htm">BIS Triennial</a></td>
+</tr>
+<tr>
+<td>OTC derivatives notional outstanding</td>
+<td>$732T (Dec 2024), $846T (Jun 2025)</td>
+<td>2024-2025</td>
+<td><a href="https://www.bis.org/statistics/derstats.htm">BIS</a></td>
+</tr>
+<tr>
+<td>IRD clearing rate</td>
+<td>76.9% by notional</td>
+<td>H1 2024</td>
+<td>BIS</td>
+</tr>
+<tr>
+<td>CDS clearing rate</td>
+<td>67.9% by notional</td>
+<td>H1 2024</td>
+<td>BIS</td>
+</tr>
+<tr>
+<td>JSCC JPY IRS clearing volume</td>
+<td>JPY 8,272T in 2024 (2x prior record)</td>
+<td>FY 2024</td>
+<td><a href="https://www.jpx.co.jp/jscc/en/interest_rate_swap.html">JSCC</a></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="model">Model</h2>
+<h3 id="what-counts-as-a-transaction">What Counts as a "Transaction"?</h3>
+<p>This is critical for <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> because the lifecycle of a single swap generates multiple events:</p>
+<table>
+<thead>
+<tr>
+<th>Event Type</th>
+<th>Is It a "Transaction"?</th>
+<th>Counted by ISDA?</th>
+<th>Our Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New trade execution</td>
+<td>Yes</td>
+<td>Yes</td>
+<td><strong>Count</strong></td>
+</tr>
+<tr>
+<td>Novation (transfer to new counterparty)</td>
+<td>Yes — creates a new contract</td>
+<td>Partially</td>
+<td><strong>Count</strong></td>
+</tr>
+<tr>
+<td>Amendment (change terms)</td>
+<td>Debatable — modifies existing contract</td>
+<td>No</td>
+<td><strong>Exclude</strong></td>
+</tr>
+<tr>
+<td>Compression/termination</td>
+<td>Generates a ticket but eliminates trades</td>
+<td>No (reduces count)</td>
+<td><strong>Exclude</strong> (net effect is counted)</td>
+</tr>
+<tr>
+<td>Clearing submission</td>
+<td>Creates a cleared trade from bilateral</td>
+<td>Counted as the cleared trade</td>
+<td><strong>Already counted</strong> (not double-counted)</td>
+</tr>
+<tr>
+<td>Lifecycle event (payment, reset)</td>
+<td>No — operational, not a new trade</td>
+<td>No</td>
+<td><strong>Exclude</strong></td>
+</tr>
+<tr>
+<td>Exercise of option/swaption</td>
+<td>Yes — triggers a new underlying contract</td>
+<td>Yes (at exercise)</td>
+<td><strong>Count</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Our definition</strong>: A transaction is a <strong>new economic commitment</strong> between counterparties — new trades, novations, and option exercises. Amendments, compression terminations, and lifecycle events are excluded.</p>
+<h3 id="segment-a-interest-rate-derivatives-ird">Segment A: Interest Rate Derivatives (IRD)</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Annual Trades (2024)</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US (reported to CFTC SDRs)</td>
+<td>1,650,000</td>
+<td>ISDA: US represents ~60% of US/EU/UK total; ~1.65M from Q breakdown</td>
+<td>High</td>
+</tr>
+<tr>
+<td>EU + UK (reported to APAs/TVs)</td>
+<td>1,050,000</td>
+<td>ISDA: EU+UK = ~40% of combined</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Japan (JSCC)</td>
+<td>200,000</td>
+<td>JSCC cleared JPY 8,272T at ~$40T avg notional/trade = ~200K trades</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Australia + Singapore + HK</td>
+<td>120,000</td>
+<td>APAC ex-Japan est. at ~6% of US volume</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Other (EM, bilateral unreported)</td>
+<td>80,000</td>
+<td>Minimal but non-zero</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Global IRD Total</strong></td>
+<td><strong>3,100,000</strong></td>
+<td>Composite</td>
+<td>Medium-High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Cross-check</strong>: ISDA reports 2.7M for US/EU/UK. Adding APAC + EM at ~15% uplift = 3.1M. This is consistent.</p>
+<p><strong>2025 growth signal</strong>: H1 2025 IRD trade count was 1.7M for US/EU/UK (+27.5% vs H1 2024). Annualized, 2025 is tracking toward ~3.5M for US/EU/UK alone, suggesting ~4.0M globally. This represents significant acceleration driven by rate volatility and electronification.</p>
+<h3 id="segment-b-credit-derivatives-cds">Segment B: Credit Derivatives (CDS)</h3>
+<table>
+<thead>
+<tr>
+<th>Sub-segment</th>
+<th>Annual Trades (2024)</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Index CDS (US/EU/UK)</td>
+<td>316,800</td>
+<td>ISDA direct</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Single-name CDS (US/EU/UK)</td>
+<td>208,200</td>
+<td>ISDA direct (SEC SBSDR data)</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Rest of world CDS</td>
+<td>75,000</td>
+<td>~15% uplift for non-reported markets</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Global CDS Total</strong></td>
+<td><strong>600,000</strong></td>
+<td>Composite</td>
+<td>Medium-High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Trend note</strong>: Index CDS trade count declined 6.9% in 2024 but rebounded 11.6% in 2025 (353.3K). Single-name CDS continues declining (-16.6% in 2024, -5.8% in 2025). CDS is a shrinking-by-count market due to compression and portfolio optimization.</p>
+<h3 id="segment-c-equity-derivatives-otc">Segment C: Equity Derivatives (OTC)</h3>
+<p>This is the most opaque segment. OTC equity derivatives include equity swaps, variance swaps, total return swaps, and OTC equity options.</p>
+<table>
+<thead>
+<tr>
+<th>Estimation Approach</th>
+<th>Est. Annual Trades</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BIS notional ($8.9T outstanding) / avg notional per trade (~$20M)</td>
+<td>445,000</td>
+<td>Very rough; outstanding != annual flow</td>
+</tr>
+<tr>
+<td>Proportional to cleared OTC equity volume at CCPs</td>
+<td>500,000-800,000</td>
+<td>Limited CCP data available</td>
+</tr>
+<tr>
+<td>SEC SBSDR data (US security-based swaps)</td>
+<td>~200,000 (US)</td>
+<td>SEC reports available but aggregate not published</td>
+</tr>
+<tr>
+<td>Scale from IRD: equity OTC = ~15% of IRD by trade count</td>
+<td>~465,000</td>
+<td>Cross-asset proportional scaling</td>
+</tr>
+<tr>
+<td><strong>Central estimate</strong></td>
+<td><strong>600,000</strong></td>
+<td>Weighted average of approaches</td>
+</tr>
+</tbody>
+</table>
+<h3 id="segment-d-commodity-swaps-otc">Segment D: Commodity Swaps (OTC)</h3>
+<p>OTC commodity derivatives include oil/gas swaps, metals swaps, agricultural swaps, and power/emissions contracts.</p>
+<table>
+<thead>
+<tr>
+<th>Estimation Approach</th>
+<th>Est. Annual Trades</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BIS notional ($2.4T outstanding) / avg notional per trade (~$10M)</td>
+<td>240,000</td>
+<td>Outstanding != flow, but commodity swaps are shorter tenor</td>
+</tr>
+<tr>
+<td>OSTTRA/TriOptima data: ~79% of eligible trades terminated per compression cycle</td>
+<td>Implies gross &gt;&gt; net</td>
+<td>If 79% compressed, the "true" trade count before compression could be 4-5x the surviving count</td>
+</tr>
+<tr>
+<td>Proportional to exchange-traded commodity derivatives (CME etc.)</td>
+<td>300,000-500,000</td>
+<td>OTC is declining relative to exchange-traded</td>
+</tr>
+<tr>
+<td><strong>Central estimate</strong></td>
+<td><strong>400,000</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="segment-e-fx-derivatives-otc-overlap-category">Segment E: FX Derivatives (OTC) — Overlap Category</h3>
+<p>Per taxonomy, FX derivatives are counted in the FX category. However, for completeness:</p>
+<ul>
+<li>FX forwards + swaps + options: estimated ~5M trades/year OTC</li>
+<li>These are EXCLUDED from our OTC derivatives total to avoid double-counting</li>
+<li>If included, OTC derivatives total would be ~5M higher</li>
+</ul>
+<h3 id="global-total-excl-fx-derivatives">Global Total (excl. FX derivatives)</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Annual Trades</th>
+<th>Daily (252 days)</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRD</td>
+<td>3,100,000</td>
+<td>12,302</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>CDS</td>
+<td>600,000</td>
+<td>2,381</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>Equity OTC</td>
+<td>600,000</td>
+<td>2,381</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Commodity OTC</td>
+<td>400,000</td>
+<td>1,587</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Total (excl. FX)</strong></td>
+<td><strong>4,700,000</strong></td>
+<td><strong>18,651</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="global-total-incl-fx-derivatives">Global Total (incl. FX derivatives)</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Annual Trades</th>
+<th>Daily (252 days)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>All above</td>
+<td>4,700,000</td>
+<td>18,651</td>
+</tr>
+<tr>
+<td>FX derivatives (OTC)</td>
+<td>5,000,000</td>
+<td>19,841</td>
+</tr>
+<tr>
+<td><strong>Total (incl. FX)</strong></td>
+<td><strong>9,700,000</strong></td>
+<td><strong>38,492</strong></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="results">Results</h2>
+<h3 id="point-estimates-with-confidence-intervals">Point Estimates with Confidence Intervals</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Point Estimate (annual)</th>
+<th>Low Bound</th>
+<th>High Bound</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRD (global)</td>
+<td>3.1M</td>
+<td>2.8M</td>
+<td>3.5M</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>CDS (global)</td>
+<td>0.6M</td>
+<td>0.5M</td>
+<td>0.7M</td>
+<td>Medium-High</td>
+</tr>
+<tr>
+<td>Equity OTC</td>
+<td>0.6M</td>
+<td>0.3M</td>
+<td>1.0M</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Commodity OTC</td>
+<td>0.4M</td>
+<td>0.2M</td>
+<td>0.7M</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Total (excl. FX)</strong></td>
+<td><strong>4.7M</strong></td>
+<td><strong>3.8M</strong></td>
+<td><strong>5.9M</strong></td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>FX derivatives</td>
+<td>5.0M</td>
+<td>3.0M</td>
+<td>8.0M</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Total (incl. FX)</strong></td>
+<td><strong>9.7M</strong></td>
+<td><strong>6.8M</strong></td>
+<td><strong>13.9M</strong></td>
+<td>Low-Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tps-calculations">TPS Calculations</h3>
+<p><strong>Excl. FX derivatives</strong> (our primary figure):
+- 4,700,000 / (365.25 x 86,400) = <strong>0.15 TPS</strong> over 24h/365d
+- 18,651 / (10h x 3,600) = <strong>0.52 TPS</strong> during trading hours</p>
+<p><strong>Incl. FX derivatives</strong>:
+- 9,700,000 / (365.25 x 86,400) = <strong>0.31 TPS</strong> over 24h/365d
+- 38,492 / (10h x 3,600) = <strong>1.07 TPS</strong> during trading hours</p>
+<h3 id="comparison-to-previous-estimate">Comparison to Previous Estimate</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Previous (REPORT.md)</th>
+<th>Revised</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual trades (excl. FX)</td>
+<td>7.3M</td>
+<td>4.7M</td>
+<td>-35.6%</td>
+</tr>
+<tr>
+<td>Annual trades (incl. FX)</td>
+<td>12.3M</td>
+<td>9.7M</td>
+<td>-21.1%</td>
+</tr>
+<tr>
+<td>TPS (excl. FX, 24h)</td>
+<td>0.3</td>
+<td>0.15</td>
+<td>-50%</td>
+</tr>
+<tr>
+<td>TPS (incl. FX, 24h)</td>
+<td>0.6</td>
+<td>0.31</td>
+<td>-48%</td>
+</tr>
+<tr>
+<td>Daily trades (excl. FX)</td>
+<td>29K</td>
+<td>18.7K</td>
+<td>-35.5%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why lower?</strong> The previous estimate included rough guesses of 2.0M for equity OTC and 1.0M for commodity OTC. With better triangulation, these appear overstated. The equity and commodity OTC derivative markets are smaller by trade count than initially assumed — they are dominated by very large notional trades between institutional counterparties. Additionally, the previous 2.9M IRD figure (ISDA) included some double-counting between US and European reporting.</p>
+<p><strong>However</strong>: The 2025 growth trajectory suggests rapid acceleration. IRD trade count grew 27.5% in H1 2025 vs H1 2024. If this holds, 2025 global OTC derivatives (excl. FX) could reach ~5.5-6.0M trades, and 2026 could approach the previous 7.3M estimate.</p>
+<hr/>
+<h2 id="sensitivity-analysis">Sensitivity Analysis</h2>
+<h3 id="impact-of-compression-on-observed-trade-counts">Impact of Compression on Observed Trade Counts</h3>
+<p>OSTTRA/TriOptima compression eliminates redundant trades. In a single commodity compression cycle, 79% of eligible trades were terminated. This means the <strong>gross number of trades executed</strong> is significantly higher than the <strong>net surviving trade count</strong> at any point.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Compression Rate</th>
+<th>Implied Gross Annual Trades (excl. FX)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Minimal (trades before compression)</td>
+<td>20% terminated</td>
+<td>5.9M</td>
+</tr>
+<tr>
+<td>Moderate</td>
+<td>40% terminated</td>
+<td>7.8M</td>
+</tr>
+<tr>
+<td>High (observed in some cycles)</td>
+<td>60% terminated</td>
+<td>11.8M</td>
+</tr>
+</tbody>
+</table>
+<p>If we count "transactions processed by infrastructure" (including compression terminations), the number is significantly higher than the "new trade" count we report.</p>
+<h3 id="impact-of-ird-growth-acceleration">Impact of IRD Growth Acceleration</h3>
+<table>
+<thead>
+<tr>
+<th>IRD Growth Scenario</th>
+<th>2025 Global IRD Trades</th>
+<th>2025 Total OTC (excl. FX)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>+15% (conservative)</td>
+<td>3.6M</td>
+<td>5.2M</td>
+</tr>
+<tr>
+<td>+25% (in line with H1 data)</td>
+<td>3.9M</td>
+<td>5.5M</td>
+</tr>
+<tr>
+<td>+35% (if H1 acceleration holds)</td>
+<td>4.2M</td>
+<td>5.8M</td>
+</tr>
+</tbody>
+</table>
+<h3 id="definition-sensitivity-what-counts">Definition Sensitivity: What Counts?</h3>
+<table>
+<thead>
+<tr>
+<th>Definition</th>
+<th>Est. Annual Count (excl. FX)</th>
+<th>TPS (24h)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New trades only (our base)</td>
+<td>4.7M</td>
+<td>0.15</td>
+</tr>
+<tr>
+<td>+ Novations (~10% of trades)</td>
+<td>5.2M</td>
+<td>0.16</td>
+</tr>
+<tr>
+<td>+ Compression terminations</td>
+<td>7-12M</td>
+<td>0.22-0.38</td>
+</tr>
+<tr>
+<td>+ All lifecycle events</td>
+<td>50-100M+</td>
+<td>1.6-3.2</td>
+</tr>
+</tbody>
+</table>
+<p>The definition of "transaction" matters enormously. If lifecycle events (resets, payments, margin calls) are included, OTC derivatives generate far more system events than trades.</p>
+<hr/>
+<h2 id="open-questions-data-gaps">Open Questions &amp; Data Gaps</h2>
+<ol>
+<li>
+<p><strong>DTCC SDR aggregate data</strong>: DTCC publishes weekly dissemination data for individual trades, but aggregate trade counts across all asset classes are not easily accessible in a single report. The CFTC Weekly Swaps Report provides weekly ticket volumes, but historical aggregation requires manual work.</p>
+</li>
+<li>
+<p><strong>Equity OTC trade count is the weakest estimate</strong>: No public data source reports aggregate OTC equity derivative trade counts. The SEC SBSDR covers US security-based swaps, but aggregate statistics are not published in a convenient format. This is the biggest single gap in our model.</p>
+</li>
+<li>
+<p><strong>Asian OTC derivatives</strong>: <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a> (JSCC) is increasingly transparent, but <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>, Korea, and other Asian markets have limited English-language reporting of OTC derivative trade counts. Japan's JPY IRS clearing volume doubled in 2024, suggesting significant activity that may be undercounted.</p>
+</li>
+<li>
+<p><strong>Compression "dark matter"</strong>: Every compression cycle terminates trades that were previously counted. The net effect is that the stock of outstanding OTC derivatives is smaller than the gross flow of trades executed. Our model counts net surviving trades; the infrastructure processes significantly more.</p>
+</li>
+<li>
+<p><strong>Cross-border double counting</strong>: A swap between a US dealer and a UK dealer may be reported to both US SDRs and UK/EU trade repositories. ISDA attempts to deduplicate, but some residual double-counting may exist. This would make our IRD estimate slightly high.</p>
+</li>
+<li>
+<p><strong>The 2025 acceleration is real</strong>: IRD trade count growth of 27.5% in H1 2025, driven by rate volatility and euro-denominated instruments, means the 2024 baseline is already somewhat stale. Our estimates should be treated as 2024 figures; 2025/2026 may be 20-30% higher.</p>
+</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/otc-derivatives/workings/count-triangulation.md">analysis/traditional-finance/otc-derivatives/workings/count-triangulation.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

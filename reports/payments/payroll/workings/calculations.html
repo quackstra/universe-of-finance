@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payroll Payments — Calculations — Universe of Finance</title>
+<meta name="description" content="1. Annual Transaction Count (2024) Employment Data (Sources: ILO, BLS, Eurostat, NBS China) Global employed persons (ILO 2024): ~3.50 billion Wage and salaried workers: ~1.90 billi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Payroll Payments — Calculations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-annual-transaction-count-2024">1. Annual Transaction Count (2024)</a></li><li><a href="#2-tps-calculation-2024">2. TPS Calculation (2024)</a></li><li><a href="#3-overlap-quantification">3. Overlap Quantification</a></li><li><a href="#4-bank-transfer-share">4. Bank Transfer Share</a></li><li><a href="#5-growth-rate-analysis">5. Growth Rate Analysis</a></li><li><a href="#6-projection-models-2026-2035">6. Projection Models (2026-2035)</a></li></ul></div><h2 id="1-annual-transaction-count-2024">1. Annual Transaction Count (2024)</h2>
+<h3 id="employment-data-sources-ilo-bls-eurostat-nbs-china">Employment Data (Sources: ILO, BLS, Eurostat, NBS China)</h3>
+<pre><code>Global employed persons (ILO 2024): ~3.50 billion
+  Wage and salaried workers:          ~1.90 billion (ILO 2021 data, projected)
+  Self-employed:                      ~1.50 billion (excluded — no employer payroll)
+  Informal sector workers:            ~2.00 billion (ILO est. — most receive cash)
+</code></pre>
+<h3 id="regional-model">Regional Model</h3>
+<h4 id="united-states"><a class="xref" href="/universe-of-finance/reports/deep-dives/usa/REPORT.html">United States</a></h4>
+<pre><code>Nonfarm payroll employment (BLS Dec 2024): 158.3M
+Pay frequency distribution (BLS/APA data):
+  Biweekly: 70% → 110.8M workers × 26 pays = 2,881M
+  Weekly:   20% → 31.7M workers × 52 pays  = 1,648M (but many overlap — hourly workers)
+  Monthly:  10% → 15.8M workers × 12 pays  = 190M
+
+Note: Weekly is overstated — many "weekly" workers in BLS data are actually
+biweekly with weekly timesheets. Adjusted estimate:
+  Biweekly: 75% → 118.7M × 26 = 3,086M
+  Weekly:   10% → 15.8M × 52  = 822M
+  Monthly:  10% → 15.8M × 12  = 190M
+  Semi-monthly: 5% → 7.9M × 24 = 190M
+
+US Total: ~3,086M + 122M (adj. weekly — net of biweekly reclassification)
+        + 190M + 190M = ~3,400M = 3.4B
+</code></pre>
+<h4 id="eu-27">EU-27</h4>
+<pre><code>Employed persons (Eurostat 2024): 197.6M
+  Employees (85.7%): 169.3M
+  Self-employed (14.3%): 28.3M (excluded)
+
+Pay frequency: ~90% monthly, ~10% biweekly/other
+  Monthly: 152.4M × 12 = 1,829M
+  Other:   16.9M × 18 (avg) = 304M
+
+EU Total: ~2,133M ≈ 2.2B (rounded)
+</code></pre>
+<h4 id="china"><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a></h4>
+<pre><code>Total employed (NBS 2024): ~740M
+Urban employed: ~470M (est. formal payroll)
+  Monthly pay: 95% → 446.5M × 12 = 5,358M
+  Other:        5% → 23.5M × 12  = 282M
+
+Rural/migrant workers receiving electronic payroll: ~150M (est.)
+  Monthly: 150M × 12 = 1,800M
+Note: Significant overlap with urban figure; use urban as primary.
+Exclude informal rural to avoid double-counting.
+
+China Total: ~5,640M ≈ 5.6B
+</code></pre>
+<h4 id="india"><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a></h4>
+<pre><code>Total employed (ILO/MOSPI 2024): ~560M
+Formal sector workers (EPFO-registered + government): ~120M
+  Monthly: 95% → 114M × 12 = 1,368M
+  Other:    5% → 6M × 12   = 72M
+
+Informal sector (~440M): Excluded — cash wages, no electronic transaction
+
+India Total (formal only): ~1,440M ≈ 1.4B
+</code></pre>
+<h4 id="japan"><a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a></h4>
+<pre><code>Employed (Statistics Bureau 2024): ~67M
+Formal payroll: ~60M
+  Monthly: 98% → 58.8M × 12 = 706M
+
+Japan Total: ~720M ≈ 0.7B
+</code></pre>
+<h4 id="rest-of-world">Rest of World</h4>
+<pre><code>Remaining employed: ~3,500M - 158M - 198M - 740M - 560M - 67M = ~1,777M
+
+Estimated formal payroll recipients: ~710M (40% formalization rate)
+  Monthly: 80% → 568M × 12 = 6,816M
+  Biweekly: 20% → 142M × 18 (avg) = 2,556M
+
+Informal cash wages: ~1,067M × avg 10 pay events = 10,670M
+
+Rest of World formal: ~9,372M ≈ 9.4B
+Rest of World informal (cash): ~10,670M ≈ 10.7B
+</code></pre>
+<h3 id="global-total">Global Total</h3>
+<pre><code>                     Formal Electronic    Cash/Informal    Total
+US:                  3,400M              0                3,400M
+EU-27:               2,133M              ~100M            2,233M
+China:               5,640M              ~2,000M          7,640M
+India (formal):      1,440M              ~5,280M*         6,720M
+Japan:               720M                0                720M
+Rest of World:       9,372M              ~10,670M         20,042M
+
+TOTAL:               22,705M             ~18,050M         ~41,200M
+                     ≈ 23.2B             ≈ 18.0B          ≈ 41.2B
+
+*India informal: 440M workers × 12 cash pays = 5,280M
+</code></pre>
+<h2 id="2-tps-calculation-2024">2. TPS Calculation (2024)</h2>
+<pre><code>Seconds per year = 365.25 × 86,400 = 31,557,600
+Average TPS = 41,200,000,000 / 31,557,600 = ~1,305 TPS
+
+Peak TPS estimation:
+- US biweekly Friday: ~130M deposits in ~4hr ACH window
+  = 130M / (4 × 3600) = ~9,028 TPS (US alone)
+- Global concurrent payday (month-end): multiple zones
+- Peak multiplier: 5.0x average → ~6,525 TPS
+</code></pre>
+<h2 id="3-overlap-quantification">3. Overlap Quantification</h2>
+<pre><code>Formal electronic payroll: ~23.2B
+  Of which ACH/bank transfer: ~95% = ~22.0B
+  Of which wire/RTGS:         ~3%  = ~0.7B
+  Of which card/wallet:       ~2%  = ~0.5B
+
+Total payroll already in Bank Transfers: ~22.7B + ~14.3B (cash-to-bank emerging mkts)
+                                        ≈ 37.0B (90% of total)
+
+Incremental (not in bank transfers): ~4.2B
+  - Cash wages: ~4.0B
+  - Check payroll: ~0.2B
+</code></pre>
+<h2 id="4-bank-transfer-share">4. Bank Transfer Share</h2>
+<pre><code>US ACH payroll share:
+  US ACH total (Nacha 2024): 33.6B transactions
+  US payroll ACH: ~3.2B
+  Payroll as % of US ACH: 3.2B / 33.6B = 9.5%
+
+Global bank transfer payroll share:
+  Global bank transfers: 484B
+  Global payroll in bank transfers: ~37B
+  Payroll as % of bank transfers: 37B / 484B = 7.6%
+</code></pre>
+<h2 id="5-growth-rate-analysis">5. Growth Rate Analysis</h2>
+<pre><code>CAGR 2019-2024 (5yr): (41.2/37.5)^(1/5) - 1 = 1.9%
+
+This tracks closely with global employment growth (~1.8% CAGR per ILO),
+plus a small uplift from informal-to-formal migration (~0.1% net).
+</code></pre>
+<h2 id="6-projection-models-2026-2035">6. Projection Models (2026-2035)</h2>
+<h3 id="baseline-2-cagr-tracks-employment-growth">Baseline (2% CAGR — tracks employment growth)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (B)</th>
+<th>Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>42.8</td>
+<td>1,357</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>44.5</td>
+<td>1,411</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>46.3</td>
+<td>1,467</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>51.1</td>
+<td>1,618</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-4-cagr-formalization-emerging-market-inclusion">High Growth (4% CAGR — formalization + emerging market inclusion)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (B)</th>
+<th>Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>44.5</td>
+<td>1,411</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>52.0</td>
+<td>1,649</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>63.3</td>
+<td>2,006</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-1-cagr-automation-aging-demographics">Conservative (1% CAGR — automation + aging demographics)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (B)</th>
+<th>Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>41.8</td>
+<td>1,325</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>43.5</td>
+<td>1,378</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>45.7</td>
+<td>1,449</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/payroll/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/payroll/workings/calculations.md">analysis/payments/payroll/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L1 & L2 Blockchain — Key Assumptions — Universe of Finance</title>
+<meta name="description" content="A1. Solana Vote Transaction Inclusion Solana counts ALL transactions including validator vote transactions (~60% of total) We include votes in headline figures for consistency with">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>L1 & L2 Blockchain — Key Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#a1-solana-vote-transaction-inclusion">A1. Solana Vote Transaction Inclusion</a></li><li><a href="#a2-definition-of-transaction">A2. Definition of "Transaction"</a></li><li><a href="#a3-double-counting-within-this-capsule">A3. Double-Counting Within This Capsule</a></li><li><a href="#a4-double-counting-with-other-capsules">A4. Double-Counting With Other Capsules</a></li><li><a href="#a5-others-category">A5. "Others" Category</a></li><li><a href="#a6-value-transfer-vs-transaction-count">A6. Value Transfer vs Transaction Count</a></li></ul></div><h2 id="a1-solana-vote-transaction-inclusion">A1. Solana Vote Transaction Inclusion</h2>
+<ul>
+<li>Solana counts ALL transactions including validator vote transactions (~60% of total)</li>
+<li>We include votes in headline figures for consistency with how Solana reports</li>
+<li>"Real" user transactions are ~30-40% of reported total</li>
+<li>This inflates Solana's TPS relative to chains that don't count consensus messages</li>
+</ul>
+<h2 id="a2-definition-of-transaction">A2. Definition of "Transaction"</h2>
+<ul>
+<li>There is no universal definition across chains</li>
+<li>Bitcoin: one transaction with potentially many UTXOs (inputs/outputs)</li>
+<li>Ethereum: one state transition (can include complex smart contract calls)</li>
+<li>Solana: one instruction (atomic unit; a swap may be multiple instructions)</li>
+<li>We count at each chain's native "transaction" unit for consistency</li>
+</ul>
+<h2 id="a3-double-counting-within-this-capsule">A3. Double-Counting Within This Capsule</h2>
+<ul>
+<li>We count each chain independently — no double-counting within L1/L2</li>
+<li>Exception: L2 batch submissions appear as L1 transactions. We count the L2 user transactions, not the L1 batch settlement transaction.</li>
+<li>Bridge transactions may count on both source and destination chains</li>
+</ul>
+<h2 id="a4-double-counting-with-other-capsules">A4. Double-Counting With Other Capsules</h2>
+<ul>
+<li><a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> transactions (DEX swaps, lending, etc.) ARE counted within L1/L2 totals</li>
+<li>Stablecoin transfers ARE counted within L1/L2 totals</li>
+<li>CEX trades are NOT counted (off-chain)</li>
+<li>Do NOT sum L1/L2 + DeFi + <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">Stablecoins</a> for a sector total</li>
+</ul>
+<h2 id="a5-others-category">A5. "Others" Category</h2>
+<ul>
+<li>Includes Tron, Avalanche, Polygon, Fantom, Cosmos chains, Near, Sui, Aptos, zkSync, Starknet</li>
+<li>Estimated at ~3M daily combined; likely an underestimate</li>
+<li>Tron alone may process 3-5M daily transactions (primarily USDT)</li>
+</ul>
+<h2 id="a6-value-transfer-vs-transaction-count">A6. Value Transfer vs Transaction Count</h2>
+<ul>
+<li>Transaction count and value transferred are weakly correlated</li>
+<li>Bitcoin has few transactions but high value per transaction (~$50K avg)</li>
+<li>Solana has many transactions but low value per transaction (&lt;$10 avg)</li>
+<li>This capsule focuses on transaction count/TPS, not value</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/blockchain-l1-l2/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/blockchain-l1-l2/workings/assumptions.md">analysis/digital-assets/blockchain-l1-l2/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

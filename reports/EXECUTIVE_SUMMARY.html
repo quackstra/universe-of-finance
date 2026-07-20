@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Summary — Universe of Finance</title>
+<meta name="description" content="Measuring every financial transaction on Earth, expressed as one number. A research brief from the Universe of Finance project. March 2026. Abstract The Universe of Finance projec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a></div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Executive Summary</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#abstract">Abstract</a></li><li><a href="#1-the-big-number">1. The Big Number</a></li><li><a href="#2-the-mest-number">2. The MEST Number</a></li><li><a href="#3-key-findings">3. Key Findings</a></li><li><a href="#4-methodology">4. Methodology</a></li><li><a href="#5-the-mest-advantage-dlt-compression-thesis">5. The MEST Advantage — DLT Compression Thesis</a></li><li><a href="#6-country-spotlights">6. Country Spotlights</a></li><li><a href="#7-time-series-highlights">7. Time-Series Highlights</a></li><li><a href="#8-limitations-and-blind-spots">8. Limitations and Blind Spots</a></li><li><a href="#9-appendix">9. Appendix</a></li><li><a href="#how-to-cite">How to Cite</a></li></ul></div><blockquote>
+<p>Measuring every financial transaction on Earth, expressed as one number.</p>
+</blockquote>
+<p><em>A research brief from the Universe of Finance project. March 2026.</em></p>
+<hr/>
+<h2 id="abstract">Abstract</h2>
+<p>The Universe of Finance project measures the total throughput of the global
+financial system across 29 transaction categories spanning 7 sectors — from
+Visa swipes to repo trades, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> taps to video game loot boxes. Our central
+estimate is <strong>~73,750 de-duplicated financial transactions per second</strong>,
+or ~2.3 trillion per year. But transactions are only the visible tip: each
+one triggers a cascade of bilateral state changes across institutions,
+ledgers, and jurisdictions. We introduce the <strong><a class="xref" href="/universe-of-finance/reports/MEST.html">MEST</a> framework</strong> (Mutual
+Economic State Transitions) and estimate the true bilateral state-change
+rate at <strong>~545,000 per second</strong> — 7.4 times the transaction count. This
+distinction has profound implications for infrastructure design, blockchain
+scalability arguments, and the $350-400 billion annual cost of financial
+plumbing.</p>
+<hr/>
+<h2 id="1-the-big-number">1. The Big Number</h2>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║        ~73,750 de-duplicated global financial TPS             ║
+║                                                               ║
+║        ~2.3 trillion transactions per year                    ║
+║        Range: 67,000 – 83,000 TPS                            ║
+║                                                               ║
+║        Coordinated global peak: ~147,000 – 246,000 TPS       ║
+║        (flash crash on a busy quarter-end)                    ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+</code></pre>
+<p>This number captures every measurable financial transaction on the planet:
+consumer card swipes, real-time <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>, equity trades, derivatives
+contracts, cryptocurrency exchanges, <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a>, <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a> disbursements,
+<a class="xref" href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">insurance premiums</a>, <a class="xref" href="/universe-of-finance/reports/government/government-payments/REPORT.html">government payments</a>, <a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">IoT</a> micropayments, and more.</p>
+<p>It is derived from 29 independent research capsules, each triangulated against
+2-3 data sources, then de-duplicated using a rigorous <a class="xref" href="/universe-of-finance/reports/OVERLAP_MATRIX.html">overlap matrix</a> that
+accounts for transactions counted in multiple categories (e.g., a digital
+wallet payment that settles on a card rail).</p>
+<h3 id="what-73750-tps-means">What ~73,750 TPS Means</h3>
+<p>To put this in context:</p>
+<table>
+<thead>
+<tr>
+<th>Comparison</th>
+<th>TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visa network capacity (theoretical)</td>
+<td>~65,000</td>
+</tr>
+<tr>
+<td><strong>Entire global financial system (measured)</strong></td>
+<td><strong>~73,750</strong></td>
+</tr>
+<tr>
+<td>Bitcoin (mainchain)</td>
+<td>~7</td>
+</tr>
+<tr>
+<td>Solana (meaningful, after vote/spam filter)</td>
+<td>~350-480</td>
+</tr>
+</tbody>
+</table>
+<p>The global financial system processes slightly more transactions per second
+than a single card network's theoretical maximum. This is possible because
+~75% of global TPS is payments, and <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> are only one of several
+payment rails.</p>
+<h3 id="tps-leaderboard-top-10">TPS Leaderboard — Top 10</h3>
+<pre><code>    Category              De-Dup TPS    Share     Sector
+    ─────────────────── ─────────── ──────── ──────────────
+ 1. Consumer Cards         24,501     33.2%    Payments
+ 2. Digital Wallets        12,938     17.5%    Payments
+ 3. Bank Transfers         15,338     20.8%    Payments
+ 4. ETD (Derivatives)       9,505     12.9%    Trad Finance
+ 5. Equity Markets          3,500      4.7%    Trad Finance
+ 6. CEX (Crypto)            3,210      4.4%    Digital Assets
+ 7. ATM Withdrawals         1,557      2.1%    Payments
+ 8. IoT / M2M                385      0.5%    Emerging
+ 9. P2P Transfers             270      0.4%    Payments
+ 10. Payroll (incr.)          131      0.2%    Payments
+    ─────────────────── ─────────── ──────── ──────────────
+    Top 3 = ~71% of global TPS
+</code></pre>
+<p>The concentration is striking: <strong><a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">consumer cards</a>, bank transfers, and digital
+wallets alone account for over 70% of all financial transactions on Earth.</strong></p>
+<hr/>
+<h2 id="2-the-mest-number">2. The MEST Number</h2>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║                                                               ║
+║        ~545,000 Mutual Economic State Transitions / second    ║
+║                                                               ║
+║        ~17.2 trillion bilateral state changes per year        ║
+║        Global average MEST multiplier: 7.4x                   ║
+║        Range: 410,000 – 720,000 MEST/s                        ║
+║                                                               ║
+╚═══════════════════════════════════════════════════════════════╝
+</code></pre>
+<h3 id="what-is-a-mest">What Is a MEST?</h3>
+<p>A <strong>Mutual Economic State Transition</strong> is any change to a holding of
+economically valuable assets where more than one party has a material
+interest in the record. Three properties must hold:</p>
+<ol>
+<li><strong>State change</strong> — an asset changes state (balance, ownership, obligation)</li>
+<li><strong>Mutual interest</strong> — two or more parties care about the record's accuracy</li>
+<li><strong>Materiality</strong> — not trivial internal bookkeeping within one entity</li>
+</ol>
+<p>When you buy a coffee with a credit card, one transaction happens from your
+perspective. Underneath, <strong>seven bilateral state changes</strong> ripple across five
+institutions: an authorization hold, a clearing match, an interchange
+allocation, two settlement legs, a merchant credit, and a statement entry.</p>
+<pre><code>    The MEST Iceberg
+
+                     /\
+                    /  \         "I bought a coffee"
+                   / 1  \       &lt;- The Transaction
+                  / TXN  \
+    ────────────/──────────\──────────── waterline ────
+               /            \
+              /   6-8 MESTs  \    Auth, clearing,
+             /   per card     \   settlement, merchant
+            /   purchase       \  credit, interchange,
+           /                    \ rewards, statement
+          /______________________\
+</code></pre>
+<p>The Big Number answers: <em>How many economic events happen per second?</em>
+The MEST Number answers: <em>How many bilateral state changes does the global
+economy actually process per second?</em></p>
+<h3 id="why-mest-matters">Why MEST Matters</h3>
+<ul>
+<li><strong>Infrastructure sizing</strong> — Settlement systems and clearing houses must
+  handle MEST volume, not transaction volume</li>
+<li><strong>Blockchain scalability</strong> — A chain that replaces traditional rails must
+  handle the MEST load, not just TPS</li>
+<li><strong>Operational risk</strong> — Each MEST is a reconciliation point that can fail</li>
+<li><strong>Cost modeling</strong> — The cost of financial plumbing is proportional to
+  MEST volume, not transaction volume</li>
+</ul>
+<h3 id="mest-by-sector">MEST by Sector</h3>
+<pre><code>    Sector              MEST/s      % of Total    Avg Multiplier
+    ──────────────── ────────── ──────────── ──────────────
+    Payments           383,655       70.4%         5-7x
+    Trad Finance       134,122       24.6%         8-12x
+    Digital Assets      15,230        2.8%         2-4x
+    Government           5,075        0.9%         5x
+    Gaming               1,701        0.3%         3x
+    Emerging             4,639        0.9%         3x
+    Banking                326        0.1%         3-4x
+    ──────────────── ────────── ──────────── ──────────────
+    TOTAL             ~544,750      100.0%         7.4x
+</code></pre>
+<p>Traditional finance produces 18% of transactions but <strong>25% of MESTs</strong>,
+because exchange-traded and OTC instruments have deeper clearing and
+settlement cascades. Digital assets produce 5% of transactions but only
+3% of MESTs — the lowest multipliers in the system.</p>
+<hr/>
+<h2 id="3-key-findings">3. Key Findings</h2>
+<ol>
+<li>
+<p><strong>Payments dominate.</strong> 75% of global TPS is payment transactions. Cards,
+   bank transfers, and <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a> are the backbone of world finance.</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> punches above its weight.</strong> 17.4% of global TPS on 3.5% of global
+   GDP. #1 in equity trades (28% of global volume), #1 in real-time payments
+   (UPI), and growing fast in cards (RuPay).</p>
+</li>
+<li>
+<p><strong>Double-counting is ~14%, not 50%.</strong> The raw sum across 29 categories is
+   ~89,300 TPS. De-duplication removes ~17%. The biggest single overlap is
+   UPI (172B transactions counted in both wallets and bank transfers).</p>
+</li>
+<li>
+<p><strong>The MEST multiplier is 7.4x.</strong> Every transaction generates an average
+   of 7.4 bilateral state changes. <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> are the deepest (12x);
+   on-chain L1/L2 transfers are the shallowest (2x).</p>
+</li>
+<li>
+<p><strong>Crypto is 5% of TPS, not 50%.</strong> After Solana vote/spam filtering and
+   CEX wash-trade adjustment, digital assets are ~3,625 TPS — roughly the
+   throughput of <a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">equity markets</a> alone.</p>
+</li>
+<li>
+<p><strong>The global MEST Tax is $350-400 billion per year.</strong> This is the
+   infrastructure cost of processing 17.2 trillion bilateral state changes
+   annually — clearing, settlement, reconciliation, and reporting.</p>
+</li>
+<li>
+<p><strong>DLT compresses MESTs 60-80%.</strong> Blockchain-native transactions achieve
+   2-3x MEST multipliers vs. 7-12x for traditional equivalents. Full
+   theoretical compression: ~345,000 fewer MEST/s, saving $150-250B/year.</p>
+</li>
+<li>
+<p><strong>Growth is 6.7x in a decade.</strong> Global gross TPS grew from ~12,900 (2015)
+   to ~86,900 (2025). The fastest growers are blockchain-native (RWA 119%
+   CAGR, <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">stablecoins</a> 103%), but traditional payments add more absolute TPS.</p>
+</li>
+<li>
+<p><strong>ATM is the only declining category.</strong> -3% CAGR, down from 63B peak.
+   Every other category is growing. Growth outpaces decline 38:1.</p>
+</li>
+<li>
+<p><strong>Recessions barely move the Big Number.</strong> A 2008-style recession changes
+    TPS by only -0.3% because trading surges offset payment declines.
+    Pandemics <em>increase</em> it (+18-28%) via cash-to-digital migration.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="4-methodology">4. Methodology</h2>
+<h3 id="approach-triangulation-first">Approach: Triangulation-First</h3>
+<p>Each of the 29 categories was researched using a triangulation-first method:</p>
+<ol>
+<li>Find 2-3 independent data sources that measure the same thing differently</li>
+<li>Build bottom-up AND top-down models, then reconcile</li>
+<li>Document assumptions, blind spots, and confidence explicitly</li>
+<li>Quantify overlaps with other categories to enable accurate de-duplication</li>
+</ol>
+<h3 id="taxonomy-29-categories-7-sectors">Taxonomy: 29 Categories, 7 Sectors</h3>
+<table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>#</th>
+<th>Combined Gross TPS</th>
+<th>Key Categories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payments</td>
+<td>11</td>
+<td>~67,600</td>
+<td>Cards, wallets, bank transfers, ATM, bills</td>
+</tr>
+<tr>
+<td>Traditional Finance</td>
+<td>6</td>
+<td>~13,400</td>
+<td>ETD, equities, forex, fixed income</td>
+</tr>
+<tr>
+<td>Digital Assets</td>
+<td>4</td>
+<td>~4,100</td>
+<td>CEX, L1/L2, stablecoins, DeFi</td>
+</tr>
+<tr>
+<td>Banking</td>
+<td>2</td>
+<td>~100</td>
+<td>RTGS, securities settlement</td>
+</tr>
+<tr>
+<td>Gaming</td>
+<td>2</td>
+<td>~480</td>
+<td>Microtransactions, game sales</td>
+</tr>
+<tr>
+<td>Government</td>
+<td>1</td>
+<td>~1,000</td>
+<td>Tax and benefits disbursements</td>
+</tr>
+<tr>
+<td>Emerging</td>
+<td>3</td>
+<td>~1,540</td>
+<td>IoT/M2M, RWA tokenisation, AI agents</td>
+</tr>
+</tbody>
+</table>
+<h3 id="confidence-scoring-0-100">Confidence Scoring (0-100)</h3>
+<p>Every category receives a composite <a class="xref" href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">confidence score</a> across four dimensions:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Weight</th>
+<th>What It Measures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source Quality</td>
+<td>0-30</td>
+<td>Primary vs. estimated data</td>
+</tr>
+<tr>
+<td>Data Recency</td>
+<td>0-20</td>
+<td>How fresh the underlying data is</td>
+</tr>
+<tr>
+<td>Triangulation</td>
+<td>0-25</td>
+<td>Independent methods that agree</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>0-25</td>
+<td>% of known market captured</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Results:</strong> Median score 62. Range: 34 (<a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI Agents</a>) to 91 (Consumer Cards).
+Eight categories score above 74 (High confidence); six score below 52
+(Medium or lower).</p>
+<pre><code>    Confidence Distribution (29 categories)
+
+    90-100  █                                     1  (Cards)
+    80-89   ███                                   3  (ETD, Equities, RTGS)
+    70-79   ████                                  4  (Bank Xfers, L1/L2, ...)
+    60-69   ███████                               7  (Wallets, IoT, P2P, ...)
+    50-59   ████████                              8  (CEX, RWA, ATM, ...)
+    40-49   ██                                    2  (Gaming Microtx, ...)
+    30-39   ████                                  4  (Payroll, AI Agents, ...)
+</code></pre>
+<h3 id="overlap-de-duplication">Overlap De-Duplication</h3>
+<p>Raw TPS across all 29 categories sums to ~89,300. The de-duplication process
+removes ~17% (~15,550 TPS) of overlaps:</p>
+<table>
+<thead>
+<tr>
+<th>Overlap Type</th>
+<th>TPS Removed</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wallet-on-card-rail</td>
+<td>~6,722</td>
+<td>Apple Pay settling on Visa</td>
+</tr>
+<tr>
+<td>Bill/payroll/insurance on bank rails</td>
+<td>~3,582</td>
+<td>Direct debit bill payments</td>
+</tr>
+<tr>
+<td>E-commerce on card/wallet rails</td>
+<td>~1,732</td>
+<td>Amazon checkout on Visa</td>
+</tr>
+<tr>
+<td>Gaming on card/wallet rails</td>
+<td>~393</td>
+<td>Steam purchase on Mastercard</td>
+</tr>
+<tr>
+<td>DeFi/Stablecoins subset of L1/L2</td>
+<td>~650</td>
+<td>Uniswap swap = L1 txn</td>
+</tr>
+<tr>
+<td>Government on bank rails</td>
+<td>~601</td>
+<td>Tax payment via ACH</td>
+</tr>
+<tr>
+<td>IoT on card/bank rails</td>
+<td>~1,153</td>
+<td>E-ZPass on linked card</td>
+</tr>
+</tbody>
+</table>
+<p>The biggest single overlap is UPI: 172 billion transactions counted in both
+digital wallets and bank transfers. This is handled by classifying UPI as
+a bank transfer (its true settlement rail) and deducting it from wallets.</p>
+<hr/>
+<h2 id="5-the-mest-advantage-dlt-compression-thesis">5. The MEST Advantage — DLT Compression Thesis</h2>
+<h3 id="the-core-argument">The Core Argument</h3>
+<p>Blockchain-native transactions do not win on speed — traditional rails are
+faster. They win on <strong>MEST compression</strong>: fewer bilateral state changes per
+economic event, because intermediaries are eliminated from the cascade.</p>
+<table>
+<thead>
+<tr>
+<th>Activity</th>
+<th>Traditional MEST</th>
+<th>DLT MEST</th>
+<th>Reduction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset transfer</td>
+<td>5-7x</td>
+<td>2x</td>
+<td>60-70%</td>
+</tr>
+<tr>
+<td>Securities trade</td>
+<td>10x</td>
+<td>2-3x</td>
+<td>70-80%</td>
+</tr>
+<tr>
+<td>Derivatives</td>
+<td>10-12x</td>
+<td>3-4x</td>
+<td>65-70%</td>
+</tr>
+<tr>
+<td>Cross-border payment</td>
+<td>7x</td>
+<td>2-3x</td>
+<td>60-70%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-numbers">The Numbers</h3>
+<pre><code>    CURRENT STATE (2025)
+    ────────────────────
+    Global MEST/s:              545,000
+    Average multiplier:         7.4x
+    Annual MEST Tax:            $350-400 billion
+
+    FULL DLT COMPRESSION (theoretical ceiling)
+    ────────────────────────────────────────────
+    Global MEST/s:              ~200,000
+    Average multiplier:         ~2.7x
+    MESTs eliminated:           ~345,000/s  (63%)
+    Annual savings:             $150-250 billion
+
+    REALISTIC 2035 SCENARIO (partial adoption)
+    ────────────────────────────────────────────
+    Global MEST/s:              ~650,000  (volume growth offsets
+                                           partial compression)
+    Average multiplier:         ~6.0x
+    Compression achieved:       ~20% of theoretical maximum
+    Annual savings:             $30-50 billion
+</code></pre>
+<h3 id="where-compression-is-already-underway">Where Compression Is Already Underway</h3>
+<ul>
+<li>
+<p><strong>Stablecoins</strong> — Replacing correspondent banking for cross-border
+  payments. 7 MESTs compressed to 2. $27.6T transfer volume in 2024.
+  Fortune 500 firms report 71% cost reductions.</p>
+</li>
+<li>
+<p><strong>Tokenized securities</strong> — BlackRock BUIDL ($2.9B AUM) demonstrates
+  compressed custody and settlement: subscription is 2 MESTs (not 5),
+  dividends are 1 MEST (not 5), operating 24/7/365.</p>
+</li>
+<li>
+<p><strong>DEX trading</strong> — Atomic swap settles trade + custody in one operation.
+  2-3 MESTs vs. 10 for traditional exchange + CCP + CSD chain.</p>
+</li>
+<li>
+<p><strong>Real-time payments</strong> — UPI and <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Pix</a> prove consumer appetite for faster,
+  cheaper rails — the same appetite DLT serves. UPI compresses cost
+  without compressing MESTs; DLT compresses both.</p>
+</li>
+</ul>
+<h3 id="honest-caveats">Honest Caveats</h3>
+<ul>
+<li>CEX compression (4x) is <strong>centralization</strong>, not innovation — Binance is the
+  clearing house, custodian, and settlement system combined</li>
+<li>Regulation will add 1-2 MESTs to crypto over the next decade (MiCA, 1099-DA)</li>
+<li>Smart contract risk replaces reconciliation risk — a genuine trade-off</li>
+<li>Not all MESTs are waste: post-2008 reporting MESTs are the solution to
+  systemic opacity</li>
+</ul>
+<hr/>
+<h2 id="6-country-spotlights">6. Country Spotlights</h2>
+<h3 id="india-174-of-global-tps-on-35-of-gdp">India — 17.4% of Global TPS on 3.5% of GDP</h3>
+<p>India is the most disproportionate contributor to global financial TPS:</p>
+<ul>
+<li><strong>UPI</strong>: 172 billion transactions/year (2025), #1 real-time payment system
+  globally. Zero merchant fees since 2020.</li>
+<li><strong>NSE</strong>: #1 stock exchange by trade count (28% of global equity volume).
+  India's options market alone generates more trades than NYSE + NASDAQ combined.</li>
+<li><strong>RuPay</strong>: Growing domestic card network displacing Visa/Mastercard share.</li>
+<li><strong>JAM trinity</strong>: Jan Dhan (520M accounts) + Aadhaar + Mobile enabled
+  7.4 billion government benefit transfers.</li>
+</ul>
+<p>India's financial system is digitally native in a way that most developed
+economies are not — it leapfrogged cards directly to real-time bank transfers.</p>
+<h3 id="eu-182-of-global-tps">EU — 18.2% of Global TPS</h3>
+<p>The EU is the second-largest contributor by regional share:</p>
+<ul>
+<li><strong>SEPA</strong>: Unified payment area processing cards + bank transfers across
+  27 member states.</li>
+<li><strong>TIPS</strong>: TARGET Instant Payment Settlement grew +402% year-over-year —
+  the fastest-growing RTGS system globally.</li>
+<li><strong>MiCA</strong>: First comprehensive crypto regulation (effective 2024-2025),
+  adding regulatory MESTs to European crypto transactions.</li>
+<li><strong>T2 consolidation</strong>: Merged TARGET2 and T2S into a single platform,
+  reducing intra-EU settlement friction.</li>
+</ul>
+<h3 id="china-the-6000-tps-blind-spot">China — The +/- 6,000 TPS Blind Spot</h3>
+<p><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> is the largest single-country uncertainty in the Big Number:</p>
+<ul>
+<li><strong>Alipay + WeChat Pay</strong>: Combined ~40 billion transactions/year, but
+  detailed breakdowns are corporate-confidential.</li>
+<li><strong>CNAPS-HVPS</strong>: China's high-value payment system processes more than
+  Fedwire, but English-language data is scarce.</li>
+<li><strong>Opacity range</strong>: China could contribute 8,000-14,000 TPS depending on
+  wallet volume assumptions — a +/- 6,000 TPS uncertainty band.</li>
+</ul>
+<p>We use PBOC aggregate data as the primary source, cross-checked against
+corporate disclosures and UnionPay filings.</p>
+<h3 id="usa-tradfi-dominant">USA — TradFi Dominant</h3>
+<p>The US contributes disproportionately to Traditional Finance TPS:</p>
+<ul>
+<li><strong>CME + CBOE</strong>: Dominant in derivatives (futures + options).</li>
+<li><strong>NYSE + NASDAQ</strong>: Combined ~40% of global equity value traded.</li>
+<li><strong>Fedwire + CHIPS</strong>: High-value payment systems processing $5T+/day.</li>
+<li><strong>Card-heavy payments</strong>: The US is one of the most card-dependent
+  economies, with slower real-time payment adoption (FedNow launched 2023
+  but still low volume).</li>
+</ul>
+<h3 id="brazil-pix-2-globally-63-of-global-tps">Brazil — Pix #2 Globally, 6.3% of Global TPS</h3>
+<ul>
+<li><strong>Pix</strong>: Launched November 2020, now processing 6.3 billion transactions/month
+  (2025) — #2 real-time payment system after UPI.</li>
+<li><strong>Dramatic growth</strong>: From zero to ~2,400 TPS in four years.</li>
+<li><strong>Financial inclusion</strong>: Pix brought 70 million previously unbanked
+  Brazilians into the digital payment system.</li>
+</ul>
+<hr/>
+<h2 id="7-time-series-highlights">7. Time-Series Highlights</h2>
+<h3 id="a-decade-of-growth-2015-2025">A Decade of Growth: 2015-2025</h3>
+<pre><code>    Global Gross TPS (all 29 categories)
+
+    2025  ████████████████████████████████████████████████░  86,900
+    2024  ██████████████████████████████████████████░        75,200
+    2023  ████████████████████████████████████░              62,400
+    2022  ███████████████████████████████░                   54,100
+    2021  ████████████████████████████░                      48,900
+    2020  ██████████████████████░                            38,200
+    2019  █████████████████░                                 29,400
+    2018  ██████████████░                                    24,600
+    2017  ████████████░                                      20,700
+    2016  ██████████░                                        17,100
+    2015  ████████░                                          12,900
+
+    6.7x growth in a decade
+</code></pre>
+<h3 id="fastest-growers-2020-2025-cagr">Fastest Growers (2020-2025 CAGR)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>CAGR</th>
+<th>2020 TPS</th>
+<th>2025 TPS</th>
+<th>Multiplier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>RWA Tokenisation</td>
+<td>119%</td>
+<td>0.05</td>
+<td>2.4</td>
+<td>48x</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Stablecoins</td>
+<td>103%</td>
+<td>20</td>
+<td>700</td>
+<td>35x</td>
+</tr>
+<tr>
+<td>3</td>
+<td>L1/L2 Blockchain</td>
+<td>77%</td>
+<td>63</td>
+<td>1,100</td>
+<td>17.5x</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DeFi</td>
+<td>54%</td>
+<td>15</td>
+<td>130</td>
+<td>8.7x</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ETD (Derivatives)</td>
+<td>45%</td>
+<td>1,483</td>
+<td>9,505</td>
+<td>6.4x</td>
+</tr>
+</tbody>
+</table>
+<p>The top 3 fastest-growing categories are all blockchain-native. But the top 3
+by <strong>absolute TPS added</strong> are consumer cards (+14,651), digital wallets
+(+16,170), and bank transfers (+14,189) — traditional infrastructure is
+still adding more raw throughput per year.</p>
+<h3 id="the-mest-multiplier-is-rising">The MEST Multiplier Is Rising</h3>
+<p>The global MEST multiplier has risen from ~6.8x (2015) toward ~7.4x (2025).
+This is not inefficiency — it reflects:</p>
+<ul>
+<li>Post-2008 regulatory reporting (trade repositories, EMIR, Dodd-Frank)</li>
+<li>Embedded finance adding intermediary layers (<a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a>, wallets-on-cards)</li>
+<li>Higher share of derivatives (which have 10-12x multipliers) in the mix</li>
+</ul>
+<p>The multiplier will continue rising absent DLT compression. Projected: 7.8-8.2x
+by 2030 on the current trajectory.</p>
+<hr/>
+<h2 id="8-limitations-and-blind-spots">8. Limitations and Blind Spots</h2>
+<h3 id="what-we-do-not-know">What We Do Not Know</h3>
+<table>
+<thead>
+<tr>
+<th>Blind Spot</th>
+<th>Impact</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>China wallet volumes</td>
+<td>+/- 6,000 TPS</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Informal remittances (30-50% of total)</td>
+<td>+/- 500 TPS</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>CEX wash trading (blended ~20.6%)</td>
+<td>+/- 660 TPS</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Cash transactions (untracked)</td>
+<td>Unknown</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Private blockchain / enterprise DLT</td>
+<td>Unknown</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>OTC derivative transaction counts</td>
+<td>+/- 50%</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="structural-limitations">Structural Limitations</h3>
+<ul>
+<li><strong>Transaction vs. value</strong>: TPS counts treat a $2 coffee and a $500M repo
+  identically. The Big Number measures throughput, not economic significance.</li>
+<li><strong>Cash is invisible</strong>: Cash transactions are the largest blind spot. ATM
+  withdrawals (1,557 TPS) are the only cash-adjacent measure we capture.</li>
+<li><strong>MEST multipliers are estimates</strong>: Per-category multipliers are
+  order-of-magnitude assessments based on transaction lifecycle analysis,
+  not instrumented measurements.</li>
+<li><strong>Point-in-time</strong>: All figures are 2025 estimates. Financial TPS is growing
+  ~20% annually, so these numbers age quickly.</li>
+</ul>
+<h3 id="confidence-gaps">Confidence Gaps</h3>
+<p>Six categories score below 52 on our confidence scale (out of 100):</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Score</th>
+<th>Primary Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI Agent Transactions</td>
+<td>34</td>
+<td>Pre-market; projections, not measurements</td>
+</tr>
+<tr>
+<td>Payroll Payments</td>
+<td>35</td>
+<td>No single source counts global payroll txns</td>
+</tr>
+<tr>
+<td>In-Game Microtransactions</td>
+<td>44</td>
+<td>Publishers report revenue, not txn counts</td>
+</tr>
+<tr>
+<td>Bill Payments</td>
+<td>48</td>
+<td>Bottom-up model with significant assumptions</td>
+</tr>
+<tr>
+<td>Tax &amp; Government Payments</td>
+<td>50</td>
+<td>Difficult to aggregate across jurisdictions</td>
+</tr>
+<tr>
+<td>ATM Withdrawals</td>
+<td>52</td>
+<td>Emerging market data is sparse</td>
+</tr>
+</tbody>
+</table>
+<p>These six categories contribute ~6,500 gross TPS (~7% of total). Their
+uncertainty does not materially affect the Big Number but does limit
+granular analysis.</p>
+<hr/>
+<h2 id="9-appendix">9. Appendix</h2>
+<h3 id="full-analyses">Full Analyses</h3>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/universe-of-finance/reports/README.html">Research Index</a></td>
+<td>Master index of all 29 categories</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/MEST.html">MEST Framework</a></td>
+<td>Full MEST definition, taxonomy, per-category cascades</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/MEST_ADVANTAGE.html">MEST Advantage</a></td>
+<td>DLT compression thesis with cost modeling</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/OVERLAP_MATRIX.html">Overlap Matrix</a></td>
+<td>Cross-sector de-duplication methodology</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">Confidence Scorecard</a></td>
+<td>0-100 scores for all categories</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS Analysis</a></td>
+<td>When does global infrastructure max out?</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/SCENARIOS.html">Scenario Analysis</a></td>
+<td>Recession, pandemic, crypto winter stress tests</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/timeseries/TIMESERIES.html">Time-Series</a></td>
+<td>2015-2025 annual data for all categories</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/SUNSET_WATCH.html">Sunset Watch</a></td>
+<td>Declining categories (growth outpaces decline 38:1)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="country-deep-dives">Country Deep Dives</h3>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Key Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a></td>
+<td>17.4% of global TPS on 3.5% of GDP</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a></td>
+<td>The +/- 6,000 TPS opacity problem</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/deep-dives/usa/REPORT.html">USA</a></td>
+<td>TradFi dominance, card-heavy payments</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a></td>
+<td>Pix: zero to #2 globally in 4 years</td>
+</tr>
+<tr>
+<td><a href="/universe-of-finance/reports/deep-dives/eu/REPORT.html">EU</a></td>
+<td>18.2% of global TPS, TIPS +402% YoY</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sle-framework">SLE Framework</h3>
+<p>Research is guided by 17 <strong>Soul Less Employee</strong> personas — expert
+archetypes grounded in real job descriptions from Visa, BIS, Chainalysis,
+DTCC, BNY Mellon, Gartner, and others. Each persona brings domain-specific
+mental models, data sources, and documented biases. See
+<a href="/universe-of-finance/">RECRUITER.md</a> for the full dispatch matrix.</p>
+<h3 id="data-sources-selected">Data Sources (Selected)</h3>
+<ul>
+<li>Nilson Report (consumer cards) — gold standard for payment card data</li>
+<li>BIS CPMI Red Book (bank transfers, RTGS) — central bank statistics</li>
+<li>FIA Annual Survey (<a class="xref" href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">exchange-traded derivatives</a>) — comprehensive ETD volumes</li>
+<li>World Federation of Exchanges (equities) — global exchange data</li>
+<li>PBOC Aggregate Statistics (China payments) — official Chinese payment data</li>
+<li>NPCI (India UPI, RuPay) — Indian payment infrastructure data</li>
+<li>BCB / Pix Statistics (<a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>) — Brazilian real-time payment data</li>
+<li>ECB Payment Statistics (EU) — European payment data</li>
+<li>McKinsey Global Payments Report ($2.5T industry revenue)</li>
+<li>Visa OnChain Analytics (stablecoin transfer volumes)</li>
+</ul>
+<h3 id="methodology-framework">Methodology Framework</h3>
+<ul>
+<li><strong>Triangulation-first</strong>: Every category requires 2-3 independent sources</li>
+<li><strong>Bottom-up AND top-down</strong>: Build from components, validate against totals</li>
+<li><strong>Explicit confidence</strong>: Every number has a 0-100 confidence score</li>
+<li><strong>De-duplication by design</strong>: Overlap matrix maintained alongside capsules</li>
+<li><strong>Time-series</strong>: 10-year history (2015-2025) for all categories</li>
+<li><strong>Stress-tested</strong>: Recession, pandemic, and crypto winter scenarios modeled</li>
+</ul>
+<hr/>
+<h2 id="how-to-cite">How to Cite</h2>
+<blockquote>
+<p>Universe of Finance Project. "Global Financial Transaction Throughput:
+~73,750 TPS and ~545,000 MEST/s." Research brief, March 2026.
+Available at: [universe-of-finance repository]</p>
+</blockquote>
+<hr/>
+<p><em>Research outputs: CC BY 4.0. Code: MIT.</em>
+<em>Produced across 10 research runs, March 2026.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/EXECUTIVE_SUMMARY.md">analysis/EXECUTIVE_SUMMARY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

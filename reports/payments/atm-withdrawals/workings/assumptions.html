@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM Withdrawals — Assumptions — Universe of Finance</title>
+<meta name="description" content="A1. Withdrawal vs. Total ATM Transaction Split The widely-cited '86.7 billion global ATM transactions' includes all ATM interactions: - Cash withdrawals: ~57-60% (our focus) - Bala">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>ATM Withdrawals — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#a1-withdrawal-vs-total-atm-transaction-split">A1. Withdrawal vs. Total ATM Transaction Split</a></li><li><a href="#a2-regional-atm-count-data">A2. Regional ATM Count Data</a></li><li><a href="#a3-transactions-per-atm">A3. Transactions Per ATM</a></li><li><a href="#a4-us-atm-withdrawal-decline-rate">A4. US ATM Withdrawal Decline Rate</a></li><li><a href="#a5-average-withdrawal-value">A5. Average Withdrawal Value</a></li><li><a href="#a6-peak-tps-multiplier">A6. Peak TPS Multiplier</a></li><li><a href="#a7-covid-impact-model">A7. COVID Impact Model</a></li><li><a href="#a8-emerging-market-growth">A8. Emerging Market Growth</a></li></ul></div><h2 id="a1-withdrawal-vs-total-atm-transaction-split">A1. Withdrawal vs. Total ATM Transaction Split</h2>
+<p>The widely-cited "86.7 billion global ATM transactions" includes all ATM interactions:
+- Cash withdrawals: ~57-60% (our focus)
+- Balance inquiries: ~20-25%
+- Deposits: ~8-10%
+- Mini-statements: ~3-5%
+- <a class="xref" href="/universe-of-finance/reports/payments/bill-payments/REPORT.html">Bill payments</a> / transfers: ~3-5%</p>
+<p>We use <strong>57% as the withdrawal share</strong> for the top-down calibration, giving ~49.4B.
+This is conservative — ATMIA has stated withdrawal share as high as 69% of "transaction revenue," but that metric weights by value rather than count.</p>
+<h2 id="a2-regional-atm-count-data">A2. Regional ATM Count Data</h2>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>ATMs (2024)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global total</td>
+<td>~3.12M</td>
+<td>Sci-Tech Today / World Bank (declining from 3.22M in 2023)</td>
+</tr>
+<tr>
+<td>China</td>
+<td>~700K</td>
+<td>Datos Insights (down from 1.1M in 2018)</td>
+</tr>
+<tr>
+<td>US</td>
+<td>~470K</td>
+<td>ATMIA (includes IAD ATMs)</td>
+</tr>
+<tr>
+<td>EU-27</td>
+<td>~266K</td>
+<td>ECB (end of H2 2023, declining 0.4%/year)</td>
+</tr>
+<tr>
+<td>India</td>
+<td>~215K</td>
+<td>RBI</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>~180K</td>
+<td>BIS</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>~120K</td>
+<td>BCB</td>
+</tr>
+</tbody>
+</table>
+<h2 id="a3-transactions-per-atm">A3. Transactions Per ATM</h2>
+<p>Global average: ~15,700 withdrawals per ATM per year (2024), down from ~18,500 at peak (2016).</p>
+<p>This masks huge variation:
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>: ~27,900/ATM/year (high density, high usage)
+- EU: ~28,200/ATM/year (moderate)
+- US: ~6,600/ATM/year (very low — many lightly used IAD ATMs)
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>: ~17,100/ATM/year (declining rapidly)</p>
+<h2 id="a4-us-atm-withdrawal-decline-rate">A4. US ATM Withdrawal Decline Rate</h2>
+<p>The Federal Reserve reported a -10.1% annual decline from 2018 to 2021 (5.1B to 3.7B).
+We moderate this to -6% for 2021-2024, reflecting:
+- Post-COVID cash usage partially rebounded
+- Remaining ATM users are sticky (rural, unbanked, cash-preference)
+- Mobile wallet adoption rate in US is slower than EU/Asia</p>
+<p>This gives ~3.1B for US in 2024.</p>
+<h2 id="a5-average-withdrawal-value">A5. Average Withdrawal Value</h2>
+<p>The $157 figure from ATMIA is likely US-weighted. Our volume-weighted model suggests ~$99 globally. We report the ATMIA figure with the caveat that true global average is likely $100-160.</p>
+<p>Key regional values:
+- US $198 (up from $156 in 2018 — people withdraw more per trip as frequency drops)
+- EU ~$140 (ECB data)
+- India ~$40 (RBI; but rising 5% annually as larger withdrawals replace small ones)
+- China ~$90 (declining usage but moderate per-withdrawal amounts)</p>
+<h2 id="a6-peak-tps-multiplier">A6. Peak TPS Multiplier</h2>
+<p>ATM usage is less concentrated than <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a> but still has patterns:
+- Weekend peaks (payday + pre-leisure spending)
+- Holiday eves (Diwali, Chinese New Year, Christmas Eve)
+- Month-end clusters in monthly-pay economies</p>
+<p>Peak multiplier: <strong>2.0x average</strong> — more spread out than payroll (5x) but more concentrated than card spending (2.5x).</p>
+<h2 id="a7-covid-impact-model">A7. COVID Impact Model</h2>
+<p>COVID lockdowns reduced ATM usage ~26% in 2020 (range: -20% US to -30% India).
+Recovery was incomplete — 2023 was still ~19% below 2016 peak.
+We assume COVID permanently shifted ~10-15% of ATM usage to digital channels, compounding the pre-existing digital displacement trend.</p>
+<h2 id="a8-emerging-market-growth">A8. Emerging Market Growth</h2>
+<p><a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> and parts of South/Southeast Asia are still net-positive for ATM deployment:
+- Egypt: major bank ATM rollout ongoing
+- Uzbekistan: 1,000+ new ATMs in 2024
+- Nigeria: financial inclusion driving growth despite mobile money</p>
+<p>However, this growth is small relative to the developed-market decline.
+Net global effect is still negative.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/atm-withdrawals/workings/assumptions.md">analysis/payments/atm-withdrawals/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

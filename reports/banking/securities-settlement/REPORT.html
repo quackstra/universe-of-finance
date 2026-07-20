@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Securities Settlement — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Category: Banking > Securities Settlement Data Year: 2024 Last Updated: 2026-03-26 Executive Summary Global securities settlement infrastr">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Banking<span class="sep">/</span>Securities Settlement</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Securities Settlement</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">44</div></div><div class="chip"><div class="k">Confidence</div><div class="v green">74</div></div><div class="chip"><div class="k">Opacity</div><div class="v amber">46</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#24/28</div></div></div>
+  <div class="chart-box"><h3>Banking — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart2"></canvas></div></div><script>new Chart(document.getElementById("chart2"),{"type": "bar", "data": {"labels": ["Interbank RTGS", "Securities Settlement"], "datasets": [{"data": [50.1, 44], "backgroundColor": ["#334155", "#3b82f6"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections-through-2035">Projections (through 2035)</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<p><strong>Category</strong>: Banking &gt; Securities Settlement
+<strong>Data Year</strong>: 2024
+<strong>Last Updated</strong>: 2026-03-26</p>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Global securities settlement infrastructure processed an estimated <strong>1.3–1.5 billion settlement transactions</strong> in 2024, averaging <strong>~41–48 TPS</strong> (calendar), with a combined settled value of approximately <strong>$3.7 quadrillion</strong> (DTCC alone). The three pillars — DTCC (US), Euroclear (international/Belgium), and Clearstream (Germany/Luxembourg) — handle the post-trade processing for virtually all exchange-traded equities, bonds, and structured products in the developed world.</p>
+<p>The defining event of 2024 was the <strong>US move to T+1 settlement</strong> (28 May 2024), compressing the settlement cycle from two business days to one. This increased operational intensity without necessarily changing annual transaction counts, but the infrastructure proved capable: NSCC processed a record peak of 545 million transactions in a single day in April 2025. Euroclear reached record settlement volumes with 331 million netted transactions for the full year.</p>
+<p><strong>Critical taxonomy note</strong>: Securities settlement is DOWNSTREAM of trading. Every equity trade, bond trade, or derivative exercise ultimately flows through settlement infrastructure. This capsule counts settlement-layer transactions only — it does not double-count the upstream trading activity covered in the equity-markets and ETD capsules.</p>
+<hr/>
+<h2 id="scope">Scope</h2>
+<p><strong>Included:</strong>
+- DTCC subsidiaries: DTC (depository/settlement), NSCC (equities/corporate bonds clearing), FICC (government securities/MBS clearing)
+- Euroclear group: Euroclear Bank (ICSD), Euroclear Belgium, France, Finland, Netherlands, Sweden, UK (CRESTCo)
+- Clearstream: International CSD (ICSD), domestic CSD (Germany)
+- TARGET2-Securities (T2S) — Eurosystem securities settlement platform
+- CCP clearing that results in settlement (counted at the settlement leg)</p>
+<p><strong>Excluded:</strong>
+- Trading/execution layer (covered in equity-markets, ETD capsules)
+- Cash legs of DVP settlement (counted in interbank-rtgs capsule)
+- OTC derivative clearing (covered in ETD/<a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> capsule)
+- Custody/safekeeping (asset servicing, not transaction processing)</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume">Transaction Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS (calendar)</td>
+<td>~41–48</td>
+<td>Calculated: 1.3–1.5B / 31.56M sec</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~6,300</td>
+<td>NSCC 545M peak day / 86,400 sec</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Daily volume (avg)</td>
+<td>~5.2–6.0M</td>
+<td>Sum of system daily averages</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual volume (2024)</td>
+<td>~1.3–1.5B transactions</td>
+<td>Aggregated from system reports</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual value (2024)</td>
+<td>&gt;$3.7 quadrillion</td>
+<td>DTCC alone = $3.7Q; Euroclear adds €1,162T</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on TPS</strong>: Securities settlement is batch-oriented during market hours. Unlike RTGS (continuous flow), settlement systems process in cycles. NSCC's Continuous Net Settlement (CNS) system nets throughout the day, with final settlement occurring end-of-day. The calendar TPS is a smoothed average; actual processing is bursty.</p>
+<h3 id="system-by-system-breakdown">System-by-System Breakdown</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Annual Volume (est.)</th>
+<th>Annual Value</th>
+<th>Avg Daily Txns</th>
+<th>Assets Under Custody</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DTCC</strong> (DTC+NSCC+FICC)</td>
+<td>~500M+</td>
+<td>$3.7 quadrillion</td>
+<td>~1.3M (DTC alone)</td>
+<td>$99T</td>
+<td><a href="https://www.dtcc.com/annuals/2024/letters/cfo/">DTCC 2024 Annual Report</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>Euroclear</strong> (group)</td>
+<td>~331M</td>
+<td>€1,162T (~$1,267T)</td>
+<td>~1.3M</td>
+<td>&gt;€40T</td>
+<td><a href="https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html">Euroclear 2024 Results</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td><strong>Clearstream</strong> (ICSD+CSD)</td>
+<td>~200M (est.)</td>
+<td>€15T+ (est.)</td>
+<td>~800K (est.)</td>
+<td>€17T+</td>
+<td><a href="https://www.clearstream.com/clearstream-en/about-clearstream">Clearstream</a></td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td><strong>T2S</strong> (Eurosystem)</td>
+<td>~165M (est.)</td>
+<td>€180T+ (est.)</td>
+<td>~660K</td>
+<td>N/A</td>
+<td><a href="https://www.ecb.europa.eu/press/targetservar/html/ecb.targetservar2024.en.html">ECB TARGET Services</a></td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DTCC detail</strong>:
+- DTC: Handles ~1.3 million delivery transactions per day. The money associated with these movements is accomplished through ~70 transfers via the Federal Reserve's National Settlement Service (NSS) each day.
+- NSCC: Clears virtually all US broker-to-broker equity, corporate bond, and UIT transactions. Peak day record: 545M transactions (7 April 2025), up 33% from the prior record of 409M during the January 2021 meme stock event.
+- FICC: Government Securities Division (GSD) clears US Treasury and agency debt. Mortgage-Backed Securities Division handles MBS settlement.
+- ATP (Automated Trade Processing): Handles &gt;350M transactions annually valued at &gt;$142T.</p>
+<p><strong>Euroclear detail</strong>:
+- 331 million netted transactions processed in 2024 (full year), valued at €1,162 trillion
+- First 9 months of 2024: 243M transactions, €850T (up 5% YoY)
+- Assets under custody exceeded €40 trillion for the first time
+- Settlement volumes hit a new all-time high</p>
+<p><strong>Clearstream detail</strong>:
+- Year-to-date through May 2024: ICSD 8.0M transactions, CSD 71.7M transactions, IFS 18.4M transactions (total: ~98.1M in 5 months)
+- Annualized: ~235M transactions (though H2 may differ)
+- Settlement instructions volume increased 25% in 2024; failed instructions declined 14%</p>
+<p><strong>T2S detail</strong>:
+- Volumes peaked in 2024, up 14% from previous year, rebounding from two consecutive years of decline
+- Part of the consolidated T2-T2S platform since March 2023</p>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="dtcc-annual-settled-value-quadrillions">DTCC Annual Settled Value ($ quadrillions)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Settled Value ($Q)</th>
+<th>Revenue ($B)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~2.0</td>
+<td>1.86</td>
+<td>Pre-pandemic baseline</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~2.3</td>
+<td>1.94</td>
+<td>COVID volatility spike</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~2.5</td>
+<td>2.02</td>
+<td>Meme stocks, record retail participation</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~2.5</td>
+<td>2.12</td>
+<td>Rate hiking cycle begins</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~3.0</td>
+<td>2.25</td>
+<td>Market recovery</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~3.7</td>
+<td>2.49</td>
+<td>T+1 transition, strong equity markets</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.dtcc.com/about/annual-report">DTCC Annual Reports</a>, <a href="https://en.wikipedia.org/wiki/Depository_Trust_%26_Clearing_Corporation">Wikipedia</a></p>
+<h3 id="euroclear-annual-transaction-volume-millions">Euroclear Annual Transaction Volume (millions)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Transactions (M)</th>
+<th>Value (€T)</th>
+<th>Assets Under Custody (€T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>~250</td>
+<td>~800</td>
+<td>~31</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~265</td>
+<td>~850</td>
+<td>~33</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~280</td>
+<td>~950</td>
+<td>~37</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~290</td>
+<td>~1,000</td>
+<td>~35</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~310</td>
+<td>~1,100</td>
+<td>~37</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>331</td>
+<td>1,162</td>
+<td>&gt;40</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html">Euroclear Annual Results</a></p>
+<p>Note: Pre-2024 Euroclear transaction volumes are estimates based on growth rate trends. The 2024 figure of 331M is confirmed.</p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>5-Year CAGR (Volume)</th>
+<th>5-Year CAGR (Value)</th>
+<th>Key Driver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DTCC</td>
+<td>~6% (value)</td>
+<td>~13% (value)</td>
+<td>T+1 transition, strong equity markets, record volumes</td>
+</tr>
+<tr>
+<td>Euroclear</td>
+<td>~5.8%</td>
+<td>~7.7%</td>
+<td>European market integration, T2S adoption</td>
+</tr>
+<tr>
+<td>Clearstream</td>
+<td>~4% (est.)</td>
+<td>~5% (est.)</td>
+<td>CSDR efficiency improvements</td>
+</tr>
+<tr>
+<td>T2S</td>
+<td>~3% (est.)</td>
+<td>~4% (est.)</td>
+<td>Gradual migration of European CSDs</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Composite securities settlement 5-year volume CAGR</strong>: ~5%
+<strong>Composite securities settlement 5-year value CAGR</strong>: ~10%</p>
+<p>The value CAGR significantly exceeds volume CAGR because:
+1. Rising equity prices increase the notional value of each settlement
+2. Government debt issuance has surged globally (higher fixed-income settlement values)
+3. T+1 settlement doesn't change annual counts but concentrates activity</p>
+<hr/>
+<h2 id="projections-through-2035">Projections (through 2035)</h2>
+<h3 id="baseline-scenario-5-volume-cagr-8-value-cagr">Baseline Scenario (5% volume CAGR, 8% value CAGR)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Volume (B)</th>
+<th>Avg TPS (calendar)</th>
+<th>Annual Value ($Q)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>1.47</td>
+<td>46.6</td>
+<td>4.0</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>1.54</td>
+<td>48.8</td>
+<td>4.3</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>1.70</td>
+<td>53.9</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>1.87</td>
+<td>59.3</td>
+<td>5.9</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>2.39</td>
+<td>75.8</td>
+<td>8.7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-scenario-8-volume-cagr">High-Growth Scenario (8% volume CAGR)</h3>
+<p>Driven by: T+0/atomic settlement adoption, tokenized securities growth, emerging market CSD expansion, fractional share settlement.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Volume (B)</th>
+<th>Avg TPS (calendar)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2030</td>
+<td>2.06</td>
+<td>65.3</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>3.03</td>
+<td>96.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-scenario-3-volume-cagr">Conservative Scenario (3% volume CAGR)</h3>
+<p>Driven by: Netting efficiency improvements reduce gross settlement counts, consolidation of European CSDs.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Volume (B)</th>
+<th>Avg TPS (calendar)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2030</td>
+<td>1.67</td>
+<td>52.9</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>1.93</td>
+<td>61.2</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>$3.7 quadrillion processed by DTCC alone</strong>: This is the largest single-institution value figure in global finance. DTCC's subsidiaries collectively process more value than any other financial market infrastructure.</p>
+</li>
+<li>
+<p><strong>T+1 proved the plumbing works</strong>: The US moved to T+1 on 28 May 2024 with no systemic issues. CLS settlement values increased post-T+1. Europe is evaluating a similar move (potentially 2027). The UK has signaled interest. T+0 (same-day or atomic settlement) remains a longer-term aspiration.</p>
+</li>
+<li>
+<p><strong>NSCC peak capacity is extraordinary</strong>: The 545M single-day record (April 2025) demonstrates that US clearing infrastructure can handle extreme stress events. This is &gt;1,000x the daily average, showing massive headroom.</p>
+</li>
+<li>
+<p><strong>Euroclear hit record highs across the board</strong>: 331M transactions, €1,162T settled value, &gt;€40T in custody — all records. European settlement infrastructure is scaling steadily.</p>
+</li>
+<li>
+<p><strong>Settlement is downstream of trading</strong>: Every equity trade, bond trade, and derivative exercise flows through these systems. The 1.3–1.5B settlement transactions are a compressed/netted version of the ~10B+ trades executed globally. Netting ratios typically run 5:1 to 10:1.</p>
+</li>
+<li>
+<p><strong>Double-counting boundary</strong>: The cash leg of DVP (delivery-versus-payment) settlement flows through RTGS systems and is counted in the interbank-rtgs capsule. This capsule counts the securities delivery leg only. There is inherent overlap in value terms — a $1M equity settlement appears as both a securities delivery (here) and a cash payment (RTGS).</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>DTCC</strong>: Medium-high confidence on value ($3.7Q), lower confidence on transaction counts. DTCC publishes value data prominently but detailed transaction count breakdowns (by subsidiary, by asset class) require consulting CPMI-IOSCO quarterly disclosures.</li>
+<li><strong>Euroclear</strong>: High confidence. Clear reporting of 331M transactions and €1,162T in 2024 press releases.</li>
+<li><strong>Clearstream</strong>: Medium confidence. Monthly statistics published but complete annual totals require aggregation. Year-to-date figures through May 2024 extrapolated.</li>
+<li><strong>T2S</strong>: Medium confidence. ECB reports growth rates (up 14% in 2024) but absolute transaction counts for T2S specifically are embedded in the broader TARGET Services reporting.</li>
+<li><strong>Overlap risk</strong>: Euroclear and Clearstream both settle through T2S for euro-denominated securities. Some transactions may be counted by both the ICSD and T2S. We attempt to avoid double-counting by using netted transaction figures where available.</li>
+<li><strong>DTCC transaction count gap</strong>: The biggest data limitation. We know DTCC processes &gt;1.3M DTC deliveries/day and &gt;350M ATP transactions/year, but the total annual settlement transaction count across all subsidiaries is not published as a single headline figure.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>DTCC total transaction count</strong>: DTCC publishes value ($3.7Q) prominently but does not provide a single headline annual transaction count across all subsidiaries (DTC + NSCC + FICC + ATP). We estimate ~500M+ but this is assembled from partial disclosures.</li>
+<li><strong>CSD consolidation impact</strong>: European CSDs are gradually consolidating onto T2S. How much of the apparent growth in T2S volumes is migration (from national CSDs) vs genuine new activity?</li>
+<li><strong>T+1 impact on fail rates</strong>: The US moved to T+1 in May 2024; early data suggests fail rates initially spiked then normalised. The steady-state impact on settlement efficiency and transaction counts is still emerging.</li>
+<li><strong>Asian CSD volumes</strong>: <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a> (JASDEC), <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> (CSDC/CCDC), and <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> (NSDL/CDSL) are major settlement systems not covered in our estimates. Including them could add 500M-1B+ settlement transactions.</li>
+<li><strong>DLT settlement pilot volumes</strong>: HKMA's Project Ensemble, BIS Project mBridge, and other DLT settlement pilots are live but volumes are not consistently reported.</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DTCC transaction count</td>
+<td>Cross-reference: DTC daily deliveries (1.3M) x 250 days = 325M; add NSCC/FICC/ATP partial data</td>
+<td>DTCC annual report, CPMI-IOSCO disclosures</td>
+<td>:yellow_circle:</td>
+</tr>
+<tr>
+<td>Asian CSD volumes (China CSDC)</td>
+<td>China equity market daily turnover (~$100-150B/day) / avg trade size; apply netting ratio</td>
+<td>Shanghai/Shenzhen exchange published trading data</td>
+<td>:yellow_circle:</td>
+</tr>
+<tr>
+<td>Asian CSD volumes (India NSDL/CDSL)</td>
+<td>SEBI publishes depository statistics; CDSL processes ~80% of Indian equity settlements</td>
+<td>SEBI Annual Report, CDSL monthly bulletins</td>
+<td>:green_circle:</td>
+</tr>
+<tr>
+<td>T+1 fail rate impact</td>
+<td>DTCC/SIFMA T+1 After Action Report; compare pre/post fail rates; model steady-state volume impact</td>
+<td>SIFMA T+1 report (published); DTCC settlement data</td>
+<td>:green_circle:</td>
+</tr>
+<tr>
+<td>CSD consolidation trend</td>
+<td>Track number of CSDs on T2S over time (currently ~20); model remaining national CSD migration dates</td>
+<td>ECB T2S participation list; CSDR implementation timeline</td>
+<td>:yellow_circle:</td>
+</tr>
+<tr>
+<td>DLT settlement pilot scale</td>
+<td>BIS Innovation Hub reports; HKMA Ensemble disclosures; SIX Digital Exchange published volumes</td>
+<td>BIS Annual Report, individual pilot disclosures</td>
+<td>:red_circle:</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li>If Asian CSDs (China, Japan, India, Korea) were included, does global securities settlement volume reach 2.5-3.0 billion transactions? This would significantly change the TPS picture.</li>
+<li>What is the netting ratio trend? If NSCC netting becomes more efficient (currently ~5:1 to 10:1 trade-to-settlement), settlement transaction counts could decline even as trading volumes increase. Conversely, T+0/atomic settlement would eliminate netting, potentially multiplying settlement counts by 5-10x.</li>
+<li>How will tokenised securities (see RWA capsule) interact with traditional settlement? Will tokenised settlement be additive or substitutive?</li>
+<li>NSCC's 545M single-day peak vs ~2M daily average implies &gt;250x headroom. Is this architecture genuine capacity or theoretical burst?</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>Trade-to-settlement ratio</strong>: Comparing exchange-reported trade counts (~10B+ globally) to settlement counts (1.3-1.5B) gives a ~7:1 netting ratio. Monitoring this ratio over time reveals whether settlement is becoming more or less efficient.</li>
+<li><strong>BIS CPMI-IOSCO PFMI disclosures</strong>: All systemically important CCPs and CSDs must publish quantitative disclosures quarterly. These are the most granular source for settlement transaction counts but are dispersed across individual institution websites.</li>
+<li><strong>Fractional share settlement</strong>: The rise of fractional share trading (Robinhood, Trading 212) may increase settlement complexity without proportionally increasing settlement counts, as fractional positions are typically netted at the broker level before reaching DTCC.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://www.dtcc.com/annuals/2024/files/DTCC-Annual-Report-2024-Print.pdf">DTCC 2024 Annual Report</a></li>
+<li><a href="https://www.dtcc.com/annuals/2024/letters/cfo/">DTCC Annual Report - CFO Letter</a></li>
+<li><a href="https://www.dtcc.com/news/2025/april/23/dtcc-processes-record-volumes-across-services-amid-market-volatility">DTCC Record Volumes (April 2025)</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Depository_Trust_%26_Clearing_Corporation">DTCC Wikipedia</a></li>
+<li><a href="https://www.euroclear.com/newsandinsights/en/press/2025/mr-05-euroclear-delivers-strong-results-in-2024.html">Euroclear 2024 Results Press Release</a></li>
+<li><a href="https://www.euroclear.com/newsandinsights/en/Format/Articles/euroclear-releases-2024-annual-reports.html">Euroclear 2024 Annual Report</a></li>
+<li><a href="https://www.clearstream.com/clearstream-en/newsroom/250131-4258778">Clearstream Settlement Efficiency 2024</a></li>
+<li><a href="https://www.ecb.europa.eu/press/targetservar/html/ecb.targetservar2024.en.html">ECB TARGET Services Annual Report 2024</a></li>
+<li><a href="https://www.sifma.org/resources/guides-playbooks/t1-after-action-report">SIFMA T+1 After Action Report</a></li>
+<li><a href="https://finance.yahoo.com/news/dtcc-handles-3-7-quadrillion-162255289.html">DTCC $3.7 Quadrillion / Canton Network</a></li>
+<li><a href="https://www.bis.org/statistics/dataportal/payment_stats.htm">BIS CPMI Payment Statistics</a></li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/banking/securities-settlement/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/banking/securities-settlement/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/banking/securities-settlement/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/banking/securities-settlement/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/banking/securities-settlement/REPORT.md">analysis/banking/securities-settlement/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

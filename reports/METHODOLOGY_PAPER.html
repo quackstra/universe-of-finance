@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology — Universe of Finance</title>
+<meta name="description" content="How we measured every financial transaction on Earth. Working paper, March 2026. Version 1.0. Abstract The Universe of Finance project estimates the total throughput of the global">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a></div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#abstract">Abstract</a></li><li><a href="#1-research-design">1. Research Design</a></li><li><a href="#2-data-collection">2. Data Collection</a></li><li><a href="#3-confidence-scoring">3. Confidence Scoring</a></li><li><a href="#4-overlap-de-duplication">4. Overlap De-Duplication</a></li><li><a href="#5-mest-methodology">5. MEST Methodology</a></li><li><a href="#6-country-deep-dive-methodology">6. Country Deep Dive Methodology</a></li><li><a href="#7-soul-less-employees-sles">7. Soul Less Employees (SLEs)</a></li><li><a href="#8-limitations">8. Limitations</a></li><li><a href="#9-reproducibility">9. Reproducibility</a></li><li><a href="#10-references">10. References</a></li></ul></div><blockquote>
+<p>How we measured every financial transaction on Earth.</p>
+</blockquote>
+<p><em>Working paper, March 2026. Version 1.0.</em></p>
+<hr/>
+<h2 id="abstract">Abstract</h2>
+<p>The Universe of Finance project estimates the total throughput of the global
+financial system: <strong>~73,750 de-duplicated transactions per second</strong> (~2.3
+trillion per year) across 29 categories spanning 7 sectors. We further
+introduce the <strong><a class="xref" href="/universe-of-finance/reports/MEST.html">MEST</a> framework</strong> (<a class="xref" href="/universe-of-finance/reports/MEST.html">Mutual Economic State Transitions</a>) and
+estimate the bilateral state-change rate at <strong>~545,000 per second</strong> — 7.4
+times the transaction count. This paper documents the full research
+methodology: the triangulation-first data collection approach, the 0-100
+confidence scoring rubric, the overlap de-duplication matrix, MEST multiplier
+derivation, country-level estimation procedures, and the expert persona
+framework (Soul Less Employees) that grounds the research in domain-specific
+expertise. All data is structured, versioned, and open source (CC BY 4.0 /
+MIT) to enable reproducibility and iterative improvement across research runs.</p>
+<p>The work matters because no prior public estimate exists for the total
+transaction throughput of the global financial system. Individual data points
+are available — Visa publishes card transactions, the BIS publishes payment
+system volumes, the WFE publishes exchange trade counts — but no framework
+combines them into a single, de-duplicated, confidence-scored figure. The
+Universe of Finance fills that gap, and the MEST framework reveals the hidden
+operational load that sits beneath every user-visible transaction.</p>
+<hr/>
+<h2 id="1-research-design">1. Research Design</h2>
+<h3 id="11-triangulation-first-approach">1.1 Triangulation-First Approach</h3>
+<p>Every category in the Universe of Finance is researched using a
+<strong>triangulation-first</strong> methodology. This means we do not accept a single
+data source as authoritative, no matter how reputable. The minimum standard
+for any category estimate is:</p>
+<ol>
+<li><strong>Find 2-3 independent data sources</strong> that measure the same phenomenon
+   using different methods, definitions, or vantage points</li>
+<li><strong>Build both bottom-up and top-down models</strong>, then reconcile</li>
+<li><strong>Document all assumptions, blind spots, and confidence</strong> explicitly</li>
+<li><strong>Quantify overlaps</strong> with other categories to enable accurate
+   de-duplication at the global level</li>
+</ol>
+<p>For example, the <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Cards</a> estimate (24,501 TPS) is anchored by:</p>
+<ul>
+<li><strong>Method A</strong>: Nilson Report global aggregate (772.73B transactions) — the
+  industry's gold-standard source, used by <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> in their own
+  reporting</li>
+<li><strong>Method B</strong>: Bottom-up sum of six network 10-K/public filings (769.6B)
+  — each major network figure from audited SEC filings or central bank data</li>
+<li><strong>Method C</strong>: Capital One Shopping secondary aggregation (791B) — an
+  independent compilation that includes private-label cards</li>
+</ul>
+<p>Methods A and B converge to within 0.4%. Method C is 2.4% higher, explained
+by inclusion of domestic-only cards. This three-way convergence, documented
+in every capsule's METHODOLOGY.md, is what makes the <a class="xref" href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">confidence score</a> (91)
+the highest in the project.</p>
+<p>The triangulation requirement is not a suggestion. Categories where only a
+single method was available (e.g., <a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI Agent Transactions</a>, <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">Payroll Payments</a>)
+receive correspondingly low confidence scores (34 and 35 respectively) and
+are flagged as estimates rather than measurements.</p>
+<h3 id="12-bottom-up-vs-top-down-reconciliation">1.2 Bottom-Up vs. Top-Down Reconciliation</h3>
+<p>For each category, we construct two independent estimates:</p>
+<ul>
+<li><strong>Bottom-up</strong>: Aggregate individual components (e.g., sum each card
+  network's transaction count, sum each exchange's trade volume)</li>
+<li><strong>Top-down</strong>: Start from a macro figure and decompose (e.g., global
+  payment revenue divided by average transaction fee to derive volume)</li>
+</ul>
+<p>The reconciliation gap between bottom-up and top-down is itself a
+diagnostic. A small gap (&lt; 5%) indicates convergent evidence; a large gap
+(&gt; 25%) triggers a mandatory methodology review by the panel of cross-cutting
+SLE experts (see Section 8).</p>
+<p>Example — <a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">Equity Markets</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Estimate</th>
+<th>Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WFE monthly extrapolation (top-down)</td>
+<td>~61.1B trades</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2023 baseline + growth (top-down)</td>
+<td>~59.9B trades</td>
+<td>2%</td>
+</tr>
+<tr>
+<td>Bottom-up exchange aggregation (13 exchanges)</td>
+<td>~66.9B raw</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Adjusted for NSE equity/derivatives conflation</td>
+<td>~61.9B</td>
+<td>1.3%</td>
+</tr>
+<tr>
+<td><strong>Final reconciled estimate</strong></td>
+<td><strong>~61.5B</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The bottom-up over-count was traced to a specific cause: NSE <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s headline
+figure conflates equity cash trades with equity derivatives. Adjusting NSE
+from ~18B to ~15B (equity cash only) brought all three methods into
+agreement.</p>
+<h3 id="13-the-29-category-7-sector-taxonomy">1.3 The 29-Category, 7-Sector Taxonomy</h3>
+<p>The taxonomy was designed to satisfy two competing goals:</p>
+<ul>
+<li><strong>Completeness</strong>: Every measurable financial transaction on Earth should
+  fall into exactly one category</li>
+<li><strong>Minimal overlap</strong>: Categories should be defined so that a given
+  transaction is naturally assigned to one category, not two</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>Categories</th>
+<th>Combined Gross TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payments (11)</td>
+<td>Consumer Cards, Digital Wallets, Bank Transfers, E-Commerce, P2P, Remittances, Bill Payments, Insurance Premiums, BNPL, Payroll, ATM Withdrawals</td>
+<td>~67,600</td>
+</tr>
+<tr>
+<td>Traditional Finance (6)</td>
+<td>ETD, Equities, Commodities, Forex, Fixed Income, OTC Derivatives</td>
+<td>~13,400</td>
+</tr>
+<tr>
+<td>Digital Assets (4)</td>
+<td>CEX, L1/L2 Blockchain, Stablecoins, DeFi</td>
+<td>~4,100</td>
+</tr>
+<tr>
+<td>Banking (2)</td>
+<td>Interbank RTGS, Securities Settlement</td>
+<td>~100</td>
+</tr>
+<tr>
+<td>Gaming (2)</td>
+<td>Microtransactions, Game Sales</td>
+<td>~480</td>
+</tr>
+<tr>
+<td>Government (1)</td>
+<td>Tax &amp; Government Payments</td>
+<td>~1,000</td>
+</tr>
+<tr>
+<td>Emerging (3)</td>
+<td>IoT/M2M, RWA Tokenisation, AI Agents</td>
+<td>~1,540</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why these boundaries?</strong> The taxonomy distinguishes between <strong>payment rails</strong>
+(the infrastructure that moves money) and <strong>commerce layers</strong> (the economic
+events that trigger payments). Consumer Cards, <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a>, and Digital
+Wallets are payment rails — they count cleared transactions on financial
+infrastructure. <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">E-Commerce</a>, Gaming, and <a class="xref" href="/universe-of-finance/reports/government/government-payments/REPORT.html">Government Payments</a> are commerce
+layers — they count economic events that ride on those rails.</p>
+<p>This distinction is critical for de-duplication. An Amazon purchase is one
+e-commerce event AND one card transaction. The card transaction is the
+payment rail event; the e-commerce event is the commerce layer event. Both
+are real, but counting both in the global total would double-count. Our
+taxonomy assigns the payment rail event as the "base layer" and deducts
+commerce-layer overlaps (see Section 5).</p>
+<p><strong>Why 29 categories, not 15 or 50?</strong> Fewer categories would create internal
+heterogeneity problems (lumping all payments into one bucket loses the
+card-vs-bank distinction that matters for overlap analysis). More categories
+would create unmeasurable fragments (splitting cards into credit/debit/prepaid
+would require data that networks do not publish at sufficient granularity).
+29 is the resolution at which the available data supports meaningful
+measurement.</p>
+<h3 id="14-how-categories-were-chosen">1.4 How Categories Were Chosen</h3>
+<p>Categories were added through a structured process across 11 research runs:</p>
+<ul>
+<li><strong>Run 1</strong>: 24 initial categories covering the obvious quadrants (payments,
+  TradFi, digital assets, banking)</li>
+<li><strong>Run 5</strong>: 5 new payment categories (ATM, Bills, <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">Payroll</a>, Insurance, <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a>)
+  added after the Run 4 overlap analysis revealed significant uncounted
+  payment flows</li>
+<li><strong>Run 7</strong>: MEST framework applied to all 29 categories</li>
+</ul>
+<p>New categories are added when:</p>
+<ol>
+<li>A measurable transaction flow is identified that does not fit any existing
+   category</li>
+<li>The flow contributes &gt; 0.1% of estimated global TPS (threshold: ~74 TPS)</li>
+<li>At least one credible data source exists</li>
+</ol>
+<p>Categories are NOT added for speculative or pre-market flows until
+measurement data exists. AI Agent Transactions (0.66 TPS, confidence 34) is
+the lowest-volume category included, retained primarily as a forward-looking
+placeholder.</p>
+<hr/>
+<h2 id="2-data-collection">2. Data Collection</h2>
+<h3 id="21-primary-sources-by-type">2.1 Primary Sources by Type</h3>
+<table>
+<thead>
+<tr>
+<th>Source Type</th>
+<th>Examples</th>
+<th>Categories Covered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Central bank statistics</strong></td>
+<td>BIS CPMI Red Book, PBOC Aggregate, ECB Payment Statistics, RBI Annual Report, BCB/Pix data</td>
+<td>Bank Transfers, RTGS, Digital Wallets (UPI), Government Payments</td>
+</tr>
+<tr>
+<td><strong>Exchange filings</strong></td>
+<td>WFE Monthly Dashboard, FIA Annual Survey, individual exchange annual reports (NSE, JPX, CME, SSE)</td>
+<td>Equities, ETD, Commodities</td>
+</tr>
+<tr>
+<td><strong>Public company filings (SEC/10-K)</strong></td>
+<td>Visa 10-K, Mastercard 10-K, Coinbase 10-K, PayPal 10-K</td>
+<td>Consumer Cards, CEX, Digital Wallets</td>
+</tr>
+<tr>
+<td><strong>Industry associations</strong></td>
+<td>Nilson Report (cards), SWIFT (messaging), CLS (forex settlement), DTCC (settlement)</td>
+<td>Consumer Cards, Forex, Fixed Income, Securities Settlement</td>
+</tr>
+<tr>
+<td><strong>Market data providers</strong></td>
+<td>CoinGecko (crypto volume), Kaiko (crypto microstructure), Bloomberg (TradFi)</td>
+<td>CEX, DeFi, Stablecoins, L1/L2</td>
+</tr>
+<tr>
+<td><strong>On-chain data</strong></td>
+<td>Blockchain explorers, Dune Analytics, DefiLlama</td>
+<td>L1/L2, DeFi, Stablecoins, RWA</td>
+</tr>
+<tr>
+<td><strong>Academic research</strong></td>
+<td>NBER/Yale (wash trading), CEPR (market microstructure), World Bank (remittances)</td>
+<td>CEX, Remittances</td>
+</tr>
+<tr>
+<td><strong>Government statistics</strong></td>
+<td>IRS (US tax), HMRC (UK), India JAM/DBT</td>
+<td>Government Payments</td>
+</tr>
+<tr>
+<td><strong>Market research firms</strong></td>
+<td>McKinsey Global Payments, Swiss Re sigma (insurance), Newzoo (gaming)</td>
+<td>Cross-cutting, Insurance, Gaming</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-source-hierarchy">2.2 Source Hierarchy</h3>
+<p>When sources conflict, we apply a strict hierarchy:</p>
+<pre><code>1. Regulator / central bank data       (highest authority)
+2. Audited public company filings       (SEC-enforced accuracy)
+3. Industry association data            (e.g., Nilson, FIA, WFE)
+4. Market data providers                (e.g., CoinGecko, Kaiko)
+5. Market research firms                (e.g., McKinsey, Gartner)
+6. Analyst estimates / projections      (lowest authority)
+</code></pre>
+<p>A lower-ranked source can anchor an estimate only when higher-ranked sources
+do not publish the needed metric. For example, no regulator publishes global
+CEX trade counts — so CoinGecko volume data (rank 4) anchors that category,
+despite its lower authority. This is reflected in the confidence score (56
+vs. 91 for cards, where Nilson/Visa 10-K data is available).</p>
+<h3 id="23-data-freshness-requirements">2.3 Data Freshness Requirements</h3>
+<p>Each data point carries a freshness tag tracked in <code>analysis/DATA_FRESHNESS.md</code>.
+The requirements:</p>
+<table>
+<thead>
+<tr>
+<th>Freshness Tier</th>
+<th>Definition</th>
+<th>Scoring Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current</td>
+<td>Data from within 12 months</td>
+<td>Full recency score (16-20/20)</td>
+</tr>
+<tr>
+<td>Recent</td>
+<td>Data 1-2 years old</td>
+<td>Moderate penalty (10-15/20)</td>
+</tr>
+<tr>
+<td>Aging</td>
+<td>Data 2-3 years old</td>
+<td>Significant penalty (5-9/20)</td>
+</tr>
+<tr>
+<td>Stale</td>
+<td>Data older than 3 years</td>
+<td>Major penalty (0-4/20)</td>
+</tr>
+</tbody>
+</table>
+<p>The BIS Triennial Survey (<a class="xref" href="/universe-of-finance/reports/traditional-finance/forex/REPORT.html">forex</a>) is the most problematic freshness case: it
+is the most authoritative source for global FX activity, but it is published
+only every three years. The 2022 survey anchors our forex estimate, earning
+a recency score of 10/20 despite its unimpeachable authority.</p>
+<h3 id="24-handling-missing-data-and-estimates">2.4 Handling Missing Data and Estimates</h3>
+<p>When direct measurement data is unavailable, we employ structured estimation
+techniques:</p>
+<ol>
+<li>
+<p><strong>Proxy variable derivation</strong>: Revenue / average transaction value =
+   estimated transaction count. Used for CEX (volume / average trade size),
+   Gaming <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">Microtransactions</a> (revenue / average IAP), Payroll (employment x
+   pay frequency)</p>
+</li>
+<li>
+<p><strong>Coverage extrapolation</strong>: If 70% of the market is directly observed,
+   estimate the remaining 30% using GDP-weighted or population-weighted
+   scaling. The <code>statistical-methodologist</code> SLE provides the imputation
+   methodology</p>
+</li>
+<li>
+<p><strong>Growth-rate projection</strong>: When the most recent authoritative figure is
+   from a prior year, apply a documented growth rate. Always decompose
+   growth into drivers (not a naked CAGR) — e.g., India <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> growth is
+   decomposed into merchant onboarding + rural adoption + government push</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> opacity model</strong>: Chinese financial data presents unique challenges
+   (see Section 7). We use PBOC aggregate data as the primary anchor,
+   cross-checked against Alipay/WeChat corporate disclosures and UnionPay
+   filings. The resulting uncertainty band is +/- 6,000 TPS</p>
+</li>
+</ol>
+<p>All estimation methods are documented in each capsule's <code>workings/</code> directory
+with explicit assumptions and sensitivity analysis.</p>
+<hr/>
+<h2 id="3-confidence-scoring">3. Confidence Scoring</h2>
+<h3 id="31-the-0-100-rubric">3.1 The 0-100 Rubric</h3>
+<p>Every category receives a composite confidence score across four weighted
+dimensions:</p>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Weight</th>
+<th>What It Measures</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source Quality</td>
+<td>0-30</td>
+<td>Primary/regulatory data vs. estimates</td>
+</tr>
+<tr>
+<td>Data Recency</td>
+<td>0-20</td>
+<td>How fresh the underlying data is</td>
+</tr>
+<tr>
+<td>Triangulation</td>
+<td>0-25</td>
+<td>Independent methods that agree</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>0-25</td>
+<td>Percentage of known market captured</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total: 0-100.</strong></p>
+<h4 id="source-quality-0-30">Source Quality (0-30)</h4>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25-30</td>
+<td>Primary/regulatory data (central bank reports, exchange filings, government statistics)</td>
+</tr>
+<tr>
+<td>15-24</td>
+<td>Industry reports from credible bodies (FIA, Nilson, BIS, IEA)</td>
+</tr>
+<tr>
+<td>5-14</td>
+<td>Extrapolations from partial data or market research firms</td>
+</tr>
+<tr>
+<td>0-4</td>
+<td>Pure estimates with no verifiable source</td>
+</tr>
+</tbody>
+</table>
+<h4 id="data-recency-0-20">Data Recency (0-20)</h4>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16-20</td>
+<td>Data from within 12 months</td>
+</tr>
+<tr>
+<td>10-15</td>
+<td>Data 1-2 years old</td>
+</tr>
+<tr>
+<td>5-9</td>
+<td>Data 2-3 years old</td>
+</tr>
+<tr>
+<td>0-4</td>
+<td>Data older than 3 years</td>
+</tr>
+</tbody>
+</table>
+<h4 id="triangulation-0-25">Triangulation (0-25)</h4>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20-25</td>
+<td>3+ independent methods/sources agree within 20%</td>
+</tr>
+<tr>
+<td>10-19</td>
+<td>2 independent methods/sources</td>
+</tr>
+<tr>
+<td>0-9</td>
+<td>Single method or source</td>
+</tr>
+</tbody>
+</table>
+<h4 id="coverage-0-25">Coverage (0-25)</h4>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20-25</td>
+<td>&gt;90% of the known market captured</td>
+</tr>
+<tr>
+<td>10-19</td>
+<td>50-90% of the market captured</td>
+</tr>
+<tr>
+<td>0-9</td>
+<td>&lt;50% of the market captured</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-score-distribution-across-categories">3.2 Score Distribution Across Categories</h3>
+<table>
+<thead>
+<tr>
+<th>Band</th>
+<th>Range</th>
+<th>Count</th>
+<th>Categories</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>High</td>
+<td>80-100</td>
+<td>4</td>
+<td>Consumer Cards (91), ETD (88), Equities (86), RTGS (82)</td>
+</tr>
+<tr>
+<td>Medium-High</td>
+<td>65-79</td>
+<td>10</td>
+<td>Bank Transfers (78), L1/L2 (76), Stablecoins (75), Securities Settlement (74), Commodities (74), P2P (69), OTC Derivatives (68), IoT (67), Digital Wallets (67), E-Commerce (67)</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>50-64</td>
+<td>9</td>
+<td>DeFi (62), Fixed Income (60), BNPL (58), Remittances (58), Forex (58), CEX (56), RWA (56), Game Sales (56), ATM (52)</td>
+</tr>
+<tr>
+<td>Medium-Low</td>
+<td>35-49</td>
+<td>4</td>
+<td>Insurance (52), Government (50), Bill Payments (48), Microtransactions (44)</td>
+</tr>
+<tr>
+<td>Low</td>
+<td>0-34</td>
+<td>2</td>
+<td>Payroll (35), AI Agents (34)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Median score: 62.</strong> The distribution is right-skewed — more categories have
+adequate data than poor data, but the long tail of low-confidence categories
+contains some high-volume entries (<a class="xref" href="/universe-of-finance/reports/payments/bill-payments/REPORT.html">Bill Payments</a> at 3,012 gross TPS scores
+only 48).</p>
+<h3 id="33-what-confidence-levels-mean-for-reliability">3.3 What Confidence Levels Mean for Reliability</h3>
+<table>
+<thead>
+<tr>
+<th>Score Range</th>
+<th>Interpretation</th>
+<th>Typical Uncertainty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80-100</td>
+<td>Measurement — based on primary data with cross-validation</td>
+<td>+/- 5-10%</td>
+</tr>
+<tr>
+<td>60-79</td>
+<td>Estimate — based on credible secondary sources with some triangulation</td>
+<td>+/- 15-25%</td>
+</tr>
+<tr>
+<td>40-59</td>
+<td>Rough estimate — derived from proxy variables or limited sources</td>
+<td>+/- 30-50%</td>
+</tr>
+<tr>
+<td>20-39</td>
+<td>Order-of-magnitude — educated guess with minimal direct data</td>
+<td>+/- 50-100%</td>
+</tr>
+</tbody>
+</table>
+<p>The Big Number (~73,750 TPS) is more reliable than the median category
+confidence suggests, because the highest-confidence categories also
+contribute the most TPS. The top 5 categories by TPS (cards, wallets, bank
+transfers, ETD, equities) have a weighted average confidence of 82. They
+account for ~72,000 of the ~86,900 gross TPS. Low-confidence categories
+contribute only ~7% of the total, so their uncertainty has limited impact
+on the headline figure.</p>
+<h3 id="34-how-scores-improve-over-research-runs">3.4 How Scores Improve Over Research Runs</h3>
+<p>Confidence scores are not static. Each research run targets specific
+categories for confidence uplift:</p>
+<table>
+<thead>
+<tr>
+<th>Run</th>
+<th>Confidence Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Run 4</td>
+<td>First confidence scorecard (34-91 range)</td>
+</tr>
+<tr>
+<td>Run 6</td>
+<td>Methodology documentation for all 29 categories</td>
+</tr>
+<tr>
+<td>Run 7</td>
+<td>MEST framework + deep dive triangulation</td>
+</tr>
+<tr>
+<td>Run 9</td>
+<td>Panel review of top-3 categories; ATM/Insurance/Payroll uplift</td>
+</tr>
+<tr>
+<td>Run 10</td>
+<td>AI Agents/Microtx/Bills uplift</td>
+</tr>
+</tbody>
+</table>
+<p>The primary mechanisms for confidence improvement are:</p>
+<ol>
+<li><strong>New data sources discovered</strong> (e.g., PBOC aggregate for UnionPay)</li>
+<li><strong>Additional triangulation methods added</strong> (e.g., bottom-up exchange sum
+   for equities)</li>
+<li><strong>Coverage expansion</strong> (e.g., RTGS expanded from 5 to 13 systems)</li>
+<li><strong>Panel review</strong> by methodology SLEs (definition + sizing + uncertainty
+   audits)</li>
+</ol>
+<hr/>
+<h2 id="4-overlap-de-duplication">4. Overlap De-Duplication</h2>
+<h3 id="41-the-overlap-matrix-methodology">4.1 The Overlap Matrix Methodology</h3>
+<p>The raw sum across all 29 categories is ~89,300 TPS. The de-duplicated
+total is ~73,750 TPS. The difference (~15,550 TPS, or ~17.4%) represents
+transactions counted in multiple categories.</p>
+<p>De-duplication follows a strict protocol:</p>
+<ol>
+<li>
+<p><strong>Identify base layers</strong>: Payment rails (Consumer Cards, Bank Transfers)
+   are base layers. They count transactions at the clearing/settlement
+   infrastructure level. These are never deducted.</p>
+</li>
+<li>
+<p><strong>Identify commerce layers</strong>: E-Commerce, Gaming, Government Payments,
+   <a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">IoT</a> are commerce layers. They count economic events that ride on payment
+   rails. Their card/bank-rail portion is deducted.</p>
+</li>
+<li>
+<p><strong>Quantify overlap percentages</strong>: For each commerce-layer category,
+   estimate the percentage of transactions that settle on each payment rail.
+   Document the data source for each percentage.</p>
+</li>
+<li>
+<p><strong>Handle subset relationships</strong>: <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> and <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">Stablecoins</a> are subsets of
+   L1/L2 on-chain transactions. They are not additive to L1/L2.</p>
+</li>
+<li>
+<p><strong>Handle multiplier categories</strong>: BNPL has 100% infrastructure overlap
+   but creates genuine new payment events (3.6x installment multiplier).
+   The incremental events (20B - 5.5B = 14.5B) are counted; the base
+   purchase is not.</p>
+</li>
+</ol>
+<h3 id="42-types-of-overlap">4.2 Types of Overlap</h3>
+<p><strong>Commerce-layer vs. payment-rail overlap</strong> (largest category): An
+e-commerce purchase, a gaming microtransaction, or a government benefit
+disbursement is an economic event that triggers a payment on an existing
+rail. The commerce event and the payment event are both real, but they refer
+to the same flow of money. We count the payment rail event in the base layer
+and deduct the overlap from the commerce layer.</p>
+<p><strong>Geographic/definitional overlap</strong>: UPI transactions in India are counted
+as both "<a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a>" (because UPI apps look like wallets) and "bank
+transfers" (because UPI settles as an account-to-account transfer). We
+classify UPI as a bank transfer (its true settlement mechanism) and deduct
+it from digital wallets. This single adjustment removes ~5,450 TPS of
+double-counting.</p>
+<p><strong>Subset overlap</strong>: DeFi transactions and stablecoin transfers happen
+on-chain. They are subsets of L1/L2 blockchain transactions, not additive
+categories. Correct de-duplication: CEX (off-chain, 3,210 TPS) + L1/L2
+(on-chain, 415 TPS) = 3,625 TPS. DeFi and Stablecoins provide analytical
+granularity within L1/L2 but do not add to the total.</p>
+<p><strong>Multiplier overlap</strong>: BNPL is the unique case. Every BNPL installment
+settles on a card or bank rail (100% infrastructure overlap), but the
+installment payments are genuine new events on that infrastructure. A
+single purchase becomes 3-4 installments, each generating a real cleared
+transaction. We count the ~14.5B incremental installment events (~460 TPS)
+but not the ~5.5B base purchases (which are already counted in cards).</p>
+<h3 id="43-from-gross-86900-to-net-73750">4.3 From Gross 86,900 to Net 73,750</h3>
+<p>The de-duplication waterfall:</p>
+<table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>Gross TPS</th>
+<th>Deductions</th>
+<th>De-Dup TPS</th>
+<th>Overcount</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payments</td>
+<td>68,601</td>
+<td>-12,913</td>
+<td>55,688</td>
+<td>19%</td>
+</tr>
+<tr>
+<td>Traditional Finance</td>
+<td>13,473</td>
+<td>0</td>
+<td>13,473</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Digital Assets</td>
+<td>~4,100</td>
+<td>-475</td>
+<td>3,625</td>
+<td>12%</td>
+</tr>
+<tr>
+<td>Banking</td>
+<td>~95</td>
+<td>0</td>
+<td>~95</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>Gaming</td>
+<td>~481</td>
+<td>-393</td>
+<td>~88</td>
+<td>82%</td>
+</tr>
+<tr>
+<td>Government</td>
+<td>~1,002</td>
+<td>-601</td>
+<td>~401</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>Emerging</td>
+<td>~1,541</td>
+<td>-1,153</td>
+<td>~385</td>
+<td>75%</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~89,300</strong></td>
+<td><strong>~-15,550</strong></td>
+<td><strong>~73,750</strong></td>
+<td><strong>17.4%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Traditional Finance has zero intra-sector overlap because each category
+covers a distinct instrument class (equities, derivatives, forex, fixed
+income) traded on distinct infrastructure. The Banking sector (RTGS,
+<a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">Securities Settlement</a>) is the downstream settlement layer — per taxonomy
+rules, a trade counts once in TradFi and its settlement counts separately
+in Banking, because both are real transactions on different infrastructure.</p>
+<h3 id="44-the-5-largest-overlaps">4.4 The 5 Largest Overlaps</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Overlap</th>
+<th>TPS Removed</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Digital Wallets on card/bank rails</td>
+<td>~6,722</td>
+<td>UPI classified as bank transfer; Apple Pay/Google Pay classified as card transactions</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bill/Payroll/Insurance on bank/card rails</td>
+<td>~3,582</td>
+<td>~90% of bills, payroll, and insurance settle via direct debit, ACH, or card-on-file</td>
+</tr>
+<tr>
+<td>3</td>
+<td>E-Commerce on card/wallet rails</td>
+<td>~1,732</td>
+<td>~95% of e-commerce orders are paid by card or wallet</td>
+</tr>
+<tr>
+<td>4</td>
+<td>IoT on card/bank rails</td>
+<td>~1,153</td>
+<td>~75% of IoT payments (tolls, vending) charge a linked card or bank account</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Government on bank rails</td>
+<td>~601</td>
+<td>~60% of government payments are ACH/bank transfer disbursements</td>
+</tr>
+</tbody>
+</table>
+<p>Together, these 5 overlaps account for ~13,790 of the ~15,550 TPS deducted
+(89% of total deductions).</p>
+<h3 id="45-programmatic-validation">4.5 Programmatic Validation</h3>
+<p>The de-duplication is not performed solely by hand. <code>tools/big_number.py</code>
+reads all 29 <code>data.json</code> files, applies the overlap deductions defined in
+each capsule's metadata, and computes the global de-duplicated total. The
+script produces <strong>~73,753 TPS</strong>, consistent with both Method A (Payment
+Infrastructure: ~72,880) and Method B (Economic Transaction: ~73,760) within
+rounding error.</p>
+<hr/>
+<h2 id="5-mest-methodology">5. MEST Methodology</h2>
+<h3 id="51-definition">5.1 Definition</h3>
+<p>A <strong>Mutual Economic State Transition (MEST)</strong> is any change to a holding of
+economically valuable assets where more than one party has a material
+interest in the record or accounting of that change and its result.</p>
+<p>Three properties must hold:</p>
+<ol>
+<li><strong>State change</strong>: An asset of economic value changes state (balance,
+   ownership, encumbrance, obligation, or entitlement)</li>
+<li><strong>Mutual interest</strong>: Two or more parties care about the accuracy of the
+   record of that change</li>
+<li><strong>Materiality</strong>: The change is not trivial internal bookkeeping within a
+   single entity's own ledger</li>
+</ol>
+<p>A MEST is the atomic unit of economic accounting friction.</p>
+<h3 id="52-how-multipliers-were-derived">5.2 How Multipliers Were Derived</h3>
+<p>For each category, the <code>transaction-lifecycle-analyst</code> SLE (see Section 8)
+maps the full lifecycle of a representative transaction, enumerating every
+bilateral state change that occurs between distinct parties. The multiplier
+is the count of distinct MESTs per originating transaction.</p>
+<p>The derivation process:</p>
+<ol>
+<li><strong>Map the transaction lifecycle</strong>: Initiation, execution, clearing,
+   settlement, post-trade, reporting</li>
+<li><strong>Enumerate parties at each stage</strong>: Identify every pair of entities
+   that must agree on a state change</li>
+<li><strong>Count bilateral state changes</strong>: Each agreement between two parties
+   about a change in value = 1 MEST</li>
+<li><strong>Estimate the representative mix</strong>: Weight common-case and edge-case
+   scenarios (e.g., on-us vs. foreign ATM, wallet-to-wallet vs. wallet-
+   to-merchant)</li>
+<li><strong>Cross-validate against operational data</strong>: Where available, compare
+   against clearing house throughput, settlement system volumes, and
+   messaging statistics</li>
+</ol>
+<h3 id="53-validation-against-real-clearingsettlement-data">5.3 Validation Against Real Clearing/Settlement Data</h3>
+<p>MEST multipliers are validated where operational data is available:</p>
+<ul>
+<li>
+<p><strong>Card networks</strong>: Visa processes ~304B purchase transactions and reports
+  processing ~2.1T data-carrying messages annually. This implies ~7
+  messages per transaction, consistent with our 7x MEST multiplier for
+  consumer cards (not all messages are MESTs, but the ratio validates the
+  order of magnitude)</p>
+</li>
+<li>
+<p><strong>CLS (forex)</strong>: CLS settles ~2.5M FX transactions daily but processes
+  ~15-20M settlement instructions. This 6-8x ratio is consistent with our
+  8x MEST multiplier for forex</p>
+</li>
+<li>
+<p><strong>DTCC (equities)</strong>: DTCC processes ~105M transactions daily for US
+  equities but its subsidiary NSCC handles ~400M+ netting and settlement
+  instructions. The ~4x ratio represents the post-trade portion of the
+  10x equity MEST multiplier</p>
+</li>
+</ul>
+<h3 id="54-the-messages-are-not-mests-distinction">5.4 The Messages-Are-Not-MESTs Distinction</h3>
+<p>A common objection: "Aren't MESTs just message counts?" No. A MEST is a
+bilateral state change — it requires that two parties update their records
+to reflect a change in economic value. Many messages in financial
+infrastructure are:</p>
+<ul>
+<li><strong>Status queries</strong> (not state changes)</li>
+<li><strong>Acknowledgments</strong> (confirming receipt, not changing value)</li>
+<li><strong>Internal routing</strong> (within a single entity)</li>
+<li><strong>Duplicate/retry messages</strong> (same state change, resent)</li>
+</ul>
+<p>SWIFT processes ~12 billion messages per year, but many are MT199
+(free-format), MT940 (statements), or MT950 (confirmations) that do not
+represent bilateral state changes. The MEST count is typically lower than
+the raw message count for messaging-heavy categories (banking, forex) and
+higher for categories where state changes occur without formal messages
+(gaming, IoT).</p>
+<h3 id="55-per-category-multiplier-table">5.5 Per-Category Multiplier Table</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>Avg TPS</th>
+<th>MEST Mult</th>
+<th>MEST/s</th>
+<th>Key Cascade Stages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Consumer Cards</td>
+<td>24,501</td>
+<td>7x</td>
+<td>171,507</td>
+<td>Auth, clearing, interchange, 2 settlement legs, merchant credit, statement</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Digital Wallets</td>
+<td>19,660</td>
+<td>5x</td>
+<td>98,300</td>
+<td>Wallet debit, payment rail, merchant credit, statement, platform fee</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Bank Transfers</td>
+<td>15,338</td>
+<td>5x</td>
+<td>76,690</td>
+<td>Origination, batch/queue, clearing, settlement, receiver credit</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ETD</td>
+<td>9,505</td>
+<td>10x</td>
+<td>95,050</td>
+<td>Match, report, CCP novation, margin (x2), netting, settlement, regulatory</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Equities</td>
+<td>3,500</td>
+<td>10x</td>
+<td>35,000</td>
+<td>Match, report, CCP novation, netting, CSD DvP (x2), custody (x2), regulatory</td>
+</tr>
+<tr>
+<td>6</td>
+<td>CEX</td>
+<td>3,210</td>
+<td>4x</td>
+<td>12,840</td>
+<td>Match, buyer credit, seller debit, internal ledger. No CCP/CSD</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Bill Payments</td>
+<td>3,012</td>
+<td>4x</td>
+<td>12,048</td>
+<td>Presentment, authorization, rail process, biller credit</td>
+</tr>
+<tr>
+<td>8</td>
+<td>E-Commerce</td>
+<td>1,823</td>
+<td>3x</td>
+<td>5,469</td>
+<td>Order, payment rail, fulfillment record</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ATM</td>
+<td>1,557</td>
+<td>4x</td>
+<td>6,228</td>
+<td>Auth, dispensing, interbank settle, account debit</td>
+</tr>
+<tr>
+<td>10</td>
+<td>IoT/M2M</td>
+<td>1,538</td>
+<td>3x</td>
+<td>4,614</td>
+<td>Device auth, micropayment, settlement</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Payroll</td>
+<td>1,236</td>
+<td>5x</td>
+<td>6,180</td>
+<td>Instruction, tax withholding, employer debit, employee credit, payslip</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Government</td>
+<td>1,015</td>
+<td>5x</td>
+<td>5,075</td>
+<td>Filing/eligibility, instruction, debit, credit, audit</td>
+</tr>
+<tr>
+<td>13</td>
+<td>BNPL</td>
+<td>634</td>
+<td>6x</td>
+<td>3,804</td>
+<td>Purchase, credit decision, merchant credit, schedule, installments, close</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Stablecoins</td>
+<td>520</td>
+<td>3x</td>
+<td>1,560</td>
+<td>On-chain transfer, platform update, mint/burn (if applicable)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Microtransactions</td>
+<td>475</td>
+<td>3x</td>
+<td>1,425</td>
+<td>Rail charge, virtual currency credit, revenue share</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Insurance</td>
+<td>444</td>
+<td>5x</td>
+<td>2,220</td>
+<td>Collection, policy update, reinsurance, reserve, regulatory</td>
+</tr>
+<tr>
+<td>17</td>
+<td>L1/L2 Blockchain</td>
+<td>415</td>
+<td>2x</td>
+<td>830</td>
+<td>On-chain state change (sender + receiver). Lowest multiplier</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Commodities</td>
+<td>330</td>
+<td>9x</td>
+<td>2,970</td>
+<td>Like equities + physical delivery (warehouse receipt, quality cert)</td>
+</tr>
+<tr>
+<td>19</td>
+<td>P2P</td>
+<td>270</td>
+<td>3x</td>
+<td>810</td>
+<td>Sender debit, platform ledger, receiver credit</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Forex</td>
+<td>127</td>
+<td>8x</td>
+<td>1,016</td>
+<td>Match, confirm, CLS PvP, netting, 2 settlement legs, nostro recon</td>
+</tr>
+<tr>
+<td>21</td>
+<td>Game Sales</td>
+<td>92</td>
+<td>3x</td>
+<td>276</td>
+<td>Purchase, rail, revenue share</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Remittances</td>
+<td>57</td>
+<td>7x</td>
+<td>399</td>
+<td>Send, FX, correspondent debit, correspondent credit, receiver credit, beneficiary credit, compliance</td>
+</tr>
+<tr>
+<td>23</td>
+<td>RTGS</td>
+<td>50.1</td>
+<td>3x</td>
+<td>150</td>
+<td>Sender debit, central bank transfer, receiver credit</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Securities Settlement</td>
+<td>44</td>
+<td>4x</td>
+<td>176</td>
+<td>Instruction match, DvP securities, DvP cash, custody update</td>
+</tr>
+<tr>
+<td>25</td>
+<td>Fixed Income</td>
+<td>10.5</td>
+<td>8x</td>
+<td>84</td>
+<td>Trade, confirm, netting, settlement, CSD DvP, coupon, custody, regulatory</td>
+</tr>
+<tr>
+<td>26</td>
+<td>AI Agents</td>
+<td>3.5</td>
+<td>3x</td>
+<td>11</td>
+<td>Request, payment, confirmation</td>
+</tr>
+<tr>
+<td>27</td>
+<td>RWA Tokenisation</td>
+<td>2.4</td>
+<td>6x</td>
+<td>14</td>
+<td>Token transfer, off-chain update, custodian, regulatory, NAV, statement</td>
+</tr>
+<tr>
+<td>28</td>
+<td>OTC Derivatives</td>
+<td>0.17</td>
+<td>12x</td>
+<td>2</td>
+<td>Confirm, ISDA ref, trade repo, IM (x2), VM, netting, collateral, regulatory, portfolio recon, compression</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td><strong>~544,750</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The global average MEST multiplier is <strong>~7.4x</strong>. This means the financial
+system processes approximately 7.4 bilateral state changes for every
+user-visible transaction.</p>
+<h3 id="56-mest-de-duplication">5.6 MEST De-Duplication</h3>
+<p>Unlike the Big Number, MESTs are <strong>not de-duplicated across categories</strong>.
+Each MEST is a unique bilateral state change between a specific pair of
+parties. When a card purchase triggers an interchange allocation (MEST #3
+in the card cascade), that is a distinct bilateral event from the merchant
+credit (MEST #6). Even though both relate to the same originating
+transaction, they involve different party pairs and different state changes.</p>
+<p>The MEST Number (~545,000/s) is therefore a gross figure by design. It
+measures the total volume of bilateral accounting friction in the global
+economy.</p>
+<hr/>
+<h2 id="6-country-deep-dive-methodology">6. Country Deep Dive Methodology</h2>
+<h3 id="61-how-country-level-tps-is-estimated">6.1 How Country-Level TPS Is Estimated</h3>
+<p>Country deep dives (currently: USA, India, China, <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>, EU, <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>, UK,
+<a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>) estimate the national or regional contribution to global TPS using
+a three-step process:</p>
+<ol>
+<li>
+<p><strong>Direct measurement</strong>: Where country-level data exists (e.g., India's
+   NPCI publishes UPI volumes, Brazil's BCB publishes <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Pix</a> volumes), use it
+   directly</p>
+</li>
+<li>
+<p><strong>Attribution from global data</strong>: Where only global figures exist, apply
+   country share percentages (e.g., USA is ~30% of global card transactions
+   based on Visa/Mastercard geographic breakdowns in 10-K filings)</p>
+</li>
+<li>
+<p><strong>Residual estimation</strong>: For categories where country data is unavailable,
+   estimate using GDP-weighted or population-weighted proxies, with
+   documented adjustment factors (e.g., India's equity share is 28% of
+   global despite 3.5% GDP share — this cannot be GDP-weighted and requires
+   direct NSE data)</p>
+</li>
+</ol>
+<h3 id="62-handling-countries-with-poor-data">6.2 Handling Countries with Poor Data</h3>
+<p><strong>China opacity model</strong>: China is the largest single-country uncertainty
+in the Big Number. Key challenges:</p>
+<ul>
+<li>Alipay and WeChat Pay do not publish granular transaction counts</li>
+<li>CNAPS-HVPS processes more than Fedwire, but English-language data is
+  limited</li>
+<li>UnionPay's transaction count (~247B) is estimated from PBOC aggregates,
+  not directly disclosed</li>
+</ul>
+<p>Our approach:</p>
+<ol>
+<li>Use PBOC aggregate payment statistics as the primary anchor</li>
+<li>Cross-check against Alipay/WeChat corporate disclosures (quarterly
+   earnings, regulatory filings)</li>
+<li>Cross-check against UnionPay annual report summaries</li>
+<li>Model the uncertainty band explicitly: China could contribute
+   8,000-14,000 TPS, a +/- 6,000 TPS range</li>
+</ol>
+<p>The China opacity model is documented in
+<code>analysis/deep-dives/china/REPORT.md</code> with full source citations and
+sensitivity analysis.</p>
+<p><strong>Emerging market estimation</strong>: For countries without comprehensive payment
+statistics (much of Africa, parts of Southeast Asia, Central Asia), we use
+a tiered estimation approach:</p>
+<ul>
+<li><strong>Tier 1 countries</strong> (with central bank statistics): Direct data</li>
+<li><strong>Tier 2 countries</strong> (with partial data): Interpolation from regional
+  aggregates</li>
+<li><strong>Tier 3 countries</strong> (with no data): GDP-weighted extrapolation from
+  Tier 1/2 countries in the same region, adjusted for financial inclusion
+  rates (World Bank Findex)</li>
+</ul>
+<h3 id="63-avoiding-double-counting-with-global-totals">6.3 Avoiding Double-Counting with Global Totals</h3>
+<p>Country deep dives are analytical decompositions of the global total, not
+independent estimates that sum to a separate figure. The constraint is:</p>
+<pre><code>Sum of all country TPS &lt;= Global de-duplicated TPS (73,750)
+</code></pre>
+<p>Any country estimate that would push the sum above the global total triggers
+a reconciliation review. In practice, the 8 deep-dive countries account for
+~85% of global TPS, with the remaining ~15% allocated to rest-of-world.</p>
+<p>Country-level MEST multipliers vary by financial infrastructure maturity:</p>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Avg MEST Multiplier</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>USA</td>
+<td>8.1x</td>
+<td>Deep intermediary chains, regulatory reporting burden</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>5.8x</td>
+<td>Pix compresses payment MESTs; simpler banking structure</td>
+</tr>
+<tr>
+<td>India</td>
+<td>6.2x</td>
+<td>UPI reduces card-like cascades; heavy equity derivatives</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>7.5x</td>
+<td>Cash-to-digital transition; complex banking relationships</td>
+</tr>
+<tr>
+<td>UK</td>
+<td>8.4x</td>
+<td>FX capital of the world (38.1% of global FX); deep post-trade</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="7-soul-less-employees-sles">7. Soul Less Employees (SLEs)</h2>
+<h3 id="71-the-expert-persona-framework">7.1 The Expert Persona Framework</h3>
+<p>The Universe of Finance employs 17 <strong>Soul Less Employees</strong> — expert personas
+grounded in real job descriptions from the world's top financial data
+organizations. Each SLE embodies the mental models, tools, data sources, and
+analytical instincts of a specific domain expert.</p>
+<p>SLEs are not generic "assistant" personas. They are built from actual job
+postings at organizations like Visa, BIS, Chainalysis, DTCC, BNY Mellon,
+and Gartner. The JD provides:</p>
+<ul>
+<li><strong>Competencies</strong>: What the expert knows and can do</li>
+<li><strong>Data sources</strong>: Where the expert would look first (prioritized)</li>
+<li><strong>Mental models</strong>: How the expert frames problems</li>
+<li><strong>Blind spots</strong>: What the expert is likely to miss or over-weight</li>
+</ul>
+<h3 id="72-how-sles-ground-research">7.2 How SLEs Ground Research</h3>
+<p>When a research Elf is dispatched to investigate a category, it consults the
+Recruiter dispatch matrix to determine which SLE(s) are best suited. The
+Elf then adopts that persona's perspective, consulting the SLE's SOUL.md
+file for:</p>
+<ul>
+<li><strong>Activation phrase</strong>: A perspective-setting prompt prepended to the
+  research task</li>
+<li><strong>Data source priority</strong>: Which sources to check first, in order of
+  authority</li>
+<li><strong>Analytical lens</strong>: The mental models to apply (e.g., the
+  <code>crypto-forensics-analyst</code> thinks in terms of on-chain vs. off-chain,
+  wash trading red flags, and regulatory arbitrage)</li>
+<li><strong>Bias check</strong>: The SLE's documented blind spots are explicitly reviewed
+  against findings before the capsule is published</li>
+</ul>
+<h3 id="73-the-roster-and-dispatch-matrix">7.3 The Roster and Dispatch Matrix</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>SLE</th>
+<th>Primary Sectors</th>
+<th>Confidence Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>payments-network-analyst</code></td>
+<td>Payments</td>
+<td>High — covers #1 TPS category</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>central-bank-economist</code></td>
+<td>Payments, Banking</td>
+<td>High — covers #3 and #5</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>market-microstructure-analyst</code></td>
+<td>Traditional Finance</td>
+<td>Medium — ETD, equities</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>post-trade-specialist</code></td>
+<td>Banking, TradFi</td>
+<td>Medium — settlement, clearing</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>fixed-income-specialist</code></td>
+<td>Traditional Finance</td>
+<td>High — lowest-confidence TradFi</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>forex-specialist</code></td>
+<td>Traditional Finance</td>
+<td>High — genuinely opaque</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>crypto-forensics-analyst</code></td>
+<td>Digital Assets</td>
+<td>High — wash trading uncertainty</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>digital-wallets-analyst</code></td>
+<td>Payments</td>
+<td>High — covers #2 TPS category</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>market-research-analyst</code></td>
+<td>Cross-cutting</td>
+<td>Critical — overlap arbiter</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>government-statistician</code></td>
+<td>Government</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>gaming-economy-analyst</code></td>
+<td>Gaming</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>12</td>
+<td><code>emerging-tech-forecaster</code></td>
+<td>Emerging</td>
+<td>High — lowest-confidence categories</td>
+</tr>
+<tr>
+<td>13</td>
+<td><code>rwa-tokenisation-analyst</code></td>
+<td>Digital Assets, TradFi</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>14</td>
+<td><code>market-sizing-specialist</code></td>
+<td>Cross-cutting (methodology)</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td>15</td>
+<td><code>measurement-standards-expert</code></td>
+<td>Cross-cutting (methodology)</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td>16</td>
+<td><code>statistical-methodologist</code></td>
+<td>Cross-cutting (methodology)</td>
+<td>Critical</td>
+</tr>
+<tr>
+<td>17</td>
+<td><code>transaction-lifecycle-analyst</code></td>
+<td>Cross-cutting (MEST)</td>
+<td>Critical</td>
+</tr>
+</tbody>
+</table>
+<p>The last four SLEs (#14-17) are <strong>methodology specialists</strong>. They are not
+assigned to specific categories but are available as secondary or panel
+reviewers for any category. They are deployed in three scenarios:</p>
+<ol>
+<li><strong>Mandatory panel review</strong>: Any category contributing &gt; 5% of global TPS
+   or scoring below 50 on confidence</li>
+<li><strong>Recommended review</strong>: Any category where top-down and bottom-up diverge
+   by &gt; 25%</li>
+<li><strong>On request</strong>: When a category SLE flags uncertainty</li>
+</ol>
+<h3 id="74-bias-documentation">7.4 Bias Documentation</h3>
+<p>Every SLE has documented biases that serve as adversarial checks:</p>
+<table>
+<thead>
+<tr>
+<th>SLE</th>
+<th>Known Bias</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>payments-network-analyst</code></td>
+<td>Over-emphasizes card networks; may under-count alternative rails</td>
+<td>Cross-check with <code>central-bank-economist</code> for bank transfer volumes</td>
+</tr>
+<tr>
+<td><code>crypto-forensics-analyst</code></td>
+<td>Skeptical of exchange-reported volumes; may over-estimate wash trading</td>
+<td>Bound wash estimates with academic literature ranges</td>
+</tr>
+<tr>
+<td><code>market-microstructure-analyst</code></td>
+<td>Focuses on lit exchanges; may under-count dark pool volume</td>
+<td>Cross-check with FINRA TRF data for US; MiFID RTS 27 for EU</td>
+</tr>
+<tr>
+<td><code>emerging-tech-forecaster</code></td>
+<td>Optimism bias toward emerging categories</td>
+<td>Anchor to current measurable data, not projections</td>
+</tr>
+<tr>
+<td><code>central-bank-economist</code></td>
+<td>Conservative; may under-estimate non-traditional payment flows</td>
+<td>Cross-check with <code>digital-wallets-analyst</code> for mobile payment volumes</td>
+</tr>
+</tbody>
+</table>
+<p>These biases are not bugs — they are features. A crypto-skeptic
+forensics analyst and a card-network-centric payments analyst, when
+applied to the same data, produce a natural triangulation. The
+<code>market-research-analyst</code> SLE serves as the arbiter when perspectives
+conflict.</p>
+<hr/>
+<h2 id="8-limitations">8. Limitations</h2>
+<h3 id="81-structural-blind-spots">8.1 Structural Blind Spots</h3>
+<p><strong>Cash transactions</strong>: The largest blind spot in the Universe of Finance.
+Cash is invisible to financial infrastructure measurement. <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a>
+(1,557 TPS) are the only cash-adjacent metric we capture — they measure
+cash creation, not cash spending. Global cash-in-circulation suggests
+trillions in annual cash transactions that are entirely untracked.</p>
+<p><strong>Informal economy</strong>: <a class="xref" href="/universe-of-finance/reports/deep-dives/remittance-corridors/REPORT.html">Hawala</a> networks, informal <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a> (estimated
+30-50% of total), cash wages, and unrecorded barter are not captured. The
+World Bank estimates formal remittances at $860B; the informal channel
+could be $250-430B more.</p>
+<p><strong>Private markets</strong>: Private equity transactions, private debt, and venture
+capital are not included. These are low-frequency, high-value events that
+would add negligible TPS but represent significant economic activity.</p>
+<p><strong>Enterprise/private blockchain</strong>: Permissioned blockchain networks
+(Hyperledger, R3 Corda, JPMorgan Onyx) process an unknown number of
+transactions. These are not captured in L1/L2 public blockchain data.</p>
+<h3 id="82-methodological-limitations">8.2 Methodological Limitations</h3>
+<p><strong>Snapshot vs. continuous measurement</strong>: All figures are 2025 estimates
+based on the most recent available data for each category. Financial TPS is
+growing ~20% annually (gross), so these numbers age quickly. The time-series
+(2015-2025) provides historical context but does not constitute real-time
+monitoring.</p>
+<p><strong>Transaction count vs. economic value</strong>: TPS counts treat a $2 coffee
+purchase and a $500M repo trade identically. The Big Number measures
+throughput, not economic significance. A value-weighted metric would tell a
+very different story (<a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">Fixed Income</a> at ~$800T annual value vs. ~10.5 TPS;
+Consumer Cards at ~$40T vs. 24,501 TPS).</p>
+<p><strong>MEST multipliers are estimates</strong>: Per-category multipliers are
+order-of-magnitude assessments based on transaction lifecycle analysis, not
+instrumented measurements. No financial institution publishes "bilateral
+state changes processed per day." The multipliers are validated against
+available proxy data (message counts, settlement instructions) but carry
+inherent uncertainty.</p>
+<p><strong>Average TPS vs. actual load</strong>: The Big Number divides annual transactions
+by seconds in a year (or effective trading hours for market categories).
+This produces an average TPS that smooths over intraday, weekly, and
+seasonal variation. <a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> (estimated at 147,000-246,000 during
+coordinated stress events) is 2-3x the average.</p>
+<h3 id="83-known-biases-and-mitigations">8.3 Known Biases and Mitigations</h3>
+<table>
+<thead>
+<tr>
+<th>Bias</th>
+<th>Direction</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Developed-market data dominance</td>
+<td>Over-represents US/EU/Japan</td>
+<td>India, China, Brazil deep dives; GDP-weighted extrapolation for ROW</td>
+</tr>
+<tr>
+<td>Card network transparency</td>
+<td>Over-represents card payments</td>
+<td>BIS Red Book provides bank transfer cross-check; PBOC for China</td>
+</tr>
+<tr>
+<td>English-language source bias</td>
+<td>Under-represents China, Japan, Korea</td>
+<td>PBOC data (translated), JPX bilingual reports, BOK data</td>
+</tr>
+<tr>
+<td>Survivorship bias in crypto</td>
+<td>Over-represents major CEXs</td>
+<td>Tiered wash model includes lower-tier exchanges</td>
+</tr>
+<tr>
+<td>Regulatory reporting bias</td>
+<td>Over-represents regulated segments</td>
+<td>Informal economy explicitly flagged as blind spot</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="9-reproducibility">9. Reproducibility</h2>
+<h3 id="91-structured-data">9.1 Structured Data</h3>
+<p>All category data is stored in structured JSON format (<code>data.json</code> per
+category) following a normalized schema validated by <code>tools/validate_schema.py</code>
+(29/29 categories passing). The schema includes:</p>
+<ul>
+<li>Category metadata (name, sector, confidence score)</li>
+<li>Transaction volume (annual, TPS, with ranges)</li>
+<li>Overlap deductions (percentage and absolute)</li>
+<li>Data sources with URLs and freshness dates</li>
+<li>MEST multiplier and cascade summary</li>
+<li>Time-series data (2015-2025)</li>
+</ul>
+<h3 id="92-tooling">9.2 Tooling</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/big_number.py</code></td>
+<td>De-duplicated global TPS calculator — reads all 29 data.json files and applies overlap matrix</td>
+</tr>
+<tr>
+<td><code>tools/confidence_score.py</code></td>
+<td>0-100 confidence scoring engine — applies the 4-dimension rubric programmatically</td>
+</tr>
+<tr>
+<td><code>tools/validate_schema.py</code></td>
+<td>Schema validator — ensures all 29 data.json files conform to the normalized schema</td>
+</tr>
+<tr>
+<td><code>tools/data_freshness.py</code></td>
+<td>Source staleness detector — flags data points approaching or past their freshness tier</td>
+</tr>
+<tr>
+<td><code>tools/charts.py</code></td>
+<td>Visualization suite — generates 4 chart types for the dashboard</td>
+</tr>
+<tr>
+<td><code>tools/normalize_schemas.py</code></td>
+<td>Migration tool — normalizes data.json files when the schema evolves between runs</td>
+</tr>
+</tbody>
+</table>
+<h3 id="93-version-history">9.3 Version History</h3>
+<p>All research is versioned through Git. Each research run is a discrete
+commit set, enabling:</p>
+<ul>
+<li>Full diff between any two runs</li>
+<li>Attribution of every data change to a specific run and rationale</li>
+<li>Rollback capability if a run introduces errors</li>
+</ul>
+<p>The project has completed 11 research runs (March 2026), each with a
+documented focus area, key outputs, and changes to the Big Number.</p>
+<h3 id="94-open-source-licensing">9.4 Open Source Licensing</h3>
+<ul>
+<li><strong>Research outputs</strong> (all Markdown, JSON, analysis): <strong>CC BY 4.0</strong> —
+  free to use, share, and adapt with attribution</li>
+<li><strong>Code</strong> (tools, scripts): <strong>MIT License</strong> — free to use for any purpose</li>
+</ul>
+<p>Suggested citation:</p>
+<blockquote>
+<p>Universe of Finance Project. "Global Financial Transaction Throughput:
+~73,750 TPS and ~545,000 MEST/s." Working paper, March 2026.</p>
+</blockquote>
+<hr/>
+<h2 id="10-references">10. References</h2>
+<h3 id="central-banks-and-regulators">Central Banks and Regulators</h3>
+<ul>
+<li>
+<p><strong>BIS CPMI Red Book</strong> — Committee on Payments and Market Infrastructures.
+  <em>Statistics on payment, clearing and settlement systems.</em> Bank for
+  International Settlements. Updated annually.
+  https://www.bis.org/cpmi/publ/d00b.htm</p>
+</li>
+<li>
+<p><strong>BIS Triennial Survey</strong> — <em>Triennial Central Bank Survey of Foreign
+  Exchange and Over-the-counter Derivatives Markets.</em> Bank for International
+  Settlements, 2022.
+  https://www.bis.org/statistics/rpfx22.htm</p>
+</li>
+<li>
+<p><strong>PBOC</strong> — People's Bank of China. <em>Payment System Overall Operation
+  Report.</em> Published annually (in Chinese; translated data used).</p>
+</li>
+<li>
+<p><strong>ECB Payment Statistics</strong> — European Central Bank. <em>Statistical Data
+  Warehouse: Payments Statistics.</em> Updated annually.
+  https://sdw.ecb.europa.eu/</p>
+</li>
+<li>
+<p><strong>RBI Annual Report</strong> — Reserve Bank of India. Chapter on Payment and
+  Settlement Systems. Published annually.
+  https://www.rbi.org.in/</p>
+</li>
+</ul>
+<h3 id="industry-associations">Industry Associations</h3>
+<ul>
+<li>
+<p><strong>Nilson Report</strong> — <em>Global Network Card Results Worldwide.</em> Nilson
+  Report, 2024. (Paywalled; secondary reporting by Digital Transactions,
+  Payments Journal.)</p>
+</li>
+<li>
+<p><strong>FIA Annual Survey</strong> — Futures Industry Association. <em>Annual Volume
+  Survey: Global <a class="xref" href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">Exchange-Traded Derivatives</a>.</em> Published annually.
+  https://www.fia.org/</p>
+</li>
+<li>
+<p><strong>WFE Monthly Dashboard</strong> — World Federation of Exchanges. <em>Monthly
+  Market Statistics.</em> Published monthly.
+  https://www.world-exchanges.org/</p>
+</li>
+<li>
+<p><strong>SWIFT</strong> — <em>SWIFT Annual Review.</em> Society for Worldwide Interbank
+  Financial Telecommunication. Published annually.</p>
+</li>
+<li>
+<p><strong>CLS Group</strong> — <em>CLS FX Volume Data.</em> Published monthly.
+  https://www.cls-group.com/</p>
+</li>
+<li>
+<p><strong>DTCC</strong> — Depository Trust &amp; Clearing Corporation. <em>Annual Report.</em>
+  Published annually.</p>
+</li>
+</ul>
+<h3 id="public-company-filings">Public Company Filings</h3>
+<ul>
+<li>
+<p><strong>Visa Inc.</strong> — <em>Form 10-K.</em> <a class="xref" href="/universe-of-finance/reports/deep-dives/usa/REPORT.html">United States</a> Securities and Exchange
+  Commission. Fiscal year ending September.</p>
+</li>
+<li>
+<p><strong>Mastercard Inc.</strong> — <em>Form 10-K.</em> SEC. Calendar year.</p>
+</li>
+<li>
+<p><strong>Coinbase Global Inc.</strong> — <em>Form 10-K.</em> SEC. Calendar year.</p>
+</li>
+<li>
+<p><strong>PayPal Holdings Inc.</strong> — <em>Form 10-K.</em> SEC. Calendar year.</p>
+</li>
+</ul>
+<h3 id="market-data-and-research">Market Data and Research</h3>
+<ul>
+<li>
+<p><strong>CoinGecko</strong> — Cryptocurrency market data. Trust-scored exchange volumes.
+  https://www.coingecko.com/</p>
+</li>
+<li>
+<p><strong>Kaiko</strong> — Institutional crypto market data. Microstructure analysis.
+  https://www.kaiko.com/</p>
+</li>
+<li>
+<p><strong>McKinsey &amp; Company</strong> — <em>Global Payments Report.</em> Published annually.</p>
+</li>
+<li>
+<p><strong>Swiss Re sigma</strong> — <em>World Insurance.</em> Swiss Re Institute. Published
+  annually.</p>
+</li>
+<li>
+<p><strong>Newzoo</strong> — <em>Global Games Market Report.</em> Published annually.</p>
+</li>
+</ul>
+<h3 id="academic-research">Academic Research</h3>
+<ul>
+<li>
+<p><strong>Cong, L.W., et al.</strong> (2022). "Crypto Wash Trading." <em>NBER Working
+  Paper.</em> National Bureau of Economic Research.</p>
+</li>
+<li>
+<p><strong>Kocenda, E., et al.</strong> (2024). "Crypto Exchanges and Market
+  Manipulation." <em>CEPR Discussion Paper.</em> Centre for Economic Policy
+  Research.</p>
+</li>
+</ul>
+<h3 id="national-payment-systems">National Payment Systems</h3>
+<ul>
+<li>
+<p><strong>NPCI</strong> — National Payments Corporation of India. UPI and RuPay
+  statistics. https://www.npci.org.in/</p>
+</li>
+<li>
+<p><strong>BCB</strong> — Banco Central do Brasil. Pix statistics.
+  https://www.bcb.gov.br/</p>
+</li>
+<li>
+<p><strong>NPCI FasTag</strong> — Toll collection data (IoT segment).</p>
+</li>
+<li>
+<p><strong>Fedwire</strong> — Federal Reserve. Fedwire Funds Service statistics.
+  https://www.frbservices.org/</p>
+</li>
+</ul>
+<h3 id="other">Other</h3>
+<ul>
+<li>
+<p><strong>World Bank</strong> — <em>Remittance Prices Worldwide</em> and <em>Global Findex
+  Database.</em> Published periodically.
+  https://www.worldbank.org/</p>
+</li>
+<li>
+<p><strong>Visa OnChain Analytics</strong> — Stablecoin transfer volume tracking.
+  https://usa.visa.com/solutions/crypto.html</p>
+</li>
+</ul>
+<hr/>
+<p><em>This methodology paper accompanies the Universe of Finance research project.
+It describes methods as of Run 11, March 2026. The methodology evolves with
+each research run — see individual capsule METHODOLOGY.md files and the
+Git commit history for run-specific changes.</em></p>
+<p><em>Research outputs: CC BY 4.0. Code: MIT.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/METHODOLOGY_PAPER.md">analysis/METHODOLOGY_PAPER.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

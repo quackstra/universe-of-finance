@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTC Derivatives — TPS Calculations — Universe of Finance</title>
+<meta name="description" content="Trade Count Estimation Reported Data: ISDA SwapsInfo (US/EU/UK) Interest Rate Derivatives (IRD): - Q1 2024: 735,800 trades ($100.5T notional) - H1 2024: 1,500,000 trades ($197.8T n">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>OTC Derivatives — TPS Calculations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#trade-count-estimation">Trade Count Estimation</a></li><li><a href="#tps-calculation">TPS Calculation</a></li><li><a href="#peak-tps">Peak TPS</a></li><li><a href="#notional-per-trade-analysis">Notional Per Trade Analysis</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li></ul></div><h2 id="trade-count-estimation">Trade Count Estimation</h2>
+<h3 id="reported-data-isda-swapsinfo-useuuk">Reported Data: ISDA SwapsInfo (US/EU/UK)</h3>
+<p><strong>Interest Rate Derivatives (IRD)</strong>:
+- Q1 2024: 735,800 trades ($100.5T notional)
+- H1 2024: 1,500,000 trades ($197.8T notional)
+- Q4 2024 (US only): 696,600 trades ($106.1T notional)
+- Full Year 2024 estimate: ~2.9M trades (~$400T notional)</p>
+<p>Average notional per IRD trade: $400T / 2.9M = <strong>~$138M per trade</strong> (US/EU/UK)</p>
+<p><strong>Credit Default Swaps (CDS)</strong>:
+- Index CDS: 316,800 trades ($12.7T notional), -6.9% YoY
+- Single-name CDS: est. ~24,000 trades (~$1T notional) — 7% of CDS notional
+- Total CDS: ~341,000 trades</p>
+<h3 id="global-extrapolation">Global Extrapolation</h3>
+<p>ISDA SwapsInfo covers US, EU, and UK markets. These represent the majority of <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> activity but not all.</p>
+<p><strong>IRD</strong>:
+- US/EU/UK: ~2.9M trades (ISDA reported)
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>: ~8% of global IRD market → ~0.25M trades
+- Australia/NZ: ~3% → ~0.10M trades
+- Hong Kong/Singapore: ~5% → ~0.17M trades
+- Other (Canada, EM): ~4% → ~0.13M trades
+- <strong>Global IRD: ~3.55M trades</strong>
+- Note: Some double-counting may occur as cross-border trades are reported in multiple jurisdictions
+- Adjusted estimate: <strong>~3.2M global IRD trades</strong></p>
+<p><strong>CDS</strong>:
+- US/EU/UK covers vast majority of CDS activity (~90%)
+- Global CDS: 341K / 0.90 = <strong>~380K trades</strong></p>
+<p><strong>Equity Derivatives (OTC)</strong>:
+- Equity swaps, variance swaps, OTC equity options
+- No comprehensive trade count data
+- Estimated from notional outstanding ($8.9T) and average trade size (~$25M)
+- With ~5-year average duration and portfolio turnover: ~2M trades/year estimate
+- <strong>Estimated: ~2.0M trades/year</strong></p>
+<p><strong>Commodity Swaps (OTC)</strong>:
+- Small notional ($2.4T outstanding) but active hedging market
+- Estimated: ~1.0M trades/year (commodity trading houses execute ~200K-400K each)
+- <strong>Estimated: ~1.0M trades/year</strong></p>
+<p><strong>FX Derivatives (OTC, excl. spot)</strong>:
+- Forwards, swaps, options: covered primarily in FX category
+- If included: ~5.0M trades/year (from FX capsule: ~750M total FX of which ~40% are derivatives by count)
+- <strong>For reference only — attributed to FX category</strong></p>
+<h3 id="global-total">Global Total</h3>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Annual Trades (M)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRD</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td>CDS</td>
+<td>0.4</td>
+</tr>
+<tr>
+<td>Equity OTC</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>Commodity swaps</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>Other OTC</td>
+<td>0.7</td>
+</tr>
+<tr>
+<td><strong>Subtotal (excl. FX derivs)</strong></td>
+<td><strong>7.3</strong></td>
+</tr>
+<tr>
+<td>FX derivatives (for reference)</td>
+<td>5.0</td>
+</tr>
+<tr>
+<td><strong>Total (incl. FX derivs)</strong></td>
+<td><strong>12.3</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tps-calculation">TPS Calculation</h2>
+<h3 id="including-fx-derivatives">Including FX Derivatives</h3>
+<p>Daily trades: 12,300,000 / 252 = ~48,800/day
+TPS (24h): 48,800 / 86,400 = <strong>~0.56 TPS</strong>
+TPS (10h effective trading day): 48,800 / 36,000 = <strong>~1.36 TPS</strong></p>
+<h3 id="excluding-fx-derivatives">Excluding FX Derivatives</h3>
+<p>Daily trades: 7,300,000 / 252 = ~29,000/day
+TPS (24h): 29,000 / 86,400 = <strong>~0.34 TPS</strong>
+TPS (10h): 29,000 / 36,000 = <strong>~0.81 TPS</strong></p>
+<h3 id="central-estimate-06-tps-incl-fx-derivs-24h-basis">Central Estimate: <strong>~0.6 TPS</strong> (incl. FX derivs, 24h basis)</h3>
+<h2 id="peak-tps">Peak TPS</h2>
+<p>Peak activity: central bank announcement days, quarter-end roll dates
+Peak concentration: ~5x average during peak hours
+<a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a>: ~3 TPS</p>
+<h2 id="notional-per-trade-analysis">Notional Per Trade Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th>Annual Trades (est.)</th>
+<th>Annual Notional (est.)</th>
+<th>Avg Notional/Trade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IRD (US/EU/UK)</td>
+<td>2.9M</td>
+<td>$400T</td>
+<td>$138M</td>
+</tr>
+<tr>
+<td>Index CDS</td>
+<td>317K</td>
+<td>$12.7T</td>
+<td>$40M</td>
+</tr>
+<tr>
+<td>Equity OTC</td>
+<td>2.0M</td>
+<td>~$50T turnover</td>
+<td>~$25M</td>
+</tr>
+<tr>
+<td>Commodity swaps</td>
+<td>1.0M</td>
+<td>~$15T turnover</td>
+<td>~$15M</td>
+</tr>
+</tbody>
+</table>
+<p>OTC derivatives have by far the highest average transaction value in the Universe of Finance.</p>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<ul>
+<li>Notional outstanding: 🟢 High — BIS semiannual survey is authoritative</li>
+<li>Daily turnover (BIS triennial): 🟢 High — gold standard</li>
+<li>IRD/CDS trade count (US/EU/UK): 🟡 Medium — ISDA SwapsInfo is reliable for covered markets</li>
+<li>Global trade count total: 🔴 Low — requires extrapolation for non-reported markets and asset classes</li>
+<li>TPS: 🔴 Low — derived from estimated global trade counts</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/otc-derivatives/workings/calculations.md">analysis/traditional-finance/otc-derivatives/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

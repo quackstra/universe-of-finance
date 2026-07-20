@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculations — Bank Transfers (ACH/RTGS) — Universe of Finance</title>
+<meta name="description" content="1. Current TPS (2024) Global Annual Volume Build-Up System Region 2024 Volume (B txns) Confidence US ACH (Nacha) US 33.6 :green_circle: High Fedwire US 0.210 :green_circle: High Fe">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Calculations — Bank Transfers (ACH/RTGS)</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-current-tps-2024">1. Current TPS (2024)</a></li><li><a href="#2-annual-volume-2024">2. Annual Volume (2024)</a></li><li><a href="#3-annual-value-2024">3. Annual Value (2024)</a></li><li><a href="#4-historic-timeseries-2015-2024">4. Historic Timeseries (2015-2024)</a></li><li><a href="#5-growth-rate-calculations">5. Growth Rate Calculations</a></li><li><a href="#6-baseline-projection-2026-2035">6. Baseline Projection (2026-2035)</a></li><li><a href="#7-high-growth-projection-2026-2035">7. High-Growth Projection (2026-2035)</a></li><li><a href="#8-conservative-projection-2026-2035">8. Conservative Projection (2026-2035)</a></li></ul></div><h2 id="1-current-tps-2024">1. Current TPS (2024)</h2>
+<h3 id="global-annual-volume-build-up">Global Annual Volume Build-Up</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Region</th>
+<th>2024 Volume (B txns)</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US ACH (Nacha)</td>
+<td>US</td>
+<td>33.6</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Fedwire</td>
+<td>US</td>
+<td>0.210</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>FedNow</td>
+<td>US</td>
+<td>0.0015</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>SEPA Credit Transfers</td>
+<td>Europe</td>
+<td>32.0</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>TARGET2/T2</td>
+<td>Europe</td>
+<td>0.108</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>UK Faster Payments</td>
+<td>UK</td>
+<td>5.1</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>UK CHAPS</td>
+<td>UK</td>
+<td>0.053</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>UK BACS</td>
+<td>UK</td>
+<td>4.5 (est.)</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>India UPI</td>
+<td>India</td>
+<td>131.1</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Brazil PIX</td>
+<td>Brazil</td>
+<td>63.0</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>China CIPS</td>
+<td>China</td>
+<td>0.008</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>China domestic (CNAPS est.)</td>
+<td>China</td>
+<td>80.0</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Rest of World RTP</td>
+<td>Various</td>
+<td>45.0</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>Rest of World batch/RTGS</td>
+<td>Various</td>
+<td>35.0</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td><strong>GLOBAL TOTAL</strong></td>
+<td></td>
+<td><strong>~429.7</strong></td>
+<td>:yellow_circle: Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="notes-on-rest-of-world-estimates">Notes on "Rest of World" estimates</h3>
+<ul>
+<li>ACI Worldwide reported 266.2B global real-time payments in 2023. Extrapolating at 42% growth → ~378B in 2024.</li>
+<li>Known RTP systems (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> 131.1B + <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a> 63B + UK FP 5.1B + partial SEPA Instant ~5B) = ~204B</li>
+<li>Implies ~174B from other systems (Thailand PromptPay, Korea, Nigeria, Indonesia, etc.)</li>
+<li>However, ACI's 2023 figure of 266.2B included UPI at 129.3B and <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a> at 37.4B, leaving ~100B for "other" in 2023.</li>
+<li>With growth, ~120B for "other RTP" in 2024 seems reasonable. We use 45B as a conservative non-RTP "rest of world" and fold the RTP remainder into known systems + rest of world RTP.</li>
+<li><strong>Revised global estimate</strong>: Using ACI's implied ~378B real-time + ~106B batch/RTGS = <strong>~484B total</strong></li>
+</ul>
+<h3 id="average-tps-calculation">Average TPS Calculation</h3>
+<pre><code>Global volume = ~484 billion transactions (2024 estimate)
+Seconds per year = 365.25 × 86,400 = 31,557,600
+
+Average TPS = 484,000,000,000 / 31,557,600 = ~15,338 TPS
+</code></pre>
+<h3 id="peak-tps-estimation">Peak TPS Estimation</h3>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> UPI peak</strong>: December 2024 had 16.73B transactions in 31 days.
+- Peak day estimate: 16.73B / 31 × 1.5 (peak-to-average ratio) ≈ 810M transactions/day
+- Peak second estimate: Assuming 80% of daily volume in 16 hours = 810M × 0.8 / 57,600 ≈ <strong>11,250 TPS</strong> (UPI alone)</p>
+<p><strong>Brazil PIX peak</strong>: 252.1M transactions on Dec 20, 2024
+- Assuming 80% in 16 hours: 252.1M × 0.8 / 57,600 ≈ <strong>3,502 TPS</strong></p>
+<p><strong>Global <a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">peak TPS</a> estimate</strong>: Sum of concurrent peaks across time zones
+- India peak + Brazil peak + US ACH peak + Europe peak + others
+- US ACH daily average: 33.6B / 250 business days = 134.4M/day, peak ~200M/day → operational peak ~3,500 TPS
+- Europe SEPA daily average: 32B / 250 = 128M/day → ~2,200 TPS operational
+- Adding all: <strong>~25,000-30,000 TPS</strong> global peak estimate</p>
+<h2 id="2-annual-volume-2024">2. Annual Volume (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Volume (B txns)</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACH/Batch transfers</td>
+<td>~106B</td>
+<td>US ACH 33.6B + SEPA 32B + UK BACS 4.5B + China est. 36B</td>
+</tr>
+<tr>
+<td>Real-time payments</td>
+<td>~378B</td>
+<td>ACI 2023 (266.2B) × 1.42 growth</td>
+</tr>
+<tr>
+<td>RTGS/Wire transfers</td>
+<td>~0.4B</td>
+<td>Fedwire 0.21B + T2 0.11B + CHAPS 0.05B + others ~0.03B</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>~484B</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-annual-value-2024">3. Annual Value (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Value (USD)</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US ACH</td>
+<td>$86.2T</td>
+<td>Nacha</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>Fedwire</td>
+<td>$1,133T</td>
+<td>Fed</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>SEPA Credit Transfers</td>
+<td>~$238T</td>
+<td>ECB (~EUR 220T × 1.08)</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>TARGET2/T2</td>
+<td>~$600T (est.)</td>
+<td>ECB (derived from daily values)</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>UK Faster Payments</td>
+<td>$5.3T</td>
+<td>Pay.UK (GBP 4.2T × 1.27)</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>UK CHAPS</td>
+<td>~$127T (est.)</td>
+<td>BoE historical ratios</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>India UPI</td>
+<td>~$2.5T</td>
+<td>NPCI (est. from monthly data)</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Brazil PIX</td>
+<td>~$3.8T</td>
+<td>BCB</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>China CIPS</td>
+<td>$24.5T</td>
+<td>CIPS</td>
+<td>:green_circle: High</td>
+</tr>
+<tr>
+<td>China domestic (est.)</td>
+<td>~$150T</td>
+<td>Estimate</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td>SWIFT cross-border (context)</td>
+<td>~$150T/yr est.</td>
+<td>$300B/day × 250 days × 2</td>
+<td>:yellow_circle: Medium</td>
+</tr>
+<tr>
+<td>Rest of World</td>
+<td>~$100T</td>
+<td>Estimate</td>
+<td>:red_circle: Low</td>
+</tr>
+<tr>
+<td><strong>GLOBAL TOTAL</strong></td>
+<td><strong>~$2,471T</strong></td>
+<td></td>
+<td>:yellow_circle: Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: RTGS systems like Fedwire and TARGET2/T2 handle extremely high-value transactions (avg $5.4M on Fedwire), which is why they dominate the value column despite low transaction counts.</p>
+<h2 id="4-historic-timeseries-2015-2024">4. Historic Timeseries (2015-2024)</h2>
+<h3 id="us-ach-network-volume-nacha">US ACH Network Volume (Nacha)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (B)</th>
+<th>Value ($T)</th>
+<th>YoY Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td>24.0 (est.)</td>
+<td>~$42</td>
+<td>~5%</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>25.6</td>
+<td>$43.7</td>
+<td>6.7%</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>21.5*</td>
+<td>$46.8</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>23.0</td>
+<td>$51.2</td>
+<td>7.0%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>24.7</td>
+<td>~$55.8</td>
+<td>7.4%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>26.8</td>
+<td>$61.9</td>
+<td>8.5%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>29.1</td>
+<td>$72.6</td>
+<td>8.6%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>30.0</td>
+<td>$76.7</td>
+<td>3.1%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>31.5</td>
+<td>$80.1</td>
+<td>5.0%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>33.6</td>
+<td>$86.2</td>
+<td>6.7%</td>
+</tr>
+</tbody>
+</table>
+<p>*Note: The 2017 figure of 21.5B from Nacha appears to represent network payments only (excluding government). The 2016 figure of 25.6B includes all payments. Adjusting for consistency, the series shows steady ~5-7% annual growth.</p>
+<h3 id="india-upi-annual-volume">India UPI Annual Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (B txns)</th>
+<th>YoY Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017</td>
+<td>0.018</td>
+<td>— (launch year)</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>0.915</td>
+<td>4,983%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>5.35</td>
+<td>485%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>12.52</td>
+<td>134%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>22.33</td>
+<td>78%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>45.96</td>
+<td>106%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>83.71</td>
+<td>82%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>131.13</td>
+<td>57%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fedwire-annual-volume">Fedwire Annual Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (M txns)</th>
+<th>Value ($T)</th>
+<th>YoY Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td>~155 (est.)</td>
+<td>~$715</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>~160 (est.)</td>
+<td>~$730</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>~162 (est.)</td>
+<td>~$740</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>~168 (est.)</td>
+<td>~$765</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>~172 (est.)</td>
+<td>~$780</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>184.0</td>
+<td>$840.5</td>
+<td>9.8%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>204.5</td>
+<td>$991.8</td>
+<td>11.1%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>196.1</td>
+<td>$1,060.3</td>
+<td>-4.1%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>193.3</td>
+<td>$1,087.2</td>
+<td>-1.4%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>209.9</td>
+<td>$1,133.4</td>
+<td>8.6%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="global-real-time-payments-aci-worldwide-estimates">Global Real-Time Payments (ACI Worldwide estimates)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Volume (B txns)</th>
+<th>YoY Growth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2018</td>
+<td>~50 (est.)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>~75 (est.)</td>
+<td>~50%</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~105</td>
+<td>~40%</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~145</td>
+<td>~38%</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~188</td>
+<td>~30%</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>266.2</td>
+<td>42.2%</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~378 (est.)</td>
+<td>~42%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-growth-rate-calculations">5. Growth Rate Calculations</h2>
+<h3 id="us-ach-5-year-cagr-2019-2024">US ACH 5-Year CAGR (2019-2024)</h3>
+<pre><code>CAGR = (33.6 / 24.7)^(1/5) - 1 = (1.3603)^0.2 - 1 = 6.35%
+</code></pre>
+<h3 id="india-upi-5-year-cagr-2019-2024">India UPI 5-Year CAGR (2019-2024)</h3>
+<pre><code>CAGR = (131.13 / 5.35)^(1/5) - 1 = (24.51)^0.2 - 1 = 89.4%
+</code></pre>
+<h3 id="global-real-time-payments-5-year-cagr-2019-2024-est">Global Real-Time Payments 5-Year CAGR (2019-2024 est.)</h3>
+<pre><code>CAGR = (378 / 75)^(1/5) - 1 = (5.04)^0.2 - 1 = 38.2%
+</code></pre>
+<h3 id="fedwire-5-year-cagr-2019-2024">Fedwire 5-Year CAGR (2019-2024)</h3>
+<pre><code>CAGR = (209.9 / 172)^(1/5) - 1 = (1.220)^0.2 - 1 = 4.06%
+</code></pre>
+<h3 id="composite-global-bank-transfer-cagr-2019-2024-est">Composite Global Bank Transfer CAGR (2019-2024 est.)</h3>
+<pre><code>2019 estimated global total: ~175B (75B RTP + ~80B batch + ~20B other)
+2024 estimated global total: ~484B
+CAGR = (484 / 175)^(1/5) - 1 = (2.766)^0.2 - 1 = 22.6%
+</code></pre>
+<h2 id="6-baseline-projection-2026-2035">6. Baseline Projection (2026-2035)</h2>
+<p>Assumptions:
+- Real-time payments: 16.7% CAGR through 2028 (per ACI), then decelerating 1.5pp/year
+- ACH/batch: 5% CAGR, stable
+- RTGS/wire: 3% CAGR, stable</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>RTP (B)</th>
+<th>Batch (B)</th>
+<th>RTGS (B)</th>
+<th>Total (B)</th>
+<th>TPS (avg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>378</td>
+<td>106</td>
+<td>0.4</td>
+<td>484</td>
+<td>15,338</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>441</td>
+<td>111</td>
+<td>0.4</td>
+<td>553</td>
+<td>17,519</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>515</td>
+<td>117</td>
+<td>0.4</td>
+<td>632</td>
+<td>20,030</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>601</td>
+<td>123</td>
+<td>0.4</td>
+<td>724</td>
+<td>22,942</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>701</td>
+<td>129</td>
+<td>0.4</td>
+<td>830</td>
+<td>26,309</td>
+</tr>
+<tr>
+<td>2029</td>
+<td>795</td>
+<td>135</td>
+<td>0.5</td>
+<td>931</td>
+<td>29,499</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>883</td>
+<td>142</td>
+<td>0.5</td>
+<td>1,026</td>
+<td>32,502</td>
+</tr>
+<tr>
+<td>2031</td>
+<td>962</td>
+<td>149</td>
+<td>0.5</td>
+<td>1,112</td>
+<td>35,235</td>
+</tr>
+<tr>
+<td>2032</td>
+<td>1,029</td>
+<td>157</td>
+<td>0.5</td>
+<td>1,186</td>
+<td>37,582</td>
+</tr>
+<tr>
+<td>2033</td>
+<td>1,081</td>
+<td>165</td>
+<td>0.5</td>
+<td>1,246</td>
+<td>39,487</td>
+</tr>
+<tr>
+<td>2034</td>
+<td>1,113</td>
+<td>173</td>
+<td>0.5</td>
+<td>1,287</td>
+<td>40,775</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>1,136</td>
+<td>181</td>
+<td>0.5</td>
+<td>1,318</td>
+<td>41,758</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-high-growth-projection-2026-2035">7. High-Growth Projection (2026-2035)</h2>
+<p>Assumptions:
+- Real-time payments maintain 25% CAGR through 2030, then 15% through 2035
+- ACH/batch: 7% CAGR (digitization of remaining cheque/cash flows)
+- RTGS/wire: 5% CAGR
+- Drivers: UPI global rollout (UAE, Singapore, Europe), PIX expansion, SEPA Instant mandate, FedNow maturity, <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>/SE Asia RTP launch</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>RTP (B)</th>
+<th>Batch (B)</th>
+<th>RTGS (B)</th>
+<th>Total (B)</th>
+<th>TPS (avg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>378</td>
+<td>106</td>
+<td>0.4</td>
+<td>484</td>
+<td>15,338</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>473</td>
+<td>113</td>
+<td>0.4</td>
+<td>587</td>
+<td>18,594</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>591</td>
+<td>121</td>
+<td>0.4</td>
+<td>712</td>
+<td>22,566</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>738</td>
+<td>130</td>
+<td>0.5</td>
+<td>868</td>
+<td>27,510</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>923</td>
+<td>139</td>
+<td>0.5</td>
+<td>1,062</td>
+<td>33,664</td>
+</tr>
+<tr>
+<td>2029</td>
+<td>1,154</td>
+<td>149</td>
+<td>0.5</td>
+<td>1,303</td>
+<td>41,291</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>1,442</td>
+<td>159</td>
+<td>0.5</td>
+<td>1,602</td>
+<td>50,762</td>
+</tr>
+<tr>
+<td>2031</td>
+<td>1,659</td>
+<td>170</td>
+<td>0.5</td>
+<td>1,830</td>
+<td>57,984</td>
+</tr>
+<tr>
+<td>2032</td>
+<td>1,907</td>
+<td>182</td>
+<td>0.6</td>
+<td>2,090</td>
+<td>66,221</td>
+</tr>
+<tr>
+<td>2033</td>
+<td>2,194</td>
+<td>195</td>
+<td>0.6</td>
+<td>2,389</td>
+<td>75,712</td>
+</tr>
+<tr>
+<td>2034</td>
+<td>2,523</td>
+<td>209</td>
+<td>0.6</td>
+<td>2,732</td>
+<td>86,589</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>2,901</td>
+<td>223</td>
+<td>0.6</td>
+<td>3,125</td>
+<td>99,020</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-conservative-projection-2026-2035">8. Conservative Projection (2026-2035)</h2>
+<p>Assumptions:
+- Real-time payments: 10% CAGR (slower adoption, regulatory friction)
+- ACH/batch: 3% CAGR (market saturation)
+- RTGS/wire: 2% CAGR
+- Factors: Regulatory backlash, privacy concerns, interoperability failures, incumbent resistance</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>RTP (B)</th>
+<th>Batch (B)</th>
+<th>RTGS (B)</th>
+<th>Total (B)</th>
+<th>TPS (avg)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2024</td>
+<td>378</td>
+<td>106</td>
+<td>0.4</td>
+<td>484</td>
+<td>15,338</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>416</td>
+<td>109</td>
+<td>0.4</td>
+<td>526</td>
+<td>16,657</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>457</td>
+<td>113</td>
+<td>0.4</td>
+<td>570</td>
+<td>18,064</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>503</td>
+<td>116</td>
+<td>0.4</td>
+<td>619</td>
+<td>19,621</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>553</td>
+<td>119</td>
+<td>0.4</td>
+<td>673</td>
+<td>21,325</td>
+</tr>
+<tr>
+<td>2029</td>
+<td>609</td>
+<td>123</td>
+<td>0.4</td>
+<td>732</td>
+<td>23,198</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>669</td>
+<td>127</td>
+<td>0.4</td>
+<td>796</td>
+<td>25,229</td>
+</tr>
+<tr>
+<td>2031</td>
+<td>736</td>
+<td>130</td>
+<td>0.4</td>
+<td>867</td>
+<td>27,475</td>
+</tr>
+<tr>
+<td>2032</td>
+<td>810</td>
+<td>134</td>
+<td>0.5</td>
+<td>944</td>
+<td>29,924</td>
+</tr>
+<tr>
+<td>2033</td>
+<td>891</td>
+<td>138</td>
+<td>0.5</td>
+<td>1,029</td>
+<td>32,618</td>
+</tr>
+<tr>
+<td>2034</td>
+<td>980</td>
+<td>142</td>
+<td>0.5</td>
+<td>1,123</td>
+<td>35,580</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>1,078</td>
+<td>147</td>
+<td>0.5</td>
+<td>1,225</td>
+<td>38,818</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/bank-transfers/workings/calculations.md">analysis/payments/bank-transfers/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

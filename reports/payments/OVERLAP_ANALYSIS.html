@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Category Overlap Analysis — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Last Updated: 2026-03-26 Purpose The Universe of Finance counts six payment categories independently. Several of these categories overlap">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments</div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Payment Category Overlap Analysis</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#purpose">Purpose</a></li><li><a href="#a-digital-wallets-consumer-cards">A) Digital Wallets <> Consumer Cards</a></li><li><a href="#b-e-commerce-cards-bank-transfers-wallets">B) E-Commerce <> Cards / Bank Transfers / Wallets</a></li><li><a href="#c-bank-transfers-breakdown">C) Bank Transfers Breakdown</a></li><li><a href="#d-overlap-summary-matrix">D) Overlap Summary Matrix</a></li><li><a href="#methodology-notes">Methodology Notes</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+<strong>Last Updated</strong>: 2026-03-26</p>
+</blockquote>
+<h2 id="purpose">Purpose</h2>
+<p>The Universe of Finance counts six payment categories independently. Several of these categories overlap — a single consumer purchase can appear in multiple categories simultaneously (e.g., an Amazon order paid via Apple Pay funded by a Visa card touches <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">E-Commerce</a>, <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a>, and <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Cards</a>). This document quantifies those overlaps to enable accurate de-duplication when aggregating total global payment TPS.</p>
+<hr/>
+<h2 id="a-digital-wallets-consumer-cards">A) Digital Wallets &lt;&gt; Consumer Cards</h2>
+<h3 id="the-core-problem">The Core Problem</h3>
+<p>Digital wallets like Apple Pay, Google Pay, and Samsung Pay are predominantly <strong>convenience layers</strong> over existing card rails. From the card network's perspective, an Apple Pay tap is simply a Visa or Mastercard contactless transaction. Both the wallet platform and the card network count it.</p>
+<h3 id="card-rail-vs-independent-wallet-transactions">Card-Rail vs. Independent Wallet Transactions</h3>
+<table>
+<thead>
+<tr>
+<th>Wallet Type</th>
+<th>Est. 2024 Txns (B)</th>
+<th>Rides on Card Rails?</th>
+<th>Incremental to Cards?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UPI (India)</strong></td>
+<td>172</td>
+<td>No — bank-to-bank A2A</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>China mobile (Alipay/WeChat)</strong></td>
+<td>280</td>
+<td>No — linked to bank accounts, not card networks</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>M-Pesa / mobile money (Africa)</strong></td>
+<td>~82 (GSMA: 108B global, ~82B Africa)</td>
+<td>No — mobile money ledger</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Other mobile money (non-Africa)</strong></td>
+<td>~26</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Apple Pay</strong></td>
+<td>~24 (est. 2024)</td>
+<td>~95%+ on Visa/MC rails</td>
+<td>~5% incremental (transit, in-app non-card)</td>
+</tr>
+<tr>
+<td><strong>Google Pay (non-UPI)</strong></td>
+<td>~5 (est.)</td>
+<td>~90%+ on Visa/MC rails</td>
+<td>~10% incremental</td>
+</tr>
+<tr>
+<td><strong>Samsung Pay</strong></td>
+<td>~3 (est.)</td>
+<td>~95%+ on Visa/MC rails</td>
+<td>Minimal</td>
+</tr>
+<tr>
+<td><strong>PayPal mobile wallet</strong></td>
+<td>~5</td>
+<td>~60% card-funded, ~40% bank/balance</td>
+<td>~40% incremental</td>
+</tr>
+<tr>
+<td><strong>Other regional wallets</strong></td>
+<td>~3</td>
+<td>Mixed</td>
+<td>~50% incremental</td>
+</tr>
+</tbody>
+</table>
+<h3 id="quantification">Quantification</h3>
+<p><strong>Total digital wallet transactions (2024):</strong> ~620 billion</p>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Txns (B)</th>
+<th>Card-Rail Overlap</th>
+<th>Incremental (non-card)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UPI</td>
+<td>172</td>
+<td>0</td>
+<td>172</td>
+</tr>
+<tr>
+<td>China mobile</td>
+<td>280</td>
+<td>~5 (UnionPay NFC subset)</td>
+<td>~275</td>
+</tr>
+<tr>
+<td>M-Pesa + African mobile money</td>
+<td>82</td>
+<td>0</td>
+<td>82</td>
+</tr>
+<tr>
+<td>Other mobile money (GSMA non-Africa)</td>
+<td>26</td>
+<td>0</td>
+<td>26</td>
+</tr>
+<tr>
+<td>Apple Pay</td>
+<td>24</td>
+<td>~23</td>
+<td>~1</td>
+</tr>
+<tr>
+<td>Google Pay (non-UPI)</td>
+<td>5</td>
+<td>~4.5</td>
+<td>~0.5</td>
+</tr>
+<tr>
+<td>Samsung Pay</td>
+<td>3</td>
+<td>~2.9</td>
+<td>~0.1</td>
+</tr>
+<tr>
+<td>PayPal mobile</td>
+<td>5</td>
+<td>~3</td>
+<td>~2</td>
+</tr>
+<tr>
+<td>Other regional</td>
+<td>3</td>
+<td>~1.5</td>
+<td>~1.5</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>~620</strong></td>
+<td><strong>~40</strong></td>
+<td><strong>~560</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-finding">Key Finding</h3>
+<p><strong>Of the ~620B digital wallet transactions, approximately 560B (~90%) are INCREMENTAL to the 773B card transactions.</strong> Only ~40B (~6.5%) are double-counted with <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a>.</p>
+<p>This is because the world's largest wallet ecosystems — <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a> (172B), <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> mobile payments (280B), and African mobile money (82B) — operate on <strong>independent, non-card rails</strong>. The card-rail overlap is concentrated in Apple Pay, Google Pay, and Samsung Pay, which are large in Western markets but small globally.</p>
+<p><strong>The double-counting risk is lower than intuition suggests.</strong> While nearly 100% of Apple Pay/Google Pay/Samsung Pay transactions in Western markets ride on Visa/Mastercard rails, these platforms collectively represent only ~32B of 620B total wallet transactions (~5%). The global wallet story is overwhelmingly UPI + China + mobile money, none of which use card rails.</p>
+<hr/>
+<h2 id="b-e-commerce-cards-bank-transfers-wallets">B) E-Commerce &lt;&gt; Cards / Bank Transfers / Wallets</h2>
+<h3 id="payment-method-breakdown-for-e-commerce-2024">Payment Method Breakdown for E-Commerce (2024)</h3>
+<p>Source: <a href="https://worldpay.com/en/global-payments-report">Worldpay Global Payments Report 2025</a></p>
+<table>
+<thead>
+<tr>
+<th>Payment Method</th>
+<th>Share of E-Commerce Value</th>
+<th>Est. E-Commerce Txns (B)</th>
+<th>Also Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digital Wallets</td>
+<td>53%</td>
+<td>~30.5</td>
+<td>Digital Wallets</td>
+</tr>
+<tr>
+<td>Credit Cards</td>
+<td>20%</td>
+<td>~11.5</td>
+<td>Consumer Cards</td>
+</tr>
+<tr>
+<td>Debit Cards</td>
+<td>12%</td>
+<td>~6.9</td>
+<td>Consumer Cards</td>
+</tr>
+<tr>
+<td>Bank Transfer (A2A)</td>
+<td>7%</td>
+<td>~4.0</td>
+<td>Bank Transfers</td>
+</tr>
+<tr>
+<td>BNPL</td>
+<td>5%</td>
+<td>~2.9</td>
+<td>(Partially in Cards — BNPL providers often use card rails for merchant payout)</td>
+</tr>
+<tr>
+<td>Cash on Delivery</td>
+<td>2%</td>
+<td>~1.2</td>
+<td>Not counted elsewhere</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>1%</td>
+<td>~0.5</td>
+<td>Various</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>~57.5</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="overlap-quantification">Overlap Quantification</h3>
+<p>Every e-commerce transaction is paid for by <em>some</em> payment method. Therefore:</p>
+<ul>
+<li><strong>~18.4B e-commerce txns</strong> (32%) are already counted in Consumer Cards (credit + debit)</li>
+<li><strong>~30.5B e-commerce txns</strong> (53%) are already counted in Digital Wallets</li>
+<li>Of those, ~65% are funded by cards (per Worldpay: 65% of Americans fund wallets with cards) — so ~20B are <em>also</em> in Consumer Cards via wallet-funded card charges</li>
+<li><strong>~4.0B e-commerce txns</strong> (7%) are already counted in <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a></li>
+<li><strong>~1.2B e-commerce txns</strong> (2%) are cash-on-delivery — genuinely unique to this category</li>
+<li><strong>~2.9B e-commerce txns</strong> (5%) are <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a> — partially unique (BNPL providers like Klarna/Afterpay settle with merchants via card networks or bank transfers)</li>
+</ul>
+<h3 id="non-overlapping-e-commerce-portion">Non-Overlapping E-Commerce Portion</h3>
+<p><strong>Truly incremental e-commerce transactions (not counted in any other payment category): ~4-6B</strong> — primarily cash-on-delivery, some BNPL, and residual "other" methods.</p>
+<p><strong>E-commerce is almost entirely an overlay category.</strong> The 57.5B e-commerce transactions are real commerce events, but 90%+ of the underlying payment flows are already captured in Cards, Wallets, or Bank Transfers. For TPS aggregation, e-commerce should be treated as a <strong>commerce layer</strong>, not a payment layer.</p>
+<hr/>
+<h2 id="c-bank-transfers-breakdown">C) Bank Transfers Breakdown</h2>
+<h3 id="by-transfer-type-2024">By Transfer Type (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Subcategory</th>
+<th>Annual Volume (B)</th>
+<th>Share by Volume</th>
+<th>Annual Value ($T)</th>
+<th>Share by Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Real-Time Payments</strong></td>
+<td>378</td>
+<td>78.1%</td>
+<td>~106</td>
+<td>4.3%</td>
+</tr>
+<tr>
+<td><strong>Batch/ACH</strong></td>
+<td>106</td>
+<td>21.9%</td>
+<td>~505</td>
+<td>20.4%</td>
+</tr>
+<tr>
+<td><strong>RTGS/Wire</strong></td>
+<td>0.4</td>
+<td>0.08%</td>
+<td>~1,860</td>
+<td>75.3%</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>484</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>~$2,471T</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="real-time-payments-detail">Real-Time Payments Detail</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>2024 Volume (B)</th>
+<th>Launch Year</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UPI</td>
+<td>India</td>
+<td>172 (NPCI: up from 131B in calendar 2024 to 172B fiscal year basis)</td>
+<td>2016</td>
+<td>Also counted in Digital Wallets</td>
+</tr>
+<tr>
+<td>PIX</td>
+<td>Brazil</td>
+<td>~65-69</td>
+<td>2020</td>
+<td>~52% YoY growth; BCB data</td>
+</tr>
+<tr>
+<td>PromptPay</td>
+<td>Thailand</td>
+<td>~18 (est.)</td>
+<td>2017</td>
+<td></td>
+</tr>
+<tr>
+<td>Faster Payments</td>
+<td>UK</td>
+<td>5.1</td>
+<td>2008</td>
+<td></td>
+</tr>
+<tr>
+<td>SEPA Instant</td>
+<td>EU</td>
+<td>~5.0</td>
+<td>2017</td>
+<td>Growing fast under EU Instant Payments Regulation</td>
+</tr>
+<tr>
+<td>Nigeria NIP</td>
+<td>Nigeria</td>
+<td>~7.9</td>
+<td>2011</td>
+<td></td>
+</tr>
+<tr>
+<td>FedNow</td>
+<td>US</td>
+<td>0.0015</td>
+<td>2023</td>
+<td>Negligible volume so far</td>
+</tr>
+<tr>
+<td>Other RTP systems (80+ countries)</td>
+<td>Various</td>
+<td>~105</td>
+<td>Various</td>
+<td>ACI estimates 266B global in 2023; 42% growth</td>
+</tr>
+</tbody>
+</table>
+<h3 id="batchach-detail">Batch/ACH Detail</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>2024 Volume (B)</th>
+<th>2024 Value ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US ACH (Nacha)</td>
+<td>US</td>
+<td>33.6</td>
+<td>$86.2</td>
+</tr>
+<tr>
+<td>SEPA Credit Transfers</td>
+<td>EU</td>
+<td>~32</td>
+<td>~$238 (EUR 220T)</td>
+</tr>
+<tr>
+<td>BACS</td>
+<td>UK</td>
+<td>~7.5</td>
+<td>~$6.5T</td>
+</tr>
+<tr>
+<td>Other national ACH</td>
+<td>Various</td>
+<td>~33</td>
+<td>~$174</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rtgswire-detail">RTGS/Wire Detail</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>2024 Volume (M)</th>
+<th>2024 Value ($T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fedwire</td>
+<td>US</td>
+<td>210</td>
+<td>$1,133</td>
+</tr>
+<tr>
+<td>TARGET2/T2</td>
+<td>EU</td>
+<td>108</td>
+<td>~$600</td>
+</tr>
+<tr>
+<td>CHAPS</td>
+<td>UK</td>
+<td>52.7</td>
+<td>~$127</td>
+</tr>
+<tr>
+<td>BOJ-NET</td>
+<td>Japan</td>
+<td>~20 (est.)</td>
+<td>~$100 (est.)</td>
+</tr>
+<tr>
+<td>Other RTGS</td>
+<td>Various</td>
+<td>~10</td>
+<td>~$200 (est.)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-overlap-upi-in-both-bank-transfers-and-digital-wallets">Key Overlap: UPI in Both Bank Transfers and Digital Wallets</h3>
+<p>UPI's 172B transactions are counted in <strong>both</strong> Bank Transfers (as real-time A2A payments) and Digital Wallets (as mobile wallet transactions via PhonePe/GPay/Paytm). This is the single largest overlap in the entire payments taxonomy — <strong>172 billion transactions</strong> appear in two categories.</p>
+<p><strong>Resolution:</strong> UPI is fundamentally a bank transfer rail. The wallet apps (PhonePe, Google Pay, Paytm) are front-ends, not independent payment systems. For de-duplication, UPI should be counted once in Bank Transfers, and Digital Wallets should subtract UPI volume from its total, leaving ~448B incremental wallet transactions.</p>
+<hr/>
+<h2 id="d-overlap-summary-matrix">D) Overlap Summary Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Category Pair</th>
+<th>Overlapping Txns (B)</th>
+<th>Nature of Overlap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digital Wallets &lt;&gt; Consumer Cards</td>
+<td>~40</td>
+<td>Apple Pay/Google Pay/Samsung Pay on card rails</td>
+</tr>
+<tr>
+<td>Digital Wallets &lt;&gt; Bank Transfers</td>
+<td>~172</td>
+<td>UPI counted in both</td>
+</tr>
+<tr>
+<td>E-Commerce &lt;&gt; Consumer Cards</td>
+<td>~18.4 (direct) + ~20 (via wallets)</td>
+<td>Card-paid e-commerce orders</td>
+</tr>
+<tr>
+<td>E-Commerce &lt;&gt; Digital Wallets</td>
+<td>~30.5</td>
+<td>Wallet-paid e-commerce orders</td>
+</tr>
+<tr>
+<td>E-Commerce &lt;&gt; Bank Transfers</td>
+<td>~4.0</td>
+<td>A2A-paid e-commerce orders</td>
+</tr>
+<tr>
+<td>P2P Transfers &lt;&gt; Digital Wallets</td>
+<td>~0.5</td>
+<td>PayPal/Cash App wallet overlap</td>
+</tr>
+<tr>
+<td>Remittances &lt;&gt; Bank Transfers</td>
+<td>~0.7</td>
+<td>Bank wire remittances</td>
+</tr>
+<tr>
+<td>Remittances &lt;&gt; P2P Transfers</td>
+<td>~0.1</td>
+<td>Cross-border P2P overlap</td>
+</tr>
+</tbody>
+</table>
+<h3 id="de-duplicated-global-payment-tps-2024">De-Duplicated Global Payment TPS (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Raw Annual Txns (B)</th>
+<th>Subtract Overlaps (B)</th>
+<th>De-Duplicated Txns (B)</th>
+<th>Avg TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>773</td>
+<td>0 (base layer)</td>
+<td>773</td>
+<td>24,500</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>620</td>
+<td>-172 (UPI) -40 (card-rail)</td>
+<td>408</td>
+<td>12,930</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>484</td>
+<td>0 (base layer; includes UPI)</td>
+<td>484</td>
+<td>15,340</td>
+</tr>
+<tr>
+<td>E-Commerce</td>
+<td>57.5</td>
+<td>-53 (paid via cards/wallets/bank)</td>
+<td>4.5</td>
+<td>143</td>
+</tr>
+<tr>
+<td>P2P Transfers</td>
+<td>8.5</td>
+<td>-0.5 (wallet overlap)</td>
+<td>8.0</td>
+<td>254</td>
+</tr>
+<tr>
+<td>Remittances</td>
+<td>1.8</td>
+<td>-0.8 (bank/P2P overlap)</td>
+<td>1.0</td>
+<td>32</td>
+</tr>
+<tr>
+<td><strong>Raw Sum</strong></td>
+<td><strong>1,944.8</strong></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>De-Duplicated Sum</strong></td>
+<td></td>
+<td></td>
+<td><strong>1,678.5</strong></td>
+<td><strong>53,199</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The raw sum overstates global payment transactions by ~14%.</strong> After de-duplication, the global payment system processes approximately <strong>1,679 billion unique transactions per year</strong>, or <strong>~53,200 TPS average</strong>.</p>
+<p>The two dominant base layers are:
+1. <strong>Consumer Cards</strong> (773B) — the legacy electronic payment backbone
+2. <strong>Bank Transfers</strong> (484B) — increasingly dominated by real-time payments</p>
+<p>Together they account for 75% of all unique payment transactions. Digital wallets add another 408B incremental transactions (24%), primarily from China's mobile payment ecosystem and African mobile money. E-Commerce, P2P, and <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">Remittances</a> add minimal incremental volume because their payment flows are captured in the base layers.</p>
+<hr/>
+<h2 id="methodology-notes">Methodology Notes</h2>
+<ol>
+<li>All transaction counts are 2024 estimates. Sources: Nilson Report (cards), NPCI (UPI), ACI Worldwide (RTP), Worldpay GPR (e-commerce payment mix), GSMA (mobile money), Statista/PBOC (China), Safaricom (M-Pesa).</li>
+<li>"Incremental" means a transaction that would not be counted in any other payment category.</li>
+<li>Card-rail overlap for Apple Pay/Google Pay/Samsung Pay estimated at 95% based on the fact that these wallets require a linked card in most markets and almost all transactions are tokenized card payments.</li>
+<li>UPI allocation: counted in Bank Transfers as the primary category (it is an A2A real-time payment system), subtracted from Digital Wallets.</li>
+<li>E-commerce payment method shares from Worldpay GPR 2025, which covers $6.33T in retail e-commerce GMV.</li>
+<li>The 65% card-funding rate for wallets is US-specific (Worldpay); global rate may be lower due to China/<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> bank-account-linked wallets.</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://worldpay.com/en/global-payments-report">Worldpay Global Payments Report 2025</a></li>
+<li><a href="https://nilsonreport.com/articles/global-network-card-results-worldwide-2024/">Nilson Report — Global Network Card Results 2024</a></li>
+<li><a href="https://www.npci.org.in/product/upi/product-statistics">NPCI UPI Product Statistics</a></li>
+<li><a href="https://www.aciworldwide.com/real-time-payments-report">ACI Worldwide — Prime Time for Real-Time 2024</a></li>
+<li><a href="https://www.gsma.com/sotir/">GSMA — State of the Industry Report on Mobile Money 2025</a></li>
+<li><a href="http://www.pbc.gov.cn/en/3688247/3688978/3709143/5649949/2025040114593718714.pdf">PBOC Payment System Report 2024</a></li>
+<li><a href="https://www.statista.com/statistics/244538/number-of-mobile-payment-transactions-in-china/">Statista — China Mobile Payment Transactions 2024</a></li>
+<li><a href="https://capitaloneshopping.com/research/apple-pay-statistics/">Capital One Shopping — Apple Pay Statistics 2026</a></li>
+<li><a href="https://coinlaw.io/samsung-pay-statistics/">CoinLaw — Samsung Pay Statistics 2025</a></li>
+<li><a href="https://www.bcb.gov.br/en">BCB — PIX Statistics</a></li>
+<li><a href="https://www.safaricom.co.ke/annualreport_2024/">Safaricom Annual Report 2024</a></li>
+<li><a href="https://www.nacha.org/content/ach-network-volume-and-value-statistics">Nacha — ACH Network Volume and Value Statistics</a></li>
+<li><a href="https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html">Federal Reserve Services — Fedwire Annual Statistics</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/OVERLAP_ANALYSIS.md">analysis/payments/OVERLAP_ANALYSIS.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

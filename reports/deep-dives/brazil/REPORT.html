@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brazil — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Last Updated: 2026-03-29 Executive Summary Brazil is Latin America's financial powerhouse and a top-10 contributor to global financial TPS">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Deep Dives<span class="sep">/</span>Brazil</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Brazil</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS contribution</div><div class="v blue">4,680</div></div><div class="chip"><div class="k">Share of global</div><div class="v green">6.3%</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">68</div></div></div>
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#brazils-share-across-categories">Brazil's Share Across Categories</a></li><li><a href="#brazil-vs-world-comparison-table">Brazil vs World — Comparison Table</a></li><li><a href="#category-by-category-analysis">Category-by-Category Analysis</a></li><li><a href="#the-pix-effect-brazils-structural-transformation">The Pix Effect — Brazil's Structural Transformation</a></li><li><a href="#the-transaction-to-gdp-anomaly">The Transaction-to-GDP Anomaly</a></li><li><a href="#risks-and-vulnerabilities">Risks and Vulnerabilities</a></li><li><a href="#key-takeaways">Key Takeaways</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+<strong>Last Updated</strong>: 2026-03-29</p>
+</blockquote>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Brazil is Latin America's financial powerhouse and a top-10 contributor to global
+financial TPS. With an estimated <strong>~4,680 de-duplicated TPS</strong> across all categories,
+Brazil contributes roughly <strong>6.3% of the global ~73,750 TPS</strong> — a meaningful
+overweight for an economy that represents ~2.1% of global GDP.</p>
+<p>Brazil's significance spans three intersecting stories:</p>
+<ol>
+<li>
+<p><strong>Pix</strong>: Brazil's instant payment system processed <strong>68.7 billion transactions</strong>
+   in CY2024 — making it the world's #2 real-time payment system behind <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>.
+   Pix reached this scale in just 4 years (launched November 2020), faster than UPI's
+   trajectory. Over <strong>170 million consumers</strong> (93% of adults) use Pix.</p>
+</li>
+<li>
+<p><strong>B3 Derivatives</strong>: B3 is the <strong>#2 derivatives exchange globally</strong> by contract
+   volume (~9.5B contracts in CY2024), and the dominant exchange in Latin America.
+   Latin America traded 9.96 billion ETD contracts in 2024, with B3 accounting for
+   the vast majority.</p>
+</li>
+<li>
+<p><strong>Cards + Boleto</strong>: Despite Pix's rise, Brazil maintains a large card ecosystem
+   (~46B annual card transactions) and the unique Boleto Bancario payment slip system,
+   creating a layered payment landscape unlike any other emerging market.</p>
+</li>
+</ol>
+<p>Brazil is the only country that simultaneously operates a top-3 real-time payment
+system AND a top-3 derivatives exchange.</p>
+<hr/>
+<h2 id="brazils-share-across-categories">Brazil's Share Across Categories</h2>
+<pre><code>Category               Brazil TPS  Global TPS   Brazil Share
+================================================================
+Bank Transfers          2,179       15,338         14.2%  |||||||
+ETD (Derivatives)         541        9,505          5.7%  ||
+Consumer Cards          1,459       24,501          6.0%  |||
+Bill Payments             190        3,012          6.3%  |||
+Digital Wallets*        2,179       19,660         11.1%  |||||
+Equity Markets             57        3,500          1.6%  |
+Gov't Payments            101        1,002         10.1%  |||||
+ATM Withdrawals           127        1,557          8.2%  ||||
+Interbank RTGS              2           50          4.0%  ||
+CEX (Crypto)               10        3,210          0.3%
+Gaming (MTX)               12          389          3.1%  |
+Commodities                 3          330          0.9%
+================================================================
+* Digital Wallets figure is gross (Pix); de-duplicated into Bank Transfers
+</code></pre>
+<hr/>
+<h2 id="brazil-vs-world-comparison-table">Brazil vs World — Comparison Table</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Brazil</th>
+<th>World</th>
+<th>Brazil's Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>De-duplicated TPS</td>
+<td>~4,680</td>
+<td>~73,750</td>
+<td><strong>6.3%</strong></td>
+</tr>
+<tr>
+<td>Real-time payment txns (2024)</td>
+<td>68.7B (Pix)</td>
+<td>378B</td>
+<td><strong>18.2%</strong></td>
+</tr>
+<tr>
+<td>ETD contracts traded (2024)</td>
+<td>~9.5B</td>
+<td>205.3B</td>
+<td><strong>4.6%</strong></td>
+</tr>
+<tr>
+<td>Card transactions (2024)</td>
+<td>~46B</td>
+<td>~773B</td>
+<td><strong>6.0%</strong></td>
+</tr>
+<tr>
+<td>Government payment txns</td>
+<td>~3.2B</td>
+<td>~32B</td>
+<td><strong>10.0%</strong></td>
+</tr>
+<tr>
+<td>GDP</td>
+<td>$2.2T</td>
+<td>$110T</td>
+<td><strong>2.0%</strong></td>
+</tr>
+<tr>
+<td>Population</td>
+<td>213M</td>
+<td>8.1B</td>
+<td><strong>2.6%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Brazil generates <strong>3x its GDP-weight</strong> in global financial TPS. The
+transaction-to-GDP ratio is among the highest in the Americas, driven by
+Pix micropayments and a mature card ecosystem.</p>
+<hr/>
+<h2 id="category-by-category-analysis">Category-by-Category Analysis</h2>
+<h3 id="1-pix-the-worlds-2-real-time-payment-system">1. Pix — The World's #2 Real-Time Payment System</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CY2024 volume</td>
+<td>68.7 billion txns</td>
+<td><a href="https://gfmag.com/transaction-banking/pix-becomes-brazils-top-transaction-method/">Global Finance</a></td>
+</tr>
+<tr>
+<td>CY2024 value</td>
+<td>~R$17 trillion (~$5T)</td>
+<td><a href="https://insights.ebanx.com/en/five-years-on-pix-approaches-8-monthly-transactions/">EBANX</a></td>
+</tr>
+<tr>
+<td>Monthly trajectory (2025)</td>
+<td>~7.9 billion txns/month</td>
+<td>EBANX</td>
+</tr>
+<tr>
+<td>Daily record</td>
+<td>252.1 million txns (Dec 20, 2024)</td>
+<td>BCB</td>
+</tr>
+<tr>
+<td>YoY growth (CY2024)</td>
+<td>+52% by volume</td>
+<td>Global Finance</td>
+</tr>
+<tr>
+<td>Active users</td>
+<td>170 million+ (93% of adults)</td>
+<td>EBANX</td>
+</tr>
+<tr>
+<td>Average transaction</td>
+<td>~R$250 (~$45)</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Global RTP share</td>
+<td><strong>18.2%</strong> of all real-time payments</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>5-year CAGR (2020-2024)</td>
+<td><strong>202%</strong></td>
+<td>EBANX</td>
+</tr>
+<tr>
+<td>P2B share of volume</td>
+<td>44% (overtook P2P at 43%)</td>
+<td>EBANX</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The growth curve rivals UPI.</strong> Pix launched in November 2020 and processed
+68.7 billion transactions by CY2024 — reaching 8 billion monthly transactions
+faster than India's UPI (5 years vs UPI's 6 years 8 months). At current
+trajectories, Pix will process <strong>~95 billion transactions in CY2025</strong>.</p>
+<pre><code>Year    Pix Txns (B)    Global RTP Share
+2020         0.45            0.4%
+2021         8.87            5.3%
+2022        24.0            10.2%
+2023        41.9            15.7%
+2024        68.7            18.2%
+2025E       ~95             ~22%
+</code></pre>
+<p><strong>Market structure</strong>: Unlike UPI's two-app dominance (PhonePe + Google Pay = 85%),
+Pix is integrated directly into every bank's app. The big five banks (Itau,
+Bradesco, Banco do Brasil, Santander, Caixa) plus fintechs (Nubank, Inter,
+PicPay) all provide native Pix access. No single app dominates.</p>
+<p><strong>Comparison to UPI</strong>: Both are central-bank-mandated, account-to-account,
+zero-cost instant payment rails. Key differences:
+- UPI uses a central switch (NPCI); Pix uses direct settlement via BCB's SPI
+- Pix average ticket (~R$250/$45) is higher than UPI (~$17)
+- UPI has 3x Pix volume but Pix grew faster in its first 4 years
+- Pix has 93% adult adoption vs UPI's ~45% population penetration</p>
+<p><strong>De-duplication note</strong>: Like UPI, Pix is architecturally a bank transfer rail
+(account-to-account). It appears in both <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a> and <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a>
+categories. For de-duplication, it is classified under Bank Transfers.</p>
+<hr/>
+<h3 id="2-consumer-cards-latin-americas-largest-card-market">2. Consumer Cards — Latin America's Largest Card Market</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q3 2024 card txns (quarterly)</td>
+<td>11.5 billion</td>
+<td><a href="https://rankingslatam.com/blogs/industry-news/brazil-payment-cards-market-trends-and-performance-insights-2024-09-overview-1">ABECS</a></td>
+</tr>
+<tr>
+<td>CY2024 card txns (annualized)</td>
+<td>~46 billion</td>
+<td>ABECS / Derived</td>
+</tr>
+<tr>
+<td>Credit card txns (Q3 2024)</td>
+<td>5.0 billion (quarterly)</td>
+<td>ABECS</td>
+</tr>
+<tr>
+<td>Debit card txns (Q3 2024)</td>
+<td>4.1 billion (quarterly)</td>
+<td>ABECS</td>
+</tr>
+<tr>
+<td>Prepaid card txns (Q3 2024)</td>
+<td>2.4 billion (quarterly)</td>
+<td>ABECS</td>
+</tr>
+<tr>
+<td>Card market share: Mastercard</td>
+<td>51%</td>
+<td><a href="https://www.statista.com/statistics/1312242/biggest-card-schemes-in-brazil/">Statista</a></td>
+</tr>
+<tr>
+<td>Card market share: Visa</td>
+<td>31%</td>
+<td>Statista</td>
+</tr>
+<tr>
+<td>Card market share: Elo</td>
+<td>14%</td>
+<td>Statista</td>
+</tr>
+<tr>
+<td>Contactless share</td>
+<td>61.1% of card payments (H1 2024)</td>
+<td>ABECS</td>
+</tr>
+<tr>
+<td>Credit card YoY growth</td>
+<td>+13.1% (Q3 2024)</td>
+<td>ABECS</td>
+</tr>
+<tr>
+<td>Debit card YoY growth</td>
+<td>-2.5% (Q3 2024)</td>
+<td>ABECS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Brazil has a mature card ecosystem</strong> — at ~46 billion annual card transactions,
+it accounts for ~6% of global card volume. This is a dramatically different profile
+from India (0.8% of global cards) because Brazil went through a full card adoption
+cycle before Pix arrived.</p>
+<p><strong>Elo — Brazil's domestic card brand</strong>: Created in 2011 by Banco do Brasil,
+Bradesco, and Caixa, Elo has reached 14% market share and is accepted at
+essentially all merchants. It competes directly with Visa and Mastercard on
+domestic transactions. Brazilian domestic card labels collectively hold ~10%
+of the market.</p>
+<p><strong>Pix impact on cards</strong>: <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Debit cards</a> are declining (-2.5% YoY in Q3 2024) as Pix
+absorbs low-value point-of-sale transactions. <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Credit cards</a> continue growing (+13.1%)
+because installment payments ("parcelamento") remain a deeply embedded consumer
+behavior in Brazil — merchants offer 2-12x interest-free installments on credit
+cards, a feature Pix is only beginning to replicate.</p>
+<hr/>
+<h3 id="3-b3-latin-americas-dominant-exchange">3. B3 — Latin America's Dominant Exchange</h3>
+<h4 id="derivatives">Derivatives</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CY2023 contracts</td>
+<td>8.3 billion</td>
+<td><a href="https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023">FIA</a></td>
+</tr>
+<tr>
+<td>CY2024 contracts (est.)</td>
+<td>~9.5 billion</td>
+<td>FIA / B3 data (36% Dec YoY growth)</td>
+</tr>
+<tr>
+<td>LatAm ETD volume (2024)</td>
+<td>9.96 billion</td>
+<td><a href="https://www.fia.org/fia/articles/etd-volume-december-2024">FIA</a></td>
+</tr>
+<tr>
+<td>B3 share of LatAm ETD</td>
+<td><strong>~95%</strong></td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>B3 global rank</td>
+<td><strong>#2</strong> by contract volume</td>
+<td>FIA</td>
+</tr>
+<tr>
+<td>Open interest (end 2023)</td>
+<td>203.6 million contracts (+61.5% YoY)</td>
+<td>FIA</td>
+</tr>
+<tr>
+<td>Key products</td>
+<td>Interest rate futures (DI), FX futures, equity index options</td>
+<td>B3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>B3 is the #2 derivatives exchange globally</strong>, behind only NSE India. Its
+product mix is fundamentally different from NSE — where India is dominated by
+equity index options, B3's largest product is interest rate futures (DI
+contracts), reflecting Brazil's historically high and volatile interest rate
+environment (Selic at 14.25% as of early 2025).</p>
+<h4 id="equities">Equities</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dec 2024 equity ADTV</td>
+<td>R$29.0 billion ($4.8B)</td>
+<td><a href="https://www.riotimesonline.com/b3-stock-exchange-sees-20-6-jump-in-december-trading-volume/">Rio Times</a></td>
+</tr>
+<tr>
+<td>CY2024 equity ADTV change</td>
+<td>-3.8% YoY (cash equities)</td>
+<td>B3 IR</td>
+</tr>
+<tr>
+<td>Individual investors</td>
+<td>5.26 million</td>
+<td>B3</td>
+</tr>
+<tr>
+<td>BDR ADTV growth (2024)</td>
+<td>+47%</td>
+<td>B3 IR</td>
+</tr>
+<tr>
+<td>ETF ADTV growth (2024)</td>
+<td>+16%</td>
+<td>B3 IR</td>
+</tr>
+<tr>
+<td>B3 market cap</td>
+<td>~$0.8 trillion</td>
+<td>B3</td>
+</tr>
+<tr>
+<td>Annual equity trades (est.)</td>
+<td>~1.8 billion</td>
+<td>Derived from ADTV</td>
+</tr>
+</tbody>
+</table>
+<p>B3's equity market is smaller than India's by trade count (~1.8B vs ~18B) but
+handles larger average trade sizes. The 2024 monetary tightening cycle reduced
+risk appetite, leading to a 3.8% decline in cash equity ADTV. However, BDRs
+(Brazilian Depositary Receipts for foreign stocks) surged 47%, indicating
+growing international diversification among Brazilian investors.</p>
+<hr/>
+<h3 id="4-boleto-bancario-brazils-unique-payment-slip-system">4. Boleto Bancario — Brazil's Unique Payment Slip System</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E-commerce volume (2024)</td>
+<td>~$27 billion</td>
+<td><a href="https://paymentscmi.com/insights/payments-ecommerce-trends-brazil-2024/">PCMI</a></td>
+</tr>
+<tr>
+<td>E-commerce share</td>
+<td>8-10% of online sales</td>
+<td>PCMI</td>
+</tr>
+<tr>
+<td>Total annual txns (est.)</td>
+<td>~4-5 billion</td>
+<td>Derived from BCB data</td>
+</tr>
+<tr>
+<td>Trend</td>
+<td>Declining, displaced by Pix</td>
+<td>Multiple sources</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Boleto Bancario is unique to Brazil</strong> — a payment slip system where consumers
+receive a barcode-based document and can pay it at any bank, ATM, lottery house,
+or via internet banking. It served as the primary non-cash payment method for
+decades before Pix.</p>
+<p>Boleto remains important for:
+- <strong><a class="xref" href="/universe-of-finance/reports/payments/bill-payments/REPORT.html">Bill payments</a></strong>: Utilities, rent, taxes, and government fees
+- <strong><a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">E-commerce</a></strong>: 8-10% of online purchases (declining from ~20% pre-Pix)
+- <strong>Unbanked population</strong>: Can be paid in cash at lottery houses</p>
+<p>Pix is rapidly absorbing Boleto's use cases. The same barcode infrastructure
+is being integrated with Pix for seamless payment, but Boleto as a standalone
+method is in structural decline.</p>
+<hr/>
+<h3 id="5-government-payments-bolsa-familia-and-beyond">5. Government Payments — Bolsa Familia and Beyond</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bolsa Familia beneficiaries</td>
+<td>20.8 million families (55.1M people)</td>
+<td><a href="https://policybasket.endhungerandpoverty.org/index.php/Brazil:_Bolsa_Fam%C3%ADlia">Policy Basket</a></td>
+</tr>
+<tr>
+<td>Bolsa Familia annual disbursement</td>
+<td>~$32 billion (~R$168 billion)</td>
+<td>World Bank / CEPAL</td>
+</tr>
+<tr>
+<td>Bolsa Familia monthly transfers</td>
+<td>~R$14 billion</td>
+<td>CEPAL</td>
+</tr>
+<tr>
+<td>Minimum monthly payment</td>
+<td>R$600/family</td>
+<td>BCB</td>
+</tr>
+<tr>
+<td>Annual government payment txns (est.)</td>
+<td>~3.2 billion</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>~25% of population</td>
+<td>Policy Basket</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bolsa Familia is the world's largest conditional cash transfer program</strong>,
+reaching 55.1 million people (~25% of Brazil's population). At ~$32 billion
+annually, it dwarfs India's DBT in per-capita terms though India's DBT reaches
+more absolute beneficiaries.</p>
+<p>Government payment transactions include:
+- <strong>Bolsa Familia</strong>: ~249 million monthly disbursements (20.8M families x 12 months)
+- <strong>INSS pensions</strong>: ~37 million beneficiaries, monthly payments
+- <strong>FGTS withdrawals</strong>: Workers' severance fund, periodic disbursements
+- <strong>Tax refunds and government salaries</strong>: Federal, state, and municipal</p>
+<p>Combined, these generate an estimated ~3.2 billion annual government payment
+transactions.</p>
+<hr/>
+<h3 id="6-strselic-brazils-rtgs-and-securities-settlement">6. STR/Selic — Brazil's RTGS and Securities Settlement</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STR annual value (2024)</td>
+<td>R$13.68 trillion</td>
+<td><a href="https://www.bcb.gov.br/en">BCB</a></td>
+</tr>
+<tr>
+<td>STR function</td>
+<td>Real-time gross settlement</td>
+<td>BCB</td>
+</tr>
+<tr>
+<td>Selic system</td>
+<td>Government securities settlement</td>
+<td>BCB</td>
+</tr>
+<tr>
+<td>Annual RTGS txns (est.)</td>
+<td>~60 million</td>
+<td>Derived</td>
+</tr>
+</tbody>
+</table>
+<p><strong>STR (Sistema de Transferencia de Reservas)</strong> is Brazil's RTGS system,
+operated by BCB. It handles high-value interbank settlements. The Selic system
+settles government securities (the name also applies to Brazil's benchmark
+interest rate).</p>
+<p><strong>TED (Transferencia Eletronica Disponivel)</strong>: Brazil's large-value wire
+transfer system, which runs through STR. TED handles ~65 million transactions
+per month (~780M/year), moving R$3.3-3.9 trillion monthly. TED volume has
+stabilized as Pix absorbs smaller transfers, but TED remains critical for
+high-value corporate payments.</p>
+<hr/>
+<h3 id="7-drex-brazils-cbdc-digital-real">7. Drex — Brazil's CBDC (Digital Real)</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status</td>
+<td>Pilot phase (Phase 2)</td>
+<td><a href="https://www.bcb.gov.br/en">BCB</a></td>
+</tr>
+<tr>
+<td>Expected launch</td>
+<td>Late 2025 / H1 2026</td>
+<td>CoinTelegraph / BCB</td>
+</tr>
+<tr>
+<td>Pilot participants</td>
+<td>Major banks, Visa, Mastercard, Microsoft</td>
+<td>BCB</td>
+</tr>
+<tr>
+<td>Use cases tested</td>
+<td>13 themes including tokenized securities, trade finance</td>
+<td>BCB</td>
+</tr>
+<tr>
+<td>Current TPS contribution</td>
+<td><strong>Zero</strong> (pilot only)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Drex is notable for its ambition</strong>: Rather than simply creating a digital
+currency, BCB is building a programmable money platform for tokenized assets,
+DeFi-inspired use cases, and automated financial contracts. Phase 2 explores
+13 themes including tokenized real estate, liquidity pools for government
+securities, and international trade finance.</p>
+<p><strong>Privacy challenge</strong>: BCB postponed the original timeline after determining
+that tested privacy solutions lacked "necessary maturity." The blockchain-
+inspired component was ultimately scaled back due to high maintenance costs
+and unresolved privacy issues. This makes Drex's trajectory uncertain —
+it may launch as a more conventional wholesale CBDC rather than the
+ambitious <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> platform originally envisioned.</p>
+<p><strong>TPS implication</strong>: Drex has zero current TPS contribution. If launched at
+scale with tokenized asset settlement, it could add meaningful volume, but
+this is speculative. Not included in current estimates.</p>
+<hr/>
+<h3 id="8-atm-withdrawals-cash-still-matters">8. ATM Withdrawals — Cash Still Matters</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual withdrawals (2024 est.)</td>
+<td>~4.0 billion</td>
+<td><a href="https://www.reportlinker.com/dataset/5ad11e5a2afe7aced9c8e9c38a9c8bf3f16b83bd">ReportLinker</a></td>
+</tr>
+<tr>
+<td>ATMs in Brazil</td>
+<td>~178,000</td>
+<td>IMARC / ATMIA</td>
+</tr>
+<tr>
+<td>CAGR (2018-2023)</td>
+<td>+2.92%</td>
+<td>ReportLinker</td>
+</tr>
+<tr>
+<td>Forecast CAGR (2024-2028)</td>
+<td>+0.99%</td>
+<td>ReportLinker</td>
+</tr>
+</tbody>
+</table>
+<p>Despite Pix's dominance, Brazil still has ~4 billion <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a> per year.
+Cash usage persists in the informal economy, street markets, and among the ~7%
+of adults who don't use Pix. Growth is flattening as digital payments
+absorb more use cases.</p>
+<hr/>
+<h3 id="9-digital-assets-latin-americas-crypto-hub">9. Digital Assets — Latin America's Crypto Hub</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Crypto trading volume (Jan-May 2024)</td>
+<td>$6 billion (BRL denominated)</td>
+<td><a href="https://newsletter.brazilcrypto.io/p/210-brazil-crypto-volumes-at-319">Chainalysis</a></td>
+</tr>
+<tr>
+<td>Total crypto flows (2024-25)</td>
+<td>$319 billion</td>
+<td>Chainalysis</td>
+</tr>
+<tr>
+<td>Market share: Binance</td>
+<td>79%</td>
+<td>Chainalysis</td>
+</tr>
+<tr>
+<td>Mercado Bitcoin users</td>
+<td>1.5 million+</td>
+<td>CoinMarketCap</td>
+</tr>
+<tr>
+<td>Stablecoin share of trades</td>
+<td>~50%</td>
+<td>Chainalysis</td>
+</tr>
+<tr>
+<td>Global ranking</td>
+<td><strong>#7</strong> by fiat trade volume</td>
+<td>Chainalysis</td>
+</tr>
+</tbody>
+</table>
+<p>Brazil is Latin America's largest crypto market and 7th globally by fiat
+currency trade volume. Unlike India's punitive 30% tax, Brazil has a more
+moderate regulatory framework. The BCB is actively developing crypto
+regulation, and Drex's DeFi ambitions suggest openness to tokenized finance.</p>
+<p><strong>Stablecoin dominance</strong>: Nearly half of all crypto trades in Brazil involve
+<a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">stablecoins</a> (primarily USDT), reflecting demand for dollar-denominated savings
+in a historically inflation-prone economy.</p>
+<hr/>
+<h3 id="10-gaming-the-mobile-giant-of-latam">10. Gaming — The Mobile Giant of LatAm</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gaming market size (2025)</td>
+<td>$5.64 billion</td>
+<td><a href="https://www.imarcgroup.com/brazil-gaming-market">IMARC</a></td>
+</tr>
+<tr>
+<td>Mobile gaming share</td>
+<td>52.8% of revenue</td>
+<td>IMARC</td>
+</tr>
+<tr>
+<td>Mobile game downloads (2024)</td>
+<td>3.5 billion</td>
+<td><a href="https://tenjin.com/blog/the-state-of-mobile-gaming-in-brazil-2025-data-trends-and-market-analysis/">Tenjin</a></td>
+</tr>
+<tr>
+<td>IAP share of revenue</td>
+<td>61.3%</td>
+<td>IMARC</td>
+</tr>
+<tr>
+<td>Global IAP ranking</td>
+<td>#5 Android, #10 iOS</td>
+<td>Tenjin</td>
+</tr>
+<tr>
+<td>Average daily play time</td>
+<td>5+ hours</td>
+<td>Tenjin</td>
+</tr>
+</tbody>
+</table>
+<p>Brazil is the largest gaming market in Latin America. With 3.5 billion mobile
+game downloads in 2024 and IAP generating 61.3% of revenue, gaming
+<a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a> are a growing contributor. Brazil ranks 5th globally for
+Android in-app purchases.</p>
+<hr/>
+<h2 id="the-pix-effect-brazils-structural-transformation">The Pix Effect — Brazil's Structural Transformation</h2>
+<h3 id="how-pix-reshaped-brazils-payment-landscape">How Pix Reshaped Brazil's Payment Landscape</h3>
+<p>Pix's impact on Brazil mirrors UPI's impact on India, but with a key
+difference: Brazil had a mature card ecosystem before Pix arrived. The
+result is displacement rather than leapfrogging.</p>
+<pre><code>Payment Method    Pre-Pix (2019)    Post-Pix (2024)    Change
+================================================================
+Cash                 55%              ~15%              -40pp
+Credit Card          20%               18%               -2pp
+Debit Card           15%               10%               -5pp
+Pix                   0%               47%              +47pp
+Boleto                8%                5%               -3pp
+TED/DOC               2%               &lt;1%               -2pp
+</code></pre>
+<p><strong>Pix didn't just replace cash — it compressed the entire payment stack.</strong>
+Cash fell from 55% to ~15%. Debit cards lost 5 percentage points. Boleto
+lost 3 points. TED/DOC became nearly irrelevant for consumer payments.
+Only credit cards held relatively steady, protected by the installment
+payment culture.</p>
+<h3 id="the-installment-paradox">The Installment Paradox</h3>
+<p>Brazil has a unique financial behavior: <strong>parcelamento</strong> (installment
+payments). Consumers routinely split purchases into 2-12 interest-free
+monthly installments on credit cards. This is so embedded in Brazilian
+culture that prices are often quoted as "12x de R$50" rather than "R$600."</p>
+<p>This protects credit cards from Pix displacement — until Pix Credit
+(launching 2025-26) offers equivalent installment functionality. When that
+happens, credit cards may face the same compression that debit cards
+experienced.</p>
+<h3 id="pix-vs-upi-the-two-giants-compared">Pix vs UPI — The Two Giants Compared</h3>
+<pre><code>Metric                     Pix (Brazil)         UPI (India)
+================================================================
+Launch year                2020                  2016
+Year to 8B monthly txns    ~5 years             ~6.7 years
+CY2024 annual txns         68.7B                172.0B
+Adult adoption             93%                   ~45%
+Avg transaction            ~$45                  ~$17
+Zero merchant fee          Yes                   Yes
+Architecture               Direct (SPI)          Switch (NPCI)
+Operator                   BCB (central bank)    NPCI (non-profit)
+</code></pre>
+<p>Both systems prove that government-mandated, zero-cost instant payment
+rails can achieve massive adoption. Brazil's higher per-capita adoption
+(93% vs ~45%) reflects its smaller, more urbanized population and higher
+smartphone penetration.</p>
+<hr/>
+<h2 id="the-transaction-to-gdp-anomaly">The Transaction-to-GDP Anomaly</h2>
+<p>Brazil generates <strong>3x its GDP-weight</strong> in financial transaction volume:</p>
+<pre><code>Country         GDP Share    TPS Share    Ratio
+India             3.5%        17.4%       5.0x
+Brazil            2.0%         6.3%       3.2x
+China            17.5%        ~20%        1.1x
+United States    25.5%        ~25%        1.0x
+Europe (EU)      16.5%        ~18%        1.1x
+</code></pre>
+<p>Brazil's overweight is driven by:</p>
+<ol>
+<li><strong>Pix micropayments</strong>: The average Pix transaction is ~$45, generating
+   more transactions per dollar of economic activity than card-dominated
+   economies.</li>
+<li><strong>Card + Pix layering</strong>: Brazil uniquely has both a mature card ecosystem
+   AND a massive instant payment system, creating parallel transaction flows.</li>
+<li><strong>Derivatives market depth</strong>: B3's interest rate derivatives reflect
+   Brazil's complex monetary environment (high rates, inflation history).</li>
+<li><strong>Social transfer scale</strong>: Bolsa Familia alone generates ~250 million
+   annual disbursements to 25% of the population.</li>
+</ol>
+<hr/>
+<h2 id="risks-and-vulnerabilities">Risks and Vulnerabilities</h2>
+<h3 id="1-pix-concentration-risk">1. Pix Concentration Risk</h3>
+<p>Pix now handles 47% of all financial transactions. Any disruption to the
+SPI (Pix's settlement infrastructure) would paralyze Brazilian commerce.
+BCB has invested heavily in redundancy, but the concentration is unprecedented.</p>
+<h3 id="2-monetary-policy-impact-on-b3">2. Monetary Policy Impact on B3</h3>
+<p>B3's derivatives volume is heavily correlated with interest rate volatility.
+If Brazil achieves sustained low inflation and stable rates (historically
+unusual), DI futures volume could decline significantly.</p>
+<h3 id="3-credit-card-disruption">3. Credit Card Disruption</h3>
+<p>When Pix Credit (installment payments via Pix) launches, it could rapidly
+erode credit card volume. This would reduce Brazil's total card TPS while
+increasing Pix TPS — a category shift rather than net growth.</p>
+<h3 id="4-drex-uncertainty">4. Drex Uncertainty</h3>
+<p>BCB's ambitious CBDC vision has been scaled back due to privacy and cost
+concerns. If Drex launches as a limited wholesale system rather than a
+retail platform, its TPS contribution will be negligible.</p>
+<h3 id="5-informal-economy">5. Informal Economy</h3>
+<p>Despite Pix's 93% adult adoption, Brazil's informal economy remains
+significant (~40% of employment). Cash transactions in favelas, street
+markets, and informal services are largely unmeasured.</p>
+<hr/>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>
+<p><strong>Brazil is 6.3% of global financial TPS on 2.0% of global GDP</strong> — a 3.2x
+   overweight driven by Pix adoption, a mature card market, and B3 derivatives.</p>
+</li>
+<li>
+<p><strong>Pix is the world's #2 real-time payment system</strong>, processing 68.7B
+   transactions in CY2024 with 93% adult adoption. It reached 8B monthly
+   transactions faster than India's UPI.</p>
+</li>
+<li>
+<p><strong>B3 is the #2 derivatives exchange globally</strong> and accounts for ~95% of
+   Latin American ETD volume. Its interest rate futures reflect Brazil's
+   unique monetary environment.</p>
+</li>
+<li>
+<p><strong>Brazil is the only country with both a top-3 RTP system AND a top-3
+   derivatives exchange</strong>, making it a uniquely diversified contributor to
+   global TPS.</p>
+</li>
+<li>
+<p><strong>Unlike India, Brazil didn't skip cards</strong> — it has ~46B annual card
+   transactions alongside Pix, creating a layered payment ecosystem. The
+   installment culture (parcelamento) protects credit cards from immediate
+   Pix displacement.</p>
+</li>
+<li>
+<p><strong>Bolsa Familia is the world's largest conditional cash transfer program</strong>
+   by per-capita disbursement, reaching 25% of the population with ~$32B
+   annually.</p>
+</li>
+<li>
+<p><strong>Drex (CBDC) is ambitious but uncertain</strong> — privacy and cost challenges
+   have scaled back the original DeFi-inspired vision. Watch for the H1 2026
+   launch timeline.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://gfmag.com/transaction-banking/pix-becomes-brazils-top-transaction-method/">Global Finance — Pix Becomes Brazil's Top Transaction Method</a></li>
+<li><a href="https://insights.ebanx.com/en/five-years-on-pix-approaches-8-monthly-transactions/">EBANX — Pix Approaches 8 Billion Monthly Transactions</a></li>
+<li><a href="https://www.businesswire.com/news/home/20250121148825/en/Pix-Transactions-Exceed-6-Billion-Monthly">BusinessWire — Pix Transactions Exceed 6 Billion Monthly</a></li>
+<li><a href="https://www.fia.org/fia/articles/global-futures-and-options-volume-hits-record-137-billion-contracts-2023">FIA — Global Futures and Options Volume 2023</a></li>
+<li><a href="https://www.fia.org/fia/articles/etd-volume-december-2024">FIA — ETD Volume December 2024</a></li>
+<li><a href="https://www.fia.org/fia/articles/2024-annual-etd-volume-review">FIA — 2024 Annual ETD Volume Review</a></li>
+<li><a href="https://rankingslatam.com/blogs/industry-news/brazil-payment-cards-market-trends-and-performance-insights-2024-09-overview-1">ABECS / Rankings LatAm — Brazil Payment Cards Q3 2024</a></li>
+<li><a href="https://www.statista.com/statistics/1312242/biggest-card-schemes-in-brazil/">Statista — Card Scheme Market Share Brazil</a></li>
+<li><a href="https://paymentscmi.com/insights/payments-ecommerce-trends-brazil-2024/">PCMI — Payment and Ecommerce Trends in Brazil 2024</a></li>
+<li><a href="https://www.riotimesonline.com/b3-stock-exchange-sees-20-6-jump-in-december-trading-volume/">Rio Times — B3 Stock Exchange December 2024</a></li>
+<li><a href="https://policybasket.endhungerandpoverty.org/index.php/Brazil:_Bolsa_Fam%C3%ADlia">Policy Basket — Bolsa Familia</a></li>
+<li><a href="https://www.bcb.gov.br/en">BCB — Banco Central do Brasil</a></li>
+<li><a href="https://newsletter.brazilcrypto.io/p/210-brazil-crypto-volumes-at-319">Chainalysis — Brazil Crypto Volumes</a></li>
+<li><a href="https://www.imarcgroup.com/brazil-gaming-market">IMARC — Brazil Gaming Market</a></li>
+<li><a href="https://tenjin.com/blog/the-state-of-mobile-gaming-in-brazil-2025-data-trends-and-market-analysis/">Tenjin — State of Mobile Gaming in Brazil 2025</a></li>
+<li><a href="https://www.reportlinker.com/dataset/5ad11e5a2afe7aced9c8e9c38a9c8bf3f16b83bd">ReportLinker — ATM Cash Withdrawals Brazil</a></li>
+<li><a href="https://www.world-exchanges.org/our-work/articles/wfe-fy24-market-data-americas-region-leading-global-markets-despite-lowest-level-ipos-worldwide-last-5-years">WFE — FY 2024 Market Highlights</a></li>
+<li><a href="https://www.bcb.gov.br/content/financialstability/spi_annual_reports/SPI_2024.pdf">BCB — SPI 2024 Annual Report</a></li>
+<li><a href="https://cointelegraph.com/news/brazil-decentralized-finance-digital-real-cbdc">CoinTelegraph — Brazil Drex CBDC DeFi</a></li>
+<li><a href="https://www.pagbrasil.com/blog/news/brazilian-domestic-card-labels-market-share/">PagBrasil — Brazilian Domestic Card Labels Market Share</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/deep-dives/brazil/REPORT.md">analysis/deep-dives/brazil/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

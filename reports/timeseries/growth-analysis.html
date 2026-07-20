@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Growth Analysis: Cross-Sector Trends 2015-2025 — Universe of Finance</title>
+<meta name="description" content="Comparative analysis of growth rates, structural trends, and regime changes across all 24 categories in the Universe of Finance. Generated: 2026-03-28 Companion files: TIMESERIES.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Timeseries</div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Growth Analysis: Cross-Sector Trends 2015-2025</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-growth-rate-comparison-by-sector">1. Growth Rate Comparison by Sector</a></li><li><a href="#2-structural-trends">2. Structural Trends</a></li><li><a href="#3-covid-impact-analysis-2020">3. COVID Impact Analysis (2020)</a></li><li><a href="#4-projection-confidence-did-past-growth-rates-predict-correctly">4. Projection Confidence: Did Past Growth Rates Predict Correctly?</a></li><li><a href="#5-power-law-distribution">5. Power Law Distribution</a></li><li><a href="#6-cross-cutting-observations">6. Cross-Cutting Observations</a></li></ul></div><blockquote>
+<p>Comparative analysis of growth rates, structural trends, and regime changes
+across all 24 categories in the Universe of Finance.</p>
+</blockquote>
+<p><strong>Generated</strong>: 2026-03-28
+<strong>Companion files</strong>: <code>TIMESERIES.md</code> (summary tables), <code>data.json</code> (machine-readable)</p>
+<hr/>
+<h2 id="1-growth-rate-comparison-by-sector">1. Growth Rate Comparison by Sector</h2>
+<h3 id="sector-level-cagrs-2015-2025-weighted-by-2025-tps">Sector-Level CAGRs (2015-2025, weighted by 2025 TPS)</h3>
+<table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>2015 TPS</th>
+<th>2025 TPS</th>
+<th>CAGR</th>
+<th>Dominant Driver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payments</td>
+<td>~9,561</td>
+<td>~69,632</td>
+<td>22.0%</td>
+<td>RTP adoption (UPI/PIX) + digital wallet expansion</td>
+</tr>
+<tr>
+<td>Digital Assets</td>
+<td>~37</td>
+<td>~5,430</td>
+<td>64.7%</td>
+<td>CEX scale + L1/L2 throughput gains</td>
+</tr>
+<tr>
+<td>Traditional Finance</td>
+<td>~2,351</td>
+<td>~11,858</td>
+<td>17.5%</td>
+<td>ETD explosion (India options)</td>
+</tr>
+<tr>
+<td>Banking</td>
+<td>~13</td>
+<td>~60</td>
+<td>16.6%</td>
+<td>Securities settlement scope expansion</td>
+</tr>
+<tr>
+<td>Gaming</td>
+<td>~240</td>
+<td>~512</td>
+<td>7.8%</td>
+<td>Mobile gaming maturation</td>
+</tr>
+<tr>
+<td>Government</td>
+<td>~700</td>
+<td>~1,002</td>
+<td>3.6%</td>
+<td>Slow digitization</td>
+</tr>
+<tr>
+<td>Emerging</td>
+<td>~400</td>
+<td>~1,541</td>
+<td>14.4%</td>
+<td>IoT tolling/metering growth</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Takeaway</strong>: Digital assets grew fastest by percentage but from a tiny base. Payments dominate absolute volume and still grew &gt;20% CAGR. Traditional finance's growth was almost entirely driven by one subcategory (ETD) -- without <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s options explosion, TradFi CAGR would be ~4%.</p>
+<h3 id="the-quiet-giant-problem">The "Quiet Giant" Problem</h3>
+<p>Traditional finance categories (equity, bonds, FX, <a class="xref" href="/universe-of-finance/reports/traditional-finance/commodities/REPORT.html">commodities</a>, <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a>) account for an enormous share of <em>value</em> transacted but a tiny share of <em>transaction count</em>:</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Payments</th>
+<th>Traditional Finance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Share of global TPS (2025)</td>
+<td>~80%</td>
+<td>~14%</td>
+</tr>
+<tr>
+<td>Share of global value (2025)</td>
+<td>~$35T</td>
+<td>~$250T+</td>
+</tr>
+<tr>
+<td>Avg transaction size</td>
+<td>~$50-500</td>
+<td>~$50K-5M</td>
+</tr>
+</tbody>
+</table>
+<p>This asymmetry explains why payments infrastructure gets the most engineering investment -- it is the throughput bottleneck, not the value bottleneck.</p>
+<hr/>
+<h2 id="2-structural-trends">2. Structural Trends</h2>
+<h3 id="trend-1-the-digitization-wave-2015-2025">Trend 1: The Digitization Wave (2015-2025)</h3>
+<p>Three overlapping waves of digitization:</p>
+<p><strong>Wave 1 (2015-2018): Card penetration deepens</strong>
+- <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer cards</a> grew from 227B to 346B txns (+53%)
+- Contactless adoption accelerated in UK, Australia, Canada
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s UnionPay scaled domestic card usage</p>
+<p><strong>Wave 2 (2018-2022): Mobile-first payments emerge</strong>
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>: 2.7B (2017) -&gt; 46B (2021) in India
+- WeChat Pay/Alipay saturated China's mobile commerce
+- M-Pesa expanded across East <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>
+- <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital wallets</a> grew from ~117B to ~410B txns</p>
+<p><strong>Wave 3 (2022-2025): Real-time payments go global</strong>
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a>: 0 -&gt; 66B txns in <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a> (2020-2024)
+- SEPA Instant: +72% YoY in Europe
+- FedNow launched in US (2023) -- still tiny but growing 2000%/yr
+- RTP combined: 50B (2018) -&gt; 553B (2025 est.)</p>
+<h3 id="trend-2-the-derivatives-explosion">Trend 2: The Derivatives Explosion</h3>
+<p><a class="xref" href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">Exchange-traded derivatives</a> grew from 24.8B to 300B contracts in 10 years:</p>
+<pre><code>2015: 24.8B  (flat since 2010)
+2019: 34.5B  (+39% in 4 years)
+2020: 46.8B  (COVID volatility)
+2023: 137.3B (India retail options)
+2025: ~300B  (India dominates)
+</code></pre>
+<p>This is almost entirely an India story. NSE went from a minor exchange to the world's largest by contract count, driven by:
+- Zero-day options (0DTE) regulation that enabled weekly expiries
+- Mobile trading apps (Zerodha, Groww) bringing retail to derivatives
+- Low per-contract costs enabling high-frequency retail speculation</p>
+<p><strong>Without India's ETD explosion, global TPS growth would be ~30% lower.</strong></p>
+<h3 id="trend-3-blockchains-throughput-revolution">Trend 3: Blockchain's Throughput Revolution</h3>
+<p>Total L1/L2 blockchain TPS: 7 (2015) -&gt; 1,100 (2025) = 157x</p>
+<p>Phase breakdown:
+- <strong>2015-2017</strong>: Bitcoin-era (3-7 TPS ceiling, block size debates)
+- <strong>2017-2019</strong>: Ethereum enables smart contracts but 15 TPS ceiling
+- <strong>2020-2022</strong>: Alt-L1s (BSC, Solana, Avalanche) push to 100+ TPS
+- <strong>2023-2025</strong>: L2 rollups + Solana's throughput gains push to 1000+ TPS</p>
+<p>The narrative arc: blockchains went from "can't scale" to "scaling faster than payments" in one decade. But only ~5% of on-chain transactions are economically meaningful payments; the rest is MEV, spam, failed txns, and protocol overhead.</p>
+<h3 id="trend-4-stablecoins-as-a-payment-rail">Trend 4: Stablecoins as a Payment Rail</h3>
+<p>The stablecoin trajectory is unique -- it grew through every crypto bear market:</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Stablecoin TPS</th>
+<th>Crypto Market Sentiment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>5</td>
+<td>Bear</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>20</td>
+<td>Early bull</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>80</td>
+<td>Peak bull</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>150</td>
+<td>Deep bear (UST collapse)</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>300</td>
+<td>Recovery</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>520</td>
+<td>Bull</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>700</td>
+<td>Bull</td>
+</tr>
+</tbody>
+</table>
+<p><a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">Stablecoins</a> are the one crypto category that behaves like payments infrastructure rather than speculative assets. Transfer value ($27.6T in 2024) now exceeds Visa and Mastercard combined.</p>
+<hr/>
+<h2 id="3-covid-impact-analysis-2020">3. COVID Impact Analysis (2020)</h2>
+<h3 id="categories-that-surged">Categories That Surged</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>2019 TPS</th>
+<th>2020 TPS</th>
+<th>Change</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P2P Transfers</td>
+<td>86</td>
+<td>124</td>
+<td>+44%</td>
+<td>Stimulus splitting, rent sharing</td>
+</tr>
+<tr>
+<td>Equity Markets</td>
+<td>1,205</td>
+<td>1,649</td>
+<td>+37%</td>
+<td>Retail trading boom, volatility</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>1,093</td>
+<td>1,483</td>
+<td>+36%</td>
+<td>Hedging demand, volatility premium</td>
+</tr>
+<tr>
+<td>Gaming Sales</td>
+<td>55</td>
+<td>72</td>
+<td>+33%</td>
+<td>Lockdown entertainment</td>
+</tr>
+<tr>
+<td>E-Commerce</td>
+<td>1,062</td>
+<td>1,282</td>
+<td>+21%</td>
+<td>Forced digital shift</td>
+</tr>
+<tr>
+<td>Gaming Microtx</td>
+<td>326</td>
+<td>397</td>
+<td>+22%</td>
+<td>Engagement hours up</td>
+</tr>
+<tr>
+<td>Bank Transfers (RTP)</td>
+<td>2,378</td>
+<td>3,330</td>
+<td>+40%</td>
+<td>Digital-first necessity</td>
+</tr>
+</tbody>
+</table>
+<h3 id="categories-that-dipped">Categories That Dipped</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>2019 TPS</th>
+<th>2020 TPS</th>
+<th>Change</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>12,620</td>
+<td>12,049</td>
+<td>-4.5%</td>
+<td>Travel, dining, physical retail collapse</td>
+</tr>
+<tr>
+<td>IoT/M2M</td>
+<td>850</td>
+<td>900</td>
+<td>+5.9%</td>
+<td>Toll collection down, offset by smart meters</td>
+</tr>
+<tr>
+<td>FX</td>
+<td>33</td>
+<td>34</td>
+<td>+3%</td>
+<td>Reduced cross-border commerce</td>
+</tr>
+</tbody>
+</table>
+<h3 id="covids-lasting-legacy">COVID's Lasting Legacy</h3>
+<p>The categories that surged in 2020 mostly stayed elevated. <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">E-commerce</a>, digital wallets, and RTP did not revert to pre-COVID trends -- they established a permanently higher baseline. Consumer cards recovered by 2021 and then accelerated. The "digital shift" was a one-way door.</p>
+<p>One exception: <strong>gaming <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a></strong> had a COVID peak in 2020 (397 TPS) that they only matched again in 2024 (389 TPS). The COVID gaming bump was largely a time-availability effect that reversed.</p>
+<hr/>
+<h2 id="4-projection-confidence-did-past-growth-rates-predict-correctly">4. Projection Confidence: Did Past Growth Rates Predict Correctly?</h2>
+<p>For categories where we can compare early projections vs. actuals:</p>
+<h3 id="consumer-cards">Consumer Cards</h3>
+<ul>
+<li><strong>2019 projection for 2024</strong> (at 2015-2019 CAGR of ~15%): ~800B txns</li>
+<li><strong>2024 actual</strong>: 773B txns</li>
+<li><strong>Verdict</strong>: Close -- COVID dip in 2020 and subsequent acceleration roughly canceled out</li>
+</ul>
+<h3 id="bank-transfers-rtp">Bank Transfers (RTP)</h3>
+<ul>
+<li><strong>2020 projection for 2025</strong> (at 2018-2020 CAGR of ~45%): ~750B txns</li>
+<li><strong>2025 estimate</strong>: 553B txns</li>
+<li><strong>Verdict</strong>: Overshot -- growth rate decelerated from 45% to ~30% as largest systems (UPI, PIX) matured</li>
+</ul>
+<h3 id="etd">ETD</h3>
+<ul>
+<li><strong>2019 projection for 2024</strong> (at 2015-2019 CAGR of ~8%): ~50B contracts</li>
+<li><strong>2024 actual</strong>: 205B contracts</li>
+<li><strong>Verdict</strong>: Massively undershot -- India options were unpredictable regime change</li>
+</ul>
+<h3 id="blockchain-l1l2">Blockchain L1/L2</h3>
+<ul>
+<li><strong>2021 projection for 2025</strong> (at 2019-2021 CAGR of ~63%): ~28B txns</li>
+<li><strong>2025 estimate</strong>: 35B txns</li>
+<li><strong>Verdict</strong>: Slightly overshot -- Solana and L2 exceeded expectations</li>
+</ul>
+<h3 id="key-lessons-for-forward-projections">Key Lessons for Forward Projections</h3>
+<ol>
+<li><strong>Mature categories (cards, FX, government)</strong>: CAGR-based projections work well. Low volatility, predictable drivers.</li>
+<li><strong>Adoption S-curve categories (RTP, wallets)</strong>: Early CAGR overpredicts because growth rates decelerate as penetration increases.</li>
+<li><strong>Regime-change categories (ETD, crypto)</strong>: Historical CAGR is useless. Single policy decisions (India 0DTE options) or technology breakthroughs (Solana throughput) can cause 5-10x deviations.</li>
+<li><strong>Nascent categories (<a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI agents</a>, RWA)</strong>: Any projection is essentially science fiction. The 2020-2025 trajectory of stablecoins (zero to $700 TPS) shows how fast new categories can emerge.</li>
+</ol>
+<hr/>
+<h2 id="5-power-law-distribution">5. Power Law Distribution</h2>
+<p>Financial transaction TPS follows a power law. Plotting 2025 TPS on a log scale:</p>
+<pre><code>10^4+ : Consumer Cards (26,700), Digital Wallets (23,150), Bank Transfers (17,519)
+10^3+ : ETD (9,505), CEX (3,500), Equity (2,067), E-Commerce (1,907)
+        IoT (1,538), L1/L2 (1,100), Gov't (1,002), Stablecoins (700)
+10^2+ : Gaming Microtx (415), P2P (301), Commodities (240), DeFi (130)
+        Gaming Sales (97)
+10^1+ : Remittances (61), Sec Settlement (47), FX (42), RTGS (14)
+10^0+ : Fixed Income (3.8), RWA (2.4), AI Agents (0.66), OTC Derivs (0.16)
+</code></pre>
+<p>The top 3 categories (cards, wallets, RTP) represent 77% of all TPS. The bottom 10 categories combined represent &lt;1%. This extreme concentration means that the "global TPS" number is overwhelmingly driven by consumer retail payments.</p>
+<hr/>
+<h2 id="6-cross-cutting-observations">6. Cross-Cutting Observations</h2>
+<h3 id="the-value-count-inversion">The Value-Count Inversion</h3>
+<ul>
+<li><strong>Highest TPS, lowest value/txn</strong>: Consumer cards ($67 avg), digital wallets ($25 avg)</li>
+<li><strong>Lowest TPS, highest value/txn</strong>: RTGS ($3.5M avg), OTC derivatives ($155M avg notional)</li>
+<li>The financial system has two fundamentally different throughput problems: mass retail (billions of small txns) and wholesale (millions of huge txns)</li>
+</ul>
+<h3 id="the-overlay-problem">The Overlay Problem</h3>
+<p>Modern payment flows create counting headaches:
+- A consumer pays $50 at a store using Apple Pay (NFC) -&gt; Visa (card rail) -&gt; issuing bank (ACH settlement)
+- This is ONE economic transaction but counts in: digital wallets, consumer cards, and <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>
+- Our dedup factor (0.75 in 2025) tries to account for this, but it is a rough estimate</p>
+<h3 id="the-india-effect">The India Effect</h3>
+<p>India now appears in the top contributors for:
+- <strong>ETD</strong>: NSE is #1 globally by contract count
+- <strong>Bank Transfers</strong>: UPI is 46% of global RTP volume
+- <strong><a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">Equity Markets</a></strong>: NSE/BSE are #1/#7 by trade count
+- <strong>Digital Wallets</strong>: UPI is simultaneously a wallet, RTP, and P2P system</p>
+<p>India's financial digitization (driven by Aadhaar + UPI + NPCI policy) is arguably the single largest structural shift in global financial TPS in this decade.</p>
+<h3 id="the-tps-per-capita-view">The "TPS Per Capita" View</h3>
+<p>Rough estimates:
+- <strong>US</strong>: ~25B annual financial txns / 330M people = ~76 txns/person/year (cards dominate)
+- <strong>India</strong>: ~200B+ annual financial txns / 1.4B people = ~143 txns/person/year (UPI dominate)
+- <strong>China</strong>: ~300B+ annual financial txns / 1.4B people = ~214 txns/person/year (WeChat/Alipay)</p>
+<p>China and India have higher per-capita digital financial transaction rates than the US, driven by mobile-first payment systems that bypassed card infrastructure.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/timeseries/growth-analysis.md">analysis/timeseries/growth-analysis.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

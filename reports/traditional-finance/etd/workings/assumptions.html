@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exchange-Traded Derivatives — Assumptions — Universe of Finance</title>
+<meta name="description" content="All assumptions documented with rationale and sensitivity notes. Definition Assumptions # Assumption Rationale Impact if Wrong A1 'Transaction' = one contract traded FIA and WFE b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Exchange-Traded Derivatives — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#definition-assumptions">Definition Assumptions</a></li><li><a href="#tps-calculation-assumptions">TPS Calculation Assumptions</a></li><li><a href="#historical-data-assumptions">Historical Data Assumptions</a></li><li><a href="#notional-value-assumptions">Notional Value Assumptions</a></li><li><a href="#projection-assumptions">Projection Assumptions</a></li><li><a href="#double-counting-and-overlap-notes">Double-Counting and Overlap Notes</a></li><li><a href="#key-uncertainties">Key Uncertainties</a></li></ul></div><blockquote>
+<p>All assumptions documented with rationale and sensitivity notes.</p>
+</blockquote>
+<h2 id="definition-assumptions">Definition Assumptions</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Assumption</th>
+<th>Rationale</th>
+<th>Impact if Wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>"Transaction" = one contract traded</td>
+<td>FIA and WFE both count contracts; this is the industry standard</td>
+<td>If counting individual legs of spreads, volume would be ~1.3-1.5x higher</td>
+</tr>
+<tr>
+<td>A2</td>
+<td>Exchange-traded only; excludes OTC</td>
+<td>Clear regulatory distinction; ETD = standardised, centrally cleared</td>
+<td>OTC derivatives are 5-10x larger by notional; not comparable by volume</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>Includes all asset classes</td>
+<td>Equity, IR, FX, commodity, ETF, crypto (if on regulated exchange)</td>
+<td>Some sources exclude crypto ETD; impact &lt;0.5% of total</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>FIA as primary volume source over WFE</td>
+<td>FIA covers 85 exchanges (broader); WFE limited to members</td>
+<td>Using WFE would reduce 2024 total by ~12% (180B vs 205B)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tps-calculation-assumptions">TPS Calculation Assumptions</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Assumption</th>
+<th>Value Used</th>
+<th>Range</th>
+<th>Sensitivity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>T1</td>
+<td>Trading days per year</td>
+<td>252</td>
+<td>250-255</td>
+<td>±1% on TPS</td>
+</tr>
+<tr>
+<td>T2</td>
+<td>Effective global trading hours per day</td>
+<td>21.6h</td>
+<td>16-24h</td>
+<td>±20% on TPS</td>
+</tr>
+<tr>
+<td>T3</td>
+<td>Volume distributed evenly across trading hours</td>
+<td>Uniform</td>
+<td>Reality: concentrated around opens/closes</td>
+<td>Peak TPS could be 2-3x higher during opening hours</td>
+</tr>
+<tr>
+<td>T4</td>
+<td>Peak-to-average ratio</td>
+<td>6x</td>
+<td>4-10x</td>
+<td>±40% on peak TPS estimate</td>
+</tr>
+<tr>
+<td>T5</td>
+<td>India expiry-day volume concentration</td>
+<td>3-6x normal</td>
+<td>Based on FIA reporting</td>
+<td>Higher concentration = higher peak TPS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="historical-data-assumptions">Historical Data Assumptions</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Assumption</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>2022 total derived from Statista (futures 29.32B + options 54.53B = 83.85B)</td>
+<td>FIA's own report may differ slightly; ±5%</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>Pre-2020 futures/options split not available from FIA summaries</td>
+<td>Cannot compute instrument-level CAGR for full 10yr period</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>FIA methodology consistent across 2015-2024</td>
+<td>FIA added exchanges over time; early years may undercount slightly</td>
+</tr>
+</tbody>
+</table>
+<h2 id="notional-value-assumptions">Notional Value Assumptions</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Assumption</th>
+<th>Value</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N1</td>
+<td>BIS covers only IR + FX ETD notional</td>
+<td>$12.83T/day</td>
+<td>BIS explicitly states this scope</td>
+</tr>
+<tr>
+<td>N2</td>
+<td>Average notional per equity ETD contract</td>
+<td>~$1,500</td>
+<td>Weighted: India ~$1K (small lots), US ~$10K, Europe ~$5K; India dominates volume</td>
+</tr>
+<tr>
+<td>N3</td>
+<td>Average notional per commodity ETD contract</td>
+<td>~$25,000</td>
+<td>Blended across energy ($50K+), metals ($30K), agriculture ($10K)</td>
+</tr>
+<tr>
+<td>N4</td>
+<td>Trading days for annual notional conversion</td>
+<td>255</td>
+<td>Slightly higher than equity markets due to commodity exchanges</td>
+</tr>
+</tbody>
+</table>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<h3 id="baseline-12-cagr">Baseline (12% CAGR)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Assumption</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B1</td>
+<td>India options growth decelerates from ~60% to ~15%</td>
+<td>SEBI lot-size increases (Nov 2024), weekly expiry restrictions already biting</td>
+</tr>
+<tr>
+<td>B2</td>
+<td>Futures grow at ~5% globally</td>
+<td>Consistent with 2020-2024 CAGR of ~2.5%, plus emerging market growth</td>
+</tr>
+<tr>
+<td>B3</td>
+<td>No major new markets open for derivatives</td>
+<td>Conservative: no China liberalization, no major African exchanges</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>Crypto ETD remains &lt;1% of total</td>
+<td>CME crypto volumes growing but from tiny base</td>
+</tr>
+<tr>
+<td>B5</td>
+<td>Options/futures mix stabilizes at ~85/15</td>
+<td>Current level sustained as India growth moderates</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-18-cagr">High-Growth (18% CAGR)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Assumption</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G1</td>
+<td>Retail derivatives access expands to 10+ new markets</td>
+<td>SE Asia (Vietnam, Philippines), Africa (Kenya, Nigeria), LatAm (Mexico, Colombia)</td>
+</tr>
+<tr>
+<td>G2</td>
+<td>Crypto ETD grows to 3-5% of total by 2035</td>
+<td>Bitcoin/Ethereum ETF options on Cboe/Nasdaq; potential Solana, other assets</td>
+</tr>
+<tr>
+<td>G3</td>
+<td>ETF options maintain 25%+ annual growth</td>
+<td>US ETF options explosion continues; spreads to Europe and APAC</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>No global regulatory clampdown</td>
+<td>Regulators accept derivatives growth as legitimate hedging/price discovery</td>
+</tr>
+<tr>
+<td>G5</td>
+<td>AI/algorithmic trading increases velocity</td>
+<td>More strategies, more frequent rebalancing</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-5-cagr">Conservative (5% CAGR)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Assumption</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>India volume drops 30-50% from SEBI interventions</td>
+<td>Lot size increases, transaction taxes, position limits reduce retail speculation</td>
+</tr>
+<tr>
+<td>C2</td>
+<td>China maintains restrictions on retail derivatives</td>
+<td>No liberalization of equity/commodity options for retail</td>
+</tr>
+<tr>
+<td>C3</td>
+<td>US introduces financial transaction tax</td>
+<td>Repeatedly proposed in Congress; would reduce HFT/algo volume</td>
+</tr>
+<tr>
+<td>C4</td>
+<td>European MiFID III adds derivatives constraints</td>
+<td>Position limits, reporting burden increases cost of trading</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>Crypto derivatives face regulatory hostility</td>
+<td>SEC/CFTC turf wars delay or prevent new crypto ETD listings</td>
+</tr>
+</tbody>
+</table>
+<h2 id="double-counting-and-overlap-notes">Double-Counting and Overlap Notes</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A single trade can appear on both sides (buyer + seller)</td>
+<td>FIA counts single-sided volume (one contract = one count), which is industry standard</td>
+</tr>
+<tr>
+<td>CME block trades may be counted differently</td>
+<td>FIA includes all trade types; no special treatment needed</td>
+</tr>
+<tr>
+<td>Index options on expiry may generate equity trades</td>
+<td>Those equity trades are in "cash equity" category, not derivatives</td>
+</tr>
+<tr>
+<td>ETF options overlap with equity category</td>
+<td>WFE separates ETF derivatives as distinct asset class (~4% of total)</td>
+</tr>
+<tr>
+<td>Crypto ETD on CME vs unregulated venues</td>
+<td>Only CME/Cboe crypto derivatives count as ETD; Binance/Deribit are not included</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-uncertainties">Key Uncertainties</h2>
+<ol>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> regulatory trajectory</strong>: SEBI's Nov 2024 lot-size changes are the single largest risk factor. If weekly expiry restrictions and transaction taxes escalate, global volume growth could stall or reverse.</p>
+</li>
+<li>
+<p><strong>FIA vs WFE gap</strong>: The 25B contract difference (~12%) creates uncertainty in the "true" total. FIA is preferred but neither is wrong — they simply measure different universes.</p>
+</li>
+<li>
+<p><strong>Notional value for equity ETD</strong>: The BIS gap (no equity/commodity ETD notional) means our total notional estimate carries significant uncertainty. The $262T equity estimate could be $100T-$500T depending on assumptions about average contract size.</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a></strong>: Without exchange-level microsecond data, the peak TPS is necessarily speculative. NSE's matching engine capacity (~500K orders/second) is a technical upper bound, but actual TPS is lower.</p>
+</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/etd/workings/assumptions.md">analysis/traditional-finance/etd/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sector: Gaming — Universe of Finance</title>
+<meta name="description" content="How we measure gaming transaction activity — 2 categories, ~481 TPS. Last Updated: 2026-03-28 (Run 6) 1. Sector Overview The Gaming sector measures commerce events within the digi">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Methodology</div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Sector: Gaming</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-sector-overview">1. Sector Overview</a></li><li><a href="#2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</a></li><li><a href="#3-categories-in-this-sector">3. Categories in This Sector</a></li><li><a href="#4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</a></li><li><a href="#5-primary-data-sources">5. Primary Data Sources</a></li><li><a href="#6-sector-triangulation-approach">6. Sector Triangulation Approach</a></li><li><a href="#7-definition-standards">7. Definition Standards</a></li><li><a href="#8-known-gaps-future-work">8. Known Gaps & Future Work</a></li></ul></div><blockquote>
+<p>How we measure gaming transaction activity — 2 categories, ~481 TPS.
+<strong>Last Updated</strong>: 2026-03-28 (Run 6)</p>
+</blockquote>
+<hr/>
+<h2 id="1-sector-overview">1. Sector Overview</h2>
+<p>The Gaming sector measures <strong>commerce events</strong> within the digital gaming economy — <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">in-game microtransactions</a> (skins, items, virtual currency, loot boxes) and game purchases (digital sales, subscriptions, esports betting). At ~481 TPS, Gaming accounts for <strong>0.7% of global financial TPS</strong>.</p>
+<p>Critically, Gaming is a <strong>commerce layer</strong>, not a payment layer. An estimated 65-80% of gaming purchases are paid via <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a>, <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a>, or <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a> that are already counted in the Payments sector. Gaming counts the <strong>economic event</strong> (player buys a skin), not the payment flow (Visa processes the charge). For payment infrastructure TPS, Gaming is excluded; for economic transaction TPS, Gaming adds ~481 TPS.</p>
+<hr/>
+<h2 id="2-sector-specific-measurement-challenges">2. Sector-Specific Measurement Challenges</h2>
+<p><strong>Revenue-to-transaction conversion.</strong> Game publishers report revenue, not transaction counts. The core challenge is converting revenue → transaction count using average transaction size, which varies wildly: mobile <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a> average $2-5, PC game purchases average $30-40, console game purchases average $50-60.</p>
+<p><strong>Platform opacity.</strong> App Store and Google Play do not publish transaction counts. Steam publishes some data (Steam Replay). Console platforms (PlayStation Store, Xbox Store, Nintendo eShop) disclose revenue but not transaction frequency.</p>
+<p><strong>Free-to-play dominance.</strong> 95%+ of mobile game revenue comes from &lt;5% of players ("whales"). This extreme distribution means average transaction size is misleading — the median player transacts zero times, while whales may transact hundreds of times per year.</p>
+<p><strong>In-game virtual currency.</strong> Many games use intermediate virtual currencies (V-Bucks, Robux, Gold). The real-money purchase of virtual currency is one transaction, but the subsequent in-game spending of that currency generates many virtual transactions that are not real financial events. We count only the <strong>real-money transaction</strong>, not virtual currency spending.</p>
+<p><strong>Regional variation.</strong> <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s gaming market (37% of global mobile gaming revenue) has distinct monetization patterns. Gacha/loot box mechanics dominate in Asia; battle pass/cosmetic models dominate in the West. Average transaction sizes differ by 2-3x.</p>
+<hr/>
+<h2 id="3-categories-in-this-sector">3. Categories in This Sector</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Category</th>
+<th>Avg TPS</th>
+<th>Annual Volume (B)</th>
+<th>Confidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>In-Game Microtransactions</td>
+<td>389</td>
+<td>12.28</td>
+<td>44 (Medium)</td>
+<td>Revenue / avg txn size derivation</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Digital Game Sales &amp; Subscriptions</td>
+<td>92</td>
+<td>2.89</td>
+<td>56 (Medium)</td>
+<td>Platform reports + estimates</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sector total: ~481 TPS</strong></p>
+<hr/>
+<h2 id="4-cross-category-overlap-rules">4. Cross-Category Overlap Rules</h2>
+<h3 id="intra-sector-overlap">Intra-Sector Overlap</h3>
+<p>Microtransactions and Game Sales are <strong>distinct transaction types</strong> with no overlap:
+- Microtransactions = in-game purchases within a game already owned/installed
+- Game Sales = purchasing or subscribing to a game itself</p>
+<p>No de-duplication needed within the sector.</p>
+<h3 id="cross-sector-overlap-with-payments">Cross-Sector Overlap (with Payments)</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│  GAMING SECTOR (commerce layer)                          │
+│                                                          │
+│  ┌──────────────────┐  ┌──────────────────┐             │
+│  │ Microtransactions │  │   Game Sales     │             │
+│  │ 389 TPS          │  │   92 TPS         │             │
+│  │                   │  │                  │             │
+│  │ Paid via:         │  │ Paid via:        │             │
+│  │ • Cards: 40%      │  │ • Cards: 45%     │             │
+│  │ • Wallets: 25%    │  │ • Wallets: 25%   │             │
+│  │ • Platform: 20%   │  │ • Platform: 20%  │             │
+│  │ • Direct debit:10%│  │ • Direct: 10%    │             │
+│  │ • Crypto/other:5% │  │                  │             │
+│  └────────┬─────────┘  └────────┬─────────┘             │
+│           │                      │                       │
+│           └──────────┬───────────┘                       │
+│                      ▼                                   │
+├─────────────────────────────────────────────────────────┤
+│  PAYMENTS SECTOR (payment rail)                          │
+│                                                          │
+│  ~65-75% of gaming TPS is already counted in             │
+│  Consumer Cards, Digital Wallets, or Bank Transfers.     │
+│                                                          │
+│  Incremental gaming TPS (not on tracked rails):          │
+│  ~120-170 TPS (platform balance, crypto, gift cards)     │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Decision:</strong> Gaming is excluded from the payment infrastructure TPS total (~70,200) but included in the economic transaction TPS total (~71,200). This avoids double-counting while still capturing the economic activity.</p>
+<hr/>
+<h2 id="5-primary-data-sources">5. Primary Data Sources</h2>
+<h3 id="source-confidence-matrix">Source Confidence Matrix</h3>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+Newzoo Annual       ████████░░ ████████░ ████████░░  ████░░░░░░
+Sensor Tower        ██████░░░░ █████████ ███████░░░  ██████░░░░
+Steam Replay/DB     ███░░░░░░░ █████████ █████████░  ████████░░
+SuperData (Nielsen) ████████░░ ███████░░ ████████░░  █████░░░░░
+App Annie/data.ai   ██████░░░░ █████████ ███████░░░  ██████░░░░
+Publisher 10-Ks     ████░░░░░░ █████████ █████████░  ███████░░░
+                    ─────────  ────────  ──────────  ───────────
+</code></pre>
+<p><strong>Tier 1 (Revenue anchors):</strong> Newzoo (global market size), Sensor Tower (mobile), publisher filings (EA, Activision, Tencent, NetEase)
+<strong>Tier 2 (Transaction proxies):</strong> Steam database (PC), SuperData/Nielsen (cross-platform)
+<strong>Tier 3 (Conversion factors):</strong> Academic studies on average transaction size, App Annie/data.ai (download and spend data)</p>
+<hr/>
+<h2 id="6-sector-triangulation-approach">6. Sector Triangulation Approach</h2>
+<h3 id="gaming-sector-triangulation-funnel">Gaming Sector Triangulation Funnel</h3>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│              RAW ESTIMATES                                │
+│                                                          │
+│  Method A              Method B            Method C      │
+│  [Revenue / AOV]       [Player Base ×      [Platform     │
+│  Total revenue ÷       Conversion Rate ×   reported      │
+│  avg order value       Avg Purchases/yr]   metrics]      │
+│  ┌──────────┐         ┌──────────┐        ┌──────────┐  │
+│  │ ~14B     │         │ ~16B     │        │ ~13B     │  │
+│  │ annual   │         │ annual   │        │ annual   │  │
+│  │ txns     │         │ txns     │        │ txns     │  │
+│  └────┬─────┘         └────┬─────┘        └────┬─────┘  │
+│       │                    │                    │        │
+│       └────────────────────┼────────────────────┘        │
+│                            ▼                              │
+│              ┌───────────────────────┐                    │
+│              │    RECONCILIATION     │                    │
+│              │ Method B overcounts   │                    │
+│              │ (assumes all payers   │                    │
+│              │ are active; actual    │                    │
+│              │ conversion is ~3-5%). │                    │
+│              │ Method C undercounts  │                    │
+│              │ (misses non-reported  │                    │
+│              │ platforms). Method A  │                    │
+│              │ is most reliable.     │                    │
+│              └──────────┬────────────┘                    │
+│                         ▼                                 │
+│              ┌───────────────────────┐                    │
+│              │   FINAL ESTIMATE      │                    │
+│              │ ~15.2B annual txns    │                    │
+│              │ ~481 TPS              │                    │
+│              │ Range: 350-650 TPS    │                    │
+│              │ Confidence: 50/100    │                    │
+│              └───────────────────────┘                    │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>Method A (Revenue / AOV):</strong> Global gaming revenue ($187B in 2024) → mobile microtransaction revenue ($92B) / avg transaction ($7.50) = ~12.3B + digital sales revenue ($95B) / avg purchase ($33) = ~2.9B. Total: ~15.2B.</p>
+<p><strong>Method B (Player Base):</strong> 3.4B gamers × 5% paying conversion × 89 purchases/yr (for payers) = ~15.1B. High uncertainty on conversion rate and purchase frequency.</p>
+<p><strong>Method C (Platform Metrics):</strong> Sum of Steam (~2B), App Store (~4B), Google Play (~5B), console stores (~2B) = ~13B. Undercounts indie platforms and direct-to-publisher.</p>
+<hr/>
+<h2 id="7-definition-standards">7. Definition Standards</h2>
+<p>In Gaming, a <strong>transaction</strong> is a <strong>real-money purchase event</strong> — the moment a player spends actual currency (not virtual currency) on a game, in-game item, or subscription.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Counting Point</th>
+<th>What Is Excluded</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In-Game Microtransactions</td>
+<td>Completed real-money purchase of virtual goods/currency</td>
+<td>Virtual currency spending (post-purchase), free rewards, gifted items</td>
+</tr>
+<tr>
+<td>Digital Game Sales</td>
+<td>Completed game purchase or subscription renewal</td>
+<td>Free game downloads, demo installations, wishlisting</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key distinction from Payments:</strong> Gaming counts the <strong>commerce event</strong> (what was bought), not the payment method (how it was paid). The payment is counted in the Payments sector.</p>
+<hr/>
+<h2 id="8-known-gaps-future-work">8. Known Gaps &amp; Future Work</h2>
+<ul>
+<li><strong>Average transaction size precision.</strong> The AOV assumption ($7.50 for microtransactions, $33 for game sales) is the single highest-leverage variable. A ±20% change in AOV produces ±20% change in transaction count. Primary research (surveys, platform partnerships) would reduce this uncertainty.</li>
+<li><strong>China/Asia-Pacific microtransaction data.</strong> Tencent and NetEase dominate Asian gaming but disclose revenue, not transaction counts. Chinese gacha/loot box mechanics produce different transaction patterns than Western cosmetic/battle pass models.</li>
+<li><strong>Esports betting.</strong> Currently included in Game Sales but may warrant its own subcategory as the market grows. Transaction patterns differ significantly from game purchases.</li>
+<li><strong>Web3 gaming.</strong> Blockchain-based game transactions (NFT purchases, token earning) blur the line between Gaming and Digital Assets sectors. Currently counted in Digital Assets (on-chain) rather than Gaming.</li>
+<li><strong>Virtual economy internal transactions.</strong> The total volume of in-game virtual currency transactions is estimated at 10-50x the real-money transaction volume. These are economically meaningful but are not financial transactions under UoF definition.</li>
+</ul>
+<hr/>
+<p><em>Gaming is a low-confidence sector due to the fundamental revenue-to-transaction conversion challenge. The methodology will improve as platforms begin publishing transaction count data alongside revenue.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/methodology/SECTOR_GAMING.md">analysis/methodology/SECTOR_GAMING.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

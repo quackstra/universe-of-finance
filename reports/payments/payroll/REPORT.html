@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payroll Payments — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Global payroll — the disbursement of wages and salaries from employers to workers — generates an estimated ~41.2 billion">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Payroll</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Payroll Payments</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">1,014</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">53</div></div><div class="chip"><div class="k">Opacity</div><div class="v red">68</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#11/28</div></div></div>
+  <div class="chart-box"><h3>Payments — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart22"></canvas></div></div><script>new Chart(document.getElementById("chart22"),{"type": "bar", "data": {"labels": ["Consumer Cards", "Digital Wallets", "Bank Transfers", "Bill Payments", "E-Commerce", "ATM Withdrawals", "Payroll", "BNPL", "Insurance Premiums", "P2P Transfers", "Remittances"], "datasets": [{"data": [24501, 19660, 15338, 3076, 1823, 1557, 1014, 634, 444, 270, 57], "backgroundColor": ["#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#3b82f6", "#334155", "#334155", "#334155", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#overlap-with-bank-transfers">Overlap with Bank Transfers</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#projections">Projections</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#depth-research-update-run-6-2026-03-28">Depth Research Update (Run 6, 2026-03-28)</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Global payroll — the disbursement of wages and salaries from employers to workers — generates an estimated <strong>~41.2 billion transactions annually</strong> in 2024, equivalent to an average of <strong>~1,305 TPS</strong>. This is derived from ILO data showing ~3.5 billion employed persons worldwide, multiplied by region-specific pay frequencies (biweekly in the US, monthly in the EU and most of Asia). <strong>Payroll is overwhelmingly a subset of <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a></strong> — approximately 85-90% of these transactions are already counted in the 484 billion bank transfer total as ACH/BACS/SEPA batch credits. The incremental, uncounted portion (~4.2B) consists of cash wage payments and check-based payroll in developing markets.</p>
+<p><strong>Data quality is 🔴 Low for transaction counts</strong> — no institution publishes a global payroll transaction count. The estimate is entirely model-derived from employment headcounts and pay frequency assumptions.</p>
+<h2 id="scope">Scope</h2>
+<p>This analysis covers:
+- <strong>Wage and salary disbursements</strong> from employers to employees (formal sector)
+- <strong>All payment channels</strong>: direct deposit (ACH/wire), check, cash wages
+- <strong>All employment types</strong>: full-time, part-time, temporary, contract workers receiving regular pay</p>
+<p>Excluded: self-employment income (no employer-to-worker transaction), gig economy per-task payments (counted in P2P/<a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a>), government benefit payments (separate category), pension disbursements.</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume">Transaction Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS</td>
+<td>~1,305</td>
+<td>Derived from 41.2B annual (<a href="/universe-of-finance/reports/payments/payroll/workings/calculations.html#1-annual-transaction-count-2024">calculations</a>)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~6,500</td>
+<td>Estimated at 5.0x average (payday concentration)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Daily volume</td>
+<td>~112.9 million</td>
+<td>Derived from annual total</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Annual volume (2024)</td>
+<td>~41.2 billion</td>
+<td>Employment × frequency model (<a href="/universe-of-finance/reports/payments/payroll/workings/calculations.html">calculations</a>)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Annual value (2024)</td>
+<td>~$32 trillion</td>
+<td>ILO Global Wage Report (formal-sector wage bill)</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regional-breakdown-2024">Regional Breakdown (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Employed (M)</th>
+<th>Formal Payroll (M)</th>
+<th>Pay Frequency</th>
+<th>Annual Payroll Txns (B)</th>
+<th>Share</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>United States</strong></td>
+<td>158.3</td>
+<td>~150</td>
+<td>Biweekly (70%), weekly (20%), monthly (10%)</td>
+<td>~3.4</td>
+<td>8.3%</td>
+</tr>
+<tr>
+<td><strong>EU-27</strong></td>
+<td>197.6</td>
+<td>~170</td>
+<td>Monthly (90%), biweekly (10%)</td>
+<td>~2.2</td>
+<td>5.3%</td>
+</tr>
+<tr>
+<td><strong>China</strong></td>
+<td>~740</td>
+<td>~470</td>
+<td>Monthly (95%)</td>
+<td>~5.6</td>
+<td>13.7%</td>
+</tr>
+<tr>
+<td><strong>India</strong></td>
+<td>~560</td>
+<td>~120</td>
+<td>Monthly (formal); cash (informal, excluded)</td>
+<td>~1.4</td>
+<td>3.5%</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>~67</td>
+<td>~60</td>
+<td>Monthly (98%)</td>
+<td>~0.7</td>
+<td>1.7%</td>
+</tr>
+<tr>
+<td><strong>Rest of Asia-Pacific</strong></td>
+<td>~700</td>
+<td>~300</td>
+<td>Monthly (80%), biweekly (20%)</td>
+<td>~4.2</td>
+<td>10.2%</td>
+</tr>
+<tr>
+<td><strong>Latin America</strong></td>
+<td>~290</td>
+<td>~150</td>
+<td>Monthly (70%), biweekly (30%)</td>
+<td>~2.3</td>
+<td>5.6%</td>
+</tr>
+<tr>
+<td><strong>Africa</strong></td>
+<td>~460</td>
+<td>~80</td>
+<td>Monthly (formal only)</td>
+<td>~1.0</td>
+<td>2.4%</td>
+</tr>
+<tr>
+<td><strong>Middle East</strong></td>
+<td>~70</td>
+<td>~50</td>
+<td>Monthly (95%)</td>
+<td>~0.6</td>
+<td>1.5%</td>
+</tr>
+<tr>
+<td><strong>Rest of World</strong></td>
+<td>~260</td>
+<td>~130</td>
+<td>Mixed</td>
+<td>~1.8</td>
+<td>4.4%</td>
+</tr>
+<tr>
+<td><strong>Sub-total (formal, electronic)</strong></td>
+<td></td>
+<td><strong>~1,680</strong></td>
+<td></td>
+<td><strong>~23.2</strong></td>
+<td><strong>56.3%</strong></td>
+</tr>
+<tr>
+<td><strong>Informal / cash wages</strong></td>
+<td></td>
+<td><strong>~1,820</strong></td>
+<td></td>
+<td><strong>~18.0</strong></td>
+<td><strong>43.7%</strong></td>
+</tr>
+<tr>
+<td><strong>GLOBAL TOTAL</strong></td>
+<td><strong>~3,500</strong></td>
+<td><strong>~3,500</strong></td>
+<td></td>
+<td><strong>~41.2</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pay-frequency-distribution-global">Pay Frequency Distribution (Global)</h3>
+<table>
+<thead>
+<tr>
+<th>Frequency</th>
+<th>Share of Workers</th>
+<th>Annual Pays per Worker</th>
+<th>Weighted Txns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Monthly</td>
+<td>~65%</td>
+<td>12</td>
+<td>~27.3B</td>
+</tr>
+<tr>
+<td>Biweekly</td>
+<td>~20%</td>
+<td>26</td>
+<td>~18.2B (but subset is smaller total workers)</td>
+</tr>
+<tr>
+<td>Weekly</td>
+<td>~5%</td>
+<td>52</td>
+<td>High frequency but small population</td>
+</tr>
+<tr>
+<td>Semi-monthly</td>
+<td>~5%</td>
+<td>24</td>
+<td>Primarily US</td>
+</tr>
+<tr>
+<td>Irregular/cash</td>
+<td>~5%</td>
+<td>~6-10</td>
+<td>Informal sector</td>
+</tr>
+</tbody>
+</table>
+<p>The US biweekly cycle drives a disproportionate share of global payroll transaction volume relative to its workforce size — 158M US workers generate ~3.4B annual payroll transactions due to 26 pay periods per year, compared to <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s ~740M workers generating ~5.6B at 12 pay periods per year.</p>
+<hr/>
+<h2 id="overlap-with-bank-transfers">Overlap with Bank Transfers</h2>
+<p><strong>Payroll is NOT an independent payment category — it is a subset of bank transfers.</strong></p>
+<h3 id="channel-decomposition">Channel Decomposition</h3>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Share of Payroll Txns</th>
+<th>Overlap Category</th>
+<th>Est. Txns (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACH / Direct Deposit (US)</td>
+<td>~94% of US payroll</td>
+<td>Bank Transfers (Batch/ACH)</td>
+<td>~3.2</td>
+</tr>
+<tr>
+<td>BACS (UK)</td>
+<td>~95% of UK payroll</td>
+<td>Bank Transfers (Batch/ACH)</td>
+<td>~0.3</td>
+</tr>
+<tr>
+<td>SEPA Credit Transfer (EU)</td>
+<td>~92% of EU payroll</td>
+<td>Bank Transfers (Batch/ACH)</td>
+<td>~2.0</td>
+</tr>
+<tr>
+<td>China domestic bank transfer</td>
+<td>~85% of China formal payroll</td>
+<td>Bank Transfers</td>
+<td>~4.8</td>
+</tr>
+<tr>
+<td>Other electronic payroll</td>
+<td>~80-90%</td>
+<td>Bank Transfers</td>
+<td>~18.7</td>
+</tr>
+<tr>
+<td>Cash wages</td>
+<td>~10% global average</td>
+<td>Not counted elsewhere</td>
+<td>~4.0</td>
+</tr>
+<tr>
+<td>Check payroll (declining)</td>
+<td>~1%</td>
+<td>Partially in bank transfers</td>
+<td>~0.2</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td></td>
+<td></td>
+<td><strong>~41.2</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-finding">Key Finding</h3>
+<p><strong>~37 billion (90%) of payroll transactions are already counted in the bank transfer total.</strong> Only ~4.2 billion (primarily cash wages in developing markets) represent incremental transactions. For de-duplication purposes, payroll should be treated as an <strong>analytic overlay</strong> on bank transfers, not an additive category.</p>
+<p>In the US specifically, ADP alone processes payroll for ~26 million workers per pay period. The total US ACH payroll volume (~3.2B transactions) represents roughly 9.5% of the 33.6B total US ACH transactions reported by Nacha for 2024.</p>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Global Employed (B)</th>
+<th>Est. Annual Payroll Txns (B)</th>
+<th>Avg TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>3.30</td>
+<td>37.5</td>
+<td>1,189</td>
+<td>Pre-COVID baseline</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>3.14</td>
+<td>35.8</td>
+<td>1,135</td>
+<td>COVID — ~5% global formal employment drop</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>3.25</td>
+<td>37.2</td>
+<td>1,179</td>
+<td>Partial recovery</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>3.38</td>
+<td>39.1</td>
+<td>1,239</td>
+<td>Recovery above 2019</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>3.44</td>
+<td>40.2</td>
+<td>1,274</td>
+<td>Continued growth</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>3.50</td>
+<td>41.2</td>
+<td>1,305</td>
+<td>Current estimate</td>
+</tr>
+</tbody>
+</table>
+<p><em>Source: ILO World Employment and Social Outlook; transaction counts derived.</em></p>
+<h3 id="growth-rate-analysis">Growth Rate Analysis</h3>
+<pre><code>CAGR 2019-2024 (5yr): (41.2/37.5)^(1/5) - 1 = 1.9%
+</code></pre>
+<p>Payroll transaction growth tracks employment growth, which is slow and steady (~2% globally). Unlike card payments or real-time transfers, payroll volume cannot grow faster than workforce expansion unless pay frequencies increase (unlikely — the trend is toward monthly, not weekly).</p>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-2-cagr">Baseline (2% CAGR)</h3>
+<p>Tracks global employment growth; no major shift in pay frequency.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Volume (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>1,357</td>
+<td>42.8</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>1,411</td>
+<td>44.5</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>1,467</td>
+<td>46.3</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>1,618</td>
+<td>51.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-4-cagr">High Growth (4% CAGR)</h3>
+<p>Formalization of informal labor in <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>/<a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>/SE Asia drives more workers onto payroll systems; gig economy workers move to W-2/formal contracts.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Volume (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>1,411</td>
+<td>44.5</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>1,649</td>
+<td>52.0</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>2,006</td>
+<td>63.3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-1-cagr">Conservative (1% CAGR)</h3>
+<p>Automation reduces headcount; aging demographics in China/EU/<a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a> shrink workforce; gig economy grows (not counted as payroll).</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Volume (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>1,325</td>
+<td>41.8</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>1,378</td>
+<td>43.5</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>1,449</td>
+<td>45.7</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>Payroll is a massive but hidden payment flow.</strong> At ~41.2B annual transactions, payroll generates more transaction volume than <a class="xref" href="/universe-of-finance/reports/payments/p2p-transfers/REPORT.html">P2P transfers</a>, <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a>, and <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">e-commerce</a> combined — but it is invisible as an independent category because it flows through ACH/bank transfer rails.</p>
+</li>
+<li>
+<p><strong>The US punches above its weight.</strong> With only 4.5% of global workers, the US generates 8.3% of payroll transactions because of the biweekly pay cycle (26 pays/year vs. 12 for monthly-pay countries). This makes US ACH infrastructure disproportionately payroll-dependent.</p>
+</li>
+<li>
+<p><strong>Informal labor is the blind spot.</strong> ILO estimates ~2 billion informal workers globally. Their wages are paid in cash and are completely invisible to electronic payment systems. India alone has ~440M informal workers — roughly 80% of its workforce.</p>
+</li>
+<li>
+<p><strong>Payroll is the most predictable payment category.</strong> Unlike retail spending or P2P transfers, payroll volume is deterministic — it follows employment counts and calendar pay dates. This makes it the lowest-variance component of the bank transfer total.</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> is extreme relative to average.</strong> Payroll batches concentrate heavily on specific dates (1st and 15th, or biweekly Fridays). A single US payday Friday can see ~130M direct deposits processed in a 4-hour ACH window, generating burst rates 5-10x the daily average.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="depth-research-update-run-6-2026-03-28">Depth Research Update (Run 6, 2026-03-28)</h2>
+<blockquote>
+<p>Full depth research: <a href="/universe-of-finance/reports/payments/payroll/workings/depth-research.html">workings/depth-research.md</a></p>
+</blockquote>
+<h3 id="key-revisions">Key Revisions</h3>
+<ol>
+<li>
+<p><strong>US pay frequency corrected via BLS 2023 data</strong>: The original model assumed 70% biweekly, but BLS shows 43% biweekly, 27% weekly, 19.8% semi-monthly, 10.3% monthly. The semi-monthly category (19.8% of workers x 24 pays) was entirely missing. Net effect: US payroll transactions revised from 3.4B to <strong>4.68B</strong> (+38%).</p>
+</li>
+<li>
+<p><strong>Nacha ACH provides independent US ceiling</strong>: 8.74B direct deposits in 2025 (all types). Payroll estimated at 60-70% = 5.2-6.1B. This cross-validates the BLS-derived 4.68B (paychecks only, excluding supplemental deposits).</p>
+</li>
+<li>
+<p><strong>UK pay frequency confirmed</strong>: 96.6% of UK establishments operate monthly payroll. 30M UK employees x 12 = 360M UK payroll transactions.</p>
+</li>
+<li>
+<p><strong>Informal sector revised downward</strong>: Original estimate of 18B informal/cash wage transactions reduced to ~14.3B, reflecting more conservative assumptions about payment frequency for informal workers (sporadic rather than monthly).</p>
+</li>
+<li>
+<p><strong>Gig economy payout data gathered</strong>: Uber offers daily cashout (up to 6x/day), DoorDash offers daily Fast Pay, Lyft offers Express Pay (5x/day). With ~150-200M global platform workers averaging 2x/month payouts = ~3.6-4.8B transactions in the grey zone between payroll and P2P. Not included in the payroll total.</p>
+</li>
+<li>
+<p><strong>Four triangulation methods converge on 38-46B</strong>: Employment x frequency (38.8B), ACH extrapolation (41-46B), wage bill cross-check (40.7-54B), ADP coverage extrapolation (~4.2B US, consistent). Central estimate: ~39B.</p>
+</li>
+<li>
+<p><strong>Confidence revised from 35 to 48</strong> (+13 points). BLS pay frequency data and Nacha ACH data provide two hard anchors for the US, which drives the largest single-country payroll volume.</p>
+</li>
+</ol>
+<h3 id="revised-current-metrics">Revised Current Metrics</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Previous</th>
+<th>Revised</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual transactions</td>
+<td>41.2B</td>
+<td><strong>~39B</strong> (range: 38-46B)</td>
+</tr>
+<tr>
+<td>Average TPS</td>
+<td>1,305</td>
+<td><strong>~1,236</strong> (range: 1,205-1,460)</td>
+</tr>
+<tr>
+<td>US component</td>
+<td>3.4B</td>
+<td><strong>4.68B</strong> (+38%, BLS-corrected)</td>
+</tr>
+<tr>
+<td>Informal component</td>
+<td>18.0B</td>
+<td><strong>14.3B</strong> (-21%)</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>No direct data source exists.</strong> There is no institution that counts global payroll transactions. This entire capsule is model-derived from employment statistics and pay frequency assumptions.</li>
+<li><strong>Informal economy exclusion.</strong> The ILO estimates 58% of global employment is informal. Informal workers receiving cash wages generate real economic transactions but zero electronic payment events.</li>
+<li><strong>Pay frequency assumptions are coarse.</strong> The biweekly/monthly split is based on US BLS, Eurostat, and regional norms — actual distributions within countries can vary significantly by industry and employer size.</li>
+<li><strong>Double-counting with bank transfers is near-total.</strong> This capsule's primary value is analytical (sizing payroll as a share of bank transfers), not additive to the TPS total.</li>
+<li><strong>Gig economy boundary is fuzzy.</strong> Uber drivers, DoorDash couriers, and similar gig workers receive per-task payments that look like payroll but are technically P2P or business-to-contractor transfers. These are excluded here but represent a growing grey area.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.ilo.org/sites/default/files/wcmsp5/groups/public/@dgreports/@inst/documents/publication/wcms_908142.pdf">ILO — World Employment and Social Outlook 2024</a></li>
+<li><a href="https://ilostat.ilo.org/topics/employment/">ILOSTAT — Employment Statistics</a></li>
+<li><a href="https://www.bls.gov/ces/">BLS — Current Employment Statistics</a></li>
+<li><a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Employment_-_annual_statistics">Eurostat — Employment Annual Statistics 2024</a></li>
+<li><a href="https://www.adp.com/-/media/adp/resourcehub/pdf/potential-payroll-survey-2024-us-en.pdf">ADP — Global Payroll Survey 2024</a></li>
+<li><a href="https://www.statista.com/topics/1317/employment-in-china/">Statista — Employment in China 2024</a></li>
+<li><a href="https://www.nacha.org/content/ach-network-volume-and-value-statistics">Nacha — ACH Network Volume and Value Statistics</a></li>
+<li><a href="https://www.cloudpay.com/blog/global-payroll-complexity-trends-by-region-2024/">CloudPay — Global Payroll Complexities and Trends 2024</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/payroll/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/payments/payroll/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/payments/payroll/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/payments/payroll/workings/confidence-uplift-run7.html">⚙ confidence uplift run7</a><a href="/universe-of-finance/reports/payments/payroll/workings/depth-research.html">⚙ depth research</a><a href="/universe-of-finance/reports/payments/payroll/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/payroll/REPORT.md">analysis/payments/payroll/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

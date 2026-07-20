@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixed Income — TPS Calculations — Universe of Finance</title>
+<meta name="description" content="Cash Bond Trade Count US Market (TRACE data) FINRA TRACE reported ~52 million bond transactions in 2024: - Investment-grade corporate: ~19M trades - High-yield corporate: ~8M trade">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Fixed Income — TPS Calculations</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#cash-bond-trade-count">Cash Bond Trade Count</a></li><li><a href="#repo-trade-count-estimated">Repo Trade Count (Estimated)</a></li><li><a href="#total-fixed-income">Total Fixed Income</a></li><li><a href="#tps-calculation">TPS Calculation</a></li><li><a href="#peak-tps">Peak TPS</a></li><li><a href="#annual-totals">Annual Totals</a></li><li><a href="#annual-value">Annual Value</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li></ul></div><h2 id="cash-bond-trade-count">Cash Bond Trade Count</h2>
+<h3 id="us-market-trace-data">US Market (TRACE data)</h3>
+<p>FINRA TRACE reported ~52 million bond transactions in 2024:
+- Investment-grade corporate: ~19M trades
+- High-yield corporate: ~8M trades (est.)
+- Agency/securitized: ~25M trades (est.)</p>
+<p>52M trades / 252 trading days = <strong>~206,000 trades/day</strong> (US TRACE-reported)</p>
+<p>US Treasury trades (non-TRACE):
+- Treasury ADV of $1,055B at average ticket of ~$10-15M = ~70,000-105,000 trades/day
+- Central estimate: <strong>~85,000 Treasury trades/day</strong></p>
+<p>Total US: ~206K + ~85K = <strong>~291,000 trades/day</strong></p>
+<h3 id="global-extrapolation">Global Extrapolation</h3>
+<p>US share of global bond trading: ~40-45% (SIFMA estimates US = 40% of global bond market)
+- Global <a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">fixed income</a> market outstanding: $145T (2024)
+- US fixed income outstanding: ~$58T (~40%)
+- US share of trading activity likely higher (~45%) due to deeper electronic markets</p>
+<p>Global cash bond trades: 291K / 0.45 = <strong>~647K trades/day</strong>
+Rounded: <strong>~600,000 trades/day</strong></p>
+<h2 id="repo-trade-count-estimated">Repo Trade Count (Estimated)</h2>
+<h3 id="european-repo">European Repo</h3>
+<ul>
+<li>ICMA Survey: EUR 5T/day combined EU + UK repo turnover</li>
+<li>Average repo ticket size (European): EUR 50-100M</li>
+<li>At EUR 75M average: 5T / 75M = ~67,000 repo trades/day (European)</li>
+</ul>
+<h3 id="us-repo">US Repo</h3>
+<ul>
+<li>Federal Reserve data: ~$4T/day in repo transactions</li>
+<li>US repo is more automated with smaller average tickets (~$25-50M)</li>
+<li>At $37.5M average: $4T / $37.5M = ~107,000 trades/day</li>
+<li>Triparty repo adds ~50,000-100,000 daily transactions</li>
+<li>Total US repo: ~180,000 trades/day</li>
+</ul>
+<h3 id="rest-of-world">Rest of World</h3>
+<ul>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, other markets: est. ~100,000 trades/day</li>
+</ul>
+<h3 id="total-global-repo">Total Global Repo</h3>
+<p>67K + 180K + 100K = <strong>~350,000 repo trades/day</strong> (institutional/inter-dealer)</p>
+<p>However, many repo transactions are overnight auto-roll, with automated systems executing millions of small repo legs:
+- Automated overnight repo: est. ~2M additional transactions/day
+- Total including automated: <strong>~2.5M repo transactions/day</strong></p>
+<h2 id="total-fixed-income">Total Fixed Income</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Daily Trades (est.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash bonds (global)</td>
+<td>600,000</td>
+</tr>
+<tr>
+<td>Repo (institutional)</td>
+<td>350,000</td>
+</tr>
+<tr>
+<td>Repo (automated/overnight)</td>
+<td>2,150,000</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~3,100,000</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tps-calculation">TPS Calculation</h2>
+<h3 id="cash-bonds-only">Cash Bonds Only</h3>
+<p>Trading hours: ~8-10h/day (bonds trade primarily in home market hours)
+Effective hours: ~9h weighted average</p>
+<p>Over trading hours: 600,000 / (9 x 3600) = <strong>~18.5 TPS</strong>
+Over 24h (conservative): 600,000 / 86,400 = <strong>~6.9 TPS</strong></p>
+<h3 id="including-repo">Including Repo</h3>
+<p>Over 24h: 3,100,000 / 86,400 = <strong>~35.9 TPS</strong></p>
+<h2 id="peak-tps">Peak TPS</h2>
+<p>Peak activity: Treasury auction days, roll dates, month-end
+Peak concentration: ~3x average during peak hours
+<a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> (incl. repo): ~100 TPS</p>
+<h2 id="annual-totals">Annual Totals</h2>
+<p>Cash bonds: 600,000 x 252 = <strong>~151 million trades/year</strong>
+Incl. repo: 3,100,000 x 252 = <strong>~781 million trades/year</strong></p>
+<h2 id="annual-value">Annual Value</h2>
+<p>US Treasuries: $1,055B/day x 252 = ~$266T/year
+US Corporate: $57.9B/day x 252 = ~$14.6T/year
+Tradeweb total (multi-asset): $2.35T/day ADV</p>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<ul>
+<li>US TRACE trade count: 🟢 High — regulatory reporting</li>
+<li>US Treasury ADV (value): 🟢 High — SIFMA/FINRA</li>
+<li>Global trade count: 🔴 Low — extrapolated from US data</li>
+<li>Repo trade count: 🔴 Low — no centralized reporting</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/fixed-income/workings/calculations.md">analysis/traditional-finance/fixed-income/workings/calculations.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

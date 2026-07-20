@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTC Derivatives — Key Assumptions — Universe of Finance</title>
+<meta name="description" content="Transaction Definition One OTC derivative trade = one bilateral contract execution between counterparties Includes: IRS, OIS, CDS (index + single-name), equity swaps, commodity swa">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>OTC Derivatives — Key Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#scope">Scope</a></li><li><a href="#value-data">Value Data</a></li><li><a href="#trade-count-estimation">Trade Count Estimation</a></li><li><a href="#market-hours">Market Hours</a></li><li><a href="#double-counting-notes">Double-Counting Notes</a></li><li><a href="#projection-assumptions">Projection Assumptions</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li>One OTC derivative trade = one bilateral contract execution between counterparties</li>
+<li>Includes: IRS, OIS, CDS (index + single-name), equity swaps, commodity swaps, swaptions, exotic options</li>
+<li>FX derivatives: presented for reference but primary count attributed to FX category</li>
+<li>Amendments, novations, and trade lifecycle events are NOT counted as new transactions</li>
+<li>Portfolio compression reducing gross positions does NOT generate new transaction counts</li>
+</ul>
+<h2 id="scope">Scope</h2>
+<ul>
+<li><strong>In scope</strong>: All OTC (bilateral) derivative contracts globally</li>
+<li><strong>Out of scope</strong>: <a class="xref" href="/universe-of-finance/reports/traditional-finance/etd/REPORT.html">Exchange-traded derivatives</a> (ETD category), FX spot (FX category), bond trading (<a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">fixed income</a> category)</li>
+<li><strong>Overlap with FX category</strong>: FX forwards, swaps, options appear in both. For aggregation, exclude from here.</li>
+<li><strong>Overlap with <a class="xref" href="/universe-of-finance/reports/traditional-finance/commodities/REPORT.html">Commodities</a> category</strong>: OTC commodity swaps counted here; physical OTC commodity trades counted in Commodities.</li>
+</ul>
+<h2 id="value-data">Value Data</h2>
+<ul>
+<li>BIS semiannual statistics: Reports from 65 major dealers in 12 jurisdictions</li>
+<li>BIS triennial survey: Most comprehensive turnover data (every 3 years, in April)</li>
+<li>ISDA SwapsInfo: Weekly/quarterly trade counts from DTCC SDR data (US, EU, UK)</li>
+<li>Notional outstanding =/= market value (gross market value is ~3-4% of notional)</li>
+</ul>
+<h2 id="trade-count-estimation">Trade Count Estimation</h2>
+<ul>
+<li>ISDA SwapsInfo is the best available source for IRD and CDS trade counts</li>
+<li>Coverage: US (CFTC reporting), EU (EMIR), UK (FCA) — the three largest <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a> markets</li>
+<li>Rest-of-world extrapolation: <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a> ~8%, Asia-Pacific ~8%, other ~4% of global IRD</li>
+<li>Equity and commodity OTC derivatives: no reliable trade count source; estimated from notional and avg trade size</li>
+</ul>
+<h2 id="market-hours">Market Hours</h2>
+<ul>
+<li>OTC derivatives trade during business hours in each jurisdiction</li>
+<li>Global effective hours: ~10-12h/day (overlap between London, New York, Tokyo)</li>
+<li>252 trading days/year</li>
+<li>TPS reported on 24h basis for consistency with other categories</li>
+</ul>
+<h2 id="double-counting-notes">Double-Counting Notes</h2>
+<ul>
+<li>FX derivatives overlap with FX category — excluded from aggregation total</li>
+<li>OTC commodity swaps overlap with Commodities category — commodity physical trades counted there, swaps here</li>
+<li>Central clearing: a trade counted once at execution, even if subsequently cleared through a CCP</li>
+<li>Trade compression: reduces notional but does not generate new trade counts</li>
+<li>Novation to CCP: counted as one original trade (not original + CCP novation)</li>
+</ul>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<ul>
+<li>Baseline (5%): Modest growth from clearing mandates and hedging demand</li>
+<li>High growth (8%): Electronic OTC trading via SEFs, EM market development</li>
+<li>Conservative (2%): Migration to ETD alternatives, compression reduces counts</li>
+<li>Notional growth assumed to outpace trade count growth (larger average trade sizes)</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/otc-derivatives/workings/assumptions.md">analysis/traditional-finance/otc-derivatives/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

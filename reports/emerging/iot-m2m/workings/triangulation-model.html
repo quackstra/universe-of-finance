@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IoT/M2M Payment Triangulation Model — Universe of Finance</title>
+<meta name="description" content="Created: 2026-03-27 Purpose: Bottom-up segment-by-segment triangulation to improve confidence on the ~20B annual transaction estimate (~634 TPS). Methodology The existing REPORT.m">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Emerging<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>IoT/M2M Payment Triangulation Model</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#methodology">Methodology</a></li><li><a href="#data-sources">Data Sources</a></li><li><a href="#model">Model</a></li><li><a href="#results">Results</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#open-questions">Open Questions</a></li></ul></div><blockquote>
+<p>Created: 2026-03-27
+Purpose: Bottom-up segment-by-segment triangulation to improve confidence on the ~20B annual transaction estimate (~634 TPS).</p>
+</blockquote>
+<h2 id="methodology">Methodology</h2>
+<p>The existing REPORT.md estimated 15-25B annual <a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">IoT</a>/<a class="xref" href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">M2M</a> transactions based on broad industry reports and top-down market sizing. This triangulation builds the estimate bottom-up from six segments, using hard data points where available and clearly-flagged extrapolations where not. Each segment is modelled independently, then overlap is deducted.</p>
+<p><strong>Approach per segment:</strong>
+1. Identify installed base or user count (hard data preferred)
+2. Estimate transaction frequency per unit (from operator disclosures or proxy data)
+3. Cross-check against market value data where available
+4. Assign per-segment confidence</p>
+<hr/>
+<h2 id="data-sources">Data Sources</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Source</th>
+<th>Type</th>
+<th>Segment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>NPCI FASTag Statistics (npci.org.in)</td>
+<td>Primary/regulatory</td>
+<td>Toll — India</td>
+</tr>
+<tr>
+<td>2</td>
+<td>China Ministry of Transport — ETC adoption reports</td>
+<td>Government</td>
+<td>Toll — China</td>
+</tr>
+<tr>
+<td>3</td>
+<td>E-ZPass IAG Statistics (e-zpassiag.com)</td>
+<td>Industry body</td>
+<td>Toll — US</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transport for London — contactless/Oyster journey data</td>
+<td>Operator</td>
+<td>Transit — UK</td>
+</tr>
+<tr>
+<td>5</td>
+<td>JR East — Suica daily transaction reports</td>
+<td>Operator</td>
+<td>Transit — Japan</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Octopus Card Wikipedia / annual reports</td>
+<td>Operator/secondary</td>
+<td>Transit — HK</td>
+</tr>
+<tr>
+<td>7</td>
+<td>IEA Global EV Outlook 2025</td>
+<td>International org</td>
+<td>EV charging</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Cantaloupe 2025 Micropayment Trends Report</td>
+<td>Industry</td>
+<td>Vending</td>
+</tr>
+<tr>
+<td>9</td>
+<td>NAMA Census data</td>
+<td>Industry body</td>
+<td>Vending</td>
+</tr>
+<tr>
+<td>10</td>
+<td>IEA Smart Meter deployment data</td>
+<td>International org</td>
+<td>Smart meters</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Astute Analytica / GlobeNewsWire smart meter market report</td>
+<td>Industry report</td>
+<td>Smart meters</td>
+</tr>
+<tr>
+<td>12</td>
+<td>SNS Insider / GM Insights — In-Vehicle Payment Services</td>
+<td>Industry report</td>
+<td>Connected vehicles</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Grand View Research — Wearable Payments Devices Market</td>
+<td>Industry report</td>
+<td>Wearables</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Juniper Research — IoT Payments</td>
+<td>Industry report</td>
+<td>Cross-segment</td>
+</tr>
+<tr>
+<td>15</td>
+<td>PTOLEMUS — Electronic Tolling Europe Study 2023</td>
+<td>Industry report</td>
+<td>Toll — Europe</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="model">Model</h2>
+<h3 id="1-toll-collection-transit-card-taps">1. Toll Collection &amp; Transit Card Taps</h3>
+<p>This is the most data-rich segment. We split into electronic toll collection (ETC) and transit smart card taps.</p>
+<h4 id="1a-electronic-toll-collection">1a. Electronic Toll Collection</h4>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Installed Base / Users</th>
+<th>Avg Trips/Year</th>
+<th>Annual Txns</th>
+<th>Confidence</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>China</strong></td>
+<td>300M+ ETC users; &gt;90% expressway coverage</td>
+<td>~40-50 trips/user/year</td>
+<td><strong>12-15B</strong></td>
+<td>Medium</td>
+<td>Ministry of Transport reports; market research</td>
+</tr>
+<tr>
+<td><strong>India (FASTag)</strong></td>
+<td>~80M FASTags issued</td>
+<td>~48 trips/year (3.8B txns in FY2023-24)</td>
+<td><strong>4.0-4.5B</strong></td>
+<td>High</td>
+<td>NPCI FASTag Statistics: 3.8B in FY23-24, growing ~11% YoY; Dec 2024 = 382M monthly</td>
+</tr>
+<tr>
+<td><strong>United States (E-ZPass + SunPass etc.)</strong></td>
+<td>59M+ E-ZPass devices; plus SunPass, FasTrak, TxTag</td>
+<td>~60-80 trips/device/year</td>
+<td><strong>3.5-5B</strong></td>
+<td>Medium</td>
+<td>E-ZPass IAG statistics; IBTTA data</td>
+</tr>
+<tr>
+<td><strong>Europe (EETS + national)</strong></td>
+<td>100M+ vehicles using ETC; 70%+ electronic penetration</td>
+<td>~30-40 trips/year</td>
+<td><strong>3-4B</strong></td>
+<td>Medium</td>
+<td>PTOLEMUS; &gt;27 countries integrated</td>
+</tr>
+<tr>
+<td><strong>Rest of World</strong> (Brazil, Japan, Australia, Middle East)</td>
+<td>~50M ETC users combined</td>
+<td>~30-40 trips/year</td>
+<td><strong>1.5-2B</strong></td>
+<td>Low</td>
+<td>Various national reports</td>
+</tr>
+<tr>
+<td><strong>SUBTOTAL</strong></td>
+<td></td>
+<td></td>
+<td><strong>24-30.5B</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Midpoint: ~27B toll transactions/year</strong></p>
+<p>This is significantly higher than the original 8-12B estimate in REPORT.md. The original estimate underweighted <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> (which dominates global ETC volume) and missed <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s FASTag system entirely. India alone contributes ~4B+ annual transactions with hard NPCI data.</p>
+<h4 id="1b-transit-smart-card-taps">1b. Transit Smart Card Taps</h4>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Cards/Users</th>
+<th>Daily Taps</th>
+<th>Annual Taps</th>
+<th>Confidence</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Japan IC cards</strong> (Suica, Pasmo, ICOCA, etc.)</td>
+<td>112M+ Suica alone; ~200M total IC cards</td>
+<td>~20-25M transit + ~3.4M retail/day</td>
+<td><strong>~8-10B</strong></td>
+<td>Medium</td>
+<td>JR East: 6.6M daily Suica txns (2018); 300M/month Tokyo metro (2024); retail usage growing</td>
+</tr>
+<tr>
+<td><strong>London (Oyster + contactless)</strong></td>
+<td>~10M active</td>
+<td>~6-8M taps/day</td>
+<td><strong>~2.2-2.9B</strong></td>
+<td>Medium</td>
+<td>TfL: ~1.6B contactless + ~0.5-0.6B Oyster journeys in 2024</td>
+</tr>
+<tr>
+<td><strong>Hong Kong (Octopus)</strong></td>
+<td>33M+ cards; 99% penetration</td>
+<td>~15M taps/day (transit + retail)</td>
+<td><strong>~5.5B</strong></td>
+<td>Medium</td>
+<td>Octopus annual reports</td>
+</tr>
+<tr>
+<td><strong>China transit cards</strong> (various city systems)</td>
+<td>500M+ users across 40+ cities</td>
+<td>~30-50M taps/day</td>
+<td><strong>~11-18B</strong></td>
+<td>Low</td>
+<td>Various city transit authority reports</td>
+</tr>
+<tr>
+<td><strong>Other global transit</strong> (Seoul T-money, Singapore EZ-Link, Navigo Paris, etc.)</td>
+<td>~100M users combined</td>
+<td>~15-20M taps/day</td>
+<td><strong>~5.5-7.3B</strong></td>
+<td>Low</td>
+<td>Various</td>
+</tr>
+<tr>
+<td><strong>SUBTOTAL</strong></td>
+<td></td>
+<td></td>
+<td><strong>32-44B</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Midpoint: ~38B transit taps/year</strong></p>
+<p><strong>CRITICAL OVERLAP NOTE:</strong> Transit card taps are a grey area. Many (especially contactless bank card taps on TfL) are processed as regular card transactions and already counted in consumer-cards. We classify them here because the payment is triggered by a machine (gate/reader) in a semi-autonomous way, but we must deduct overlap later.</p>
+<h4 id="combined-toll-transit-65b-gross-but-transit-overlaps-heavily-with-consumer-cards">Combined Toll + Transit: ~65B gross, but transit overlaps heavily with <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">consumer cards</a>.</h4>
+<p><strong>For IoT/M2M scope (autonomous device-initiated):</strong>
+- Toll collection is clearly M2M (transponder auto-debits): <strong>~27B</strong>
+- Transit taps are borderline — the tap is human-initiated but machine-processed. We include only the pure smart-card (non-bank-card) portion: roughly 60% of transit taps = <strong>~23B</strong>
+- <strong>Toll + Transit net for M2M: ~50B</strong> (but this broadens the original scope)</p>
+<p><strong>Conservative (matching original REPORT.md scope, toll-only):</strong> <strong>~27B</strong></p>
+<h3 id="2-ev-charging-payments">2. EV Charging Payments</h3>
+<table>
+<thead>
+<tr>
+<th>Data Point</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global public charging points (end 2024)</td>
+<td>&gt;5 million</td>
+<td>IEA Global EV Outlook 2025</td>
+</tr>
+<tr>
+<td>Annual additions (2024)</td>
+<td>+1.3 million (30% YoY growth)</td>
+<td>IEA</td>
+</tr>
+<tr>
+<td>Average sessions per charger per day</td>
+<td>~2-4 (varies: DC fast = 6-10, AC slow = 1-2)</td>
+<td>Industry estimates, ChargePoint disclosures</td>
+</tr>
+<tr>
+<td>Global EV fleet (end 2024)</td>
+<td>~45M light-duty EVs</td>
+<td>IEA</td>
+</tr>
+<tr>
+<td>Public charging share of total charging</td>
+<td>~20-25%</td>
+<td>IEA</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bottom-up calculation:</strong>
+- 5M public chargers x avg 2.5 sessions/day x 365 = <strong>4.6B sessions/year</strong> (gross)
+- Cross-check: 45M EVs x 20% public charging x ~100 public sessions/year = <strong>900M sessions</strong> — this seems low
+- Reconciliation: Many chargers in China have lower utilisation; the per-charger estimate likely overstates. Realistic range: <strong>1.5-3B sessions/year</strong>
+- Home charging that auto-bills (smart EVSE with automatic utility billing): ~35M home chargers x 250 sessions/year = <strong>8.75B</strong> — but most are just electricity consumption, not separate payment transactions. Only ~10% trigger a distinct payment event = <strong>~0.9B</strong></p>
+<p><strong>EV Charging total: ~2.5-4B transactions/year</strong>
+<strong>Midpoint: ~3B</strong>
+Confidence: Medium (IEA charger data is solid; session frequency is estimated)</p>
+<h3 id="3-smart-meter-billing-events">3. Smart Meter Billing Events</h3>
+<table>
+<thead>
+<tr>
+<th>Data Point</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global smart meters installed</td>
+<td>~1.8B (end 2025)</td>
+<td>Astute Analytica / IEA</td>
+</tr>
+<tr>
+<td>Billing frequency (current dominant model)</td>
+<td>Monthly</td>
+<td>Industry standard</td>
+</tr>
+<tr>
+<td>Meters that trigger automated payment</td>
+<td>~40% (rest are prepaid or manual bill pay)</td>
+<td>Estimated</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bottom-up calculation:</strong>
+- 1.8B meters x 40% auto-pay x 12 months = <strong>8.6B billing events/year</strong>
+- Daily/hourly billing (emerging): &lt;1% of meters today = <strong>~65M additional</strong>
+- UK example: 33M smart meters x 12 = 396M billing events (matches scale)</p>
+<p><strong>Smart Meter Billing total: ~8-9B transactions/year</strong>
+<strong>Midpoint: ~8.5B</strong>
+Confidence: Low-Medium (meter count is solid; auto-pay percentage is estimated)</p>
+<h3 id="4-vending-unattended-retail">4. Vending &amp; Unattended Retail</h3>
+<table>
+<thead>
+<tr>
+<th>Data Point</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global vending machines</td>
+<td>~25.4M (2025)</td>
+<td>Market reports</td>
+</tr>
+<tr>
+<td>Cashless-enabled machines</td>
+<td>~58% = ~14.7M</td>
+<td>Cantaloupe 2025 report</td>
+</tr>
+<tr>
+<td>Annual cashless transactions globally</td>
+<td>~8.2B reported</td>
+<td>Cantaloupe / industry data</td>
+</tr>
+<tr>
+<td>Avg cashless txns per enabled machine per day</td>
+<td>~1.5-2</td>
+<td>Derived: 8.2B / 14.7M / 365</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bottom-up calculation:</strong>
+- 8.2B annual cashless vending transactions is a direct industry figure
+- Cross-check: 14.7M machines x 1.5 txns/day x 365 = 8.0B — consistent
+- Additional unattended retail (parking meters, car washes, laundromats, EV chargers already counted separately): ~2-3B</p>
+<p><strong>Vending &amp; Unattended Retail total: ~8-11B transactions/year</strong>
+<strong>Midpoint: ~9.5B</strong> (vending only ~8.2B; adding other unattended retail ~1.3B)
+Confidence: Medium (Cantaloupe/NAMA data is fairly authoritative for vending; other unattended retail is estimated)</p>
+<h3 id="5-connected-vehicle-payments-non-toll-non-charging">5. Connected Vehicle Payments (non-toll, non-charging)</h3>
+<table>
+<thead>
+<tr>
+<th>Data Point</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connected cars with payment features</td>
+<td>~225M (15% of 1.5B registered vehicles)</td>
+<td>McKinsey; SNS Insider</td>
+</tr>
+<tr>
+<td>In-vehicle payment market (2025)</td>
+<td>$5.4-5.8B</td>
+<td>SNS Insider; Future Market Insights</td>
+</tr>
+<tr>
+<td>Parking + fuel = 47.6% of in-vehicle payments</td>
+<td>~$2.6B</td>
+<td>SNS Insider</td>
+</tr>
+<tr>
+<td>Average transaction value (parking/fuel)</td>
+<td>~$10-15</td>
+<td>Estimated</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bottom-up calculation:</strong>
+- 225M connected vehicles x ~5% actually use in-vehicle payment features = ~11M active users
+- Active users x ~50 autonomous payments/year (auto-parking, auto-fuel, insurance telematics) = <strong>~550M</strong>
+- Cross-check from market value: $5.4B / $12 avg = ~450M transactions — broadly consistent</p>
+<p><strong>Connected Vehicle Payments total: ~0.4-0.6B transactions/year</strong>
+<strong>Midpoint: ~0.5B</strong>
+Confidence: Low (very early market; adoption rates are estimated)</p>
+<h3 id="6-wearable-payments">6. Wearable Payments</h3>
+<table>
+<thead>
+<tr>
+<th>Data Point</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wearable payment devices market (2024)</td>
+<td>$58B</td>
+<td>Grand View Research</td>
+</tr>
+<tr>
+<td>Active smartwatches with NFC</td>
+<td>~300M globally</td>
+<td>Estimated from shipment data</td>
+</tr>
+<tr>
+<td>Wearable payment penetration</td>
+<td>~15-20% of smartwatch owners use it regularly</td>
+<td>Industry surveys</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Bottom-up calculation:</strong>
+- 300M NFC-enabled wearables x 18% active x ~80 payment txns/year = <strong>~4.3B</strong>
+- But these are almost entirely tap-to-pay at POS terminals — human-initiated, not M2M
+- True M2M wearable payments (auto-transit, auto-gym-entry, etc.): &lt;5% = <strong>~0.2B</strong></p>
+<p><strong>Wearable Payments (M2M portion): ~0.1-0.3B transactions/year</strong>
+<strong>Midpoint: ~0.2B</strong>
+Confidence: Low (most wearable payments overlap entirely with consumer cards; M2M portion is a guess)</p>
+<h3 id="7-industrial-iot-payments">7. Industrial IoT Payments</h3>
+<p>No hard data exists for this segment. All estimates are derived from market value.</p>
+<table>
+<thead>
+<tr>
+<th>Data Point</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Industrial IoT payment market</td>
+<td>~$27B (from original REPORT.md)</td>
+<td>Research Nester</td>
+</tr>
+<tr>
+<td>Average B2B IoT payment value</td>
+<td>~$500-5,000</td>
+<td>Estimated</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Top-down from market value:</strong>
+- $27B / $2,000 avg = <strong>~13.5M transactions</strong>
+- These are high-value, low-frequency (automated procurement, supply chain settlements)</p>
+<p><strong>Industrial IoT total: ~0.01-0.05B transactions/year</strong>
+<strong>Midpoint: ~0.02B</strong>
+Confidence: Very Low (no direct data; pure estimation)</p>
+<hr/>
+<h2 id="results">Results</h2>
+<h3 id="per-segment-summary">Per-Segment Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Annual Txns (B)</th>
+<th>TPS</th>
+<th>Confidence</th>
+<th>Change from REPORT.md</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Electronic toll collection</td>
+<td><strong>27.0</strong></td>
+<td>856</td>
+<td>Medium</td>
+<td>Was 8-12B; +15B from China/India recount</td>
+</tr>
+<tr>
+<td>Transit smart card taps (M2M portion)</td>
+<td><strong>23.0</strong></td>
+<td>729</td>
+<td>Low</td>
+<td>New segment (was not separated)</td>
+</tr>
+<tr>
+<td>EV charging</td>
+<td><strong>3.0</strong></td>
+<td>95</td>
+<td>Medium</td>
+<td>Was 0.5-1B; +2B from 5M charger recount</td>
+</tr>
+<tr>
+<td>Smart meter billing</td>
+<td><strong>8.5</strong></td>
+<td>269</td>
+<td>Low-Medium</td>
+<td>Was 2-4B; +4.5B from 1.8B meter base</td>
+</tr>
+<tr>
+<td>Vending &amp; unattended retail</td>
+<td><strong>9.5</strong></td>
+<td>301</td>
+<td>Medium</td>
+<td>Was 3-5B; +4.5B from Cantaloupe data</td>
+</tr>
+<tr>
+<td>Connected vehicle payments</td>
+<td><strong>0.5</strong></td>
+<td>16</td>
+<td>Low</td>
+<td>Was 0.5-1B; refined to low end</td>
+</tr>
+<tr>
+<td>Wearable payments (M2M)</td>
+<td><strong>0.2</strong></td>
+<td>6</td>
+<td>Low</td>
+<td>New segment</td>
+</tr>
+<tr>
+<td>Industrial IoT</td>
+<td><strong>0.02</strong></td>
+<td>0.6</td>
+<td>Very Low</td>
+<td>Was 1-2B; revised sharply down</td>
+</tr>
+<tr>
+<td><strong>GROSS TOTAL</strong></td>
+<td><strong>71.7</strong></td>
+<td><strong>2,274</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="overlap-deductions">Overlap Deductions</h3>
+<table>
+<thead>
+<tr>
+<th>Overlap</th>
+<th>Deduction</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transit taps already in consumer-cards</td>
+<td>-23.0B</td>
+<td>Transit taps via bank contactless cards (TfL ~60% contactless bank cards). Already counted above as M2M portion only — but the entire transit category is borderline M2M. If we exclude transit entirely: deduct 23B.</td>
+</tr>
+<tr>
+<td>Wearable payments in consumer-cards</td>
+<td>-0.2B</td>
+<td>Nearly all wearable payments route through card networks</td>
+</tr>
+<tr>
+<td>EV charging via card rails</td>
+<td>-0B</td>
+<td>Already a distinct payment event even if settled on card rails</td>
+</tr>
+<tr>
+<td>Smart meter via bank transfer rails</td>
+<td>-0B</td>
+<td>Distinct billing event even if settled via direct debit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="three-scoping-models">Three Scoping Models</h3>
+<p><strong>Narrow scope (device-autonomous only, no human tap):</strong>
+Toll + EV charging + Smart meter + Industrial IoT + Connected vehicle = <strong>39.0B</strong> (~1,237 TPS)</p>
+<p><strong>Medium scope (includes vending/unattended where human presence triggers machine payment):</strong>
+Narrow + Vending/unattended = <strong>48.5B</strong> (~1,538 TPS)</p>
+<p><strong>Broad scope (includes transit smart card taps):</strong>
+Medium + Transit card taps (M2M portion) = <strong>71.5B</strong> (~2,267 TPS)</p>
+<h3 id="recommended-estimate-medium-scope">Recommended Estimate (Medium Scope)</h3>
+<p><strong>~48.5B transactions/year (~1,538 TPS)</strong></p>
+<p>This is the most defensible scope: it includes payments that are device-initiated or device-mediated (toll transponders, EV chargers, smart meters, vending machines, connected vehicles) but excludes transit taps which are fundamentally human-initiated. This represents a significant upward revision from the original 20B midpoint.</p>
+<h3 id="updated-datajson-values">Updated data.json values</h3>
+<ul>
+<li><strong>avg_tps</strong>: 1,538 (medium scope midpoint)</li>
+<li><strong>annual_volume</strong>: 48,500,000,000</li>
+<li><strong>confidence</strong>: low → <strong>low-medium</strong> (triangulated from multiple segments but still relies on estimates for several)</li>
+<li><strong>Range</strong>: 35-65B (narrow to broad scope)</li>
+</ul>
+<hr/>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<h3 id="what-overlaps-with-other-universe-of-finance-categories">What overlaps with other Universe of Finance categories</h3>
+<table>
+<thead>
+<tr>
+<th>This Segment</th>
+<th>Overlaps With</th>
+<th>Direction</th>
+<th>Magnitude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transit smart card taps</td>
+<td>Consumer Cards</td>
+<td>Transit taps via contactless bank cards are already counted in consumer-cards. ~40% of London transit, ~30% of Tokyo transit uses bank cards.</td>
+<td>~10-15B of the 38B transit taps</td>
+</tr>
+<tr>
+<td>Wearable payments</td>
+<td>Consumer Cards</td>
+<td>Nearly 100% of wearable NFC payments are card-rail transactions</td>
+<td>~4.3B (but only ~0.2B was M2M)</td>
+</tr>
+<tr>
+<td>EV charging</td>
+<td>Consumer Cards, Digital Wallets</td>
+<td>~70% of EV charging payments are settled via card or wallet</td>
+<td>Settlement overlap, not transaction count overlap</td>
+</tr>
+<tr>
+<td>Smart meter billing</td>
+<td>Bank Transfers</td>
+<td>~80% of smart meter auto-payments are direct debit (bank transfer)</td>
+<td>Settlement overlap, not count overlap</td>
+</tr>
+<tr>
+<td>Toll collection</td>
+<td>Bank Transfers, Consumer Cards</td>
+<td>~60% settled via linked bank account, ~30% via linked card</td>
+<td>Settlement overlap</td>
+</tr>
+<tr>
+<td>Vending</td>
+<td>Consumer Cards, Digital Wallets</td>
+<td>~77% of cashless vending is card/mobile pay</td>
+<td>Settlement overlap</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key distinction:</strong> Most IoT/M2M transactions settle on existing payment rails (cards, <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>) but represent distinct transaction <em>events</em> that would not otherwise exist. A toll transponder beep is a transaction event even though the money moves via a linked Visa card. We count the event, not the settlement.</p>
+<h3 id="overlap-with-digital-wallets">Overlap with digital-wallets</h3>
+<p>Some transit and vending payments go through Apple Pay / Google Pay — these are counted in both IoT/M2M (as the event) and digital-wallets (as the settlement method). Estimated overlap: ~3-5B transactions.</p>
+<hr/>
+<h2 id="open-questions">Open Questions</h2>
+<ol>
+<li>
+<p><strong>China toll collection volume is the biggest uncertainty.</strong> We estimated 12-15B from 300M users x 40-50 trips/year, but actual utilisation rates could be 20 trips/year (suburban users) or 100+ trips/year (freight trucks). Authoritative data from China's Ministry of Transport would narrow this by 5-10B.</p>
+</li>
+<li>
+<p><strong>Transit smart card scope decision matters enormously.</strong> Including or excluding transit taps swings the total by 23B (50% of medium-scope estimate). The project should make a clear scoping call.</p>
+</li>
+<li>
+<p><strong>Smart meter billing frequency is changing.</strong> If utilities move from monthly to daily or hourly billing (as UK smart meter infrastructure supports), the 8.5B could become 100B+ within a decade. This is the micropayment revolution referenced in REPORT.md.</p>
+</li>
+<li>
+<p><strong>India FASTag is the best-documented M2M system.</strong> NPCI publishes monthly transaction counts. This should be used as the primary calibration point for the model.</p>
+</li>
+<li>
+<p><strong>The original REPORT.md estimate of 1-2B for Industrial IoT was too high.</strong> B2B automated procurement is high-value, low-frequency. The actual transaction count is likely &lt;50M/year.</p>
+</li>
+<li>
+<p><strong>Vending machine data from Cantaloupe (8.2B annual cashless transactions) is a game-changer.</strong> This single data point more than doubles the original 3-5B vending estimate and is from the industry's own reporting.</p>
+</li>
+<li>
+<p><strong>How should we handle transit card retail purchases?</strong> Suica and Octopus are widely used for convenience store purchases (3.4M/day for Suica alone). These are human-initiated retail transactions that happen to use a transit-origin payment method. Currently excluded from our M2M scope.</p>
+</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/emerging/iot-m2m/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/emerging/iot-m2m/workings/triangulation-model.md">analysis/emerging/iot-m2m/workings/triangulation-model.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

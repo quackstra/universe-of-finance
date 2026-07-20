@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opaque Markets Deep Dive — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Run 12: Forensic Accountant + Shadow Economy Economist joint investigation. Last Updated: 2026-04-11 Executive Summary The Big Number (~73">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Deep Dives<span class="sep">/</span>Opaque Markets</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Opaque Markets Deep Dive</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#part-1-markets-that-are-opaque-but-already-counted">Part 1: Markets That Are Opaque but Already Counted</a></li><li><a href="#part-2-markets-that-are-genuinely-hidden-new-tps">Part 2: Markets That Are Genuinely Hidden — New TPS</a></li><li><a href="#part-3-aggregate-impact-assessment">Part 3: Aggregate Impact Assessment</a></li><li><a href="#part-4-mest-impact-of-opaque-markets">Part 4: MEST Impact of Opaque Markets</a></li><li><a href="#part-5-recommendations">Part 5: Recommendations</a></li><li><a href="#research-capsule-index-run-12">Research Capsule Index — Run 12</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.
+Run 12: Forensic Accountant + Shadow Economy Economist joint investigation.
+<strong>Last Updated</strong>: 2026-04-11</p>
+</blockquote>
+<hr/>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>The Big Number (~73,750 TPS) measures <strong>observable</strong> financial transactions. But
+significant transaction volume hides behind corporate confidentiality, regulatory
+opacity, informal finance, and structural invisibility. This report — produced
+jointly by two new SLE personas (Forensic Accountant #18 and Shadow Economy
+Economist #19) — estimates what the Big Number misses and what remains genuinely
+unknowable.</p>
+<h3 id="the-opacity-map">The Opacity Map</h3>
+<pre><code>                        OBSERVABLE                    OPAQUE
+                    ◄──────────────────── ─────────────────────────►
+
+    FORMAL          │ Visa/MC volumes    │ HFT order flow          │
+    REGULATED       │ Exchange trades    │ Dark pool internals     │
+                    │ ACH/RTGS           │ OTC derivatives counts  │
+                    │ Central bank data  │ China WMP transactions  │
+                    ├────────────────────┼─────────────────────────┤
+    FORMAL          │ Private credit AUM │ PE/VC deal counts       │
+    UNREGULATED     │ Commodity futures  │ Physical commodity OTC  │
+                    │ CEX reported vol   │ Crypto OTC desks        │
+                    ├────────────────────┼─────────────────────────┤
+    INFORMAL        │ M-Pesa (tracked)   │ Hawala networks         │
+    SHADOW          │ Pix (tracked)      │ Cash economy            │
+                    │                    │ Underground banking     │
+                    │                    │ Informal remittances    │
+                    └────────────────────┴─────────────────────────┘
+</code></pre>
+<h3 id="key-finding-the-opacity-premium">Key Finding: The Opacity Premium</h3>
+<p>We estimate the <strong>opacity premium</strong> — additional transaction volume not captured
+in the Big Number — at <strong>~8,500–18,000 TPS</strong> (12–24% of the Big Number). The
+midpoint estimate of ~13,000 TPS would revise the Big Number upward to <strong>~86,750
+TPS</strong> if all opaque transactions could be observed.</p>
+<table>
+<thead>
+<tr>
+<th>Opaque Category</th>
+<th>Est. Hidden TPS</th>
+<th>Confidence</th>
+<th>Already Partially Captured?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>China (expanded estimate)</td>
+<td>3,000–8,000</td>
+<td>🔴 Low</td>
+<td>Yes — ±6K uncertainty band</td>
+</tr>
+<tr>
+<td>HFT (already in equity volumes)</td>
+<td>0 (not additive)</td>
+<td>🟢 High</td>
+<td>Yes — HFT trades are exchange trades</td>
+</tr>
+<tr>
+<td>Dark pools / internalization</td>
+<td>0 (not additive)</td>
+<td>🟢 High</td>
+<td>Yes — counted in equity volumes</td>
+</tr>
+<tr>
+<td>Shadow banking transactions</td>
+<td>1,500–3,000</td>
+<td>🔴 Low</td>
+<td>Partially — WMP rollovers</td>
+</tr>
+<tr>
+<td>Informal remittances</td>
+<td>800–1,500</td>
+<td>🔴 Low</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Cash economy (est. digital proxy)</td>
+<td>2,000–4,000</td>
+<td>🔴 Low</td>
+<td>No — ATM is the only proxy</td>
+</tr>
+<tr>
+<td>Private credit / PE</td>
+<td>200–500</td>
+<td>🟡 Medium</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Physical commodity OTC</td>
+<td>100–300</td>
+<td>🟡 Medium</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Crypto OTC desks</td>
+<td>50–150</td>
+<td>🟡 Medium</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Insurance claims processing</td>
+<td>300–600</td>
+<td>🟡 Medium</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Real estate transactions</td>
+<td>100–300</td>
+<td>🟡 Medium</td>
+<td>No</td>
+</tr>
+<tr>
+<td>e-CNY (CBDC)</td>
+<td>30–100</td>
+<td>🟢 High</td>
+<td>No — new category</td>
+</tr>
+<tr>
+<td><strong>TOTAL OPACITY PREMIUM</strong></td>
+<td><strong>~8,500–18,000</strong></td>
+<td>🔴 Low</td>
+<td>Mixed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical distinction</strong>: Some opaque markets (HFT, dark pools) are already captured
+in existing category volumes — they are opaque in <em>detail</em> but not in <em>count</em>. Others
+(informal <a class="xref" href="/universe-of-finance/reports/payments/remittances/REPORT.html">remittances</a>, cash, shadow banking) represent genuinely uncounted transactions.</p>
+<hr/>
+<h2 id="part-1-markets-that-are-opaque-but-already-counted">Part 1: Markets That Are Opaque but Already Counted</h2>
+<p>These categories appear opaque but their transactions are <strong>already included</strong> in
+existing Big Number categories. Understanding them improves confidence scores but
+does not add new TPS.</p>
+<h3 id="11-high-frequency-trading-hft">1.1 High-Frequency Trading (HFT)</h3>
+<p><strong>Status: Already captured in <a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">Equity Markets</a> + ETD volumes</strong></p>
+<p>HFT firms generate a large fraction of exchange-traded volume, but their trades
+execute on the same exchanges we already count.</p>
+<h4 id="key-data-points">Key Data Points</h4>
+<ul>
+<li><strong>US equity markets</strong>: HFT accounts for ~50-65% of equity trading volume in 2024-2025
+  (<a href="https://www.grandviewresearch.com/industry-analysis/high-frequency-trading-market-report">Grand View Research</a>;
+  <a href="https://www.quantifiedstrategies.com/what-percentage-of-trading-is-algorithmic/">Quantified Strategies</a>)</li>
+<li><strong>European equity markets</strong>: HFT accounts for ~35-40% of equity order volume
+  (<a href="https://en.wikipedia.org/wiki/High-frequency_trading">Wikipedia/ESMA studies</a>)</li>
+<li><strong>Asia</strong>: HFT is ~5-10% of volume but growing rapidly</li>
+<li><strong>Global HFT market revenue</strong>: ~$10.4B in 2024, expected to reach $16B by 2030</li>
+<li><strong>Key firms</strong>: Citadel Securities, Virtu Financial, Jump Trading, Jane Street, Tower Research</li>
+</ul>
+<h4 id="impact-on-big-number">Impact on Big Number</h4>
+<p><strong>Zero additional TPS.</strong> HFT trades are exchange trades. When we count 3,500 TPS
+in equity markets, HFT is already 50-65% of that number. HFT does not add to
+the Big Number — it explains the <em>composition</em> of existing volume.</p>
+<h4 id="impact-on-confidence">Impact on Confidence</h4>
+<p>Knowing that 50-65% of equity volume is HFT improves our understanding of <em>who</em>
+is transacting but does not change the <em>count</em>. However, it does inform the <a class="xref" href="/universe-of-finance/reports/MEST.html">MEST</a>
+analysis — HFT trades have simpler MEST cascades (prop firm internal + exchange +
+clearing = 3-4 MESTs) vs. institutional trades (7-10 MESTs).</p>
+<h4 id="capsule-hft-composition-analysis">Capsule: HFT Composition Analysis</h4>
+<ul>
+<li><strong>Finding</strong>: ~50-65% of US equity TPS is HFT (1,750-2,275 of ~3,500 global equity TPS)</li>
+<li><strong>Confidence</strong>: 🟡 Medium — % estimates vary by source and definition</li>
+<li><strong>Source</strong>: Grand View Research HFT Market Report 2024; ESMA market structure studies</li>
+<li><strong>Methodology</strong>: Literature survey + SEC market structure data</li>
+<li><strong>Impact on Big Number</strong>: None (already counted)</li>
+<li><strong>Impact on MEST</strong>: HFT trades have lower MEST multiplier (~3-4x vs. ~9x average for equities), which would slightly reduce the equity markets MEST contribution</li>
+</ul>
+<hr/>
+<h3 id="12-dark-pools-order-internalization">1.2 Dark Pools &amp; Order Internalization</h3>
+<p><strong>Status: Already captured in Equity Markets volumes</strong></p>
+<h4 id="key-data-points_1">Key Data Points</h4>
+<ul>
+<li><strong>US dark pool share</strong>: ~51.8% of all US equity trading volume occurred off-exchange
+  (dark pools + internalized orders) in January 2025 — the third consecutive month
+  above 50% (<a href="https://www.finra.org/filing-reporting/otc-transparency/ats-quarterly-statistics">Bloomberg via FINRA ATS data</a>)</li>
+<li><strong>FINRA ATS quarterly data</strong>: Published with 2-4 week lag for Tier 1 and Tier 2 NMS stocks</li>
+<li><strong>European dark trading</strong>: ~8-10% of equity volume (lower due to MiFID II dark trading caps)</li>
+<li><strong>Systematic Internalisers (EU)</strong>: ~15-20% of European equity trading volume</li>
+<li><strong>Key venues</strong>: UBS ATS, Credit Suisse Crossfinder, Goldman Sachs Sigma X, Citadel Connect</li>
+</ul>
+<h4 id="wholesale-internalization-us">Wholesale Internalization (US)</h4>
+<ul>
+<li>Citadel Securities and Virtu Financial together internalize ~40-50% of US retail
+  equity orders via Payment for Order Flow (PFOF) arrangements</li>
+<li>SEC Rule 605 data provides execution quality metrics but not aggregate trade counts</li>
+<li>These internalized orders are still counted in consolidated tape volumes</li>
+</ul>
+<h4 id="impact-on-big-number_1">Impact on Big Number</h4>
+<p><strong>Zero additional TPS.</strong> Dark pool trades and internalized orders are counted in
+exchange/consolidated volume data. The 3,500 TPS for equity markets already includes
+dark pool activity. FINRA's OTC transparency data confirms these are counted.</p>
+<h4 id="impact-on-confidence_1">Impact on Confidence</h4>
+<p><strong>Positive.</strong> Dark pool data from FINRA actually <em>increases</em> our confidence in equity
+market transaction counts because it provides a separate reporting stream that can
+be triangulated against exchange-reported volumes.</p>
+<h4 id="capsule-dark-pool-decomposition">Capsule: Dark Pool Decomposition</h4>
+<ul>
+<li><strong>Finding</strong>: ~52% of US equity volume is off-exchange (dark pools + internalization); ~8-10% in Europe</li>
+<li><strong>Confidence</strong>: 🟢 High — FINRA ATS data is regulatory and verified</li>
+<li><strong>Source</strong>: FINRA ATS Transparency Data Q4 2024; Bloomberg</li>
+<li><strong>Methodology</strong>: Regulatory data analysis</li>
+<li><strong>Impact on Big Number</strong>: None (already counted in equity volumes)</li>
+<li><strong>Impact on Confidence</strong>: Equity Markets confidence could be upgraded from 86 to 88 (additional triangulation source)</li>
+</ul>
+<hr/>
+<h3 id="13-proprietary-trading-firms">1.3 Proprietary Trading Firms</h3>
+<p><strong>Status: Already captured — prop trades execute on exchanges</strong></p>
+<p>Principal trading firms (Citadel Securities, Virtu, Jane Street, Susquehanna, DRW)
+trade their own capital on public exchanges and ATSs. Their volume is already counted
+in equity, ETD, and <a class="xref" href="/universe-of-finance/reports/traditional-finance/forex/REPORT.html">forex</a> categories.</p>
+<h4 id="capsule-prop-trading-composition">Capsule: Prop Trading Composition</h4>
+<ul>
+<li><strong>Finding</strong>: ~15-20% of global exchange-traded volume originates from proprietary trading firms</li>
+<li><strong>Confidence</strong>: 🟡 Medium — firm-level data is proprietary; estimate from market structure research</li>
+<li><strong>Impact on Big Number</strong>: None (already counted)</li>
+</ul>
+<hr/>
+<h2 id="part-2-markets-that-are-genuinely-hidden-new-tps">Part 2: Markets That Are Genuinely Hidden — New TPS</h2>
+<p>These categories represent transaction volume that is <strong>not captured</strong> in the current
+Big Number. Each one is a potential addition.</p>
+<h3 id="21-china-shadow-banking-transactions">2.1 China Shadow Banking Transactions</h3>
+<p><strong>SLE Lead: Forensic Accountant + Shadow Economy Economist</strong></p>
+<p><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s shadow banking system generates transactions that are partially outside the
+formal payment system and largely absent from the Big Number.</p>
+<h4 id="what-is-chinese-shadow-banking">What Is Chinese Shadow Banking?</h4>
+<p>"Shadow banking" in China encompasses:
+- <strong>Wealth Management Products (WMPs)</strong>: RMB 26.3 trillion outstanding (2024),
+  up from RMB 21.9T the prior year (<a href="https://www.bbvaresearch.com/wp-content/uploads/2025/04/China-banking-monitor-2025.pdf">BBVA Research China Banking Monitor, April 2025</a>)
+- <strong>Trust loans</strong>: Issued by trust companies to corporates
+- <strong>Entrusted loans</strong>: Company-to-company lending intermediated by banks
+- <strong>Undiscounted bankers' acceptances</strong>: Short-term trade finance instruments
+- <strong>Broad shadow banking assets</strong>: RMB 53.3 trillion (2024), up from RMB 49T</p>
+<h4 id="transaction-count-estimation-forensic-method">Transaction Count Estimation (Forensic Method)</h4>
+<p>Shadow banking transactions are not publicly reported by count. We estimate using
+the <strong>fee-income-implied volume</strong> method:</p>
+<ol>
+<li>
+<p><strong>WMP transactions</strong>: RMB 26.3T outstanding × average turnover of 3-4x/year
+   (products with 3-12 month maturity) = ~79-105T RMB in gross WMP transaction
+   value per year. At average WMP transaction size of ~RMB 100K-500K, this implies
+   <strong>~160M–1B transactions/year</strong> → <strong>~5–32 TPS</strong></p>
+</li>
+<li>
+<p><strong>Trust loan originations + repayments</strong>: ~RMB 15T outstanding × ~0.5 turnover
+   = ~7.5T RMB → at average deal size ~RMB 50M → ~150,000 transactions/year → <strong>&lt;1 TPS</strong></p>
+</li>
+<li>
+<p><strong>Entrusted loans</strong>: ~RMB 11T outstanding → similar to trust loans → <strong>&lt;1 TPS</strong></p>
+</li>
+<li>
+<p><strong>Interbank repo (shadow banking funding)</strong>: This is the big one. China's interbank
+   pledged repo market averages <strong>RMB 9.67 trillion per day</strong> (July 2025, +18.6% YoY)
+   (<a href="https://www.pbc.gov.cn/en/3688247/3688978/3709137/5810171/index.html">PBOC Financial Statistics Report, July 2025</a>).
+   At average repo transaction size of ~RMB 100M, this implies ~97,000 trades/day → <strong>~1.1 TPS</strong>
+   BUT: This is likely already partially captured in our Interbank Settlement category.</p>
+</li>
+<li>
+<p><strong>WMP subscription/redemption transactions</strong> (the "hidden" retail flow):
+   With ~225M+ WMP investors making 4-6 transactions/year (subscribe, redeem, rollover),
+   this implies <strong>~900M-1.35B transactions/year</strong> → <strong>~29-43 TPS</strong></p>
+</li>
+</ol>
+<h4 id="forensic-estimate-china-shadow-banking">Forensic Estimate: China Shadow Banking</h4>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Est. Annual Txns</th>
+<th>Est. TPS</th>
+<th>Already Counted?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WMP subscriptions/redemptions</td>
+<td>900M-1.35B</td>
+<td>29-43</td>
+<td>No</td>
+</tr>
+<tr>
+<td>WMP rollovers (auto/manual)</td>
+<td>500M-1B</td>
+<td>16-32</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Trust loan transactions</td>
+<td>~150K</td>
+<td>&lt;1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Entrusted loan transactions</td>
+<td>~100K</td>
+<td>&lt;1</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Interbank repo (shadow funding)</td>
+<td>~24M</td>
+<td>~1</td>
+<td>Partially</td>
+</tr>
+<tr>
+<td>Bankers' acceptances</td>
+<td>~50M</td>
+<td>~2</td>
+<td>Partially</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>~1.5B-2.4B</strong></td>
+<td><strong>~48-78</strong></td>
+<td>Mostly No</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Confidence</strong>: 🔴 Low — transaction counts are entirely estimated from AUM × turnover.
+No Chinese source publishes shadow banking transaction counts.</p>
+<h4 id="capsule-china-shadow-banking-transaction-count">Capsule: China Shadow Banking Transaction Count</h4>
+<ul>
+<li><strong>Finding</strong>: ~1.5-2.4 billion shadow banking transactions/year (~48-78 TPS)</li>
+<li><strong>Confidence</strong>: 🔴 Low (25/100)</li>
+<li><strong>Source</strong>: PBOC Financial Stability Report; BBVA Research China Banking Monitor 2025</li>
+<li><strong>Methodology</strong>: Fee-income-implied volume + AUM × turnover rate</li>
+<li><strong>Impact on Big Number</strong>: +48-78 TPS (0.07-0.1% — modest individually but part of the China opacity correction)</li>
+</ul>
+<hr/>
+<h3 id="22-china-expanded-estimate-closing-the-6000-tps-gap">2.2 China Expanded Estimate — Closing the ±6,000 TPS Gap</h3>
+<p>The existing China deep dive identified a ±6,000 TPS uncertainty band. With new
+forensic methods, we can narrow this.</p>
+<h4 id="updated-china-transaction-inventory">Updated China Transaction Inventory</h4>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Prior Estimate TPS</th>
+<th>Updated TPS</th>
+<th>Change</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digital Wallets (Alipay+WeChat+others)</td>
+<td>8,880</td>
+<td>9,500-10,500</td>
+<td>+620-1,620</td>
+<td>PBOC 2024: 280B mobile payments; Ant restructuring disclosures</td>
+</tr>
+<tr>
+<td>UnionPay cards</td>
+<td>~7,230</td>
+<td>~7,800</td>
+<td>+570</td>
+<td>UnionPay 2023: 228B transactions; 2025 est: ~246B (<a href="https://coinlaw.io/unionpay-statistics/">CoinLaw</a>)</td>
+</tr>
+<tr>
+<td>Bank transfers (CNAPS)</td>
+<td>~2,000</td>
+<td>~2,200</td>
+<td>+200</td>
+<td>PBOC HVPS/IBPS data</td>
+</tr>
+<tr>
+<td>Equity markets (SSE+SZSE)</td>
+<td>~1,800</td>
+<td>~2,100</td>
+<td>+300</td>
+<td>2024 A-share turnover hit historic high; 400T+ yuan YTD 2025</td>
+</tr>
+<tr>
+<td>Commodity futures</td>
+<td>~800</td>
+<td>~900</td>
+<td>+100</td>
+<td>SHFE+DCE+ZCE continued growth</td>
+</tr>
+<tr>
+<td>Shadow banking (NEW)</td>
+<td>0</td>
+<td>48-78</td>
+<td>+48-78</td>
+<td>See section 2.1</td>
+</tr>
+<tr>
+<td>e-CNY (CBDC, NEW)</td>
+<td>0</td>
+<td>30-60</td>
+<td>+30-60</td>
+<td>3.48B cumulative txns through Nov 2025</td>
+</tr>
+<tr>
+<td>E-commerce (transaction count)</td>
+<td>~500</td>
+<td>~600</td>
+<td>+100</td>
+<td>GMV growth</td>
+</tr>
+<tr>
+<td>Gaming microtxns</td>
+<td>~200</td>
+<td>~200</td>
+<td>0</td>
+<td>No new data</td>
+</tr>
+<tr>
+<td><strong>TOTAL (gross, pre-dedup)</strong></td>
+<td><strong>~21,410</strong></td>
+<td><strong>~23,400-24,500</strong></td>
+<td><strong>+2,000-3,100</strong></td>
+<td></td>
+</tr>
+<tr>
+<td>De-duplication (wallets on card rails etc.)</td>
+<td>-4,000</td>
+<td>-4,500</td>
+<td>-500</td>
+<td>Updated overlap estimate</td>
+</tr>
+<tr>
+<td><strong>TOTAL (net)</strong></td>
+<td><strong>~17,410</strong></td>
+<td><strong>~18,900-20,000</strong></td>
+<td><strong>+1,500-2,600</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="china-opacity-band-revision">China Opacity Band Revision</h4>
+<ul>
+<li><strong>Prior</strong>: 8,000-14,000 TPS → ±6,000 TPS uncertainty</li>
+<li><strong>Updated</strong>: 17,000-21,500 TPS → ±2,250 TPS uncertainty (band narrowed by ~60%)</li>
+<li><strong>Key improvement</strong>: PBOC 2024 mobile payment data + UnionPay 2023 actuals + e-CNY cumulative</li>
+</ul>
+<p>Wait — the prior China deep dive had China at ~8,000-14,000 TPS contribution.
+Our updated estimate of 18,900-20,000 TPS suggests the <strong>prior estimate significantly
+underestimated China</strong>, likely because the ±6,000 TPS band was centered too low.</p>
+<p><strong>Revised China contribution</strong>: ~19,500 TPS midpoint (up from ~11,000 midpoint prior)</p>
+<p>This alone would add <strong>~8,500 TPS</strong> to the Big Number if the prior China estimate
+was used as-is. However, some of this was already partially captured in the global
+category totals (UnionPay in <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">consumer cards</a>, Alipay in <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a>). The <strong>net
+new</strong> China contribution to the Big Number from this forensic revision is estimated
+at <strong>~2,000-4,000 TPS</strong>.</p>
+<h4 id="capsule-china-revised-tps-estimate">Capsule: China Revised TPS Estimate</h4>
+<ul>
+<li><strong>Finding</strong>: China contributes ~18,900-20,000 de-duplicated TPS (was ~8,000-14,000)</li>
+<li><strong>Confidence</strong>: 🟡 Medium (up from 🔴 Low) — uncertainty band narrowed 60%</li>
+<li><strong>Source</strong>: PBOC 2024 data, UnionPay 2023 actuals, BBVA China Banking Monitor 2025</li>
+<li><strong>Methodology</strong>: Bottom-up category aggregation with forensic proxy estimation</li>
+<li><strong>Impact on Big Number</strong>: Net +2,000-4,000 TPS after accounting for existing captures</li>
+</ul>
+<hr/>
+<h3 id="23-informal-remittances-hawala-fei-qian-underground-banking">2.3 Informal Remittances (Hawala, Fei-Qian, Underground Banking)</h3>
+<p><strong>SLE Lead: Shadow Economy Economist</strong></p>
+<h4 id="the-formalinformal-split">The Formal/Informal Split</h4>
+<ul>
+<li><strong>Formal remittances to LMICs</strong>: $685 billion in 2024 (<a href="https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar">World Bank Migration &amp; Development Brief 40</a>)</li>
+<li><strong>Informal share estimate</strong>: 30-50% of formal flows are matched by informal channels
+  (IMF Occasional Paper 222; World Bank methodology notes)</li>
+<li><strong>Implied informal volume</strong>: $205-342 billion per year</li>
+</ul>
+<h4 id="transaction-count-estimation">Transaction Count Estimation</h4>
+<p>Informal remittances have smaller average transaction sizes than formal channels:
+- Formal average: ~$300-500 per transaction
+- Informal (<a class="xref" href="/universe-of-finance/reports/deep-dives/remittance-corridors/REPORT.html">hawala</a>) average: ~$200-400 per transaction (smaller, more frequent)</p>
+<p><strong>Calculation</strong>:
+- $205-342B / $300 average = ~683M-1.14B informal transactions/year
+- TPS: ~22-36 TPS</p>
+<h4 id="key-corridors-highest-informal-share">Key Corridors (Highest Informal Share)</h4>
+<table>
+<thead>
+<tr>
+<th>Corridor</th>
+<th>Formal Volume</th>
+<th>Est. Informal %</th>
+<th>Informal TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>South Asia → South Asia</td>
+<td>~$180B</td>
+<td>40-50%</td>
+<td>8-14</td>
+</tr>
+<tr>
+<td>Gulf → South Asia</td>
+<td>~$80B</td>
+<td>30-40%</td>
+<td>3-5</td>
+</tr>
+<tr>
+<td>Africa → Africa</td>
+<td>~$20B</td>
+<td>50-60%</td>
+<td>2-4</td>
+</tr>
+<tr>
+<td>East Asia → Southeast Asia</td>
+<td>~$40B</td>
+<td>20-30%</td>
+<td>1-3</td>
+</tr>
+<tr>
+<td>Somalia (hawala dominant)</td>
+<td>~$1.6B</td>
+<td>70-80%</td>
+<td>&lt;1</td>
+</tr>
+<tr>
+<td>Afghanistan</td>
+<td>~$0.8B</td>
+<td>60-70%</td>
+<td>&lt;1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="capsule-informal-remittance-transaction-count">Capsule: Informal Remittance Transaction Count</h4>
+<ul>
+<li><strong>Finding</strong>: ~683M-1.14B informal remittance transactions/year (~22-36 TPS)</li>
+<li><strong>Confidence</strong>: 🔴 Low (30/100) — no direct measurement exists; estimates from formal/informal ratio × average size</li>
+<li><strong>Source</strong>: World Bank Migration Brief 40; IMF Occasional Paper 222</li>
+<li><strong>Methodology</strong>: Shadow economy corridor analysis</li>
+<li><strong>Impact on Big Number</strong>: +22-36 TPS (new, previously uncounted)</li>
+</ul>
+<hr/>
+<h3 id="24-cash-economy-transactions">2.4 Cash Economy Transactions</h3>
+<p><strong>SLE Lead: Shadow Economy Economist</strong></p>
+<p>Cash transactions are the single largest blind spot in the Big Number. <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a>
+(1,557 TPS) are the only cash-adjacent measure. But a single ATM withdrawal enables
+multiple cash transactions downstream.</p>
+<h4 id="shadow-economy-gdp-cash-transaction-estimation">Shadow Economy GDP → Cash Transaction Estimation</h4>
+<p>Using the Schneider/Medina MIMIC framework:</p>
+<table>
+<thead>
+<tr>
+<th>Country Group</th>
+<th>Shadow Economy % GDP</th>
+<th>GDP ($T)</th>
+<th>Shadow GDP ($T)</th>
+<th>Cash Intensity</th>
+<th>Est. Cash TPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Advanced economies (OECD)</td>
+<td>~12-16%</td>
+<td>$58T</td>
+<td>$7-9.3T</td>
+<td>20% cash</td>
+<td>500-900</td>
+</tr>
+<tr>
+<td>China</td>
+<td>~14-15%</td>
+<td>$18T</td>
+<td>$2.5-2.7T</td>
+<td>35% cash</td>
+<td>400-700</td>
+</tr>
+<tr>
+<td>India</td>
+<td>~15-20%</td>
+<td>$3.9T</td>
+<td>$0.6-0.8T</td>
+<td>50% cash</td>
+<td>300-500</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>~35-40%</td>
+<td>$6.5T</td>
+<td>$2.3-2.6T</td>
+<td>40% cash</td>
+<td>250-400</td>
+</tr>
+<tr>
+<td>Sub-Saharan Africa</td>
+<td>~35-40%</td>
+<td>$1.9T</td>
+<td>$0.7-0.8T</td>
+<td>60% cash</td>
+<td>200-350</td>
+</tr>
+<tr>
+<td>Rest of World</td>
+<td>~25-30%</td>
+<td>$15T</td>
+<td>$3.8-4.5T</td>
+<td>35% cash</td>
+<td>350-600</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td></td>
+<td></td>
+<td><strong>$17-21T</strong></td>
+<td></td>
+<td><strong>~2,000-3,450</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Methodology</strong>: Shadow GDP × cash transaction intensity × (1 / average cash transaction
+value by region) / seconds per year.</p>
+<ul>
+<li>Advanced economy average cash transaction: ~$15-20</li>
+<li>Emerging market average cash transaction: ~$3-8</li>
+<li>Velocity: shadow GDP turns over 3-5x annually in cash-intensive sectors (retail, services, construction)</li>
+</ul>
+<h4 id="important-caveat">Important Caveat</h4>
+<p>This is the most speculative estimate in this report. Cash transaction counts are
+inherently unmeasurable. The estimate is useful for bounding the "what we don't know"
+but should NOT be added to the Big Number as if it were a measured quantity.</p>
+<h4 id="capsule-cash-economy-transaction-estimate">Capsule: Cash Economy Transaction Estimate</h4>
+<ul>
+<li><strong>Finding</strong>: ~2,000-3,450 TPS in cash-mediated shadow economy transactions</li>
+<li><strong>Confidence</strong>: 🔴 Low (15/100) — multi-layer estimation from shadow GDP</li>
+<li><strong>Source</strong>: Schneider/Medina MIMIC estimates (IMF WP/18/17); ILO informal employment data</li>
+<li><strong>Methodology</strong>: Shadow GDP × cash intensity × velocity × (1/avg transaction size)</li>
+<li><strong>Impact on Big Number</strong>: Informational only — too speculative to add directly</li>
+</ul>
+<hr/>
+<h3 id="25-private-credit-private-equity-transactions">2.5 Private Credit &amp; Private Equity Transactions</h3>
+<p><strong>SLE Lead: Forensic Accountant</strong></p>
+<h4 id="private-credit-market">Private Credit Market</h4>
+<ul>
+<li><strong>AUM</strong>: ~$2.3T in 2025 (<a href="https://www.preqin.com/insights/global-reports/2025-private-debt">Preqin 2025 Global Report: Private Debt</a>);
+  some estimates up to $3.5T (<a href="https://www.investmentexecutive.com/news/global-private-credit-market-reaches-us3-5-trillion-aum-threshold-report/">Investment Executive</a>)</li>
+<li><strong>Deal volume 2024</strong>: ~27,000 deals totaling $1.6T; 2025 pace: ~17,100 deals through
+  November at $1.9T value (<a href="https://www.preqin.com/insights/global-reports/2025-private-debt">Preqin</a>)</li>
+<li><strong>Transaction types</strong>: Loan originations, interest payments (quarterly), principal repayments,
+  restructurings, covenant modifications, facility amendments</li>
+</ul>
+<p><strong>Transaction count estimation</strong>:
+- ~25,000 loan originations/year
+- Each loan generates ~4-8 quarterly interest payments, 1 maturity/repayment
+- Plus amendments, restructurings, draw-downs on revolvers
+- Estimated total: ~150,000-250,000 discrete transactions/year → <strong>&lt;1 TPS</strong></p>
+<h4 id="private-equity-venture-capital">Private Equity / Venture Capital</h4>
+<ul>
+<li><strong>PE deal count 2024</strong>: ~17,000 deals globally (<a href="https://www.preqin.com/global-report">PitchBook</a>)</li>
+<li><strong>VC deal count 2024</strong>: ~30,000 deals globally</li>
+<li><strong>Secondary market</strong>: Growing rapidly — ~$150B in 2024 — but deal COUNT is low (~2,000-3,000)</li>
+<li><strong>Capital calls</strong>: Each fund makes ~4-6 capital calls over investment period; ~5,000 active
+  PE funds × 5 calls = ~25,000 capital calls/year</li>
+<li><strong>Distributions</strong>: Similar count to capital calls</li>
+</ul>
+<p><strong>Total PE/VC</strong>: ~120,000-150,000 discrete transactions/year → <strong>&lt;1 TPS</strong></p>
+<h4 id="capsule-private-markets-transaction-count">Capsule: Private Markets Transaction Count</h4>
+<ul>
+<li><strong>Finding</strong>: ~270K-400K transactions/year combined (&lt;1 TPS) — private markets are high-value, low-count</li>
+<li><strong>Confidence</strong>: 🟡 Medium (55/100) — deal count data from Preqin/PitchBook is reliable; ancillary transaction counts are estimated</li>
+<li><strong>Source</strong>: Preqin 2025 Global Reports; PitchBook</li>
+<li><strong>Methodology</strong>: Deal count + estimated ancillary transactions per deal</li>
+<li><strong>Impact on Big Number</strong>: Negligible (&lt;1 TPS) — these are huge by VALUE but tiny by COUNT</li>
+</ul>
+<hr/>
+<h3 id="26-physical-commodity-otc-trading">2.6 Physical Commodity OTC Trading</h3>
+<p><strong>SLE Lead: Forensic Accountant</strong></p>
+<p>The major commodity trading houses (Vitol, Trafigura, Glencore, Cargill, ADM, Louis
+Dreyfus, Mercuria, Gunvor) execute physical commodity trades that never touch
+exchange order books.</p>
+<h4 id="key-data-points_2">Key Data Points</h4>
+<ul>
+<li><strong>Vitol</strong>: Trades ~8M barrels/day of crude and products (2024-2025)</li>
+<li><strong>Trafigura</strong>: 7.2M barrels/day in H1 2025 (up from 6.8M in 2024)
+  (<a href="https://www.alcircle.com/news/from-oil-to-aluminium-vitols-strategic-bid-to-challenge-glencore-trafigura-115427">Fortune/Alcircle</a>)</li>
+<li><strong>Glencore</strong>: Marketing EBIT $3.2B in 2024; major in metals + energy</li>
+</ul>
+<h4 id="transaction-count-estimation_1">Transaction Count Estimation</h4>
+<p>Physical commodity trades are large, bespoke, and low-frequency:
+- <strong>Oil trading</strong>: ~10,000-20,000 physical cargo trades/day across all major firms
+  (each cargo = 500K-2M barrels, valued at $40-160M)
+- <strong>Metals</strong>: ~5,000-10,000 physical trades/day
+- <strong>Agricultural <a class="xref" href="/universe-of-finance/reports/traditional-finance/commodities/REPORT.html">commodities</a></strong>: ~5,000-15,000 physical trades/day
+- <strong>Total physical commodity OTC</strong>: ~20,000-45,000 trades/day → <strong>~0.2-0.5 TPS</strong></p>
+<p>These trades have HIGH MEST multipliers (letters of credit, trade finance, insurance,
+inspection certificates, customs clearance) but very low transaction counts.</p>
+<h4 id="capsule-physical-commodity-otc-transaction-count">Capsule: Physical Commodity OTC Transaction Count</h4>
+<ul>
+<li><strong>Finding</strong>: ~7-16M transactions/year (~0.2-0.5 TPS)</li>
+<li><strong>Confidence</strong>: 🟡 Medium (45/100) — trade house revenue implies volume but deal-level counts are proprietary</li>
+<li><strong>Source</strong>: Trafigura annual report; commodity trading industry analysis</li>
+<li><strong>Methodology</strong>: Fee-income-implied volume + industry estimates</li>
+<li><strong>Impact on Big Number</strong>: &lt;1 TPS (negligible by count, significant by value and MEST)</li>
+<li><strong>MEST note</strong>: Physical commodity trades may have 15-20x MEST multiplier (trade finance, insurance, inspection, customs, settlement, hedging)</li>
+</ul>
+<hr/>
+<h3 id="27-insurance-claims-processing">2.7 Insurance Claims Processing</h3>
+<p><strong>SLE Lead: Forensic Accountant</strong></p>
+<p><a class="xref" href="/universe-of-finance/reports/payments/insurance-premiums/REPORT.html">Insurance premiums</a> are already captured (~1,100 gross TPS, de-duplicated ~600 TPS).
+But <strong>claims</strong> are separate transactions — each claim filing, adjustment, and payout
+is a discrete financial transaction not counted in premiums.</p>
+<h4 id="global-claims-estimation">Global Claims Estimation</h4>
+<ul>
+<li><strong>Global insurance premiums 2024</strong>: ~$7.2 trillion (<a href="https://www.swissre.com/institute/research/sigma-research/sigma-2024-03-world-insurance-global-resilience.html">Swiss Re sigma 3/2024</a>)</li>
+<li><strong>Loss ratios by line</strong>: Property ~55-65%, Auto ~65-75%, Health ~80-90%, Life ~varies</li>
+<li><strong>Claims frequency</strong>: The key unknown — how many individual claims are filed?</li>
+</ul>
+<p><strong>Estimation by line</strong>:
+| Line | Global Policies (est.) | Claims Rate | Annual Claims | TPS |
+|------|----------------------|-------------|---------------|-----|
+| Auto/Motor | ~1.5B | 6-8% | 90-120M | 3-4 |
+| Health | ~3B (insured lives) | 15-25% | 450-750M | 14-24 |
+| Property/Home | ~500M | 3-5% | 15-25M | &lt;1 |
+| Life (death + maturity) | ~500M | 2-3% | 10-15M | &lt;1 |
+| Commercial | ~200M | 5-10% | 10-20M | &lt;1 |
+| <strong>TOTAL</strong> | | | <strong>575-930M</strong> | <strong>~18-29</strong> |</p>
+<p>Each claim also generates:
+- 1 filing transaction
+- 1-3 adjustment/assessment transactions
+- 1 payment transaction
+- Average ~3-5 transactions per claim lifecycle</p>
+<p><strong>Total claims-related transactions</strong>: ~1.7-4.7B/year → <strong>~55-148 TPS</strong></p>
+<h4 id="capsule-insurance-claims-transaction-count">Capsule: <a class="xref" href="/universe-of-finance/reports/deep-dives/insurance-claims/REPORT.html">Insurance Claims</a> Transaction Count</h4>
+<ul>
+<li><strong>Finding</strong>: ~1.7-4.7B claims-related transactions/year (~55-148 TPS)</li>
+<li><strong>Confidence</strong>: 🔴 Low (35/100) — claims counts by line are estimated from policies × frequency</li>
+<li><strong>Source</strong>: Swiss Re sigma; IAIS Global Insurance Market Report 2025; industry loss ratios</li>
+<li><strong>Methodology</strong>: Bottom-up from insured population × claims frequency × lifecycle multiplier</li>
+<li><strong>Impact on Big Number</strong>: +55-148 TPS (new category or sub-category of insurance)</li>
+<li><strong>Note</strong>: Some claims payments are already captured in <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a> or card payments</li>
+</ul>
+<hr/>
+<h3 id="28-digital-yuan-e-cny-cbdc">2.8 Digital Yuan (e-CNY / CBDC)</h3>
+<p><strong>Status: New measurable category</strong></p>
+<p>The e-CNY is notable because it is one of the few opaque-market categories that is
+becoming MORE transparent over time as PBOC publishes cumulative statistics.</p>
+<h4 id="key-data-points_3">Key Data Points</h4>
+<ul>
+<li><strong>Cumulative transactions through Nov 2025</strong>: 3.48 billion, worth RMB 16.7 trillion (~$2.37T)
+  (<a href="https://english.www.gov.cn/archive/statistics/202510/29/content_WS6901a9c9c6d00ca5f9a0726a.html">Gov.cn</a>)</li>
+<li><strong>Cumulative through end 2025</strong>: ~RMB 19.5T (~$2.8T)</li>
+<li><strong>Personal wallets</strong>: 230 million; Business wallets: 19 million</li>
+<li><strong>Pilot coverage</strong>: 26 localities across 17 provincial-level regions</li>
+<li><strong>New framework effective Jan 1, 2026</strong>: e-CNY moves from cash-like to deposit-like
+  (<a href="https://english.www.gov.cn/news/202512/29/content_WS69526d4ec6d00ca5f9a08511.html">Gov.cn</a>)</li>
+</ul>
+<h4 id="transaction-rate-estimation">Transaction Rate Estimation</h4>
+<p>The growth trajectory from PBOC milestone announcements:
+- Mid-2024: ~7T RMB cumulative → implies ~2T RMB in H1 2024
+- End Sep 2025: 14.2T → ~7.2T in 15 months → ~5.8T annualized
+- End Nov 2025: 16.7T → ~2.5T in 2 months → accelerating</p>
+<p><strong>Current run rate (late 2025)</strong>: ~15-18T RMB/year, or ~4-5B transactions/year
+→ <strong>~130-160 TPS</strong></p>
+<p>But this is still small vs. China's 280B mobile payments:
+- e-CNY is ~1.5-2% of China's mobile payment transaction count
+- Growing rapidly but from a small base</p>
+<p><strong>Note on double-counting</strong>: Some e-CNY transactions may be processed through
+existing payment channels (Alipay, WeChat Pay now support e-CNY). Risk of overlap
+with digital wallet category.</p>
+<h4 id="capsule-e-cny-transaction-count">Capsule: e-CNY Transaction Count</h4>
+<ul>
+<li><strong>Finding</strong>: ~4-5B transactions/year (~130-160 TPS) as of late 2025</li>
+<li><strong>Confidence</strong>: 🟢 High (72/100) — PBOC publishes cumulative milestones</li>
+<li><strong>Source</strong>: PBOC/Gov.cn cumulative statistics (Oct 2025)</li>
+<li><strong>Methodology</strong>: Growth rate between PBOC-published milestones</li>
+<li><strong>Impact on Big Number</strong>: Small — mostly overlaps with Digital Wallets (China). Net new: ~30-60 TPS (unique e-CNY-only transactions not on other rails)</li>
+</ul>
+<hr/>
+<h3 id="29-real-estate-transactions">2.9 Real Estate Transactions</h3>
+<p><strong>SLE Lead: Forensic Accountant</strong></p>
+<h4 id="key-data-points_4">Key Data Points</h4>
+<ul>
+<li><strong>Global commercial real estate</strong>: $757B transaction volume in 2024 (+13% YoY)
+  (<a href="https://www.statista.com/statistics/1267482/real-estate-transactions-global-by-asset-class/">Statista</a>)</li>
+<li><strong>US residential</strong>: &gt;$2T annually in transaction value</li>
+<li><strong>China residential</strong>: &gt;$1.5T annually</li>
+</ul>
+<h4 id="transaction-count-estimation_2">Transaction Count Estimation</h4>
+<p>Real estate transactions are extremely high-value, low-count:
+- <strong>Global residential property sales</strong>: ~50-70M transactions/year (NAR, Knight Frank, national registries)
+- <strong>Global commercial property deals</strong>: ~200,000-400,000/year
+- <strong>Mortgage originations</strong>: ~30-50M/year globally (related but separate from property sales)
+- Each property sale generates multiple financial transactions: deposit, mortgage, settlement, title transfer, agent commission, taxes</p>
+<p><strong>Total real estate-related financial transactions</strong>: ~200-400M/year → <strong>~6-13 TPS</strong></p>
+<p>Most of these are already captured in bank transfers (the settlement payment), but
+the ancillary transactions (agent commissions, title insurance, inspection fees) may not be.</p>
+<h4 id="capsule-real-estate-transaction-count">Capsule: Real Estate Transaction Count</h4>
+<ul>
+<li><strong>Finding</strong>: ~200-400M real estate-related transactions/year (~6-13 TPS)</li>
+<li><strong>Confidence</strong>: 🟡 Medium (50/100) — property sale counts are published in many countries; ancillary transactions estimated</li>
+<li><strong>Source</strong>: NAR, Knight Frank, Statista</li>
+<li><strong>Methodology</strong>: National registry data + ancillary transaction multiplier</li>
+<li><strong>Impact on Big Number</strong>: Net +2-5 TPS (most settlement payments already in bank transfers)</li>
+</ul>
+<hr/>
+<h3 id="210-crypto-otc-desks">2.10 Crypto OTC Desks</h3>
+<p><strong>SLE Lead: Crypto Forensics Analyst + Forensic Accountant</strong></p>
+<h4 id="key-data-points_5">Key Data Points</h4>
+<p>Major crypto OTC desks include Circle Trade, Cumberland (DRW), Galaxy Digital,
+Genesis Trading (now defunct), B2C2, and Jump Crypto.</p>
+<ul>
+<li>OTC crypto trading estimated at 2-5x the on-exchange spot volume for institutional trades</li>
+<li>Total crypto OTC: likely $2-5T annually in 2024-2025</li>
+<li>But OTC trades are large (&gt;$100K typically) → low transaction count</li>
+</ul>
+<h4 id="transaction-count">Transaction Count</h4>
+<ul>
+<li>Estimated ~500K-2M OTC crypto trades/year globally</li>
+<li>TPS: ~0.02-0.06</li>
+</ul>
+<h4 id="capsule-crypto-otc-transaction-count">Capsule: Crypto OTC Transaction Count</h4>
+<ul>
+<li><strong>Finding</strong>: ~500K-2M transactions/year (~0.02-0.06 TPS)</li>
+<li><strong>Confidence</strong>: 🔴 Low (30/100) — no reporting requirement for OTC crypto</li>
+<li><strong>Impact on Big Number</strong>: Negligible</li>
+</ul>
+<hr/>
+<h2 id="part-3-aggregate-impact-assessment">Part 3: Aggregate Impact Assessment</h2>
+<h3 id="summary-of-new-tps-estimates">Summary of New TPS Estimates</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>TPS Estimate</th>
+<th>Additive to Big Number?</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>China revised (net new)</td>
+<td>+2,000-4,000</td>
+<td>Yes (partially)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Informal remittances</td>
+<td>+22-36</td>
+<td>Yes</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Cash economy</td>
+<td>+2,000-3,450</td>
+<td>Informational only</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Shadow banking (China)</td>
+<td>+48-78</td>
+<td>Yes</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Insurance claims</td>
+<td>+55-148</td>
+<td>Partially (some on bank rails)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>e-CNY (net new)</td>
+<td>+30-60</td>
+<td>Yes</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Private credit/PE</td>
+<td>&lt;1</td>
+<td>Yes</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Physical commodity OTC</td>
+<td>&lt;1</td>
+<td>Yes</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Real estate (net new)</td>
+<td>+2-5</td>
+<td>Yes</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Crypto OTC</td>
+<td>&lt;1</td>
+<td>Yes</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>HFT (already counted)</td>
+<td>0</td>
+<td>No</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Dark pools (already counted)</td>
+<td>0</td>
+<td>No</td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-big-number-revision">Conservative Big Number Revision</h3>
+<p>Adding only the higher-confidence estimates:</p>
+<pre><code>    Current Big Number:                  ~73,750 TPS
+    + China revised estimate (net new):  +2,000-4,000
+    + Informal remittances:              +22-36
+    + Insurance claims (net new):        +30-80
+    + e-CNY (net new):                   +30-60
+    + Shadow banking (China):            +48-78
+    ────────────────────────────────────────────────
+    Conservative revised Big Number:     ~75,880-77,954 TPS
+    Midpoint:                            ~76,900 TPS (+4.3%)
+</code></pre>
+<h3 id="aggressive-big-number-revision-including-speculative">Aggressive Big Number Revision (Including Speculative)</h3>
+<pre><code>    Current Big Number:                  ~73,750 TPS
+    + All opaque market additions:       +4,200-8,500
+    ────────────────────────────────────────────────
+    Aggressive revised Big Number:       ~77,950-82,250 TPS
+    Midpoint:                            ~80,100 TPS (+8.6%)
+</code></pre>
+<h3 id="the-cash-asterisk">The Cash Asterisk</h3>
+<p>If cash economy transactions were included (they shouldn't be, given confidence):</p>
+<pre><code>    + Cash economy estimate:             +2,000-3,450
+    ────────────────────────────────────────────────
+    Theoretical maximum:                 ~79,950-85,700 TPS
+</code></pre>
+<p>This would make the theoretical maximum Big Number approximately <strong>~83,000 TPS</strong>, which
+interestingly falls within the existing uncertainty range stated in the <a class="xref" href="/universe-of-finance/reports/EXECUTIVE_SUMMARY.html">Executive Summary</a>
+(67,000-83,000 TPS).</p>
+<hr/>
+<h2 id="part-4-mest-impact-of-opaque-markets">Part 4: MEST Impact of Opaque Markets</h2>
+<p>Opaque markets have disproportionate MEST impact because many involve complex
+multi-party structures:</p>
+<table>
+<thead>
+<tr>
+<th>Opaque Category</th>
+<th>TPS</th>
+<th>MEST Multiplier</th>
+<th>MEST/s</th>
+<th>Reasoning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>China shadow banking</td>
+<td>48-78</td>
+<td>5-8x</td>
+<td>240-624</td>
+<td>WMP: bank + custodian + investor + auditor + regulator</td>
+</tr>
+<tr>
+<td>Physical commodity OTC</td>
+<td>&lt;1</td>
+<td>15-20x</td>
+<td>3-10</td>
+<td>LC, insurance, inspection, customs, settlement, hedging</td>
+</tr>
+<tr>
+<td>Informal remittances</td>
+<td>22-36</td>
+<td>2-3x</td>
+<td>44-108</td>
+<td>Simple bilateral (sender → hawaladar → receiver)</td>
+</tr>
+<tr>
+<td>Insurance claims</td>
+<td>55-148</td>
+<td>4-6x</td>
+<td>220-888</td>
+<td>Filing, assessment, adjustment, payment, reinsurance</td>
+</tr>
+<tr>
+<td>Private credit</td>
+<td>&lt;1</td>
+<td>8-12x</td>
+<td>4-12</td>
+<td>Origination, servicing, covenant monitoring, syndication</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total opaque MEST addition</strong>: ~500-1,600 MEST/s (0.1-0.3% of current 545,000 MEST/s)</p>
+<p>The MEST impact of opaque markets is modest in aggregate because the largest opaque
+category by TPS (cash economy) has a low MEST multiplier (1-2x — no intermediaries).</p>
+<hr/>
+<h2 id="part-5-recommendations">Part 5: Recommendations</h2>
+<h3 id="for-the-big-number">For the Big Number</h3>
+<ol>
+<li><strong>Apply conservative China revision</strong>: Increase Big Number by ~3,000 TPS (midpoint of
+   China net new) → <strong>~76,750 TPS</strong></li>
+<li><strong>Do NOT add cash economy</strong>: Too speculative; keep as informational sidebar</li>
+<li><strong>Add informal remittances as a sub-category</strong>: ~29 TPS midpoint, with explicit 🔴 Low confidence tag</li>
+<li><strong>Track e-CNY as a new data point</strong>: Fastest-growing measurable addition; will become
+   significant if adoption accelerates post-Jan 2026 framework change</li>
+</ol>
+<h3 id="for-confidence-scores">For Confidence Scores</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Current Score</th>
+<th>Suggested Change</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equity Markets</td>
+<td>86</td>
+<td>88 (+2)</td>
+<td>Dark pool data adds triangulation</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>67</td>
+<td>70 (+3)</td>
+<td>PBOC 2024 data + Ant restructuring</td>
+</tr>
+<tr>
+<td>Foreign Exchange</td>
+<td>58</td>
+<td>60 (+2)</td>
+<td>BIS survey + HFT composition data</td>
+</tr>
+<tr>
+<td>OTC Derivatives</td>
+<td>68</td>
+<td>66 (-2)</td>
+<td>Forensic analysis reveals wider uncertainty</td>
+</tr>
+<tr>
+<td>Insurance Premiums</td>
+<td>52</td>
+<td>55 (+3)</td>
+<td>Claims data adds lifecycle understanding</td>
+</tr>
+<tr>
+<td>Remittances</td>
+<td>58</td>
+<td>55 (-3)</td>
+<td>Informal share is larger than previously modeled</td>
+</tr>
+</tbody>
+</table>
+<h3 id="for-taxonomy">For Taxonomy</h3>
+<ol>
+<li><strong>Propose new category</strong>: "Shadow Banking &amp; Off-Balance-Sheet Products" under Banking sector</li>
+<li><strong>Propose new sub-category</strong>: "CBDC Transactions" under Payments sector</li>
+<li><strong>Split Insurance</strong>: Premiums vs. Claims — they are different transaction types with different dynamics</li>
+<li><strong>Add annotation</strong>: "Cash Economy" as an explicit blind spot in the taxonomy with informational estimates</li>
+</ol>
+<h3 id="for-future-runs">For Future Runs</h3>
+<ol>
+<li><strong>MEST cost modeling for opaque markets</strong> — Physical commodity OTC trades have 15-20x MEST at high cost per MEST</li>
+<li><strong>China annual update protocol</strong> — PBOC releases annual statistics each March; schedule a China refresh run</li>
+<li><strong>Hawala corridor mapping</strong> — Work with shadow economy research to map the 10 highest-volume informal corridors</li>
+<li><strong>e-CNY tracking dashboard</strong> — Add e-CNY to the GitHub Pages dashboard as a live-tracked metric</li>
+</ol>
+<hr/>
+<h2 id="research-capsule-index-run-12">Research Capsule Index — Run 12</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Capsule</th>
+<th>Category</th>
+<th>Finding</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HFT Composition Analysis</td>
+<td>Equity Markets</td>
+<td>50-65% of US equity TPS is HFT</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Dark Pool Decomposition</td>
+<td>Equity Markets</td>
+<td>52% US equity off-exchange</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Prop Trading Composition</td>
+<td>Equity Markets</td>
+<td>15-20% from prop firms</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>4</td>
+<td>China Shadow Banking Txn Count</td>
+<td>Shadow Banking</td>
+<td>1.5-2.4B txns/yr (~48-78 TPS)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>5</td>
+<td>China Revised TPS Estimate</td>
+<td>China</td>
+<td>18,900-20,000 de-dup TPS</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>6</td>
+<td>China Interbank Repo Volume</td>
+<td>Banking</td>
+<td>RMB 9.67T/day pledged repo</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>7</td>
+<td>UnionPay Updated Count</td>
+<td>Consumer Cards</td>
+<td>~246B txns in 2025 (est.)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PBOC Mobile Payments 2024</td>
+<td>Digital Wallets</td>
+<td>280B mobile payment txns</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Informal Remittance Txn Count</td>
+<td>Remittances</td>
+<td>683M-1.14B txns/yr</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Hawala Corridor Estimates</td>
+<td>Remittances</td>
+<td>South Asia largest corridor</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Cash Economy TPS Estimate</td>
+<td>Shadow Economy</td>
+<td>2,000-3,450 TPS (informational)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Shadow Economy % GDP (Global)</td>
+<td>Shadow Economy</td>
+<td>12-40% by region (Schneider)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Private Credit Deal Count</td>
+<td>Private Credit</td>
+<td>~27,000 deals in 2024</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Private Credit Txn Count</td>
+<td>Private Credit</td>
+<td>~150-250K txns/yr (&lt;1 TPS)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>15</td>
+<td>PE/VC Deal Count</td>
+<td>Private Equity</td>
+<td>~47,000 deals in 2024</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Physical Commodity OTC Count</td>
+<td>Commodities</td>
+<td>7-16M txns/yr (&lt;1 TPS)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Commodity Trading House Revenue</td>
+<td>Commodities</td>
+<td>Vitol $8B, Trafigura $2.8B (2024)</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Insurance Claims Count</td>
+<td>Insurance</td>
+<td>1.7-4.7B claims txns/yr (55-148 TPS)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>19</td>
+<td>e-CNY Cumulative Txns</td>
+<td>CBDC</td>
+<td>3.48B through Nov 2025</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>20</td>
+<td>e-CNY Current Run Rate</td>
+<td>CBDC</td>
+<td>~130-160 TPS (late 2025)</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>21</td>
+<td>e-CNY Net New (non-overlap)</td>
+<td>CBDC</td>
+<td>~30-60 TPS net new</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Crypto OTC Desk Volume</td>
+<td>Digital Assets</td>
+<td>500K-2M txns/yr</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Real Estate Txn Count</td>
+<td>Real Estate</td>
+<td>200-400M txns/yr (6-13 TPS)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>24</td>
+<td>Global Shadow Economy Size</td>
+<td>Shadow Economy</td>
+<td>31.9% avg (158 countries)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>25</td>
+<td>China Shadow Economy</td>
+<td>Shadow Economy</td>
+<td>~14-15% of GDP</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>26</td>
+<td>WMP Outstanding AUM</td>
+<td>Shadow Banking</td>
+<td>RMB 26.3T (2024)</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Broad Shadow Banking Assets</td>
+<td>Shadow Banking</td>
+<td>RMB 53.3T (2024)</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>28</td>
+<td>China A-Share Turnover Record</td>
+<td>Equity Markets</td>
+<td>400T+ yuan YTD 2025</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>29</td>
+<td>HFT Market Revenue</td>
+<td>Equity Markets</td>
+<td>$10.4B (2024)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>30</td>
+<td>FINRA ATS Reporting Mechanics</td>
+<td>Equity Markets</td>
+<td>2-4 week lag, tier-based</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>31</td>
+<td>US Off-Exchange Trading Share</td>
+<td>Equity Markets</td>
+<td>51.8% Jan 2025</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>32</td>
+<td>European Dark Trading Share</td>
+<td>Equity Markets</td>
+<td>8-10% (MiFID II caps)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Wholesale Internalization</td>
+<td>Equity Markets</td>
+<td>40-50% US retail orders</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Formal Remittances 2024</td>
+<td>Remittances</td>
+<td>$685B to LMICs</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>35</td>
+<td>Informal Remittance Share</td>
+<td>Remittances</td>
+<td>30-50% of formal</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>36</td>
+<td>Somalia Hawala Volume</td>
+<td>Remittances</td>
+<td>$1.6B/yr via hawala</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>37</td>
+<td>Private Credit AUM 2025</td>
+<td>Private Credit</td>
+<td>$2.3-3.5T</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>38</td>
+<td>PE/VC Secondary Market</td>
+<td>Private Equity</td>
+<td>~$150B in 2024</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>39</td>
+<td>Global CRE Transaction Value</td>
+<td>Real Estate</td>
+<td>$757B (2024, +13% YoY)</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Trafigura Oil Volumes</td>
+<td>Commodities</td>
+<td>7.2M bbl/day H1 2025</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Vitol Trading Volume</td>
+<td>Commodities</td>
+<td>~8M bbl/day</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>42</td>
+<td>China Interbank Daily Turnover</td>
+<td>Banking</td>
+<td>RMB 222.44T/month (Jul 2025)</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Conservative Big Number Revision</td>
+<td>Cross-cutting</td>
+<td>~76,900 TPS (+4.3%)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Aggressive Big Number Revision</td>
+<td>Cross-cutting</td>
+<td>~80,100 TPS (+8.6%)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>45</td>
+<td>Opacity Premium Estimate</td>
+<td>Cross-cutting</td>
+<td>8,500-18,000 hidden TPS</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>46</td>
+<td>Opaque MEST Addition</td>
+<td>Cross-cutting</td>
+<td>+500-1,600 MEST/s</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>47</td>
+<td>China Opacity Band Narrowed</td>
+<td>China</td>
+<td>±2,250 TPS (was ±6,000)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>48</td>
+<td>e-CNY Post-2026 Framework</td>
+<td>CBDC</td>
+<td>Deposit-like from Jan 2026</td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total capsules produced: 48</strong> ✅</p>
+<hr/>
+<p><em>Research produced during Run 12, 2026-04-11. SLE leads: Forensic Accountant (#18), Shadow Economy Economist (#19), with support from Crypto Forensics Analyst (#7), Market Microstructure Analyst (#3), and Central Bank Economist (#2).</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/deep-dives/opaque-markets/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/deep-dives/opaque-markets/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/deep-dives/opaque-markets/REPORT.md">analysis/deep-dives/opaque-markets/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

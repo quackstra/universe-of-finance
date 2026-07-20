@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peak TPS Analysis — Universe of Finance</title>
+<meta name="description" content="What happens when multiple categories hit peak load simultaneously? Author: Emerging Tech Forecaster + Market Research Analyst (Run 5) Last Updated: 2026-03-28 1. Per-Category Pea">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a></div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Peak TPS Analysis</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-per-category-peak-tps-from-reportmd-data">1. Per-Category Peak TPS (from REPORT.md data)</a></li><li><a href="#2-calendar-co-occurrence-analysis">2. Calendar Co-Occurrence Analysis</a></li><li><a href="#3-estimated-coordinated-global-peak-tps">3. Estimated Coordinated Global Peak TPS</a></li><li><a href="#4-comparison-with-benchmark-systems">4. Comparison with Benchmark Systems</a></li></ul></div><blockquote>
+<p>What happens when multiple categories hit peak load simultaneously?</p>
+</blockquote>
+<p><strong>Author</strong>: Emerging Tech Forecaster + Market Research Analyst (Run 5)
+<strong>Last Updated</strong>: 2026-03-28</p>
+<hr/>
+<h2 id="1-per-category-peak-tps-from-reportmd-data">1. Per-Category Peak TPS (from REPORT.md data)</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Avg TPS</th>
+<th>Peak TPS</th>
+<th>Peak Trigger</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>24,501</td>
+<td>50,000–65,000</td>
+<td>Black Friday, Singles' Day, Christmas Eve</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>19,660</td>
+<td>~45,000</td>
+<td>Singles' Day (Alipay) + UPI month-end</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>15,338</td>
+<td>25,000–30,000</td>
+<td>Month-end payroll + real-time payment spikes</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>E-Commerce</td>
+<td>~1,800</td>
+<td>600,000–1,000,000</td>
+<td>Singles' Day (Alibaba 583K orders/sec record)</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>9,505</td>
+<td>~57,000</td>
+<td>Indian expiry days, triple witching</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Equity Markets</td>
+<td>3,500</td>
+<td>~80,000</td>
+<td>Flash crash, circuit-breaker days, VIX spike</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>CEX (wash-adjusted)</td>
+<td>3,040</td>
+<td>~15,000</td>
+<td>Crypto crash/rally (FTX collapse, BTC halving)</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Government Payments</td>
+<td>~1,002</td>
+<td>5,000–10,000</td>
+<td>Tax deadline day, benefits disbursement day</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>L1/L2 Blockchain</td>
+<td>415</td>
+<td>~5,000</td>
+<td>Major DeFi event, NFT mint, airdrop</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Stablecoins</td>
+<td>~520</td>
+<td>~2,000</td>
+<td>De-peg panic, exchange withdrawal run</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>IoT/M2M</td>
+<td>~1,538</td>
+<td>~4,500</td>
+<td>Rush hour tolling (global concurrent)</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Gaming Microtx</td>
+<td>~389</td>
+<td>~778</td>
+<td>Holiday sales, new release launch</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>P2P Transfers</td>
+<td>270</td>
+<td>~600</td>
+<td>US holiday weekends</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Securities Settlement</td>
+<td>~44</td>
+<td>~6,300</td>
+<td>NSCC peak day (options expiry settlement)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>Interbank RTGS</td>
+<td>~50</td>
+<td>~130</td>
+<td>Cross-timezone concurrent settlement</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Commodities</td>
+<td>~330</td>
+<td>~1,650</td>
+<td>Commodity shock day (OPEC decision, crop report)</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Forex</td>
+<td>~40</td>
+<td>~160</td>
+<td>Central bank surprise (SNB floor removal type event)</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Remittances</td>
+<td>57</td>
+<td>~100</td>
+<td>Eid, Christmas corridor peaks</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Fixed Income</td>
+<td>~7</td>
+<td>~50</td>
+<td>Flight-to-quality day, Treasury auction settlement</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>OTC Derivatives</td>
+<td>~0.15</td>
+<td>~1.5</td>
+<td>Margin call cascades</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Game Sales</td>
+<td>~92</td>
+<td>~275</td>
+<td>Steam Summer Sale, Black Friday digital</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>RWA Tokenisation</td>
+<td>~2.4</td>
+<td>~15</td>
+<td>Major fund launch</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>AI Agents</td>
+<td>~0.66</td>
+<td>~8.5</td>
+<td>Peak period (Dec 2025)</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="2-calendar-co-occurrence-analysis">2. Calendar Co-Occurrence Analysis</h2>
+<h3 id="scenario-a-black-friday-late-november-us">Scenario A: Black Friday (Late November, US)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Peak multiplier</th>
+<th>Est. TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>2.5x</td>
+<td>~61,250</td>
+<td>Highest card volume day globally</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>1.5x</td>
+<td>~29,500</td>
+<td>Strong in US/EU; China not aligned</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>1.2x</td>
+<td>~18,400</td>
+<td>Month-end payroll coincidence possible</td>
+</tr>
+<tr>
+<td>E-Commerce</td>
+<td>5x+</td>
+<td>~9,100</td>
+<td>Major e-commerce peak (but settles on card/bank rails)</td>
+</tr>
+<tr>
+<td>Equity Markets</td>
+<td>0.5x (US closed)</td>
+<td>~1,750</td>
+<td>Half-day after Thanksgiving; Asia/EU normal</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>0.7x</td>
+<td>~6,650</td>
+<td>US closed, lower global volume</td>
+</tr>
+<tr>
+<td>CEX</td>
+<td>1.0x</td>
+<td>~3,040</td>
+<td>Crypto uncorrelated with retail shopping</td>
+</tr>
+<tr>
+<td>Gaming</td>
+<td>2.5x</td>
+<td>~973</td>
+<td>Game sales peak</td>
+</tr>
+<tr>
+<td>Government</td>
+<td>0.8x</td>
+<td>~802</td>
+<td>Not a government payment date</td>
+</tr>
+<tr>
+<td>IoT/M2M</td>
+<td>1.3x</td>
+<td>~2,000</td>
+<td>Holiday travel tolling</td>
+</tr>
+<tr>
+<td><strong>Total (de-dup)</strong></td>
+<td></td>
+<td><strong>~95,000</strong></td>
+<td>Cards, wallets, bank transfers dominate</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: Black Friday is the global payments peak but NOT a trading peak. US <a class="xref" href="/universe-of-finance/reports/traditional-finance/equity-markets/REPORT.html">equity markets</a> are closed. The peak is concentrated in payment infrastructure.</p>
+<h3 id="scenario-b-quarter-end-last-business-day-of-marchjuneseptdec">Scenario B: Quarter-End (Last Business Day of March/June/Sept/Dec)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Peak multiplier</th>
+<th>Est. TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>1.3x</td>
+<td>~31,850</td>
+<td>Above average but not peak</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>1.2x</td>
+<td>~23,590</td>
+<td>Month-end spending patterns</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>2.0x</td>
+<td>~30,680</td>
+<td>Payroll + corporate settlement + tax deadlines</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>3.0x</td>
+<td>~28,500</td>
+<td>Triple/quadruple witching (options/futures expiry)</td>
+</tr>
+<tr>
+<td>Equity Markets</td>
+<td>2.0x</td>
+<td>~7,000</td>
+<td>Window dressing, rebalancing</td>
+</tr>
+<tr>
+<td>Securities Settlement</td>
+<td>3.0x</td>
+<td>~132</td>
+<td>Massive settlement backlog from expiry</td>
+</tr>
+<tr>
+<td>RTGS</td>
+<td>2.0x</td>
+<td>~100</td>
+<td>Corporate payment deadlines</td>
+</tr>
+<tr>
+<td>Government</td>
+<td>1.5x</td>
+<td>~1,503</td>
+<td>Quarter-end tax remittances</td>
+</tr>
+<tr>
+<td>Commodities</td>
+<td>1.5x</td>
+<td>~495</td>
+<td>Contract rollovers</td>
+</tr>
+<tr>
+<td>CEX</td>
+<td>1.0x</td>
+<td>~3,040</td>
+<td>Uncorrelated</td>
+</tr>
+<tr>
+<td><strong>Total (de-dup)</strong></td>
+<td></td>
+<td><strong>~105,000</strong></td>
+<td>Trading + payments co-peak</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: Quarter-end is the most dangerous co-occurrence for infrastructure stress. Both payment systems AND trading venues hit peak simultaneously. Triple witching alone can push ETD to 3-6x normal volume.</p>
+<h3 id="scenario-c-us-tax-deadline-day-april-15">Scenario C: US Tax Deadline Day (April 15)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Peak multiplier</th>
+<th>Est. TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bank Transfers</td>
+<td>1.8x</td>
+<td>~27,600</td>
+<td>IRS estimated payments, corporate tax, ACH surge</td>
+</tr>
+<tr>
+<td>Government</td>
+<td>5.0x</td>
+<td>~5,010</td>
+<td>160M tax returns peak; IRS refund disbursement overlap</td>
+</tr>
+<tr>
+<td>Consumer Cards</td>
+<td>1.1x</td>
+<td>~26,950</td>
+<td>Normal+ (some pay taxes on cards)</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>1.0x</td>
+<td>~19,660</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>Equity Markets</td>
+<td>1.2x</td>
+<td>~4,200</td>
+<td>Tax-loss harvesting/rebalancing</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>1.0x</td>
+<td>~9,505</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>CEX</td>
+<td>1.0x</td>
+<td>~3,040</td>
+<td>Tax selling possible</td>
+</tr>
+<tr>
+<td><strong>Total (de-dup)</strong></td>
+<td></td>
+<td><strong>~78,000</strong></td>
+<td>Bank transfers + government dominate the delta</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scenario-d-chinese-new-year-singles-day-november-11">Scenario D: Chinese New Year / Singles' Day (November 11)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Peak multiplier</th>
+<th>Est. TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Digital Wallets</td>
+<td>2.3x</td>
+<td>~45,000</td>
+<td>Alipay/WeChat red envelopes + purchases</td>
+</tr>
+<tr>
+<td>Consumer Cards</td>
+<td>1.2x</td>
+<td>~29,400</td>
+<td>China UnionPay elevated; global normal</td>
+</tr>
+<tr>
+<td>E-Commerce</td>
+<td>10x+</td>
+<td>~18,230</td>
+<td>Singles' Day — Alibaba 583K orders/sec peak</td>
+</tr>
+<tr>
+<td>Remittances</td>
+<td>1.5x</td>
+<td>~86</td>
+<td>Corridor spikes (SEA, East Asia)</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>1.0x</td>
+<td>~15,338</td>
+<td>Normal globally</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>1.0x</td>
+<td>~9,505</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>CEX</td>
+<td>1.0x</td>
+<td>~3,040</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td><strong>Total (de-dup)</strong></td>
+<td></td>
+<td><strong>~85,000</strong></td>
+<td>Asia digital payment dominance</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: <a class="xref" href="/universe-of-finance/reports/payments/ecommerce/REPORT.html">E-commerce</a> peak TPS is enormous (583K+ orders/sec) but these are <em>commerce events</em>, not unique payment transactions. Each order settles on card/wallet/bank rails already counted above.</p>
+<h3 id="scenario-e-crypto-black-swan-terraluna-collapse-ftx-type-event">Scenario E: Crypto Black Swan (Terra/LUNA collapse, FTX type event)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Peak multiplier</th>
+<th>Est. TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CEX</td>
+<td>4.0x</td>
+<td>~12,160</td>
+<td>Exchange rush, liquidation cascades</td>
+</tr>
+<tr>
+<td>L1/L2 Blockchain</td>
+<td>5.0x</td>
+<td>~2,075</td>
+<td>On-chain panic (DEX swaps, bridge withdrawals)</td>
+</tr>
+<tr>
+<td>Stablecoins</td>
+<td>4.0x</td>
+<td>~2,080</td>
+<td>Flight to/from stablecoins</td>
+</tr>
+<tr>
+<td>DeFi</td>
+<td>5.0x</td>
+<td><em>(subset of L1/L2)</em></td>
+<td>Liquidation cascades</td>
+</tr>
+<tr>
+<td>Consumer Cards</td>
+<td>1.0x</td>
+<td>~24,501</td>
+<td>Unaffected</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>1.0x</td>
+<td>~15,338</td>
+<td>Unaffected</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>1.1x</td>
+<td>~10,456</td>
+<td>Crypto futures on CME elevated</td>
+</tr>
+<tr>
+<td><strong>Total (de-dup)</strong></td>
+<td></td>
+<td><strong>~75,000</strong></td>
+<td>Crypto adds ~12K TPS on top of normal base</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: Even the worst crypto crash adds relatively little to global peak TPS because crypto's share of the total (~5%) limits its impact on the Big Number.</p>
+<h3 id="scenario-f-flash-crash-volatility-cascade-2010-style-or-worse">Scenario F: Flash Crash + Volatility Cascade (2010-style or worse)</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Peak multiplier</th>
+<th>Est. TPS</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equity Markets</td>
+<td>5.0x+</td>
+<td>~80,000</td>
+<td>Circuit breakers, algo trading surge</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>6.0x</td>
+<td>~57,000</td>
+<td>Hedging frenzy, VIX futures explode</td>
+</tr>
+<tr>
+<td>Consumer Cards</td>
+<td>1.0x</td>
+<td>~24,501</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>1.0x</td>
+<td>~15,338</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>1.0x</td>
+<td>~19,660</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>RTGS</td>
+<td>2.0x</td>
+<td>~100</td>
+<td>Margin calls require RTGS settlement</td>
+</tr>
+<tr>
+<td>Securities Settlement</td>
+<td>2.0x</td>
+<td>~88</td>
+<td>Settlement backlog</td>
+</tr>
+<tr>
+<td>CEX</td>
+<td>2.0x</td>
+<td>~6,080</td>
+<td>Crypto follows equity panic</td>
+</tr>
+<tr>
+<td>Forex</td>
+<td>3.0x</td>
+<td>~120</td>
+<td>Safe-haven flows</td>
+</tr>
+<tr>
+<td>Commodities</td>
+<td>2.0x</td>
+<td>~660</td>
+<td>Gold flight</td>
+</tr>
+<tr>
+<td><strong>Total (de-dup)</strong></td>
+<td></td>
+<td><strong>~170,000+</strong></td>
+<td>Trading surge dominates</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: A flash crash is the scenario that most amplifies global TPS because equity markets and ETD together can surge to 137,000 TPS — nearly double the entire normal Big Number — while payments continue at their normal ~53,000 TPS base.</p>
+<hr/>
+<h2 id="3-estimated-coordinated-global-peak-tps">3. Estimated Coordinated Global Peak TPS</h2>
+<h3 id="the-perfect-storm-calendar-day">The "Perfect Storm" Calendar Day</h3>
+<p><strong>December 31, Quarter-End + Year-End + Elevated Consumer Spending</strong></p>
+<p>The highest plausible simultaneous load occurs when payment peaks and trading peaks co-occur:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Peak TPS</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Consumer Cards</td>
+<td>~40,000</td>
+<td>Year-end elevated (not Black Friday peak)</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>~30,000</td>
+<td>Year-end elevated</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>~30,000</td>
+<td>Corporate year-end settlement + payroll</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>~28,000</td>
+<td>Year-end expiry, contract rolls</td>
+</tr>
+<tr>
+<td>Equity Markets</td>
+<td>~7,000</td>
+<td>Window dressing, year-end rebalancing</td>
+</tr>
+<tr>
+<td>CEX</td>
+<td>~4,500</td>
+<td>Year-end crypto rally common</td>
+</tr>
+<tr>
+<td>Government</td>
+<td>~3,000</td>
+<td>Year-end tax payments</td>
+</tr>
+<tr>
+<td>IoT/M2M</td>
+<td>~2,000</td>
+<td>Holiday travel tolling</td>
+</tr>
+<tr>
+<td>Gaming</td>
+<td>~800</td>
+<td>Holiday sales</td>
+</tr>
+<tr>
+<td>Other (forex, commodities, etc.)</td>
+<td>~1,500</td>
+<td>Elevated</td>
+</tr>
+<tr>
+<td><strong>Coordinated Peak</strong></td>
+<td><strong>~147,000</strong></td>
+<td><strong>2.1x average Big Number</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-true-worst-case-volatility-event-on-a-busy-day">The "True Worst Case" — Volatility Event on a Busy Day</h3>
+<p>If a flash crash occurs on a quarter-end when consumer payments are already elevated:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Peak TPS</th>
+<th>Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equity Markets</td>
+<td>~80,000</td>
+<td>Circuit breakers, algo chaos</td>
+</tr>
+<tr>
+<td>ETD</td>
+<td>~57,000</td>
+<td>Max observed multiplier on expiry day</td>
+</tr>
+<tr>
+<td>Consumer Cards</td>
+<td>~35,000</td>
+<td>Quarter-end elevated</td>
+</tr>
+<tr>
+<td>Bank Transfers</td>
+<td>~27,000</td>
+<td>Month-end elevated</td>
+</tr>
+<tr>
+<td>Digital Wallets</td>
+<td>~25,000</td>
+<td>Slightly elevated</td>
+</tr>
+<tr>
+<td>CEX</td>
+<td>~12,000</td>
+<td>Crypto follows equity panic</td>
+</tr>
+<tr>
+<td>L1/L2</td>
+<td>~5,000</td>
+<td>On-chain panic</td>
+</tr>
+<tr>
+<td>Government</td>
+<td>~2,000</td>
+<td>Normal</td>
+</tr>
+<tr>
+<td>All other categories</td>
+<td>~3,000</td>
+<td>Mixed</td>
+</tr>
+<tr>
+<td><strong>Absolute Peak</strong></td>
+<td><strong>~246,000</strong></td>
+<td><strong>3.5x average Big Number</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="confidence-assessment">Confidence Assessment</h3>
+<table>
+<thead>
+<tr>
+<th>Estimate</th>
+<th>TPS</th>
+<th>Confidence</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal state (Big Number)</td>
+<td>~70,700</td>
+<td>Medium</td>
+<td>Well-validated across 24 categories</td>
+</tr>
+<tr>
+<td>Typical busy day</td>
+<td>~90,000–100,000</td>
+<td>Medium</td>
+<td>Any major holiday or month-end</td>
+</tr>
+<tr>
+<td>Quarter-end co-peak</td>
+<td>~120,000–150,000</td>
+<td>Low</td>
+<td>Requires payment + trading alignment</td>
+</tr>
+<tr>
+<td>Absolute worst case</td>
+<td>~200,000–250,000</td>
+<td>Very Low</td>
+<td>Flash crash on busy day; modeled, never observed</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="4-comparison-with-benchmark-systems">4. Comparison with Benchmark Systems</h2>
+<h3 id="visas-claimed-capacity-65000-tps">Visa's Claimed Capacity: 65,000 TPS</h3>
+<ul>
+<li>Visa's VisaNet has a <strong>stated capacity</strong> of 65,000 TPS (some sources say 83,000 TPS)</li>
+<li>Visa currently processes ~24,500 TPS average, peaking at ~50,000–65,000 on Black Friday</li>
+<li><strong>Implication</strong>: Visa alone handles ~35% of global average financial TPS and could theoretically handle ~92% of it at peak capacity</li>
+<li>Visa's capacity headroom: ~1.3–2.7x their peak observed load</li>
+</ul>
+<h3 id="solanas-claimed-throughput-65000-tps-theoretical">Solana's Claimed Throughput: 65,000 TPS (theoretical)</h3>
+<ul>
+<li>Solana's theoretical maximum is ~65,000 TPS</li>
+<li>Actual observed peak: ~4,000+ TPS (including vote transactions)</li>
+<li>After vote/spam filtering: ~350–480 meaningful TPS (average), ~2,000–2,500 peak</li>
+<li><strong>Implication</strong>: Solana's claimed throughput (~65,000 TPS) would handle the current Big Number but has never demonstrated even 10% of that in real financial transaction throughput</li>
+<li>Gap between claim and reality: ~25–185x depending on what you count</li>
+</ul>
+<h3 id="comparison-table">Comparison Table</h3>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Claimed Capacity</th>
+<th>Actual Peak</th>
+<th>Utilisation</th>
+<th>Could Handle Big Number?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VisaNet</td>
+<td>65,000–83,000 TPS</td>
+<td>~50,000–65,000 TPS</td>
+<td>~30–80%</td>
+<td>Average yes, peak no</td>
+</tr>
+<tr>
+<td>Solana</td>
+<td>~65,000 TPS (theoretical)</td>
+<td>~4,000 TPS (raw), ~2,500 (filtered)</td>
+<td>~4–6%</td>
+<td>No (at current real throughput)</td>
+</tr>
+<tr>
+<td>Ethereum L1</td>
+<td>~15–30 TPS</td>
+<td>~15 TPS</td>
+<td>~50–100%</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Ethereum + L2s</td>
+<td>~2,000+ TPS (aggregate)</td>
+<td>~500–800 TPS</td>
+<td>~25–40%</td>
+<td>No</td>
+</tr>
+<tr>
+<td>UPI (NPCI)</td>
+<td>~100,000 TPS (target)</td>
+<td>~11,250 TPS</td>
+<td>~11%</td>
+<td>Average possibly, peak no</td>
+</tr>
+<tr>
+<td>PIX (Brazil)</td>
+<td>~40,000 TPS (capacity)</td>
+<td>~3,500 TPS</td>
+<td>~9%</td>
+<td>No at current capacity</td>
+</tr>
+<tr>
+<td>FedNow</td>
+<td>~500,000 msg/sec (target)</td>
+<td>early ramp-up</td>
+<td>&lt;1%</td>
+<td>Designed for it, not tested</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-takeaway">Key Takeaway</h3>
+<p>No single system can handle the global coordinated peak. The reason global finance works is that it runs on <strong>hundreds of independent systems across dozens of time zones</strong> that never all peak simultaneously. The ~70,700 average TPS is spread across:</p>
+<ul>
+<li>6+ <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> (Visa, Mastercard, UnionPay, Amex, JCB, domestic schemes)</li>
+<li>50+ real-time payment systems (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a>, FedNow, FPS, TIPS, etc.)</li>
+<li>80+ equity exchanges</li>
+<li>30+ derivative exchanges</li>
+<li>13+ RTGS systems</li>
+<li>100+ CEX platforms</li>
+<li>Dozens of L1/L2 blockchains</li>
+</ul>
+<p>The distributed nature of global finance is not a bug — it's the architecture that makes ~70,700 TPS possible without any single point of failure.</p>
+<hr/>
+<p><em>This analysis uses peak multipliers from individual REPORT.md files. Most peak estimates carry Low confidence — they are modeled from averages and seasonal patterns, not observed concurrent peak measurements. The coordinated peak estimates should be treated as order-of-magnitude guides, not precise predictions.</em></p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/PEAK_TPS.md">analysis/PEAK_TPS.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interbank RTGS — Assumptions — Universe of Finance</title>
+<meta name="description" content="Scope Assumptions CLS inclusion: CLS is included as an RTGS-adjacent system because it performs final settlement of FX obligations via payment-versus-payment, using RTGS systems as">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Banking<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Interbank RTGS — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#scope-assumptions">Scope Assumptions</a></li><li><a href="#data-assumptions">Data Assumptions</a></li><li><a href="#fx-rate-assumptions">FX Rate Assumptions</a></li><li><a href="#projection-assumptions">Projection Assumptions</a></li><li><a href="#double-counting-notes">Double-Counting Notes</a></li></ul></div><h2 id="scope-assumptions">Scope Assumptions</h2>
+<ol>
+<li>
+<p><strong>CLS inclusion</strong>: CLS is included as an RTGS-adjacent system because it performs final settlement of FX obligations via payment-versus-payment, using RTGS systems as the funding mechanism. This is a judgment call — CLS could also be classified under "FX Markets" if that category existed in the taxonomy.</p>
+</li>
+<li>
+<p><strong>Excluding smaller RTGS systems</strong>: We focus on the five largest systems (Fedwire, T2, CHAPS, BOJ-NET, CLS). Other national RTGS systems (CIPS in <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, RBI in <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>, SIC in Switzerland, etc.) are excluded from the detailed breakdown but partially captured in the aggregate estimate. This means the 423M total is an undercount of global RTGS activity.</p>
+</li>
+<li>
+<p><strong>Excluding Fedwire Securities</strong>: Fedwire operates two services — Funds (payments) and Securities (government bond settlement). Only Funds is counted here; <a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">Securities settlement</a> is covered in the securities-settlement capsule.</p>
+</li>
+</ol>
+<h2 id="data-assumptions">Data Assumptions</h2>
+<ol start="4">
+<li>
+<p><strong>Fedwire 2024 volume</strong>: Calculated as daily average of 836,322 × 251 business days = ~209.9M. The exact annual figure may differ slightly due to rounding; FRB Services publishes the precise number.</p>
+</li>
+<li>
+<p><strong>T2 2024 volume</strong>: ECB described 2024 traffic as "nearly 108 million transactions" — we use 108M as a round figure.</p>
+</li>
+<li>
+<p><strong>BOJ-NET volume</strong>: The ~19,000 daily average and ~¥73 trillion daily value are from the most recent English-language BOJ publication available. Japanese-language sources may have more current data.</p>
+</li>
+<li>
+<p><strong>CLS transaction count</strong>: This is the least certain figure. CLS publishes value data readily but transaction counts are infrequent. Our estimate of ~250M annual trades is derived from the ratio of the 3.2M record-day trades to the $19.1T record-day value, applied to the $7T average daily value. This methodology assumes a linear relationship between value and trade count, which may not hold.</p>
+</li>
+</ol>
+<h2 id="fx-rate-assumptions">FX Rate Assumptions</h2>
+<ol start="8">
+<li><strong>EUR/USD = 1.09</strong>: Approximate 2024 average (actual range: 1.06-1.12)</li>
+<li><strong>GBP/USD = 1.27</strong>: Approximate 2024 average (actual range: 1.23-1.34)</li>
+<li><strong>USD/JPY = 149.5</strong> (JPY/USD = 0.00669): Approximate 2024 average (actual range: 140-162)</li>
+</ol>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<ol start="11">
+<li>
+<p><strong>3% baseline volume CAGR</strong>: Based on observed 5-year CAGRs of 3.2% (Fedwire), 4.2% (T2), 3.9% (CHAPS). The composite is slightly below the weighted average because we expect growth to moderate as central banks improve netting efficiency.</p>
+</li>
+<li>
+<p><strong>5% baseline value CAGR</strong>: Value grows faster than volume because average transaction sizes increase with inflation and financial market growth.</p>
+</li>
+<li>
+<p><strong>24/7 RTGS impact not modeled in baseline</strong>: The Bank of England has signaled interest in extended RTGS hours, but this is not yet operational. If adopted, it could increase daily transaction counts by 10-20% by spreading settlement across more hours.</p>
+</li>
+</ol>
+<h2 id="double-counting-notes">Double-Counting Notes</h2>
+<ol start="14">
+<li>
+<p><strong>CLS vs RTGS overlap</strong>: CLS settles through national RTGS systems. A CLS-settled FX trade generates funding payments in Fedwire, T2, BOJ-NET, etc. The report headline value of ~$2,150T EXCLUDES CLS to avoid this overlap. When CLS is included, the gross value is ~$3,700T but this overstates unique economic activity.</p>
+</li>
+<li>
+<p><strong>RTGS as final settlement layer</strong>: Many upstream systems (ACH, <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a>, CCPs) generate net settlement obligations that are ultimately discharged through RTGS. The RTGS transaction count captures only the final settlement, not the upstream transactions. This is by design per the taxonomy's approach.</p>
+</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/banking/interbank-rtgs/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/banking/interbank-rtgs/workings/assumptions.md">analysis/banking/interbank-rtgs/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

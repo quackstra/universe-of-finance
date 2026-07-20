@@ -1035,6 +1035,7 @@ nav .nav-links a:hover { color: var(--text); }
     <ul class="nav-links">
       <li><a href="#leaderboard">Leaderboard</a></li>
       <li><a href="#opacity">Opacity</a></li>
+      <li><a href="reports/index.html">Reports</a></li>
       <li><a href="#ttr">TTR</a></li>
       <li><a href="#mest-cascade">MEST</a></li>
       <li><a href="#mest-advantage">Advantage</a></li>
@@ -1117,7 +1118,8 @@ nav .nav-links a:hover { color: var(--text); }
         whole point. Compare these <span class="age-badge age-stale">as of 2024</span> badges
         with the <span class="age-badge age-fresh">seconds ago</span> ledger feeds in the top
         ticker. TradFi reports itself in quarters and estimates; open ledgers report themselves
-        in seconds. See the <a href="analysis/deep-dives/" style="color:var(--accent-blue);">deep dives</a>
+        in seconds. Click any category name to open its full report — sources, calcs, and
+        methodology. Browse the <a href="reports/index.html" style="color:var(--accent-blue);">research library</a>
         and <a href="data/SOURCES.md" style="color:var(--accent-blue);">data sources</a>.
       </p>
     </div>
@@ -1490,6 +1492,33 @@ const DATA = [
 
 const SECTORS = ["All","Payments","Traditional Finance","Digital Assets","Banking","Gaming","Government","Emerging"];
 
+// Dashboard → repository report pages (generated under /reports/ by tools/build_reports.py)
+const REPORT_PATH = {
+  "Consumer Cards":"payments/consumer-cards","Digital Wallets":"payments/digital-wallets",
+  "Bank Transfers":"payments/bank-transfers","ETD (Derivatives)":"traditional-finance/etd",
+  "Equity Markets":"traditional-finance/equity-markets","CEX (Crypto)":"digital-assets/cex",
+  "Bill Payments":"payments/bill-payments","E-Commerce":"payments/ecommerce",
+  "ATM Withdrawals":"payments/atm-withdrawals","IoT & M2M":"emerging/iot-m2m",
+  "Payroll":"payments/payroll","Government Payments":"government/government-payments",
+  "BNPL":"payments/bnpl","Microtransactions":"gaming/gaming-microtx",
+  "Stablecoins":"digital-assets/stablecoins","L1/L2 Blockchain":"digital-assets/blockchain-l1-l2",
+  "Insurance Premiums":"payments/insurance-premiums","Commodities":"traditional-finance/commodities",
+  "P2P Transfers":"payments/p2p-transfers","Forex":"traditional-finance/forex",
+  "Game Sales":"gaming/gaming-sales","Remittances":"payments/remittances",
+  "Interbank RTGS":"banking/interbank-rtgs","Securities Settlement":"banking/securities-settlement",
+  "Fixed Income":"traditional-finance/fixed-income","AI Agents":"emerging/ai-agents",
+  "RWA Tokenisation":"emerging/rwa-tokenisation","OTC Derivatives":"traditional-finance/otc-derivatives",
+};
+const SPOTLIGHT_PATH = {
+  "India":"deep-dives/india","China":"deep-dives/china","Brazil":"deep-dives/brazil",
+  "European Union":"deep-dives/eu","Japan":"deep-dives/japan","United Kingdom":"deep-dives/uk",
+};
+function reportHref(name){ const p = REPORT_PATH[name]; return p ? `reports/${p}/REPORT.html` : null; }
+function nameLink(name){
+  const h = reportHref(name);
+  return h ? `<a href="${h}" title="Open the ${name} report — sources, calcs, methodology">${name}</a>` : name;
+}
+
 const SECTOR_LABELS = {
   "Payments":"Payments","Traditional Finance":"TradFi","Digital Assets":"Digital Assets",
   "Banking":"Banking","Gaming":"Gaming","Government":"Government","Emerging":"Emerging"
@@ -1629,7 +1658,7 @@ function renderTable() {
   tbody.innerHTML = filtered.map((d, i) => `
     <tr>
       <td class="td-number muted">${i + 1}</td>
-      <td class="td-name">${d.name}</td>
+      <td class="td-name">${nameLink(d.name)}</td>
       <td class="td-number">${d.tps.toLocaleString('en-US')}</td>
       <td class="td-number muted">${d.txnYear}</td>
       <td><span class="td-sector ${SECTOR_CLASSES[d.sector]}">${SECTOR_LABELS[d.sector] || d.sector}</span></td>
@@ -2366,7 +2395,7 @@ window.OpacityIndex = (function () {
     tb.innerHTML = sortCats().map((d, i) => `
       <tr>
         <td class="muted">${i + 1}</td>
-        <td><span class="op-row-name">${esco(d.name)}</span><span class="op-row-sub">${esco(d.sector)} · ${d.tps.toLocaleString("en-US")} tps</span></td>
+        <td>${(typeof reportHref==="function" && reportHref(d.name)) ? `<a class="op-row-name" href="${reportHref(d.name)}" title="Open the ${esco(d.name)} report">${esco(d.name)}</a>` : `<span class="op-row-name">${esco(d.name)}</span>`}<span class="op-row-sub">${esco(d.sector)} · ${d.tps.toLocaleString("en-US")} tps</span></td>
         <td>${barHTML(d)}</td>
         <td class="op-score">${d.opacity}</td>
         <td class="muted" style="font-size:0.82rem;max-width:420px;">${esco(d.justification)}<br><span style="opacity:0.7">${esco(d.source)}</span></td>
@@ -2393,6 +2422,16 @@ window.OpacityIndex = (function () {
           `<span class="value"><span class="conf-badge ${cls}">${s.opacity}</span></span>`;
         const quote = card.querySelector(".spotlight-quote");
         if (quote) card.insertBefore(row, quote); else card.appendChild(row);
+        // deep-dive link
+        const path = (typeof SPOTLIGHT_PATH !== "undefined") ? SPOTLIGHT_PATH[s.name] : null;
+        if (path && !card.querySelector(".dd-link")) {
+          const a = document.createElement("a");
+          a.className = "dd-link";
+          a.href = `reports/${path}/REPORT.html`;
+          a.textContent = `Read the ${s.name} deep dive →`;
+          a.style.cssText = "display:inline-block;margin-top:12px;font-size:0.82rem;color:var(--accent-blue);text-decoration:none;font-weight:600;";
+          card.appendChild(a);
+        }
       });
     });
   }

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaming Microtransactions — Payment Overlap Analysis — Universe of Finance</title>
+<meta name="description" content="Quantifies how gaming microtransaction purchases overlap with other payment categories in the Universe of Finance taxonomy. 1. The Core Question When a player buys 1,000 V-Bucks o">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Gaming<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Gaming Microtransactions — Payment Overlap Analysis</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-the-core-question">1. The Core Question</a></li><li><a href="#2-payment-channel-decomposition">2. Payment Channel Decomposition</a></li><li><a href="#3-aggregate-overlap-summary">3. Aggregate Overlap Summary</a></li><li><a href="#4-overlap-with-consumer-cards">4. Overlap with Consumer Cards</a></li><li><a href="#5-overlap-with-digital-wallets">5. Overlap with Digital Wallets</a></li><li><a href="#6-incremental-truly-unique-gaming-microtransactions">6. Incremental (Truly Unique) Gaming Microtransactions</a></li><li><a href="#7-update-to-datajson-overlap-fields">7. Update to data.json Overlap Fields</a></li><li><a href="#8-regional-variation">8. Regional Variation</a></li></ul></div><blockquote>
+<p>Quantifies how gaming microtransaction purchases overlap with other payment categories
+in the Universe of Finance taxonomy.</p>
+</blockquote>
+<h2 id="1-the-core-question">1. The Core Question</h2>
+<p>When a player buys 1,000 V-Bucks on their iPhone, three things happen:
+1. Apple charges their card-on-file (Visa/MC) via the App Store
+2. Apple processes the transaction through its payment system
+3. Epic receives the revenue minus Apple's 30% commission</p>
+<p>Is this one transaction or three? For our purposes, <strong>it is one consumer payment transaction</strong> — the player-to-platform purchase. But that single transaction may already be counted in:
+- <strong><a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer Cards</a></strong> (if paid by credit/debit card)
+- <strong><a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a></strong> (if paid via Apple Pay, Google Pay, or PayPal)
+- <strong><a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a></strong> (if paid via carrier billing that settles as direct debit, or open banking)</p>
+<h2 id="2-payment-channel-decomposition">2. Payment Channel Decomposition</h2>
+<h3 id="mobile-iap-953b-transactions-81b-revenue">Mobile IAP (~9.53B transactions, $81B revenue)</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Method</th>
+<th>Share of Mobile IAP Value</th>
+<th>Est. Txns (B)</th>
+<th>Also Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Card-on-file (credit/debit)</td>
+<td>~55%</td>
+<td>~5.24</td>
+<td>Consumer Cards</td>
+</tr>
+<tr>
+<td>Apple Pay / Google Pay</td>
+<td>~15%</td>
+<td>~1.43</td>
+<td>Digital Wallets + Consumer Cards (wallet on card rails)</td>
+</tr>
+<tr>
+<td>Carrier billing (DCB)</td>
+<td>~12%</td>
+<td>~1.14</td>
+<td>None — unique to telecom rails</td>
+</tr>
+<tr>
+<td>PayPal / platform balance</td>
+<td>~8%</td>
+<td>~0.76</td>
+<td>Partially in Digital Wallets</td>
+</tr>
+<tr>
+<td>Gift cards / store credit</td>
+<td>~5%</td>
+<td>~0.48</td>
+<td>Counted at original gift card purchase (prepaid/cards)</td>
+</tr>
+<tr>
+<td>Bank transfer / open banking</td>
+<td>~3%</td>
+<td>~0.29</td>
+<td>Bank Transfers</td>
+</tr>
+<tr>
+<td>Other (crypto, regional methods)</td>
+<td>~2%</td>
+<td>~0.19</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sources for payment method split:</strong>
+- Xsolla industry data: cards remain dominant for game payments globally (~55-60%)
+- J.P. Morgan Payments in Gaming: digital wallets growing but card-on-file still standard
+- Carrier billing: ~12% of mobile IAP (higher in SE Asia, lower in US/EU)
+- Regional variation is significant: <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> ~80% wallet, US ~70% card, SE Asia ~30% carrier billing</p>
+<h3 id="pc-iap-150b-transactions-18b-revenue">PC IAP (~1.50B transactions, $18B revenue)</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Method</th>
+<th>Share</th>
+<th>Est. Txns (B)</th>
+<th>Also Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Card-on-file (Steam, Epic, direct)</td>
+<td>~60%</td>
+<td>~0.90</td>
+<td>Consumer Cards</td>
+</tr>
+<tr>
+<td>PayPal</td>
+<td>~15%</td>
+<td>~0.23</td>
+<td>Digital Wallets</td>
+</tr>
+<tr>
+<td>Platform wallet (Steam Wallet)</td>
+<td>~12%</td>
+<td>~0.18</td>
+<td>Counted at wallet top-up (card/bank)</td>
+</tr>
+<tr>
+<td>Bank transfer / iDEAL / Sofort</td>
+<td>~8%</td>
+<td>~0.12</td>
+<td>Bank Transfers</td>
+</tr>
+<tr>
+<td>Gift cards / prepaid</td>
+<td>~3%</td>
+<td>~0.05</td>
+<td>Counted at original purchase</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>~2%</td>
+<td>~0.02</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<h3 id="console-iap-125b-transactions-15b-revenue">Console IAP (~1.25B transactions, $15B revenue)</h3>
+<table>
+<thead>
+<tr>
+<th>Payment Method</th>
+<th>Share</th>
+<th>Est. Txns (B)</th>
+<th>Also Counted In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Card-on-file (PS Store, Xbox, Nintendo)</td>
+<td>~70%</td>
+<td>~0.88</td>
+<td>Consumer Cards</td>
+</tr>
+<tr>
+<td>PayPal</td>
+<td>~10%</td>
+<td>~0.13</td>
+<td>Digital Wallets</td>
+</tr>
+<tr>
+<td>Platform wallet / store credit</td>
+<td>~10%</td>
+<td>~0.13</td>
+<td>Counted at wallet top-up</td>
+</tr>
+<tr>
+<td>Gift cards (PSN, Xbox, Nintendo eShop)</td>
+<td>~8%</td>
+<td>~0.10</td>
+<td>Counted at original purchase</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>~2%</td>
+<td>~0.03</td>
+<td>Various</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-aggregate-overlap-summary">3. Aggregate Overlap Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Payment Rail</th>
+<th>Mobile IAP (B)</th>
+<th>PC IAP (B)</th>
+<th>Console IAP (B)</th>
+<th>Total (B)</th>
+<th>% of 12.28B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Card rails (direct)</strong></td>
+<td>5.24</td>
+<td>0.90</td>
+<td>0.88</td>
+<td><strong>7.02</strong></td>
+<td><strong>57.2%</strong></td>
+</tr>
+<tr>
+<td><strong>Card rails (via wallet)</strong></td>
+<td>1.43</td>
+<td>0.00</td>
+<td>0.00</td>
+<td><strong>1.43</strong></td>
+<td><strong>11.6%</strong></td>
+</tr>
+<tr>
+<td><strong>Digital wallets (non-card)</strong></td>
+<td>0.76</td>
+<td>0.23</td>
+<td>0.13</td>
+<td><strong>1.12</strong></td>
+<td><strong>9.1%</strong></td>
+</tr>
+<tr>
+<td><strong>Carrier billing</strong></td>
+<td>1.14</td>
+<td>0.00</td>
+<td>0.00</td>
+<td><strong>1.14</strong></td>
+<td><strong>9.3%</strong></td>
+</tr>
+<tr>
+<td><strong>Gift cards / store credit</strong></td>
+<td>0.48</td>
+<td>0.05</td>
+<td>0.10</td>
+<td><strong>0.63</strong></td>
+<td><strong>5.1%</strong></td>
+</tr>
+<tr>
+<td><strong>Bank transfer</strong></td>
+<td>0.29</td>
+<td>0.12</td>
+<td>0.00</td>
+<td><strong>0.41</strong></td>
+<td><strong>3.3%</strong></td>
+</tr>
+<tr>
+<td><strong>Platform wallet (funded earlier)</strong></td>
+<td>0.00</td>
+<td>0.18</td>
+<td>0.13</td>
+<td><strong>0.31</strong></td>
+<td><strong>2.5%</strong></td>
+</tr>
+<tr>
+<td><strong>Other</strong></td>
+<td>0.19</td>
+<td>0.02</td>
+<td>0.03</td>
+<td><strong>0.24</strong></td>
+<td><strong>1.9%</strong></td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>9.53</strong></td>
+<td><strong>1.50</strong></td>
+<td><strong>1.25</strong></td>
+<td><strong>12.28</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-overlap-with-consumer-cards">4. Overlap with Consumer Cards</h2>
+<p><strong>Total <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a> on card rails: 7.02B (direct) + 1.43B (via wallet) = 8.45B</strong></p>
+<p>This represents <strong>68.8%</strong> of all gaming microtransactions.</p>
+<p>However, not all of these are double-counted in our Consumer Cards capsule:
+- The 772.73B card figure from Nilson counts <strong>all</strong> card network purchase transactions, which includes gaming purchases
+- So yes, <strong>~8.45B gaming microtransactions are already counted in the 772.7B consumer card total</strong>
+- This is 1.1% of all card transactions — small but non-trivial</p>
+<h2 id="5-overlap-with-digital-wallets">5. Overlap with Digital Wallets</h2>
+<p><strong>Total microtransactions via wallets: 1.43B (card-funded) + 1.12B (non-card) = 2.55B</strong></p>
+<p>Of these:
+- 1.43B are Apple Pay/Google Pay on card rails → counted in both Wallets and Cards
+- 1.12B are PayPal/platform balance → counted in Wallets only
+- Total wallet overlap: <strong>2.55B</strong> (20.8% of gaming microtransactions)</p>
+<h2 id="6-incremental-truly-unique-gaming-microtransactions">6. Incremental (Truly Unique) Gaming Microtransactions</h2>
+<p>Transactions NOT counted in any other payment category:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Txns (B)</th>
+<th>Why Incremental</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carrier billing (DCB)</td>
+<td>1.14</td>
+<td>Telecom rails — not cards, wallets, or bank transfers</td>
+</tr>
+<tr>
+<td>Gift cards / store credit</td>
+<td>0.63</td>
+<td>The gift card purchase was counted, but the redemption is a new transaction</td>
+</tr>
+<tr>
+<td>Platform wallet spend (pre-funded)</td>
+<td>0.31</td>
+<td>Steam Wallet / PSN balance spend — the top-up was counted, the in-game spend is internal</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>0.24</td>
+<td>Crypto, regional methods</td>
+</tr>
+<tr>
+<td><strong>TOTAL INCREMENTAL</strong></td>
+<td><strong>~2.32B</strong></td>
+<td><strong>18.9% of gaming microtransactions</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key finding: ~81% of gaming microtransactions (10.0B) are already counted in Consumer Cards, Digital Wallets, or Bank Transfers.</strong> Only ~2.3B (~19%) are truly incremental.</p>
+<h2 id="7-update-to-datajson-overlap-fields">7. Update to data.json Overlap Fields</h2>
+<p>The existing <code>data.json</code> overlap section should be updated from:</p>
+<pre><code class="language-json">"overlap_note": "65-75% of microtransactions settle on card rails"
+</code></pre>
+<p>to:</p>
+<pre><code class="language-json">"overlap_note": "68.8% of microtransactions settle on card rails (8.45B of 12.28B). An additional 9.1% flow through non-card digital wallets, 3.3% through bank transfers. Only ~19% (2.3B) are truly incremental — primarily carrier billing and gift card redemptions."
+</code></pre>
+<h2 id="8-regional-variation">8. Regional Variation</h2>
+<p>The payment mix varies dramatically by region:</p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Card %</th>
+<th>Wallet %</th>
+<th>Carrier %</th>
+<th>Other %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US/Canada</td>
+<td>~70%</td>
+<td>~15%</td>
+<td>~5%</td>
+<td>~10%</td>
+</tr>
+<tr>
+<td>EU/UK</td>
+<td>~60%</td>
+<td>~20%</td>
+<td>~8%</td>
+<td>~12%</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>~40%</td>
+<td>~25%</td>
+<td>~20%</td>
+<td>~15%</td>
+</tr>
+<tr>
+<td>South Korea</td>
+<td>~50%</td>
+<td>~30%</td>
+<td>~10%</td>
+<td>~10%</td>
+</tr>
+<tr>
+<td>China</td>
+<td>~10%</td>
+<td>~80%</td>
+<td>~2%</td>
+<td>~8%</td>
+</tr>
+<tr>
+<td>SE Asia</td>
+<td>~25%</td>
+<td>~35%</td>
+<td>~30%</td>
+<td>~10%</td>
+</tr>
+<tr>
+<td>Latin America</td>
+<td>~45%</td>
+<td>~20%</td>
+<td>~15%</td>
+<td>~20%</td>
+</tr>
+</tbody>
+</table>
+<p>China's dominance of mobile IAP revenue (~35% of global) means that the global card overlap is lower than US-centric intuition suggests. Alipay and WeChat Pay process ~80% of Chinese gaming IAP, and these are NOT on card rails.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/gaming/gaming-microtx/workings/payment-overlap.md">analysis/gaming/gaming-microtx/workings/payment-overlap.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

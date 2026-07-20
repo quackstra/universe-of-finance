@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeFi — Key Assumptions — Universe of Finance</title>
+<meta name="description" content="A1. DEX Volume is On-Chain and Verifiable Unlike CEX volume, DEX trades settle on-chain via smart contracts DeFiLlama reads events directly from blockchain data This makes DEX volu">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Digital Assets<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>DeFi — Key Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#a1-dex-volume-is-on-chain-and-verifiable">A1. DEX Volume is On-Chain and Verifiable</a></li><li><a href="#a2-double-counting-the-critical-issue">A2. Double-Counting — The Critical Issue</a></li><li><a href="#a3-tvl-is-a-stock-metric-not-a-flow-metric">A3. TVL Is a Stock Metric, Not a Flow Metric</a></li><li><a href="#a4-perp-dex-volume-notional">A4. Perp DEX Volume = Notional</a></li><li><a href="#a5-user-count-address-count">A5. User Count = Address Count</a></li><li><a href="#a6-lendingborrowing-is-not-counted-as-volume">A6. Lending/Borrowing Is Not Counted as "Volume"</a></li><li><a href="#a7-projection-methodology">A7. Projection Methodology</a></li></ul></div><h2 id="a1-dex-volume-is-on-chain-and-verifiable">A1. DEX Volume is On-Chain and Verifiable</h2>
+<ul>
+<li>Unlike CEX volume, DEX trades settle on-chain via smart contracts</li>
+<li>DeFiLlama reads events directly from blockchain data</li>
+<li>This makes DEX volume data higher confidence than CEX data</li>
+<li>However, MEV bots and sandwich attacks inflate volume (est. 10-20% of DEX volume is bot-driven)</li>
+</ul>
+<h2 id="a2-double-counting-the-critical-issue">A2. Double-Counting — The Critical Issue</h2>
+<ul>
+<li>ALL <a class="xref" href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">DeFi</a> transactions are L1/L2 transactions</li>
+<li>A Uniswap swap on Ethereum L1 = 1 DeFi transaction + 1 Ethereum L1 transaction</li>
+<li>A Raydium swap on Solana = 1 DeFi transaction + 1 Solana transaction</li>
+<li>Stablecoin transfers used within DeFi = overlap with <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">stablecoins</a> capsule</li>
+<li>CEX trading has ZERO overlap (off-chain settlement)</li>
+</ul>
+<h2 id="a3-tvl-is-a-stock-metric-not-a-flow-metric">A3. TVL Is a Stock Metric, Not a Flow Metric</h2>
+<ul>
+<li>TVL = total capital locked at a point in time</li>
+<li>It does NOT measure throughput or transaction volume</li>
+<li>TVL can increase without any transactions (if ETH price rises, ETH-denominated TVL rises in USD)</li>
+<li>TVL double-counts: same dollar can be "locked" in multiple protocols via rehypothecation</li>
+</ul>
+<h2 id="a4-perp-dex-volume-notional">A4. Perp DEX Volume = Notional</h2>
+<ul>
+<li>Same caveat as CEX derivatives: notional volume overstates economic activity</li>
+<li>A $100 trade with 50x leverage = $5,000 notional volume</li>
+<li>Spot DEX volume is a more honest measure of capital flow</li>
+</ul>
+<h2 id="a5-user-count-address-count">A5. User Count = Address Count</h2>
+<ul>
+<li>"21.7M unique users" = unique wallet addresses</li>
+<li>One human often uses 2-10 wallets (privacy, strategy separation)</li>
+<li>True unique human users may be 5-10M</li>
+<li>Sybil activity (airdrop farming) inflates address counts further</li>
+</ul>
+<h2 id="a6-lendingborrowing-is-not-counted-as-volume">A6. Lending/Borrowing Is Not Counted as "Volume"</h2>
+<ul>
+<li>We report lending TVL and open borrows as stock metrics</li>
+<li>We do NOT add lending flow to DEX trading volume</li>
+<li>The "DeFi volume" headline ($4.16T) = DEX spot + DEX perps only</li>
+</ul>
+<h2 id="a7-projection-methodology">A7. Projection Methodology</h2>
+<ul>
+<li>Baseline: DEX-to-CEX ratio continues growing from ~10% to ~25% by 2030</li>
+<li>High growth: DeFi captures traditional finance use cases (RWA, equities on-chain)</li>
+<li>Conservative: Memecoin boom fades, regulatory pressure</li>
+<li>All scenarios follow crypto's cyclical pattern (bull 2025-2026, bear 2027-2028)</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/digital-assets/defi/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/digital-assets/defi/workings/assumptions.md">analysis/digital-assets/defi/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assumptions — Bank Transfers (ACH/RTGS) — Universe of Finance</title>
+<meta name="description" content="Scope Definition 'Bank Transfers' includes: ACH/batch credit transfers, real-time payments (UPI, PIX, FedNow, Faster Payments, SEPA Instant), RTGS/wire transfers (Fedwire, TARGET2/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Assumptions — Bank Transfers (ACH/RTGS)</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#scope-definition">Scope Definition</a></li><li><a href="#data-year">Data Year</a></li><li><a href="#geographic-scope">Geographic Scope</a></li><li><a href="#estimation-methodology">Estimation Methodology</a></li><li><a href="#currency-conversion">Currency Conversion</a></li><li><a href="#data-reconciliation">Data Reconciliation</a></li><li><a href="#growth-projections">Growth Projections</a></li><li><a href="#double-counting-prevention">Double-Counting Prevention</a></li></ul></div><h2 id="scope-definition">Scope Definition</h2>
+<ol>
+<li><strong>"<a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a>"</strong> includes: ACH/batch credit transfers, real-time payments (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a>, FedNow, Faster Payments, SEPA Instant), RTGS/wire transfers (Fedwire, TARGET2/T2, CHAPS, BOJ-NET), and cross-border wires (SWIFT gpi, CIPS).</li>
+<li><strong>Excludes</strong>: Card payments (Visa, Mastercard), <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a> (Apple Pay, Google Pay) unless they ride on bank transfer rails (e.g., UPI via Google Pay counts as UPI), cheques, cash, cryptocurrency.</li>
+<li><strong>Real-time payments are classified as bank transfers</strong> because they are account-to-account movements through banking infrastructure, even though they differ from traditional batch ACH.</li>
+</ol>
+<h2 id="data-year">Data Year</h2>
+<ol start="4">
+<li>Primary data year is <strong>2024</strong> for current state. Where 2024 data is unavailable, 2023 data is used with explicit notation.</li>
+<li>Historical timeseries covers <strong>2015-2024</strong> where possible. For systems launched after 2015 (UPI: 2016, PIX: 2020, FedNow: 2023), timeseries starts at launch.</li>
+</ol>
+<h2 id="geographic-scope">Geographic Scope</h2>
+<ol start="6">
+<li><strong>Global aggregate</strong> is constructed bottom-up from major systems:
+   - <strong>US</strong>: ACH (Nacha) + Fedwire + FedNow
+   - <strong>Europe</strong>: SEPA Credit Transfers + TARGET2/T2 + UK (Faster Payments, BACS, CHAPS)
+   - <strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a></strong>: UPI
+   - <strong><a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a></strong>: PIX
+   - <strong><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a></strong>: Domestic CNAPS (estimated) + CIPS cross-border
+   - <strong>Rest of World</strong>: Estimated from ACI Worldwide global totals minus known systems</li>
+</ol>
+<h2 id="estimation-methodology">Estimation Methodology</h2>
+<ol start="7">
+<li><strong>TPS calculation</strong>: Annual volume / (365.25 days * 86,400 seconds). This gives average TPS over a full calendar year including nights/weekends when volume is lower.</li>
+<li><strong><a class="xref" href="/universe-of-finance/reports/PEAK_TPS.html">Peak TPS</a> estimate</strong>: Based on peak day volumes where available (e.g., PIX 252.1M on Dec 20, 2024), divided by 86,400 seconds. Where peak day isn't known, we estimate 2.5x average daily volume based on observed ratios.</li>
+<li><strong>Business-day adjusted TPS</strong>: Where relevant (RTGS systems operating ~250 days), we calculate operational TPS separately.</li>
+</ol>
+<h2 id="currency-conversion">Currency Conversion</h2>
+<ol start="10">
+<li>All values converted to <strong>USD</strong> using approximate 2024 average exchange rates:<ul>
+<li>EUR/USD = 1.08</li>
+<li>GBP/USD = 1.27</li>
+<li>INR/USD = 0.012 (83.3 INR per USD)</li>
+<li>BRL/USD = 0.20 (5.0 BRL per USD)</li>
+<li>RMB/USD = 0.139 (7.2 RMB per USD)</li>
+<li>JPY/USD = 0.0066 (151 JPY per USD)</li>
+</ul>
+</li>
+</ol>
+<h2 id="data-reconciliation">Data Reconciliation</h2>
+<ol start="11">
+<li><strong>Nacha vs. FedACH</strong>: Nacha reports total ACH Network (33.6B), which includes both FedACH and EPN (The Clearing House). FedACH alone was 20.1B in 2024. We use Nacha's full network figure for US ACH.</li>
+<li><strong>Nacha "off-network"</strong>: Total ACH including off-network was 40.2B in 2024. We use the 33.6B on-network figure for consistency.</li>
+<li><strong>PIX variance</strong>: Sources report 57B-69B for 2024 PIX volume. We use 63B as a reasonable midpoint with medium confidence.</li>
+<li><strong>UPI figures</strong>: NPCI reports 131.1B for calendar year 2024 (not fiscal year). Some sources report ~172B which likely includes Jan-Mar 2025 or counts sub-transactions. We use 131.1B as the conservative calendar-year figure.</li>
+<li><strong>China domestic payments</strong>: CNAPS domestic volume is not publicly reported in English. We estimate China's domestic electronic credit transfers at ~80B based on BIS CPMI proportional data and China's share of global non-cash payments. This is a RED confidence estimate.</li>
+</ol>
+<h2 id="growth-projections">Growth Projections</h2>
+<ol start="16">
+<li><strong>Baseline projection (2026-2035)</strong>: Applies observed 5-year CAGRs to each subcategory, with gradual deceleration (CAGR reduces by 0.5 percentage points per year after 2028).</li>
+<li><strong>High-growth scenario</strong>: Assumes real-time payments maintain 25%+ CAGR through 2030 driven by UPI global expansion, PIX continued growth, FedNow/SEPA Instant mandates, and new RTP launches in <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>/SE Asia.</li>
+<li><strong>Conservative scenario</strong>: Assumes regulatory friction, interoperability challenges, and slower-than-expected adoption in mature markets. Real-time growth decelerates to 10% CAGR by 2028.</li>
+</ol>
+<h2 id="double-counting-prevention">Double-Counting Prevention</h2>
+<ol start="19">
+<li><strong>SWIFT messages are NOT added to other system volumes</strong> — SWIFT is a messaging network, not a settlement system. A Fedwire or TARGET2 payment may also generate a SWIFT message. We track SWIFT separately for cross-border context but do not add it to global totals.</li>
+<li><strong>FedNow is tracked separately from ACH</strong> — they are distinct rails despite both being US domestic transfer systems.</li>
+<li><strong>SEPA Instant is a subset of SEPA Credit Transfers</strong> — we break it out but don't double-count.</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/bank-transfers/workings/assumptions.md">analysis/payments/bank-transfers/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

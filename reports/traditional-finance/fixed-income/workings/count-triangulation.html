@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixed Income Transaction Count Triangulation — Universe of Finance</title>
+<meta name="description" content="Created: 2026-03-27 (Run 4) Purpose: Refine the ~7 TPS cash bond / ~35 TPS incl. repo estimates using segmented data from multiple independent sources Methodology The original est">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Fixed Income Transaction Count Triangulation</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#methodology">Methodology</a></li><li><a href="#data-sources-with-citations-and-dates">Data Sources (with citations and dates)</a></li><li><a href="#model">Model</a></li><li><a href="#results">Results</a></li><li><a href="#sensitivity-analysis">Sensitivity Analysis</a></li><li><a href="#open-questions-data-gaps">Open Questions & Data Gaps</a></li></ul></div><blockquote>
+<p><strong>Created</strong>: 2026-03-27 (Run 4)
+<strong>Purpose</strong>: Refine the ~7 TPS cash bond / ~35 TPS incl. repo estimates using segmented data from multiple independent sources</p>
+</blockquote>
+<hr/>
+<h2 id="methodology">Methodology</h2>
+<p>The original estimate of ~7 TPS for cash bonds was derived primarily from FINRA TRACE data scaled globally. This triangulation builds a <strong>bottom-up segmented model</strong> across three categories:</p>
+<ol>
+<li><strong>Cash bonds</strong> (government, corporate, municipal, agency/MBS, EM)</li>
+<li><strong>Repo / reverse repo</strong> (overnight, term, triparty, bilateral, central bank facilities)</li>
+<li><strong>Money market instruments</strong> (commercial paper, T-bills at auction — excluded from count as these are primary market or separate category)</li>
+</ol>
+<p>For each segment we gather independent data sources and cross-check where possible.</p>
+<hr/>
+<h2 id="data-sources-with-citations-and-dates">Data Sources (with citations and dates)</h2>
+<h3 id="cash-bonds">Cash Bonds</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Data Point</th>
+<th>Date</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FINRA TRACE</td>
+<td>~52M US bond transactions/year (corporate + agency + securitized)</td>
+<td>FY 2024</td>
+<td><a href="https://www.finra.org/finra-data/fixed-income">FINRA TRACE</a></td>
+</tr>
+<tr>
+<td>MSRB EMMA</td>
+<td>14.5M US municipal bond trades in 2024 (record); 17.6M in 2025 (+22%)</td>
+<td>FY 2024/2025</td>
+<td><a href="https://www.msrb.org/sites/default/files/2025-01/MSRB-2024-Municipal-Market-Year-in-Review.pdf">MSRB 2024 Review</a>, <a href="https://www.msrb.org/sites/default/files/2026-01/MSRB-2025-Municipal-Market-Year-in-Review.pdf">MSRB 2025 Review</a></td>
+</tr>
+<tr>
+<td>Coalition Greenwich</td>
+<td>US corporate bond market: 125,723 trades/day avg in 2024 (IG + HY)</td>
+<td>FY 2024</td>
+<td><a href="https://coalitiongreenwich.crisil.com/">Coalition Greenwich</a></td>
+</tr>
+<tr>
+<td>SIFMA</td>
+<td>US Treasury ADV $1,055B (2024); Corporate ADV $57.9B</td>
+<td>FY 2024</td>
+<td><a href="https://www.sifma.org/research/statistics/">SIFMA</a></td>
+</tr>
+<tr>
+<td>Tradeweb</td>
+<td>European Govt Bond record ADV $212.6B in 2024, up 45.6% YoY</td>
+<td>FY 2024</td>
+<td><a href="https://www.tradeweb.com/newsroom/">Tradeweb</a></td>
+</tr>
+<tr>
+<td>EMTA</td>
+<td>EM debt trading $6.116T in 2024 (annual, all EM bonds)</td>
+<td>FY 2024</td>
+<td><a href="https://www.emta.org/activities-and-services/volume-surveys/">EMTA Volume Surveys</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="repo-market">Repo Market</h3>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Data Point</th>
+<th>Date</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OFR</td>
+<td>US repo market $12.6T daily avg exposures Q3 2025; $11.9T gross in 2024</td>
+<td>Q3 2025</td>
+<td><a href="https://www.financialresearch.gov/the-ofr-blog/2025/12/04/sizing-us-repo-market/">OFR Blog</a></td>
+</tr>
+<tr>
+<td>FICC GSD</td>
+<td>Record $10T single-day clearing (Sep 30, 2024); 42% YoY growth</td>
+<td>Sep 2024</td>
+<td><a href="https://www.dtcc.com/news/2024/october/03/ficcs-government-securities-division-surpasses">DTCC</a></td>
+</tr>
+<tr>
+<td>ICMA Survey #48</td>
+<td>European repo outstanding EUR 10.9T (Dec 2024); EUR 12.4T (Jun 2025); EUR 13.7T (Dec 2025, +25% YoY)</td>
+<td>Dec 2024-Dec 2025</td>
+<td><a href="https://www.icmagroup.org/market-practice-and-regulatory-policy/repo-and-collateral-markets/market-data/icma-european-repo-market-survey/">ICMA</a></td>
+</tr>
+<tr>
+<td>NY Fed SOFR</td>
+<td>SOFR underlying volume ~$1.0-2.0T/day (varies)</td>
+<td>2024</td>
+<td><a href="https://www.newyorkfed.org/markets/reference-rates/sofr">NY Fed</a></td>
+</tr>
+<tr>
+<td>Fed ON RRP</td>
+<td>ON RRP facility declining from $2.5T peak to ~$100-200B in late 2024</td>
+<td>2024</td>
+<td><a href="https://fred.stlouisfed.org/series/RRPONTSYD">FRED RRPONTSYD</a></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="model">Model</h2>
+<h3 id="segment-1-us-cash-bond-trades">Segment 1: US Cash Bond Trades</h3>
+<table>
+<thead>
+<tr>
+<th>Sub-segment</th>
+<th>Annual Trades</th>
+<th>Daily Trades (252 days)</th>
+<th>Source / Method</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US Corporate + Agency + Securitized (TRACE)</td>
+<td>52,000,000</td>
+<td>206,349</td>
+<td>FINRA TRACE direct report</td>
+<td>High</td>
+</tr>
+<tr>
+<td>US Municipal Bonds (MSRB)</td>
+<td>14,500,000</td>
+<td>57,540</td>
+<td>MSRB EMMA direct report</td>
+<td>High</td>
+</tr>
+<tr>
+<td>US Treasury (est. from ADV / avg trade size)</td>
+<td>12,600,000</td>
+<td>50,000</td>
+<td>$1,055B ADV / ~$21M avg trade size (institutional dominated)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>US Total Cash Bonds</strong></td>
+<td><strong>79,100,000</strong></td>
+<td><strong>313,889</strong></td>
+<td>Composite</td>
+<td>High</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on TRACE coverage</strong>: TRACE captures corporate bonds, agency debentures, ABS, and securitized products but NOT US Treasuries. Treasury trade count is estimated from ADV / average trade size, which is uncertain because the Treasury market is dominated by very large institutional/dealer trades.</p>
+<p><strong>Cross-check</strong>: Coalition Greenwich reports 125,723 corporate bond trades/day in 2024. TRACE reports 52M/year for corporate + agency + securitized = ~206K/day. The difference (~80K/day) likely reflects that TRACE includes agency and securitized products beyond just corporate bonds, and Greenwich may count both sides or include portfolio trades differently. Numbers are broadly consistent.</p>
+<h3 id="segment-2-european-cash-bond-trades">Segment 2: European Cash Bond Trades</h3>
+<table>
+<thead>
+<tr>
+<th>Sub-segment</th>
+<th>Annual Trades (est.)</th>
+<th>Daily Trades</th>
+<th>Source / Method</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>European Govt Bonds</td>
+<td>6,300,000</td>
+<td>25,000</td>
+<td>Tradeweb ADV $212.6B / est. avg trade size ~$8.5M for govt bonds</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>European Corporate Bonds</td>
+<td>5,000,000</td>
+<td>19,841</td>
+<td>Scale from US: EU corporate bond market ~60% of US by value; similar trading velocity</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>European Covered Bonds / Agency</td>
+<td>2,500,000</td>
+<td>9,921</td>
+<td>Est. from SIX/Euroclear settlement data</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>European Total</strong></td>
+<td><strong>13,800,000</strong></td>
+<td><strong>54,762</strong></td>
+<td>Composite</td>
+<td>Low-Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="segment-3-asia-pacific-em-cash-bond-trades">Segment 3: Asia-Pacific &amp; EM Cash Bond Trades</h3>
+<table>
+<thead>
+<tr>
+<th>Sub-segment</th>
+<th>Annual Trades (est.)</th>
+<th>Daily Trades</th>
+<th>Source / Method</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Japan (JGBs + corporate)</td>
+<td>5,000,000</td>
+<td>19,841</td>
+<td>Japan is ~15% of global bond outstanding; est. trading frequency lower than US</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>China (onshore + offshore)</td>
+<td>8,000,000</td>
+<td>31,746</td>
+<td>China interbank bond market huge by value (~$22T outstanding) but concentrated among banks, limited secondary market trading</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Other Asia (AUD, KRW, SGD, HKD, INR)</td>
+<td>4,000,000</td>
+<td>15,873</td>
+<td>Composite estimate from regional exchange data</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Emerging Markets (ex-China)</td>
+<td>3,000,000</td>
+<td>11,905</td>
+<td>EMTA reports $6.1T annual EM trading value; at avg ~$2M per trade = ~3M trades</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>APAC + EM Total</strong></td>
+<td><strong>20,000,000</strong></td>
+<td><strong>79,365</strong></td>
+<td>Composite</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<h3 id="segment-4-repo-reverse-repo">Segment 4: Repo / Reverse Repo</h3>
+<p>This is the critical segment. Repo is technically a <a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">fixed income</a> transaction (sale + repurchase of a bond) but behaves like secured lending. The question of inclusion fundamentally changes the TPS number.</p>
+<h4 id="approach-estimate-repo-trade-count-from-market-size-and-average-trade-size">Approach: Estimate repo trade count from market size and average trade size</h4>
+<p><strong>US Repo Market</strong>:
+- Total daily exposures: ~$12.6T (Q3 2025, OFR)
+- Segments:
+  - FICC centrally cleared: $4.4T/day
+  - BNY triparty (non-FICC): $3.1T/day
+  - Non-centrally cleared bilateral (NCCBR): $5.0T/day</p>
+<p>Repo trade sizes vary enormously:
+- <strong>Triparty repo</strong>: avg trade size ~$100-500M (large institutional), some much larger
+- <strong>Bilateral dealer-to-dealer</strong>: avg ~$50-200M
+- <strong>Sponsored repo (FICC)</strong>: avg ~$25-100M (growing rapidly, more participants)
+- <strong>GCF repo</strong>: avg ~$10-50M per ticket
+- <strong>Fed ON RRP</strong>: single large transactions per counterparty (~$100B+ facility, ~50-80 counterparties daily = ~50-80 trades)</p>
+<table>
+<thead>
+<tr>
+<th>Sub-segment</th>
+<th>Daily Value</th>
+<th>Est. Avg Trade Size</th>
+<th>Est. Daily Trades</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FICC centrally cleared (GSD)</td>
+<td>$4.4T</td>
+<td>$75M</td>
+<td>58,667</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>BNY triparty (non-FICC)</td>
+<td>$3.1T</td>
+<td>$200M</td>
+<td>15,500</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>NCCBR (bilateral)</td>
+<td>$5.0T</td>
+<td>$150M</td>
+<td>33,333</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Fed ON RRP + SRF</td>
+<td>~$0.2T</td>
+<td>$2.5B (per counterparty)</td>
+<td>80</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>US Repo Total</strong></td>
+<td><strong>$12.7T</strong></td>
+<td>—</td>
+<td><strong>~107,580</strong></td>
+<td>Low-Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>European Repo Market</strong>:
+- Outstanding: EUR 13.7T at Dec 2025 (ICMA Survey)
+- Turnover estimated at roughly 0.5x-1x outstanding per day for actively traded segments
+- European repo is more fragmented (Eurex Repo, LCH RepoClear, BrokerTec, MTS Repo, bilateral)</p>
+<table>
+<thead>
+<tr>
+<th>Sub-segment</th>
+<th>Daily Value (est.)</th>
+<th>Est. Avg Trade Size</th>
+<th>Est. Daily Trades</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CCP-cleared (Eurex, LCH)</td>
+<td>EUR 3.0T</td>
+<td>EUR 50M</td>
+<td>60,000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>ATS/electronic (BrokerTec, MTS)</td>
+<td>EUR 1.5T</td>
+<td>EUR 30M</td>
+<td>50,000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Bilateral / voice</td>
+<td>EUR 1.5T</td>
+<td>EUR 100M</td>
+<td>15,000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>European Repo Total</strong></td>
+<td><strong>~EUR 6.0T</strong></td>
+<td>—</td>
+<td><strong>~125,000</strong></td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Asia-Pacific Repo</strong>:
+- <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a> repo market ~$3T outstanding; <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> interbank repo ~$5T daily (massive but concentrated)
+- Asia repo estimated at ~50,000-100,000 trades/day</p>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Est. Daily Repo Trades</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Japan</td>
+<td>30,000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>China</td>
+<td>50,000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Other Asia</td>
+<td>20,000</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>APAC Repo Total</strong></td>
+<td><strong>100,000</strong></td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<h4 id="global-repo-summary">Global Repo Summary</h4>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Est. Daily Repo Trades</th>
+<th>Est. Annual (252 days)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US</td>
+<td>107,580</td>
+<td>27,110,160</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>125,000</td>
+<td>31,500,000</td>
+</tr>
+<tr>
+<td>APAC</td>
+<td>100,000</td>
+<td>25,200,000</td>
+</tr>
+<tr>
+<td><strong>Global Repo Total</strong></td>
+<td><strong>332,580</strong></td>
+<td><strong>83,810,160</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key caveat</strong>: Average trade sizes are the biggest uncertainty. If average repo trade size is $50M instead of $100M+, daily trade count doubles. If $200M+, it halves.</p>
+<hr/>
+<h2 id="results">Results</h2>
+<h3 id="cash-bonds-only">Cash Bonds Only</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Annual Trades</th>
+<th>Daily Trades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US</td>
+<td>79,100,000</td>
+<td>313,889</td>
+</tr>
+<tr>
+<td>Europe</td>
+<td>13,800,000</td>
+<td>54,762</td>
+</tr>
+<tr>
+<td>APAC + EM</td>
+<td>20,000,000</td>
+<td>79,365</td>
+</tr>
+<tr>
+<td><strong>Global Cash Bonds</strong></td>
+<td><strong>112,900,000</strong></td>
+<td><strong>448,016</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TPS (cash bonds)</strong>: 112,900,000 / (365.25 x 86,400) = <strong>~3.6 TPS</strong> over 24h/365d
+<strong>TPS (trading hours)</strong>: 448,016 / (10h x 3,600s) = <strong>~12.4 TPS</strong> during trading hours</p>
+<p><strong>Previous estimate</strong>: ~7 TPS (using 220M trades/year over 365 days, which double-counted)
+<strong>Revised estimate</strong>: <strong>~3.6 TPS</strong> (24h basis), <strong>~12 TPS</strong> (trading hours basis)</p>
+<p>The original ~600K/day estimate is now refined to ~448K/day. The 52M TRACE number was previously assumed to be ~40% of global, suggesting 130M globally. Our bottom-up model yields 113M, which is consistent (US = ~70% of global by trade count, vs. ~33% by outstanding value -- this makes sense because US markets are more liquid and electronified).</p>
+<h3 id="including-repo">Including Repo</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Annual Trades</th>
+<th>Daily Trades</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cash bonds (global)</td>
+<td>112,900,000</td>
+<td>448,016</td>
+</tr>
+<tr>
+<td>Repo (global)</td>
+<td>83,810,160</td>
+<td>332,580</td>
+</tr>
+<tr>
+<td><strong>Total Fixed Income</strong></td>
+<td><strong>196,710,160</strong></td>
+<td><strong>780,596</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TPS (incl. repo)</strong>: 196,710,160 / (365.25 x 86,400) = <strong>~6.2 TPS</strong> over 24h/365d
+<strong>TPS (trading hours)</strong>: 780,596 / (10h x 3,600s) = <strong>~21.7 TPS</strong> during trading hours</p>
+<h3 id="point-estimates-with-confidence-intervals">Point Estimates with Confidence Intervals</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Point Estimate (annual)</th>
+<th>Low Bound</th>
+<th>High Bound</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US Cash Bonds</td>
+<td>79.1M</td>
+<td>70M</td>
+<td>85M</td>
+<td>High (TRACE + MSRB anchored)</td>
+</tr>
+<tr>
+<td>European Cash Bonds</td>
+<td>13.8M</td>
+<td>8M</td>
+<td>20M</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>APAC + EM Cash Bonds</td>
+<td>20.0M</td>
+<td>10M</td>
+<td>35M</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Cash Bonds Total</strong></td>
+<td><strong>112.9M</strong></td>
+<td><strong>88M</strong></td>
+<td><strong>140M</strong></td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>US Repo</td>
+<td>27.1M</td>
+<td>15M</td>
+<td>50M</td>
+<td>Low-Medium</td>
+</tr>
+<tr>
+<td>European Repo</td>
+<td>31.5M</td>
+<td>15M</td>
+<td>60M</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>APAC Repo</td>
+<td>25.2M</td>
+<td>10M</td>
+<td>50M</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Repo Total</strong></td>
+<td><strong>83.8M</strong></td>
+<td><strong>40M</strong></td>
+<td><strong>160M</strong></td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Grand Total</strong></td>
+<td><strong>196.7M</strong></td>
+<td><strong>128M</strong></td>
+<td><strong>300M</strong></td>
+<td>Low-Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TPS Range</strong>:
+- Cash bonds only: <strong>2.8 - 4.4 TPS</strong> (point: 3.6)
+- Including repo: <strong>4.1 - 9.5 TPS</strong> (point: 6.2)
+- Trading hours, incl. repo: <strong>14 - 33 TPS</strong> (point: 22)</p>
+<hr/>
+<h2 id="sensitivity-analysis">Sensitivity Analysis</h2>
+<h3 id="key-variable-average-repo-trade-size">Key Variable: Average Repo Trade Size</h3>
+<p>The repo trade count estimate is extremely sensitive to assumed average trade size.</p>
+<table>
+<thead>
+<tr>
+<th>Assumed Avg Repo Trade Size</th>
+<th>Global Daily Repo Trades</th>
+<th>Total FI Daily Trades</th>
+<th>Total FI TPS (24h)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$50M</td>
+<td>665,160</td>
+<td>1,113,176</td>
+<td>12.9</td>
+</tr>
+<tr>
+<td>$75M (low end of our model)</td>
+<td>443,440</td>
+<td>891,456</td>
+<td>10.3</td>
+</tr>
+<tr>
+<td>$100M</td>
+<td>332,580</td>
+<td>780,596</td>
+<td>9.0</td>
+</tr>
+<tr>
+<td>$150M (base case avg)</td>
+<td>221,720</td>
+<td>669,736</td>
+<td>7.7</td>
+</tr>
+<tr>
+<td>$250M</td>
+<td>133,032</td>
+<td>581,048</td>
+<td>6.7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Our model uses a weighted average of ~$100M across all repo segments</strong>, reflecting a mix of small GCF/sponsored tickets and large bilateral/triparty trades.</p>
+<h3 id="key-variable-non-us-cash-bond-trade-count">Key Variable: Non-US Cash Bond Trade Count</h3>
+<p>US trade count is well-anchored by TRACE and MSRB. Non-US is the major uncertainty.</p>
+<table>
+<thead>
+<tr>
+<th>US Share of Global Cash Bond Trades</th>
+<th>Implied Global Daily Trades</th>
+<th>TPS (24h)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50% (more global)</td>
+<td>627,778</td>
+<td>7.3</td>
+</tr>
+<tr>
+<td>60%</td>
+<td>523,148</td>
+<td>6.0</td>
+</tr>
+<tr>
+<td>70% (base case)</td>
+<td>448,413</td>
+<td>5.2</td>
+</tr>
+<tr>
+<td>80% (US dominated)</td>
+<td>392,361</td>
+<td>4.5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="should-repo-be-included">Should Repo Be Included?</h3>
+<p><strong>Arguments for inclusion</strong>:
+- Repo IS a bond transaction — it involves sale and repurchase of fixed income securities
+- Our taxonomy defines the category as "fixed income transactions"
+- Excluding repo would undercount the actual transaction load on fixed income infrastructure
+- Central clearing mandates (SEC 2025 rule for US Treasuries) mean more repo flows through transaction processing systems</p>
+<p><strong>Arguments for exclusion / separate reporting</strong>:
+- Repo functions as secured money market lending, not bond "trading"
+- Most repo transactions are rolled overnight, mechanically — they don't reflect investment decisions
+- Including repo makes fixed income look much busier than the cash bond market really is
+- Repo overlaps conceptually with the "money markets" category</p>
+<p><strong>Recommendation</strong>: Report <strong>both figures</strong> with clear labeling. Use cash bonds for comparing trading velocity across asset classes; use the inclusive figure for infrastructure capacity planning.</p>
+<hr/>
+<h2 id="open-questions-data-gaps">Open Questions &amp; Data Gaps</h2>
+<ol>
+<li>
+<p><strong>Repo trade count data simply does not exist</strong> in aggregated public form. The OFR's December 2024 NCCBR data collection is the first attempt at transaction-level US repo data, but it's not yet published in aggregate. This is the single biggest gap.</p>
+</li>
+<li>
+<p><strong>Non-US bond trade counts</strong> remain poorly reported. European and Asian bond markets report value (ADV) but rarely trade counts. Our estimates for these regions are derived from value / assumed trade size, which is circular.</p>
+</li>
+<li>
+<p><strong>Treasury market trade count</strong>: Unlike corporate bonds (TRACE), US Treasury trades are not reported to a consolidated tape. FINRA began publishing Treasury aggregate statistics in 2020, but trade counts are not published. The SEC's Treasury market study may eventually produce this data.</p>
+</li>
+<li>
+<p><strong>China interbank bond market</strong>: China has the world's second-largest bond market (~$22T outstanding) but trade count data is extremely opaque. CCDC and Shanghai Clearing House report settlement volumes but not trade counts in accessible English-language publications.</p>
+</li>
+<li>
+<p><strong>Double counting in TRACE</strong>: TRACE reports both sides of inter-dealer trades. The 52M figure may overcount actual "economic" transactions by 10-15% for inter-dealer activity. However, TRACE de-duplicates customer-to-dealer trades.</p>
+</li>
+<li>
+<p><strong>Municipal bond data (MSRB)</strong> is a high-confidence anchor: 14.5M trades in 2024 is a direct count, not an estimate. The 22% jump to 17.6M in 2025 shows this market is electronifying rapidly.</p>
+</li>
+<li>
+<p><strong>2025 acceleration</strong>: Multiple indicators suggest trade counts grew significantly in 2025 vs 2024:
+   - MSRB: 17.6M munis trades (+22%)
+   - ISDA IRD: H1 2025 trade count +27.5% vs H1 2024
+   - FICC GSD: 42% YoY activity growth
+   - This suggests 2024 numbers may already be conservative as a "current" figure.</p>
+</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/fixed-income/workings/count-triangulation.md">analysis/traditional-finance/fixed-income/workings/count-triangulation.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

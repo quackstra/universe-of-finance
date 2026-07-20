@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bank Transfers -- Regional/System Breakdown (2024) — Universe of Finance</title>
+<meta name="description" content="Workings file for the Bank Transfers capsule. Last updated: 2026-03-27 Methodology The 484B total annual bank transfer transactions (2024) is decomposed into individual payment sy">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Bank Transfers -- Regional/System Breakdown (2024)</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#methodology">Methodology</a></li><li><a href="#data-sources">Data Sources</a></li><li><a href="#breakdown-table-real-time-payment-systems-2024">Breakdown Table -- Real-Time Payment Systems (2024)</a></li><li><a href="#breakdown-table-batchach-systems-2024">Breakdown Table -- Batch/ACH Systems (2024)</a></li><li><a href="#breakdown-table-rtgswire-systems-2024">Breakdown Table -- RTGS/Wire Systems (2024)</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#the-real-time-payments-revolution-growth-comparison">The Real-Time Payments Revolution -- Growth Comparison</a></li><li><a href="#key-trends">Key Trends</a></li><li><a href="#open-questions">Open Questions</a></li></ul></div><blockquote>
+<p>Workings file for the <a href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">Bank Transfers</a> capsule.
+Last updated: 2026-03-27</p>
+</blockquote>
+<hr/>
+<h2 id="methodology">Methodology</h2>
+<p>The 484B total annual bank transfer transactions (2024) is decomposed into individual payment systems using:</p>
+<ol>
+<li><strong>Direct operator disclosures</strong> -- NPCI (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>), Nacha (US ACH), ECB (SEPA), Pay.UK (Faster Payments), BCB (<a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a>), PBOC (CNAPS/CIPS), Federal Reserve (Fedwire, FedNow)</li>
+<li><strong>Industry benchmarks</strong> -- ACI Worldwide Prime Time Report 2024 for global real-time payments</li>
+<li><strong>Central bank reports</strong> -- PBOC Payment System Report 2024, Bank of England, BOJ</li>
+</ol>
+<p>The 484B total breaks down as: ~378B real-time + ~106B batch/ACH + ~0.4B RTGS/wire. This workings file decomposes each segment by individual system.</p>
+<hr/>
+<h2 id="data-sources">Data Sources</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Citation</th>
+<th>Accessed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACI Worldwide</td>
+<td><a href="https://www.aciworldwide.com/real-time-payments-report">Prime Time for Real-Time 2024</a> -- 266.2B RTP in 2023, ~42% growth</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>NPCI</td>
+<td><a href="https://www.npci.org.in/product/upi/product-statistics">UPI Product Statistics</a> -- 172.2B txns (CY2024)</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>BCB (Brazil)</td>
+<td><a href="https://www.bcb.gov.br/en">PIX Statistics</a> -- 63-69B txns (2024), ~52% YoY growth</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>Nacha</td>
+<td><a href="https://www.nacha.org/content/ach-network-volume-and-value-statistics">ACH Volume &amp; Value</a> -- 33.6B txns, $86.2T</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>ECB</td>
+<td><a href="https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2024h2~5ada0087d2.en.html">Payments Statistics H2 2024</a> -- ~32B credit transfers</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>Pay.UK</td>
+<td><a href="https://www.wearepay.uk/what-we-do/payment-systems/faster-payment-system/">FPS Statistics</a> -- 5.09B txns, GBP 4.2T</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>Federal Reserve</td>
+<td><a href="https://www.frbservices.org/resources/financial-services/fednow/volume-value-stats">FedNow Volume</a> -- 1.5M txns, $38.2B</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>Federal Reserve</td>
+<td><a href="https://www.frbservices.org/resources/financial-services/wires/volume-value-stats/annual-stats.html">Fedwire Annual Stats</a> -- 210M txns, $1,133T</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>PBOC</td>
+<td><a href="http://www.pbc.gov.cn/en/3688247/3688978/3709143/5649949/2025040114593718714.pdf">Payment System Report 2024</a> -- 357.2B consumer txns</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>CIPS</td>
+<td><a href="https://www.cips.com.cn/en/about_us/about_cips/introduction/index.html">Introduction</a> -- 8.2M txns, RMB 175.5T</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>NIBSS (Nigeria)</td>
+<td><a href="https://www.vanguardngr.com/2025/01/nigerias-instant-payment-transactions-hit-n1-07-quadrillion-in-2024-nibss/">NIP 2024</a> -- 11.2B txns</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>Statista / PromptPay</td>
+<td><a href="https://www.statista.com/statistics/1131100/thailand-volume-of-promptpay-transactions/">Thailand PromptPay</a> -- ~24.3B txns (2024)</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>AusPayPlus</td>
+<td><a href="https://www.auspayplus.com.au/solutions/npp">NPP Statistics</a> -- 1.6B txns, A$1.99T</td>
+<td>2026-03-27</td>
+</tr>
+<tr>
+<td>ECB</td>
+<td><a href="https://www.ecb.europa.eu/paym/target/t2/facts/html/index.en.html">TARGET2 Facts</a> -- 108M txns (record)</td>
+<td>2026-03-26</td>
+</tr>
+<tr>
+<td>BOE</td>
+<td><a href="https://www.bankofengland.co.uk/report/2025/rtgs-and-chaps-annual-report-2024-25">CHAPS Annual Report</a> -- 52.7M txns</td>
+<td>2026-03-26</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="breakdown-table-real-time-payment-systems-2024">Breakdown Table -- Real-Time Payment Systems (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>Annual Txns (B)</th>
+<th>Annual Value</th>
+<th>YoY Growth</th>
+<th>Share of Global RTP</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>UPI</strong></td>
+<td>India</td>
+<td>172.2</td>
+<td>~$2.5T (INR 247T)</td>
+<td>+46%</td>
+<td>45.6%</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>PIX</strong></td>
+<td>Brazil</td>
+<td>~66.0</td>
+<td>~$5.0T (est.)</td>
+<td>+52%</td>
+<td>17.5%</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>PromptPay</strong></td>
+<td>Thailand</td>
+<td>~24.3</td>
+<td>—</td>
+<td>+22% (est.)</td>
+<td>6.4%</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>China IBPS/mobile</strong></td>
+<td>China</td>
+<td>~20.0 (est.)</td>
+<td>—</td>
+<td>—</td>
+<td>5.3%</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>SEPA Instant</strong></td>
+<td>EU</td>
+<td>~5.0</td>
+<td>—</td>
+<td>+72% (daily vol)</td>
+<td>1.3%</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>UK Faster Payments</strong></td>
+<td>UK</td>
+<td>5.09</td>
+<td>GBP 4.2T</td>
+<td>~5%</td>
+<td>1.3%</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Nigeria NIP</strong></td>
+<td>Nigeria</td>
+<td>11.2</td>
+<td>NGN 1.07Q (~$700B)</td>
+<td>+15.5%</td>
+<td>3.0%</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>South Korea</strong></td>
+<td>S. Korea</td>
+<td>~10.0 (est.)</td>
+<td>—</td>
+<td>+15% (est.)</td>
+<td>2.6%</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>US RTP (TCH)</strong></td>
+<td>US</td>
+<td>~0.5 (est.)</td>
+<td>—</td>
+<td>~50% (est.)</td>
+<td>0.1%</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>FedNow</strong></td>
+<td>US</td>
+<td>0.0015</td>
+<td>$38.2B</td>
+<td>+2,000% (from tiny base)</td>
+<td>0.0004%</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Australia NPP</strong></td>
+<td>Australia</td>
+<td>1.6</td>
+<td>A$1.99T</td>
+<td>+23%</td>
+<td>0.4%</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>Japan Zengin (instant)</strong></td>
+<td>Japan</td>
+<td>~2.0 (est.)</td>
+<td>—</td>
+<td>—</td>
+<td>0.5%</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Other RTP systems</strong></td>
+<td>Various</td>
+<td>~60.1 (est.)</td>
+<td>—</td>
+<td>—</td>
+<td>15.9%</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>TOTAL Real-Time</strong></td>
+<td></td>
+<td><strong>~378</strong></td>
+<td></td>
+<td></td>
+<td><strong>100%</strong></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note on <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a></strong>: China's real-time payment landscape is complex. PBOC reports 357.2B consumer payment transactions, but the vast majority flow through Alipay/WeChat Pay (counted under <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">Digital Wallets</a>) rather than traditional bank-to-bank rails. The ~20B figure here represents bank-initiated instant transfers via IBPS (Internet Banking Payment System) and similar channels, excluding wallet-mediated flows.</p>
+<hr/>
+<h2 id="breakdown-table-batchach-systems-2024">Breakdown Table -- Batch/ACH Systems (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>Annual Txns (B)</th>
+<th>Annual Value</th>
+<th>YoY Growth</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>US ACH (Nacha)</strong></td>
+<td>US</td>
+<td>33.6</td>
+<td>$86.2T</td>
+<td>+6.7%</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>SEPA Credit Transfers</strong> (non-instant)</td>
+<td>EU</td>
+<td>~27.0 (est.)</td>
+<td>~EUR 210T</td>
+<td>+5% (est.)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>SEPA Direct Debits</strong></td>
+<td>EU</td>
+<td>~24.0 (est.)</td>
+<td>~EUR 15T</td>
+<td>+4% (est.)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>UK Bacs</strong></td>
+<td>UK</td>
+<td>~7.5 (est.)</td>
+<td>—</td>
+<td>-2% (est.)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Japan Zengin</strong> (batch)</td>
+<td>Japan</td>
+<td>~2.2 (est.)</td>
+<td>—</td>
+<td>—</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Australia BECS</strong></td>
+<td>Australia</td>
+<td>~3.0 (est.)</td>
+<td>—</td>
+<td>declining</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Other ACH/batch</strong></td>
+<td>Various</td>
+<td>~8.7 (est.)</td>
+<td>—</td>
+<td>—</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>TOTAL Batch/ACH</strong></td>
+<td></td>
+<td><strong>~106</strong></td>
+<td></td>
+<td></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: SEPA totals (~32B credit transfers total) include both instant and non-instant. The ~5B SEPA Instant is counted under real-time above; the ~27B remainder here. SEPA Direct Debits are a separate scheme.</p>
+<hr/>
+<h2 id="breakdown-table-rtgswire-systems-2024">Breakdown Table -- RTGS/Wire Systems (2024)</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Country</th>
+<th>Annual Txns (M)</th>
+<th>Annual Value</th>
+<th>Avg Txn Size</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fedwire</strong></td>
+<td>US</td>
+<td>210</td>
+<td>$1,133T</td>
+<td>$5.4M</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>TARGET2/T2</strong></td>
+<td>EU</td>
+<td>108</td>
+<td>~$600T (EUR 556T)</td>
+<td>~$5.6M</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>CHAPS</strong></td>
+<td>UK</td>
+<td>52.7</td>
+<td>~$150T (est.)</td>
+<td>~$2.8M</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>CIPS</strong></td>
+<td>China</td>
+<td>8.2</td>
+<td>$24.5T (RMB 175.5T)</td>
+<td>$2.98M</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>BOJ-NET</strong></td>
+<td>Japan</td>
+<td>~15 (est.)</td>
+<td>~$200T (est.)</td>
+<td>~$13M</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Other RTGS</strong></td>
+<td>Various</td>
+<td>~6 (est.)</td>
+<td>~$150T (est.)</td>
+<td>varies</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>TOTAL RTGS</strong></td>
+<td></td>
+<td><strong>~400</strong></td>
+<td><strong>~$2,258T</strong></td>
+<td></td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="reconciliation">Reconciliation</h2>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Our Sum (B)</th>
+<th>REPORT.md Total (B)</th>
+<th>Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real-time payments</td>
+<td>378</td>
+<td>378</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Batch/ACH</td>
+<td>106</td>
+<td>106</td>
+<td>0</td>
+</tr>
+<tr>
+<td>RTGS/Wire</td>
+<td>0.4</td>
+<td>0.4</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>~484.4</strong></td>
+<td><strong>~484</strong></td>
+<td><strong>~0.4 (0.08%)</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="sum-of-known-systems-vs-total">Sum of known systems vs. total</h3>
+<table>
+<thead>
+<tr>
+<th>Segment</th>
+<th>Known Systems Sum</th>
+<th>Segment Total</th>
+<th>Unattributed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Real-time</td>
+<td>~317.9B</td>
+<td>378B</td>
+<td>~60.1B (15.9%)</td>
+</tr>
+<tr>
+<td>Batch/ACH</td>
+<td>~106B</td>
+<td>106B</td>
+<td>~8.7B (8.2%)</td>
+</tr>
+<tr>
+<td>RTGS</td>
+<td>~394M</td>
+<td>400M</td>
+<td>~6M</td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>60.1B unattributed real-time transactions</strong> likely include:
+- <strong>China domestic mobile</strong> (not captured in IBPS -- Alipay/WeChat P2P <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>): ~15-25B
+- <strong>Indonesia, Philippines, Malaysia, Vietnam</strong> real-time systems: ~10-15B combined
+- <strong>Mexico SPEI/CoDi</strong>: ~3-5B
+- <strong>Saudi Arabia (SARIE), UAE (IPP), other <a class="xref" href="/universe-of-finance/reports/deep-dives/middle-east/REPORT.html">Middle East</a></strong>: ~2-3B
+- <strong>Other African systems</strong> (Ghana GhIPSS, Kenya PesaLink, etc.): ~2-3B
+- <strong>Various smaller systems</strong> in 80+ countries with live RTP: ~10-15B</p>
+<hr/>
+<h2 id="the-real-time-payments-revolution-growth-comparison">The Real-Time Payments Revolution -- Growth Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Launch Year</th>
+<th>Time to 1B txns</th>
+<th>Time to 10B txns</th>
+<th>2024 Volume (B)</th>
+<th>Population Served</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UPI</td>
+<td>2016</td>
+<td>~2.5 years</td>
+<td>~4 years</td>
+<td>172.2</td>
+<td>1.4B</td>
+</tr>
+<tr>
+<td>PIX</td>
+<td>2020</td>
+<td>~1 year</td>
+<td>~2 years</td>
+<td>~66</td>
+<td>215M</td>
+</tr>
+<tr>
+<td>PromptPay</td>
+<td>2017</td>
+<td>~3 years</td>
+<td>~5 years</td>
+<td>~24.3</td>
+<td>72M</td>
+</tr>
+<tr>
+<td>UK FPS</td>
+<td>2008</td>
+<td>~3 years</td>
+<td>never (5.1B total)</td>
+<td>5.09</td>
+<td>67M</td>
+</tr>
+<tr>
+<td>Nigeria NIP</td>
+<td>2011</td>
+<td>~6 years</td>
+<td>~12 years</td>
+<td>11.2</td>
+<td>220M</td>
+</tr>
+<tr>
+<td>FedNow</td>
+<td>2023</td>
+<td>not yet</td>
+<td>not yet</td>
+<td>0.0015</td>
+<td>330M</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Per-capita real-time transactions (2024)</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>RTP Txns/Person/Year</th>
+<th>System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thailand</td>
+<td>~337</td>
+<td>PromptPay</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>~307</td>
+<td>PIX</td>
+</tr>
+<tr>
+<td>India</td>
+<td>~123</td>
+<td>UPI</td>
+</tr>
+<tr>
+<td>UK</td>
+<td>~76</td>
+<td>Faster Payments</td>
+</tr>
+<tr>
+<td>Nigeria</td>
+<td>~51</td>
+<td>NIP</td>
+</tr>
+<tr>
+<td>Australia</td>
+<td>~62</td>
+<td>NPP</td>
+</tr>
+<tr>
+<td>US</td>
+<td>~0.005</td>
+<td>FedNow</td>
+</tr>
+</tbody>
+</table>
+<p>Thailand leads on per-capita real-time usage, followed closely by <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>. The US is effectively at zero for real-time bank transfers -- a striking contrast given its economic development.</p>
+<hr/>
+<h2 id="key-trends">Key Trends</h2>
+<ol>
+<li>
+<p><strong>UPI and PIX together are 63% of global real-time volume.</strong> Two systems, in two countries, processing 238B of 378B global real-time transactions. Both launched within the last 8 years.</p>
+</li>
+<li>
+<p><strong>The US real-time gap is extraordinary.</strong> FedNow processed 1.5 million transactions in 2024 -- approximately what UPI processes every 5 seconds. Even including TCH's RTP network (~500M est.), the US real-time volume is ~0.1% of <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s.</p>
+</li>
+<li>
+<p><strong>SEPA Instant is accelerating fast.</strong> Daily volumes grew 72% in 2024 vs. 2023, driven by the EU Instant Payments Regulation mandating SEPA Instant adoption. This is the most significant regulatory catalyst for real-time payments in the developed world.</p>
+</li>
+<li>
+<p><strong>Nigeria's NIP is <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>'s real-time champion.</strong> At 11.2B transactions, Nigeria processes more real-time payments than the UK, EU, and US combined. This is largely driven by the mobile money operator ecosystem (OPay, PalmPay, Moniepoint).</p>
+</li>
+<li>
+<p><strong>RTGS value dwarfs everything.</strong> Fedwire alone moved $1,133 trillion -- roughly 45x US GDP. The average Fedwire transfer ($5.4M) is 180,000x the average UPI payment (~$30). These are fundamentally different products under the "bank transfer" umbrella.</p>
+</li>
+<li>
+<p><strong>China's payment system is uniquely fragmented.</strong> With 357.2B consumer transactions via PBOC rails, 280B mobile payments, and an unclear boundary between bank-initiated and wallet-initiated flows, China's true bank transfer volume is the hardest to isolate in the entire dataset.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="open-questions">Open Questions</h2>
+<ol>
+<li>
+<p><strong>What is China's true bank-to-bank transfer volume?</strong> PBOC reports 357.2B consumer payment transactions, but Alipay/WeChat Pay dominate. Isolating pure bank-transfer flows (excluding wallet-mediated) requires PBOC sub-categorization that is not publicly available in English.</p>
+</li>
+<li>
+<p><strong>Will FedNow follow PIX's trajectory?</strong> PIX went from 0 to 65B in 4 years. FedNow is at 1.5M after 18 months. The US banking structure (fragmented, legacy-heavy) suggests a slower curve, but Same Day ACH (1.2B, +45.3% YoY) shows demand exists.</p>
+</li>
+<li>
+<p><strong>How should SEPA be counted?</strong> SEPA Credit Transfers (~32B total) include both instant (~5B) and standard (~27B). The standard transfers settle in D+1, not "real-time" -- but they are electronic bank transfers. Our methodology counts standard SEPA under batch/ACH and SEPA Instant under real-time.</p>
+</li>
+<li>
+<p><strong>Thailand's PromptPay volume precision</strong>: The ~24.3B figure comes from Statista; the ACI report suggests ~18B for 2023. With 22% growth that would be ~22B, not 24.3B. The gap may reflect different counting methodologies (interbank vs. total including on-us).</p>
+</li>
+<li>
+<p><strong>What percentage of UPI transactions are commercial vs. micro-tests?</strong> NPCI data shows P2M (person-to-merchant) was ~59% of UPI volume in Dec 2024. But even P2P includes genuine transfers. The "frivolous transaction" share is likely &lt;5% but unquantified.</p>
+</li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/bank-transfers/workings/regional-breakdown.md">analysis/payments/bank-transfers/workings/regional-breakdown.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

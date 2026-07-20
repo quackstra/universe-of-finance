@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Dictionary — Universe of Finance</title>
+<meta name="description" content="Formal schema documentation for all data.json files in the analysis directory. Last updated: 2026-03-29. 1. Overview Every category in the Universe of Finance taxonomy has a struc">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a></div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Data Dictionary</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-overview">1. Overview</a></li><li><a href="#2-category-datajson-schema-reference">2. Category data.json — Schema Reference</a></li><li><a href="#3-deep-dive-datajson-schema-reference">3. Deep Dive data.json — Schema Reference</a></li><li><a href="#4-enums-and-controlled-vocabularies">4. Enums and Controlled Vocabularies</a></li><li><a href="#5-cross-references">5. Cross-References</a></li><li><a href="#6-tooling">6. Tooling</a></li><li><a href="#7-json-schema-category-datajson">7. JSON Schema (Category data.json)</a></li><li><a href="#8-changelog-schema-evolution">8. Changelog — Schema Evolution</a></li></ul></div><blockquote>
+<p>Formal schema documentation for all <code>data.json</code> files in the analysis directory.
+Last updated: 2026-03-29.</p>
+</blockquote>
+<hr/>
+<h2 id="1-overview">1. Overview</h2>
+<p>Every category in the Universe of Finance taxonomy has a structured <code>data.json</code>
+file containing transaction throughput measurements, historical data, projections,
+source citations, and confidence scores. These files are the single source of
+truth for all downstream outputs: the Big Number calculation, confidence
+scorecards, time-series charts, executive summaries, and the <a class="xref" href="/universe-of-finance/reports/MEST.html">MEST</a> Advantage
+analysis.</p>
+<h3 id="file-organization">File Organization</h3>
+<pre><code>analysis/
+  &lt;sector&gt;/
+    &lt;category-slug&gt;/
+      data.json          # Category schema (29 files)
+      workings/          # Optional: methodology docs, models, raw data
+  deep-dives/
+    &lt;country-or-region&gt;/
+      data.json          # Deep Dive schema (7+ files)
+</code></pre>
+<p>There are two distinct schemas:</p>
+<ol>
+<li><strong>Category data.json</strong> — One per transaction category (e.g., <code>consumer-cards</code>,
+   <code>equity-markets</code>). Measures global throughput for that category.</li>
+<li><strong>Deep Dive data.json</strong> — One per country or region (e.g., <code>brazil</code>, <code>japan</code>).
+   Breaks down a country's contribution across multiple categories.</li>
+</ol>
+<h3 id="how-to-use">How to Use</h3>
+<ul>
+<li><strong>Read a single category:</strong> Parse <code>analysis/&lt;sector&gt;/&lt;slug&gt;/data.json</code> and
+  access <code>current.avg_tps.value</code> for the headline TPS figure.</li>
+<li><strong>Aggregate globally:</strong> Use <code>tools/big_number.py</code> which loads all category
+  files, applies overlap deductions, and computes the de-duplicated global TPS.</li>
+<li><strong>Validate schema:</strong> Run <code>tools/validate_schema.py</code> to check all files against
+  the required schema.</li>
+<li><strong>Score confidence:</strong> Run <code>tools/confidence_score.py</code> to apply the rubric and
+  write scores into each <code>data.json</code>.</li>
+</ul>
+<hr/>
+<h2 id="2-category-datajson-schema-reference">2. Category data.json — Schema Reference</h2>
+<p>The category schema captures global throughput for a single transaction type.</p>
+<h3 id="top-level-fields">Top-Level Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>category</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Human-readable category name</td>
+<td><code>"Consumer Card Payments"</code></td>
+<td>Free text</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>URL-safe identifier</td>
+<td><code>"consumer-cards"</code></td>
+<td>Must match parent directory name; must be in <code>ALL_SLUGS</code> set</td>
+</tr>
+<tr>
+<td><code>sector</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Parent sector grouping</td>
+<td><code>"Payments"</code></td>
+<td>One of 7 valid sectors (see Section 4)</td>
+</tr>
+<tr>
+<td><code>last_updated</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Date of last data revision</td>
+<td><code>"2026-03-26"</code></td>
+<td>Format: <code>YYYY-MM-DD</code>, exactly 10 characters</td>
+</tr>
+<tr>
+<td><code>current</code></td>
+<td>object</td>
+<td>Yes</td>
+<td>Current-period metrics</td>
+<td>See below</td>
+<td>Must contain all 5 required metric keys</td>
+</tr>
+<tr>
+<td><code>historic</code></td>
+<td>array</td>
+<td>Yes</td>
+<td>Year-by-year historical data</td>
+<td>See below</td>
+<td>Array of objects; may be empty</td>
+</tr>
+<tr>
+<td><code>projections</code></td>
+<td>object</td>
+<td>Yes</td>
+<td>Forward-looking scenarios</td>
+<td>See below</td>
+<td>Must contain 3 scenario keys</td>
+</tr>
+<tr>
+<td><code>overlap</code></td>
+<td>object</td>
+<td>Yes</td>
+<td>Cross-category overlap metadata</td>
+<td>See below</td>
+<td>Must contain 3 required keys</td>
+</tr>
+<tr>
+<td><code>sources</code></td>
+<td>array</td>
+<td>Yes</td>
+<td>Cited references</td>
+<td>See below</td>
+<td>Non-empty array of source objects</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>object</td>
+<td>No</td>
+<td>Confidence scoring breakdown</td>
+<td>See below</td>
+<td>Written by <code>confidence_score.py</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="current-object"><code>current</code> Object</h3>
+<p>Contains 5 required metric objects, each following the Metric schema.</p>
+<table>
+<thead>
+<tr>
+<th>Metric Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>avg_tps</code></td>
+<td>Average transactions per second (annual volume / 31,536,000)</td>
+</tr>
+<tr>
+<td><code>peak_tps</code></td>
+<td>Estimated peak TPS during high-activity periods</td>
+</tr>
+<tr>
+<td><code>daily_volume</code></td>
+<td>Average daily transaction count</td>
+</tr>
+<tr>
+<td><code>annual_volume</code></td>
+<td>Total annual transaction count</td>
+</tr>
+<tr>
+<td><code>annual_value_usd</code></td>
+<td>Total annual transaction value in USD</td>
+</tr>
+</tbody>
+</table>
+<p>Some categories include additional metrics beyond the required five:</p>
+<table>
+<thead>
+<tr>
+<th>Optional Metric Key</th>
+<th>Used By</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wash_adjusted</code></td>
+<td><code>cex</code></td>
+<td>Wash-trading adjustment model with regional breakdown</td>
+</tr>
+<tr>
+<td><code>avg_tps_installment</code></td>
+<td><code>bnpl</code></td>
+<td>Installment-level TPS (used by <code>big_number.py</code>)</td>
+</tr>
+<tr>
+<td><code>annual_volume_installments</code></td>
+<td><code>bnpl</code></td>
+<td>Annual installment count</td>
+</tr>
+</tbody>
+</table>
+<h3 id="metric-object-schema">Metric Object Schema</h3>
+<p>Each metric in <code>current</code> follows this structure:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td>number or null</td>
+<td>Yes</td>
+<td>The measured/estimated value</td>
+<td><code>24501</code></td>
+<td>Must be number or <code>null</code></td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Description of how value was derived</td>
+<td><code>"Nilson Report — Global Network Card Results 2024"</code></td>
+<td>Free text; may be empty string</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>URL to source document</td>
+<td><code>"https://nilsonreport.com/..."</code></td>
+<td>May be empty string if no URL available</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Confidence level for this specific metric</td>
+<td><code>"high"</code></td>
+<td>One of: <code>high</code>, <code>medium-high</code>, <code>medium</code>, <code>low-medium</code>, <code>low</code></td>
+</tr>
+<tr>
+<td><code>note</code></td>
+<td>string</td>
+<td>No</td>
+<td>Additional context or caveats</td>
+<td><code>"Includes purchase volume and cash advances"</code></td>
+<td>Free text</td>
+</tr>
+</tbody>
+</table>
+<h3 id="historic-array"><code>historic</code> Array</h3>
+<p>Array of year-over-year historical data points.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>year</code></td>
+<td>integer</td>
+<td>Yes</td>
+<td>Calendar year</td>
+<td><code>2024</code></td>
+</tr>
+<tr>
+<td><code>annual_volume</code></td>
+<td>number or null</td>
+<td>Yes</td>
+<td>Annual transaction count for that year</td>
+<td><code>772730000000</code></td>
+</tr>
+<tr>
+<td><code>avg_tps</code></td>
+<td>number or null</td>
+<td>Yes</td>
+<td>Average TPS for that year</td>
+<td><code>24501</code></td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Source citation</td>
+<td><code>"Nilson Report"</code></td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Confidence for this data point</td>
+<td><code>"high"</code></td>
+</tr>
+</tbody>
+</table>
+<p>Values may be <code>null</code> when transaction counts are unavailable (common for
+categories where only market value, not transaction count, is published).</p>
+<h3 id="projections-object"><code>projections</code> Object</h3>
+<p>Contains three scenario arrays, each with projected future data points.</p>
+<table>
+<thead>
+<tr>
+<th>Scenario Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>baseline</code></td>
+<td>Central estimate using moderate growth assumptions</td>
+</tr>
+<tr>
+<td><code>high_growth</code></td>
+<td>Optimistic scenario with accelerated adoption/growth</td>
+</tr>
+<tr>
+<td><code>conservative</code></td>
+<td>Pessimistic scenario with slower growth or saturation</td>
+</tr>
+</tbody>
+</table>
+<p>Each scenario is an array of projection objects:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>year</code></td>
+<td>integer</td>
+<td>Yes</td>
+<td>Projected year</td>
+<td><code>2030</code></td>
+</tr>
+<tr>
+<td><code>tps</code></td>
+<td>number or null</td>
+<td>Yes</td>
+<td>Projected average TPS</td>
+<td><code>39239</code></td>
+</tr>
+<tr>
+<td><code>annual_volume</code></td>
+<td>number or null</td>
+<td>Yes</td>
+<td>Projected annual transaction count</td>
+<td><code>1238000000000</code></td>
+</tr>
+</tbody>
+</table>
+<p>Projection arrays vary in granularity: some have yearly entries, others have
+5-year intervals (e.g., 2025, 2030, 2035). Values may be <code>null</code> for categories
+where projections have not yet been computed.</p>
+<h3 id="overlap-object"><code>overlap</code> Object</h3>
+<p>Documents relationships between categories to enable de-duplication.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>overlaps_with</code></td>
+<td>array of strings</td>
+<td>Yes</td>
+<td>Slugs of overlapping categories</td>
+<td><code>["digital-wallets"]</code></td>
+<td>Each element must be a valid slug; empty array if no overlap</td>
+</tr>
+<tr>
+<td><code>overlap_type</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Nature of the overlap</td>
+<td><code>"partial"</code></td>
+<td>One of: <code>none</code>, <code>partial</code>, <code>full_subset</code>, <code>high</code>, <code>complete</code>, <code>subset</code></td>
+</tr>
+<tr>
+<td><code>overlap_note</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Explanation of the overlap</td>
+<td><code>"Card-rail transactions processed via digital wallets"</code></td>
+<td>Free text; may be empty string</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sources-array"><code>sources</code> Array</h3>
+<p>Cited references used to build the data. Non-empty; typically 5-20 sources.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>integer</td>
+<td>Yes</td>
+<td>Sequential identifier within this file</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>citation</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Human-readable citation text</td>
+<td><code>"Nilson Report — Global Network Card Results 2024"</code></td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>URL to the source</td>
+<td><code>"https://nilsonreport.com/..."</code></td>
+</tr>
+<tr>
+<td><code>accessed</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Date the source was accessed</td>
+<td><code>"2026-03-26"</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="confidence-object"><code>confidence</code> Object</h3>
+<p>Written by <code>tools/confidence_score.py</code>. Provides a 0-100 composite score.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>score</code></td>
+<td>integer</td>
+<td>Composite confidence score</td>
+<td>0-100</td>
+</tr>
+<tr>
+<td><code>source_quality</code></td>
+<td>integer</td>
+<td>Quality of primary data sources</td>
+<td>0-30</td>
+</tr>
+<tr>
+<td><code>data_recency</code></td>
+<td>integer</td>
+<td>How current the data is</td>
+<td>0-20</td>
+</tr>
+<tr>
+<td><code>triangulation</code></td>
+<td>integer</td>
+<td>Number of independent methods/sources used</td>
+<td>0-25</td>
+</tr>
+<tr>
+<td><code>coverage</code></td>
+<td>integer</td>
+<td>Market coverage completeness</td>
+<td>0-25</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>string</td>
+<td>Qualitative assessment of data reliability</td>
+<td>Free text</td>
+</tr>
+</tbody>
+</table>
+<h3 id="category-specific-extensions">Category-Specific Extensions</h3>
+<p>Some categories have additional top-level objects beyond the base schema:</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Used By</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>network_breakdown</code></td>
+<td><code>consumer-cards</code></td>
+<td>Per-network transaction breakdown (Visa, Mastercard, etc.) with <code>global_networks</code>, <code>domestic_networks</code>, and reconciliation data</td>
+</tr>
+<tr>
+<td><code>exchange_breakdown</code></td>
+<td><code>equity-markets</code></td>
+<td>Per-exchange trade volume breakdown with <code>tier1_exchanges</code>, <code>tier2_sum_billions</code>, and <code>regional_summary</code></td>
+</tr>
+<tr>
+<td><code>wash_adjusted</code> (in <code>current</code>)</td>
+<td><code>cex</code></td>
+<td>Regional wash-trading model with per-region volume shares, wash percentages, and tier cross-check</td>
+</tr>
+</tbody>
+</table>
+<p>These extensions are not validated by <code>validate_schema.py</code> but are consumed
+by analysis tools and reports.</p>
+<hr/>
+<h2 id="3-deep-dive-datajson-schema-reference">3. Deep Dive data.json — Schema Reference</h2>
+<p>Deep Dive files break down a single country's or region's transaction throughput
+across all relevant categories. The schema is fundamentally different from
+category files.</p>
+<h3 id="top-level-fields_1">Top-Level Fields</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>country</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Country or region name</td>
+<td><code>"Brazil"</code></td>
+</tr>
+<tr>
+<td><code>iso_code</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>ISO 3166-1 alpha-2 code</td>
+<td><code>"BR"</code></td>
+</tr>
+<tr>
+<td><code>population</code></td>
+<td>integer</td>
+<td>Yes</td>
+<td>Population estimate</td>
+<td><code>213000000</code></td>
+</tr>
+<tr>
+<td><code>gdp_usd_trillion</code></td>
+<td>number</td>
+<td>Yes</td>
+<td>GDP in trillions of USD</td>
+<td><code>2.2</code></td>
+</tr>
+<tr>
+<td><code>last_updated</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Date of last revision</td>
+<td><code>"2026-03-29"</code></td>
+</tr>
+<tr>
+<td><code>total_tps_contribution</code></td>
+<td>number</td>
+<td>Yes</td>
+<td>De-duplicated TPS contribution</td>
+<td><code>4680</code></td>
+</tr>
+<tr>
+<td><code>share_of_global_tps</code></td>
+<td>string</td>
+<td>Yes</td>
+<td>Percentage of global total</td>
+<td><code>"6.3%"</code></td>
+</tr>
+<tr>
+<td><code>global_tps_reference</code></td>
+<td>number</td>
+<td>Yes</td>
+<td>Global TPS denominator used</td>
+<td><code>73750</code></td>
+</tr>
+<tr>
+<td><code>categories</code></td>
+<td>object</td>
+<td>Yes</td>
+<td>Per-category breakdown</td>
+<td>See below</td>
+</tr>
+<tr>
+<td><code>de_duplicated_&lt;country&gt;_tps</code></td>
+<td>object</td>
+<td>Yes</td>
+<td>De-duplication methodology</td>
+<td>See below</td>
+</tr>
+<tr>
+<td><code>key_metrics</code></td>
+<td>object</td>
+<td>Yes</td>
+<td>Country-specific headline stats</td>
+<td>See below</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>object</td>
+<td>Yes</td>
+<td>Confidence scoring</td>
+<td>Same schema as category confidence</td>
+</tr>
+</tbody>
+</table>
+<h3 id="categories-object"><code>categories</code> Object</h3>
+<p>Keys are category slugs. Each value is a category contribution object:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;country&gt;_tps</code></td>
+<td>number</td>
+<td>Country's TPS contribution to this category</td>
+<td><code>2179</code></td>
+</tr>
+<tr>
+<td><code>&lt;country&gt;_annual_txns_billions</code></td>
+<td>number</td>
+<td>Annual transactions in billions</td>
+<td><code>68.7</code></td>
+</tr>
+<tr>
+<td><code>share_of_category</code></td>
+<td>string</td>
+<td>This country's share of the global category</td>
+<td><code>"11.1%"</code></td>
+</tr>
+<tr>
+<td><code>share_of_&lt;country&gt;_total</code></td>
+<td>string</td>
+<td>This category's share of the country's total</td>
+<td><code>"46.6%"</code></td>
+</tr>
+<tr>
+<td><code>key_systems</code></td>
+<td>array of strings</td>
+<td>Major payment systems/platforms</td>
+<td><code>["Pix", "TED", "Boleto"]</code></td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>string</td>
+<td>Detailed analytical notes</td>
+<td>Free text</td>
+</tr>
+<tr>
+<td><code>sources</code></td>
+<td>array of objects</td>
+<td>Per-category source citations</td>
+<td><code>[{"citation": "...", "url": "..."}]</code></td>
+</tr>
+</tbody>
+</table>
+<p>Note: The field name prefix varies by country (e.g., <code>brazil_tps</code>, <code>japan_tps</code>,
+<code>india_tps</code>). This is a country-specific naming convention, not a fixed field name.</p>
+<h3 id="de_duplicated_country_tps-object"><code>de_duplicated_&lt;country&gt;_tps</code> Object</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>value</code></td>
+<td>number</td>
+<td>De-duplicated TPS after overlap removal</td>
+</tr>
+<tr>
+<td><code>methodology</code></td>
+<td>string</td>
+<td>Detailed description of de-duplication steps</td>
+</tr>
+<tr>
+<td><code>range_low</code></td>
+<td>number</td>
+<td>Lower bound of estimate range</td>
+</tr>
+<tr>
+<td><code>range_high</code></td>
+<td>number</td>
+<td>Upper bound of estimate range</td>
+</tr>
+<tr>
+<td><code>notes</code></td>
+<td>string</td>
+<td>Uncertainty assessment</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key_metrics-object"><code>key_metrics</code> Object</h3>
+<p>Country-specific headline statistics. Fields vary by country. Examples:</p>
+<ul>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">Brazil</a>: <code>pix_txns_per_capita_2024</code>, <code>pix_active_users_millions</code>, <code>drex_status</code></li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>: <code>cashless_ratio_2024_pct</code>, <code>paypay_users_millions</code>, <code>digital_yen_status</code></li>
+<li><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>: <code>upi_txns_per_capita</code>, <code>jan_dhan_accounts_millions</code></li>
+</ul>
+<h3 id="deep-dive-source-citations-inline">Deep Dive Source Citations (Inline)</h3>
+<p>Deep dive <code>sources</code> within each category use a simplified format:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>citation</code></td>
+<td>string</td>
+<td>Short citation text</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td>string</td>
+<td>URL to source</td>
+</tr>
+</tbody>
+</table>
+<p>These lack the <code>id</code> and <code>accessed</code> fields present in category-level sources.</p>
+<hr/>
+<h2 id="4-enums-and-controlled-vocabularies">4. Enums and Controlled Vocabularies</h2>
+<h3 id="valid-sectors-7">Valid Sectors (7)</h3>
+<table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>Directory Name</th>
+<th>Category Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Payments</td>
+<td><code>payments/</code></td>
+<td>11</td>
+</tr>
+<tr>
+<td>Traditional Finance</td>
+<td><code>traditional-finance/</code></td>
+<td>6</td>
+</tr>
+<tr>
+<td>Digital Assets</td>
+<td><code>digital-assets/</code></td>
+<td>4</td>
+</tr>
+<tr>
+<td>Banking</td>
+<td><code>banking/</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td>Gaming</td>
+<td><code>gaming/</code></td>
+<td>2</td>
+</tr>
+<tr>
+<td>Government</td>
+<td><code>government/</code></td>
+<td>1</td>
+</tr>
+<tr>
+<td>Emerging</td>
+<td><code>emerging/</code></td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="valid-category-slugs-29">Valid Category Slugs (29)</h3>
+<p>Defined in <code>validate_schema.py</code> as <code>ALL_SLUGS</code>:</p>
+<p><strong>Payments:</strong> <code>consumer-cards</code>, <code>digital-wallets</code>, <code>bank-transfers</code>, <code>ecommerce</code>,
+<code>p2p-transfers</code>, <code>remittances</code>, <code>insurance-premiums</code>, <code>bnpl</code>, <code>bill-payments</code>,
+<code>payroll</code>, <code>atm-withdrawals</code></p>
+<p><strong>Traditional Finance:</strong> <code>equity-markets</code>, <code>etd</code>, <code>forex</code>, <code>fixed-income</code>,
+<code>commodities</code>, <code>otc-derivatives</code></p>
+<p><strong>Digital Assets:</strong> <code>cex</code>, <code>blockchain-l1-l2</code>, <code>defi</code>, <code>stablecoins</code></p>
+<p><strong>Banking:</strong> <code>interbank-rtgs</code>, <code>securities-settlement</code></p>
+<p><strong>Gaming:</strong> <code>gaming-microtx</code>, <code>gaming-sales</code></p>
+<p><strong>Government:</strong> <code>government-payments</code></p>
+<p><strong>Emerging:</strong> <code>rwa-tokenisation</code>, <code>iot-m2m</code>, <code>ai-agents</code></p>
+<h3 id="confidence-levels-per-metric">Confidence Levels (Per-Metric)</h3>
+<p>Used in <code>current.&lt;metric&gt;.confidence</code> and <code>historic[].confidence</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>high</code></td>
+<td>Primary source data with direct measurement</td>
+</tr>
+<tr>
+<td><code>medium-high</code></td>
+<td>Strong secondary sources with cross-validation</td>
+</tr>
+<tr>
+<td><code>medium</code></td>
+<td>Industry reports or derived from reliable proxies</td>
+</tr>
+<tr>
+<td><code>low-medium</code></td>
+<td>Triangulated from partial data across multiple segments</td>
+</tr>
+<tr>
+<td><code>low</code></td>
+<td>Estimates, extrapolations, or single-source data</td>
+</tr>
+</tbody>
+</table>
+<h3 id="confidence-score-bands-composite">Confidence Score Bands (Composite)</h3>
+<p>Used in <code>confidence.score</code> (0-100 composite):</p>
+<table>
+<thead>
+<tr>
+<th>Score Range</th>
+<th>Band</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>80-100</td>
+<td>High</td>
+<td>Primary/regulatory data, recent, well-triangulated, high coverage</td>
+</tr>
+<tr>
+<td>60-79</td>
+<td>Medium-High</td>
+<td>Good data with some gaps or estimation</td>
+</tr>
+<tr>
+<td>40-59</td>
+<td>Medium</td>
+<td>Mix of measured and estimated data</td>
+</tr>
+<tr>
+<td>20-39</td>
+<td>Low-Medium</td>
+<td>Primarily estimated with limited primary sources</td>
+</tr>
+<tr>
+<td>0-19</td>
+<td>Low</td>
+<td>Pre-market or entirely estimated</td>
+</tr>
+</tbody>
+</table>
+<h3 id="confidence-rubric-sub-scores">Confidence Rubric Sub-Scores</h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Max</th>
+<th>75%+</th>
+<th>50-74%</th>
+<th>25-49%</th>
+<th>&lt;25%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source Quality</td>
+<td>30</td>
+<td>Primary/regulatory (25-30)</td>
+<td>Industry reports (15-24)</td>
+<td>Extrapolations (5-14)</td>
+<td>Pure estimates (0-4)</td>
+</tr>
+<tr>
+<td>Data Recency</td>
+<td>20</td>
+<td>&lt;1 year old (16-20)</td>
+<td>1-2 years (10-15)</td>
+<td>2-3 years (5-9)</td>
+<td>&gt;3 years (0-4)</td>
+</tr>
+<tr>
+<td>Triangulation</td>
+<td>25</td>
+<td>3+ methods (20-25)</td>
+<td>2 methods (10-19)</td>
+<td>1 method (0-9)</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>25</td>
+<td>&gt;90% market (20-25)</td>
+<td>50-90% (10-19)</td>
+<td>&lt;50% (0-9)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="overlap-types">Overlap Types</h3>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>none</code></td>
+<td>No overlap with other categories</td>
+</tr>
+<tr>
+<td><code>partial</code></td>
+<td>Some transactions counted in another category</td>
+</tr>
+<tr>
+<td><code>full_subset</code></td>
+<td>All transactions are a subset of another category</td>
+</tr>
+<tr>
+<td><code>high</code></td>
+<td>Most transactions overlap with other categories</td>
+</tr>
+<tr>
+<td><code>complete</code></td>
+<td>Category is entirely contained within another</td>
+</tr>
+<tr>
+<td><code>subset</code></td>
+<td>Synonym for <code>full_subset</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="deep-dive-countriesregions-7">Deep Dive Countries/Regions (7+)</h3>
+<table>
+<thead>
+<tr>
+<th>Slug</th>
+<th>Entity</th>
+<th>ISO Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>usa</code></td>
+<td>United States</td>
+<td>US</td>
+</tr>
+<tr>
+<td><code>china</code></td>
+<td>China</td>
+<td>CN</td>
+</tr>
+<tr>
+<td><code>india</code></td>
+<td>India</td>
+<td>IN</td>
+</tr>
+<tr>
+<td><code>brazil</code></td>
+<td>Brazil</td>
+<td>BR</td>
+</tr>
+<tr>
+<td><code>eu</code></td>
+<td>European Union</td>
+<td>EU</td>
+</tr>
+<tr>
+<td><code>japan</code></td>
+<td>Japan</td>
+<td>JP</td>
+</tr>
+<tr>
+<td><code>uk</code></td>
+<td>United Kingdom</td>
+<td>GB</td>
+</tr>
+<tr>
+<td><code>africa</code></td>
+<td>Africa (continent)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="5-cross-references">5. Cross-References</h2>
+<h3 id="overlap-network">Overlap Network</h3>
+<p>Categories reference each other through the <code>overlap</code> object. The <code>big_number.py</code>
+tool applies deduction rules to avoid double-counting. Key overlap relationships:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Overlaps With</th>
+<th>Deduction Applied</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>digital-wallets</code></td>
+<td><code>bank-transfers</code>, <code>consumer-cards</code></td>
+<td>Flat: -172B (UPI in bank-transfers) -40B (card-rail overlay)</td>
+</tr>
+<tr>
+<td><code>ecommerce</code></td>
+<td><code>consumer-cards</code>, <code>digital-wallets</code>, <code>bank-transfers</code></td>
+<td>-95% (settles on existing rails)</td>
+</tr>
+<tr>
+<td><code>defi</code></td>
+<td><code>blockchain-l1-l2</code></td>
+<td>Excluded (full subset of L1/L2)</td>
+</tr>
+<tr>
+<td><code>stablecoins</code></td>
+<td><code>blockchain-l1-l2</code></td>
+<td>Excluded (full subset of L1/L2)</td>
+</tr>
+<tr>
+<td><code>rwa-tokenisation</code></td>
+<td><code>blockchain-l1-l2</code></td>
+<td>Excluded (full subset of L1/L2)</td>
+</tr>
+<tr>
+<td><code>ai-agents</code></td>
+<td><code>blockchain-l1-l2</code></td>
+<td>Excluded (full subset of L1/L2)</td>
+</tr>
+<tr>
+<td><code>government-payments</code></td>
+<td><code>bank-transfers</code></td>
+<td>-60% (flows via ACH/bank transfers)</td>
+</tr>
+<tr>
+<td><code>iot-m2m</code></td>
+<td><code>consumer-cards</code>, <code>bank-transfers</code></td>
+<td>-75% (settles on existing rails)</td>
+</tr>
+<tr>
+<td><code>gaming-microtx</code></td>
+<td><code>consumer-cards</code>, <code>digital-wallets</code></td>
+<td>Incremental: 70 TPS only</td>
+</tr>
+<tr>
+<td><code>gaming-sales</code></td>
+<td><code>consumer-cards</code>, <code>digital-wallets</code></td>
+<td>Incremental: 18 TPS only</td>
+</tr>
+<tr>
+<td><code>bill-payments</code></td>
+<td><code>bank-transfers</code>, <code>consumer-cards</code></td>
+<td>-90% (direct debit/card-on-file)</td>
+</tr>
+<tr>
+<td><code>payroll</code></td>
+<td><code>bank-transfers</code></td>
+<td>-90% (ACH/BACS/SEPA batch)</td>
+</tr>
+<tr>
+<td><code>insurance-premiums</code></td>
+<td><code>consumer-cards</code>, <code>bank-transfers</code></td>
+<td>-90% (card/direct debit)</td>
+</tr>
+<tr>
+<td><code>bnpl</code></td>
+<td><code>consumer-cards</code></td>
+<td>Incremental: 460 TPS (3.6x multiplier creates net new installment events)</td>
+</tr>
+<tr>
+<td><code>atm-withdrawals</code></td>
+<td>(none)</td>
+<td>0% (unique cash-out events)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sector-groupings">Sector Groupings</h3>
+<p>Each sector groups related categories. The sector name in <code>data.json</code> must match
+one of the 7 valid sectors. The <code>big_number.py</code> tool aggregates TPS by sector
+before computing the global total.</p>
+<h3 id="deep-dive-to-category-mapping">Deep Dive to Category Mapping</h3>
+<p>Each deep dive's <code>categories</code> object keys are category slugs that reference the
+corresponding global category <code>data.json</code>. The <code>share_of_category</code> field in a
+deep dive indicates what percentage of the global category is attributed to
+that country.</p>
+<hr/>
+<h2 id="6-tooling">6. Tooling</h2>
+<h3 id="validate_schemapy"><code>validate_schema.py</code></h3>
+<p><strong>Purpose:</strong> Validates all category <code>data.json</code> files against the required schema.</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">cd /home/quackstra/wt-run11
+python3 tools/validate_schema.py
+</code></pre>
+<p><strong>What it checks:</strong>
+- All 9 required top-level keys are present
+- <code>slug</code> matches the parent directory name
+- <code>last_updated</code> is valid <code>YYYY-MM-DD</code> format
+- All 5 required <code>current</code> metrics exist and are well-formed
+- Each metric has <code>value</code>, <code>source</code>, <code>url</code>, <code>confidence</code>
+- Confidence values are in the valid enum set
+- <code>value</code> is numeric or <code>null</code>
+- <code>historic</code> entries have <code>year</code>, <code>annual_volume</code>, <code>avg_tps</code>, <code>source</code>, <code>confidence</code>
+- <code>projections</code> has all 3 scenarios (<code>baseline</code>, <code>high_growth</code>, <code>conservative</code>)
+- Each projection entry has a <code>year</code> field
+- <code>overlap</code> has all 3 required keys; <code>overlap_type</code> is valid
+- <code>sources</code> is non-empty; each source has <code>id</code>, <code>citation</code>, <code>url</code>, <code>accessed</code></p>
+<p><strong>Exit code:</strong> 0 if all pass, 1 if any errors found.</p>
+<p><strong>Note:</strong> Deep Dive files use a different schema and are not validated by this
+tool. The validator only processes files in <code>&lt;sector&gt;/&lt;category&gt;/data.json</code> paths.</p>
+<h3 id="big_numberpy"><code>big_number.py</code></h3>
+<p><strong>Purpose:</strong> Computes the de-duplicated global financial TPS ("the Big Number").</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">python3 tools/big_number.py              # De-duplicated table (default)
+python3 tools/big_number.py --raw        # Raw sums without deduplication
+python3 tools/big_number.py --json       # JSON output for programmatic use
+python3 tools/big_number.py --sensitivity # Sensitivity analysis
+</code></pre>
+<p><strong>How it works:</strong>
+1. Loads all category <code>data.json</code> files
+2. Extracts <code>current.avg_tps.value</code> and <code>current.annual_volume.value</code>
+3. Applies per-category TPS overrides (<a class="xref" href="/universe-of-finance/reports/traditional-finance/forex/REPORT.html">forex</a>, fixed-income revised estimates)
+4. Applies overlap deduction rules (see Section 5)
+5. Aggregates by sector and computes global totals
+6. Outputs a formatted table with raw vs. de-duplicated comparison</p>
+<p><strong>Deduction types:</strong>
+- <code>exclude</code> — Category fully excluded from TPS sum
+- <code>pct</code> — Reduce TPS/volume by a percentage
+- <code>flat_vol</code> — Subtract a flat transaction count
+- <code>incremental_tps</code> — Use a fixed incremental TPS instead of the raw value</p>
+<h3 id="confidence_scorepy"><code>confidence_score.py</code></h3>
+<p><strong>Purpose:</strong> Applies the confidence rubric to all categories and writes scores.</p>
+<p><strong>Usage:</strong></p>
+<pre><code class="language-bash">python3 tools/confidence_score.py            # Score and update all files
+python3 tools/confidence_score.py --dry-run  # Preview without writing
+</code></pre>
+<p><strong>How it works:</strong>
+1. Loads all <code>data.json</code> files from the analysis directory
+2. Looks up hand-scored confidence values from an internal <code>SCORES</code> dictionary
+3. Computes composite score: <code>source_quality + data_recency + triangulation + coverage</code>
+4. Writes the <code>confidence</code> object back into each <code>data.json</code>
+5. Generates <code>analysis/CONFIDENCE_SCORECARD.md</code> with a ranked table</p>
+<hr/>
+<h2 id="7-json-schema-category-datajson">7. JSON Schema (Category data.json)</h2>
+<p>A formal JSON Schema for programmatic validation of category <code>data.json</code> files:</p>
+<pre><code class="language-json">{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "universe-of-finance-category-data",
+  "title": "Universe of Finance — Category data.json",
+  "type": "object",
+  "required": [
+    "category", "slug", "sector", "last_updated",
+    "current", "historic", "projections", "overlap", "sources"
+  ],
+  "properties": {
+    "category": {
+      "type": "string",
+      "description": "Human-readable category name"
+    },
+    "slug": {
+      "type": "string",
+      "description": "URL-safe identifier matching parent directory",
+      "enum": [
+        "consumer-cards", "digital-wallets", "bank-transfers", "ecommerce",
+        "p2p-transfers", "remittances", "insurance-premiums", "bnpl",
+        "bill-payments", "payroll", "atm-withdrawals", "equity-markets",
+        "etd", "forex", "fixed-income", "commodities", "otc-derivatives",
+        "cex", "blockchain-l1-l2", "defi", "stablecoins", "interbank-rtgs",
+        "securities-settlement", "gaming-microtx", "gaming-sales",
+        "government-payments", "rwa-tokenisation", "iot-m2m", "ai-agents"
+      ]
+    },
+    "sector": {
+      "type": "string",
+      "enum": [
+        "Payments", "Traditional Finance", "Digital Assets",
+        "Banking", "Gaming", "Government", "Emerging"
+      ]
+    },
+    "last_updated": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "ISO 8601 date (YYYY-MM-DD)"
+    },
+    "current": {
+      "type": "object",
+      "required": ["avg_tps", "peak_tps", "daily_volume", "annual_volume", "annual_value_usd"],
+      "properties": {
+        "avg_tps": { "$ref": "#/$defs/metric" },
+        "peak_tps": { "$ref": "#/$defs/metric" },
+        "daily_volume": { "$ref": "#/$defs/metric" },
+        "annual_volume": { "$ref": "#/$defs/metric" },
+        "annual_value_usd": { "$ref": "#/$defs/metric" }
+      },
+      "additionalProperties": true
+    },
+    "historic": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/historicEntry" }
+    },
+    "projections": {
+      "type": "object",
+      "required": ["baseline", "high_growth", "conservative"],
+      "properties": {
+        "baseline": { "type": "array", "items": { "$ref": "#/$defs/projectionEntry" } },
+        "high_growth": { "type": "array", "items": { "$ref": "#/$defs/projectionEntry" } },
+        "conservative": { "type": "array", "items": { "$ref": "#/$defs/projectionEntry" } }
+      }
+    },
+    "overlap": {
+      "type": "object",
+      "required": ["overlaps_with", "overlap_type", "overlap_note"],
+      "properties": {
+        "overlaps_with": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "overlap_type": {
+          "type": "string",
+          "enum": ["none", "partial", "full_subset", "high", "complete", "subset"]
+        },
+        "overlap_note": { "type": "string" }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/sourceEntry" }
+    },
+    "confidence": { "$ref": "#/$defs/confidenceBlock" }
+  },
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "required": ["value", "source", "url", "confidence"],
+      "properties": {
+        "value": {
+          "oneOf": [
+            { "type": "number" },
+            { "type": "null" }
+          ]
+        },
+        "source": { "type": "string" },
+        "url": { "type": "string" },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium-high", "medium", "low-medium", "low"]
+        },
+        "note": { "type": "string" }
+      }
+    },
+    "historicEntry": {
+      "type": "object",
+      "required": ["year", "annual_volume", "avg_tps", "source", "confidence"],
+      "properties": {
+        "year": { "type": "integer" },
+        "annual_volume": {
+          "oneOf": [{ "type": "number" }, { "type": "null" }]
+        },
+        "avg_tps": {
+          "oneOf": [{ "type": "number" }, { "type": "null" }]
+        },
+        "source": { "type": "string" },
+        "confidence": { "type": "string" }
+      }
+    },
+    "projectionEntry": {
+      "type": "object",
+      "required": ["year"],
+      "properties": {
+        "year": { "type": "integer" },
+        "tps": {
+          "oneOf": [{ "type": "number" }, { "type": "null" }]
+        },
+        "annual_volume": {
+          "oneOf": [{ "type": "number" }, { "type": "null" }]
+        }
+      }
+    },
+    "sourceEntry": {
+      "type": "object",
+      "required": ["id", "citation", "url", "accessed"],
+      "properties": {
+        "id": { "type": "integer" },
+        "citation": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "accessed": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        }
+      }
+    },
+    "confidenceBlock": {
+      "type": "object",
+      "properties": {
+        "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "source_quality": { "type": "integer", "minimum": 0, "maximum": 30 },
+        "data_recency": { "type": "integer", "minimum": 0, "maximum": 20 },
+        "triangulation": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "coverage": { "type": "integer", "minimum": 0, "maximum": 25 },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
+</code></pre>
+<hr/>
+<h2 id="8-changelog-schema-evolution">8. Changelog — Schema Evolution</h2>
+<h3 id="run-1-4-initial">Run 1-4 (Initial)</h3>
+<ul>
+<li>Established base category schema with <code>category</code>, <code>slug</code>, <code>sector</code>,
+  <code>last_updated</code>, <code>current</code>, <code>historic</code>, <code>projections</code>, <code>overlap</code>, <code>sources</code>.</li>
+<li>Initial 24 categories across 7 sectors.</li>
+</ul>
+<h3 id="run-5">Run 5</h3>
+<ul>
+<li>Added 5 new payment categories: <code>insurance-premiums</code>, <code>bnpl</code>, <code>bill-payments</code>,
+  <code>payroll</code>, <code>atm-withdrawals</code>. Total categories: 29.</li>
+<li>Added <code>REVISED_TPS_OVERRIDES</code> in <code>big_number.py</code> for <code>forex</code> and <code>fixed-income</code>.</li>
+<li>Added new deduction types: <code>incremental_tps</code> for gaming and <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a> categories.</li>
+<li>Added <code>avg_tps_installment</code> and <code>annual_volume_installments</code> optional fields
+  in BNPL <code>current</code> object.</li>
+</ul>
+<h3 id="run-6">Run 6</h3>
+<ul>
+<li>Added overlap deductions for the 5 new Run 5 categories in <code>big_number.py</code>.</li>
+<li>Refined <code>VALID_OVERLAP_TYPES</code> to include <code>high</code>, <code>complete</code>, <code>subset</code>.</li>
+</ul>
+<h3 id="run-7-8">Run 7-8</h3>
+<ul>
+<li>Introduced Deep Dive schema (USA first, then <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>, India).</li>
+<li>Deep Dives use country-specific field naming (e.g., <code>usa_tps</code>, <code>india_tps</code>).</li>
+<li>Added <code>de_duplicated_&lt;country&gt;_tps</code> object with <code>range_low</code>/<code>range_high</code>.</li>
+<li>Added <code>key_metrics</code> object for country-specific headline statistics.</li>
+</ul>
+<h3 id="run-9">Run 9</h3>
+<ul>
+<li>Added <code>confidence</code> object to all category files via <code>confidence_score.py</code>.</li>
+<li>Introduced 4-dimension scoring rubric (source_quality, data_recency,
+  triangulation, coverage).</li>
+<li>Added Brazil and EU deep dives.</li>
+</ul>
+<h3 id="run-10">Run 10</h3>
+<ul>
+<li>Added Japan and UK deep dives.</li>
+<li>Confidence uplift for <a class="xref" href="/universe-of-finance/reports/emerging/ai-agents/REPORT.html">AI Agents</a>, <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">Microtransactions</a>, <a class="xref" href="/universe-of-finance/reports/payments/bill-payments/REPORT.html">Bill Payments</a>.</li>
+<li>Added <code>wash_adjusted</code> with regional breakdown model to CEX <code>current</code> object.</li>
+<li>Added <code>network_breakdown</code> to <code>consumer-cards</code> with global/domestic networks.</li>
+<li>Added <code>exchange_breakdown</code> to <code>equity-markets</code> with per-exchange data.</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/DATA_DICTIONARY.md">analysis/DATA_DICTIONARY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

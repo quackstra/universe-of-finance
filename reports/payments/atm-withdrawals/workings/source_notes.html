@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM Withdrawals — Source Notes — Universe of Finance</title>
+<meta name="description" content="Key Sources and Their Limitations 1. BIS CPMI Retail Payment Statistics (Red Book) What it provides: ATM transaction volumes and values for ~25 CPMI member countries, standardized">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>ATM Withdrawals — Source Notes</h1></div>
+  
+  
+  <article class="article">
+<h2 id="key-sources-and-their-limitations">Key Sources and Their Limitations</h2>
+<h3 id="1-bis-cpmi-retail-payment-statistics-red-book">1. BIS CPMI Retail Payment Statistics (Red Book)</h3>
+<ul>
+<li><strong>What it provides</strong>: ATM transaction volumes and values for ~25 CPMI member countries, standardized definitions</li>
+<li><strong>What it lacks</strong>: Non-CPMI countries (most of <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a>, smaller Asian markets)</li>
+<li><strong>Reliability</strong>: High for covered countries</li>
+<li><strong>Lag</strong>: Typically 12-18 months behind current year</li>
+<li><strong>Key insight</strong>: BIS February 2024 commentary noted global <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a> declining ~3% by count while value per withdrawal rises</li>
+</ul>
+<h3 id="2-ecb-payment-statistics">2. ECB Payment Statistics</h3>
+<ul>
+<li><strong>What it provides</strong>: Semi-annual ATM transaction data for all eurozone countries. Number of ATMs, withdrawal counts, values.</li>
+<li><strong>What it lacks</strong>: Non-euro EU countries (Sweden, Denmark, Poland) reported separately</li>
+<li><strong>Reliability</strong>: Very high — regulatory reporting requirement</li>
+<li><strong>Frequency</strong>: Semi-annual (H1 2024 and H2 2024 both available)</li>
+<li><strong>Key data</strong>: EU ATM count: 265,624 (end H2 2023), declining 0.4% annually</li>
+</ul>
+<h3 id="3-federal-reserve-payments-study">3. Federal Reserve Payments Study</h3>
+<ul>
+<li><strong>What it provides</strong>: Detailed US ATM withdrawal transaction counts and values</li>
+<li><strong>What it lacks</strong>: Only published triennially — latest detailed data is 2021</li>
+<li><strong>Reliability</strong>: Very high for the year it covers</li>
+<li><strong>Key data</strong>: US ATM cash withdrawals declined from 5.1B (2018) to 3.7B (2021), -10.1% CAGR. Average withdrawal rose from $156 to $198.</li>
+<li><strong>Gap</strong>: No 2024 data; must extrapolate</li>
+</ul>
+<h3 id="4-rbi-atm-statistics">4. RBI ATM Statistics</h3>
+<ul>
+<li><strong>What it provides</strong>: Monthly ATM transaction counts by bank, region, and ATM type</li>
+<li><strong>What it lacks</strong>: Clean annual totals (must aggregate monthly data)</li>
+<li><strong>Reliability</strong>: High — regulatory reporting</li>
+<li><strong>Key data</strong>: January 2025: 48.83 crore cash withdrawals (~489M/month). Declining from 57 crore in Jan 2023.</li>
+</ul>
+<h3 id="5-atmia">5. ATMIA</h3>
+<ul>
+<li><strong>What it provides</strong>: Industry-level statistics, installed base counts, operational benchmarks</li>
+<li><strong>What it lacks</strong>: Detailed transaction volume data by region (proprietary reports)</li>
+<li><strong>Reliability</strong>: Medium — industry association data, may have advocacy bias</li>
+<li><strong>Key data</strong>: $157 average withdrawal, declining transactions per ATM, rising operational costs</li>
+</ul>
+<h3 id="6-datos-insights-formerly-rbr">6. Datos Insights (formerly RBR)</h3>
+<ul>
+<li><strong>What it provides</strong>: Global ATM market forecasts, installed base tracking, regional deployment trends</li>
+<li><strong>What it lacks</strong>: Free data is limited; detailed reports are paywalled</li>
+<li><strong>Reliability</strong>: Medium-high — independent research firm</li>
+<li><strong>Key insight</strong>: Advanced terminals and emerging markets reshaping ATM landscape; Asia-Pacific decline driven by <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a></li>
+</ul>
+<h3 id="7-sci-tech-today-electroiq-atm-statistics">7. Sci-Tech Today / Electroiq ATM Statistics</h3>
+<ul>
+<li><strong>What it provides</strong>: Aggregated ATM statistics from multiple sources (86.7B total transactions, 3.22M ATMs)</li>
+<li><strong>What it lacks</strong>: Primary source attribution is sometimes unclear</li>
+<li><strong>Reliability</strong>: Medium — aggregator, useful for cross-checking</li>
+<li><strong>Key data</strong>: Global ATM transactions totaled 86.7B (all types); 3.22M ATMs worldwide in 2024</li>
+</ul>
+<h2 id="data-gaps">Data Gaps</h2>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No single global ATM withdrawal count published</td>
+<td>Must aggregate from regional sources</td>
+<td>Top-down (86.7B × 57%) and bottom-up regional model converge at ~49B</td>
+</tr>
+<tr>
+<td>US data is 3 years old (2021)</td>
+<td>US estimate requires extrapolation</td>
+<td>Moderate decline rate from -10.1% to -6% for 2021-2024</td>
+</tr>
+<tr>
+<td>China PBOC does not separate ATM withdrawals</td>
+<td>Must estimate from ATM counts × per-ATM rates</td>
+<td>Cross-check with Datos/BIS China data</td>
+</tr>
+<tr>
+<td>African and SE Asian ATM data is sparse</td>
+<td>Undercount possible for emerging markets</td>
+<td>Used residual approach after accounting for major markets</td>
+</tr>
+<tr>
+<td>Withdrawal vs. non-withdrawal split varies by source</td>
+<td>57-69% range creates uncertainty</td>
+<td>Used 57% (conservative) for top-down; validated with bottom-up</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/atm-withdrawals/workings/source_notes.md">analysis/payments/atm-withdrawals/workings/source_notes.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

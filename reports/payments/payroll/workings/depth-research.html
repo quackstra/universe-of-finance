@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payroll Payments — Depth Research — Universe of Finance</title>
+<meta name="description" content="Depth research conducted 2026-03-28 to improve confidence from 35 to a defensible level. New Data Points Found 1. US Pay Frequency Distribution — BLS Hard Data (2023) The original">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Payroll Payments — Depth Research</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#new-data-points-found">New Data Points Found</a></li><li><a href="#revised-model">Revised Model</a></li><li><a href="#impact-on-tps-estimate">Impact on TPS Estimate</a></li><li><a href="#revised-confidence-score">Revised Confidence Score</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Depth research conducted 2026-03-28 to improve confidence from 35 to a defensible level.</p>
+</blockquote>
+<h2 id="new-data-points-found">New Data Points Found</h2>
+<h3 id="1-us-pay-frequency-distribution-bls-hard-data-2023">1. US Pay Frequency Distribution — BLS Hard Data (2023)</h3>
+<p>The original model used 70% biweekly / 20% weekly / 10% monthly for the US. BLS actual data differs significantly:</p>
+<table>
+<thead>
+<tr>
+<th>Pay Frequency</th>
+<th>BLS (2023)</th>
+<th>Original Model</th>
+<th>Delta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Biweekly</td>
+<td><strong>43.0%</strong></td>
+<td>70%</td>
+<td>-27pp</td>
+</tr>
+<tr>
+<td>Weekly</td>
+<td><strong>27.0%</strong></td>
+<td>20%</td>
+<td>+7pp</td>
+</tr>
+<tr>
+<td>Semi-monthly</td>
+<td><strong>19.8%</strong></td>
+<td>0% (not modeled)</td>
+<td>+19.8pp</td>
+</tr>
+<tr>
+<td>Monthly</td>
+<td><strong>10.3%</strong></td>
+<td>10%</td>
+<td>+0.3pp</td>
+</tr>
+</tbody>
+</table>
+<p>Source: <a href="https://www.selectsoftwarereviews.com/blog/payroll-statistics">SelectSoftware Reviews / BLS</a></p>
+<p><strong>Impact on US calculation</strong>:</p>
+<pre><code>Original: 150M workers × (70% × 26 + 20% × 52 + 10% × 12) = 150M × 22.4 = 3.36B
+Revised:  150M workers × (43% × 26 + 27% × 52 + 19.8% × 24 + 10.3% × 12) =
+          150M × (11.18 + 14.04 + 4.75 + 1.24) = 150M × 31.21 = 4.68B
+</code></pre>
+<p>The BLS data yields <strong>4.68B US <a class="xref" href="/universe-of-finance/reports/payments/payroll/REPORT.html">payroll</a> transactions</strong> — significantly higher than the original 3.4B, driven by the semi-monthly category (19.8% of workers × 24 pays) that wasn't separately modeled, and the weekly category being larger than assumed.</p>
+<h3 id="2-us-direct-deposit-penetration">2. US Direct Deposit Penetration</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct deposit usage</td>
+<td><strong>95.15%</strong> of Americans</td>
+<td><a href="https://www.selectsoftwarereviews.com/blog/payroll-statistics">SelectSoftware Reviews</a></td>
+</tr>
+<tr>
+<td>Most common payday</td>
+<td>Friday, followed by Thursday</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Payroll tech: still use spreadsheets/manual</td>
+<td>51%</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Cloud-based payroll processing</td>
+<td>Only 50%</td>
+<td>Same</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-nacha-ach-direct-deposit-volume-2025-hard-data">3. Nacha ACH Direct Deposit Volume (2025) — Hard Data</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total ACH Direct Deposits (2025)</td>
+<td><strong>8.74B</strong></td>
+<td><a href="https://www.nacha.org/news/same-day-ach-and-business-business-payments-propel-ach-network-volume-growth-2025">Nacha</a></td>
+</tr>
+<tr>
+<td>Total ACH Network payments (2025)</td>
+<td>35.2B (up ~5% from 2024)</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Total ACH Network payments (2024)</td>
+<td>33.6B</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Total ACH value (2025)</td>
+<td>$93 trillion</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Total ACH value (2024)</td>
+<td>$86.2 trillion</td>
+<td>Same</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Critical anchor point</strong>: The 8.74B Direct Deposits include payroll, Social Security, tax refunds, and retirement distributions. If payroll is ~60-70% of all direct deposits:
+- Payroll via ACH: <strong>5.2-6.1B transactions/year</strong> in the US alone</p>
+<p>This is <strong>higher</strong> than our revised 4.68B estimate from BLS frequency data. The difference could be explained by:
+- Multiple pay items per paycheck (base + bonus + commission)
+- Gig economy direct deposits (classified as direct deposit but not traditional payroll)
+- Employer-side contributions (401k, HSA, FSA matching)</p>
+<p><strong>Reconciliation</strong>: The 4.68B is "employee paychecks"; the 5.2-6.1B from ACH includes supplemental payments. A reasonable US payroll transaction range is <strong>4.7-5.5B/year</strong>.</p>
+<h3 id="4-uk-pay-frequency-hard-data">4. UK Pay Frequency — Hard Data</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UK monthly payroll</td>
+<td><strong>96.6%</strong> of establishments</td>
+<td><a href="https://www.selectsoftwarereviews.com/blog/payroll-statistics">SelectSoftware Reviews</a></td>
+</tr>
+<tr>
+<td>UK employees on PAYE</td>
+<td>~30M</td>
+<td>ONS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Derived UK payroll</strong>: 30M × 12 (monthly) = <strong>360M payroll transactions/year</strong></p>
+<p>Plus HMRC RTI submissions: Each employer must submit a Full Payment Submission (FPS) every pay run. With ~2M employers × 12 monthly = <strong>24M employer filing transactions</strong> (these are administrative, not payment transactions, but drive the payroll infrastructure).</p>
+<h3 id="5-india-epfo-provident-fund-data">5. India EPFO (Provident Fund) Data</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EPFO pensioners on CPPS</td>
+<td><strong>69.4 lakh</strong> (6.94M) in Jan 2025</td>
+<td><a href="https://www.epfo.gov.in/">EPFO</a></td>
+</tr>
+<tr>
+<td>CPPS pension success rate</td>
+<td>99.9%</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Mandatory online PF payment</td>
+<td>All companies</td>
+<td>Government mandate</td>
+</tr>
+<tr>
+<td>EPFO interest rate (2024-25)</td>
+<td>8.25%</td>
+<td>Same</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Derived <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> formal payroll transactions</strong>:
+- India formal sector employment: ~120M
+- Monthly pay (98%+): 120M × 12 = <strong>1.44B</strong>
+- EPFO contributions (employer + employee, monthly): ~70M covered × 12 = <strong>840M</strong> contribution transactions
+- <strong>Total India formal payroll + PF: ~2.3B/year</strong></p>
+<h3 id="6-global-pay-frequency-distribution-new-data">6. Global Pay Frequency Distribution (New Data)</h3>
+<table>
+<thead>
+<tr>
+<th>Region/Country</th>
+<th>Dominant Frequency</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US</td>
+<td>Biweekly (43%), Weekly (27%)</td>
+<td>BLS</td>
+</tr>
+<tr>
+<td>UK</td>
+<td>Monthly (96.6%)</td>
+<td>SelectSoftware Reviews</td>
+</tr>
+<tr>
+<td>Austria</td>
+<td>Monthly (only legal option)</td>
+<td><a href="https://www.deel.com/blog/biweekly-vs-monthly-pay-country-by-country-comparison-guide/">Deel</a></td>
+</tr>
+<tr>
+<td>Australia</td>
+<td>Mixed: weekly, biweekly, monthly all legal</td>
+<td>Deel</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Monthly (~98%)</td>
+<td>Original model (confirmed)</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>Monthly (standard)</td>
+<td>CloudPay</td>
+</tr>
+<tr>
+<td>France</td>
+<td>Monthly (standard)</td>
+<td>CloudPay</td>
+</tr>
+<tr>
+<td>Construction industry (US)</td>
+<td>Weekly (65.4%)</td>
+<td>BLS</td>
+</tr>
+<tr>
+<td>Financial services (US)</td>
+<td>Monthly (dominant)</td>
+<td>BLS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight</strong>: The global distribution skews more monthly than the US alone would suggest. Most of the world (EU, <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>, India, <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>) pays monthly, reducing the global per-worker transaction count.</p>
+<h3 id="7-gig-economy-payout-frequency">7. Gig Economy Payout Frequency</h3>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Standard Payout</th>
+<th>Instant Option</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uber</td>
+<td>Weekly</td>
+<td>Daily (up to 6x/day via Uber Pro Card)</td>
+<td><a href="https://www.getwhizz.com/blog/for-delivery/gig-economy-and-delivery-statistics">GetWhizz</a></td>
+</tr>
+<tr>
+<td>Lyft</td>
+<td>Weekly</td>
+<td>Instant via Express Pay (up to 5x/day)</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>DoorDash</td>
+<td>Weekly</td>
+<td>Daily Fast Pay ($1.99 fee)</td>
+<td>Same</td>
+</tr>
+<tr>
+<td>Fiverr</td>
+<td>Biweekly (14-day clearance)</td>
+<td>None standard</td>
+<td>Platform data</td>
+</tr>
+<tr>
+<td>Upwork</td>
+<td>Weekly or on-demand</td>
+<td>Instant transfer available</td>
+<td>Platform data</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Gig economy scale</strong>:
+- Global gig workers: ~150-200M (ILO estimate for platform workers)
+- Average payout frequency: ~2x/month (mix of weekly + instant)
+- <strong>Gig economy payroll-like transactions: ~3.6-4.8B/year</strong></p>
+<p>Note: These are NOT included in the original payroll model (which explicitly excluded gig workers). They represent a growing grey area.</p>
+<hr/>
+<h2 id="revised-model">Revised Model</h2>
+<h3 id="rebuilt-regional-payroll-transaction-model">Rebuilt Regional Payroll Transaction Model</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>Employed (M)</th>
+<th>Formal Payroll (M)</th>
+<th>Pay Freq (weighted avg pays/yr)</th>
+<th>Annual Txns (B)</th>
+<th>Change vs Original</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>US</strong></td>
+<td>158.3</td>
+<td>150</td>
+<td><strong>31.2</strong> (BLS data)</td>
+<td><strong>4.68</strong></td>
+<td>+1.28B (+38%)</td>
+</tr>
+<tr>
+<td><strong>EU-27</strong></td>
+<td>197.6</td>
+<td>170</td>
+<td>12.7 (90% monthly, 10% biweekly)</td>
+<td><strong>2.16</strong></td>
+<td>-0.04B (flat)</td>
+</tr>
+<tr>
+<td><strong>UK</strong></td>
+<td>33</td>
+<td>30</td>
+<td>12.0 (96.6% monthly)</td>
+<td><strong>0.36</strong></td>
+<td>(new separate line)</td>
+</tr>
+<tr>
+<td><strong>China</strong></td>
+<td>740</td>
+<td>470</td>
+<td>12.0 (95% monthly)</td>
+<td><strong>5.64</strong></td>
+<td>+0.04B (flat)</td>
+</tr>
+<tr>
+<td><strong>India</strong></td>
+<td>560</td>
+<td>120</td>
+<td>12.0 (formal monthly)</td>
+<td><strong>1.44</strong></td>
+<td>+0.04B (flat)</td>
+</tr>
+<tr>
+<td><strong>Japan</strong></td>
+<td>67</td>
+<td>60</td>
+<td>12.0 (98% monthly)</td>
+<td><strong>0.72</strong></td>
+<td>+0.02B (flat)</td>
+</tr>
+<tr>
+<td><strong>Rest of Asia-Pac</strong></td>
+<td>700</td>
+<td>300</td>
+<td>13.5 (80% monthly, 20% biweekly)</td>
+<td><strong>4.05</strong></td>
+<td>-0.15B</td>
+</tr>
+<tr>
+<td><strong>Latin America</strong></td>
+<td>290</td>
+<td>150</td>
+<td>14.4 (70% monthly, 30% biweekly)</td>
+<td><strong>2.16</strong></td>
+<td>-0.14B</td>
+</tr>
+<tr>
+<td><strong>Africa</strong></td>
+<td>460</td>
+<td>80</td>
+<td>12.0</td>
+<td><strong>0.96</strong></td>
+<td>-0.04B</td>
+</tr>
+<tr>
+<td><strong>Middle East</strong></td>
+<td>70</td>
+<td>50</td>
+<td>12.0</td>
+<td><strong>0.60</strong></td>
+<td>flat</td>
+</tr>
+<tr>
+<td><strong>Rest of World</strong></td>
+<td>260</td>
+<td>130</td>
+<td>13.0</td>
+<td><strong>1.69</strong></td>
+<td>-0.11B</td>
+</tr>
+<tr>
+<td><strong>Sub-total formal electronic</strong></td>
+<td></td>
+<td>~1,710</td>
+<td></td>
+<td><strong>24.46</strong></td>
+<td>+1.26B</td>
+</tr>
+<tr>
+<td><strong>Informal/cash wages</strong></td>
+<td></td>
+<td>~1,790</td>
+<td>~8 (est.)</td>
+<td><strong>14.32</strong></td>
+<td>-3.68B</td>
+</tr>
+<tr>
+<td><strong>GLOBAL TOTAL</strong></td>
+<td>~3,500</td>
+<td>~3,500</td>
+<td></td>
+<td><strong>~38.8B</strong></td>
+<td>-2.4B</td>
+</tr>
+</tbody>
+</table>
+<p>Wait — the revised total (38.8B) is <strong>lower</strong> than the original (41.2B). This is because the informal sector estimate was revised downward: the original assumed ~18B informal transactions, but with more careful analysis, informal workers paid sporadically (not monthly) yield ~14.3B.</p>
+<p>However, the <strong>formal sector</strong> moved up significantly (+1.26B), driven entirely by the US BLS correction (biweekly is only 43%, not 70%, but weekly is 27% and semi-monthly is 19.8% — the net effect is more pay periods per US worker than originally modeled).</p>
+<p><strong>Revised estimate: 38-42B, central ~39B</strong> (range reflects informal sector uncertainty).</p>
+<h3 id="triangulation-funnel">TRIANGULATION FUNNEL</h3>
+<pre><code>╔══════════════════════════════════════════════════════════╗
+║              EMPLOYMENT × FREQUENCY MODEL                ║
+║  3.5B employed × weighted avg 11.1 pays/year             ║
+║  = ~38.8B transactions                                   ║
+║  = ~1,230 TPS                                            ║
+╠══════════════════════════════════════════════════════════╣
+║           US ACH EXTRAPOLATION                           ║
+║  US ACH Direct Deposits: 8.74B (all types)               ║
+║  Payroll share: 60-70% = 5.2-6.1B                        ║
+║  US = ~12% of global formal employment                   ║
+║  But US has higher frequency (biweekly)                  ║
+║  US generates ~19% of global payroll txns                ║
+║  Global implied: 5.2-6.1B / 0.19 = 27-32B formal        ║
+║  + informal 14B = 41-46B                                ║
+║  = ~1,300-1,460 TPS                                      ║
+╠══════════════════════════════════════════════════════════╣
+║           ILO WAGE BILL CROSS-CHECK                      ║
+║  Global formal wage bill: ~$32T                          ║
+║  Average paycheck: ~$800-1,200 (global weighted)         ║
+║  = 26.7-40B formal payroll transactions                  ║
+║  + informal: 14B                                        ║
+║  = 40.7-54B total                                       ║
+║  = ~1,290-1,710 TPS                                      ║
+╠══════════════════════════════════════════════════════════╣
+║         ADP COVERAGE EXTRAPOLATION                       ║
+║  ADP: 26M US workers per pay period                      ║
+║  US workforce on ADP: ~16% of 158M                       ║
+║  ADP annual payroll txns: 26M × 26 = 676M               ║
+║  Scale to full US: 676M / 0.16 = ~4.2B                  ║
+║  (Consistent with BLS-based 4.68B estimate)              ║
+╚══════════════════════════════════════════════════════════╝
+
+CONVERGENCE RANGE: 38-46B transactions
+REVISED CENTRAL ESTIMATE: ~39B transactions, ~1,236 TPS
+</code></pre>
+<p>The models converge on <strong>38-46B</strong> with the employment-frequency model at the lower end (38.8B) and the ACH extrapolation at the higher end (41-46B). The original estimate of 41.2B sits within this range. Revised central: <strong>~39B</strong>.</p>
+<hr/>
+<h2 id="impact-on-tps-estimate">Impact on TPS Estimate</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Original</th>
+<th>Revised</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Annual transactions</td>
+<td>41.2B</td>
+<td><strong>~39B</strong> (range: 38-46B)</td>
+<td>-5% central, wider range</td>
+</tr>
+<tr>
+<td>Average TPS</td>
+<td>1,305</td>
+<td><strong>~1,236</strong> (range: 1,205-1,460)</td>
+<td>-5% central</td>
+</tr>
+<tr>
+<td>Peak TPS</td>
+<td>6,525</td>
+<td><strong>~6,180</strong> (5.0x average)</td>
+<td>-5%</td>
+</tr>
+<tr>
+<td>US component</td>
+<td>3.4B</td>
+<td><strong>4.68B</strong> (BLS-corrected)</td>
+<td>+38%</td>
+</tr>
+<tr>
+<td>Informal component</td>
+<td>18.0B</td>
+<td><strong>14.3B</strong></td>
+<td>-21%</td>
+</tr>
+</tbody>
+</table>
+<p>The net effect is modest: the US correction (+1.28B) is largely offset by the informal economy revision (-3.7B), producing a slightly lower but much better-supported central estimate.</p>
+<hr/>
+<h2 id="revised-confidence-score">Revised Confidence Score</h2>
+<p><strong>Previous</strong>: 35/100</p>
+<p><strong>Revised</strong>: 48/100</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Previous</th>
+<th>Revised</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source quality</td>
+<td>8/20</td>
+<td>12/20</td>
+<td>Added BLS pay frequency hard data (2023 survey), Nacha ACH 2025 with 8.74B direct deposit anchor, India EPFO payment data, UK 96.6% monthly confirmed</td>
+</tr>
+<tr>
+<td>Data recency</td>
+<td>10/20</td>
+<td>14/20</td>
+<td>BLS 2023 (latest available), Nacha 2025 full-year, EPFO Jan 2025, SSA Jan 2026</td>
+</tr>
+<tr>
+<td>Triangulation</td>
+<td>7/20</td>
+<td>12/20</td>
+<td>Four independent approaches: employment × frequency, ACH extrapolation, wage bill cross-check, ADP coverage extrapolation. All converge on 38-46B range</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>10/20</td>
+<td>10/20</td>
+<td>US now has hard data (BLS + Nacha). UK confirmed. India EPFO adds formal sector data. Main gaps: China pay frequency data, Africa/MENA informal sector</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>35</strong></td>
+<td><strong>48</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Why +13 points?</strong> Three breakthroughs:</p>
+<ol>
+<li>
+<p><strong>BLS pay frequency data</strong> resolves the biggest US assumption: the biweekly/weekly/semi-monthly/monthly split is now empirical, not assumed. This changes the US estimate by +38%.</p>
+</li>
+<li>
+<p><strong>Nacha ACH Direct Deposits (8.74B)</strong> provides an independent ceiling for US electronic payroll. Since payroll is 60-70% of all direct deposits, we can bound US payroll at 5.2-6.1B from payment system data, cross-validating the BLS-derived 4.68B.</p>
+</li>
+<li>
+<p><strong>Gig economy payout data</strong> from Uber/DoorDash/Lyft reveals that 150-200M platform workers receive 2x/month payouts — a ~3.6-4.8B transaction category that exists in a grey zone between payroll and <a class="xref" href="/universe-of-finance/reports/payments/p2p-transfers/REPORT.html">P2P transfers</a>.</p>
+</li>
+</ol>
+<p><strong>What would move to 55+:</strong>
+1. ADP or Paychex publishing aggregate paychecks processed (they have the data but don't publish it)
+2. China Ministry of Human Resources publishing enterprise payroll frequency data
+3. India Ministry of Labour publishing EPFO contribution transaction counts
+4. BLS equivalent data from EU (Eurostat) or Japan (MHLW)</p>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://www.selectsoftwarereviews.com/blog/payroll-statistics">SelectSoftware Reviews — 60+ Payroll Statistics and Trends for 2026</a></li>
+<li><a href="https://www.deel.com/blog/biweekly-vs-monthly-pay-country-by-country-comparison-guide/">Deel — Biweekly vs Monthly Pay: Country-by-Country Comparison Guide</a></li>
+<li><a href="https://www.cloudpay.com/blog/global-payroll-complexity-trends-by-region-2024/">CloudPay — Global Payroll Complexities and Trends 2024</a></li>
+<li><a href="https://www.nacha.org/news/same-day-ach-and-business-business-payments-propel-ach-network-volume-growth-2025">Nacha — Same Day ACH and B2B Payments Propel ACH Growth 2025</a></li>
+<li><a href="https://www.nacha.org/news/nachas-top-50-ach-originators-and-receivers-2025-now-available-total-ach-payment-volume-2025">Nacha — Top 50 ACH Originators 2025; Total Volume Exceeded 42 Billion</a></li>
+<li><a href="https://www.nacha.org/content/ach-payments-fact-sheet">Nacha — ACH Payments Fact Sheet</a></li>
+<li><a href="https://www.epfo.gov.in/">EPFO — Centralised Pension Payment System</a></li>
+<li><a href="https://kpmg.com/xx/en/our-insights/gms-flash-alert/flash-alert-2025-209.html">KPMG — India EPFO Launches Revamped ECR System</a></li>
+<li><a href="https://www.getwhizz.com/blog/for-delivery/gig-economy-and-delivery-statistics">GetWhizz — Gig Economy and Delivery Statistics 2025</a></li>
+<li><a href="https://www.cnbc.com/2025/12/09/workers-cash-daily-income-needs-paycheck.html">CNBC — Why more workers are moving away from traditional paycheck cycle</a></li>
+<li><a href="https://gigglefinance.com/state-of-same-day-pay-in-gig-economy/">Giggle Finance — State of Same-Day Pay in the Gig Economy</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/payroll/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/payroll/workings/depth-research.md">analysis/payments/payroll/workings/depth-research.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remittances — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Global cross-border remittances reached an estimated $905 billion in 2024, with flows to low- and middle-income countrie">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Remittances</div>
+  <div class="report-head"><span class="kind">Report</span><h1>Remittances</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">57</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">58</div></div><div class="chip"><div class="k">Opacity</div><div class="v red">70</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#22/28</div></div></div>
+  <div class="chart-box"><h3>Payments — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart23"></canvas></div></div><script>new Chart(document.getElementById("chart23"),{"type": "bar", "data": {"labels": ["Consumer Cards", "Digital Wallets", "Bank Transfers", "Bill Payments", "E-Commerce", "ATM Withdrawals", "Payroll", "BNPL", "Insurance Premiums", "P2P Transfers", "Remittances"], "datasets": [{"data": [24501, 19660, 15338, 3076, 1823, 1557, 1014, 634, 444, 270, 57], "backgroundColor": ["#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#334155", "#3b82f6"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#growth-rate-analysis">Growth Rate Analysis</a></li><li><a href="#projections">Projections</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#open-questions-triangulation-opportunities">Open Questions & Triangulation Opportunities</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Global cross-border remittances reached an estimated <strong>$905 billion in 2024</strong>, with flows to low- and middle-income countries (LMICs) accounting for <strong>$685 billion</strong>. The transaction count is far harder to pin down — remittance providers generally report values, not counts. Based on available data from Western Union (~300 million annual transactions), Wise (~125 million), and extrapolation across the broader market, we estimate <strong>~1.8 billion cross-border personal transfer transactions in 2024</strong>, yielding approximately <strong>57 TPS</strong>. This makes remittances one of the lowest-TPS categories in the Payments sector by volume, but one of the highest by average transaction value (~$500).</p>
+<p>The remittance market is undergoing a structural shift from cash-based agent networks (Western Union, MoneyGram) to digital-first platforms (Wise, Remitly, WorldRemit), with digital channels now handling over 50% of flows in many corridors.</p>
+<h2 id="scope">Scope</h2>
+<p><strong>Included:</strong>
+- Cross-border personal money transfers (worker remittances)
+- Formal channels: banks, money transfer operators (MTOs), digital remittance platforms
+- All corridors globally (South-North, South-South, North-South)</p>
+<p><strong>Excluded:</strong>
+- Domestic <a class="xref" href="/universe-of-finance/reports/payments/p2p-transfers/REPORT.html">P2P transfers</a> (covered in P2P Transfers)
+- Business-to-business cross-border payments (covered in B2B/Wholesale)
+- Informal/<a class="xref" href="/universe-of-finance/reports/deep-dives/remittance-corridors/REPORT.html">hawala</a> transfers (untracked by definition)
+- Crypto remittances (estimated &lt;2% of total; data unreliable)</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume">Transaction Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS</td>
+<td>~57</td>
+<td>Derived from annual volume estimate</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~100</td>
+<td>Holiday corridors (Eid, Christmas, Diwali)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Daily volume</td>
+<td>~4.9 million</td>
+<td>Derived from annual</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Annual volume (2024)</td>
+<td>~1.8 billion txns (est.)</td>
+<td>Extrapolated from provider data</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Annual value (2024)</td>
+<td>$905 billion</td>
+<td><a href="https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar">World Bank</a></td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Avg transaction size</td>
+<td>~$500</td>
+<td>Derived: $905B / 1.8B txns</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Avg cost (% of $200 txn)</td>
+<td>6.35%</td>
+<td><a href="https://remittanceprices.worldbank.org/">World Bank RPW</a></td>
+<td>🟢 High</td>
+</tr>
+</tbody>
+</table>
+<h3 id="top-recipient-countries-2024">Top Recipient Countries (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Country</th>
+<th>Inflows ($B)</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>India</td>
+<td>$129</td>
+<td>World Bank</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Mexico</td>
+<td>$68</td>
+<td>World Bank / Banxico</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>China</td>
+<td>$48</td>
+<td>World Bank</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Philippines</td>
+<td>$40</td>
+<td>World Bank / BSP</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Pakistan</td>
+<td>$33</td>
+<td>World Bank / SBP</td>
+<td>🟢 High</td>
+</tr>
+<tr>
+<td>Bangladesh</td>
+<td>$25</td>
+<td>World Bank</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Egypt</td>
+<td>$24</td>
+<td>World Bank</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Nigeria</td>
+<td>$20</td>
+<td>World Bank</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="provider-market-share-estimated-2024">Provider Market Share (Estimated 2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Est. Annual Txns (M)</th>
+<th>Est. Annual Value ($B)</th>
+<th>Channel</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Western Union</td>
+<td>~300</td>
+<td>~$135</td>
+<td>Agent + digital</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Wise</td>
+<td>~125</td>
+<td>~$145</td>
+<td>Digital</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>MoneyGram</td>
+<td>~100</td>
+<td>~$50</td>
+<td>Agent + digital</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Remitly</td>
+<td>~50</td>
+<td>~$50</td>
+<td>Digital</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>WorldRemit</td>
+<td>~30</td>
+<td>~$15</td>
+<td>Digital</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Banks</td>
+<td>~400</td>
+<td>~$300</td>
+<td>Bank wire</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Other MTOs</td>
+<td>~795</td>
+<td>~$210</td>
+<td>Mixed</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>~1,800</strong></td>
+<td><strong>~$905</strong></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<h3 id="global-remittance-flows-value">Global Remittance Flows (Value)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Global Total ($B)</th>
+<th>To LMICs ($B)</th>
+<th>YoY Growth</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>$715</td>
+<td>$549</td>
+<td>+2.7%</td>
+<td>World Bank</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>$717</td>
+<td>$556</td>
+<td>+0.3%</td>
+<td>World Bank</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>$791</td>
+<td>$605</td>
+<td>+10.3%</td>
+<td>World Bank</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>$831</td>
+<td>$626</td>
+<td>+5.1%</td>
+<td>World Bank</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>$865</td>
+<td>$656</td>
+<td>+4.1%</td>
+<td>World Bank</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>$905</td>
+<td>$685</td>
+<td>+4.6%</td>
+<td>World Bank (est.)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="estimated-transaction-count-global">Estimated Transaction Count (Global)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Est. Txns (billions)</th>
+<th>Est. Avg Txn Size</th>
+<th>Avg TPS</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019</td>
+<td>1.30</td>
+<td>$550</td>
+<td>41</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>1.35</td>
+<td>$531</td>
+<td>43</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>1.45</td>
+<td>$546</td>
+<td>46</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>1.55</td>
+<td>$536</td>
+<td>49</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>1.65</td>
+<td>$524</td>
+<td>52</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>1.80</td>
+<td>$503</td>
+<td>57</td>
+<td>🔴 Low</td>
+</tr>
+</tbody>
+</table>
+<p>Note: Transaction count estimates assume declining average transaction size over time as digital channels enable smaller, more frequent transfers. This is a well-documented trend — digital remittance average transaction sizes are $200-300 vs. $500+ for traditional MTOs.</p>
+<hr/>
+<h2 id="growth-rate-analysis">Growth Rate Analysis</h2>
+<table>
+<thead>
+<tr>
+<th>Period</th>
+<th>CAGR (Value)</th>
+<th>CAGR (Est. Transactions)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2019-2024 (5yr)</td>
+<td>4.8%</td>
+<td>6.7%</td>
+<td>Volume growing faster than value (smaller txns)</td>
+</tr>
+<tr>
+<td>2022-2024 (2yr)</td>
+<td>4.3%</td>
+<td>7.7%</td>
+<td>Digital adoption accelerating txn count</td>
+</tr>
+<tr>
+<td>COVID period 2020-2021</td>
+<td>10.3%</td>
+<td>7.4%</td>
+<td>Stimulus payments boosted sender capacity</td>
+</tr>
+</tbody>
+</table>
+<h3 id="digital-vs-traditional">Digital vs. Traditional</h3>
+<ul>
+<li>Digital remittances are growing at ~20-25% CAGR (by value)</li>
+<li>Traditional agent-based remittances are declining at ~3-5% CAGR</li>
+<li>Digital share of total: ~15% in 2019 → ~40% in 2024 (estimated)</li>
+</ul>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-45-value-cagr-7-txn-cagr-digital-shift-continues">Baseline (4.5% value CAGR, 7% txn CAGR — digital shift continues)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (billions)</th>
+<th>Avg TPS</th>
+<th>Annual Value ($B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>1.93</td>
+<td>61</td>
+<td>$946</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>2.20</td>
+<td>70</td>
+<td>$1,034</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>2.70</td>
+<td>86</td>
+<td>$1,180</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>3.78</td>
+<td>120</td>
+<td>$1,475</td>
+</tr>
+</tbody>
+</table>
+<h3 id="high-growth-6-value-cagr-10-txn-cagr-rapid-digitization">High Growth (6% value CAGR, 10% txn CAGR — rapid digitization)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (billions)</th>
+<th>Avg TPS</th>
+<th>Annual Value ($B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>1.98</td>
+<td>63</td>
+<td>$959</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>2.40</td>
+<td>76</td>
+<td>$1,078</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>3.19</td>
+<td>101</td>
+<td>$1,284</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>5.14</td>
+<td>163</td>
+<td>$1,718</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conservative-3-value-cagr-5-txn-cagr-regulatory-friction">Conservative (3% value CAGR, 5% txn CAGR — regulatory friction)</h3>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Txns (billions)</th>
+<th>Avg TPS</th>
+<th>Annual Value ($B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>1.89</td>
+<td>60</td>
+<td>$932</td>
+</tr>
+<tr>
+<td>2027</td>
+<td>2.08</td>
+<td>66</td>
+<td>$989</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>2.41</td>
+<td>76</td>
+<td>$1,081</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>3.08</td>
+<td>98</td>
+<td>$1,253</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>Remittances are a value story, not a volume story.</strong> At ~57 TPS, this is orders of magnitude below <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">card networks</a> or <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a>. But the $905B annual value exceeds all foreign direct investment to LMICs and all official development aid combined.</p>
+</li>
+<li>
+<p><strong>Transaction counts are the biggest data gap</strong> in remittance research. The World Bank, which is the gold standard for remittance data, tracks values but not transaction counts. Our 1.8B estimate is derived from provider data and should be treated with low confidence.</p>
+</li>
+<li>
+<p><strong>Digital is eating traditional.</strong> Western Union's Q4 2024 results show digital transactions growing while overall transactions are flat-to-declining. Wise processes ~$145B at ~0.6% margin vs. Western Union's ~$135B at ~3%. The cost compression is real.</p>
+</li>
+<li>
+<p><strong>Average transaction size is falling</strong>, from ~$550 in 2019 to ~$500 in 2024 (estimated). Digital platforms enable smaller, more frequent transfers ($200-300 average) vs. traditional MTOs ($500+). This means transaction counts are growing faster than values.</p>
+</li>
+<li>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> is the remittance superpower</strong>, receiving $129B in 2024 — nearly double the #2 recipient (Mexico, $68B). The US-India and Gulf-India corridors alone account for ~$80B.</p>
+</li>
+<li>
+<p><strong>The G20's 3% cost target remains unmet.</strong> The global average remittance cost is 6.35% for a $200 transfer (Q4 2024). Sub-Saharan <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> remains the most expensive corridor at ~7.9%. Digital channels average ~4.3%.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>Value data is reliable (World Bank)</strong> — The $905B figure comes from balance-of-payments data compiled by the World Bank's KNOMAD team. This is the global standard.</li>
+<li><strong>Transaction count is estimated</strong> — No global authority tracks the number of remittance transactions. Our 1.8B figure is built bottom-up from provider disclosures and market share assumptions. Confidence is low.</li>
+<li><strong>Informal flows are excluded</strong> — Hawala networks, hand-carried cash, and crypto remittances are not captured. The World Bank estimates true flows could be 50% larger than official figures.</li>
+<li><strong>Provider data is uneven</strong> — Western Union (public) reports quarterly transactions. Wise (public) reports volume and revenue. MoneyGram (private since 2023) has limited recent disclosure.</li>
+<li><strong>Double-counting risk with P2P</strong> — Some platforms (e.g., PayPal, Cash App) enable cross-border transfers that may be counted in both P2P and Remittances depending on the sender's intent.</li>
+<li><strong>"Remittance" definition varies</strong> — Some sources include all personal cross-border transfers; others only count worker remittances (compensation of employees abroad). We use the broader definition.</li>
+</ul>
+<hr/>
+<h2 id="open-questions-triangulation-opportunities">Open Questions &amp; Triangulation Opportunities</h2>
+<h3 id="what-we-cant-directly-observe">What We Can't Directly Observe</h3>
+<ul>
+<li><strong>Global remittance transaction count.</strong> The World Bank tracks value ($905B) but not transaction count. Our 1.8B estimate is the weakest figure in the entire payments taxonomy — built from provider extrapolations with low confidence.</li>
+<li><strong>Informal/hawala transfer volume.</strong> The World Bank estimates informal flows could be 50% of formal flows, which would imply true remittances of ~$1.35T and ~2.7B transactions. This is fundamentally unobservable.</li>
+<li><strong>Average transaction size by corridor.</strong> The global average (~$500) masks enormous variation: US-Mexico average is ~$390 (Banxico data), Gulf-India is ~$250, while UK-Nigeria may be ~$800+. Corridor-level data is sparse.</li>
+<li><strong>Digital vs. traditional share by transaction count.</strong> Digital is ~40% by value, but digital transactions are smaller ($200-300 avg) vs. traditional ($500+). By count, digital may already be &gt;50%.</li>
+<li><strong>MoneyGram data post-privatization.</strong> Since going private in 2023 (acquired by Madison Dearborn), MoneyGram no longer files public financials. Its ~$50B volume and ~100M transaction estimates are increasingly stale.</li>
+</ul>
+<h3 id="triangulation-strategies">Triangulation Strategies</h3>
+<table>
+<thead>
+<tr>
+<th>Gap</th>
+<th>Approach</th>
+<th>Proxy Data Available</th>
+<th>Expected Precision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global transaction count</td>
+<td>Method 1: $905B / $500 avg = 1.81B. Method 2: Sum known providers (WU 300M + Wise 125M + banks 400M + others 975M). Method 3: Use corridor-level data from World Bank RPW to build bottom-up count.</td>
+<td>World Bank RPW (200+ corridors); WU quarterly reports; Wise annual report</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>Informal flows</td>
+<td>Compare official BoP remittance data with household survey data on received transfers. The gap = informal. IMF has done this for select corridors (India, Philippines, Pakistan).</td>
+<td>IMF household surveys; World Bank bilateral estimates; Dilip Ratha research papers</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>Average txn size by corridor</td>
+<td>Banxico publishes US-Mexico average ($390). SBP publishes Pakistan inflow data. RBI publishes India corridor data. Assemble 10-15 major corridors to build weighted global average.</td>
+<td>Banxico monthly remittance data; SBP monthly stats; RBI Annual Report; BSP (Philippines) OFW stats</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Digital share by count</td>
+<td>Wise (125M txns, ~$145B value, $1,160 avg) is 100% digital. WU digital is ~40% of transactions. Remitly/WorldRemit are 100% digital. Weight by market share.</td>
+<td>Wise annual report; WU quarterly: digital ~40% of C2C transactions; Remitly S-1 (2021)</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Cost reduction trajectory</td>
+<td>World Bank RPW publishes quarterly average cost by corridor. Extrapolate cost decline rate to estimate when 3% G20 target is reached.</td>
+<td>World Bank RPW: 6.35% global average; Sub-Saharan Africa 7.9%; South Asia 4.3%</td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-modeling-questions">Key Modeling Questions</h3>
+<ul>
+<li>The World Bank's $905B figure is derived from balance-of-payments data (central bank reporting). This captures formal bank and MTO flows but may miss digital-native platforms that route through novel corridors (e.g., Wise's multi-currency accounts, crypto-bridged remittances). Is the $905B an undercount?</li>
+<li>If digital remittance average transaction size ($250) continues converging toward P2P averages ($120-290), do remittances become indistinguishable from cross-border P2P transfers? At what point does the category boundary dissolve?</li>
+<li>Western Union's strategic pivot from agent networks to digital: if WU's agent revenue declines faster than digital grows, could there be a net reduction in formal remittance volume as senders shift to informal digital channels (WhatsApp-mediated hawala, crypto)?</li>
+<li>SWIFT gpi (global payments innovation) is reducing cross-border bank transfer costs. If bank wire remittances become competitive with MTOs at the &lt;$1,000 level, could banks recapture remittance share?</li>
+</ul>
+<h3 id="reference-comparisons">Reference Comparisons</h3>
+<ul>
+<li><strong>India's inflows by channel:</strong> India receives $129B in remittances. RBI data shows ~75% arrives via bank wire (SWIFT), ~15% via digital platforms, ~10% via traditional MTOs. This is unusual — most LMIC <a class="xref" href="/universe-of-finance/reports/deep-dives/remittance-corridors/REPORT.html">remittance corridors</a> are MTO-dominated. India's high bank penetration (Jan Dhan accounts: 530M) explains this.</li>
+<li><strong>Mexico vs. Philippines per-capita remittances:</strong> Mexico receives $68B for 130M people (~$523/capita); Philippines receives $40B for 115M people (~$348/capita). But remittances are 8.5% of Philippine GDP vs. 3.9% of Mexican GDP — the Philippines is more remittance-dependent despite lower per-capita inflows.</li>
+<li><strong>Cost corridor extremes:</strong> Sending $200 from South Africa to Botswana costs ~20% in fees; sending $200 from Singapore to India costs ~2.7%. This 7.4x cost differential on similar-distance corridors reflects market competition, not geography.</li>
+<li><strong>Crypto remittance test case:</strong> El Salvador's Bitcoin remittance experiment showed &lt;2% of remittances used Bitcoin in 2024, despite government promotion. This suggests crypto remittances remain a niche use case, not a systematic undercount in official figures.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://blogs.worldbank.org/en/peoplemove/in-2024--remittance-flows-to-low--and-middle-income-countries-ar">World Bank — Remittance flows to LMICs reach $685 billion in 2024</a></li>
+<li><a href="https://www.worldbank.org/en/news/press-release/2024/06/26/remittances-slowed-in-2023-expected-to-grow-faster-in-2024">World Bank — Remittances Slowed in 2023, Expected to Grow in 2024 (June 2024 press release)</a></li>
+<li><a href="https://remittanceprices.worldbank.org/">World Bank Remittance Prices Worldwide</a></li>
+<li><a href="https://data.worldbank.org/indicator/BX.TRF.PWKR.CD.DT">World Bank Open Data — Personal remittances received</a></li>
+<li><a href="https://www.migrationdataportal.org/themes/remittances-overview">Migration Data Portal — Remittances overview</a></li>
+<li><a href="https://www.businesswire.com/news/home/20250204893052/en/Western-Union-Reports-Fourth-Quarter-and-Full-Year-2024-Results">Western Union Q4/FY2024 Results</a></li>
+<li><a href="https://www.fxcintel.com/research/reports/ct-remittances-money-transfers-2024-year-in-data">FXC Intelligence — Remittances and money transfers 2024 year in data</a></li>
+<li><a href="https://www.federalreserve.gov/econres/notes/feds-notes/global-remittances-cycle-20250227.html">Federal Reserve — Global Remittances Cycle (Feb 2025)</a></li>
+<li><a href="https://www.gpfi.org/sites/default/files/NEW%202024%20Update%20to%20Leaders%20on%20Progress%20Towards%20the%20G20%20Remittance%20Target.pdf">GPFI — 2024 Update on Progress Towards G20 Remittance Target</a></li>
+<li><a href="https://www.williamblair.com/-/media/downloads/eqr/2025/williamblair-money-remittances.pdf">William Blair — Money Remittances: 2024 report</a></li>
+<li><a href="https://www.businessresearchinsights.com/market-reports/remittance-market-110452">Precedence Research — Remittance Market Forecast to $1T by 2035</a></li>
+<li><a href="https://www.grandviewresearch.com/press-release/global-digital-remittance-market">Grand View Research — Digital Remittance Market to $60B by 2030</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/remittances/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/payments/remittances/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/payments/remittances/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/payments/remittances/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/remittances/REPORT.md">analysis/payments/remittances/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

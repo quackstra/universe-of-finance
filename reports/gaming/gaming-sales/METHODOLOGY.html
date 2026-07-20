@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Game Sales — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition One transaction = one consumer payment for a digital game purchase, DLC/expansion purchase, or subscription renewal event. Counted at: the payment event (con">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Gaming<span class="sep">/</span>Gaming Sales</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>Digital Game Sales — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#revenue-to-transaction-count-derivation">Revenue-to-Transaction-Count Derivation</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#key-methodological-challenges">Key Methodological Challenges</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>One transaction = <strong>one consumer payment for a digital game purchase,
+DLC/expansion purchase, or subscription renewal event</strong>.</p>
+<p>Counted at: <strong>the payment event</strong> (consumer-to-platform).
+- A $69.99 game purchase = 1 transaction
+- A monthly Game Pass renewal = 1 transaction
+- A $14.99 DLC pack = 1 transaction</p>
+<p>Excluded: <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">in-game microtransactions</a> (gaming-microtx capsule), physical
+game sales, free-to-play downloads, hardware purchases, game streaming
+infrastructure costs.</p>
+<hr/>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-revenue-average-selling-price-subscriptions">Method A: Revenue / Average Selling Price + Subscriptions</h3>
+<p>Residual revenue ($60.2B = total gaming $182.7B minus microtx $114B minus
+physical $8.5B) decomposed into three transaction types:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Revenue ($B)</th>
+<th>ASP/ATV ($)</th>
+<th>Transactions (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base game purchases</td>
+<td>40.0</td>
+<td>~30 (wgt'd)</td>
+<td>1.33</td>
+</tr>
+<tr>
+<td>DLC/expansions</td>
+<td>12.0</td>
+<td>~15</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>Subscriptions</td>
+<td>8.2</td>
+<td>~10.8/event</td>
+<td>0.76</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>60.2</strong></td>
+<td></td>
+<td><strong>2.89</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="method-b-platform-specific-validation">Method B: Platform-Specific Validation</h3>
+<ul>
+<li>Epic Games Store: $950M third-party sales / $30 ASP = ~32M (vs est. 37M)</li>
+<li>PS5 sell-through: ~15M units x 5-8 games = 75-120M (vs est. 222M incl. PS4)</li>
+<li>SteamDB: 132M MAU x 15% monthly buyers x 1.3 games = ~308M (vs est. 296M)</li>
+</ul>
+<h3 id="method-c-subscription-renewals-cross-check">Method C: Subscription Renewals Cross-Check</h3>
+<p>~140M subscribers x 5.4 avg annual payments = ~757M renewal transactions.
+Cross-checked against reported subscriber counts (PS Plus 51.2M, Game Pass
+35M, NSO 38M, EA Play 13M, Ubisoft+ 3M).</p>
+<pre><code>+---------------------------------------------------+
+|              RAW ESTIMATES                          |
+|                                                     |
+|  Method A           Method B           Method C     |
+|  [Revenue / ASP]    [Platform Checks]  [Sub Counts] |
+|  +------------+     +------------+     +----------+ |
+|  | 2.89B      |     | Platform   |     | 757M sub | |
+|  | txns/year  |     | samples    |     | renewals | |
+|  |            |     | consistent |     | (26% of  | |
+|  |            |     | with A     |     | total)   | |
+|  +-----+------+     +-----+------+     +----+-----+ |
+|        |                  |                  |       |
+|        +------------------+------------------+       |
+|                           v                          |
+|              +------------------------+              |
+|              |    RECONCILIATION      |              |
+|              | Platform micro-samples |              |
+|              | validate top-down est. |              |
+|              | ASP uncertainty is     |              |
+|              | wider than microtx ATV |              |
+|              | ($5 mobile to $70 AAA) |              |
+|              +----------+-------------+              |
+|                         v                            |
+|              +------------------------+              |
+|              |   FINAL ESTIMATE       |              |
+|              |   2.89B +/- 0.8B       |              |
+|              |   ~92 TPS (calendar)   |              |
+|              |   Confidence: 56/100   |              |
+|              +------------------------+              |
++---------------------------------------------------+
+</code></pre>
+<hr/>
+<h2 id="revenue-to-transaction-count-derivation">Revenue-to-Transaction-Count Derivation</h2>
+<p>Like <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a>, this category requires a revenue-to-count
+conversion. The key difference is that game sales involve three distinct
+transaction populations with different price distributions:</p>
+<pre><code>REVENUE ($60.2B)
+  |
+  +---&gt; Base Game Purchases ($40B)
+  |     |
+  |     +-- Platform-weighted ASP:
+  |     |   PlayStation Store: $45  (222M txns)
+  |     |   Steam:            $25  (296M txns)  &lt;-- discount/indie heavy
+  |     |   Xbox Store:       $45  (158M txns)
+  |     |   Nintendo eShop:   $35  (123M txns)
+  |     |   Mobile premium:    $5  (500M txns)  &lt;-- high count, low value
+  |     |   Epic/Other:       $28  (112M txns)
+  |     |
+  |     +-- Blended ASP: ~$30
+  |         $40B / $30 = 1.33B transactions
+  |
+  +---&gt; DLC &amp; Expansions ($12B)
+  |     |
+  |     +-- Avg DLC price: ~$15
+  |         $12B / $15 = 0.80B transactions
+  |
+  +---&gt; Subscription Renewals ($8.2B)
+        |
+        +-- ~140M subscribers
+        +-- Monthly/annual mix varies by service:
+        |   PS Plus: 70% annual, 30% monthly = 5.4 events/yr avg
+        |   Game Pass: 60% monthly, 40% annual = 8.8 events/yr avg
+        |   NSO: 80% annual = 4 events/yr avg (family plans)
+        +-- Blended: ~5.4 payments/subscriber/year
+            140M x 5.4 = 757M transactions
+</code></pre>
+<h3 id="why-asp-varies-more-than-atv">Why ASP Varies More Than ATV</h3>
+<p>Game sales ASP spans a 14x range ($5 mobile to $70 AAA), compared to
+microtransaction ATV's 12x range ($0.99 to $12). The driver is platform
+mix: mobile premium games ($5 avg) contribute high transaction count but
+low revenue, while console AAA ($60-70) contributes high revenue but
+low count. Steam's aggressive discounting (50-90% off during sales)
+creates seasonal ASP volatility not captured in annual averages.</p>
+<hr/>
+<h2 id="reconciliation">Reconciliation</h2>
+<p>Method A and Method B micro-samples agree within 10-20% for each
+platform. The subscription component (Method C) is the most reliable
+sub-estimate because subscriber counts are published by Sony, Microsoft,
+and Nintendo. The game purchase component carries more uncertainty due
+to ASP variation.</p>
+<hr/>
+<h2 id="key-methodological-challenges">Key Methodological Challenges</h2>
+<ul>
+<li><strong>DLC/microtransaction boundary is fuzzy</strong>: A $4.99 skin pack could
+  classify as either. We use: single content drops = DLC; consumable
+  or currency purchases = microtransactions</li>
+<li><strong>Steam is a private company</strong>: Valve does not report revenue. All
+  Steam figures are industry estimates from SteamSpy/SteamDB</li>
+<li><strong>Subscription bundling</strong>: Game Pass Ultimate bundles Gold + EA Play +
+  cloud gaming. Counted as 1 transaction per renewal despite multiple
+  service components</li>
+<li><strong>Regional pricing</strong>: Turkey, Argentina, <a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a> pricing is 50-80% below
+  US. If 20% of Steam transactions are regional-priced, effective ASP
+  drops and transaction count rises</li>
+<li><strong>Physical-to-digital shift</strong>: Digital now accounts for 84-96% of
+  sales, but the last physical holdouts (collectors, poor-internet
+  regions) may persist for decades</li>
+</ul>
+<hr/>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<p><strong>82% of digital game sales overlap with card/wallet rails.</strong></p>
+<pre><code>Gross game sales + subs        ############################  2.89B
+                               |
+(-) Direct card (30-35%)       ####################          0.94B  -&gt; Consumer Cards
+                               |
+(-) Platform billing/card      #################             0.78B  -&gt; Consumer Cards
+    (25-30%)                   |
+(-) PayPal (10-15%)            ###############               0.36B  -&gt; Digital Wallets
+                               |
+(-) Platform wallet, card-     ##############                0.26B  -&gt; Mixed
+    funded (8-10%)             |
+(-) Bank transfer (3-5%)       #############                 0.12B  -&gt; Bank Transfers
+                               |
+Remaining unique               ============
+(gift cards, carrier billing,  ######                        0.45B  (15.4%)
+ Alipay/WeChat, crypto)
+
+Of 2.89B transactions:
+  - 1.84B (63.6%) settle on card rails
+  - 0.42B (14.5%) flow through digital wallets
+  - 0.11B (3.8%)  flow through bank transfers
+  - 0.45B (15.4%) are truly incremental
+</code></pre>
+<h3 id="combined-gaming-overlap-microtx-sales">Combined Gaming Overlap (Microtx + Sales)</h3>
+<pre><code>Total gaming transactions:     15.17B (12.28B + 2.89B)
+  On card rails:               10.29B (67.8%)
+  On wallet rails:              2.97B (19.6%)
+  On bank transfer rails:       0.52B (3.4%)
+  Truly incremental:            2.77B (18.3%)
+
+Gaming = ~1.3% of global card transaction volume (773B)
+</code></pre>
+<hr/>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<pre><code>Category: Digital Game Sales &amp; Subscriptions (2.89B annual transactions)
+
+Region          Volume    Share   Data Quality
+--------------- -------- ------- ----------------
+US/Canada       ########   30%   Publisher 10-Ks, NPD/Circana
+Europe          ######     22%   Steam, console storefronts
+China           #####      18%   Partially opaque (Tencent, NetEase)
+Japan           ####       12%   Nintendo, Sony Japan, mobile
+Korea           ##          6%   PC-heavy market, well-tracked
+Rest            ###        12%   Sparse
+</code></pre>
+<hr/>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ---------  --------  ----------  -----------
+Newzoo              ████████░  ████████░ ████████░░  █████░░░░░
+Publisher 10-Ks     ████░░░░░  █████████ ██████████  ██████████
+SteamDB/SteamSpy    ████░░░░░  █████████ ██████░░░░  ████████░░
+Sensor Tower        ██████░░░  █████████ ████████░░  ██████░░░░
+Subscription Data   █████████  █████████ ████████░░  ████████░░
+                    ---------  --------  ----------  -----------
+Composite Score:    56/100     88/100    78/100      64/100
+</code></pre>
+<p><strong>Overall confidence: 56/100</strong> -- Higher than microtransactions because
+subscription data is publisher-confirmed. Game purchase counts still
+carry significant ASP uncertainty.</p>
+<hr/>
+<h2 id="revision-history">Revision History</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-03-26</td>
+<td>Initial estimate: 2.89B txns, ~92 TPS</td>
+<td>Baseline</td>
+</tr>
+<tr>
+<td>2026-03-26</td>
+<td>Payment overlap analysis: 82% on card rails</td>
+<td>Overlap mapped</td>
+</tr>
+</tbody>
+</table>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/gaming/gaming-sales/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/gaming/gaming-sales/METHODOLOGY.md">analysis/gaming/gaming-sales/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buy Now Pay Later (BNPL) — Assumptions — Universe of Finance</title>
+<meta name="description" content="Every assumption documented with reasoning. Referenced from calculations and projections. Data Collection Assumptions A1. Provider-Level Data as Primary Source Assumption: Individ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Buy Now Pay Later (BNPL) — Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#data-collection-assumptions">Data Collection Assumptions</a></li><li><a href="#transaction-counting-assumptions">Transaction Counting Assumptions</a></li><li><a href="#overlap-assumptions">Overlap Assumptions</a></li><li><a href="#projection-assumptions">Projection Assumptions</a></li></ul></div><blockquote>
+<p>Every assumption documented with reasoning. Referenced from calculations and projections.</p>
+</blockquote>
+<hr/>
+<h2 id="data-collection-assumptions">Data Collection Assumptions</h2>
+<h3 id="a1-provider-level-data-as-primary-source">A1. Provider-Level Data as Primary Source</h3>
+<p><strong>Assumption:</strong> Individual <a class="xref" href="/universe-of-finance/reports/payments/bnpl/REPORT.html">BNPL</a> provider disclosures (SEC filings, investor presentations) are the most reliable data source for this category.
+<strong>Reasoning:</strong> Unlike cards (Nilson) or <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a> (central banks), there is no industry-level aggregator for BNPL. The top 5 Western providers are publicly traded and disclose GMV, active users, and transaction metrics.
+<strong>Risk:</strong> Provider metrics are not standardized — "transaction" can mean purchase event or installment event depending on the provider. We assume Klarna's "2.5M transactions/day" is at the purchase level based on context.</p>
+<h3 id="a2-china-bnpl-estimation">A2. China BNPL Estimation</h3>
+<p><strong>Assumption:</strong> Ant Group's Huabei and JD's Baitiao collectively process ~2B BNPL-equivalent purchases annually with ~$150B GMV.
+<strong>Reasoning:</strong> Ant Group's "credit tech" revenue (~$4.5B) at 0.5-1% implied take rate suggests $450-900B total credit facilitation. Huabei is a revolving credit line, not strictly BNPL, so we discount to ~$150B for BNPL-equivalent installment purchases.
+<strong>Risk:</strong> This could be wildly wrong in either direction. <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s BNPL market operates differently from Western models and disclosure is minimal. Range: 1-4B purchases.</p>
+<h3 id="a3-other-provider-estimation">A3. "Other" Provider Estimation</h3>
+<p><strong>Assumption:</strong> The long tail of 50+ regional BNPL providers collectively represents ~$74B GMV and ~1.1B purchases.
+<strong>Reasoning:</strong> Estimated at ~16% of total GMV, consistent with market concentration patterns in payments (top 5-6 players typically capture 80-85% of a category).
+<strong>Risk:</strong> Could be higher if <a class="xref" href="/universe-of-finance/reports/deep-dives/middle-east/REPORT.html">Middle East</a> (Tabby, Tamara) and Southeast Asia (Atome, hoolah, Kredivo) are growing faster than estimated.</p>
+<hr/>
+<h2 id="transaction-counting-assumptions">Transaction Counting Assumptions</h2>
+<h3 id="a4-installment-multiplier-of-36x">A4. Installment Multiplier of 3.6x</h3>
+<p><strong>Assumption:</strong> Each BNPL purchase generates an average of 3.6 payment events (including the initial payment).
+<strong>Reasoning:</strong> Weighted average across models: 60% "Pay in 4" (4.0x), 15% "Pay in 3" (3.0x), 15% longer-term (avg 8x), 10% pay-after-delivery (1.0x). Including ~5% for payment failures and retries.
+<strong>Risk:</strong> The model mix is uncertain. If "Pay in 4" has higher share (70%+), the multiplier is closer to 3.8x. If longer-term installment plans grow faster, it could exceed 4.0x.</p>
+<h3 id="a5-each-installment-one-transaction">A5. Each Installment = One Transaction</h3>
+<p><strong>Assumption:</strong> Every installment debit from a consumer's bank account or card counts as one transaction, regardless of whether the original purchase was one event.
+<strong>Reasoning:</strong> Each installment generates a real payment event on underlying rails — a card charge, an ACH debit, or a direct debit. These are real infrastructure transactions.
+<strong>Risk:</strong> Some BNPL providers batch installment processing (multiple installments from multiple customers in one batch). At the infrastructure level, this could mean fewer actual payment messages than individual installments. Impact: likely &lt;10% overcounting.</p>
+<h3 id="a6-merchant-payment-timing">A6. Merchant Payment Timing</h3>
+<p><strong>Assumption:</strong> The merchant receives a single payment at or near purchase time (funded by the BNPL provider), not in installments.
+<strong>Reasoning:</strong> This is the standard BNPL model — the provider pays the merchant upfront (minus discount fee) and collects installments from the consumer. The merchant payment is not counted separately to avoid triple-counting.
+<strong>Risk:</strong> Some models (pay-after-delivery) may delay merchant payment until consumer confirms receipt.</p>
+<hr/>
+<h2 id="overlap-assumptions">Overlap Assumptions</h2>
+<h3 id="a7-100-infrastructure-overlap">A7. 100% Infrastructure Overlap</h3>
+<p><strong>Assumption:</strong> Every BNPL installment payment flows through an existing payment rail (card or bank transfer).
+<strong>Reasoning:</strong> BNPL providers do not operate their own payment infrastructure. Klarna debits consumer bank accounts (via ACH/SEPA DD) or charges cards on file. Affirm offers virtual card numbers processed on Visa/MC rails.
+<strong>Risk:</strong> None — this is definitionally true. BNPL is an application-layer product, not a payment rail.</p>
+<h3 id="a8-net-incremental-transactions-26x">A8. Net Incremental Transactions = 2.6x</h3>
+<p><strong>Assumption:</strong> Each BNPL purchase creates 2.6 net new transactions on underlying rails compared to the counterfactual (paying in full with one transaction).
+<strong>Reasoning:</strong> Average installments (3.6) minus the one transaction that would have occurred anyway = 2.6 net new.
+<strong>Risk:</strong> The counterfactual assumes the consumer would have purchased the item with a single payment. In reality, some BNPL purchases would not have occurred at all without BNPL (incremental demand). This means the "net new" could be higher (all 3.6 installments are truly incremental) for some fraction of purchases.</p>
+<hr/>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<h3 id="a9-baseline-growth-trajectory">A9. Baseline Growth Trajectory</h3>
+<p><strong>Assumption:</strong> BNPL purchase count grows at 12-15% CAGR (2025-2030), slowing to 9-10% (2030-2035).
+<strong>Reasoning:</strong> Category is transitioning from hyper-growth to mainstream. Comparison: <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a> went from 40%+ growth (2015-2019) to 15-20% (2020-2024) as they matured.
+<strong>Risk:</strong> Regulatory risk (EU CCD implementation 2026, CFPB rules) could slow growth below baseline. Conversely, in-store BNPL adoption could sustain higher growth.</p>
+<h3 id="a10-conservative-regulatory-impact">A10. Conservative Regulatory Impact</h3>
+<p><strong>Assumption:</strong> In the conservative scenario, BNPL regulation as full credit products (requiring creditworthiness assessments) reduces growth to 5-8%.
+<strong>Reasoning:</strong> The EU Consumer Credit Directive 2023/2225 (effective 2026) will require BNPL providers to conduct affordability checks. CFPB interpretive rule classifies BNPL as <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">credit cards</a>. These add friction to the checkout flow.
+<strong>Risk:</strong> Regulation may be less impactful than feared — providers have adapted to UK FCA regulation with minimal growth impact.</p>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/bnpl/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/bnpl/workings/assumptions.md">analysis/payments/bnpl/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

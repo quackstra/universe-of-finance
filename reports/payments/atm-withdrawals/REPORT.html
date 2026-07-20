@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM Withdrawals — Universe of Finance</title>
+<meta name="description" content="Part of the Universe of Finance project. Executive Summary Global ATM cash withdrawals totaled an estimated ~49.1 billion transactions in 2024, equivalent to an average of ~1,557">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Atm Withdrawals</div>
+  <div class="report-head"><span class="kind">Report</span><h1>ATM Withdrawals</h1></div>
+  <div class="chips"><div class="chip"><div class="k">TPS</div><div class="v blue">1,557</div></div><div class="chip"><div class="k">Confidence</div><div class="v amber">52</div></div><div class="chip"><div class="k">Opacity</div><div class="v amber">56</div></div><div class="chip"><div class="k">TPS rank</div><div class="v ">#9/28</div></div></div>
+  <div class="chart-box"><h3>Payments — TPS by category (log scale)</h3><div class="chart-canvas"><canvas id="chart13"></canvas></div></div><script>new Chart(document.getElementById("chart13"),{"type": "bar", "data": {"labels": ["Consumer Cards", "Digital Wallets", "Bank Transfers", "Bill Payments", "E-Commerce", "ATM Withdrawals", "Payroll", "BNPL", "Insurance Premiums", "P2P Transfers", "Remittances"], "datasets": [{"data": [24501, 19660, 15338, 3076, 1823, 1557, 1014, 634, 444, 270, 57], "backgroundColor": ["#334155", "#334155", "#334155", "#334155", "#334155", "#3b82f6", "#334155", "#334155", "#334155", "#334155", "#334155"], "borderRadius": 4, "borderWidth": 0}]}, "options": {"indexAxis": "y", "responsive": true, "maintainAspectRatio": false, "plugins": {"legend": {"display": false}}, "scales": {"x": {"type": "logarithmic", "grid": {"color": "rgba(148,163,184,0.1)"}, "ticks": {"color": "#9ca3af"}}, "y": {"grid": {"display": false}, "ticks": {"color": "#cbd5e1", "font": {"size": 11}}}}}});</script>
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#executive-summary">Executive Summary</a></li><li><a href="#scope">Scope</a></li><li><a href="#current-state">Current State</a></li><li><a href="#historic-trend">Historic Trend</a></li><li><a href="#projections">Projections</a></li><li><a href="#key-findings">Key Findings</a></li><li><a href="#relationship-to-consumer-cards">Relationship to Consumer Cards</a></li><li><a href="#data-quality-limitations">Data Quality & Limitations</a></li><li><a href="#sources">Sources</a></li></ul></div><blockquote>
+<p>Part of the <a href="/universe-of-finance/">Universe of Finance</a> project.</p>
+</blockquote>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>Global ATM cash withdrawals totaled an estimated <strong>~49.1 billion transactions</strong> in 2024, equivalent to an average of <strong>~1,557 TPS</strong>, dispensing approximately <strong>$7.7 trillion</strong> in cash annually. This represents a <strong>declining category</strong> — down from a peak of ~63 billion in 2016-2017, a drop of ~22% over 8 years. The decline is driven by digital payment adoption in developed markets (contactless cards, <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">mobile wallets</a>) and the explosive growth of real-time payment systems (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">UPI</a>, <a class="xref" href="/universe-of-finance/reports/deep-dives/brazil/REPORT.html">PIX</a>) in emerging markets. However, the decline is uneven: developed markets (US, EU, <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a>) are seeing 5-10% annual drops, while <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> and parts of South/Southeast Asia still show growth as ATM networks expand for financial inclusion.</p>
+<p><strong>ATM withdrawals have zero overlap with other payment categories.</strong> They are cash-out events — the ATM transaction converts bank balance to physical cash. The subsequent spending of that cash is untraceable and uncounted in any electronic payment category.</p>
+<h2 id="scope">Scope</h2>
+<p>This analysis covers:
+- <strong>Cash withdrawals at ATMs</strong> (bank-owned and independent deployers)
+- <strong>All card types</strong>: debit, credit, prepaid cards used for cash withdrawal
+- <strong>On-us and off-us transactions</strong>: both own-bank and foreign ATM withdrawals</p>
+<p>Excluded: balance inquiries (~20% of ATM interactions), mini-statements, <a class="xref" href="/universe-of-finance/reports/payments/bill-payments/REPORT.html">bill payments</a> via ATM (counted in bill payments), deposits at ATMs, cardless ATM withdrawals (small but growing).</p>
+<hr/>
+<h2 id="current-state">Current State</h2>
+<h3 id="transaction-volume">Transaction Volume</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Source</th>
+<th>Confidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Average TPS</td>
+<td>~1,557</td>
+<td>Derived from 49.1B annual</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Peak TPS (est.)</td>
+<td>~3,114</td>
+<td>Estimated at 2.0x average (holiday weekends)</td>
+<td>🔴 Low</td>
+</tr>
+<tr>
+<td>Daily volume</td>
+<td>~134.5 million</td>
+<td>Derived from annual total</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual volume (2024)</td>
+<td>~49.1 billion</td>
+<td>BIS/ECB/RBI/ATMIA composite (<a href="/universe-of-finance/reports/payments/atm-withdrawals/workings/calculations.html">calculations</a>)</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Annual value (2024)</td>
+<td>~$7.7 trillion</td>
+<td>Volume × avg withdrawal value</td>
+<td>🟡 Medium</td>
+</tr>
+<tr>
+<td>Avg withdrawal value</td>
+<td>~$157</td>
+<td>Weighted global average (US $198, EU ~$140, India ~$40)</td>
+<td>🟡 Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="regional-breakdown-2024">Regional Breakdown (2024)</h3>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>ATMs (thousands)</th>
+<th>Est. Withdrawals (B)</th>
+<th>YoY Change</th>
+<th>Share</th>
+<th>Avg Withdrawal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Asia-Pacific</strong></td>
+<td>~1,500</td>
+<td>~22.0</td>
+<td>-4%</td>
+<td>44.8%</td>
+<td>~$80</td>
+</tr>
+<tr>
+<td>— China</td>
+<td>~700</td>
+<td>~12.0</td>
+<td>-8%</td>
+<td>24.4%</td>
+<td>~$90</td>
+</tr>
+<tr>
+<td>— India</td>
+<td>~215</td>
+<td>~6.0</td>
+<td>-5%</td>
+<td>12.2%</td>
+<td>~$40</td>
+</tr>
+<tr>
+<td>— Japan</td>
+<td>~180</td>
+<td>~2.5</td>
+<td>-3%</td>
+<td>5.1%</td>
+<td>~$200</td>
+</tr>
+<tr>
+<td>— Rest of APAC</td>
+<td>~405</td>
+<td>~1.5</td>
+<td>+3%</td>
+<td>3.1%</td>
+<td>~$60</td>
+</tr>
+<tr>
+<td><strong>Europe</strong></td>
+<td>~400</td>
+<td>~10.0</td>
+<td>-4%</td>
+<td>20.4%</td>
+<td>~$140</td>
+</tr>
+<tr>
+<td>— EU-27</td>
+<td>~266</td>
+<td>~7.5</td>
+<td>-4%</td>
+<td>15.3%</td>
+<td>~$145</td>
+</tr>
+<tr>
+<td>— UK</td>
+<td>~50</td>
+<td>~1.5</td>
+<td>-6%</td>
+<td>3.1%</td>
+<td>~$120</td>
+</tr>
+<tr>
+<td>— Rest of Europe</td>
+<td>~84</td>
+<td>~1.0</td>
+<td>-2%</td>
+<td>2.0%</td>
+<td>~$100</td>
+</tr>
+<tr>
+<td><strong>North America</strong></td>
+<td>~500</td>
+<td>~8.0</td>
+<td>-6%</td>
+<td>16.3%</td>
+<td>~$198</td>
+</tr>
+<tr>
+<td>— US</td>
+<td>~470</td>
+<td>~7.5</td>
+<td>-6%</td>
+<td>15.3%</td>
+<td>~$198</td>
+</tr>
+<tr>
+<td>— Canada</td>
+<td>~30</td>
+<td>~0.5</td>
+<td>-5%</td>
+<td>1.0%</td>
+<td>~$150</td>
+</tr>
+<tr>
+<td><strong>Latin America</strong></td>
+<td>~350</td>
+<td>~5.0</td>
+<td>-2%</td>
+<td>10.2%</td>
+<td>~$80</td>
+</tr>
+<tr>
+<td><strong>Middle East &amp; Africa</strong></td>
+<td>~250</td>
+<td>~3.1</td>
+<td>+5%</td>
+<td>6.3%</td>
+<td>~$60</td>
+</tr>
+<tr>
+<td><strong>Other</strong></td>
+<td>~120</td>
+<td>~1.0</td>
+<td>0%</td>
+<td>2.0%</td>
+<td>~$80</td>
+</tr>
+<tr>
+<td><strong>GLOBAL TOTAL</strong></td>
+<td><strong>~3,120</strong></td>
+<td><strong>~49.1</strong></td>
+<td><strong>-3%</strong></td>
+<td><strong>100%</strong></td>
+<td><strong>~$157</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="key-regional-dynamics">Key Regional Dynamics</h3>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a>'s collapse</strong>: China had 1.1M ATMs in 2018, now ~700K. ATM withdrawals down ~40% since 2018 as Alipay and WeChat Pay dominate. PBOC data shows continued acceleration of decline.</p>
+<p><strong><a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>'s paradox</strong>: Despite UPI processing 172B transactions, ATM withdrawals remain high (~6B/year) and monthly cash withdrawal values still grew 5.5% in FY2024. Cash demand is sticky for rural and small-ticket transactions. However, transaction <em>counts</em> are declining — people make fewer but larger withdrawals.</p>
+<p><strong>Africa's growth</strong>: The only region with growing ATM deployment. Financial inclusion initiatives (Nigeria NIP, Egypt digital banking) are driving ATM expansion even as mobile money grows alongside.</p>
+<p><strong>US decline</strong>: Federal Reserve data shows US ATM withdrawals fell from 5.1B (2018) to 3.7B (2021) — a 10.1% annual decline rate. Extrapolating at a moderated 6% annual decline gives ~2.5B for 2024. However, total US ATM transactions (including balance inquiries and non-withdrawal) remain higher.</p>
+<hr/>
+<h2 id="historic-trend">Historic Trend</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Annual Withdrawals (B)</th>
+<th>ATMs Worldwide (M)</th>
+<th>Avg TPS</th>
+<th>Txns/ATM/Year</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015</td>
+<td>~62</td>
+<td>3.40</td>
+<td>1,965</td>
+<td>18,235</td>
+<td>Near-peak; pre-digital wallet era</td>
+</tr>
+<tr>
+<td>2016</td>
+<td>~63</td>
+<td>3.40</td>
+<td>1,997</td>
+<td>18,529</td>
+<td>Peak year; ATMIA reported 6% withdrawal growth</td>
+</tr>
+<tr>
+<td>2017</td>
+<td>~62</td>
+<td>3.37</td>
+<td>1,965</td>
+<td>18,398</td>
+<td>Plateau; China ATMs peak at 1.1M</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>~60</td>
+<td>3.30</td>
+<td>1,902</td>
+<td>18,182</td>
+<td>Decline begins; India demonetization aftershock</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>~57</td>
+<td>3.25</td>
+<td>1,807</td>
+<td>17,538</td>
+<td>Steady decline; contactless payments grow</td>
+</tr>
+<tr>
+<td>2020</td>
+<td>~42</td>
+<td>3.20</td>
+<td>1,331</td>
+<td>13,125</td>
+<td>COVID devastation — lockdowns crushed ATM usage</td>
+</tr>
+<tr>
+<td>2021</td>
+<td>~46</td>
+<td>3.15</td>
+<td>1,458</td>
+<td>14,603</td>
+<td>Partial recovery</td>
+</tr>
+<tr>
+<td>2022</td>
+<td>~50</td>
+<td>3.10</td>
+<td>1,585</td>
+<td>16,129</td>
+<td>Near-recovery in emerging markets</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>~51</td>
+<td>3.24</td>
+<td>1,617</td>
+<td>15,741</td>
+<td>Post-COVID plateau; value per withdrawal rising</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>~49.1</td>
+<td>3.12</td>
+<td>1,557</td>
+<td>15,737</td>
+<td>Resume decline; -3% YoY</td>
+</tr>
+</tbody>
+</table>
+<h3 id="growth-rate-analysis">Growth Rate Analysis</h3>
+<pre><code>Peak to current: (49.1/63)^(1/8) - 1 = -3.0% CAGR (2016-2024)
+Pre-COVID trend: (57/63)^(1/3) - 1 = -3.3% CAGR (2016-2019)
+COVID-adjusted: (49.1/60)^(1/6) - 1 = -3.3% CAGR (2018-2024)
+</code></pre>
+<p>The pre-COVID trend and post-COVID reality have converged at roughly <strong>-3% to -3.5% CAGR</strong>. COVID did not permanently alter the trajectory — it accelerated the decline temporarily, but the recovery brought volumes back to the pre-existing decline trendline.</p>
+<hr/>
+<h2 id="projections">Projections</h2>
+<h3 id="baseline-4-cagr-steady-digital-displacement">Baseline (-4% CAGR — Steady Digital Displacement)</h3>
+<p>Cash usage continues declining at current rates. ATM networks consolidate in developed markets, grow modestly in Africa/South Asia.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Volume (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>1,434</td>
+<td>45.3</td>
+</tr>
+<tr>
+<td>2028</td>
+<td>1,322</td>
+<td>41.7</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>1,218</td>
+<td>38.4</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>994</td>
+<td>31.4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="slow-decline-2-cagr-cash-resilience">Slow Decline (-2% CAGR — Cash Resilience)</h3>
+<p>Cash proves stickier than expected. Privacy concerns, unbanked populations, and rural demand sustain ATM usage. Emerging market growth partially offsets developed market decline.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Volume (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>1,507</td>
+<td>47.6</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>1,411</td>
+<td>44.5</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>1,300</td>
+<td>41.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="accelerated-decline-75-cagr-digital-cash-replacement">Accelerated Decline (-7.5% CAGR — Digital Cash Replacement)</h3>
+<p>CBDCs launch in major markets, UPI/PIX expand to 20+ countries, contactless payment ubiquity reaches rural areas. ATM withdrawal volume halves by 2035.</p>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Projected TPS</th>
+<th>Annual Volume (B)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026</td>
+<td>1,335</td>
+<td>42.1</td>
+</tr>
+<tr>
+<td>2030</td>
+<td>980</td>
+<td>30.9</td>
+</tr>
+<tr>
+<td>2035</td>
+<td>666</td>
+<td>21.0</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="key-findings">Key Findings</h2>
+<ol>
+<li>
+<p><strong>ATM withdrawals are a declining but still massive category.</strong> At ~49B annual transactions and ~$7.7T in cash dispensed, ATMs remain a critical cash-access infrastructure even as digital payments surge.</p>
+</li>
+<li>
+<p><strong>Zero overlap with other payment categories.</strong> This is one of the cleanest categories in the taxonomy — an ATM withdrawal is a cash-out event, not a payment. It does not appear in card purchase statistics, wallet transactions, or bank transfer counts.</p>
+</li>
+<li>
+<p><strong>China is driving the global decline.</strong> China's ATM withdrawal volume has fallen ~40% since 2018, accounting for more than half of the global decline. The Alipay/WeChat Pay ecosystem has effectively replaced cash for urban transactions.</p>
+</li>
+<li>
+<p><strong>Value per withdrawal is rising as volume falls.</strong> Average withdrawal amounts are increasing 3-5% annually as consumers make fewer but larger ATM visits. This is consistent across all regions and suggests ATMs are shifting from daily convenience to periodic cash-stocking behavior.</p>
+</li>
+<li>
+<p><strong>The peak was 2016-2017 at ~63 billion withdrawals.</strong> The industry will likely never return to peak volumes. Even in the most optimistic (slow-decline) scenario, 2035 volume (41B) is 35% below peak.</p>
+</li>
+<li>
+<p><strong>Africa is the last growth frontier.</strong> Financial inclusion programs in Egypt, Nigeria, and East Africa are driving ATM deployment growth. Africa may not peak until 2028-2030 as mobile money and ATMs coexist rather than substitute.</p>
+</li>
+<li>
+<p><strong>ATM infrastructure costs are rising per transaction.</strong> With declining volumes but fixed maintenance costs, the per-transaction cost of ATM networks is increasing. This creates a potential tipping point where networks become uneconomic in low-usage areas, accelerating closures and further reducing access.</p>
+</li>
+</ol>
+<hr/>
+<h2 id="relationship-to-consumer-cards">Relationship to Consumer Cards</h2>
+<p>ATM withdrawals use card rails for <strong>authentication</strong> (card + PIN) but are categorically different from card <strong>payments</strong>:</p>
+<ul>
+<li><strong>Card network statistics</strong>: Visa and Mastercard include ATM cash advances in total volume by <em>value</em> (~$7.4T of Nilson's $51.9T total) but typically report purchase transaction <em>counts</em> separately from cash withdrawal counts</li>
+<li><strong><a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">Consumer cards</a> capsule</strong>: The 772.73B figure in our consumer cards capsule includes "purchase + cash" in value but the transaction count is purchase-focused. ATM withdrawals add ~49B to the broader "card-initiated transaction" count</li>
+<li><strong>De-duplication</strong>: No de-duplication needed. ATM withdrawals and card purchases are distinct transaction types on the same network infrastructure</li>
+</ul>
+<hr/>
+<h2 id="data-quality-limitations">Data Quality &amp; Limitations</h2>
+<ul>
+<li><strong>BIS Red Book coverage</strong>: BIS CPMI statistics cover ~25 major economies. ATM data for smaller developing markets is estimated.</li>
+<li><strong>ECB data is strong for EU</strong>: ECB publishes half-yearly ATM statistics with transaction counts. H1 2024 and H2 2024 data both available.</li>
+<li><strong>US data is stale</strong>: The Federal Reserve Payments Study is triennial — latest detailed ATM data is 2021 (3.7B withdrawals). 2024 is extrapolated.</li>
+<li><strong>India RBI data is monthly</strong>: RBI publishes monthly ATM transaction counts (e.g., 48.83 crore withdrawals in January 2025). However, converting crore to annual totals requires 12-month aggregation.</li>
+<li><strong>China PBOC aggregation</strong>: PBOC reports total "consumer payment transactions" but does not cleanly separate ATM withdrawals from other card transactions.</li>
+<li><strong>Withdrawal vs. total ATM transactions</strong>: The 86.7B "global ATM transactions" figure includes balance inquiries, mini-statements, and deposits. Cash withdrawals are ~57-60% of total ATM interactions, giving the ~49.1B figure used here.</li>
+<li><strong>Independent ATM deployers</strong>: Bank-owned ATM data is well-tracked; independent deployer (IAD) transaction data is murkier. IADs represent ~40% of US ATMs.</li>
+</ul>
+<hr/>
+<h2 id="sources">Sources</h2>
+<ol>
+<li><a href="https://data.bis.org/topics/CPMI_CT">BIS — CPMI Retail Payment Statistics</a></li>
+<li><a href="https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2024h2~5ada0087d2.en.html">ECB — Payments Statistics: H2 2024</a></li>
+<li><a href="https://www.ecb.europa.eu/press/stats/paysec/html/ecb.pis2024h1~5263055ced.en.html">ECB — Payments Statistics: H1 2024</a></li>
+<li><a href="https://rbi.org.in/scripts/atmview.aspx">RBI — Bankwise ATM/POS/Card Statistics</a></li>
+<li><a href="https://www.federalreserve.gov/paymentsystems/2023-April-The-Federal-Reserve-Payments-Study.htm">Federal Reserve — Payments Study 2022 Triennial</a></li>
+<li><a href="https://www.atmia.com/">ATMIA — Industry Reports</a></li>
+<li><a href="https://datos-insights.com/blog/atm-industry-trends-a-z-guide-global-market-evolution/">Datos Insights — ATM Industry Trends A-Z Guide</a></li>
+<li><a href="https://www.atmmarketplace.com/news/atm-cash-withdrawal-volume-grows-6-percent-in-2016/">ATM Marketplace — Cash Withdrawal Volume Statistics</a></li>
+<li><a href="https://www.bis.org/statistics/payment_stats/commentary2402.pdf">BIS — Tap, Click and Pay (Feb 2024)</a></li>
+<li><a href="https://www.sci-tech-today.com/stats/atm-statistics-updated/">Sci-Tech Today — ATM Statistics 2025</a></li>
+<li><a href="https://data.worldbank.org/indicator/FB.ATM.TOTL.P5">World Bank — ATMs per 100,000 Adults</a></li>
+</ol>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/atm-withdrawals/METHODOLOGY.html">Methodology</a><a href="/universe-of-finance/reports/payments/atm-withdrawals/workings/assumptions.html">⚙ assumptions</a><a href="/universe-of-finance/reports/payments/atm-withdrawals/workings/calculations.html">⚙ calculations</a><a href="/universe-of-finance/reports/payments/atm-withdrawals/workings/source_notes.html">⚙ source notes</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/atm-withdrawals/REPORT.md">analysis/payments/atm-withdrawals/REPORT.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

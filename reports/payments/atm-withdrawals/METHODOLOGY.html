@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATM Withdrawals — Methodology — Universe of Finance</title>
+<meta name="description" content="Transaction Definition A 'transaction' in this category is a completed cash withdrawal at an ATM. Specifically: Counting point: Successful cash dispensation — the ATM releases cash">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Payments<span class="sep">/</span>Atm Withdrawals</div>
+  <div class="report-head"><span class="kind">Methodology</span><h1>ATM Withdrawals — Methodology</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#triangulation-approach">Triangulation Approach</a></li><li><a href="#reconciliation">Reconciliation</a></li><li><a href="#overlap-analysis">Overlap Analysis</a></li><li><a href="#coverage-assessment">Coverage Assessment</a></li><li><a href="#confidence-assessment">Confidence Assessment</a></li><li><a href="#revision-history">Revision History</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<p>A "transaction" in this category is a <strong>completed cash withdrawal at an ATM</strong>. Specifically:</p>
+<ul>
+<li><strong>Counting point:</strong> Successful cash dispensation — the ATM releases cash to the cardholder. Failed/declined transactions are excluded</li>
+<li><strong>Unit:</strong> One cash withdrawal = one transaction. A consumer withdrawing $200 from an ATM = one transaction, regardless of denomination breakdown</li>
+<li><strong>Scope:</strong> All ATM cash withdrawals globally — bank-owned and independent deployer (IAD) ATMs, all card types (debit, credit, prepaid), on-us and off-us transactions</li>
+<li><strong>Exclusions:</strong> Balance inquiries (~20% of ATM interactions), mini-statements, <a class="xref" href="/universe-of-finance/reports/payments/bill-payments/REPORT.html">bill payments</a> via ATM, deposits at ATMs, cardless <a class="xref" href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">ATM withdrawals</a> (small but growing), cash advances at bank counters</li>
+</ul>
+<h2 id="triangulation-approach">Triangulation Approach</h2>
+<h3 id="method-a-bisecbrbi-composite-atmia-adjustment-primary">Method A: BIS/ECB/RBI Composite + ATMIA Adjustment (Primary)</h3>
+<ul>
+<li><strong>Source:</strong> BIS CPMI Red Book (25 major economies), ECB Payment Statistics H1+H2 2024 (EU-27: 7.5B), RBI Bankwise ATM Statistics (<a class="xref" href="/universe-of-finance/reports/deep-dives/india/REPORT.html">India</a>: ~6B), Fed Payments Study 2021 (US: 3.7B, extrapolated to 2024: ~2.5B), ATMIA/Datos Insights industry estimates</li>
+<li><strong>Value:</strong> ~49.1 billion withdrawals</li>
+<li><strong>Derivation:</strong> Total global ATM transactions ~86.7B (all types) × 57% cash withdrawal share = ~49.4B. Cross-checked against BIS+ECB+RBI+Fed country-level sum + rest-of-world estimate = ~49.1B</li>
+<li><strong>Strengths:</strong> BIS and ECB data is central-bank-quality; RBI publishes monthly; ATMIA is the industry association; multiple independent inputs converge</li>
+<li><strong>Weaknesses:</strong> US data is extrapolated from 2021 Fed study (triennial); <a class="xref" href="/universe-of-finance/reports/deep-dives/china/REPORT.html">China</a> ATM data is PBOC aggregate; withdrawal share of total ATM transactions (57%) is estimated</li>
+</ul>
+<h3 id="method-b-atm-count-x-transactions-per-atm">Method B: ATM Count x Transactions-Per-ATM</h3>
+<ul>
+<li><strong>Source:</strong> 3.12 million ATMs worldwide (RBR/Datos Insights), ~15,700 withdrawals per ATM per year (industry average)</li>
+<li><strong>Value:</strong> 3.12M × 15,700 = ~49.0B withdrawals</li>
+<li><strong>Strengths:</strong> ATM fleet count is well-tracked by industry researchers; transactions-per-ATM is a standard industry metric</li>
+<li><strong>Weaknesses:</strong> Transactions-per-ATM varies enormously (India ~28,000, US ~5,300, <a class="xref" href="/universe-of-finance/reports/deep-dives/japan/REPORT.html">Japan</a> ~14,000); using a single global average introduces error; ATM fleet data may lag closures</li>
+</ul>
+<h3 id="method-c-peak-year-decline-trend">Method C: Peak-Year Decline Trend</h3>
+<ul>
+<li><strong>Source:</strong> 2016 peak of ~63B (ATMIA), observed -3.0% CAGR (2016-2024)</li>
+<li><strong>Value:</strong> 63B × (1-0.03)^8 = ~49.3B</li>
+<li><strong>Strengths:</strong> Simple, independent validation; trend is consistent pre- and post-COVID</li>
+<li><strong>Weaknesses:</strong> Assumes constant decline rate — actual rate varies by year and region; COVID created a discontinuity (2020: -26%) that partially recovered</li>
+</ul>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    RAW ESTIMATES                          │
+│                                                          │
+│  Method A             Method B            Method C       │
+│  [BIS/ECB/RBI]        [ATMs × Txn/ATM]   [Peak Decline] │
+│  ┌──────────────┐    ┌──────────────┐    ┌────────────┐ │
+│  │ 49.1B        │    │ ~49.0B       │    │ ~49.3B     │ │
+│  │ (central bank│    │ (3.12M ATMs  │    │ (63B peak  │ │
+│  │  composite)  │    │  × 15,700/yr)│    │  × -3%     │ │
+│  │              │    │              │    │  CAGR)     │ │
+│  └──────┬───────┘    └──────┬───────┘    └─────┬──────┘ │
+│         │                   │                  │         │
+│         └───────────────────┼──────────────────┘         │
+│                             ▼                            │
+│                ┌────────────────────────┐                │
+│                │    RECONCILIATION      │                │
+│                │ All three methods      │                │
+│                │ converge at 49.0-49.3B │                │
+│                │ Tight cluster: &lt;0.6%   │                │
+│                │ spread                 │                │
+│                └───────────┬────────────┘                │
+│                            ▼                             │
+│                ┌────────────────────────┐                │
+│                │   FINAL ESTIMATE       │                │
+│                │   49.1B withdrawals    │                │
+│                │   1,557 TPS            │                │
+│                │   Confidence: 52/100   │                │
+│                └────────────────────────┘                │
+└─────────────────────────────────────────────────────────┘
+</code></pre>
+<h2 id="reconciliation">Reconciliation</h2>
+<p><strong>BIS/ECB/RBI composite (Method A) anchors the final estimate</strong> because:
+1. It aggregates the highest-quality national data sources (central banks + industry body)
+2. ATM count × transactions-per-ATM (Method B) independently converges at ~49.0B
+3. Peak-year decline trend (Method C) produces ~49.3B from a completely independent approach
+4. All three methods cluster within 0.6% — unusual convergence for this project</p>
+<p><strong>Key strength of this category:</strong> Three fully independent methods produce nearly identical estimates. The convergence gives higher confidence in the number than the 52/100 score suggests — confidence is constrained by the stale US data (2021 Fed study) and PBOC opacity, not by methodological disagreement.</p>
+<h2 id="overlap-analysis">Overlap Analysis</h2>
+<pre><code>ATM Withdrawals: 49.1B total
+                │
+                │  ATM withdrawals are CASH-OUT events,
+                │  not payments. They have ZERO overlap
+                │  with any other payment category:
+                │
+                ████████████████████████████████████  49.1B
+                │
+                │  Card authentication:
+                │  ATMs use card + PIN for auth,
+                │  but the withdrawal is NOT counted
+                │  in card purchase statistics.
+                │  Nilson/Visa 772.73B = purchases only.
+                │
+                │  Cash spending:
+                │  The cash withdrawn is spent later
+                │  in untracked cash transactions —
+                │  invisible to all electronic payment
+                │  categories.
+                │
+                ▼
+De-duplicated   ████████████████████████████████████  49.1B
+                ATM Withdrawals is a STANDALONE
+                category — zero deductions needed.
+                Cleanest category in the taxonomy.
+</code></pre>
+<p><strong>ATM Withdrawals has zero overlap</strong> with any other payment category. This is the cleanest category in the entire Universe of Finance taxonomy. An ATM withdrawal is a cash-out event — the card interaction authenticates the user but the transaction is a cash disbursement, not a purchase. Card network statistics (Nilson's 772.73B) explicitly exclude ATM withdrawals from purchase counts.</p>
+<h2 id="coverage-assessment">Coverage Assessment</h2>
+<ul>
+<li><strong>Directly observed:</strong> ECB (EU-27: 7.5B, 15%), RBI (India: ~6B, 12%), Fed (US: extrapolated from 2021, 5%) — total ~32% from central bank/government data</li>
+<li><strong>Semi-observed:</strong> ATMIA/Datos Insights industry estimates (~40%) — reputable but proprietary</li>
+<li><strong>Estimated:</strong> China (24%), <a class="xref" href="/universe-of-finance/reports/deep-dives/africa/REPORT.html">Africa</a> (6%), rest of world (~22%) — derived from ATM fleet + usage rates</li>
+</ul>
+<pre><code>Region          Volume    Share   Data Quality
+─────────────── ──────── ─────── ───────────
+China           ████████ 24.4%   Low (PBOC aggregate)
+Asia-Pac (ex CN)████░░░░ 20.4%   Medium (India RBI monthly)
+Europe          ████░░░░ 20.4%   High (ECB half-yearly)
+North America   ███░░░░░ 16.3%   Medium (Fed 2021 extrapolated)
+Latin America   ██░░░░░░ 10.2%   Low (fragmented data)
+Africa/ME       █░░░░░░░  6.3%   Low (sparse data)
+Other           █░░░░░░░  2.0%   Low
+</code></pre>
+<h2 id="confidence-assessment">Confidence Assessment</h2>
+<pre><code>                    Coverage   Recency   Authority   Granularity
+                    ─────────  ────────  ──────────  ───────────
+BIS Red Book        ███████░░  ██████░░░ ██████████  ██████░░░░
+ECB Payment Stats   ████░░░░░  █████████ ██████████  █████████░
+RBI ATM Stats       ██░░░░░░░  █████████ █████████░  █████████░
+Fed Payments Study  ██░░░░░░░  █████░░░░ ██████████  █████████░
+ATMIA/Datos         █████████  ████████░ ███████░░░  ██████░░░░
+World Bank ATMs     █████████  ████████░ █████████░  ████░░░░░░
+                    ─────────  ────────  ──────────  ───────────
+Composite Score:    65/100     78/100    88/100      62/100
+</code></pre>
+<ul>
+<li><strong>Final <a class="xref" href="/universe-of-finance/reports/CONFIDENCE_SCORECARD.html">confidence score</a>:</strong> 52/100</li>
+<li><strong>Key uncertainty drivers:</strong></li>
+<li>US data is extrapolated from 2021 Fed study (3 years stale)</li>
+<li>China PBOC does not cleanly separate ATM withdrawals from other card transactions</li>
+<li>Withdrawal vs. total ATM transaction share (57%) is estimated</li>
+<li>Independent ATM deployer (IAD) data is murkier than bank-owned ATM data</li>
+</ul>
+<h2 id="revision-history">Revision History</h2>
+<ul>
+<li><strong>Run 5 (2026-03-28):</strong> Initial estimate — 49.1B from BIS/ECB/RBI composite</li>
+<li><strong>Run 6 (2026-03-28):</strong> Methodology documentation formalized with three-method triangulation</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/payments/atm-withdrawals/REPORT.html">← Category report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/payments/atm-withdrawals/METHODOLOGY.md">analysis/payments/atm-withdrawals/METHODOLOGY.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>

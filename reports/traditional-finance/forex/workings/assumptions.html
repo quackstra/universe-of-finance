@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forex — Key Assumptions — Universe of Finance</title>
+<meta name="description" content="Transaction Definition One FX trade = one execution between two counterparties Includes spot, forwards, swaps, and options Does NOT include FX futures (covered in ETD category) Doe">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a><span class="sep">/</span>Traditional Finance<span class="sep">/</span>Workings</div>
+  <div class="report-head"><span class="kind">Workings · calculations</span><h1>Forex — Key Assumptions</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#transaction-definition">Transaction Definition</a></li><li><a href="#value-data">Value Data</a></li><li><a href="#trade-count-estimation">Trade Count Estimation</a></li><li><a href="#market-hours">Market Hours</a></li><li><a href="#double-counting-notes">Double-Counting Notes</a></li><li><a href="#projection-assumptions">Projection Assumptions</a></li></ul></div><h2 id="transaction-definition">Transaction Definition</h2>
+<ul>
+<li>One FX trade = one execution between two counterparties</li>
+<li>Includes spot, forwards, swaps, and options</li>
+<li>Does NOT include FX futures (covered in ETD category)</li>
+<li>Does NOT include retail CFD trades (these are synthetic, not actual FX)</li>
+<li>FX swaps count as ONE transaction (not two legs)</li>
+</ul>
+<h2 id="value-data">Value Data</h2>
+<ul>
+<li>BIS triennial survey is conducted in April every 3 years</li>
+<li>"Net-net" basis adjusts for double-counting between reporting dealers</li>
+<li>2024 turnover interpolated linearly between 2022 ($7.5T) and 2025 ($9.6T) surveys</li>
+</ul>
+<h2 id="trade-count-estimation">Trade Count Estimation</h2>
+<ul>
+<li>CLS settles ~20% of global FX by trade count (500K/day)</li>
+<li>Average institutional ticket size: $3-5 million</li>
+<li>Retail FX CFDs excluded from count (synthetic exposure, internally netted)</li>
+<li>Central estimate: ~3 million trades/day</li>
+</ul>
+<h2 id="market-hours">Market Hours</h2>
+<ul>
+<li>FX markets operate ~23.5 hours/day, 5 days/week</li>
+<li>~252 trading days per year</li>
+<li>TPS calculated over 24h (conservative) since FX is truly global</li>
+</ul>
+<h2 id="double-counting-notes">Double-Counting Notes</h2>
+<ul>
+<li>FX derivatives (swaps, forwards, options) overlap with the <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC Derivatives</a> category</li>
+<li>Per taxonomy rules: counted here as FX, noted as overlap</li>
+<li>FX swaps used for funding purposes may overstate "trading" activity</li>
+<li>CLS settlement involves both legs of each trade but counts as one trade</li>
+</ul>
+<h2 id="projection-assumptions">Projection Assumptions</h2>
+<ul>
+<li>Baseline CAGR (6%) based on 15-year historical trend</li>
+<li>High growth (9%) assumes retail FX expansion + crypto-fiat flows</li>
+<li>Conservative (3%) assumes regulatory tightening and consolidation</li>
+<li>Trade count assumed to grow proportionally with value turnover</li>
+</ul>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/reports/traditional-finance/forex/REPORT.html">← Back to report</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/traditional-finance/forex/workings/assumptions.md">analysis/traditional-finance/forex/workings/assumptions.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>
