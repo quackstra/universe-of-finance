@@ -21,7 +21,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - "*.jsonl"
-  - data/
   - logs/
   - run.sh
   - README.md

@@ -320,6 +320,58 @@ tbody td {
 .conf-mid { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
 .conf-low { background: rgba(239,68,68,0.15); color: var(--accent-red); }
 
+/* ─── Live Layer: ticker strip + data-age badges ─── */
+.live-ticker {
+  width: 100%;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  background: rgba(17,24,39,0.6);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+.live-ticker .lt-inner {
+  max-width: 1280px; margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.lt-items { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lt-label {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); margin-right: 6px; white-space: nowrap;
+}
+.lt-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px; border: 1px solid var(--card-border); border-radius: 8px;
+  background: rgba(10,14,26,0.5); white-space: nowrap;
+}
+.lt-item .lt-name { font-weight: 600; font-size: 0.85rem; }
+.lt-item .lt-tps { font-family: var(--mono); font-weight: 700; color: var(--accent-green); font-size: 0.9rem; }
+.lt-item .lt-unit { font-size: 0.7rem; color: var(--muted); }
+.pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green);
+  box-shadow: 0 0 0 0 rgba(16,185,129,0.7); animation: ltpulse 2s infinite;
+}
+.pulse-dot.amber { background: var(--accent-amber); box-shadow: 0 0 0 0 rgba(245,158,11,0.7); animation: ltpulse-amber 2s infinite; }
+.pulse-dot.red { background: var(--accent-red); animation: none; }
+@keyframes ltpulse {
+  0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+@keyframes ltpulse-amber {
+  0% { box-shadow: 0 0 0 0 rgba(245,158,11,0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(245,158,11,0); }
+  100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+}
+/* Data-age badge: green (fresh) → amber (lagged) → red (very stale / no feed) */
+.age-badge {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+  padding: 1px 7px; border-radius: 4px; white-space: nowrap;
+}
+.age-fresh { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+.age-lagged { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.age-stale { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+.age-none { background: rgba(156,163,175,0.12); color: var(--muted); }
+
 /* ─── MEST Cascade ─── */
 .cascade-container {
   display: flex;
@@ -919,6 +971,14 @@ nav .nav-links a:hover { color: var(--text); }
     </ul>
   </div>
 </nav>
+
+<!-- ═══════ LIVE TICKER (Live Layer, Tier 1) ═══════ -->
+<div class="live-ticker" id="liveTicker" aria-label="Live ledger-verified transaction throughput">
+  <div class="lt-inner">
+    <span class="lt-label">Live&nbsp;·&nbsp;ledger-verified</span>
+    <span id="liveTickerItems" class="lt-items"><span class="muted" style="font-size:0.8rem;">loading feeds…</span></span>
+  </div>
+</div>
 
 <!-- ═══════ HERO ═══════ -->
 <section class="hero visible" id="hero">
@@ -1929,6 +1989,122 @@ HYPOTHESES.forEach(h => {
     </div>
   `;
 });
+
+/* ═══════ LIVE LAYER — Tier 1 ledger feeds ═══════
+ * Reads data/live/chains.json (committed every 15 min by GitHub Actions) and renders
+ * the ticker strip. Staleness is content: every feed shows its data age with a
+ * green (fresh) / amber (lagged) / red (stale/unreachable) badge. Where a feed is
+ * CORS-friendly (Bitcoin via mempool.space) we also attempt a client-side live fetch
+ * to upgrade the badge to true "seconds ago". Never blank, never fake.
+ */
+window.LiveLayer = (function () {
+  const ORDER = ["bitcoin", "ethereum", "solana", "radix", "xrpl"];
+  const JSON_URL = "data/live/chains.json";
+  // Chain snapshot cron cadence is 15 min → thresholds tuned to that.
+  const FRESH_S = 20 * 60, LAGGED_S = 90 * 60;
+  let feeds = {};
+
+  const parseTs = (s) => (s ? Date.parse(s) : NaN);
+
+  function agoText(sec) {
+    if (!isFinite(sec) || sec < 0) return "—";
+    if (sec < 60) return Math.round(sec) + "s ago";
+    if (sec < 3600) return Math.round(sec / 60) + "m ago";
+    if (sec < 86400) return Math.round(sec / 3600) + "h ago";
+    return Math.round(sec / 86400) + "d ago";
+  }
+  function ageClass(sec, status) {
+    if (status === "unreachable") return "age-none";
+    if (!isFinite(sec)) return "age-none";
+    if (status === "stale" || sec > LAGGED_S) return "age-stale";
+    if (sec > FRESH_S) return "age-lagged";
+    return "age-fresh";
+  }
+  function dotClass(cls) {
+    return cls === "age-fresh" ? "" : (cls === "age-lagged" ? "amber" : "red");
+  }
+  function fmtTps(v) {
+    if (v == null) return "—";
+    if (v >= 1000) return Math.round(v).toLocaleString("en-US");
+    if (v >= 10) return v.toFixed(1);
+    return v.toFixed(v >= 1 ? 2 : 3);
+  }
+
+  const esc = (s) => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  function render() {
+    const el = document.getElementById("liveTickerItems");
+    if (!el) return;
+    const now = Date.now();
+    const html = ORDER.map((key) => {
+      const f = feeds[key];
+      if (!f) return "";
+      const stampStr = f.retrieved_at || f.last_attempt;
+      const ageS = (now - parseTs(stampStr)) / 1000;
+      const ac = ageClass(ageS, f.status);
+      const tpsTxt = (f.status === "unreachable") ? "no feed" : fmtTps(f.tps);
+      const ageTxt = (f.status === "unreachable") ? "unreachable"
+        : agoText(ageS) + (f.status === "stale" ? " · stale" : "");
+      const tip = esc(
+        (f.source_url ? "Source: " + f.source_url + "\n" : "") +
+        (f.period_covered ? "Period: " + f.period_covered + "\n" : "") +
+        (f.note ? "Note: " + f.note : "")
+      );
+      return `<span class="lt-item" title="${tip}">` +
+        `<span class="pulse-dot ${dotClass(ac)}"></span>` +
+        `<span class="lt-name">${esc(f.label || key)}</span>` +
+        `<span class="lt-tps">${tpsTxt}</span>` +
+        `<span class="lt-unit">${f.status === "unreachable" ? "" : "tps"}</span>` +
+        `<span class="age-badge ${ac}">${ageTxt}</span></span>`;
+    }).join("");
+    el.innerHTML = html || `<span class="muted" style="font-size:0.8rem;">no feeds available</span>`;
+  }
+
+  async function loadCommitted() {
+    try {
+      const r = await fetch(JSON_URL, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      feeds = data.feeds || {};
+      render();
+    } catch (e) {
+      const el = document.getElementById("liveTickerItems");
+      if (el && !Object.keys(feeds).length) el.textContent = "live feed unavailable";
+    }
+  }
+
+  // Optional: client-side live fetch for Bitcoin (mempool.space sends CORS headers)
+  // to upgrade the badge to true seconds-fresh liveness.
+  async function liveBitcoin() {
+    try {
+      const r = await fetch("https://mempool.space/api/v1/blocks", { cache: "no-store" });
+      if (!r.ok) return;
+      const blocks = await r.json();
+      const recent = blocks.slice(0, 10);
+      const span = Math.max(recent[0].timestamp - recent[recent.length - 1].timestamp, 1);
+      const txs = recent.slice(1).reduce((a, b) => a + b.tx_count, 0);
+      feeds.bitcoin = Object.assign({}, feeds.bitcoin, {
+        label: "Bitcoin", tps: Math.round((txs / span) * 1000) / 1000, unit: "tps",
+        status: "ok", retrieved_at: new Date().toISOString(),
+        source_url: "https://mempool.space/api/v1/blocks",
+        period_covered: "last " + recent.length + " blocks (client-side live)",
+      });
+      render();
+    } catch (e) { /* CORS or offline — committed value already shown */ }
+  }
+
+  function start() {
+    loadCommitted().then(liveBitcoin);
+    setInterval(loadCommitted, 60 * 1000);   // re-read committed JSON each minute
+    setInterval(liveBitcoin, 60 * 1000);     // refresh live Bitcoin each minute
+    setInterval(render, 1000);               // tick the "N ago" labels every second
+  }
+
+  return { start, getFeeds: () => feeds };
+})();
+
+document.addEventListener("DOMContentLoaded", () => window.LiveLayer.start());
 </script>
 </body>
 </html>
