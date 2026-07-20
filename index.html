@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Universe of Finance — Measuring every financial transaction on Earth</title>
 <meta name="description" content="Interactive dashboard mapping global financial transaction throughput across 29 categories and 7 sectors. ~73,750 TPS. ~545,000 MEST/s. ~47B tokenizable resources worth ~$867T.">
+<!-- Open Graph / social — the Opacity Index press card -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Universe of Finance">
+<meta property="og:title" content="The Opacity Index — ~60% of global transaction throughput is too opaque to verify">
+<meta property="og:description" content="Open ledgers report every transaction in seconds. TradFi reports itself in quarters and estimates. The Opacity Index scores every system 0–100 on how measurable it is at all.">
+<meta property="og:image" content="https://quackstra.github.io/universe-of-finance/assets/opacity-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://quackstra.github.io/universe-of-finance/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Opacity Index — Universe of Finance">
+<meta name="twitter:description" content="~60% of the world's transaction throughput flows through systems too opaque to independently verify.">
+<meta name="twitter:image" content="https://quackstra.github.io/universe-of-finance/assets/opacity-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -319,6 +332,117 @@ tbody td {
 .conf-high { background: rgba(16,185,129,0.15); color: var(--accent-green); }
 .conf-mid { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
 .conf-low { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+
+/* ─── Live Layer: ticker strip + data-age badges ─── */
+.live-ticker {
+  width: 100%;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  background: rgba(17,24,39,0.6);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+.live-ticker .lt-inner {
+  max-width: 1280px; margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.lt-items { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lt-row2 { padding-top: 0; border-top: 1px dashed var(--card-border); }
+.lt-row2 .lt-tps { color: var(--accent-amber); }
+.lt-label {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); margin-right: 6px; white-space: nowrap;
+}
+.lt-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px; border: 1px solid var(--card-border); border-radius: 8px;
+  background: rgba(10,14,26,0.5); white-space: nowrap;
+}
+.lt-item .lt-name { font-weight: 600; font-size: 0.85rem; }
+.lt-item .lt-tps { font-family: var(--mono); font-weight: 700; color: var(--accent-green); font-size: 0.9rem; }
+.lt-item .lt-unit { font-size: 0.7rem; color: var(--muted); }
+.pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green);
+  box-shadow: 0 0 0 0 rgba(16,185,129,0.7); animation: ltpulse 2s infinite;
+}
+.pulse-dot.amber { background: var(--accent-amber); box-shadow: 0 0 0 0 rgba(245,158,11,0.7); animation: ltpulse-amber 2s infinite; }
+.pulse-dot.red { background: var(--accent-red); animation: none; }
+@keyframes ltpulse {
+  0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+@keyframes ltpulse-amber {
+  0% { box-shadow: 0 0 0 0 rgba(245,158,11,0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(245,158,11,0); }
+  100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+}
+/* Data-age badge: green (fresh) → amber (lagged) → red (very stale / no feed) */
+.age-badge {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+  padding: 1px 7px; border-radius: 4px; white-space: nowrap;
+}
+.age-fresh { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+.age-lagged { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.age-stale { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+.age-none { background: rgba(156,163,175,0.12); color: var(--muted); }
+
+/* ─── Opacity Index ─── */
+.op-hero-stat {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
+  background: linear-gradient(90deg, rgba(16,185,129,0.08), rgba(239,68,68,0.12));
+  border: 1px solid var(--card-border); border-radius: 12px; padding: 20px 24px; margin: 8px 0 28px;
+}
+.op-hero-stat .big { font-family: var(--mono); font-weight: 800; font-size: 2.4rem; color: var(--accent-red); line-height: 1; }
+.op-hero-stat .txt { color: var(--muted); font-size: 0.95rem; max-width: 720px; }
+.op-controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.op-sort-btn {
+  font-family: var(--mono); font-size: 0.78rem; padding: 6px 12px; border-radius: 6px;
+  border: 1px solid var(--card-border); background: var(--card); color: var(--muted); cursor: pointer;
+}
+.op-sort-btn.active { color: var(--text); border-color: var(--accent-blue); }
+.op-table { width: 100%; border-collapse: collapse; }
+.op-table th { text-align: left; padding: 10px 12px; font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--card-border); }
+.op-table td { padding: 10px 12px; border-bottom: 1px solid rgba(30,41,59,0.5); vertical-align: middle; }
+.op-row-name { font-weight: 600; }
+.op-row-sub { display: block; color: var(--muted); font-size: 0.75rem; font-weight: 400; margin-top: 2px; }
+.op-bar-wrap { display: flex; align-items: center; gap: 10px; min-width: 220px; }
+.op-bar { position: relative; flex: 1; height: 14px; border-radius: 7px; overflow: hidden;
+  background: rgba(255,255,255,0.05); display: flex; }
+.op-seg { height: 100%; }
+.op-seg.latency { background: var(--accent-blue); }
+.op-seg.granularity { background: var(--accent-purple); }
+.op-seg.verifiability { background: var(--accent-cyan); }
+.op-seg.coverage { background: var(--accent-amber); }
+.op-score { font-family: var(--mono); font-weight: 700; font-size: 0.95rem; min-width: 30px; text-align: right; }
+.op-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 14px 0 4px; font-size: 0.78rem; color: var(--muted); }
+.op-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.op-legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+/* ─── Split Screen: Measured vs Estimated ─── */
+.split-axis { position: relative; height: 20px; margin: 0 0 4px; font-family: var(--mono);
+  font-size: 0.68rem; color: var(--muted); }
+.split-axis .tick { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.split-axis .tick::before { content: ""; position: absolute; left: 50%; top: 16px; width: 1px;
+  height: 6px; background: var(--card-border); }
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 760px) { .split-grid { grid-template-columns: 1fr; } }
+.split-col { border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; background: var(--card); }
+.split-col h3 { font-size: 1rem; margin-bottom: 2px; }
+.split-col .col-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 14px; }
+.split-col.measured { border-top: 3px solid var(--accent-green); }
+.split-col.estimated { border-top: 3px solid var(--accent-red); }
+.sr-row { margin-bottom: 11px; }
+.sr-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 3px; }
+.sr-name { font-size: 0.85rem; font-weight: 600; }
+.sr-tps { font-family: var(--mono); font-size: 0.8rem; }
+.sr-track { position: relative; height: 10px; border-radius: 5px; background: rgba(255,255,255,0.05); }
+.sr-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 5px; min-width: 2px; }
+.sr-fill.m { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+.sr-fill.m.lag { background: linear-gradient(90deg, var(--accent-amber), #d97706); }
+.sr-fill.e { background: linear-gradient(90deg, #f87171, var(--accent-red)); }
+.sr-meta { font-family: var(--mono); font-size: 0.68rem; margin-top: 3px; }
 
 /* ─── MEST Cascade ─── */
 .cascade-container {
@@ -910,6 +1034,7 @@ nav .nav-links a:hover { color: var(--text); }
     <div class="brand">Universe of Finance</div>
     <ul class="nav-links">
       <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#opacity">Opacity</a></li>
       <li><a href="#ttr">TTR</a></li>
       <li><a href="#mest-cascade">MEST</a></li>
       <li><a href="#mest-advantage">Advantage</a></li>
@@ -919,6 +1044,18 @@ nav .nav-links a:hover { color: var(--text); }
     </ul>
   </div>
 </nav>
+
+<!-- ═══════ LIVE TICKER (Live Layer, Tier 1) ═══════ -->
+<div class="live-ticker" id="liveTicker" aria-label="Live ledger-verified transaction throughput">
+  <div class="lt-inner">
+    <span class="lt-label" title="Public blockchains report every transaction in seconds.">Live&nbsp;·&nbsp;ledger-verified</span>
+    <span id="liveTickerItems" class="lt-items"><span class="muted" style="font-size:0.8rem;">loading feeds…</span></span>
+  </div>
+  <div class="lt-inner lt-row2">
+    <span class="lt-label" title="Named payment systems report exact counts — but monthly or annually, not live.">Published&nbsp;·&nbsp;lagged</span>
+    <span id="pubTickerItems" class="lt-items"><span class="muted" style="font-size:0.8rem;">loading feeds…</span></span>
+  </div>
+</div>
 
 <!-- ═══════ HERO ═══════ -->
 <section class="hero visible" id="hero">
@@ -967,13 +1104,96 @@ nav .nav-links a:hover { color: var(--text); }
             <th data-key="txnYear" data-type="string">Txns/yr</th>
             <th data-key="sector" data-type="string">Sector</th>
             <th data-key="confidence" data-type="number">Confidence <span class="sort-arrow"></span></th>
+            <th title="Vintage of the underlying estimate. Every leaderboard figure is a period-2024 annual estimate — compare with the seconds-fresh chain feeds in the ticker.">Data age</th>
             <th data-key="mestMult" data-type="number">MEST Mult <span class="sort-arrow"></span></th>
             <th data-key="mestPerSec" data-type="number">MEST/s <span class="sort-arrow"></span></th>
           </tr>
         </thead>
         <tbody id="leaderboardBody"></tbody>
       </table>
+      <p class="muted" style="font-size:0.82rem;margin-top:14px;line-height:1.5;">
+        <strong>Data age</strong> shows the vintage of each estimate. Every category above is
+        a period-2024 annual estimate — no live feed exists for these systems, which is the
+        whole point. Compare these <span class="age-badge age-stale">as of 2024</span> badges
+        with the <span class="age-badge age-fresh">seconds ago</span> ledger feeds in the top
+        ticker. TradFi reports itself in quarters and estimates; open ledgers report themselves
+        in seconds. See the <a href="analysis/deep-dives/" style="color:var(--accent-blue);">deep dives</a>
+        and <a href="data/SOURCES.md" style="color:var(--accent-blue);">data sources</a>.
+      </p>
     </div>
+  </div>
+</section>
+
+<!-- ═══════ OPACITY INDEX ═══════ -->
+<section id="opacity">
+  <div class="container">
+    <h2>Opacity Index</h2>
+    <p class="section-subtitle">
+      How measurable is each system — at all? Scored 0–100 (higher = darker) on a published,
+      versioned <a href="opacity-methodology/" style="color:var(--accent-blue);">rubric</a>.
+      This is <em>not</em> the confidence score: confidence is how sure we are of our estimate;
+      opacity is how measurable the system is in the first place.
+    </p>
+    <div class="op-hero-stat">
+      <span class="big" id="opHeadlinePct">—</span>
+      <span class="txt" id="opHeadlineTxt">of categorised transaction throughput flows through systems that score 60+ on opacity — measured self-servingly, on a lag, or not at all.</span>
+    </div>
+    <div class="op-legend">
+      <span><i style="background:var(--accent-blue)"></i>Latency /30</span>
+      <span><i style="background:var(--accent-purple)"></i>Granularity /25</span>
+      <span><i style="background:var(--accent-cyan)"></i>Verifiability /25</span>
+      <span><i style="background:var(--accent-amber)"></i>Coverage /20</span>
+      <span class="muted">— bar length = total opacity; segments = per-dimension contribution (hover for values)</span>
+    </div>
+    <div class="op-controls" id="opControls">
+      <button class="op-sort-btn active" data-sort="opacity">Most opaque</button>
+      <button class="op-sort-btn" data-sort="opacity-asc">Most transparent</button>
+      <button class="op-sort-btn" data-sort="tps">By throughput</button>
+      <button class="op-sort-btn" data-sort="name">A–Z</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="op-table">
+        <thead><tr><th>#</th><th>Category</th><th>Opacity (0–100)</th><th>Score</th><th>Justification</th></tr></thead>
+        <tbody id="opacityBody"><tr><td colspan="5" class="muted">loading opacity index…</td></tr></tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:0.82rem;margin-top:14px;line-height:1.5;">
+      Every score is arguable from the <a href="opacity-methodology/" style="color:var(--accent-blue);">rubric</a>
+      and its cited source — <strong>challenge one via PR</strong> with public, citable evidence.
+      Rubric v1.0 · CC&nbsp;BY&nbsp;4.0.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════ SPLIT SCREEN — Measured vs Estimated ═══════ -->
+<section id="split">
+  <div class="container">
+    <h2>Measured vs. Estimated</h2>
+    <p class="section-subtitle">
+      One shared, log-scaled TPS axis. On the left, systems that report every transaction —
+      in <strong>seconds</strong> (open ledgers) or on a <strong>lag</strong> (published rails).
+      On the right, the estimated majority, last refreshed in 2024. Same axis, so the
+      magnitudes are directly comparable — and so is the freshness gap.
+    </p>
+    <div class="split-axis" id="splitAxis" aria-hidden="true"></div>
+    <div class="split-grid">
+      <div class="split-col measured">
+        <h3 style="color:var(--accent-green)">Measured</h3>
+        <div class="col-sub">Ledger-verified (green, seconds) + published rails (amber, lagged).</div>
+        <div id="splitMeasured"><span class="muted" style="font-size:0.8rem;">loading…</span></div>
+      </div>
+      <div class="split-col estimated">
+        <h3 style="color:var(--accent-red)">Estimated</h3>
+        <div class="col-sub">No live feed exists. Period-2024 annual estimates + confidence.</div>
+        <div id="splitEstimated"></div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.8rem;margin-top:14px;">
+      Estimated column shows the largest categories; the full set is in the
+      <a href="#leaderboard" style="color:var(--accent-blue);">leaderboard</a>. A Bitcoin bar
+      that updated <span class="age-badge age-fresh">seconds ago</span> sits on the same axis as
+      a card-network bar <span class="age-badge age-stale">as of 2024</span>. That is the whole point.
+    </p>
   </div>
 </section>
 
@@ -1318,6 +1538,9 @@ const INSIGHTS = [
   { icon:"&#128201;", text:"Recessions barely move the number \u2014 2020 saw only a -0.3% dip before roaring back." },
   { icon:"&#9939;&#65039;", text:"Crypto\u2019s MEST advantage: 60\u201380% fewer state changes per transaction than traditional rails." },
   { icon:"&#127470;&#127475;", text:"India is 5\u00d7 overweight in TPS vs GDP \u2014 the most transaction-dense large economy." },
+  { icon:"&#128274;", text:"~60% of categorised throughput flows through systems scoring 60+ on the Opacity Index \u2014 measured self-servingly, on a lag, or not at all." },
+  { icon:"&#9201;&#65039;", text:"The freshness gap: open ledgers report every transaction in seconds; the estimated majority was last refreshed in 2024 \u2014 ~560+ days stale and counting." },
+  { icon:"&#128262;", text:"The most measurable systems on Earth are Pix (Brazil, opacity 24) and UPI (India, opacity 30) \u2014 real-time, centrally published, independently checkable." },
 ];
 
 /* ═══════════════════════════════════════════
@@ -1383,6 +1606,17 @@ let activeFilter = 'All';
 
 function confClass(c) { return c > 70 ? 'conf-high' : c >= 50 ? 'conf-mid' : 'conf-low'; }
 
+// Data-age retrofit: every leaderboard estimate reflects the 2024 annual data corpus
+// (Run 6 baseline). Age is computed live so the contrast with the seconds-fresh chain
+// feeds grows every day the estimate is not refreshed. Staleness is content.
+const DATA_VINTAGE = '2024-12-31';
+function dataAgeBadgeHTML(asOf) {
+  const days = Math.floor((Date.now() - Date.parse(asOf)) / 86400000);
+  const cls = days > 540 ? 'age-stale' : days > 180 ? 'age-lagged' : 'age-fresh';
+  const yr = String(asOf).slice(0, 4);
+  return `<span class="age-badge ${cls}" title="Estimate vintage ${asOf} — no live feed exists for this category">as of ${yr} · ${days}d</span>`;
+}
+
 function renderTable() {
   const filtered = activeFilter === 'All' ? [...DATA] : DATA.filter(d => d.sector === activeFilter);
   filtered.sort((a, b) => {
@@ -1400,6 +1634,7 @@ function renderTable() {
       <td class="td-number muted">${d.txnYear}</td>
       <td><span class="td-sector ${SECTOR_CLASSES[d.sector]}">${SECTOR_LABELS[d.sector] || d.sector}</span></td>
       <td><span class="conf-badge ${confClass(d.confidence)}">${d.confidence}</span></td>
+      <td>${dataAgeBadgeHTML(d.asOf || DATA_VINTAGE)}</td>
       <td class="td-number">${d.mestMult}x</td>
       <td class="td-number">${d.mestPerSec.toLocaleString('en-US')}</td>
     </tr>
@@ -1929,6 +2164,315 @@ HYPOTHESES.forEach(h => {
     </div>
   `;
 });
+
+/* ═══════ LIVE LAYER — Tier 1 ledger feeds ═══════
+ * Reads data/live/chains.json (committed every 15 min by GitHub Actions) and renders
+ * the ticker strip. Staleness is content: every feed shows its data age with a
+ * green (fresh) / amber (lagged) / red (stale/unreachable) badge. Where a feed is
+ * CORS-friendly (Bitcoin via mempool.space) we also attempt a client-side live fetch
+ * to upgrade the badge to true "seconds ago". Never blank, never fake.
+ */
+window.LiveLayer = (function () {
+  const ORDER = ["bitcoin", "ethereum", "solana", "radix", "xrpl"];
+  const JSON_URL = "data/live/chains.json";
+  const PUB_ORDER = ["upi", "pix", "faster_payments", "fedwire"];
+  const PUB_URL = "data/published/systems.json";
+  // Chain snapshot cron cadence is 15 min → thresholds tuned to that.
+  const FRESH_S = 20 * 60, LAGGED_S = 90 * 60;
+  // Published-stat feeds are lagged by design → day-scale thresholds.
+  const PUB_FRESH_D = 60, PUB_LAGGED_D = 270;
+  let feeds = {}, pubFeeds = {};
+
+  const parseTs = (s) => (s ? Date.parse(s) : NaN);
+
+  function agoText(sec) {
+    if (!isFinite(sec) || sec < 0) return "—";
+    if (sec < 60) return Math.round(sec) + "s ago";
+    if (sec < 3600) return Math.round(sec / 60) + "m ago";
+    if (sec < 86400) return Math.round(sec / 3600) + "h ago";
+    return Math.round(sec / 86400) + "d ago";
+  }
+  function ageClass(sec, status) {
+    if (status === "unreachable") return "age-none";
+    if (!isFinite(sec)) return "age-none";
+    if (status === "stale" || sec > LAGGED_S) return "age-stale";
+    if (sec > FRESH_S) return "age-lagged";
+    return "age-fresh";
+  }
+  function dotClass(cls) {
+    return cls === "age-fresh" ? "" : (cls === "age-lagged" ? "amber" : "red");
+  }
+  function fmtTps(v) {
+    if (v == null) return "—";
+    if (v >= 1000) return Math.round(v).toLocaleString("en-US");
+    if (v >= 10) return v.toFixed(1);
+    return v.toFixed(v >= 1 ? 2 : 3);
+  }
+
+  const esc = (s) => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  function render() {
+    const el = document.getElementById("liveTickerItems");
+    if (!el) return;
+    const now = Date.now();
+    const html = ORDER.map((key) => {
+      const f = feeds[key];
+      if (!f) return "";
+      const stampStr = f.retrieved_at || f.last_attempt;
+      const ageS = (now - parseTs(stampStr)) / 1000;
+      const ac = ageClass(ageS, f.status);
+      const tpsTxt = (f.status === "unreachable") ? "no feed" : fmtTps(f.tps);
+      const ageTxt = (f.status === "unreachable") ? "unreachable"
+        : agoText(ageS) + (f.status === "stale" ? " · stale" : "");
+      const tip = esc(
+        (f.source_url ? "Source: " + f.source_url + "\n" : "") +
+        (f.period_covered ? "Period: " + f.period_covered + "\n" : "") +
+        (f.note ? "Note: " + f.note : "")
+      );
+      return `<span class="lt-item" title="${tip}">` +
+        `<span class="pulse-dot ${dotClass(ac)}"></span>` +
+        `<span class="lt-name">${esc(f.label || key)}</span>` +
+        `<span class="lt-tps">${tpsTxt}</span>` +
+        `<span class="lt-unit">${f.status === "unreachable" ? "" : "tps"}</span>` +
+        `<span class="age-badge ${ac}">${ageTxt}</span></span>`;
+    }).join("");
+    el.innerHTML = html || `<span class="muted" style="font-size:0.8rem;">no feeds available</span>`;
+  }
+
+  async function loadCommitted() {
+    try {
+      const r = await fetch(JSON_URL, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      feeds = data.feeds || {};
+      render();
+    } catch (e) {
+      const el = document.getElementById("liveTickerItems");
+      if (el && !Object.keys(feeds).length) el.textContent = "live feed unavailable";
+    }
+  }
+
+  function pubAgeClass(days) {
+    if (!isFinite(days)) return "age-none";
+    if (days > PUB_LAGGED_D) return "age-stale";
+    if (days > PUB_FRESH_D) return "age-lagged";
+    return "age-fresh";
+  }
+  function renderPublished() {
+    const el = document.getElementById("pubTickerItems");
+    if (!el) return;
+    const now = Date.now();
+    const html = PUB_ORDER.map((key) => {
+      const f = pubFeeds[key];
+      if (!f) return "";
+      const days = (now - parseTs(f.as_of)) / 86400000;
+      const ac = pubAgeClass(days);
+      const yr = (f.as_of || "").slice(0, 4);
+      const ageTxt = "as of " + (yr || "?") + " · " + Math.round(days) + "d stale";
+      const tip = esc(
+        (f.source_url ? "Source: " + f.source_url + "\n" : "") +
+        (f.period_covered ? "Period: " + f.period_covered + "\n" : "") +
+        (f.annual_txns ? "Txns: " + f.annual_txns + "\n" : "") +
+        (f.note ? "Note: " + f.note : "")
+      );
+      return `<span class="lt-item" title="${tip}">` +
+        `<span class="pulse-dot ${dotClass(ac)}"></span>` +
+        `<span class="lt-name">${esc(f.label || key)}</span>` +
+        `<span class="lt-tps">${fmtTps(f.tps)}</span><span class="lt-unit">tps</span>` +
+        `<span class="age-badge ${ac}">${ageTxt}</span></span>`;
+    }).join("");
+    el.innerHTML = html || `<span class="muted" style="font-size:0.8rem;">no published feeds</span>`;
+  }
+  async function loadPublished() {
+    try {
+      const r = await fetch(PUB_URL, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      pubFeeds = data.feeds || {};
+      renderPublished();
+    } catch (e) {
+      const el = document.getElementById("pubTickerItems");
+      if (el && !Object.keys(pubFeeds).length) el.textContent = "published feeds unavailable";
+    }
+  }
+
+  // Optional: client-side live fetch for Bitcoin (mempool.space sends CORS headers)
+  // to upgrade the badge to true seconds-fresh liveness.
+  async function liveBitcoin() {
+    try {
+      const r = await fetch("https://mempool.space/api/v1/blocks", { cache: "no-store" });
+      if (!r.ok) return;
+      const blocks = await r.json();
+      const recent = blocks.slice(0, 10);
+      const span = Math.max(recent[0].timestamp - recent[recent.length - 1].timestamp, 1);
+      const txs = recent.slice(1).reduce((a, b) => a + b.tx_count, 0);
+      feeds.bitcoin = Object.assign({}, feeds.bitcoin, {
+        label: "Bitcoin", tps: Math.round((txs / span) * 1000) / 1000, unit: "tps",
+        status: "ok", retrieved_at: new Date().toISOString(),
+        source_url: "https://mempool.space/api/v1/blocks",
+        period_covered: "last " + recent.length + " blocks (client-side live)",
+      });
+      render();
+    } catch (e) { /* CORS or offline — committed value already shown */ }
+  }
+
+  function start() {
+    loadCommitted().then(liveBitcoin);
+    loadPublished();
+    setInterval(loadCommitted, 60 * 1000);   // re-read committed JSON each minute
+    setInterval(liveBitcoin, 60 * 1000);     // refresh live Bitcoin each minute
+    setInterval(loadPublished, 6 * 60 * 60 * 1000); // published feeds change slowly
+    setInterval(render, 1000);               // tick the "N ago" labels every second
+  }
+
+  return { start, getFeeds: () => feeds, getPublished: () => pubFeeds };
+})();
+
+document.addEventListener("DOMContentLoaded", () => window.LiveLayer.start());
+
+/* ═══════ OPACITY INDEX ═══════
+ * Reads data/opacity.json and renders the ranked table + hero stat, and injects each
+ * spotlight's opacity score into its card. Bar length = total opacity; the four coloured
+ * segments show the per-dimension contribution. Hero % is computed live from the data
+ * (not pre-decided): share of categorised throughput in systems scoring 60+.
+ */
+window.OpacityIndex = (function () {
+  const URL = "data/opacity.json";
+  let cats = [], spots = [], sortMode = "opacity";
+  const esco = (s) => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  function sortCats() {
+    const c = cats.slice();
+    if (sortMode === "opacity") c.sort((a, b) => b.opacity - a.opacity);
+    else if (sortMode === "opacity-asc") c.sort((a, b) => a.opacity - b.opacity);
+    else if (sortMode === "tps") c.sort((a, b) => b.tps - a.tps);
+    else if (sortMode === "name") c.sort((a, b) => a.name.localeCompare(b.name));
+    return c;
+  }
+  function barHTML(d) {
+    const seg = (cls, v) => `<span class="op-seg ${cls}" style="width:${v}%"></span>`;
+    const tip = `Latency ${d.dims.latency}/30 · Granularity ${d.dims.granularity}/25 · ` +
+      `Verifiability ${d.dims.verifiability}/25 · Coverage ${d.dims.coverage}/20`;
+    return `<div class="op-bar-wrap"><div class="op-bar" title="${tip}">` +
+      seg("latency", d.dims.latency) + seg("granularity", d.dims.granularity) +
+      seg("verifiability", d.dims.verifiability) + seg("coverage", d.dims.coverage) +
+      `</div></div>`;
+  }
+  function render() {
+    const tb = document.getElementById("opacityBody");
+    if (!tb) return;
+    tb.innerHTML = sortCats().map((d, i) => `
+      <tr>
+        <td class="muted">${i + 1}</td>
+        <td><span class="op-row-name">${esco(d.name)}</span><span class="op-row-sub">${esco(d.sector)} · ${d.tps.toLocaleString("en-US")} tps</span></td>
+        <td>${barHTML(d)}</td>
+        <td class="op-score">${d.opacity}</td>
+        <td class="muted" style="font-size:0.82rem;max-width:420px;">${esco(d.justification)}<br><span style="opacity:0.7">${esco(d.source)}</span></td>
+      </tr>`).join("");
+  }
+  function renderHero() {
+    const tot = cats.reduce((a, c) => a + c.tps, 0);
+    const op60 = cats.filter((c) => c.opacity >= 60).reduce((a, c) => a + c.tps, 0);
+    const pct = tot ? Math.round((op60 / tot) * 100) : 0;
+    const el = document.getElementById("opHeadlinePct");
+    if (el) el.textContent = pct + "%";
+  }
+  function injectSpotlights() {
+    const cards = document.querySelectorAll("#spotlights .spotlight-card");
+    spots.forEach((s) => {
+      cards.forEach((card) => {
+        const h = card.querySelector("h3");
+        if (!h || h.textContent.trim() !== s.name) return;
+        if (card.querySelector(".op-injected")) return;
+        const cls = s.opacity >= 70 ? "conf-low" : s.opacity >= 45 ? "conf-mid" : "conf-high";
+        const row = document.createElement("div");
+        row.className = "spotlight-stat op-injected";
+        row.innerHTML = `<span class="label" title="${esco(s.justification)}">Opacity Index</span>` +
+          `<span class="value"><span class="conf-badge ${cls}">${s.opacity}</span></span>`;
+        const quote = card.querySelector(".spotlight-quote");
+        if (quote) card.insertBefore(row, quote); else card.appendChild(row);
+      });
+    });
+  }
+  async function start() {
+    try {
+      const r = await fetch(URL, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      cats = data.categories || []; spots = data.spotlights || [];
+      render(); renderHero(); injectSpotlights();
+    } catch (e) {
+      const tb = document.getElementById("opacityBody");
+      if (tb) tb.innerHTML = `<tr><td colspan="5" class="muted">opacity index unavailable</td></tr>`;
+    }
+    const ctrl = document.getElementById("opControls");
+    if (ctrl) ctrl.addEventListener("click", (e) => {
+      const btn = e.target.closest(".op-sort-btn"); if (!btn) return;
+      sortMode = btn.dataset.sort;
+      ctrl.querySelectorAll(".op-sort-btn").forEach((b) => b.classList.toggle("active", b === btn));
+      render();
+    });
+  }
+  return { start };
+})();
+
+document.addEventListener("DOMContentLoaded", () => window.OpacityIndex.start());
+
+/* ═══════ SPLIT SCREEN — Measured vs Estimated ═══════
+ * The flagship exhibit: live/lagged exact feeds (left) and estimated categories (right)
+ * on ONE shared log-scaled TPS axis, so magnitude and freshness are comparable at a glance.
+ */
+window.SplitScreen = (function () {
+  const MIN = 0.1, MAX = 30000;
+  const L = Math.log10(MIN), R = Math.log10(MAX);
+  const xFrac = (tps) => Math.max(0, Math.min(1, (Math.log10(Math.max(tps, MIN)) - L) / (R - L)));
+  const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const fmt = (v) => v >= 1000 ? Math.round(v).toLocaleString("en-US") : v >= 10 ? v.toFixed(0) : v.toFixed(2);
+
+  function axis() {
+    const el = document.getElementById("splitAxis"); if (!el) return;
+    const ticks = [{ v: 0.1, t: "0.1" }, { v: 1, t: "1" }, { v: 10, t: "10" }, { v: 100, t: "100" }, { v: 1000, t: "1k" }, { v: 10000, t: "10k" }];
+    el.innerHTML = ticks.map((k) => `<span class="tick" style="left:${(xFrac(k.v) * 100).toFixed(1)}%">${k.t}</span>`).join("") +
+      `<span style="position:absolute;right:0;top:0;">TPS →</span>`;
+  }
+  function rowHTML(name, tps, fillCls, meta) {
+    return `<div class="sr-row"><div class="sr-head"><span class="sr-name">${esc(name)}</span>` +
+      `<span class="sr-tps">${fmt(tps)} tps</span></div>` +
+      `<div class="sr-track"><div class="sr-fill ${fillCls}" style="width:${(xFrac(tps) * 100).toFixed(1)}%"></div></div>` +
+      `<div class="sr-meta muted">${meta}</div></div>`;
+  }
+  async function renderMeasured() {
+    const el = document.getElementById("splitMeasured"); if (!el) return;
+    let rows = [];
+    try {
+      const [c, s] = await Promise.all([
+        fetch("data/live/chains.json", { cache: "no-store" }).then((r) => r.json()),
+        fetch("data/published/systems.json", { cache: "no-store" }).then((r) => r.json()),
+      ]);
+      const live = Object.values(c.feeds || {}).filter((f) => f.tps != null)
+        .map((f) => ({ name: f.label, tps: f.tps, lag: false,
+          meta: `<span class="age-badge age-fresh">ledger · live</span>` }));
+      const pub = Object.values(s.feeds || {}).filter((f) => f.tps != null)
+        .map((f) => ({ name: f.label, tps: f.tps, lag: true,
+          meta: `<span class="age-badge age-lagged">published · as of ${(f.as_of || "").slice(0, 4)}</span>` }));
+      rows = live.concat(pub).sort((a, b) => b.tps - a.tps);
+    } catch (e) { el.innerHTML = `<span class="muted" style="font-size:0.8rem;">measured feeds unavailable</span>`; return; }
+    el.innerHTML = rows.map((r) => rowHTML(r.name, r.tps, "m" + (r.lag ? " lag" : ""), r.meta)).join("");
+  }
+  function renderEstimated() {
+    const el = document.getElementById("splitEstimated"); if (!el) return;
+    const top = (typeof DATA !== "undefined" ? DATA.slice() : []).sort((a, b) => b.tps - a.tps).slice(0, 14);
+    el.innerHTML = top.map((d) =>
+      rowHTML(d.name, d.tps, "e",
+        `<span class="age-badge age-stale">as of 2024</span> · conf ${d.confidence}`)).join("");
+  }
+  function start() { axis(); renderMeasured(); renderEstimated(); setInterval(renderMeasured, 60000); }
+  return { start };
+})();
+
+document.addEventListener("DOMContentLoaded", () => window.SplitScreen.start());
 </script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+name: Live Layer — fetch feeds
+
+# Git-scraping pattern: a cron job fetches open financial feeds server-side
+# (no CORS limits on the runner) and commits the JSON the static site reads as its API.
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # Tier-1 chain snapshot fallback every 15 min
+  workflow_dispatch: {}       # manual trigger (use to test on the PR branch)
+  push:
+    branches: [main]
+    paths:
+      - "tools/fetch_live_data.py"
+      - ".github/workflows/live-data.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: live-data
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch Tier-1 chain feeds
+        run: python3 tools/fetch_live_data.py
+        # stdlib-only; non-fatal if some feeds fail (graceful degradation in-script)
+
+      - name: Commit updated feeds
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/live/ data/published/ || true
+          if git diff --cached --quiet; then
+            echo "No feed changes to commit"
+          else
+            git commit -m "[Live] feed refresh $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
