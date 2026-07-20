@@ -374,6 +374,39 @@ tbody td {
 .age-stale { background: rgba(239,68,68,0.15); color: var(--accent-red); }
 .age-none { background: rgba(156,163,175,0.12); color: var(--muted); }
 
+/* ─── Opacity Index ─── */
+.op-hero-stat {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
+  background: linear-gradient(90deg, rgba(16,185,129,0.08), rgba(239,68,68,0.12));
+  border: 1px solid var(--card-border); border-radius: 12px; padding: 20px 24px; margin: 8px 0 28px;
+}
+.op-hero-stat .big { font-family: var(--mono); font-weight: 800; font-size: 2.4rem; color: var(--accent-red); line-height: 1; }
+.op-hero-stat .txt { color: var(--muted); font-size: 0.95rem; max-width: 720px; }
+.op-controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.op-sort-btn {
+  font-family: var(--mono); font-size: 0.78rem; padding: 6px 12px; border-radius: 6px;
+  border: 1px solid var(--card-border); background: var(--card); color: var(--muted); cursor: pointer;
+}
+.op-sort-btn.active { color: var(--text); border-color: var(--accent-blue); }
+.op-table { width: 100%; border-collapse: collapse; }
+.op-table th { text-align: left; padding: 10px 12px; font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--card-border); }
+.op-table td { padding: 10px 12px; border-bottom: 1px solid rgba(30,41,59,0.5); vertical-align: middle; }
+.op-row-name { font-weight: 600; }
+.op-row-sub { display: block; color: var(--muted); font-size: 0.75rem; font-weight: 400; margin-top: 2px; }
+.op-bar-wrap { display: flex; align-items: center; gap: 10px; min-width: 220px; }
+.op-bar { position: relative; flex: 1; height: 14px; border-radius: 7px; overflow: hidden;
+  background: rgba(255,255,255,0.05); display: flex; }
+.op-seg { height: 100%; }
+.op-seg.latency { background: var(--accent-blue); }
+.op-seg.granularity { background: var(--accent-purple); }
+.op-seg.verifiability { background: var(--accent-cyan); }
+.op-seg.coverage { background: var(--accent-amber); }
+.op-score { font-family: var(--mono); font-weight: 700; font-size: 0.95rem; min-width: 30px; text-align: right; }
+.op-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 14px 0 4px; font-size: 0.78rem; color: var(--muted); }
+.op-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.op-legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
 /* ─── MEST Cascade ─── */
 .cascade-container {
   display: flex;
@@ -964,6 +997,7 @@ nav .nav-links a:hover { color: var(--text); }
     <div class="brand">Universe of Finance</div>
     <ul class="nav-links">
       <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#opacity">Opacity</a></li>
       <li><a href="#ttr">TTR</a></li>
       <li><a href="#mest-cascade">MEST</a></li>
       <li><a href="#mest-advantage">Advantage</a></li>
@@ -1050,6 +1084,47 @@ nav .nav-links a:hover { color: var(--text); }
         and <a href="data/SOURCES.md" style="color:var(--accent-blue);">data sources</a>.
       </p>
     </div>
+  </div>
+</section>
+
+<!-- ═══════ OPACITY INDEX ═══════ -->
+<section id="opacity">
+  <div class="container">
+    <h2>Opacity Index</h2>
+    <p class="section-subtitle">
+      How measurable is each system — at all? Scored 0–100 (higher = darker) on a published,
+      versioned <a href="opacity-methodology/" style="color:var(--accent-blue);">rubric</a>.
+      This is <em>not</em> the confidence score: confidence is how sure we are of our estimate;
+      opacity is how measurable the system is in the first place.
+    </p>
+    <div class="op-hero-stat">
+      <span class="big" id="opHeadlinePct">—</span>
+      <span class="txt" id="opHeadlineTxt">of categorised transaction throughput flows through systems that score 60+ on opacity — measured self-servingly, on a lag, or not at all.</span>
+    </div>
+    <div class="op-legend">
+      <span><i style="background:var(--accent-blue)"></i>Latency /30</span>
+      <span><i style="background:var(--accent-purple)"></i>Granularity /25</span>
+      <span><i style="background:var(--accent-cyan)"></i>Verifiability /25</span>
+      <span><i style="background:var(--accent-amber)"></i>Coverage /20</span>
+      <span class="muted">— bar length = total opacity; segments = per-dimension contribution (hover for values)</span>
+    </div>
+    <div class="op-controls" id="opControls">
+      <button class="op-sort-btn active" data-sort="opacity">Most opaque</button>
+      <button class="op-sort-btn" data-sort="opacity-asc">Most transparent</button>
+      <button class="op-sort-btn" data-sort="tps">By throughput</button>
+      <button class="op-sort-btn" data-sort="name">A–Z</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="op-table">
+        <thead><tr><th>#</th><th>Category</th><th>Opacity (0–100)</th><th>Score</th><th>Justification</th></tr></thead>
+        <tbody id="opacityBody"><tr><td colspan="5" class="muted">loading opacity index…</td></tr></tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:0.82rem;margin-top:14px;line-height:1.5;">
+      Every score is arguable from the <a href="opacity-methodology/" style="color:var(--accent-blue);">rubric</a>
+      and its cited source — <strong>challenge one via PR</strong> with public, citable evidence.
+      Rubric v1.0 · CC&nbsp;BY&nbsp;4.0.
+    </p>
   </div>
 </section>
 
@@ -2183,6 +2258,95 @@ window.LiveLayer = (function () {
 })();
 
 document.addEventListener("DOMContentLoaded", () => window.LiveLayer.start());
+
+/* ═══════ OPACITY INDEX ═══════
+ * Reads data/opacity.json and renders the ranked table + hero stat, and injects each
+ * spotlight's opacity score into its card. Bar length = total opacity; the four coloured
+ * segments show the per-dimension contribution. Hero % is computed live from the data
+ * (not pre-decided): share of categorised throughput in systems scoring 60+.
+ */
+window.OpacityIndex = (function () {
+  const URL = "data/opacity.json";
+  let cats = [], spots = [], sortMode = "opacity";
+  const esco = (s) => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  function sortCats() {
+    const c = cats.slice();
+    if (sortMode === "opacity") c.sort((a, b) => b.opacity - a.opacity);
+    else if (sortMode === "opacity-asc") c.sort((a, b) => a.opacity - b.opacity);
+    else if (sortMode === "tps") c.sort((a, b) => b.tps - a.tps);
+    else if (sortMode === "name") c.sort((a, b) => a.name.localeCompare(b.name));
+    return c;
+  }
+  function barHTML(d) {
+    const seg = (cls, v) => `<span class="op-seg ${cls}" style="width:${v}%"></span>`;
+    const tip = `Latency ${d.dims.latency}/30 · Granularity ${d.dims.granularity}/25 · ` +
+      `Verifiability ${d.dims.verifiability}/25 · Coverage ${d.dims.coverage}/20`;
+    return `<div class="op-bar-wrap"><div class="op-bar" title="${tip}">` +
+      seg("latency", d.dims.latency) + seg("granularity", d.dims.granularity) +
+      seg("verifiability", d.dims.verifiability) + seg("coverage", d.dims.coverage) +
+      `</div></div>`;
+  }
+  function render() {
+    const tb = document.getElementById("opacityBody");
+    if (!tb) return;
+    tb.innerHTML = sortCats().map((d, i) => `
+      <tr>
+        <td class="muted">${i + 1}</td>
+        <td><span class="op-row-name">${esco(d.name)}</span><span class="op-row-sub">${esco(d.sector)} · ${d.tps.toLocaleString("en-US")} tps</span></td>
+        <td>${barHTML(d)}</td>
+        <td class="op-score">${d.opacity}</td>
+        <td class="muted" style="font-size:0.82rem;max-width:420px;">${esco(d.justification)}<br><span style="opacity:0.7">${esco(d.source)}</span></td>
+      </tr>`).join("");
+  }
+  function renderHero() {
+    const tot = cats.reduce((a, c) => a + c.tps, 0);
+    const op60 = cats.filter((c) => c.opacity >= 60).reduce((a, c) => a + c.tps, 0);
+    const pct = tot ? Math.round((op60 / tot) * 100) : 0;
+    const el = document.getElementById("opHeadlinePct");
+    if (el) el.textContent = pct + "%";
+  }
+  function injectSpotlights() {
+    const cards = document.querySelectorAll("#spotlights .spotlight-card");
+    spots.forEach((s) => {
+      cards.forEach((card) => {
+        const h = card.querySelector("h3");
+        if (!h || h.textContent.trim() !== s.name) return;
+        if (card.querySelector(".op-injected")) return;
+        const cls = s.opacity >= 70 ? "conf-low" : s.opacity >= 45 ? "conf-mid" : "conf-high";
+        const row = document.createElement("div");
+        row.className = "spotlight-stat op-injected";
+        row.innerHTML = `<span class="label" title="${esco(s.justification)}">Opacity Index</span>` +
+          `<span class="value"><span class="conf-badge ${cls}">${s.opacity}</span></span>`;
+        const quote = card.querySelector(".spotlight-quote");
+        if (quote) card.insertBefore(row, quote); else card.appendChild(row);
+      });
+    });
+  }
+  async function start() {
+    try {
+      const r = await fetch(URL, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      cats = data.categories || []; spots = data.spotlights || [];
+      render(); renderHero(); injectSpotlights();
+    } catch (e) {
+      const tb = document.getElementById("opacityBody");
+      if (tb) tb.innerHTML = `<tr><td colspan="5" class="muted">opacity index unavailable</td></tr>`;
+    }
+    const ctrl = document.getElementById("opControls");
+    if (ctrl) ctrl.addEventListener("click", (e) => {
+      const btn = e.target.closest(".op-sort-btn"); if (!btn) return;
+      sortMode = btn.dataset.sort;
+      ctrl.querySelectorAll(".op-sort-btn").forEach((b) => b.classList.toggle("active", b === btn));
+      render();
+    });
+  }
+  return { start };
+})();
+
+document.addEventListener("DOMContentLoaded", () => window.OpacityIndex.start());
 </script>
 </body>
 </html>
