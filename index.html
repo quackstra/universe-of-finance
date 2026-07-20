@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Universe of Finance — Measuring every financial transaction on Earth</title>
 <meta name="description" content="Interactive dashboard mapping global financial transaction throughput across 29 categories and 7 sectors. ~73,750 TPS. ~545,000 MEST/s. ~47B tokenizable resources worth ~$867T.">
+<!-- Open Graph / social — the Opacity Index press card -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Universe of Finance">
+<meta property="og:title" content="The Opacity Index — ~60% of global transaction throughput is too opaque to verify">
+<meta property="og:description" content="Open ledgers report every transaction in seconds. TradFi reports itself in quarters and estimates. The Opacity Index scores every system 0–100 on how measurable it is at all.">
+<meta property="og:image" content="https://quackstra.github.io/universe-of-finance/assets/opacity-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://quackstra.github.io/universe-of-finance/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Opacity Index — Universe of Finance">
+<meta name="twitter:description" content="~60% of the world's transaction throughput flows through systems too opaque to independently verify.">
+<meta name="twitter:image" content="https://quackstra.github.io/universe-of-finance/assets/opacity-og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -406,6 +419,30 @@ tbody td {
 .op-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 14px 0 4px; font-size: 0.78rem; color: var(--muted); }
 .op-legend span { display: inline-flex; align-items: center; gap: 6px; }
 .op-legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+/* ─── Split Screen: Measured vs Estimated ─── */
+.split-axis { position: relative; height: 20px; margin: 0 0 4px; font-family: var(--mono);
+  font-size: 0.68rem; color: var(--muted); }
+.split-axis .tick { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.split-axis .tick::before { content: ""; position: absolute; left: 50%; top: 16px; width: 1px;
+  height: 6px; background: var(--card-border); }
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 760px) { .split-grid { grid-template-columns: 1fr; } }
+.split-col { border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; background: var(--card); }
+.split-col h3 { font-size: 1rem; margin-bottom: 2px; }
+.split-col .col-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 14px; }
+.split-col.measured { border-top: 3px solid var(--accent-green); }
+.split-col.estimated { border-top: 3px solid var(--accent-red); }
+.sr-row { margin-bottom: 11px; }
+.sr-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 3px; }
+.sr-name { font-size: 0.85rem; font-weight: 600; }
+.sr-tps { font-family: var(--mono); font-size: 0.8rem; }
+.sr-track { position: relative; height: 10px; border-radius: 5px; background: rgba(255,255,255,0.05); }
+.sr-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 5px; min-width: 2px; }
+.sr-fill.m { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+.sr-fill.m.lag { background: linear-gradient(90deg, var(--accent-amber), #d97706); }
+.sr-fill.e { background: linear-gradient(90deg, #f87171, var(--accent-red)); }
+.sr-meta { font-family: var(--mono); font-size: 0.68rem; margin-top: 3px; }
 
 /* ─── MEST Cascade ─── */
 .cascade-container {
@@ -1128,6 +1165,38 @@ nav .nav-links a:hover { color: var(--text); }
   </div>
 </section>
 
+<!-- ═══════ SPLIT SCREEN — Measured vs Estimated ═══════ -->
+<section id="split">
+  <div class="container">
+    <h2>Measured vs. Estimated</h2>
+    <p class="section-subtitle">
+      One shared, log-scaled TPS axis. On the left, systems that report every transaction —
+      in <strong>seconds</strong> (open ledgers) or on a <strong>lag</strong> (published rails).
+      On the right, the estimated majority, last refreshed in 2024. Same axis, so the
+      magnitudes are directly comparable — and so is the freshness gap.
+    </p>
+    <div class="split-axis" id="splitAxis" aria-hidden="true"></div>
+    <div class="split-grid">
+      <div class="split-col measured">
+        <h3 style="color:var(--accent-green)">Measured</h3>
+        <div class="col-sub">Ledger-verified (green, seconds) + published rails (amber, lagged).</div>
+        <div id="splitMeasured"><span class="muted" style="font-size:0.8rem;">loading…</span></div>
+      </div>
+      <div class="split-col estimated">
+        <h3 style="color:var(--accent-red)">Estimated</h3>
+        <div class="col-sub">No live feed exists. Period-2024 annual estimates + confidence.</div>
+        <div id="splitEstimated"></div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.8rem;margin-top:14px;">
+      Estimated column shows the largest categories; the full set is in the
+      <a href="#leaderboard" style="color:var(--accent-blue);">leaderboard</a>. A Bitcoin bar
+      that updated <span class="age-badge age-fresh">seconds ago</span> sits on the same axis as
+      a card-network bar <span class="age-badge age-stale">as of 2024</span>. That is the whole point.
+    </p>
+  </div>
+</section>
+
 <!-- ═══════ TTR (Total Tokenizable Resources) ═══════ -->
 <section id="ttr">
   <div class="container">
@@ -1469,6 +1538,9 @@ const INSIGHTS = [
   { icon:"&#128201;", text:"Recessions barely move the number \u2014 2020 saw only a -0.3% dip before roaring back." },
   { icon:"&#9939;&#65039;", text:"Crypto\u2019s MEST advantage: 60\u201380% fewer state changes per transaction than traditional rails." },
   { icon:"&#127470;&#127475;", text:"India is 5\u00d7 overweight in TPS vs GDP \u2014 the most transaction-dense large economy." },
+  { icon:"&#128274;", text:"~60% of categorised throughput flows through systems scoring 60+ on the Opacity Index \u2014 measured self-servingly, on a lag, or not at all." },
+  { icon:"&#9201;&#65039;", text:"The freshness gap: open ledgers report every transaction in seconds; the estimated majority was last refreshed in 2024 \u2014 ~560+ days stale and counting." },
+  { icon:"&#128262;", text:"The most measurable systems on Earth are Pix (Brazil, opacity 24) and UPI (India, opacity 30) \u2014 real-time, centrally published, independently checkable." },
 ];
 
 /* ═══════════════════════════════════════════
@@ -2347,6 +2419,60 @@ window.OpacityIndex = (function () {
 })();
 
 document.addEventListener("DOMContentLoaded", () => window.OpacityIndex.start());
+
+/* ═══════ SPLIT SCREEN — Measured vs Estimated ═══════
+ * The flagship exhibit: live/lagged exact feeds (left) and estimated categories (right)
+ * on ONE shared log-scaled TPS axis, so magnitude and freshness are comparable at a glance.
+ */
+window.SplitScreen = (function () {
+  const MIN = 0.1, MAX = 30000;
+  const L = Math.log10(MIN), R = Math.log10(MAX);
+  const xFrac = (tps) => Math.max(0, Math.min(1, (Math.log10(Math.max(tps, MIN)) - L) / (R - L)));
+  const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const fmt = (v) => v >= 1000 ? Math.round(v).toLocaleString("en-US") : v >= 10 ? v.toFixed(0) : v.toFixed(2);
+
+  function axis() {
+    const el = document.getElementById("splitAxis"); if (!el) return;
+    const ticks = [{ v: 0.1, t: "0.1" }, { v: 1, t: "1" }, { v: 10, t: "10" }, { v: 100, t: "100" }, { v: 1000, t: "1k" }, { v: 10000, t: "10k" }];
+    el.innerHTML = ticks.map((k) => `<span class="tick" style="left:${(xFrac(k.v) * 100).toFixed(1)}%">${k.t}</span>`).join("") +
+      `<span style="position:absolute;right:0;top:0;">TPS →</span>`;
+  }
+  function rowHTML(name, tps, fillCls, meta) {
+    return `<div class="sr-row"><div class="sr-head"><span class="sr-name">${esc(name)}</span>` +
+      `<span class="sr-tps">${fmt(tps)} tps</span></div>` +
+      `<div class="sr-track"><div class="sr-fill ${fillCls}" style="width:${(xFrac(tps) * 100).toFixed(1)}%"></div></div>` +
+      `<div class="sr-meta muted">${meta}</div></div>`;
+  }
+  async function renderMeasured() {
+    const el = document.getElementById("splitMeasured"); if (!el) return;
+    let rows = [];
+    try {
+      const [c, s] = await Promise.all([
+        fetch("data/live/chains.json", { cache: "no-store" }).then((r) => r.json()),
+        fetch("data/published/systems.json", { cache: "no-store" }).then((r) => r.json()),
+      ]);
+      const live = Object.values(c.feeds || {}).filter((f) => f.tps != null)
+        .map((f) => ({ name: f.label, tps: f.tps, lag: false,
+          meta: `<span class="age-badge age-fresh">ledger · live</span>` }));
+      const pub = Object.values(s.feeds || {}).filter((f) => f.tps != null)
+        .map((f) => ({ name: f.label, tps: f.tps, lag: true,
+          meta: `<span class="age-badge age-lagged">published · as of ${(f.as_of || "").slice(0, 4)}</span>` }));
+      rows = live.concat(pub).sort((a, b) => b.tps - a.tps);
+    } catch (e) { el.innerHTML = `<span class="muted" style="font-size:0.8rem;">measured feeds unavailable</span>`; return; }
+    el.innerHTML = rows.map((r) => rowHTML(r.name, r.tps, "m" + (r.lag ? " lag" : ""), r.meta)).join("");
+  }
+  function renderEstimated() {
+    const el = document.getElementById("splitEstimated"); if (!el) return;
+    const top = (typeof DATA !== "undefined" ? DATA.slice() : []).sort((a, b) => b.tps - a.tps).slice(0, 14);
+    el.innerHTML = top.map((d) =>
+      rowHTML(d.name, d.tps, "e",
+        `<span class="age-badge age-stale">as of 2024</span> · conf ${d.confidence}`)).join("");
+  }
+  function start() { axis(); renderMeasured(); renderEstimated(); setInterval(renderMeasured, 60000); }
+  return { start };
+})();
+
+document.addEventListener("DOMContentLoaded", () => window.SplitScreen.start());
 </script>
 </body>
 </html>
