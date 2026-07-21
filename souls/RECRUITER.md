@@ -49,6 +49,9 @@ A payments economist at the BIS and a crypto forensics analyst at Chainalysis ap
 | 17 | `transaction-lifecycle-analyst` | Transaction Lifecycle & MEST Analyst | **Cross-cutting (MEST analysis)** | Critical — MEST multiplier estimation for all categories |
 | 18 | `forensic-accountant` | Forensic Accountant & Financial Investigator | **Cross-cutting (opacity)** | Critical — opaque market volume estimation via proxy chains and fee-income analysis |
 | 19 | `shadow-economy-economist` | Shadow Economy Economist & Illicit Finance Researcher | **Cross-cutting (opacity)** | Critical — informal sector sizing via MIMIC, currency demand, and trade misinvoicing |
+| 20 | `academic-payments-economist` | Academic & Research Economist (Money, Payments & FMI) | **Cross-cutting (academia)** | High — grounds volume estimates in payment-demand theory and the peer-reviewed literature |
+| 21 | `national-accounts-statistician` | National Accounts & Flow-of-Funds Statistician | **Cross-cutting (government)** | Critical — macro-consistency check: reconciles transaction totals against national financial accounts |
+| 22 | `cbdc-digital-currency-researcher` | CBDC & Digital Currency Researcher | Digital Assets / Emerging | High — the flagged future category; retail/wholesale CBDC and tokenised settlement |
 
 ---
 
@@ -126,6 +129,23 @@ The following two SLEs are **opacity specialists** — forensic and economic res
 | HFT / Dark Pools (new) | `forensic-accountant` + `market-microstructure-analyst` | Order flow internalization; FINRA ATS data; SEC Rule 605 |
 | China (country-level) | `forensic-accountant` + `shadow-economy-economist` | Both formal opacity (corporate-confidential) and shadow banking |
 | Private Credit / PE | `forensic-accountant` | No exchange reporting; fund-level transaction counts from AUM × turnover |
+
+### Academia & Government Deepening (NEW — Run 14)
+
+The following three SLEs deepen the roster's **academic** and **government-statistics**
+pillars, which were previously thin relative to industry/consultancy sources. They
+are cross-cutting: available as secondary SLEs for any category when their lens applies.
+
+| SLE | Trigger | Role When Deployed |
+|-----|---------|--------------------|
+| `academic-payments-economist` | Any "what's the behavioural driver?" or "what does the literature say?" question. Also: card interchange / two-sided markets, cash-vs-digital substitution, velocity | Grounds a category estimate in a theory of payment demand and the peer-reviewed/working-paper literature. Challenges numbers that have no behavioural model behind them |
+| `national-accounts-statistician` | Any "does this reconcile with the macro data?" or "how does this map to the financial accounts?" question. Also: sectoral decomposition, stock-flow consistency, gross-vs-net | Runs the macro-consistency check — reconciles aggregate transaction/value totals against flow-of-funds and SNA financial accounts. The definitional bridge between "payment" and "SNA financial transaction" |
+| `cbdc-digital-currency-researcher` | Any CBDC, e-CNY, digital-euro, tokenised-deposit, or wholesale-settlement-DLT question | Estimates the emerging CBDC category, separating pilot from steady-state and cannibalisation from net-new. Fulfils the roster's own flagged need for a dedicated CBDC SLE |
+
+**Key principle**: `academic-payments-economist` and `national-accounts-statistician`
+are validation/grounding SLEs — they rarely lead a category but sharpen and sanity-check
+its estimate. `cbdc-digital-currency-researcher` is a category primary for CBDC and a
+secondary for stablecoins, bank transfers, and securities settlement (its migration targets).
 
 ### MEST Analysis Dispatch
 
