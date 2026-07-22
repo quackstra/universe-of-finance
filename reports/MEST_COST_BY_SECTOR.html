@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cost of MEST by Sector — Universe of Finance</title>
+<meta name="description" content="Not all MESTs cost the same. A gaming microtransaction's state change is an internal database write costing a hundredth of a cent; a securities settlement's is an irrevocable, cus">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/universe-of-finance/assets/report.css">
+</head>
+<body>
+<div class="topbar"><div class="inner">
+  <div class="brand"><a href="/universe-of-finance/">Universe of Finance</a></div>
+  <a class="home-link" href="/universe-of-finance/">← Interactive dashboard</a>
+</div></div>
+<div class="wrap">
+  <div class="crumb"><a href="/universe-of-finance/">Dashboard</a></div>
+  <div class="report-head"><span class="kind">Analysis</span><h1>Cost of MEST by Sector</h1></div>
+  
+  
+  <article class="article">
+<div class="toc"><div class="toc-title">On this page</div><ul><li><a href="#1-the-question">1. The Question</a></li><li><a href="#2-cost-per-mest-by-type-why-a-securities-mest-a-gaming-mest">2. Cost per MEST by Type (why a securities MEST ≫ a gaming MEST)</a></li><li><a href="#3-cost-per-mest-by-sector-and-the-disruption-model">3. Cost per MEST by Sector — and the disruption model</a></li><li><a href="#4-the-chart-how-efficient-must-a-blockchain-be">4. The Chart: How Efficient Must a Blockchain Be?</a></li><li><a href="#5-the-counter-intuitive-finding">5. The Counter-Intuitive Finding</a></li><li><a href="#6-reproduce-it">6. Reproduce It</a></li><li><a href="#7-sle-dispatch">7. SLE Dispatch</a></li><li><a href="#8-open-questions-run-15">8. Open Questions (Run 15)</a></li><li><a href="#9-sources-anchors">9. Sources & Anchors</a></li></ul></div><blockquote>
+<p>Not all MESTs cost the same. A gaming microtransaction's state change is an
+internal database write costing a hundredth of a cent; a <a class="xref" href="/universe-of-finance/reports/banking/securities-settlement/REPORT.html">securities settlement</a>'s
+is an irrevocable, custody-bearing, regulator-reported transfer costing dollars.
+That ~1000× spread decides which industries a blockchain can actually disrupt —
+and the answer is the opposite of what most people assume.</p>
+</blockquote>
+<p><em>A Universe of Finance capsule. Run 14. Confidence: 🟡 Medium on the cost ordering,
+🔴 Low on the absolute levels. Reproducible via <code>tools/mest_cost.py</code>.</em></p>
+<hr/>
+<h2 id="1-the-question">1. The Question</h2>
+<p>The <a href="/universe-of-finance/reports/MEST.html">MEST framework</a> counts bilateral state transitions; the
+<a href="/universe-of-finance/reports/MEST_ADVANTAGE.html">MEST Advantage</a> priced the aggregate <a class="xref" href="/universe-of-finance/reports/MEST.html">MEST</a> Tax (~$350–400B/yr).
+This capsule goes one level down: <strong>what does a single MEST cost, and why does it
+vary by three orders of magnitude across the economy?</strong> Then it uses that answer to
+draw the line Ferg asked for — <em>how efficient must a blockchain be to disrupt the
+transfer and ownership machinery of a given industry?</em></p>
+<p>The punchline, derived below and charted in §4:</p>
+<blockquote>
+<p><strong>The most expensive MESTs are the easiest for a blockchain to beat on cost.
+The cheapest MESTs — consumer payments and gaming — are the hardest.</strong></p>
+</blockquote>
+<hr/>
+<h2 id="2-cost-per-mest-by-type-why-a-securities-mest-a-gaming-mest">2. Cost per MEST by <em>Type</em> (why a securities MEST ≫ a gaming MEST)</h2>
+<p>A MEST's cost is set by <em>what kind of state transition it is</em>, not by the dollar
+value moving. The <a href="/universe-of-finance/reports/MEST.html#the-mest-taxonomy">MEST taxonomy</a> sorts cleanly by cost:</p>
+<table>
+<thead>
+<tr>
+<th>MEST type</th>
+<th>$/MEST (order of magnitude)</th>
+<th>Why it costs what it costs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ledger credit/debit</strong> (internal)</td>
+<td>$0.0001 – $0.001</td>
+<td>An internal DB write. No external party, no finality guarantee.</td>
+</tr>
+<tr>
+<td><strong>Authorization</strong></td>
+<td>$0.001 – $0.01</td>
+<td>A contingent hold — cheap to place, cheap to void.</td>
+</tr>
+<tr>
+<td><strong>Fee/commission</strong></td>
+<td>$0.005 – $0.05</td>
+<td>Calculate, allocate, and book on both sides.</td>
+</tr>
+<tr>
+<td><strong>Revenue recognition</strong></td>
+<td>$0.01 – $0.10</td>
+<td>Recognition plus the tax/audit counterparty who cares.</td>
+</tr>
+<tr>
+<td><strong>Payment leg</strong></td>
+<td>$0.01 – $0.05</td>
+<td>Value movement across two institutions' ledgers.</td>
+</tr>
+<tr>
+<td><strong>Clearing event</strong></td>
+<td>$0.02 – $0.20</td>
+<td>Match, validate, novate — CCP operations.</td>
+</tr>
+<tr>
+<td><strong>Audit trail / reconciliation</strong></td>
+<td>$0.02 – $0.50</td>
+<td>Labour-heavy; the back-office cost centre.</td>
+</tr>
+<tr>
+<td><strong>Netting entry</strong></td>
+<td>$0.05 – $0.50</td>
+<td>Multilateral position compression (CCP/CLS).</td>
+</tr>
+<tr>
+<td><strong>Custody movement</strong></td>
+<td>$0.10 – $1.00</td>
+<td>CSD/omnibus transfer; asset-servicing overhead.</td>
+</tr>
+<tr>
+<td><strong>Risk / margin adjustment</strong></td>
+<td>$0.10 – $2.00</td>
+<td>Bilateral margin call + collateral movement.</td>
+</tr>
+<tr>
+<td><strong>Settlement leg</strong></td>
+<td>$0.10 – $2.00</td>
+<td><strong>Irrevocable finality (RTGS/DvP) — the expensive one.</strong></td>
+</tr>
+<tr>
+<td><strong>Regulatory report</strong></td>
+<td>$0.10 – $5.00</td>
+<td>Reportable-event capture + filing infrastructure.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The ordering principle: cost rises with <em>irreversibility, mutuality, and
+oversight</em>.</strong> A state change that one party can undo inside its own database is
+nearly free. A state change that must be final, agreed by a counterparty, held in
+custody, margined, <em>and</em> reported to a regulator is expensive — because each of
+those properties requires its own institution, reconciliation, and legal backstop.</p>
+<p>So, directly answering the question: <strong>a securities MEST is ~100–1000× more
+expensive than a gaming MEST</strong>, because a securities trade is built from the
+expensive types (clearing + netting + custody + settlement finality + regulatory
+report) while a gaming microtransaction is built almost entirely from the cheapest
+type (an internal ledger write with no external counterparty at all).</p>
+<hr/>
+<h2 id="3-cost-per-mest-by-sector-and-the-disruption-model">3. Cost per MEST by <em>Sector</em> — and the disruption model</h2>
+<p>Each sector is a <em>recipe</em> of MEST types, giving it a representative cost-per-MEST
+(<code>c</code>) and an incumbent multiplier (<code>m</code>, MESTs per transaction, from
+<a href="/universe-of-finance/reports/MEST_ADVANTAGE.html">MEST Advantage §3.1</a>). A blockchain replaces the whole <code>m</code>-MEST
+cascade with a small <strong>residual</strong> <code>r</code> of on-chain state transitions (2–3 —
+atomic settlement still needs a debit and a credit; see the
+<a href="/universe-of-finance/reports/MESTCV.html#9-the-irreducible-mest-floor-what-condensation-does-not-remove">irreducible floor</a>).</p>
+<p>The blockchain undercuts the incumbent when</p>
+<pre><code>        r × (chain cost per state transition)   &lt;   m × c
+                                                     └── incumbent friction / txn
+</code></pre>
+<p>so the <strong>disruption threshold</strong> — the most a chain's state transition can cost and
+still win — is:</p>
+<pre><code>        b*  =  (m × c) / r          [ USD per on-chain state transition ]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Sector</th>
+<th>Group</th>
+<th style="text-align: right;">m</th>
+<th style="text-align: right;">$/MEST (c)</th>
+<th style="text-align: right;">residual r</th>
+<th style="text-align: right;">Friction/txn (m·c)</th>
+<th style="text-align: right;"><strong>b*</strong> ($/state-tx)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gaming microtx</td>
+<td>Gaming</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.002</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$0.008</td>
+<td style="text-align: right;"><strong>$0.004</strong></td>
+</tr>
+<tr>
+<td>Digital wallets</td>
+<td>Payments</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.005</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$0.025</td>
+<td style="text-align: right;"><strong>$0.013</strong></td>
+</tr>
+<tr>
+<td>Bill payments</td>
+<td>Payments</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$0.032</td>
+<td style="text-align: right;"><strong>$0.016</strong></td>
+</tr>
+<tr>
+<td>Consumer cards</td>
+<td>Payments</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.008</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$0.056</td>
+<td style="text-align: right;"><strong>$0.028</strong></td>
+</tr>
+<tr>
+<td>Bank transfers</td>
+<td>Payments</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0.025</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$0.125</td>
+<td style="text-align: right;"><strong>$0.063</strong></td>
+</tr>
+<tr>
+<td>Equity markets</td>
+<td>TradFi</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.15</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$1.50</td>
+<td style="text-align: right;"><strong>$0.75</strong></td>
+</tr>
+<tr>
+<td>ETD (derivatives)</td>
+<td>TradFi</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">$3.00</td>
+<td style="text-align: right;"><strong>$1.00</strong></td>
+</tr>
+<tr>
+<td>Securities settle</td>
+<td>Banking</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$9.00</td>
+<td style="text-align: right;"><strong>$4.50</strong></td>
+</tr>
+<tr>
+<td>Forex</td>
+<td>TradFi</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$16.00</td>
+<td style="text-align: right;"><strong>$8.00</strong></td>
+</tr>
+<tr>
+<td>Fixed income</td>
+<td>TradFi</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">2.00</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$16.00</td>
+<td style="text-align: right;"><strong>$8.00</strong></td>
+</tr>
+<tr>
+<td>Cross-border wire</td>
+<td>Payments</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">3.50</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">$24.50</td>
+<td style="text-align: right;"><strong>$12.25</strong></td>
+</tr>
+<tr>
+<td>OTC derivatives</td>
+<td>TradFi</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">5.00</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">$50.00</td>
+<td style="text-align: right;"><strong>$16.67</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The thresholds span <strong>four orders of magnitude — from $0.004 to $16.67.</strong></p>
+<hr/>
+<h2 id="4-the-chart-how-efficient-must-a-blockchain-be">4. The Chart: How Efficient Must a Blockchain Be?</h2>
+<p><img alt="Blockchain disruption threshold by sector" src="charts/mest_disruption_threshold.png"/></p>
+<p>Each bar is a sector's threshold <code>b*</code> — the cost ceiling a chain must beat. The
+dashed lines mark what real chains cost to process one state transition today:</p>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>~$/state transition</th>
+<th>Reality</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Solana-class</strong></td>
+<td>~$0.0005</td>
+<td>High-throughput L1s; sub-cent fees</td>
+</tr>
+<tr>
+<td><strong>L2 rollups</strong></td>
+<td>~$0.01</td>
+<td>Base / Arbitrum / Optimism typical</td>
+</tr>
+<tr>
+<td><strong>Ethereum L1</strong></td>
+<td>~$3</td>
+<td>Congested base layer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A sector is cost-disruptable once a chain sits to the LEFT of its bar end.</strong>
+Reading the chart:</p>
+<ul>
+<li><strong>Trivially disruptable (any chain wins):</strong> <a class="xref" href="/universe-of-finance/reports/traditional-finance/otc-derivatives/REPORT.html">OTC derivatives</a>, cross-border wire,
+  FX, <a class="xref" href="/universe-of-finance/reports/traditional-finance/fixed-income/REPORT.html">fixed income</a>, securities settlement. Their bars extend <em>past even Ethereum
+  L1</em> — a chain can be 1,000–30,000× less efficient than Solana and still undercut
+  the incumbent. <strong>Cost is not the barrier here.</strong></li>
+<li><strong>L2-disruptable:</strong> equities, ETD, <a class="xref" href="/universe-of-finance/reports/payments/bank-transfers/REPORT.html">bank transfers</a>, <a class="xref" href="/universe-of-finance/reports/payments/consumer-cards/REPORT.html">consumer cards</a>, bill
+  payments, <a class="xref" href="/universe-of-finance/reports/payments/digital-wallets/REPORT.html">digital wallets</a>. A rollup clears them; Solana clears them with room to
+  spare. (This is exactly where <a class="xref" href="/universe-of-finance/reports/digital-assets/stablecoins/REPORT.html">stablecoins</a> and tokenised T-bills are eating share
+  right now.)</li>
+<li><strong>Hardest (needs Solana-class):</strong> gaming <a class="xref" href="/universe-of-finance/reports/gaming/gaming-microtx/REPORT.html">microtransactions</a>, at $0.004. Only the
+  most efficient chains clear it — and even then the incumbent (a centralized game
+  server) is nearly free <em>and</em> solves no trust problem that a chain would solve.</li>
+</ul>
+<hr/>
+<h2 id="5-the-counter-intuitive-finding">5. The Counter-Intuitive Finding</h2>
+<p>Intuition says blockchains should start with cheap, high-volume consumer payments
+and work up to complex instruments. The cost model says the <strong>opposite</strong>:</p>
+<blockquote>
+<p><strong>Cost-to-disrupt is inversely proportional to how cheap the incumbent MEST
+already is.</strong> High-value instruments carry expensive MESTs (finality, custody,
+margin, reporting), so their disruption threshold is enormous — a chain barely
+has to try. Consumer and gaming MESTs are already near-free, so the threshold is
+punishingly low.</p>
+</blockquote>
+<p>Two corollaries that reframe the whole "blockchain disruption" debate:</p>
+<ol>
+<li><strong>For high-value finance, cost is never the binding constraint.</strong> OTC
+   derivatives clear a $16.67 threshold that even a congested L1 beats 5×. If DLT
+   hasn't displaced them, it is <em>not</em> because chains are too expensive — it is
+   <strong>legal finality, multilateral netting benefits, liquidity, and regulatory
+   acceptance.</strong> The moat is institutional, not computational. Efforts to win these
+   sectors should spend on <em>law and liquidity</em>, not on shaving basis points of gas.</li>
+<li><strong>For consumer payments and gaming, cost is the <em>only</em> game — and it's nearly
+   lost before it starts.</strong> The incumbent is a free internal ledger write with no
+   counterparty risk to intermediate. A chain must be Solana-efficient <em>and</em> offer
+   a benefit beyond cost (self-custody, composability, cross-border reach) or there
+   is simply nothing to disrupt.</li>
+</ol>
+<p>This is the mirror image of the <a href="/universe-of-finance/reports/README.html">Value/Count Spectrum</a>: the sectors with
+the <em>fewest, most valuable</em> transactions are the ones where blockchains have the
+largest cost headroom, and the sectors with the <em>most, cheapest</em> transactions are
+where they have the least.</p>
+<hr/>
+<h2 id="6-reproduce-it">6. Reproduce It</h2>
+<pre><code class="language-bash">python3 tools/mest_cost.py     # prints both tables + renders the chart
+</code></pre>
+<p><code>tools/mest_cost.py</code> holds the type-cost table, the sector recipes, the threshold
+formula, and the chain reference costs in one place — edit the numbers and the
+chart re-renders. Sensitivity to the two softest inputs (<code>c</code> and <code>r</code>) is high; the
+<em>ordering</em> is robust, the <em>absolute thresholds</em> are 🔴.</p>
+<hr/>
+<h2 id="7-sle-dispatch">7. SLE Dispatch</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>SLE</th>
+<th>Contribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lead</strong></td>
+<td><code>transaction-lifecycle-analyst</code></td>
+<td>Owns the MEST-type recipe per sector and the residual <code>r</code></td>
+</tr>
+<tr>
+<td>Secondary</td>
+<td><code>post-trade-specialist</code></td>
+<td>Cost realism for clearing/netting/custody/settlement MESTs (the expensive types)</td>
+</tr>
+<tr>
+<td>Secondary</td>
+<td><code>crypto-forensics-analyst</code></td>
+<td>Real per-state-transition chain costs (the reference lines)</td>
+</tr>
+<tr>
+<td>Secondary</td>
+<td><code>forensic-accountant</code></td>
+<td>Fee-income → implied cost-per-MEST cross-check</td>
+</tr>
+<tr>
+<td>Secondary</td>
+<td><code>market-microstructure-analyst</code></td>
+<td>Why the moat is liquidity/finality, not cost, for §5.1</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="8-open-questions-run-15">8. Open Questions (Run 15)</h2>
+<ul>
+<li><strong>Firm the cost-per-MEST <code>c</code> by sector</strong> — currently mid-of-range estimates;
+  anchor each to a disclosed fee schedule (NSCC, CME, CLS, SWIFT gpi, card
+  interchange) divided across its MEST cascade.</li>
+<li><strong>Residual <code>r</code> is doing a lot of work</strong> — for margined/complex instruments the
+  true on-chain residual may be 3–4, not 2; re-derive per instrument.</li>
+<li><strong>Add the non-cost axis</strong> — plot each sector on (cost headroom) × (institutional
+  moat) to show <em>why</em> the cost-easy sectors remain un-disrupted.</li>
+<li><strong>Chain-cost bands move</strong> — L2 fees and Solana fees change with demand; publish
+  the reference lines as ranges, and re-run when they shift.</li>
+</ul>
+<hr/>
+<h2 id="9-sources-anchors">9. Sources &amp; Anchors</h2>
+<ul>
+<li>Universe of Finance: <a href="/universe-of-finance/reports/MEST.html">MEST</a> (the type taxonomy),
+  <a href="/universe-of-finance/reports/MEST_ADVANTAGE.html">MEST Advantage §2.1 &amp; §3.1</a> (cost-per-MEST ranges, multipliers,
+  DLT residuals), <a href="/universe-of-finance/reports/MESTCV.html">MESTcv</a> (the irreducible floor).</li>
+<li>Card interchange: ~$187.2B global swipe fees, 2024 (per MEST Advantage §2.2).</li>
+<li>Post-trade fee schedules (NSCC/DTCC, CME Clearing, LCH) — for <code>c</code> firming.</li>
+<li>On-chain fee trackers (Solana, L2 rollups, Ethereum) — for the reference lines.</li>
+</ul>
+<blockquote>
+<p><strong>Confidence statement.</strong> The <em>ordering</em> — securities MESTs ≫ payments MESTs ≫
+gaming MESTs, and therefore high-value sectors are the most cost-disruptable — is
+🟡 Medium and robust to the assumptions. The <em>absolute thresholds</em> are 🔴 Low:
+both <code>c</code> (cost per MEST) and <code>r</code> (on-chain residual) are order-of-magnitude
+estimates. Treat the chart as a map of the terrain, not a survey of it.</p>
+</blockquote>
+  </article>
+  <div class="related"><h3>Related in this repository</h3><div class="links"><a href="/universe-of-finance/">← Dashboard</a></div></div>
+  <div class="report-foot">Generated from <a href="https://github.com/quackstra/universe-of-finance/blob/main/analysis/MEST_COST_BY_SECTOR.md">analysis/MEST_COST_BY_SECTOR.md</a> ·
+    <a href="/universe-of-finance/">Universe of Finance</a> · numbers link to their calculations and sources.</div>
+</div>
+</body></html>
