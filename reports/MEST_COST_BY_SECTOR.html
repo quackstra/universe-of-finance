@@ -267,7 +267,7 @@ still win — is:</p>
 <p>The thresholds span <strong>four orders of magnitude — from $0.004 to $16.67.</strong></p>
 <hr/>
 <h2 id="4-the-chart-how-efficient-must-a-blockchain-be">4. The Chart: How Efficient Must a Blockchain Be?</h2>
-<p><img alt="Blockchain disruption threshold by sector" src="charts/mest_disruption_threshold.png"/></p>
+<p><img alt="Blockchain disruption threshold by sector" class="report-img" loading="lazy" src="/universe-of-finance/analysis/charts/mest_disruption_threshold.png"/></p>
 <p>Each bar is a sector's threshold <code>b*</code> — the cost ceiling a chain must beat. The
 dashed lines mark what real chains cost to process one state transition today:</p>
 <table>
@@ -340,13 +340,36 @@ punishingly low.</p>
 the <em>fewest, most valuable</em> transactions are the ones where blockchains have the
 largest cost headroom, and the sectors with the <em>most, cheapest</em> transactions are
 where they have the least.</p>
+<h3 id="51-the-non-cost-axis-cost-headroom-vs-the-moat">5.1 The non-cost axis: cost headroom vs. the moat</h3>
+<p>If cost isn't the barrier for high-value finance, what is? Plotting each sector on
+<strong>cost headroom (the threshold <code>b*</code>) against its institutional moat</strong> — legal
+finality, netting benefit, liquidity, regulatory acceptance, network effects —
+shows exactly where the real disruption frontier lies:</p>
+<p><img alt="Cost headroom vs. institutional moat" class="report-img" loading="lazy" src="/universe-of-finance/analysis/charts/mest_cost_vs_moat.png"/></p>
+<ul>
+<li><strong>Top-right — cost-easy, moat-hard</strong> (OTC, securities, ETD, FX, fixed income,
+  equities): enormous cost headroom, but a high institutional moat. These are
+  un-disrupted <em>despite</em> the cost economics — the barrier is law, netting, and
+  liquidity. A chain competing here should spend on legal finality and market-maker
+  liquidity, not on gas.</li>
+<li><strong>Bottom-left — cost-hard, moat-low</strong> (gaming, wallets, bill pay): the incumbent
+  is already near-free and there is little trust to intermediate. A chain wins here
+  only on <em>features</em> (self-custody, composability, reach), never on cost alone.</li>
+<li><strong>Bottom-right — the sweet spot</strong> (cross-border wire, and the stablecoin rails
+  already eating it): high cost headroom <em>and</em> a low-to-moderate moat. This is where
+  blockchain disruption is actually happening today — and the quadrant to target.</li>
+</ul>
+<p>The two-axis view is the real answer to "how efficient must a blockchain be": for
+most of finance, <strong>efficiency is necessary but nowhere near sufficient</strong> — the moat
+is the binding constraint, and it is not measured in dollars per state transition.</p>
 <hr/>
 <h2 id="6-reproduce-it">6. Reproduce It</h2>
-<pre><code class="language-bash">python3 tools/mest_cost.py     # prints both tables + renders the chart
+<pre><code class="language-bash">python3 tools/mest_cost.py     # prints both tables + renders both charts
 </code></pre>
-<p><code>tools/mest_cost.py</code> holds the type-cost table, the sector recipes, the threshold
-formula, and the chain reference costs in one place — edit the numbers and the
-chart re-renders. Sensitivity to the two softest inputs (<code>c</code> and <code>r</code>) is high; the
+<p><code>tools/mest_cost.py</code> holds the type-cost table, the sector recipes (including the
+moat score), the threshold formula, and the chain reference costs in one place —
+edit the numbers and both the threshold chart and the cost-vs-moat scatter
+re-render. Sensitivity to the two softest inputs (<code>c</code> and <code>r</code>) is high; the
 <em>ordering</em> is robust, the <em>absolute thresholds</em> are 🔴.</p>
 <hr/>
 <h2 id="7-sle-dispatch">7. SLE Dispatch</h2>
@@ -394,8 +417,9 @@ chart re-renders. Sensitivity to the two softest inputs (<code>c</code> and <cod
   interchange) divided across its MEST cascade.</li>
 <li><strong>Residual <code>r</code> is doing a lot of work</strong> — for margined/complex instruments the
   true on-chain residual may be 3–4, not 2; re-derive per instrument.</li>
-<li><strong>Add the non-cost axis</strong> — plot each sector on (cost headroom) × (institutional
-  moat) to show <em>why</em> the cost-easy sectors remain un-disrupted.</li>
+<li><strong>Quantify the moat axis</strong> (added §5.1) — the moat scores are currently expert
+  judgement (0–100). Anchor each to observable proxies: netting-benefit ratios,
+  bid/ask liquidity depth, regulatory-approval status, switching costs.</li>
 <li><strong>Chain-cost bands move</strong> — L2 fees and Solana fees change with demand; publish
   the reference lines as ranges, and re-run when they shift.</li>
 </ul>

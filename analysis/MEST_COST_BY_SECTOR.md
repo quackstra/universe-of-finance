@@ -170,17 +170,43 @@ the *fewest, most valuable* transactions are the ones where blockchains have the
 largest cost headroom, and the sectors with the *most, cheapest* transactions are
 where they have the least.
 
+### 5.1 The non-cost axis: cost headroom vs. the moat
+
+If cost isn't the barrier for high-value finance, what is? Plotting each sector on
+**cost headroom (the threshold `b*`) against its institutional moat** — legal
+finality, netting benefit, liquidity, regulatory acceptance, network effects —
+shows exactly where the real disruption frontier lies:
+
+![Cost headroom vs. institutional moat](charts/mest_cost_vs_moat.png)
+
+- **Top-right — cost-easy, moat-hard** (OTC, securities, ETD, FX, fixed income,
+  equities): enormous cost headroom, but a high institutional moat. These are
+  un-disrupted *despite* the cost economics — the barrier is law, netting, and
+  liquidity. A chain competing here should spend on legal finality and market-maker
+  liquidity, not on gas.
+- **Bottom-left — cost-hard, moat-low** (gaming, wallets, bill pay): the incumbent
+  is already near-free and there is little trust to intermediate. A chain wins here
+  only on *features* (self-custody, composability, reach), never on cost alone.
+- **Bottom-right — the sweet spot** (cross-border wire, and the stablecoin rails
+  already eating it): high cost headroom *and* a low-to-moderate moat. This is where
+  blockchain disruption is actually happening today — and the quadrant to target.
+
+The two-axis view is the real answer to "how efficient must a blockchain be": for
+most of finance, **efficiency is necessary but nowhere near sufficient** — the moat
+is the binding constraint, and it is not measured in dollars per state transition.
+
 ---
 
 ## 6. Reproduce It
 
 ```bash
-python3 tools/mest_cost.py     # prints both tables + renders the chart
+python3 tools/mest_cost.py     # prints both tables + renders both charts
 ```
 
-`tools/mest_cost.py` holds the type-cost table, the sector recipes, the threshold
-formula, and the chain reference costs in one place — edit the numbers and the
-chart re-renders. Sensitivity to the two softest inputs (`c` and `r`) is high; the
+`tools/mest_cost.py` holds the type-cost table, the sector recipes (including the
+moat score), the threshold formula, and the chain reference costs in one place —
+edit the numbers and both the threshold chart and the cost-vs-moat scatter
+re-render. Sensitivity to the two softest inputs (`c` and `r`) is high; the
 *ordering* is robust, the *absolute thresholds* are 🔴.
 
 ---
@@ -204,8 +230,9 @@ chart re-renders. Sensitivity to the two softest inputs (`c` and `r`) is high; t
   interchange) divided across its MEST cascade.
 - **Residual `r` is doing a lot of work** — for margined/complex instruments the
   true on-chain residual may be 3–4, not 2; re-derive per instrument.
-- **Add the non-cost axis** — plot each sector on (cost headroom) × (institutional
-  moat) to show *why* the cost-easy sectors remain un-disrupted.
+- **Quantify the moat axis** (added §5.1) — the moat scores are currently expert
+  judgement (0–100). Anchor each to observable proxies: netting-benefit ratios,
+  bid/ask liquidity depth, regulatory-approval status, switching costs.
 - **Chain-cost bands move** — L2 fees and Solana fees change with demand; publish
   the reference lines as ranges, and re-run when they shift.
 

@@ -175,6 +175,22 @@ def rewrite_md_links(soup: BeautifulSoup, md: Path):
         a["href"] = f"{BASEURL}/"
 
 
+def rewrite_images(soup: BeautifulSoup, md: Path):
+    """Point relative <img> src (e.g. charts/foo.png in analysis/) at its Pages-absolute
+    URL, since /reports/ pages don't sit beside the analysis/ chart assets."""
+    for img in soup.find_all("img"):
+        src = img.get("src", "")
+        if not src or re.match(r"^[a-z]+://", src) or src.startswith("/"):
+            continue
+        try:
+            rel = (md.parent / src).resolve().relative_to(ROOT)
+        except ValueError:
+            continue
+        img["src"] = f"{BASEURL}/{rel.as_posix()}"
+        img["loading"] = "lazy"
+        img["class"] = img.get("class", []) + ["report-img"]
+
+
 def autolink(soup: BeautifulSoup, self_url: str):
     for rx, url in LINKS:
         if url == self_url:
@@ -398,6 +414,7 @@ def convert(md: Path):
     soup = BeautifulSoup(html, "html.parser")
     self_url = url_for(md)
     rewrite_md_links(soup, md)
+    rewrite_images(soup, md)
     autolink(soup, self_url)
     toc = build_toc(soup)
     chips, chart = chips_and_chart(md)

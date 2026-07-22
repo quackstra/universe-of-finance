@@ -65,20 +65,23 @@ MEST_TYPE_COST = {
 #     extended). mult = incumbent MESTs/txn (MEST Advantage §3.1). residual =
 #     on-chain state transitions after atomic condensation.
 # ---------------------------------------------------------------------------
+# moat = the NON-cost barrier (0-100): legal finality + netting benefit + liquidity
+# + regulatory acceptance + network effects. High moat = un-disrupted even when cost
+# headroom is huge, because the barrier isn't price. This is the §5 "why" axis.
 SECTORS = [
-    # name,                    group,           mult, cost_mid, residual, dominant MEST types
-    ("Gaming microtx", "Gaming", 4, 0.002, 2, "internal ledger writes"),
-    ("Digital wallets", "Payments", 5, 0.005, 2, "ledger + payment leg"),
-    ("Bill payments", "Payments", 4, 0.008, 2, "payment leg + recon"),
-    ("Consumer cards", "Payments", 7, 0.008, 2, "auth + clearing + interchange + settle"),
-    ("Bank transfers", "Payments", 5, 0.025, 2, "clearing + interbank settle"),
-    ("Equity markets", "TradFi", 10, 0.15, 2, "clearing + netting + custody + settle"),
-    ("ETD (derivatives)", "TradFi", 10, 0.30, 3, "CCP novation + margin + settle"),
-    ("Securities settle", "Banking", 9, 1.00, 2, "custody + DvP finality + recon"),
-    ("Forex", "TradFi", 8, 2.00, 2, "CLS/PvP legs + nostro recon"),
-    ("Fixed income", "TradFi", 8, 2.00, 2, "bilateral confirm + custody + repo"),
-    ("Cross-border wire", "Payments", 7, 3.50, 2, "correspondent hops + reg report"),
-    ("OTC derivatives", "TradFi", 10, 5.00, 3, "ISDA + bilateral margin + recon"),
+    # name,               group,       mult, cost_mid, residual, moat, dominant MEST types
+    ("Gaming microtx", "Gaming", 4, 0.002, 2, 10, "internal ledger writes"),
+    ("Digital wallets", "Payments", 5, 0.005, 2, 20, "ledger + payment leg"),
+    ("Bill payments", "Payments", 4, 0.008, 2, 25, "payment leg + recon"),
+    ("Bank transfers", "Payments", 5, 0.025, 2, 35, "clearing + interbank settle"),
+    ("Consumer cards", "Payments", 7, 0.008, 2, 45, "auth + clearing + interchange + settle"),
+    ("Cross-border wire", "Payments", 7, 3.50, 2, 55, "correspondent hops + reg report"),
+    ("Forex", "TradFi", 8, 2.00, 2, 70, "CLS/PvP legs + nostro recon"),
+    ("Fixed income", "TradFi", 8, 2.00, 2, 72, "bilateral confirm + custody + repo"),
+    ("Equity markets", "TradFi", 10, 0.15, 2, 75, "clearing + netting + custody + settle"),
+    ("ETD (derivatives)", "TradFi", 10, 0.30, 3, 80, "CCP novation + margin + settle"),
+    ("Securities settle", "Banking", 9, 1.00, 2, 85, "custody + DvP finality + recon"),
+    ("OTC derivatives", "TradFi", 10, 5.00, 3, 88, "ISDA + bilateral margin + recon"),
 ]
 
 GROUP_COLOR = {
@@ -110,10 +113,10 @@ def print_tables() -> None:
     print("\n=== Disruption threshold by SECTOR ===")
     print(f"{'Sector':20} {'mult':>4} {'$/MEST':>8} {'resid':>5} {'friction/txn':>12} {'b* ($/state-tx)':>16}")
     rows = []
-    for name, group, mult, cost, resid, _types in SECTORS:
+    for name, group, mult, cost, resid, moat, _types in SECTORS:
         friction = mult * cost
         b = threshold(mult, cost, resid)
-        rows.append((name, group, mult, cost, resid, friction, b))
+        rows.append((name, group, mult, cost, resid, friction, b, moat))
         print(f"{name:20} {mult:>4} {cost:>8.4f} {resid:>5} {friction:>12.3f} {b:>16.4f}")
     print(
         "\nReading: a chain can cost UP TO b* per state transition and still undercut\n"
@@ -195,7 +198,80 @@ def render_chart(rows) -> Path:
     return out
 
 
+def render_scatter(rows) -> Path:
+    """Why the cost-easy sectors stay un-disrupted: cost headroom vs. the moat.
+
+    x = disruption threshold b* (cost headroom, log). y = the non-cost moat.
+    The payoff: high-value sectors sit top-RIGHT (huge cost headroom, high moat) —
+    un-disrupted by institutions, not price. The disruption sweet spot is bottom-
+    RIGHT (high headroom, low moat), exactly where stablecoins are winning.
+    """
+    fig, ax = plt.subplots(figsize=(13, 8.4))
+    ax.set_xscale("log")
+    x_lo, x_hi, y_hi = 2e-3, 40, 100
+    moat_split = 50
+
+    # Quadrant shading + labels (drawn first, behind points).
+    ax.axhspan(moat_split, y_hi, xmin=0.5, xmax=1.0, color="#fca5a5", alpha=0.12, zorder=0)
+    ax.axhspan(0, moat_split, xmin=0.5, xmax=1.0, color="#86efac", alpha=0.16, zorder=0)
+    ax.axhspan(0, moat_split, xmin=0.0, xmax=0.5, color="#fcd34d", alpha=0.12, zorder=0)
+    ax.axhline(moat_split, color="#94a3b8", linestyle=":", linewidth=1.2, zorder=1)
+
+    # Chain-cost feasibility boundaries (can a chain even afford this sector?).
+    for label, cost, color in CHAIN_REFS[1:]:  # L2, L1
+        ax.axvline(cost, color=color, linestyle="--", linewidth=1.4, alpha=0.8, zorder=1)
+        ax.text(cost, 2, f"{label}\n~${cost:g}", color=color, fontsize=8.5,
+                ha="center", va="bottom", fontweight="bold",
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.8, pad=1))
+
+    for r in rows:
+        name, group, b, moat = r[0], r[1], r[6], r[7]
+        ax.scatter(b, moat, s=170, color=GROUP_COLOR[group], edgecolor="white",
+                   linewidth=1.3, zorder=4)
+        ax.annotate(name, (b, moat), xytext=(7, 6), textcoords="offset points",
+                    fontsize=9, color="#334155", zorder=5)
+
+    ax.text(2.6, 96, "COST-EASY, MOAT-HARD\nun-disrupted by institutions, not price",
+            fontsize=9.5, color="#b91c1c", ha="center", va="center", fontweight="bold", zorder=3)
+    ax.text(5.5, 14, "THE SWEET SPOT\nhigh cost headroom + low moat\n(stablecoins are winning here)",
+            fontsize=9.5, color="#15803d", ha="center", va="center", fontweight="bold", zorder=3)
+    ax.text(6.0e-3, 30, "COST-HARD, MOAT-LOW\nwin on features, not price",
+            fontsize=9.5, color="#a16207", ha="center", va="center", fontweight="bold", zorder=3)
+
+    ax.set_xlim(x_lo, x_hi)
+    ax.set_ylim(0, y_hi)
+    ax.set_xlabel(
+        "Cost headroom → disruption threshold b* ($/state transition a chain may cost, log)",
+        fontsize=10)
+    ax.set_ylabel("Institutional moat (legal finality · netting · liquidity · regulation)  →",
+                  fontsize=10)
+    ax.grid(color="#e2e8f0", linewidth=0.7, zorder=0)
+    for spine in ("top", "right"):
+        ax.spines[spine].set_visible(False)
+
+    from matplotlib.patches import Patch
+    handles = [Patch(facecolor=c, label=g) for g, c in GROUP_COLOR.items()]
+    ax.legend(handles=handles, title="Sector group", loc="upper left",
+              frameon=False, fontsize=9, title_fontsize=9)
+
+    fig.suptitle("Why the cost-easy sectors stay un-disrupted: cost headroom vs. the moat",
+                 fontsize=14.5, fontweight="bold", x=0.5, y=0.985)
+    fig.text(0.5, 0.935,
+             "Right = a chain can be very inefficient and still win on cost. Up = the barrier "
+             "is institutional, not price.\nHigh-value finance is cost-easy but moat-hard; the "
+             "real disruption frontier is the low-moat bottom-right.",
+             ha="center", va="top", fontsize=9.5, color="#475569")
+
+    fig.tight_layout(rect=[0, 0, 1, 0.9])
+    out = CHARTS_DIR / "mest_cost_vs_moat.png"
+    fig.savefig(out, dpi=DPI, bbox_inches="tight")
+    plt.close(fig)
+    return out
+
+
 if __name__ == "__main__":
     rows = print_tables()
-    path = render_chart(rows)
-    print(f"\nChart written to {path.relative_to(BASE_DIR)}")
+    p1 = render_chart(rows)
+    p2 = render_scatter(rows)
+    print(f"\nCharts written to {p1.relative_to(BASE_DIR)}")
+    print(f"                 {p2.relative_to(BASE_DIR)}")

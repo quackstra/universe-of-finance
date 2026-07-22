@@ -105,6 +105,16 @@ These categories overlap — the [Overlap Matrix](OVERLAP_MATRIX.md) details de-
 - **[Data Freshness](DATA_FRESHNESS.md)** — Source staleness tracker
 - **[Payments Overlap](payments/OVERLAP_ANALYSIS.md)** — Payments sector deep dive
 
+### MEST Framework
+
+- **[MEST Overview](MEST.md)** — Mutual Economic State Transitions (~545K/s, 7.4× multiplier)
+- **[MEST Advantage](MEST_ADVANTAGE.md)** — DLT compression thesis (crypto cuts MESTs 60–80%)
+- **[MEST by Country](MEST_BY_COUNTRY.md)** — Per-country MEST multipliers
+- **[MESTcv — Condensation Value](MESTCV.md)** — the value of condensing MEST (~$0.6–1.9T/yr net)
+- **[Cost of MEST by Sector](MEST_COST_BY_SECTOR.md)** — cost per MEST by type/sector +
+  the **blockchain disruption-threshold chart** and the cost-vs-moat frontier
+
 ---
 
-*Last updated: 2026-03-28 (Run 6). 29 categories, 6 runs completed.*
+*Last updated: 2026-07-22 (Run 14). 29 categories; MEST framework extended with
+MESTcv + Cost-of-MEST-by-Sector.*

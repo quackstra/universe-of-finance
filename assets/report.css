@@ -102,3 +102,15 @@ body {
 .toc a { color: #cbd5e1; text-decoration: none; }
 .toc a:hover { color: var(--accent-blue); }
 @media (max-width: 640px) { .toc ul { columns: 1; } .report-head h1 { font-size: 1.6rem; } }
+
+/* Chart images embedded from analysis/**/charts (added Run 14) */
+.report-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 22px auto;
+  background: #fff;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 10px;
+  padding: 10px;
+}
