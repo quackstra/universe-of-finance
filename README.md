@@ -195,6 +195,7 @@ Global gross TPS grew **6.7×** from 2015 to 2025. Fastest growers (2020-25 CAGR
 - **[China Opacity Report](analysis/deep-dives/china/REPORT.md)** — The ±6,000 TPS blind spot
 - **[Sunset Watch](analysis/SUNSET_WATCH.md)** — Declining categories (growth outpaces decline 38:1)
 - **[MEST Advantage Paper](analysis/MEST_ADVANTAGE.md)** — DLT compression thesis: crypto reduces MESTs 60-80%
+- **[MESTcv — Condensation Value](analysis/MESTCV.md)** — the value of condensing MEST: ~$0.6–1.9T/yr net (the toll + the trips never taken)
 - **[Brazil Deep Dive](analysis/deep-dives/brazil/REPORT.md)** — Pix #2 globally, 6.3% of global TPS
 - **[EU Deep Dive](analysis/deep-dives/eu/REPORT.md)** — 18.2% of global TPS, TIPS +402% YoY
 - **[Japan Deep Dive](analysis/deep-dives/japan/REPORT.md)** — Cash-to-digital transition, JPX renaissance, 4.6% of global TPS

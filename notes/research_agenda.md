@@ -44,6 +44,20 @@ capsules. No new counted categories; Sovereign Wealth added as a value-not-count
    Middle East deep dive). Track mBridge production milestones; this is where CBDC meets
    high-value cross-border settlement.
 
+### Tier 3b: MESTcv — firm the condensation-value framework (published Run 14)
+
+4b. **MESTcv follow-through** (`analysis/MESTCV.md` published as a 🔴 framework capsule).
+   Highest-value firming targets for Run 15, in priority order:
+   - **Housing line** — decompose the ~5–10% real-estate round-trip cost into MEST-caused
+     (condensable) vs. genuine-service components. This is the largest and softest ΔUnlock line.
+   - **Deadweight-vs-rent split of the MEST Tax** — the pivot between net GDP gain and pure
+     redistribution; currently the weakest link and it drives the headline sign/size.
+   - **Irreducible MEST floor per category** — estimate ΔUnlock against 2–3 MESTs, not zero.
+   - **Capture model** — parameterise operator rent (commons vs. monopoly) and publish MESTcv
+     as a function of it rather than a point estimate.
+   - SLE panel: `transaction-lifecycle-analyst` (lead) + `forensic-accountant` +
+     `national-accounts-statistician` + `post-trade-specialist` + `market-research-analyst`.
+
 ### Tier 4: Remaining country/region deep dives
 
 7. **Turkey** — deliberately excluded from the Middle East deep dive (Europe/Asia bridge,
