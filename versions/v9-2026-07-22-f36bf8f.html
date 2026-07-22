@@ -1,0 +1,2531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Universe of Finance — Measuring every financial transaction on Earth</title>
+<meta name="description" content="Interactive dashboard mapping global financial transaction throughput across 29 categories and 7 sectors. ~73,750 TPS. ~545,000 MEST/s. ~47B tokenizable resources worth ~$867T.">
+<!-- Open Graph / social — the Opacity Index press card -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Universe of Finance">
+<meta property="og:title" content="The Opacity Index — ~60% of global transaction throughput is too opaque to verify">
+<meta property="og:description" content="Open ledgers report every transaction in seconds. TradFi reports itself in quarters and estimates. The Opacity Index scores every system 0–100 on how measurable it is at all.">
+<meta property="og:image" content="https://quackstra.github.io/universe-of-finance/assets/opacity-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://quackstra.github.io/universe-of-finance/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Opacity Index — Universe of Finance">
+<meta name="twitter:description" content="~60% of the world's transaction throughput flows through systems too opaque to independently verify.">
+<meta name="twitter:image" content="https://quackstra.github.io/universe-of-finance/assets/opacity-og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+<style>
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0e1a;
+  --card: #111827;
+  --card-border: #1e293b;
+  --accent-blue: #3b82f6;
+  --accent-green: #10b981;
+  --accent-emerald: #10b981;
+  --accent-amber: #f59e0b;
+  --accent-purple: #8b5cf6;
+  --accent-red: #ef4444;
+  --accent-pink: #ec4899;
+  --accent-cyan: #06b6d4;
+  --text: #f9fafb;
+  --muted: #9ca3af;
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── Utilities ─── */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.accent-blue { color: var(--accent-blue); }
+.accent-green { color: var(--accent-green); }
+.accent-amber { color: var(--accent-amber); }
+.accent-purple { color: var(--accent-purple); }
+
+section {
+  padding: 80px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-bottom: 40px;
+  max-width: 640px;
+}
+
+/* ─── Hero ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 50% 30%, rgba(59,130,246,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 70%, rgba(139,92,246,0.06) 0%, transparent 50%);
+  pointer-events: none;
+  animation: heroGlow 12s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-3%, 2%) scale(1.05); }
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(59,130,246,0.12);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent-blue);
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.hero .tagline {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  color: var(--muted);
+  font-weight: 400;
+  margin-bottom: 56px;
+  position: relative;
+}
+
+.hero-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .big-number {
+  font-family: var(--mono);
+  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.hero-stat .big-number.tps { color: var(--accent-blue); }
+.hero-stat .big-number.mest { color: var(--accent-purple); }
+.hero-stat .big-number.ttr { color: var(--accent-emerald, #10b981); }
+
+.hero-stat .unit {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-weight: 400;
+}
+
+.hero-stat .sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.hero-mest-explain {
+  max-width: 620px;
+  text-align: center;
+  margin-top: 48px;
+  position: relative;
+}
+
+.hero-mest-explain .label {
+  font-weight: 700;
+  color: var(--accent-purple);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.hero-mest-explain p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s infinite;
+  color: var(--muted);
+  font-size: 1.5rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+  50% { transform: translateX(-50%) translateY(10px); opacity: 1; }
+}
+
+/* ─── Leaderboard ─── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--muted);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover { border-color: var(--accent-blue); color: var(--text); }
+.filter-btn.active {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #fff;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+thead th {
+  background: rgba(255,255,255,0.04);
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.2s;
+}
+
+thead th:hover { color: var(--text); }
+thead th .sort-arrow { margin-left: 4px; font-size: 0.7rem; }
+thead th.sort-active { color: var(--accent-blue); }
+
+tbody tr {
+  border-top: 1px solid var(--card-border);
+  transition: background 0.15s;
+}
+tbody tr:hover { background: rgba(255,255,255,0.03); }
+
+tbody td {
+  padding: 12px 16px;
+  white-space: nowrap;
+}
+
+.td-name { font-weight: 600; }
+.td-number { font-family: var(--mono); font-weight: 500; }
+.td-sector {
+  font-size: 0.78rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.sector-payments { background: rgba(59,130,246,0.15); color: var(--accent-blue); }
+.sector-tradfi { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.sector-digital { background: rgba(139,92,246,0.15); color: var(--accent-purple); }
+.sector-banking { background: rgba(6,182,212,0.15); color: var(--accent-cyan); }
+.sector-gaming { background: rgba(236,72,153,0.15); color: var(--accent-pink); }
+.sector-government { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+.sector-emerging { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+
+.conf-badge {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.conf-high { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+.conf-mid { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.conf-low { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+
+/* ─── Live Layer: ticker strip + data-age badges ─── */
+.live-ticker {
+  width: 100%;
+  border-top: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  background: rgba(17,24,39,0.6);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+.live-ticker .lt-inner {
+  max-width: 1280px; margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.lt-items { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lt-row2 { padding-top: 0; border-top: 1px dashed var(--card-border); }
+.lt-row2 .lt-tps { color: var(--accent-amber); }
+.lt-label {
+  font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted); margin-right: 6px; white-space: nowrap;
+}
+.lt-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px; border: 1px solid var(--card-border); border-radius: 8px;
+  background: rgba(10,14,26,0.5); white-space: nowrap;
+}
+.lt-item .lt-name { font-weight: 600; font-size: 0.85rem; }
+.lt-item .lt-tps { font-family: var(--mono); font-weight: 700; color: var(--accent-green); font-size: 0.9rem; }
+.lt-item .lt-unit { font-size: 0.7rem; color: var(--muted); }
+.pulse-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--accent-green);
+  box-shadow: 0 0 0 0 rgba(16,185,129,0.7); animation: ltpulse 2s infinite;
+}
+.pulse-dot.amber { background: var(--accent-amber); box-shadow: 0 0 0 0 rgba(245,158,11,0.7); animation: ltpulse-amber 2s infinite; }
+.pulse-dot.red { background: var(--accent-red); animation: none; }
+@keyframes ltpulse {
+  0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+@keyframes ltpulse-amber {
+  0% { box-shadow: 0 0 0 0 rgba(245,158,11,0.6); }
+  70% { box-shadow: 0 0 0 7px rgba(245,158,11,0); }
+  100% { box-shadow: 0 0 0 0 rgba(245,158,11,0); }
+}
+/* Data-age badge: green (fresh) → amber (lagged) → red (very stale / no feed) */
+.age-badge {
+  font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+  padding: 1px 7px; border-radius: 4px; white-space: nowrap;
+}
+.age-fresh { background: rgba(16,185,129,0.15); color: var(--accent-green); }
+.age-lagged { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.age-stale { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+.age-none { background: rgba(156,163,175,0.12); color: var(--muted); }
+
+/* ─── Opacity Index ─── */
+.op-hero-stat {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px;
+  background: linear-gradient(90deg, rgba(16,185,129,0.08), rgba(239,68,68,0.12));
+  border: 1px solid var(--card-border); border-radius: 12px; padding: 20px 24px; margin: 8px 0 28px;
+}
+.op-hero-stat .big { font-family: var(--mono); font-weight: 800; font-size: 2.4rem; color: var(--accent-red); line-height: 1; }
+.op-hero-stat .txt { color: var(--muted); font-size: 0.95rem; max-width: 720px; }
+.op-controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.op-sort-btn {
+  font-family: var(--mono); font-size: 0.78rem; padding: 6px 12px; border-radius: 6px;
+  border: 1px solid var(--card-border); background: var(--card); color: var(--muted); cursor: pointer;
+}
+.op-sort-btn.active { color: var(--text); border-color: var(--accent-blue); }
+.op-table { width: 100%; border-collapse: collapse; }
+.op-table th { text-align: left; padding: 10px 12px; font-size: 0.75rem; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted); border-bottom: 1px solid var(--card-border); }
+.op-table td { padding: 10px 12px; border-bottom: 1px solid rgba(30,41,59,0.5); vertical-align: middle; }
+.op-row-name { font-weight: 600; }
+.op-row-sub { display: block; color: var(--muted); font-size: 0.75rem; font-weight: 400; margin-top: 2px; }
+.op-bar-wrap { display: flex; align-items: center; gap: 10px; min-width: 220px; }
+.op-bar { position: relative; flex: 1; height: 14px; border-radius: 7px; overflow: hidden;
+  background: rgba(255,255,255,0.05); display: flex; }
+.op-seg { height: 100%; }
+.op-seg.latency { background: var(--accent-blue); }
+.op-seg.granularity { background: var(--accent-purple); }
+.op-seg.verifiability { background: var(--accent-cyan); }
+.op-seg.coverage { background: var(--accent-amber); }
+.op-score { font-family: var(--mono); font-weight: 700; font-size: 0.95rem; min-width: 30px; text-align: right; }
+.op-legend { display: flex; gap: 16px; flex-wrap: wrap; margin: 14px 0 4px; font-size: 0.78rem; color: var(--muted); }
+.op-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.op-legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+
+/* ─── Split Screen: Measured vs Estimated ─── */
+.split-axis { position: relative; height: 20px; margin: 0 0 4px; font-family: var(--mono);
+  font-size: 0.68rem; color: var(--muted); }
+.split-axis .tick { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.split-axis .tick::before { content: ""; position: absolute; left: 50%; top: 16px; width: 1px;
+  height: 6px; background: var(--card-border); }
+.split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 760px) { .split-grid { grid-template-columns: 1fr; } }
+.split-col { border: 1px solid var(--card-border); border-radius: 12px; padding: 16px; background: var(--card); }
+.split-col h3 { font-size: 1rem; margin-bottom: 2px; }
+.split-col .col-sub { font-size: 0.78rem; color: var(--muted); margin-bottom: 14px; }
+.split-col.measured { border-top: 3px solid var(--accent-green); }
+.split-col.estimated { border-top: 3px solid var(--accent-red); }
+.sr-row { margin-bottom: 11px; }
+.sr-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 3px; }
+.sr-name { font-size: 0.85rem; font-weight: 600; }
+.sr-tps { font-family: var(--mono); font-size: 0.8rem; }
+.sr-track { position: relative; height: 10px; border-radius: 5px; background: rgba(255,255,255,0.05); }
+.sr-fill { position: absolute; left: 0; top: 0; height: 100%; border-radius: 5px; min-width: 2px; }
+.sr-fill.m { background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan)); }
+.sr-fill.m.lag { background: linear-gradient(90deg, var(--accent-amber), #d97706); }
+.sr-fill.e { background: linear-gradient(90deg, #f87171, var(--accent-red)); }
+.sr-meta { font-family: var(--mono); font-size: 0.68rem; margin-top: 3px; }
+
+/* ─── MEST Cascade ─── */
+.cascade-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cascade-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px 0;
+  position: relative;
+  opacity: 0.35;
+  transition: opacity 0.4s, transform 0.4s;
+  transform: translateX(-10px);
+}
+
+.cascade-step.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.cascade-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  background: rgba(139,92,246,0.15);
+  color: var(--accent-purple);
+  border: 2px solid rgba(139,92,246,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.cascade-step.active .cascade-num {
+  background: var(--accent-purple);
+  color: #fff;
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 20px rgba(139,92,246,0.4);
+}
+
+.cascade-line {
+  position: absolute;
+  left: 19px;
+  top: 60px;
+  bottom: 0;
+  width: 2px;
+  background: var(--card-border);
+}
+
+.cascade-step:last-child .cascade-line { display: none; }
+
+.cascade-body h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.cascade-body .parties {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.cascade-body .parties span {
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.cascade-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.cascade-btn {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cascade-btn:hover { border-color: var(--accent-purple); }
+.cascade-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.cascade-trigger-card {
+  text-align: center;
+  padding: 24px;
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08));
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 12px;
+}
+
+.cascade-trigger-card .emoji { font-size: 2rem; margin-bottom: 8px; }
+.cascade-trigger-card h3 { font-size: 1.2rem; margin-bottom: 4px; }
+.cascade-trigger-card p { color: var(--muted); font-size: 0.9rem; }
+
+/* ─── Charts ─── */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.chart-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.chart-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.chart-canvas-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* ─── Spotlights ─── */
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (min-width: 1100px) {
+  .spotlight-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.spotlight-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.spotlight-india::before { background: linear-gradient(90deg, #ff9933, #fff, #138808); }
+.spotlight-china::before { background: linear-gradient(90deg, #de2910, #ffde00); }
+.spotlight-brazil::before { background: linear-gradient(90deg, #009c3b, #ffdf00, #002776); }
+.spotlight-eu::before { background: linear-gradient(90deg, #003399, #ffcc00, #003399); }
+.spotlight-japan::before { background: linear-gradient(90deg, #fff, #bc002d, #fff); }
+.spotlight-uk::before { background: linear-gradient(90deg, #012169, #c8102e, #fff); }
+
+.spotlight-card.coming-soon { opacity: 0.7; }
+.spotlight-card.coming-soon .coming-soon-badge {
+  display: inline-block;
+  background: rgba(245,158,11,0.15);
+  color: var(--accent-amber);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ─── MEST Advantage Waterfall ─── */
+.waterfall-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.waterfall-stat-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+}
+
+.waterfall-stat-card .big {
+  font-family: var(--mono);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.waterfall-stat-card .big.green { color: var(--accent-green); }
+.waterfall-stat-card .big.purple { color: var(--accent-purple); }
+.waterfall-stat-card .big.amber { color: var(--accent-amber); }
+
+.waterfall-stat-card .desc {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .waterfall-summary { grid-template-columns: 1fr; }
+}
+
+.spotlight-card .flag { font-size: 2.5rem; margin-bottom: 16px; }
+.spotlight-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; }
+
+.spotlight-stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 0.9rem;
+}
+
+.spotlight-stat:last-child { border-bottom: none; }
+.spotlight-stat .label { color: var(--muted); }
+.spotlight-stat .value { font-family: var(--mono); font-weight: 600; }
+
+.spotlight-quote {
+  margin-top: 20px;
+  padding: 16px;
+  background: rgba(255,255,255,0.03);
+  border-left: 3px solid var(--accent-amber);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ─── Insights ─── */
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.insight-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.insight-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+.insight-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(59,130,246,0.1);
+}
+
+.insight-card p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+/* ─── Hypothesis Generator ─── */
+.hyp-intro {
+  max-width: 780px;
+  margin-bottom: 32px;
+  line-height: 1.7;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+.hyp-intro strong { color: var(--text); }
+
+.hyp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.hyp-card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.hyp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.hyp-card.tier-field::before { background: var(--accent-amber); }
+.hyp-card.tier-forensic::before { background: var(--accent-red); }
+.hyp-card.tier-structural::before { background: var(--accent-purple); }
+
+.hyp-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-2px);
+}
+
+.hyp-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hyp-id {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+}
+.hyp-id.tier-field { background: rgba(245,158,11,0.15); color: var(--accent-amber); }
+.hyp-id.tier-forensic { background: rgba(239,68,68,0.15); color: var(--accent-red); }
+.hyp-id.tier-structural { background: rgba(139,92,246,0.15); color: var(--accent-purple); }
+
+.hyp-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.hyp-body {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.hyp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.hyp-tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.05);
+  color: var(--muted);
+}
+
+.hyp-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+.hyp-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.hyp-legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hyp-caveat {
+  margin-top: 12px;
+  padding: 20px 24px;
+  background: rgba(245,158,11,0.06);
+  border: 1px solid rgba(245,158,11,0.15);
+  border-radius: 12px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.hyp-caveat strong { color: var(--accent-amber); }
+
+/* ─── TTR Section ─── */
+.ttr-hero-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.ttr-hero-stat {
+  text-align: center;
+}
+
+.ttr-hero-stat .ttr-big {
+  font-family: var(--mono);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--accent-emerald);
+  line-height: 1.1;
+}
+
+.ttr-hero-stat .ttr-unit {
+  font-size: 1rem;
+  color: var(--muted);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.ttr-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.ttr-gap-card {
+  text-align: center;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));
+  border: 1px solid rgba(16,185,129,0.2);
+  border-radius: 16px;
+  margin-top: 32px;
+}
+
+.ttr-gap-card .gap-visual {
+  position: relative;
+  height: 32px;
+  background: rgba(16,185,129,0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px 0 16px;
+}
+
+.ttr-gap-card .gap-filled {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  min-width: 2px;
+  background: var(--accent-emerald);
+  border-radius: 8px 0 0 8px;
+  box-shadow: 0 0 8px rgba(16,185,129,0.6);
+}
+
+.ttr-gap-card .gap-callout {
+  font-family: var(--mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent-amber);
+  margin-bottom: 4px;
+}
+
+.ttr-gap-card .gap-desc {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .ttr-grid { grid-template-columns: 1fr; }
+  .ttr-hero-numbers { flex-direction: column; gap: 24px; }
+}
+
+/* ─── Footer ─── */
+footer {
+  border-top: 1px solid var(--card-border);
+  padding: 48px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 2;
+}
+
+footer a {
+  color: var(--accent-blue);
+  text-decoration: none;
+}
+
+footer a:hover { text-decoration: underline; }
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  section { padding: 56px 0; }
+  .chart-grid, .spotlight-grid { grid-template-columns: 1fr; }
+  .hero-numbers { flex-direction: column; gap: 32px; }
+  h2 { font-size: 1.6rem; }
+  .card { padding: 20px; }
+  table { font-size: 0.8rem; }
+  thead th, tbody td { padding: 10px 10px; }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #4b5563; }
+
+/* ─── Nav ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10,14,26,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+  padding: 0 24px;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+}
+
+nav.visible { transform: translateY(0); }
+
+nav .inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+nav .brand {
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+nav .nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+}
+
+nav .nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+nav .nav-links a:hover { color: var(--text); }
+
+@media (max-width: 640px) {
+  nav .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="inner">
+    <div class="brand">Universe of Finance</div>
+    <ul class="nav-links">
+      <li><a href="#leaderboard">Leaderboard</a></li>
+      <li><a href="#opacity">Opacity</a></li>
+      <li><a href="reports/index.html">Reports</a></li>
+      <li><a href="#ttr">TTR</a></li>
+      <li><a href="#mest-cascade">MEST</a></li>
+      <li><a href="#mest-advantage">Advantage</a></li>
+      <li><a href="#charts">Charts</a></li>
+      <li><a href="#spotlights">Spotlights</a></li>
+      <li><a href="#insights">Insights</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════ LIVE TICKER (Live Layer, Tier 1) ═══════ -->
+<div class="live-ticker" id="liveTicker" aria-label="Live ledger-verified transaction throughput">
+  <div class="lt-inner">
+    <span class="lt-label" title="Public blockchains report every transaction in seconds.">Live&nbsp;·&nbsp;ledger-verified</span>
+    <span id="liveTickerItems" class="lt-items"><span class="muted" style="font-size:0.8rem;">loading feeds…</span></span>
+  </div>
+  <div class="lt-inner lt-row2">
+    <span class="lt-label" title="Named payment systems report exact counts — but monthly or annually, not live.">Published&nbsp;·&nbsp;lagged</span>
+    <span id="pubTickerItems" class="lt-items"><span class="muted" style="font-size:0.8rem;">loading feeds…</span></span>
+  </div>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero visible" id="hero">
+  <div class="container" style="display:flex;flex-direction:column;align-items:center;">
+    <div class="hero-badge">Open Research Project</div>
+    <h1>Universe of Finance</h1>
+    <p class="tagline">Measuring every financial transaction on Earth</p>
+    <div class="hero-numbers">
+      <div class="hero-stat">
+        <div class="big-number tps mono">~<span id="counterTPS">0</span></div>
+        <div class="unit">TPS</div>
+        <div class="sub">~2.3 trillion transactions per year</div>
+      </div>
+      <div class="hero-stat">
+        <div class="big-number mest mono">~<span id="counterMEST">0</span></div>
+        <div class="unit">MEST/s</div>
+        <div class="sub">Mutual Economic State Transitions</div>
+      </div>
+      <div class="hero-stat">
+        <div class="big-number ttr mono">~<span id="counterTTR">0</span>B</div>
+        <div class="unit">TTR</div>
+        <div class="sub">$<span id="counterTTRValue">0</span>T tokenizable resources</div>
+      </div>
+    </div>
+    <div class="hero-mest-explain">
+      <div class="label">What is a MEST?</div>
+      <p>Every transaction triggers a cascade of bilateral state changes. A single card swipe generates ~7 MESTs: authorization, clearing, interchange, settlement on both sides, merchant credit, and statement update. MEST measures what the financial system <em>actually</em> processes.</p>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true">&#8595;</div>
+</section>
+
+<!-- ═══════ LEADERBOARD ═══════ -->
+<section id="leaderboard">
+  <div class="container">
+    <h2>TPS Leaderboard</h2>
+    <p class="section-subtitle">28 categories ranked by throughput. Click column headers to sort. Filter by sector.</p>
+    <div class="filter-bar" id="filterBar"></div>
+    <div class="table-wrap">
+      <table id="leaderboardTable">
+        <thead>
+          <tr>
+            <th data-key="rank">#</th>
+            <th data-key="name" data-type="string">Category</th>
+            <th data-key="tps" data-type="number" class="sort-active">TPS <span class="sort-arrow">&#9660;</span></th>
+            <th data-key="txnYear" data-type="string">Txns/yr</th>
+            <th data-key="sector" data-type="string">Sector</th>
+            <th data-key="confidence" data-type="number">Confidence <span class="sort-arrow"></span></th>
+            <th title="Vintage of the underlying estimate. Every leaderboard figure is a period-2024 annual estimate — compare with the seconds-fresh chain feeds in the ticker.">Data age</th>
+            <th data-key="mestMult" data-type="number">MEST Mult <span class="sort-arrow"></span></th>
+            <th data-key="mestPerSec" data-type="number">MEST/s <span class="sort-arrow"></span></th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardBody"></tbody>
+      </table>
+      <p class="muted" style="font-size:0.82rem;margin-top:14px;line-height:1.5;">
+        <strong>Data age</strong> shows the vintage of each estimate. Every category above is
+        a period-2024 annual estimate — no live feed exists for these systems, which is the
+        whole point. Compare these <span class="age-badge age-stale">as of 2024</span> badges
+        with the <span class="age-badge age-fresh">seconds ago</span> ledger feeds in the top
+        ticker. TradFi reports itself in quarters and estimates; open ledgers report themselves
+        in seconds. Click any category name to open its full report — sources, calcs, and
+        methodology. Browse the <a href="reports/index.html" style="color:var(--accent-blue);">research library</a>
+        and <a href="data/SOURCES.md" style="color:var(--accent-blue);">data sources</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ OPACITY INDEX ═══════ -->
+<section id="opacity">
+  <div class="container">
+    <h2>Opacity Index</h2>
+    <p class="section-subtitle">
+      How measurable is each system — at all? Scored 0–100 (higher = darker) on a published,
+      versioned <a href="opacity-methodology/" style="color:var(--accent-blue);">rubric</a>.
+      This is <em>not</em> the confidence score: confidence is how sure we are of our estimate;
+      opacity is how measurable the system is in the first place.
+    </p>
+    <div class="op-hero-stat">
+      <span class="big" id="opHeadlinePct">—</span>
+      <span class="txt" id="opHeadlineTxt">of categorised transaction throughput flows through systems that score 60+ on opacity — measured self-servingly, on a lag, or not at all.</span>
+    </div>
+    <div class="op-legend">
+      <span><i style="background:var(--accent-blue)"></i>Latency /30</span>
+      <span><i style="background:var(--accent-purple)"></i>Granularity /25</span>
+      <span><i style="background:var(--accent-cyan)"></i>Verifiability /25</span>
+      <span><i style="background:var(--accent-amber)"></i>Coverage /20</span>
+      <span class="muted">— bar length = total opacity; segments = per-dimension contribution (hover for values)</span>
+    </div>
+    <div class="op-controls" id="opControls">
+      <button class="op-sort-btn active" data-sort="opacity">Most opaque</button>
+      <button class="op-sort-btn" data-sort="opacity-asc">Most transparent</button>
+      <button class="op-sort-btn" data-sort="tps">By throughput</button>
+      <button class="op-sort-btn" data-sort="name">A–Z</button>
+    </div>
+    <div style="overflow-x:auto;">
+      <table class="op-table">
+        <thead><tr><th>#</th><th>Category</th><th>Opacity (0–100)</th><th>Score</th><th>Justification</th></tr></thead>
+        <tbody id="opacityBody"><tr><td colspan="5" class="muted">loading opacity index…</td></tr></tbody>
+      </table>
+    </div>
+    <p class="muted" style="font-size:0.82rem;margin-top:14px;line-height:1.5;">
+      Every score is arguable from the <a href="opacity-methodology/" style="color:var(--accent-blue);">rubric</a>
+      and its cited source — <strong>challenge one via PR</strong> with public, citable evidence.
+      Rubric v1.0 · CC&nbsp;BY&nbsp;4.0.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════ SPLIT SCREEN — Measured vs Estimated ═══════ -->
+<section id="split">
+  <div class="container">
+    <h2>Measured vs. Estimated</h2>
+    <p class="section-subtitle">
+      One shared, log-scaled TPS axis. On the left, systems that report every transaction —
+      in <strong>seconds</strong> (open ledgers) or on a <strong>lag</strong> (published rails).
+      On the right, the estimated majority, last refreshed in 2024. Same axis, so the
+      magnitudes are directly comparable — and so is the freshness gap.
+    </p>
+    <div class="split-axis" id="splitAxis" aria-hidden="true"></div>
+    <div class="split-grid">
+      <div class="split-col measured">
+        <h3 style="color:var(--accent-green)">Measured</h3>
+        <div class="col-sub">Ledger-verified (green, seconds) + published rails (amber, lagged).</div>
+        <div id="splitMeasured"><span class="muted" style="font-size:0.8rem;">loading…</span></div>
+      </div>
+      <div class="split-col estimated">
+        <h3 style="color:var(--accent-red)">Estimated</h3>
+        <div class="col-sub">No live feed exists. Period-2024 annual estimates + confidence.</div>
+        <div id="splitEstimated"></div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.8rem;margin-top:14px;">
+      Estimated column shows the largest categories; the full set is in the
+      <a href="#leaderboard" style="color:var(--accent-blue);">leaderboard</a>. A Bitcoin bar
+      that updated <span class="age-badge age-fresh">seconds ago</span> sits on the same axis as
+      a card-network bar <span class="age-badge age-stale">as of 2024</span>. That is the whole point.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════ TTR (Total Tokenizable Resources) ═══════ -->
+<section id="ttr">
+  <div class="container">
+    <h2 style="color:var(--accent-emerald);">Total Tokenizable Resources</h2>
+    <p class="section-subtitle">Every asset, right, and record that can be represented as a token on a ledger. The full universe of what DLT can address.</p>
+    <div class="ttr-hero-numbers">
+      <div class="ttr-hero-stat">
+        <div class="ttr-big mono">~<span id="counterTTRSection">0</span>B</div>
+        <div class="ttr-unit">Discrete Tokenizable Resources</div>
+      </div>
+      <div class="ttr-hero-stat">
+        <div class="ttr-big mono">$<span id="counterTTRValueSection">0</span>T</div>
+        <div class="ttr-unit">Total Value of Tokenizable Assets</div>
+      </div>
+    </div>
+    <div class="ttr-grid">
+      <div class="chart-card">
+        <h3 style="color:var(--accent-emerald);">TTR Tier Breakdown by Value</h3>
+        <div class="chart-canvas-wrap" style="height:340px;">
+          <canvas id="ttrTierChart"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3 style="color:var(--accent-emerald);">TTR Tier Composition</h3>
+        <div class="chart-canvas-wrap">
+          <canvas id="ttrDoughnut"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="ttr-gap-card">
+      <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:4px;">The Tokenization Gap</h3>
+      <p class="gap-desc" style="margin-bottom:8px;">Current RWA tokenization (~$20B) vs Total Tokenizable Resources (~$867T)</p>
+      <div class="gap-visual">
+        <div class="gap-filled"></div>
+      </div>
+      <div class="gap-callout">&lt; 0.01% tokenized</div>
+      <p class="gap-desc">$20B of $867T &mdash; the opportunity is almost entirely untapped</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MEST CASCADE ═══════ -->
+<section id="mest-cascade">
+  <div class="container">
+    <h2>The MEST Cascade</h2>
+    <p class="section-subtitle">One card purchase. Seven bilateral state changes. Step through the cascade.</p>
+    <div class="cascade-trigger-card">
+      <div class="emoji">&#128179;</div>
+      <h3>$42.00 Coffee Shop Purchase</h3>
+      <p>Tap. Approved. But behind the scenes, 7 state transitions fire across 5 institutions.</p>
+    </div>
+    <div class="cascade-container" id="cascadeContainer"></div>
+    <div class="cascade-controls">
+      <button class="cascade-btn" id="cascadePrev" disabled>&#8592; Back</button>
+      <button class="cascade-btn" id="cascadeNext">Next Step &#8594;</button>
+      <button class="cascade-btn" id="cascadeAll">Show All</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MEST ADVANTAGE ═══════ -->
+<section id="mest-advantage">
+  <div class="container">
+    <h2>The MEST Advantage</h2>
+    <p class="section-subtitle">If every category shifted to DLT-native infrastructure, 63% of bilateral state changes disappear. Here's where the compression comes from.</p>
+    <div class="chart-grid">
+      <div class="chart-card" style="grid-column: 1 / -1;">
+        <h3>MEST Compression Waterfall: Traditional &rarr; DLT</h3>
+        <div class="chart-canvas-wrap" style="height:420px;">
+          <canvas id="mestWaterfallChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="waterfall-summary">
+      <div class="waterfall-stat-card">
+        <div class="big purple">545K</div>
+        <div class="desc">Current MEST/s</div>
+      </div>
+      <div class="waterfall-stat-card">
+        <div class="big green">~200K</div>
+        <div class="desc">After full DLT compression</div>
+      </div>
+      <div class="waterfall-stat-card">
+        <div class="big amber">$150-250B</div>
+        <div class="desc">Estimated annual savings</div>
+      </div>
+    </div>
+
+    <div class="chart-grid" style="margin-top:30px;">
+      <div class="chart-card" style="grid-column: 1 / -1;">
+        <h3>How efficient must a blockchain be to disrupt each sector's MEST?</h3>
+        <p class="section-subtitle" style="margin-top:-4px;">The cost a chain must beat per state transition. The surprise: the most expensive MESTs (OTC, FX, securities) are the <em>easiest</em> to disrupt on cost &mdash; the cheap consumer &amp; gaming MESTs are the hardest.</p>
+        <img src="analysis/charts/mest_disruption_threshold.png" alt="Blockchain disruption threshold by sector" loading="lazy" style="display:block;width:100%;height:auto;background:#fff;border-radius:10px;padding:10px;box-sizing:border-box;">
+        <p class="muted" style="font-size:0.85rem;margin-top:14px;line-height:1.5;">
+          Cost rises with a MEST's irreversibility, mutuality, and oversight &mdash; a securities
+          state transition costs ~1000&times; a gaming one. Full write-up, the cost-per-MEST-by-type
+          table, and the cost-vs-moat frontier that shows <em>why</em> the cost-easy sectors stay
+          un-disrupted: <a href="reports/MEST_COST_BY_SECTOR.html" style="color:var(--accent-blue);">Cost of MEST by Sector &rarr;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CHARTS ═══════ -->
+<section id="charts">
+  <div class="container">
+    <h2>Visual Breakdown</h2>
+    <p class="section-subtitle">Sector composition and historical growth.</p>
+    <div class="chart-grid">
+      <div class="chart-card">
+        <h3>Sector Share of Global TPS</h3>
+        <div class="chart-canvas-wrap">
+          <canvas id="sectorDoughnut"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Global Gross TPS (2015 - 2025)</h3>
+        <div class="chart-canvas-wrap">
+          <canvas id="timeSeriesLine"></canvas>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:24px;">
+      <div class="chart-card">
+        <h3>MEST Multiplier by Category</h3>
+        <div class="chart-canvas-wrap" style="height:620px;">
+          <canvas id="mestBarChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SPOTLIGHTS ═══════ -->
+<section id="spotlights">
+  <div class="container">
+    <h2>Country Spotlights</h2>
+    <p class="section-subtitle">Six economies that shape global transaction throughput.</p>
+    <div class="spotlight-grid">
+      <div class="spotlight-card spotlight-india">
+        <div class="flag">&#127470;&#127475;</div>
+        <h3>India</h3>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">17.4%</span></div>
+        <div class="spotlight-stat"><span class="label">Share of global GDP</span><span class="value">3.5%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~12,850</span></div>
+        <div class="spotlight-stat"><span class="label">UPI txns/year</span><span class="value mono">228B</span></div>
+        <div class="spotlight-stat"><span class="label">NSE share of global ETD</span><span class="value mono">62%</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-high">72</span></span></div>
+        <div class="spotlight-quote">"India skipped the card era entirely — leapfrogging straight to real-time mobile payments."</div>
+      </div>
+      <div class="spotlight-card spotlight-china">
+        <div class="flag">&#127464;&#127475;</div>
+        <h3>China</h3>
+        <div class="spotlight-stat"><span class="label">TPS uncertainty band</span><span class="value accent-amber">&plusmn;6,000 TPS</span></div>
+        <div class="spotlight-stat"><span class="label">Context</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">Larger than entire Digital Assets sector</span></div>
+        <div class="spotlight-stat"><span class="label">Opacity: crypto</span><span class="value"><span class="conf-badge conf-low">10</span></span></div>
+        <div class="spotlight-stat"><span class="label">Opacity: equities</span><span class="value"><span class="conf-badge conf-high">75</span></span></div>
+        <div class="spotlight-quote">"The biggest blind spot in global finance. China's uncertainty band alone exceeds most sectors."</div>
+      </div>
+      <div class="spotlight-card spotlight-brazil">
+        <div class="flag">&#127463;&#127479;</div>
+        <h3>Brazil</h3>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">6.3%</span></div>
+        <div class="spotlight-stat"><span class="label">Share of global GDP</span><span class="value">3.0%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~4,680</span></div>
+        <div class="spotlight-stat"><span class="label">Pix txns/year</span><span class="value mono">68.7B</span></div>
+        <div class="spotlight-stat"><span class="label">Pix adult adoption</span><span class="value mono">93%</span></div>
+        <div class="spotlight-stat"><span class="label">B3 ETD rank</span><span class="value mono">#2 Global</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-mid">68</span></span></div>
+        <div class="spotlight-quote">"Pix processed 68.7B transactions in 2024 &mdash; 93% of Brazilian adults use it. The fastest real-time payments adoption in history."</div>
+      </div>
+      <div class="spotlight-card spotlight-eu">
+        <div class="flag">&#127466;&#127482;</div>
+        <h3>European Union</h3>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">18.2%</span></div>
+        <div class="spotlight-stat"><span class="label">Share of global GDP</span><span class="value">24.8%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~13,400</span></div>
+        <div class="spotlight-stat"><span class="label">Non-cash txns 2024</span><span class="value mono">149.7B</span></div>
+        <div class="spotlight-stat"><span class="label">TIPS growth (YoY)</span><span class="value mono accent-green">+402%</span></div>
+        <div class="spotlight-stat"><span class="label">MiCA compliance</span><span class="value mono">65%+</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-high">78</span></span></div>
+        <div class="spotlight-quote">"The ECB's TIPS instant payment volume grew 402% in 2024. The EU is building the world's most regulated &mdash; and most measurable &mdash; financial system."</div>
+      </div>
+      <div class="spotlight-card spotlight-japan">
+        <div class="flag">&#127471;&#127477;</div>
+        <h3>Japan</h3>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">4.6%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~3,420</span></div>
+        <div class="spotlight-stat"><span class="label">JPX equity rank</span><span class="value mono">#3 Global</span></div>
+        <div class="spotlight-stat"><span class="label">PayPay users</span><span class="value mono">65M</span></div>
+        <div class="spotlight-stat"><span class="label">Cash-to-digital shift</span><span class="value mono accent-green">42%</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-mid">68</span></span></div>
+        <div class="spotlight-quote">"JPX is #3 globally by equity market cap. PayPay has 65M users driving Japan's cash-to-digital transition &mdash; 42% of consumer payments are now cashless."</div>
+      </div>
+      <div class="spotlight-card spotlight-uk">
+        <div class="flag">&#127468;&#127463;</div>
+        <h3>United Kingdom</h3>
+        <div class="spotlight-stat"><span class="label">Share of global TPS</span><span class="value accent-green">5.7%</span></div>
+        <div class="spotlight-stat"><span class="label">TPS contribution</span><span class="value mono">~4,200</span></div>
+        <div class="spotlight-stat"><span class="label">Share of global FX</span><span class="value mono">38.1%</span></div>
+        <div class="spotlight-stat"><span class="label">Key innovation</span><span class="value" style="font-family:var(--font);font-size:0.85rem;">Faster Payments pioneer</span></div>
+        <div class="spotlight-stat"><span class="label">Confidence</span><span class="value"><span class="conf-badge conf-high">75</span></span></div>
+        <div class="spotlight-quote">"London clears 38.1% of global FX volume. The UK pioneered Faster Payments in 2008 &mdash; a model replicated by 60+ countries. LCH is the world's largest interest rate swap CCP."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ INSIGHTS ═══════ -->
+<section id="insights">
+  <div class="container">
+    <h2>Key Insights</h2>
+    <p class="section-subtitle">What the data tells us about how the world moves money.</p>
+    <div class="insights-grid" id="insightsGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════ HYPOTHESIS GENERATOR ═══════ -->
+<section id="hypotheses">
+  <div class="container">
+    <h2>Hypothesis Generator</h2>
+    <p class="section-subtitle">Where human investigators should look next.</p>
+
+    <div class="hyp-intro">
+      <p>
+        This research was produced by AI agents operating within public data.
+        Agents can triangulate published statistics, apply forensic proxy methods,
+        and estimate from observable shadows &mdash; but they <strong>cannot make phone calls,
+        file FOIA requests, conduct interviews, attend conferences, or access
+        paywalled databases</strong>. The hypotheses below identify specific questions
+        where human investigation would yield disproportionate insight &mdash; places
+        where a forensic accountant with a Bloomberg terminal, a central bank
+        economist with PBOC contacts, or an academic with survey access could
+        move the needle in ways an agent never will.
+      </p>
+    </div>
+
+    <div class="hyp-legend">
+      <div class="hyp-legend-item"><div class="hyp-legend-dot" style="background:var(--accent-amber)"></div> Field Research &mdash; requires interviews, site visits, or FOIA</div>
+      <div class="hyp-legend-item"><div class="hyp-legend-dot" style="background:var(--accent-red)"></div> Forensic Accounting &mdash; requires paywalled data or financial analysis</div>
+      <div class="hyp-legend-item"><div class="hyp-legend-dot" style="background:var(--accent-purple)"></div> Structural &mdash; challenges the framework itself</div>
+    </div>
+
+    <div class="hyp-grid" id="hypGrid"></div>
+
+    <div class="hyp-caveat">
+      <strong>On the limits of agentic research:</strong> Every number in this project
+      was produced by AI agents searching the open web and applying analytical frameworks.
+      The agents are honest about what they don't know &mdash; confidence scores, uncertainty
+      bands, and opacity gradients are all attempts to quantify ignorance. But there is
+      a category of knowledge that agents <em>cannot</em> access: the informal, relational,
+      institutional knowledge held by practitioners. A retired PBOC official knows things
+      about WMP transaction flows that will never appear in a research paper. A hawala
+      broker in Dubai knows the real volume of the Gulf&ndash;South Asia corridor. A
+      Citadel Securities engineer knows the true order-to-trade ratio. These hypotheses
+      are invitations to those people &mdash; or to researchers who can reach them.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container">
+    <p>Research methodology: Triangulation-first, 19 Soul Less Employees, 29 categories, 7 sectors &middot; Run 12</p>
+    <p><a href="https://github.com/quackstra/universe-of-finance" target="_blank" rel="noopener">View the full research on GitHub</a> &middot; <a href="versions/" rel="noopener">Version History</a></p>
+    <p style="margin-top:16px;">&copy; 2026 Universe of Finance &middot; <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA
+   ═══════════════════════════════════════════ */
+const DATA = [
+  { name:"Consumer Cards", tps:24501, txnYear:"772.7B", sector:"Payments", confidence:91, mestMult:7, mestPerSec:171507 },
+  { name:"Digital Wallets", tps:19660, txnYear:"620B", sector:"Payments", confidence:67, mestMult:5, mestPerSec:98300 },
+  { name:"Bank Transfers", tps:15338, txnYear:"484B", sector:"Payments", confidence:78, mestMult:5, mestPerSec:76690 },
+  { name:"ETD (Derivatives)", tps:9505, txnYear:"205.3B", sector:"Traditional Finance", confidence:88, mestMult:10, mestPerSec:95050 },
+  { name:"Equity Markets", tps:3500, txnYear:"61.5B", sector:"Traditional Finance", confidence:86, mestMult:10, mestPerSec:35000 },
+  { name:"CEX (Crypto)", tps:3210, txnYear:"101B", sector:"Digital Assets", confidence:56, mestMult:4, mestPerSec:12840 },
+  { name:"Bill Payments", tps:3076, txnYear:"97B", sector:"Payments", confidence:60, mestMult:4, mestPerSec:12304 },
+  { name:"E-Commerce", tps:1823, txnYear:"57.5B", sector:"Payments", confidence:67, mestMult:3, mestPerSec:5469 },
+  { name:"ATM Withdrawals", tps:1557, txnYear:"49.1B", sector:"Payments", confidence:52, mestMult:4, mestPerSec:6228 },
+  { name:"IoT & M2M", tps:1538, txnYear:"48.5B", sector:"Emerging", confidence:67, mestMult:3, mestPerSec:4614 },
+  { name:"Payroll", tps:1014, txnYear:"32B", sector:"Payments", confidence:53, mestMult:5, mestPerSec:5070 },
+  { name:"Government Payments", tps:983, txnYear:"31B", sector:"Government", confidence:65, mestMult:5, mestPerSec:4915 },
+  { name:"BNPL", tps:634, txnYear:"20B", sector:"Payments", confidence:58, mestMult:6, mestPerSec:3804 },
+  { name:"Microtransactions", tps:539, txnYear:"17B", sector:"Gaming", confidence:60, mestMult:3, mestPerSec:1617 },
+  { name:"Stablecoins", tps:520, txnYear:"16.4B", sector:"Digital Assets", confidence:75, mestMult:3, mestPerSec:1560 },
+  { name:"L1/L2 Blockchain", tps:415, txnYear:"13.1B", sector:"Digital Assets", confidence:76, mestMult:2, mestPerSec:830 },
+  { name:"Insurance Premiums", tps:444, txnYear:"14B", sector:"Payments", confidence:52, mestMult:5, mestPerSec:2220 },
+  { name:"Commodities", tps:330, txnYear:"10.4B", sector:"Traditional Finance", confidence:74, mestMult:9, mestPerSec:2970 },
+  { name:"P2P Transfers", tps:270, txnYear:"8.5B", sector:"Payments", confidence:69, mestMult:3, mestPerSec:810 },
+  { name:"Forex", tps:127, txnYear:"4B", sector:"Traditional Finance", confidence:58, mestMult:8, mestPerSec:1016 },
+  { name:"Game Sales", tps:92, txnYear:"2.9B", sector:"Gaming", confidence:56, mestMult:3, mestPerSec:276 },
+  { name:"Remittances", tps:57, txnYear:"1.8B", sector:"Payments", confidence:58, mestMult:7, mestPerSec:399 },
+  { name:"Interbank RTGS", tps:50.1, txnYear:"1.6B", sector:"Banking", confidence:82, mestMult:3, mestPerSec:150 },
+  { name:"Securities Settlement", tps:44, txnYear:"1.4B", sector:"Banking", confidence:74, mestMult:4, mestPerSec:176 },
+  { name:"Fixed Income", tps:10.5, txnYear:"0.33B", sector:"Traditional Finance", confidence:60, mestMult:8, mestPerSec:84 },
+  { name:"AI Agents", tps:3.5, txnYear:"0.11B", sector:"Emerging", confidence:42, mestMult:3, mestPerSec:11 },
+  { name:"RWA Tokenisation", tps:2.4, txnYear:"0.076B", sector:"Emerging", confidence:56, mestMult:6, mestPerSec:14 },
+  { name:"OTC Derivatives", tps:0.17, txnYear:"0.005B", sector:"Traditional Finance", confidence:68, mestMult:12, mestPerSec:2 },
+];
+
+const SECTORS = ["All","Payments","Traditional Finance","Digital Assets","Banking","Gaming","Government","Emerging"];
+
+// Dashboard → repository report pages (generated under /reports/ by tools/build_reports.py)
+const REPORT_PATH = {
+  "Consumer Cards":"payments/consumer-cards","Digital Wallets":"payments/digital-wallets",
+  "Bank Transfers":"payments/bank-transfers","ETD (Derivatives)":"traditional-finance/etd",
+  "Equity Markets":"traditional-finance/equity-markets","CEX (Crypto)":"digital-assets/cex",
+  "Bill Payments":"payments/bill-payments","E-Commerce":"payments/ecommerce",
+  "ATM Withdrawals":"payments/atm-withdrawals","IoT & M2M":"emerging/iot-m2m",
+  "Payroll":"payments/payroll","Government Payments":"government/government-payments",
+  "BNPL":"payments/bnpl","Microtransactions":"gaming/gaming-microtx",
+  "Stablecoins":"digital-assets/stablecoins","L1/L2 Blockchain":"digital-assets/blockchain-l1-l2",
+  "Insurance Premiums":"payments/insurance-premiums","Commodities":"traditional-finance/commodities",
+  "P2P Transfers":"payments/p2p-transfers","Forex":"traditional-finance/forex",
+  "Game Sales":"gaming/gaming-sales","Remittances":"payments/remittances",
+  "Interbank RTGS":"banking/interbank-rtgs","Securities Settlement":"banking/securities-settlement",
+  "Fixed Income":"traditional-finance/fixed-income","AI Agents":"emerging/ai-agents",
+  "RWA Tokenisation":"emerging/rwa-tokenisation","OTC Derivatives":"traditional-finance/otc-derivatives",
+};
+const SPOTLIGHT_PATH = {
+  "India":"deep-dives/india","China":"deep-dives/china","Brazil":"deep-dives/brazil",
+  "European Union":"deep-dives/eu","Japan":"deep-dives/japan","United Kingdom":"deep-dives/uk",
+};
+function reportHref(name){ const p = REPORT_PATH[name]; return p ? `reports/${p}/REPORT.html` : null; }
+function nameLink(name){
+  const h = reportHref(name);
+  return h ? `<a href="${h}" title="Open the ${name} report — sources, calcs, methodology">${name}</a>` : name;
+}
+
+const SECTOR_LABELS = {
+  "Payments":"Payments","Traditional Finance":"TradFi","Digital Assets":"Digital Assets",
+  "Banking":"Banking","Gaming":"Gaming","Government":"Government","Emerging":"Emerging"
+};
+
+const SECTOR_COLORS = {
+  "Payments": "#3b82f6",
+  "Traditional Finance": "#f59e0b",
+  "Digital Assets": "#8b5cf6",
+  "Banking": "#06b6d4",
+  "Gaming": "#ec4899",
+  "Government": "#10b981",
+  "Emerging": "#ef4444"
+};
+
+const SECTOR_CLASSES = {
+  "Payments":"sector-payments","Traditional Finance":"sector-tradfi","Digital Assets":"sector-digital",
+  "Banking":"sector-banking","Gaming":"sector-gaming","Government":"sector-government","Emerging":"sector-emerging"
+};
+
+const SECTOR_CHART_DATA = {
+  labels: ["Payments","TradFi","Digital Assets","Banking","Gaming","Government","Emerging"],
+  values: [55690, 13473, 3625, 95, 480, 983, 1540],
+  colors: ["#3b82f6","#f59e0b","#8b5cf6","#06b6d4","#ec4899","#10b981","#ef4444"]
+};
+
+const TIME_SERIES = {
+  labels: [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025],
+  values: [12900,15200,18400,22100,26500,28800,38500,53100,66400,79800,86900]
+};
+
+const CASCADE_STEPS = [
+  { title:"Authorization Request", parties:["Merchant POS","Card Network"], desc:"Terminal sends auth request through network" },
+  { title:"Issuer Authorization", parties:["Card Network","Issuing Bank"], desc:"Bank checks funds, approves, places hold" },
+  { title:"Clearing", parties:["Acquirer","Card Network"], desc:"Batch transaction details submitted for clearing" },
+  { title:"Interchange Fee", parties:["Acquirer","Issuing Bank"], desc:"Interchange fee calculated and allocated" },
+  { title:"Issuer Settlement", parties:["Card Network","Issuing Bank"], desc:"Cardholder account debited, funds released" },
+  { title:"Acquirer Settlement", parties:["Card Network","Acquiring Bank"], desc:"Net settlement amount transferred to acquirer" },
+  { title:"Merchant Credit", parties:["Acquiring Bank","Merchant Account"], desc:"Funds deposited minus merchant discount rate" },
+];
+
+const INSIGHTS = [
+  { icon:"&#128179;", text:"Payments dominate: 75% of global TPS comes from payments infrastructure." },
+  { icon:"&#128200;", text:"Double-counting is only ~14% \u2014 most categories have clean boundaries." },
+  { icon:"&#128640;", text:"Growth outpaces decline 38:1 \u2014 financial throughput almost never shrinks." },
+  { icon:"&#128201;", text:"Recessions barely move the number \u2014 2020 saw only a -0.3% dip before roaring back." },
+  { icon:"&#9939;&#65039;", text:"Crypto\u2019s MEST advantage: 60\u201380% fewer state changes per transaction than traditional rails." },
+  { icon:"&#127470;&#127475;", text:"India is 5\u00d7 overweight in TPS vs GDP \u2014 the most transaction-dense large economy." },
+  { icon:"&#128274;", text:"~60% of categorised throughput flows through systems scoring 60+ on the Opacity Index \u2014 measured self-servingly, on a lag, or not at all." },
+  { icon:"&#9201;&#65039;", text:"The freshness gap: open ledgers report every transaction in seconds; the estimated majority was last refreshed in 2024 \u2014 ~560+ days stale and counting." },
+  { icon:"&#128262;", text:"The most measurable systems on Earth are Pix (Brazil, opacity 24) and UPI (India, opacity 30) \u2014 real-time, centrally published, independently checkable." },
+];
+
+/* ═══════════════════════════════════════════
+   COUNTER ANIMATION
+   ═══════════════════════════════════════════ */
+function animateCounter(el, target, duration, format) {
+  const start = performance.now();
+  const step = (now) => {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    const val = Math.round(ease * target);
+    el.textContent = format(val);
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function fmtComma(n) { return n.toLocaleString('en-US'); }
+
+document.addEventListener('DOMContentLoaded', () => {
+  animateCounter(document.getElementById('counterTPS'), 73750, 2200, fmtComma);
+  animateCounter(document.getElementById('counterMEST'), 545000, 2400, fmtComma);
+  animateCounter(document.getElementById('counterTTR'), 47, 2000, fmtComma);
+  animateCounter(document.getElementById('counterTTRValue'), 867, 2200, fmtComma);
+});
+
+/* TTR section counters — triggered on scroll into view */
+const ttrSectionObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(document.getElementById('counterTTRSection'), 47, 2000, fmtComma);
+      animateCounter(document.getElementById('counterTTRValueSection'), 867, 2200, fmtComma);
+      ttrSectionObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const ttrSection = document.getElementById('ttr');
+if (ttrSection) ttrSectionObs.observe(ttrSection);
+
+/* ═══════════════════════════════════════════
+   NAV SHOW ON SCROLL
+   ═══════════════════════════════════════════ */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('visible', window.scrollY > window.innerHeight * 0.6);
+}, { passive: true });
+
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+   ═══════════════════════════════════════════ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('section:not(.hero)').forEach(s => observer.observe(s));
+
+/* ═══════════════════════════════════════════
+   LEADERBOARD
+   ═══════════════════════════════════════════ */
+let sortKey = 'tps';
+let sortDir = -1; // -1 = desc
+let activeFilter = 'All';
+
+function confClass(c) { return c > 70 ? 'conf-high' : c >= 50 ? 'conf-mid' : 'conf-low'; }
+
+// Data-age retrofit: every leaderboard estimate reflects the 2024 annual data corpus
+// (Run 6 baseline). Age is computed live so the contrast with the seconds-fresh chain
+// feeds grows every day the estimate is not refreshed. Staleness is content.
+const DATA_VINTAGE = '2024-12-31';
+function dataAgeBadgeHTML(asOf) {
+  const days = Math.floor((Date.now() - Date.parse(asOf)) / 86400000);
+  const cls = days > 540 ? 'age-stale' : days > 180 ? 'age-lagged' : 'age-fresh';
+  const yr = String(asOf).slice(0, 4);
+  return `<span class="age-badge ${cls}" title="Estimate vintage ${asOf} — no live feed exists for this category">as of ${yr} · ${days}d</span>`;
+}
+
+function renderTable() {
+  const filtered = activeFilter === 'All' ? [...DATA] : DATA.filter(d => d.sector === activeFilter);
+  filtered.sort((a, b) => {
+    let av = a[sortKey], bv = b[sortKey];
+    if (typeof av === 'string') return sortDir * av.localeCompare(bv);
+    return sortDir * (av - bv);
+  });
+
+  const tbody = document.getElementById('leaderboardBody');
+  tbody.innerHTML = filtered.map((d, i) => `
+    <tr>
+      <td class="td-number muted">${i + 1}</td>
+      <td class="td-name">${nameLink(d.name)}</td>
+      <td class="td-number">${d.tps.toLocaleString('en-US')}</td>
+      <td class="td-number muted">${d.txnYear}</td>
+      <td><span class="td-sector ${SECTOR_CLASSES[d.sector]}">${SECTOR_LABELS[d.sector] || d.sector}</span></td>
+      <td><span class="conf-badge ${confClass(d.confidence)}">${d.confidence}</span></td>
+      <td>${dataAgeBadgeHTML(d.asOf || DATA_VINTAGE)}</td>
+      <td class="td-number">${d.mestMult}x</td>
+      <td class="td-number">${d.mestPerSec.toLocaleString('en-US')}</td>
+    </tr>
+  `).join('');
+}
+
+// Filter buttons
+const filterBar = document.getElementById('filterBar');
+SECTORS.forEach(s => {
+  const btn = document.createElement('button');
+  btn.className = 'filter-btn' + (s === 'All' ? ' active' : '');
+  btn.textContent = s === 'Traditional Finance' ? 'TradFi' : s;
+  btn.addEventListener('click', () => {
+    activeFilter = s;
+    filterBar.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTable();
+  });
+  filterBar.appendChild(btn);
+});
+
+// Sort headers
+document.querySelectorAll('#leaderboardTable thead th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.key;
+    if (key === 'rank') return;
+    if (sortKey === key) { sortDir *= -1; } else { sortKey = key; sortDir = -1; }
+    document.querySelectorAll('#leaderboardTable thead th').forEach(h => {
+      h.classList.remove('sort-active');
+      const arrow = h.querySelector('.sort-arrow');
+      if (arrow) arrow.textContent = '';
+    });
+    th.classList.add('sort-active');
+    const arrow = th.querySelector('.sort-arrow');
+    if (arrow) arrow.textContent = sortDir === -1 ? '\u25BC' : '\u25B2';
+    renderTable();
+  });
+});
+
+renderTable();
+
+/* ═══════════════════════════════════════════
+   MEST CASCADE
+   ═══════════════════════════════════════════ */
+let cascadeStep = -1;
+const cascadeEl = document.getElementById('cascadeContainer');
+
+CASCADE_STEPS.forEach((s, i) => {
+  cascadeEl.innerHTML += `
+    <div class="cascade-step" id="cstep${i}">
+      <div class="cascade-num">${i + 1}</div>
+      <div class="cascade-body">
+        <h4>${s.title}</h4>
+        <p class="parties"><span>${s.parties[0]}</span> &harr; <span>${s.parties[1]}</span></p>
+        <p class="muted" style="font-size:0.85rem;margin-top:4px;">${s.desc}</p>
+      </div>
+      <div class="cascade-line"></div>
+    </div>
+  `;
+});
+
+function updateCascade() {
+  CASCADE_STEPS.forEach((_, i) => {
+    document.getElementById(`cstep${i}`).classList.toggle('active', i <= cascadeStep);
+  });
+  document.getElementById('cascadePrev').disabled = cascadeStep < 0;
+  document.getElementById('cascadeNext').disabled = cascadeStep >= CASCADE_STEPS.length - 1;
+}
+
+document.getElementById('cascadeNext').addEventListener('click', () => {
+  if (cascadeStep < CASCADE_STEPS.length - 1) { cascadeStep++; updateCascade(); }
+});
+document.getElementById('cascadePrev').addEventListener('click', () => {
+  if (cascadeStep >= 0) { cascadeStep--; updateCascade(); }
+});
+document.getElementById('cascadeAll').addEventListener('click', () => {
+  cascadeStep = CASCADE_STEPS.length - 1; updateCascade();
+});
+
+/* ═══════════════════════════════════════════
+   CHARTS
+   ═══════════════════════════════════════════ */
+Chart.defaults.color = '#9ca3af';
+Chart.defaults.borderColor = '#1e293b';
+Chart.defaults.font.family = "'Inter', sans-serif";
+
+// Sector doughnut
+new Chart(document.getElementById('sectorDoughnut'), {
+  type: 'doughnut',
+  data: {
+    labels: SECTOR_CHART_DATA.labels,
+    datasets: [{
+      data: SECTOR_CHART_DATA.values,
+      backgroundColor: SECTOR_CHART_DATA.colors,
+      borderColor: '#111827',
+      borderWidth: 3,
+      hoverBorderColor: '#f9fafb',
+      hoverBorderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '62%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { padding: 16, usePointStyle: true, pointStyleWidth: 12, font: { size: 12 } }
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => `${ctx.label}: ${ctx.parsed.toLocaleString()} TPS`
+        }
+      }
+    }
+  }
+});
+
+// Time series
+const tsCtx = document.getElementById('timeSeriesLine').getContext('2d');
+const gradient = tsCtx.createLinearGradient(0, 0, 0, 350);
+gradient.addColorStop(0, 'rgba(59,130,246,0.3)');
+gradient.addColorStop(1, 'rgba(59,130,246,0.0)');
+
+new Chart(tsCtx, {
+  type: 'line',
+  data: {
+    labels: TIME_SERIES.labels,
+    datasets: [{
+      label: 'Global Gross TPS',
+      data: TIME_SERIES.values,
+      borderColor: '#3b82f6',
+      backgroundColor: gradient,
+      borderWidth: 3,
+      fill: true,
+      tension: 0.35,
+      pointBackgroundColor: '#3b82f6',
+      pointBorderColor: '#111827',
+      pointBorderWidth: 2,
+      pointRadius: 4,
+      pointHoverRadius: 7,
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: { callback: v => (v/1000) + 'k', font: { family: "'JetBrains Mono', monospace", size: 11 } }
+      },
+      x: {
+        grid: { display: false },
+        ticks: { font: { size: 11 } }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: { label: ctx => ctx.parsed.y.toLocaleString() + ' TPS' }
+      },
+      annotation: {
+        annotations: {
+          growth: {
+            type: 'label',
+            xValue: 2020,
+            yValue: 72000,
+            content: ['6.7\u00d7 growth in a decade'],
+            color: '#f59e0b',
+            font: { size: 13, weight: '700', family: "'Inter', sans-serif" },
+            backgroundColor: 'rgba(245,158,11,0.1)',
+            borderRadius: 6,
+            padding: { x: 10, y: 6 },
+          }
+        }
+      }
+    }
+  }
+});
+
+// MEST multiplier horizontal bar — sorted by multiplier desc
+const mestSorted = [...DATA].sort((a, b) => b.mestMult - a.mestMult);
+
+new Chart(document.getElementById('mestBarChart'), {
+  type: 'bar',
+  data: {
+    labels: mestSorted.map(d => d.name),
+    datasets: [{
+      label: 'MEST Multiplier',
+      data: mestSorted.map(d => d.mestMult),
+      backgroundColor: mestSorted.map(d => SECTOR_COLORS[d.sector] + 'cc'),
+      borderColor: mestSorted.map(d => SECTOR_COLORS[d.sector]),
+      borderWidth: 1,
+      borderRadius: 4,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: { callback: v => v + 'x', font: { family: "'JetBrains Mono', monospace", size: 11 } }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 11 }, autoSkip: false }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => {
+            const d = mestSorted[ctx.dataIndex];
+            return `${d.mestMult}x multiplier \u2014 ${d.sector}`;
+          }
+        }
+      }
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════
+   MEST ADVANTAGE WATERFALL
+   ═══════════════════════════════════════════ */
+const WATERFALL_DATA = {
+  labels: [
+    'Current\nMEST/s',
+    'Cards\n(-122.5K)',
+    'ETD\n(-66.5K)',
+    'Wallets\n(-59.2K)',
+    'Bank Xfer\n(-46.0K)',
+    'Equities\n(-28.0K)',
+    'Other\n(-22.3K)',
+    'After DLT\nMEST/s'
+  ],
+  // running totals for waterfall effect
+  bases:  [0, 422495, 355960, 296780, 250766, 222766, 200455, 0],
+  values: [545000, 122505,  66535,  59180,  46014,  28000,  22311, 200455],
+};
+
+const wfCtx = document.getElementById('mestWaterfallChart').getContext('2d');
+
+// Invisible base bars (stacked under visible bars to create waterfall effect)
+const baseDataset = {
+  label: '_base',
+  data: WATERFALL_DATA.bases,
+  backgroundColor: 'transparent',
+  borderWidth: 0,
+  barPercentage: 0.65,
+};
+
+const valueDataset = {
+  label: 'MEST/s',
+  data: WATERFALL_DATA.values,
+  backgroundColor: WATERFALL_DATA.labels.map((_, i) => {
+    if (i === 0) return '#8b5cf6'; // start — purple
+    if (i === WATERFALL_DATA.labels.length - 1) return '#10b981'; // end — green
+    return '#ef4444cc'; // reductions — red
+  }),
+  borderColor: WATERFALL_DATA.labels.map((_, i) => {
+    if (i === 0) return '#8b5cf6';
+    if (i === WATERFALL_DATA.labels.length - 1) return '#10b981';
+    return '#ef4444';
+  }),
+  borderWidth: 1,
+  borderRadius: 4,
+  barPercentage: 0.65,
+};
+
+new Chart(wfCtx, {
+  type: 'bar',
+  data: {
+    labels: WATERFALL_DATA.labels,
+    datasets: [baseDataset, valueDataset]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        stacked: true,
+        grid: { display: false },
+        ticks: { font: { size: 11 }, maxRotation: 0 }
+      },
+      y: {
+        stacked: true,
+        beginAtZero: true,
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: {
+          callback: v => (v/1000).toFixed(0) + 'K',
+          font: { family: "'JetBrains Mono', monospace", size: 11 }
+        }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        filter: (item) => item.datasetIndex === 1,
+        callbacks: {
+          title: (items) => items[0].label.replace(/\n/g, ' '),
+          label: (ctx) => {
+            const i = ctx.dataIndex;
+            if (i === 0) return 'Current: ' + ctx.parsed.y.toLocaleString() + ' MEST/s';
+            if (i === WATERFALL_DATA.labels.length - 1) return 'After DLT: ' + ctx.parsed.y.toLocaleString() + ' MEST/s';
+            return '-' + ctx.parsed.y.toLocaleString() + ' MEST/s eliminated';
+          }
+        }
+      },
+      annotation: {
+        annotations: {
+          compressionLabel: {
+            type: 'label',
+            xValue: 3.5,
+            yValue: 490000,
+            content: ['63% fewer state changes with DLT'],
+            color: '#10b981',
+            font: { size: 13, weight: '700', family: "'Inter', sans-serif" },
+            backgroundColor: 'rgba(16,185,129,0.1)',
+            borderRadius: 6,
+            padding: { x: 12, y: 6 },
+          }
+        }
+      }
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════
+   TTR CHARTS
+   ═══════════════════════════════════════════ */
+const TTR_TIERS = {
+  labels: ['Financial Assets', 'Real Assets', 'Rights & Claims', 'Digital Native', 'Government Records'],
+  values: [415, 380, 45, 15, 12],
+  colors: ['#10b981', '#34d399', '#6ee7b7', '#a7f3d0', '#d1fae5']
+};
+
+// TTR Horizontal Bar
+new Chart(document.getElementById('ttrTierChart'), {
+  type: 'bar',
+  data: {
+    labels: TTR_TIERS.labels,
+    datasets: [{
+      label: 'Value ($T)',
+      data: TTR_TIERS.values,
+      backgroundColor: TTR_TIERS.colors.map(c => c + 'cc'),
+      borderColor: TTR_TIERS.colors,
+      borderWidth: 1,
+      borderRadius: 4,
+      barPercentage: 0.7,
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      x: {
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: {
+          callback: v => '$' + v + 'T',
+          font: { family: "'JetBrains Mono', monospace", size: 11 }
+        }
+      },
+      y: {
+        grid: { display: false },
+        ticks: { font: { size: 12 } }
+      }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx => '$' + ctx.parsed.x + ' trillion'
+        }
+      }
+    }
+  }
+});
+
+// TTR Doughnut
+new Chart(document.getElementById('ttrDoughnut'), {
+  type: 'doughnut',
+  data: {
+    labels: TTR_TIERS.labels,
+    datasets: [{
+      data: TTR_TIERS.values,
+      backgroundColor: TTR_TIERS.colors,
+      borderColor: '#111827',
+      borderWidth: 3,
+      hoverBorderColor: '#f9fafb',
+      hoverBorderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    cutout: '62%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { padding: 14, usePointStyle: true, pointStyleWidth: 12, font: { size: 11 } }
+      },
+      tooltip: {
+        callbacks: {
+          label: ctx => `${ctx.label}: $${ctx.parsed}T (${((ctx.parsed / 867) * 100).toFixed(1)}%)`
+        }
+      }
+    }
+  }
+});
+
+/* ═══════════════════════════════════════════
+   INSIGHTS
+   ═══════════════════════════════════════════ */
+const insightsGrid = document.getElementById('insightsGrid');
+INSIGHTS.forEach(ins => {
+  insightsGrid.innerHTML += `
+    <div class="insight-card">
+      <div class="insight-icon">${ins.icon}</div>
+      <p>${ins.text}</p>
+    </div>
+  `;
+});
+
+/* ═══════════════════════════════════════════
+   HYPOTHESIS GENERATOR
+   ═══════════════════════════════════════════ */
+const HYPOTHESES = [
+  {
+    id: "H-01", tier: "forensic",
+    title: "China\u2019s real mobile payment count is 30\u201340% higher than PBOC aggregates suggest",
+    body: "PBOC reports ~280B mobile payments (2024), but this may exclude certain QR-code micro-transactions below reporting thresholds, offline transactions settled in batch, and cross-platform transfers classified as bank transfers. A forensic audit of Ant Group\u2019s restructured entity disclosures (now required post-2024 regulation) could reveal the true count. If confirmed, the Big Number increases by 2,000\u20134,000 TPS.",
+    tags: ["China", "Digital Wallets", "+2K\u20134K TPS", "Conf: 67\u219270+"],
+    why: "Ant Group\u2019s 2024 restructuring into a financial holding company triggers new CBIRC reporting. These filings may contain transaction count data never before public."
+  },
+  {
+    id: "H-02", tier: "field",
+    title: "Hawala networks process 2\u20133\u00d7 the World Bank\u2019s informal remittance estimate",
+    body: "The World Bank estimates informal remittances at 30\u201350% of formal flows. But field researchers in the Gulf\u2013South Asia corridor consistently report higher ratios. A structured survey of hawala brokers in Dubai, Karachi, and Mumbai \u2014 using the methodology of Passas (2003) and El-Qorchi (2002) \u2014 could calibrate the true ratio. This would directly impact the Remittances category and potentially add 50\u2013100 TPS to the Big Number.",
+    tags: ["Remittances", "Shadow Economy", "+50\u2013100 TPS", "Field Survey"],
+    why: "No survey of hawala broker transaction volumes has been published since 2015. The corridor has grown 3\u00d7 since then."
+  },
+  {
+    id: "H-03", tier: "structural",
+    title: "The Big Number undercounts by 40\u201360% because it ignores intra-firm treasury transactions",
+    body: "Large corporations (Apple, Toyota, Shell) move money between subsidiaries thousands of times daily \u2014 intercompany loans, cash pooling, transfer pricing settlements, hedging transactions. These are real financial transactions with real MEST cascades (treasury system \u2192 bank \u2192 FX \u2192 counterparty bank). They don\u2019t appear in any external data source because they settle on internal ledgers or via SWIFT Category 2 messages that aren\u2019t publicly reported. A survey of Fortune 500 treasury operations could size this.",
+    tags: ["Structural Blind Spot", "MEST Impact", "Framework Challenge"],
+    why: "If true, this would be the single largest gap in the Big Number \u2014 bigger than all of China\u2019s opacity combined."
+  },
+  {
+    id: "H-04", tier: "forensic",
+    title: "Insurance claims generate more transactions than insurance premiums",
+    body: "Our Run 12 estimate suggests 55\u2013148 TPS in claims-related transactions vs. ~444 TPS in premium payments. But the claims estimate is based on population \u00d7 frequency models, not observed data. The US NAIC (National Association of Insurance Commissioners) publishes claims-level data that could validate or reject this. If health claims processing in the US alone matches our global estimate, the true number could be 3\u20135\u00d7 higher.",
+    tags: ["Insurance", "NAIC Data", "+55\u2013500 TPS", "Paywalled"],
+    why: "NAIC\u2019s Statistical Compilation is paywalled ($500+). An academic with access could extract claims transaction counts by line in an afternoon."
+  },
+  {
+    id: "H-05", tier: "field",
+    title: "China\u2019s interbank repo market processes more daily transactions than all US equity markets combined",
+    body: "PBOC reports RMB 9.67 trillion/day in interbank repo (July 2025). At typical interbank lot sizes, we estimate ~97,000 trades/day. But if smaller banks trade in smaller lots (which CFETS data would reveal), the true count could be 500K\u20131M trades/day \u2014 making China\u2019s repo market one of the highest-frequency financial markets on Earth. CFETS (China Foreign Exchange Trade System) data would resolve this.",
+    tags: ["China", "Banking", "CFETS Access", "Interbank"],
+    why: "CFETS publishes aggregate statistics but the trade-level granularity is available to member institutions. A contact at a Chinese bank could provide the distribution."
+  },
+  {
+    id: "H-06", tier: "forensic",
+    title: "Crypto OTC desks process 5\u201310\u00d7 more value than on-exchange, but in 1/100th the transactions",
+    body: "Our estimate of 500K\u20132M crypto OTC trades/year is based on limited data. Circle, Cumberland, and Galaxy Digital publish no transaction counts. But their disclosed trading revenue, combined with typical OTC spread data (2\u201310 bps), implies transaction sizes of $500K\u2013$50M. If the true average is at the lower end, OTC transaction counts could be 10\u00d7 our estimate \u2014 still negligible for TPS but important for the MEST analysis (each OTC trade generates 4\u20136 MESTs for settlement, custody, and compliance).",
+    tags: ["Digital Assets", "OTC", "MEST Impact", "Revenue Forensics"],
+    why: "Galaxy Digital is publicly traded and files 10-K with the SEC. Trading revenue / estimated spread = implied deal count."
+  },
+  {
+    id: "H-07", tier: "structural",
+    title: "The MEST multiplier is converging, not diverging \u2014 regulation adds MESTs but automation removes them",
+    body: "We project the MEST multiplier rising from 7.4\u00d7 to 7.8\u20138.2\u00d7 by 2030, driven by regulation. But this ignores a counterforce: automation is collapsing MEST cascades. Straight-through processing (STP) in securities settlement eliminates manual reconciliation MESTs. API-based payments (FedNow, TIPS) reduce the clearing cascade. If automation offsets regulation, the multiplier may be flat or declining. This is testable with DTCC\u2019s STP rate data and SWIFT\u2019s gpi completion metrics.",
+    tags: ["MEST Framework", "Automation vs Regulation", "DTCC Data"],
+    why: "If the multiplier is flat, the \u201cMEST Tax\u201d projections in the MEST Advantage paper need revision \u2014 and the DLT compression thesis weakens."
+  },
+  {
+    id: "H-08", tier: "field",
+    title: "India\u2019s UPI transaction count will surpass 500 billion/year by 2027, making it 1/4 of the global Big Number",
+    body: "UPI processed 172B transactions in CY2024 and ~228B in CY2025 \u2014 a 33% YoY growth rate. If this rate holds (and India\u2019s digital payment mandate + expanding merchant acceptance suggest it will), UPI alone will exceed 500B transactions/year by 2027. At that point, a single Indian payment rail would represent ~15,850 TPS \u2014 roughly 20% of the current global Big Number. This can be tracked in real-time via NPCI monthly disclosures.",
+    tags: ["India", "UPI", "Projection", "NPCI Data"],
+    why: "The policy question: does the Big Number grow because the world is transacting more, or because India is pulling the average up?"
+  },
+  {
+    id: "H-09", tier: "forensic",
+    title: "The e-CNY\u2019s January 2026 deposit framework will trigger a 5\u201310\u00d7 transaction volume increase within 12 months",
+    body: "China\u2019s e-CNY shifted from cash-like to deposit-like on January 1, 2026. Banks can now pay interest on e-CNY holdings. This changes the incentive structure fundamentally: instead of a digital cash substitute, e-CNY becomes a savings vehicle with payment functionality. If even 5% of China\u2019s RMB 130T+ household deposits migrate to e-CNY, transaction volume could surge from ~4\u20135B/year to 20\u201350B/year. Early 2026 PBOC data would confirm.",
+    tags: ["CBDC", "China", "e-CNY", "Policy Shock"],
+    why: "This is the most testable hypothesis \u2014 PBOC publishes quarterly milestones. By June 2026 we\u2019ll know."
+  },
+  {
+    id: "H-10", tier: "structural",
+    title: "Cash transactions outnumber all digital transactions combined in at least 15 countries",
+    body: "Our shadow economy analysis estimates 2,000\u20133,450 TPS in cash transactions \u2014 but this uses ATM withdrawals as the only proxy. In countries like Japan (cash-to-GDP ratio: 20%), Germany (15%), and much of Sub-Saharan Africa, cash still dominates daily transactions. If ECB and BOJ payment diary surveys are correct that the average person makes 1\u20133 cash transactions per day, then Japan alone generates ~400M cash transactions/day (~4,600 TPS). The Big Number\u2019s structural blind spot may be larger than the number itself.",
+    tags: ["Cash Economy", "Structural", "BOJ/ECB Surveys", "Framework Limit"],
+    why: "This challenges whether TPS is a useful metric at all for countries where most transactions leave no digital trace."
+  },
+  {
+    id: "H-11", tier: "field",
+    title: "Physical commodity OTC trades have the highest MEST multiplier in the entire financial system (15\u201325\u00d7)",
+    body: "A single physical oil cargo trade (Vitol selling 2M barrels to a refinery) triggers: letter of credit issuance, insurance policy, bill of lading, customs declaration, quality inspection certificate, price fixation, hedge execution, vessel charter, demurrage settlement, and final payment. That\u2019s 10\u201315 discrete MEST-generating events from one trade. If trade finance documentation is included, the multiplier could reach 25\u00d7. Interviewing a trade finance banker at a commodity-focused bank (Soci\u00e9t\u00e9 G\u00e9n\u00e9rale, ING, ABN AMRO) would validate this.",
+    tags: ["Commodities", "MEST", "Trade Finance", "15\u201325\u00d7"],
+    why: "At <1 TPS but 25\u00d7 MEST, physical commodity OTC generates more bilateral state changes than entire categories with higher TPS."
+  },
+  {
+    id: "H-12", tier: "forensic",
+    title: "Africa\u2019s mobile money transaction count is systematically under-reported by 20\u201330%",
+    body: "GSMA\u2019s State of the Industry report is the standard source for mobile money data. But GSMA counts only registered mobile money services in its database. Informal mobile money agents who operate outside licensed networks (common in DRC, Somalia, Myanmar) are excluded. Central bank of Kenya data for M-Pesa is reliable, but extending this to 50+ African markets introduces compounding gaps. Field validation in 3\u20135 key markets (Nigeria NIP, Ghana MoMo, Tanzania M-Pesa) against central bank data would calibrate the error.",
+    tags: ["Africa", "Mobile Money", "GSMA Gap", "Field Validation"],
+    why: "If Africa\u2019s true mobile money TPS is 20\u201330% higher, it shifts the Africa deep dive from 2.1% to 2.5\u20132.7% of global TPS."
+  },
+];
+
+const hypGrid = document.getElementById('hypGrid');
+HYPOTHESES.forEach(h => {
+  hypGrid.innerHTML += `
+    <div class="hyp-card tier-${h.tier}">
+      <div class="hyp-header">
+        <span class="hyp-id tier-${h.tier}">${h.id}</span>
+        <span class="hyp-title">${h.title}</span>
+      </div>
+      <div class="hyp-body">${h.body}</div>
+      <div class="hyp-body" style="color:var(--accent-${h.tier === 'field' ? 'amber' : h.tier === 'forensic' ? 'red' : 'purple'});font-size:0.82rem;font-weight:600;">Why a human: ${h.why}</div>
+      <div class="hyp-meta">${h.tags.map(t => `<span class="hyp-tag">${t}</span>`).join('')}</div>
+    </div>
+  `;
+});
+
+/* ═══════ LIVE LAYER — Tier 1 ledger feeds ═══════
+ * Reads data/live/chains.json (committed every 15 min by GitHub Actions) and renders
+ * the ticker strip. Staleness is content: every feed shows its data age with a
+ * green (fresh) / amber (lagged) / red (stale/unreachable) badge. Where a feed is
+ * CORS-friendly (Bitcoin via mempool.space) we also attempt a client-side live fetch
+ * to upgrade the badge to true "seconds ago". Never blank, never fake.
+ */
+window.LiveLayer = (function () {
+  const ORDER = ["bitcoin", "ethereum", "solana", "radix", "xrpl"];
+  const JSON_URL = "data/live/chains.json";
+  const PUB_ORDER = ["upi", "pix", "faster_payments", "fedwire"];
+  const PUB_URL = "data/published/systems.json";
+  // Chain snapshot cron cadence is 15 min → thresholds tuned to that.
+  const FRESH_S = 20 * 60, LAGGED_S = 90 * 60;
+  // Published-stat feeds are lagged by design → day-scale thresholds.
+  const PUB_FRESH_D = 60, PUB_LAGGED_D = 270;
+  let feeds = {}, pubFeeds = {};
+
+  const parseTs = (s) => (s ? Date.parse(s) : NaN);
+
+  function agoText(sec) {
+    if (!isFinite(sec) || sec < 0) return "—";
+    if (sec < 60) return Math.round(sec) + "s ago";
+    if (sec < 3600) return Math.round(sec / 60) + "m ago";
+    if (sec < 86400) return Math.round(sec / 3600) + "h ago";
+    return Math.round(sec / 86400) + "d ago";
+  }
+  function ageClass(sec, status) {
+    if (status === "unreachable") return "age-none";
+    if (!isFinite(sec)) return "age-none";
+    if (status === "stale" || sec > LAGGED_S) return "age-stale";
+    if (sec > FRESH_S) return "age-lagged";
+    return "age-fresh";
+  }
+  function dotClass(cls) {
+    return cls === "age-fresh" ? "" : (cls === "age-lagged" ? "amber" : "red");
+  }
+  function fmtTps(v) {
+    if (v == null) return "—";
+    if (v >= 1000) return Math.round(v).toLocaleString("en-US");
+    if (v >= 10) return v.toFixed(1);
+    return v.toFixed(v >= 1 ? 2 : 3);
+  }
+
+  const esc = (s) => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  function render() {
+    const el = document.getElementById("liveTickerItems");
+    if (!el) return;
+    const now = Date.now();
+    const html = ORDER.map((key) => {
+      const f = feeds[key];
+      if (!f) return "";
+      const stampStr = f.retrieved_at || f.last_attempt;
+      const ageS = (now - parseTs(stampStr)) / 1000;
+      const ac = ageClass(ageS, f.status);
+      const tpsTxt = (f.status === "unreachable") ? "no feed" : fmtTps(f.tps);
+      const ageTxt = (f.status === "unreachable") ? "unreachable"
+        : agoText(ageS) + (f.status === "stale" ? " · stale" : "");
+      const tip = esc(
+        (f.source_url ? "Source: " + f.source_url + "\n" : "") +
+        (f.period_covered ? "Period: " + f.period_covered + "\n" : "") +
+        (f.note ? "Note: " + f.note : "")
+      );
+      return `<span class="lt-item" title="${tip}">` +
+        `<span class="pulse-dot ${dotClass(ac)}"></span>` +
+        `<span class="lt-name">${esc(f.label || key)}</span>` +
+        `<span class="lt-tps">${tpsTxt}</span>` +
+        `<span class="lt-unit">${f.status === "unreachable" ? "" : "tps"}</span>` +
+        `<span class="age-badge ${ac}">${ageTxt}</span></span>`;
+    }).join("");
+    el.innerHTML = html || `<span class="muted" style="font-size:0.8rem;">no feeds available</span>`;
+  }
+
+  async function loadCommitted() {
+    try {
+      const r = await fetch(JSON_URL, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      feeds = data.feeds || {};
+      render();
+    } catch (e) {
+      const el = document.getElementById("liveTickerItems");
+      if (el && !Object.keys(feeds).length) el.textContent = "live feed unavailable";
+    }
+  }
+
+  function pubAgeClass(days) {
+    if (!isFinite(days)) return "age-none";
+    if (days > PUB_LAGGED_D) return "age-stale";
+    if (days > PUB_FRESH_D) return "age-lagged";
+    return "age-fresh";
+  }
+  function renderPublished() {
+    const el = document.getElementById("pubTickerItems");
+    if (!el) return;
+    const now = Date.now();
+    const html = PUB_ORDER.map((key) => {
+      const f = pubFeeds[key];
+      if (!f) return "";
+      const days = (now - parseTs(f.as_of)) / 86400000;
+      const ac = pubAgeClass(days);
+      const yr = (f.as_of || "").slice(0, 4);
+      const ageTxt = "as of " + (yr || "?") + " · " + Math.round(days) + "d stale";
+      const tip = esc(
+        (f.source_url ? "Source: " + f.source_url + "\n" : "") +
+        (f.period_covered ? "Period: " + f.period_covered + "\n" : "") +
+        (f.annual_txns ? "Txns: " + f.annual_txns + "\n" : "") +
+        (f.note ? "Note: " + f.note : "")
+      );
+      return `<span class="lt-item" title="${tip}">` +
+        `<span class="pulse-dot ${dotClass(ac)}"></span>` +
+        `<span class="lt-name">${esc(f.label || key)}</span>` +
+        `<span class="lt-tps">${fmtTps(f.tps)}</span><span class="lt-unit">tps</span>` +
+        `<span class="age-badge ${ac}">${ageTxt}</span></span>`;
+    }).join("");
+    el.innerHTML = html || `<span class="muted" style="font-size:0.8rem;">no published feeds</span>`;
+  }
+  async function loadPublished() {
+    try {
+      const r = await fetch(PUB_URL, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      pubFeeds = data.feeds || {};
+      renderPublished();
+    } catch (e) {
+      const el = document.getElementById("pubTickerItems");
+      if (el && !Object.keys(pubFeeds).length) el.textContent = "published feeds unavailable";
+    }
+  }
+
+  // Optional: client-side live fetch for Bitcoin (mempool.space sends CORS headers)
+  // to upgrade the badge to true seconds-fresh liveness.
+  async function liveBitcoin() {
+    try {
+      const r = await fetch("https://mempool.space/api/v1/blocks", { cache: "no-store" });
+      if (!r.ok) return;
+      const blocks = await r.json();
+      const recent = blocks.slice(0, 10);
+      const span = Math.max(recent[0].timestamp - recent[recent.length - 1].timestamp, 1);
+      const txs = recent.slice(1).reduce((a, b) => a + b.tx_count, 0);
+      feeds.bitcoin = Object.assign({}, feeds.bitcoin, {
+        label: "Bitcoin", tps: Math.round((txs / span) * 1000) / 1000, unit: "tps",
+        status: "ok", retrieved_at: new Date().toISOString(),
+        source_url: "https://mempool.space/api/v1/blocks",
+        period_covered: "last " + recent.length + " blocks (client-side live)",
+      });
+      render();
+    } catch (e) { /* CORS or offline — committed value already shown */ }
+  }
+
+  function start() {
+    loadCommitted().then(liveBitcoin);
+    loadPublished();
+    setInterval(loadCommitted, 60 * 1000);   // re-read committed JSON each minute
+    setInterval(liveBitcoin, 60 * 1000);     // refresh live Bitcoin each minute
+    setInterval(loadPublished, 6 * 60 * 60 * 1000); // published feeds change slowly
+    setInterval(render, 1000);               // tick the "N ago" labels every second
+  }
+
+  return { start, getFeeds: () => feeds, getPublished: () => pubFeeds };
+})();
+
+document.addEventListener("DOMContentLoaded", () => window.LiveLayer.start());
+
+/* ═══════ OPACITY INDEX ═══════
+ * Reads data/opacity.json and renders the ranked table + hero stat, and injects each
+ * spotlight's opacity score into its card. Bar length = total opacity; the four coloured
+ * segments show the per-dimension contribution. Hero % is computed live from the data
+ * (not pre-decided): share of categorised throughput in systems scoring 60+.
+ */
+window.OpacityIndex = (function () {
+  const URL = "data/opacity.json";
+  let cats = [], spots = [], sortMode = "opacity";
+  const esco = (s) => String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+  function sortCats() {
+    const c = cats.slice();
+    if (sortMode === "opacity") c.sort((a, b) => b.opacity - a.opacity);
+    else if (sortMode === "opacity-asc") c.sort((a, b) => a.opacity - b.opacity);
+    else if (sortMode === "tps") c.sort((a, b) => b.tps - a.tps);
+    else if (sortMode === "name") c.sort((a, b) => a.name.localeCompare(b.name));
+    return c;
+  }
+  function barHTML(d) {
+    const seg = (cls, v) => `<span class="op-seg ${cls}" style="width:${v}%"></span>`;
+    const tip = `Latency ${d.dims.latency}/30 · Granularity ${d.dims.granularity}/25 · ` +
+      `Verifiability ${d.dims.verifiability}/25 · Coverage ${d.dims.coverage}/20`;
+    return `<div class="op-bar-wrap"><div class="op-bar" title="${tip}">` +
+      seg("latency", d.dims.latency) + seg("granularity", d.dims.granularity) +
+      seg("verifiability", d.dims.verifiability) + seg("coverage", d.dims.coverage) +
+      `</div></div>`;
+  }
+  function render() {
+    const tb = document.getElementById("opacityBody");
+    if (!tb) return;
+    tb.innerHTML = sortCats().map((d, i) => `
+      <tr>
+        <td class="muted">${i + 1}</td>
+        <td>${(typeof reportHref==="function" && reportHref(d.name)) ? `<a class="op-row-name" href="${reportHref(d.name)}" title="Open the ${esco(d.name)} report">${esco(d.name)}</a>` : `<span class="op-row-name">${esco(d.name)}</span>`}<span class="op-row-sub">${esco(d.sector)} · ${d.tps.toLocaleString("en-US")} tps</span></td>
+        <td>${barHTML(d)}</td>
+        <td class="op-score">${d.opacity}</td>
+        <td class="muted" style="font-size:0.82rem;max-width:420px;">${esco(d.justification)}<br><span style="opacity:0.7">${esco(d.source)}</span></td>
+      </tr>`).join("");
+  }
+  function renderHero() {
+    const tot = cats.reduce((a, c) => a + c.tps, 0);
+    const op60 = cats.filter((c) => c.opacity >= 60).reduce((a, c) => a + c.tps, 0);
+    const pct = tot ? Math.round((op60 / tot) * 100) : 0;
+    const el = document.getElementById("opHeadlinePct");
+    if (el) el.textContent = pct + "%";
+  }
+  function injectSpotlights() {
+    const cards = document.querySelectorAll("#spotlights .spotlight-card");
+    spots.forEach((s) => {
+      cards.forEach((card) => {
+        const h = card.querySelector("h3");
+        if (!h || h.textContent.trim() !== s.name) return;
+        if (card.querySelector(".op-injected")) return;
+        const cls = s.opacity >= 70 ? "conf-low" : s.opacity >= 45 ? "conf-mid" : "conf-high";
+        const row = document.createElement("div");
+        row.className = "spotlight-stat op-injected";
+        row.innerHTML = `<span class="label" title="${esco(s.justification)}">Opacity Index</span>` +
+          `<span class="value"><span class="conf-badge ${cls}">${s.opacity}</span></span>`;
+        const quote = card.querySelector(".spotlight-quote");
+        if (quote) card.insertBefore(row, quote); else card.appendChild(row);
+        // deep-dive link
+        const path = (typeof SPOTLIGHT_PATH !== "undefined") ? SPOTLIGHT_PATH[s.name] : null;
+        if (path && !card.querySelector(".dd-link")) {
+          const a = document.createElement("a");
+          a.className = "dd-link";
+          a.href = `reports/${path}/REPORT.html`;
+          a.textContent = `Read the ${s.name} deep dive →`;
+          a.style.cssText = "display:inline-block;margin-top:12px;font-size:0.82rem;color:var(--accent-blue);text-decoration:none;font-weight:600;";
+          card.appendChild(a);
+        }
+      });
+    });
+  }
+  async function start() {
+    try {
+      const r = await fetch(URL, { cache: "no-store" });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const data = await r.json();
+      cats = data.categories || []; spots = data.spotlights || [];
+      render(); renderHero(); injectSpotlights();
+    } catch (e) {
+      const tb = document.getElementById("opacityBody");
+      if (tb) tb.innerHTML = `<tr><td colspan="5" class="muted">opacity index unavailable</td></tr>`;
+    }
+    const ctrl = document.getElementById("opControls");
+    if (ctrl) ctrl.addEventListener("click", (e) => {
+      const btn = e.target.closest(".op-sort-btn"); if (!btn) return;
+      sortMode = btn.dataset.sort;
+      ctrl.querySelectorAll(".op-sort-btn").forEach((b) => b.classList.toggle("active", b === btn));
+      render();
+    });
+  }
+  return { start };
+})();
+
+document.addEventListener("DOMContentLoaded", () => window.OpacityIndex.start());
+
+/* ═══════ SPLIT SCREEN — Measured vs Estimated ═══════
+ * The flagship exhibit: live/lagged exact feeds (left) and estimated categories (right)
+ * on ONE shared log-scaled TPS axis, so magnitude and freshness are comparable at a glance.
+ */
+window.SplitScreen = (function () {
+  const MIN = 0.1, MAX = 30000;
+  const L = Math.log10(MIN), R = Math.log10(MAX);
+  const xFrac = (tps) => Math.max(0, Math.min(1, (Math.log10(Math.max(tps, MIN)) - L) / (R - L)));
+  const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const fmt = (v) => v >= 1000 ? Math.round(v).toLocaleString("en-US") : v >= 10 ? v.toFixed(0) : v.toFixed(2);
+
+  function axis() {
+    const el = document.getElementById("splitAxis"); if (!el) return;
+    const ticks = [{ v: 0.1, t: "0.1" }, { v: 1, t: "1" }, { v: 10, t: "10" }, { v: 100, t: "100" }, { v: 1000, t: "1k" }, { v: 10000, t: "10k" }];
+    el.innerHTML = ticks.map((k) => `<span class="tick" style="left:${(xFrac(k.v) * 100).toFixed(1)}%">${k.t}</span>`).join("") +
+      `<span style="position:absolute;right:0;top:0;">TPS →</span>`;
+  }
+  function rowHTML(name, tps, fillCls, meta) {
+    return `<div class="sr-row"><div class="sr-head"><span class="sr-name">${esc(name)}</span>` +
+      `<span class="sr-tps">${fmt(tps)} tps</span></div>` +
+      `<div class="sr-track"><div class="sr-fill ${fillCls}" style="width:${(xFrac(tps) * 100).toFixed(1)}%"></div></div>` +
+      `<div class="sr-meta muted">${meta}</div></div>`;
+  }
+  async function renderMeasured() {
+    const el = document.getElementById("splitMeasured"); if (!el) return;
+    let rows = [];
+    try {
+      const [c, s] = await Promise.all([
+        fetch("data/live/chains.json", { cache: "no-store" }).then((r) => r.json()),
+        fetch("data/published/systems.json", { cache: "no-store" }).then((r) => r.json()),
+      ]);
+      const live = Object.values(c.feeds || {}).filter((f) => f.tps != null)
+        .map((f) => ({ name: f.label, tps: f.tps, lag: false,
+          meta: `<span class="age-badge age-fresh">ledger · live</span>` }));
+      const pub = Object.values(s.feeds || {}).filter((f) => f.tps != null)
+        .map((f) => ({ name: f.label, tps: f.tps, lag: true,
+          meta: `<span class="age-badge age-lagged">published · as of ${(f.as_of || "").slice(0, 4)}</span>` }));
+      rows = live.concat(pub).sort((a, b) => b.tps - a.tps);
+    } catch (e) { el.innerHTML = `<span class="muted" style="font-size:0.8rem;">measured feeds unavailable</span>`; return; }
+    el.innerHTML = rows.map((r) => rowHTML(r.name, r.tps, "m" + (r.lag ? " lag" : ""), r.meta)).join("");
+  }
+  function renderEstimated() {
+    const el = document.getElementById("splitEstimated"); if (!el) return;
+    const top = (typeof DATA !== "undefined" ? DATA.slice() : []).sort((a, b) => b.tps - a.tps).slice(0, 14);
+    el.innerHTML = top.map((d) =>
+      rowHTML(d.name, d.tps, "e",
+        `<span class="age-badge age-stale">as of 2024</span> · conf ${d.confidence}`)).join("");
+  }
+  function start() { axis(); renderMeasured(); renderEstimated(); setInterval(renderMeasured, 60000); }
+  return { start };
+})();
+
+document.addEventListener("DOMContentLoaded", () => window.SplitScreen.start());
+</script>
+</body>
+</html>
