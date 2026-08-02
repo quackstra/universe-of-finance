@@ -1,57 +1,57 @@
 {
-  "generated_at": "2026-08-02T11:58:59Z",
+  "generated_at": "2026-08-02T13:18:20Z",
   "tier": 1,
   "description": "Ledger-verified real-time transaction throughput from open, keyless chain APIs.",
   "feeds": {
     "bitcoin": {
       "label": "Bitcoin",
-      "tps": 11.432,
+      "tps": 8.605,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://mempool.space/api/v1/blocks",
-      "period_covered": "last 10 blocks (~75 min)",
+      "period_covered": "last 10 blocks (~86 min)",
       "extra": {
-        "block_height": 960727
+        "block_height": 960732
       },
-      "retrieved_at": "2026-08-02T11:58:57Z",
+      "retrieved_at": "2026-08-02T13:18:19Z",
       "status": "ok"
     },
     "ethereum": {
       "label": "Ethereum",
-      "tps": 9.667,
+      "tps": 27.75,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://ethereum-rpc.publicnode.com",
-      "period_covered": "block 25667052 (12s)",
+      "period_covered": "block 25667447 (12s)",
       "extra": {
-        "block_height": 25667052
+        "block_height": 25667447
       },
-      "retrieved_at": "2026-08-02T11:58:57Z",
+      "retrieved_at": "2026-08-02T13:18:19Z",
       "status": "ok"
     },
     "solana": {
       "label": "Solana",
-      "tps": 2911.3,
+      "tps": 3000.1,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://api.mainnet-beta.solana.com",
       "period_covered": "60s performance sample",
       "note": "includes consensus vote txns",
-      "non_vote_tps": 1279.0,
-      "retrieved_at": "2026-08-02T11:58:57Z",
+      "non_vote_tps": 1366.8,
+      "retrieved_at": "2026-08-02T13:18:19Z",
       "status": "ok"
     },
     "radix": {
       "label": "Radix",
-      "tps": 0.018,
+      "tps": 0.019,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://mainnet.radixdlt.com",
-      "period_covered": "last 100 txns (~5568s)",
+      "period_covered": "last 100 txns (~5256s)",
       "extra": {
-        "state_version": 544734017
+        "state_version": 544757400
       },
-      "retrieved_at": "2026-08-02T11:58:58Z",
+      "retrieved_at": "2026-08-02T13:18:20Z",
       "status": "ok"
     },
     "xrpl": {
@@ -67,7 +67,7 @@
       "retrieved_at": "2026-08-02T10:57:50Z",
       "status": "stale",
       "last_error": "'ledger'",
-      "last_attempt": "2026-08-02T11:58:59Z"
+      "last_attempt": "2026-08-02T13:18:20Z"
     }
   }
 }
