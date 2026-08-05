@@ -1,57 +1,57 @@
 {
-  "generated_at": "2026-08-05T22:40:46Z",
+  "generated_at": "2026-08-05T23:36:28Z",
   "tier": 1,
   "description": "Ledger-verified real-time transaction throughput from open, keyless chain APIs.",
   "feeds": {
     "bitcoin": {
       "label": "Bitcoin",
-      "tps": 10.696,
+      "tps": 9.063,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://mempool.space/api/v1/blocks",
-      "period_covered": "last 10 blocks (~59 min)",
+      "period_covered": "last 10 blocks (~79 min)",
       "extra": {
-        "block_height": 961217
+        "block_height": 961221
       },
-      "retrieved_at": "2026-08-05T22:40:45Z",
+      "retrieved_at": "2026-08-05T23:36:27Z",
       "status": "ok"
     },
     "ethereum": {
       "label": "Ethereum",
-      "tps": 25.917,
+      "tps": 40.667,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://ethereum-rpc.publicnode.com",
-      "period_covered": "block 25691777 (12s)",
+      "period_covered": "block 25692055 (12s)",
       "extra": {
-        "block_height": 25691777
+        "block_height": 25692055
       },
-      "retrieved_at": "2026-08-05T22:40:45Z",
+      "retrieved_at": "2026-08-05T23:36:27Z",
       "status": "ok"
     },
     "solana": {
       "label": "Solana",
-      "tps": 3933.1,
+      "tps": 3870.8,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://api.mainnet-beta.solana.com",
       "period_covered": "60s performance sample",
       "note": "includes consensus vote txns",
-      "non_vote_tps": 2276.3,
-      "retrieved_at": "2026-08-05T22:40:45Z",
+      "non_vote_tps": 2201.3,
+      "retrieved_at": "2026-08-05T23:36:27Z",
       "status": "ok"
     },
     "radix": {
       "label": "Radix",
-      "tps": 0.022,
+      "tps": 0.014,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://mainnet.radixdlt.com",
-      "period_covered": "last 100 txns (~4566s)",
+      "period_covered": "last 100 txns (~7017s)",
       "extra": {
-        "state_version": 546155794
+        "state_version": 546173097
       },
-      "retrieved_at": "2026-08-05T22:40:46Z",
+      "retrieved_at": "2026-08-05T23:36:27Z",
       "status": "ok"
     },
     "xrpl": {
@@ -65,7 +65,9 @@
         "ledger_index": "106096985"
       },
       "retrieved_at": "2026-08-05T22:40:46Z",
-      "status": "ok"
+      "status": "stale",
+      "last_error": "'ledger'",
+      "last_attempt": "2026-08-05T23:36:28Z"
     }
   }
 }
