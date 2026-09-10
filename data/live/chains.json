@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-09-10T05:14:19Z",
+  "generated_at": "2026-09-10T09:44:14Z",
   "tier": 1,
   "description": "Ledger-verified real-time transaction throughput from open, keyless chain APIs.",
   "feeds": {
     "bitcoin": {
       "label": "Bitcoin",
-      "tps": 5.206,
+      "tps": 20.812,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://mempool.space/api/v1/blocks",
-      "period_covered": "last 10 blocks (~88 min)",
+      "period_covered": "last 10 blocks (~44 min)",
       "extra": {
-        "block_height": 966308
+        "block_height": 966341
       },
-      "retrieved_at": "2026-09-10T05:14:18Z",
+      "retrieved_at": "2026-09-10T09:44:12Z",
       "status": "ok"
     },
     "ethereum": {
@@ -29,18 +29,18 @@
       "retrieved_at": "2026-09-09T20:00:16Z",
       "status": "stale",
       "last_error": "HTTP Error 403: Forbidden",
-      "last_attempt": "2026-09-10T05:14:18Z"
+      "last_attempt": "2026-09-10T09:44:13Z"
     },
     "solana": {
       "label": "Solana",
-      "tps": 3569.2,
+      "tps": 3840.6,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://api.mainnet-beta.solana.com",
       "period_covered": "60s performance sample",
       "note": "includes consensus vote txns",
-      "non_vote_tps": 1374.0,
-      "retrieved_at": "2026-09-10T05:14:18Z",
+      "non_vote_tps": 1707.0,
+      "retrieved_at": "2026-09-10T09:44:13Z",
       "status": "ok"
     },
     "radix": {
@@ -56,19 +56,19 @@
       "retrieved_at": "2026-08-31T19:38:53Z",
       "status": "stale",
       "last_error": "HTTP Error 500: Internal Server Error",
-      "last_attempt": "2026-09-10T05:14:19Z"
+      "last_attempt": "2026-09-10T09:44:13Z"
     },
     "xrpl": {
       "label": "XRP Ledger",
-      "tps": 12.75,
+      "tps": 13.75,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://xrplcluster.com",
-      "period_covered": "ledger 106883246 (~4s close)",
+      "period_covered": "ledger 106887458 (~4s close)",
       "extra": {
-        "ledger_index": "106883246"
+        "ledger_index": "106887458"
       },
-      "retrieved_at": "2026-09-10T05:14:19Z",
+      "retrieved_at": "2026-09-10T09:44:14Z",
       "status": "ok"
     }
   }
