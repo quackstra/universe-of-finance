@@ -1,44 +1,44 @@
 {
-  "generated_at": "2026-11-12T04:14:03Z",
+  "generated_at": "2026-11-12T12:42:23Z",
   "tier": 1,
   "description": "Ledger-verified real-time transaction throughput from open, keyless chain APIs.",
   "feeds": {
     "bitcoin": {
       "label": "Bitcoin",
-      "tps": 5.414,
+      "tps": 13.911,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://mempool.space/api/v1/blocks",
-      "period_covered": "last 10 blocks (~116 min)",
+      "period_covered": "last 10 blocks (~53 min)",
       "extra": {
-        "block_height": 975518
+        "block_height": 975554
       },
-      "retrieved_at": "2026-11-12T04:14:02Z",
+      "retrieved_at": "2026-11-12T12:42:23Z",
       "status": "ok"
     },
     "ethereum": {
       "label": "Ethereum",
-      "tps": 15.417,
+      "tps": 36.917,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://ethereum-rpc.publicnode.com",
-      "period_covered": "block 26396399 (12s)",
+      "period_covered": "block 26398930 (12s)",
       "extra": {
-        "block_height": 26396399
+        "block_height": 26398930
       },
-      "retrieved_at": "2026-11-12T04:14:02Z",
+      "retrieved_at": "2026-11-12T12:42:23Z",
       "status": "ok"
     },
     "solana": {
       "label": "Solana",
-      "tps": 1898.2,
+      "tps": 1262.2,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://api.mainnet-beta.solana.com",
       "period_covered": "60s performance sample",
       "note": "includes consensus vote txns",
-      "non_vote_tps": 1898.2,
-      "retrieved_at": "2026-11-12T04:14:02Z",
+      "non_vote_tps": 1262.2,
+      "retrieved_at": "2026-11-12T12:42:23Z",
       "status": "ok"
     },
     "radix": {
@@ -47,24 +47,24 @@
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://mainnet.radixdlt.com",
-      "period_covered": "last 100 txns (~20123s)",
+      "period_covered": "last 100 txns (~20130s)",
       "extra": {
-        "state_version": 568947884
+        "state_version": 569024827
       },
-      "retrieved_at": "2026-11-12T04:14:03Z",
+      "retrieved_at": "2026-11-12T12:42:23Z",
       "status": "ok"
     },
     "xrpl": {
       "label": "XRP Ledger",
-      "tps": 19.0,
+      "tps": 45.75,
       "unit": "tps",
       "method": "ledger",
       "source_url": "https://xrplcluster.com",
-      "period_covered": "ledger 108274566 (~4s close)",
+      "period_covered": "ledger 108282215 (~4s close)",
       "extra": {
-        "ledger_index": "108274566"
+        "ledger_index": "108282215"
       },
-      "retrieved_at": "2026-11-12T04:14:03Z",
+      "retrieved_at": "2026-11-12T12:42:23Z",
       "status": "ok"
     }
   }
